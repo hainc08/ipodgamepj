@@ -445,6 +445,7 @@ only=20
 methods, classes can also declare properties. For more information on=20
 properties, see <SPAN class=3Dcontent_text>=93Properties=94</SPAN>. </P>
 <P></P></DIV>
+<P>변수안에 오브젝트를 저장할 때, 당신은 언제나 포인터 타잎을 사용한다. Object-C는 변수에 객체를 수용하기 위해 강하고 약한 두 가지의 타잎 모두 유지한다. (이하 강포인터 약포인터) 강포인터는 타잎선언시에 클래스 이름을 포함한다. 약포인터는 클래스의 이름 대신에 타잎의 ID를 사용한다. 약포인터는 클래스 콜렉션이나 알려지지 않은 콜렉션 안에서 확실히 알려진 타잎의 오브젝트를 골라내기위해서 빈번하게 사용된다.(이건 뭔소리래?) 당신이 강포인터를 사용하는데 익숙하다면, 당신은 약포인터가 문제를 일으킨다고 생각할지도 모른다. 그러나 그것들은 확실히 엄청난 유연성을 제공하며, Objective-C프로그램 안에서 훨씬 큰 변동성 허락한다.</P>
 <P>When storing objects in variables, you always use a pointer type. =
 Objective-C=20
 supports both strong and weak typing for variables containing objects. =
@@ -462,6 +463,7 @@ typed=20
 variables would cause problems, but they actually provide tremendous =
 flexibility=20
 and allow for much greater dynamism in Objective-C programs. </P>
+<P>뒤의 샘플은 MyClass클래스를 위한 강포인터와 약포인터의 선언을 보여준다.</P>
 <P>The following example shows both strongly and weakly typed variable=20
 declarations for the <CODE>MyClass</CODE> class: </P><PRE>MyClass*  =
 myObject1;    // Strong typing<SPAN></SPAN>
@@ -471,6 +473,7 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW11=20
 turn_anchor=3D"yes"></A>
 <H3>Methods</H3>
+<P>Objective-C에서의 클래스는 인스턴스 메써드와 클래스 메써드, 두 종류의 메써드를 선언할 수 있다. 인스턴스 메써드는 실행시키는 범위가 클래스의 인스턴스에 한정되는 메써드이다. 다시말해 인스턴스 메써드를 부르기전에, 당신은 반드시 클래스의 인스턴스를 생성해야한다. 클래스 메써드는 이와 달리, 클래스의 인스턴스 생성을 요구하지 않는다.</P>
 <P>A class in Objective-C can declare two types of methods: instance =
 methods and=20
 class methods. An instance method is a method whose execution is scoped =
@@ -482,6 +485,7 @@ by=20
 comparison, do not require you to create an instance, but more on that =
 later.=20
 </P>
+<P>메써드의 선언은 메써드 타잎, 리턴 타잎, 하나이상의 이름 키워드, 파라미터 타잎과 이름정보로 구성된다. Figure 2는 인스턴스 메써드인 insertObject:atIndex:의 선언을 보여준다. 그 선언은 이것이 인스턴스 메써드임을 가르키는 마이너스(-) 글자가 선행한다. 그 메써드의 실제 이름(insertObject:atIndex:)은 콜론 문자를 포함한 모든 시그니쳐 키워드의 연결이다. 콜론문자는 파라미터의 존재를 선언한다. 만약 메써드가 파라메터가 없다면, 당신은 첫(그리고 유일한) 시그니쳐 키워드 뒤의 콜론을 생략한다. 이 샘플에서는 메써드가 두개의 파람터를 가진다.</P>
 <P>The declaration of a method consists of the method type identifier, a =
 return=20
 type, one or more signature keywords, and the parameter type and name=20
