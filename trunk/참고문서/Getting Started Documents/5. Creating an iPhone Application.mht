@@ -20,7 +20,7 @@ Content-Location: http://developer.apple.com/iphone/gettingstarted/docs/creating
 <HTML><HEAD><TITLE>Apple Developer Connection - iPhone Dev Center - =
 Getting Started Docs</TITLE>
 <META http-equiv=3DContent-Type content=3D"text/html; =
-charset=3Diso-8859-1">
+charset=euc-kr">
 <META http-equiv=3Dpics-label=20
 content=3D'(pics-1.1 "http://www.icra.org/ratingsv02.html" l gen true =
 for "http://www.apple.com" r (cz 1 lz 1 nz 1 oz 1 vz 1) =
@@ -31,37 +31,37 @@ for "http://www.apple.com" r (cz 1 lz 1 nz 1 oz 1 vz 1) =
 <META content=3Dwidth=3D1024 name=3Dviewport><LINK=20
 href=3D"http://devimages.apple.com/global/styles/adc.css" =
 type=3Dtext/css=20
-charset=3Dutf-8 rel=3Dstylesheet>
+charset=UTF-8 rel=3Dstylesheet>
 <SCRIPT =
 src=3D"http://devimages.apple.com/global/scripts/lib/prototype.js"=20
-type=3Dtext/javascript charset=3Dutf-8></SCRIPT>
+type=3Dtext/javascript charset=UTF-8></SCRIPT>
 
 <SCRIPT =
 src=3D"http://devimages.apple.com/global/scripts/lib/scriptaculous.js"=20
-type=3Dtext/javascript charset=3Dutf-8></SCRIPT>
+type=3Dtext/javascript charset=UTF-8></SCRIPT>
 
 <SCRIPT =
 src=3D"http://devimages.apple.com/global/scripts/browserdetect.js"=20
-type=3Dtext/javascript charset=3Dutf-8></SCRIPT>
+type=3Dtext/javascript charset=UTF-8></SCRIPT>
 
 <SCRIPT src=3D"http://devimages.apple.com/global/scripts/apple_core.js"=20
-type=3Dtext/javascript charset=3Dutf-8></SCRIPT>
+type=3Dtext/javascript charset=UTF-8></SCRIPT>
 
 <SCRIPT =
 src=3D"http://devimages.apple.com/global/scripts/search_decorator.js"=20
-type=3Dtext/javascript charset=3Dutf-8></SCRIPT>
+type=3Dtext/javascript charset=UTF-8></SCRIPT>
 
 <SCRIPT src=3D"http://devimages.apple.com/global/scripts/adc_core.js"=20
-type=3Dtext/javascript charset=3Dutf-8></SCRIPT>
+type=3Dtext/javascript charset=UTF-8></SCRIPT>
 
-<SCRIPT type=3Dtext/javascript charset=3Dutf-8>=0A=
+<SCRIPT type=3Dtext/javascript charset=UTF-8>=0A=
 		document.write('<link rel=3D"stylesheet" type=3D"text/css" =
 href=3D"http://devimages.apple.com/global/styles/script.css" =
 media=3D"screen">')=0A=
 	</SCRIPT>
 <LINK href=3D"http://developer.apple.com/iphone/styles/iphone.css" =
 type=3Dtext/css=20
-charset=3Dutf-8 rel=3Dstylesheet>
+charset=UTF-8 rel=3Dstylesheet>
 <STYLE type=3Dtext/css>#main #header {
 	PADDING-LEFT: 135px
 }
@@ -131,7 +131,7 @@ iTunes</A>=20
   <LI id=3Dgh-nav-resources><A=20
   href=3D"http://developer.apple.com/information/">Information</A> =
 </LI></UL>
-<SCRIPT type=3Dtext/javascript charset=3Dutf-8>=0A=
+<SCRIPT type=3Dtext/javascript charset=UTF-8>=0A=
 		var menus =3D $$('#globalheader ul#gh-nav li.menu');=0A=
 		var menu =3D new ADC.Menus(menus);=0A=
 	</SCRIPT>
@@ -192,7 +192,12 @@ href=3D"http://developer.apple.com/iphone/logout.action">Log out</A> =
 <DIV id=3Dmain>
 <DIV id=3Dcontent>
 <H2>Creating an iPhone Application</H2>
-<P>At a high level, the process for creating an iPhone application is =
+<P>하이레벨에서의 iPhone 어플리케이션을 제작하는 과정은 Mac OS X 어플리케이션을 제작하는 과정과 비슷한다. 
+둘다 같은 툴들과 많은 같은 기본 라이브러리를 사용한다. 유사성에도 불구하고, 중요한 차이점은 물론 있다. 
+iPhone은 데스트탑 컴퓨터가 아니다. 이것은 다른 용도를 가지며 매우 다른 디자인 접근을 요구한다. 
+이러한 접근은 iPhone OS의 힘의 장점과 모바일 환경에서 이상하거나 비현실적인 특징들을 앞서나가는 것을 필요로한다. 
+작은 크기의 iPhone과 iPod touch의 스크린 역시 당신의 어플리케이션의 유저 인터페이스가 잘 조직되고 언제나 유저의 필요에 최대한 맞춰져야함을 의미한다.
+<br>At a high level, the process for creating an iPhone application is =
 similar to=20
 that for creating a Mac OS X application. Both use the same tools and =
 many of=20
@@ -210,7 +215,11 @@ touch screens also means that your application's user interface should =
 be well=20
 organized and always focused on the information the user needs most. =
 </P>
-<P>iPhone OS lets users interact with iPhone and iPod touch devices in =
+<P>iPhone OS는 유저들이 iPhone과 iPod touch장치들과 데스크탑 어플리케이션에서 할 수 없었던 상호작용을 하게한다. 
+멀티터치 인터페이스는 이벤트를 받는 혁명적인 새로운 방식이다. 스크린을 만지는 각각 떨어진 손가락을 보고하고, 그것을 여러개의 손가락을 이용한 제스쳐와 조합으로 쉽게 만들어낸다. 
+더해서, 몇몇 데스크탑에서 제공되는 Accelerometers와 같은 내부의 하드웨어는 iPhone OS에서 당신의 컨텐츠에 맞게 스크린의 현재 위치를 추척하는데 좀 더 광범위하게 사용된다.(의역이 많이 들어갔군...) 
+당신의 어플리케이션 안에서 이러한 특징을 어떻게 사용하는지 이해하는 것은 당신의 유저에 맞춘 디자인을 도와준다.
+<br>iPhone OS lets users interact with iPhone and iPod touch devices in =
 ways that=20
 you cannot interact with desktop applications. The Multi-Touch interface =
 is a=20
@@ -227,7 +236,11 @@ your content accordingly. Understanding how you can use these features =
 in your=20
 applications will help you focus on a design that is right for your =
 users. </P>
-<P>The best way to understand the design of an iPhone application is to =
+<P>
+iPhone 어플리케이션의 디자인을 이해하는 최고의 방법은 예제를 보는 것이다. 
+이 문서는 샘플 어플리케이션인 "MoveMe"를 둘러보게 한다. 
+이 샘플은 다음의 것들을 포함하여 iPhone 어플리케이션의 전형적인 행동을 보여준다.
+<br>The best way to understand the design of an iPhone application is to =
 look at=20
 an example. This article takes you on a tour of the <SPAN =
 class=3Dcontent_text><A=20
@@ -237,11 +250,11 @@ target=3D_top>MoveMe</A></SPAN> sample application. This sample =
 demonstrates many=20
 of the typical behaviors of an iPhone application, including: </P>
 <UL class=3Dsquare>
-  <LI>Initializing the application=20
-  <LI>Displaying a window=20
-  <LI>Drawing custom content=20
-  <LI>Handling touch events=20
-  <LI>Performing animations </LI></UL>
+  <LI>어플리케이션의 초기화<br>Initializing the application=20
+  <LI>윈도우 보여주기<br>Displaying a window=20
+  <LI>컨텐츠 그리기<br>Drawing custom content=20
+  <LI>터치이벤트 핸들링<br>Handling touch events=20
+  <LI>에니메이션 실행<br>Performing animations </LI></UL>
 <P><SPAN class=3Dcontent_text>Figure 1</SPAN> shows the interface for =
 this=20
 application. Touching the Welcome button triggers an animation that =
