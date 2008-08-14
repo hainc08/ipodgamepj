@@ -648,6 +648,7 @@ them in your code, as shown in the following example: </P><PRE>   =
 myObject.flag =3D YES;<SPAN></SPAN>
    CGRect   viewFrame =3D myObject.rootView.frame;<SPAN></SPAN>
 </PRE>
+<P>앞의 예제에 있는 객체와 프로퍼티 이름이 마련되었더라도, 그들은 프로퍼티의 유연성을 보여준다.(엥?) dot구문은 메써드를 부르는 대응들을 가린다. 각 읽는 프로퍼티는 프로퍼티와 같은 이름을 가진 메써드로 대응된다. 각 쓰는 프로퍼티는 set프로퍼티이름: 의 추가 메써드로 대응되며, 여기서 프로퍼티이름의 첫문자는 대문자로 사용한다. (이 메써드들은 프로퍼티의 실제적인 예이며, 인스턴트 변수로 대응되지 않은 클래스의 어트리뷰트를 위한 프로퍼티를 선언할 수 있는 방법이다.) 프로퍼티 대신에 메써드를 사용하여 앞의 코드를 수행하기 위하여는, 당신은 뒤에 오는 코드로 쓸 것이다.</P>
 <P>Although the object and property names in the preceding example are=20
 contrived, they demonstrate the flexibility of properties. The dot =
 syntax=20
@@ -668,6 +669,7 @@ write the following code: </P><PRE>   [myObject =
 setFlag:YES];<SPAN></SPAN>
    CGRect   viewFrame =3D [[myObject rootView] frame];<SPAN></SPAN>
 </PRE>
+<P>당신의 클래스들 안에서 프로퍼티를 선언하는 방법에 대한 좀 더 자세한 정보는 "The Objective-C 2.0 Programming Language." 안에 "Properties"를 읽기 바란다.
 <P>For information on how to declare properties in your own classes, =
 read <SPAN=20
 class=3Dcontent_text><A=20
@@ -683,6 +685,7 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW1=20
 turn_anchor=3D"yes"></A>
 <H3>Protocols and Delegates</H3>
+<P>프로토콜은 어느 클래스에서도 수행될 수 있는 메써드를 선언한다. 프로토콜은 그들자신이 클래스는 아니다. 그들은 단순히 이행할 책임을 가지는 다른 객체들과의 경계면에 대한 선언이다. 당신의 클래스들 하나의 프로토콜의 메써드를 수행할때, 그 클래스는 프로토콜에 따라서 말하게 된다.</P>
 <P>A protocol declares methods that can be implemented by any class. =
 Protocols=20
 are not classes themselves. They simply define an interface that other =
@@ -691,6 +694,8 @@ are responsible for implementing. When you implement the methods of a =
 protocol=20
 in one of your classes, your class is said to conform to that protocol. =
 </P>
+<P>iPhone OS안에, 프로토콜은 대표 오브젝트를 실행하기 위해 종종 사용된다. 대표 오브젝트는 남을 대신해서 행동하거나, 다른 오브젝트와 통일을 위한 오브젝트이다. 프로토콜, 델리케이트, 그리고 다른 오브젝트끼리의 상호작용을 보기위한 가장 좋은 방법은 다음 보기를 보라.
+<br>(virtual함수 처럼 사용되는 것들인가?)</P>
 <P>In iPhone OS, protocols are used frequently to implement delegate =
 objects. A=20
 delegate object is an object that acts on behalf of, or in coordination =
@@ -698,6 +703,7 @@ with,=20
 another object. The best way to look at the interplay between protocols, =
 
 delegates, and other objects is to look at an example. </P>
+<P>UIApplication 클래스는 어플리케이션의 필요한 행동을 수행한다. 강제로 당신이 UIApplication의 하위 클래스가 어플리케이션의 현재 상태에 대한 간단한 통지를 받는 것을 대신해서. UIApplication 클래스는 대표오브젝트의 메써드를 부름으로서 그런 통지를 전달한다. UIApplicationDelegate 프로토콜의 메써드를 수행하게 되는 오브젝트는 그러한 통지를 받아 적절한 반응을 할 수 있게 된다. </P>
 <P>The <CODE>UIApplication</CODE> class implements the required behavior =
 of an=20
 application. Instead of forcing you to subclass =
@@ -711,6 +717,7 @@ implements the=20
 methods of the <CODE>UIApplicationDelegate</CODE> protocol can receive =
 those=20
 notifications and provide an appropriate response. </P>
+<P>프로토콜의 선언은 부모클래스가 없다는 것과 인스턴스 변수를 선언할 수 없다는 것을 제외하고 클래스의 인터페이스와 유사하다. 뒤의 보기는 하나의 메써드를 가지는 간단한 프로토콜의 선언을 보여준다.</P>
 <P>The declaration of a protocol looks similar to that of a class =
 interface,=20
 with the exceptions that protocols do not have a parent class and they =
@@ -721,6 +728,7 @@ declaration with one method: </P><PRE>@protocol MyProtocol<SPAN></SPAN>
 - (void)myProtocolMethod;<SPAN></SPAN>
 @end<SPAN></SPAN>
 </PRE>
+<P>많은 대표 프로토콜의 경우에서 프로토콜의 채택은 프로토콜에 의해 선언된 메써드를 실행하는 간단한 일이다. 몇몇의 프로토콜은 당신이 그 프로토콜을 지원한다는 것을 명시적으로 필요로한다. 그리고 프로토콜은 요구하거나 선택하는 메써드를 지정할 수 있다.(응?) 당신의 개발이 계속될 수록, 당신은 "Objective-C 2.0 Programming Language"안의 "Protocols"에서 프로토콜과 그것들이 사용되는지에 대해서 배우는데 더 많은 시간을 소요해야한다.</P>
 <P>In the case of many delegate protocols, adopting a protocol is simply =
 a=20
 matter of implementing the methods defined by that protocol. There are =
@@ -745,6 +753,7 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW12=20
 turn_anchor=3D"yes"></A>
 <H3>For More Information</H3>
+<P>앞의 정보는 Objective-C언어의 기초에 익숙하게 하기 위하여 1차적으로 예정되었다. 여기에서 커버된 주제는 당신이 문서의 나머지를 통해 읽으면서 만날확률이 높은 언어의 특징을 반영한다. 이들은 언어의 유일한 특징은 아니다. 당신이 Objective-C 2.0 Programming Language에 있는 언어에 관하여 더 많은 것을 읽기 바란다. </P>
 <P>The preceding information was intended primarily to familiarize you =
 with the=20
 basics of the Objective-C language. The subjects covered here reflect =
