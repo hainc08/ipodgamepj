@@ -255,7 +255,12 @@ of the typical behaviors of an iPhone application, including: </P>
   <LI>컨텐츠 그리기<br>Drawing custom content=20
   <LI>터치이벤트 핸들링<br>Handling touch events=20
   <LI>에니메이션 실행<br>Performing animations </LI></UL>
-<P><SPAN class=3Dcontent_text>Figure 1</SPAN> shows the interface for =
+<P>Figure 1는 어플리케이션의 인터페이스를 보여준다. 
+Welcome버튼을 누르면 진동과 함께 버튼이 당신의 손가락 중앙으로 움직이는 애니메이션이 시작된다. 
+손가락을 스크린 위에서 드래그하면, 버튼은 당신의 손가락을 따라간다. 
+손가락을 스크린에서 떼면, 다른 애니메이션을 이용해서 버튼은 원래의 자리로 돌아간다. 
+버튼의 외부 어디에서든 더블 탭핑(두번 터치)을 하면 버튼의 인사말의 언어가 바뀐다.<br>
+<SPAN class=3Dcontent_text>Figure 1</SPAN> shows the interface for =
 this=20
 application. Touching the Welcome button triggers an animation that =
 causes the=20
@@ -278,7 +283,10 @@ alt=3D"The MoveMe application"=20
 src=3D"http://devimages.apple.com/iphone/gettingstarted/docs/images/MoveM=
 e.jpg"=20
 width=3D309> <BR>
-<P>Before reading the other sections of this article, you should =
+<P>
+이 문서의 다른 부분을 읽기전에, 당신은 소스코드를 직접 따라갈 수 있는 샘플(MoveMe)을 다운로드하는 것이 좋다. 
+그리고 이미 iPhone Dev Cente에서 iPhone OS와 툴, 개발에 대한 기본적인 이해에 대한 소개 페이지 읽은 적이 있어야 한다.
+<br>Before reading the other sections of this article, you should =
 download the=20
 sample (<SPAN class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/library/samplecode/MoveMe/index=
@@ -301,7 +309,8 @@ rview.action"=20
 href=3D"http://developer.apple.com/iphone/gettingstarted/docs/iphonedevto=
 ols.action"=20
   target=3D_top>Tools for iPhone Development</A></SPAN> </LI></UL>
-<P>If you are not familiar with the Objective-C programming language, =
+<P>당신이 Object-C 프로그래밍 랭기쥐에 익숙치 않다면 Object-C의 기본적인 문법과 구문에 익숙해지기 위해 Learning Objective-C: A Primer를 먼저 읽어야 한다.<br>
+If you are not familiar with the Objective-C programming language, =
 you should=20
 also have read <SPAN class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/gettingstarted/docs/objectivecp=
@@ -314,7 +323,11 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW17=20
 turn_anchor=3D"yes"></A>
 <H3>Examining the MoveMe Sample Project</H3>
-<P>Downloading the <SPAN class=3Dcontent_text><A=20
+<P>
+다운로드받은 MoveMe 샘플은 소스코드와 어플리케이션을 빌드하고 실행할 수 있는 지원 파일을 제공한다. 
+당신은 Xcode어플리케이션을 이용해서 iPhone OS를 위한 프로젝트를 관리한다. (디폴트로 /Developer/Applications에 있다.)
+각 Xcode 프로젝트 윈도우는 당신의 코드와 리소스를 수집하고, 당신의 어플리케이션을 빌드, 컴파일, 어셈블링하며, 코드를 에디팅과 디버깅하기 위한 작업공간과 결합한다.<br>
+Downloading the <SPAN class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/library/samplecode/MoveMe/index=
 .html"=20
 target=3D_top>MoveMe</A></SPAN> sample provides you with the source code =
@@ -329,7 +342,10 @@ rules for=20
 compiling your source and assembling your application, and tools for =
 editing and=20
 debugging your code. </P>
-<P><SPAN class=3Dcontent_text>Figure 2</SPAN> shows the Xcode project =
+<P>
+Figure 2는 MoveMe어플리케이션을 위한 Xcode프로젝트 윈도우 보여준다. 이 프로젝트를 열기위해서 이것을 당신의 로컬하드디스크에 복사한다음 MoveMe.xcodeproj를 더블클릭하여 연다.
+(당신은 Xcode에서 File > Open을 선택한다음 파일을 선택해서 프로젝트를 열 수도 있다.) 당신의 프로젝트는 (.m확장자로 표시된)몇 Object-C소스 파일, 약간의 이미지파일과 다른 리소스, 그리고 어플리케이션 번들을 빌드하기 위해 미리 선언된 타겟(MoveMe) 을 포함한다.<br>
+<SPAN class=3Dcontent_text>Figure 2</SPAN> shows the Xcode project =
 window for=20
 the MoveMe application. To open this project, copy it to your local hard =
 drive=20
@@ -352,7 +368,12 @@ alt=3D"The MoveMe project window"=20
 src=3D"http://devimages.apple.com/iphone/gettingstarted/docs/images/movem=
 e_project.jpg"=20
 width=3D797> <BR>
-<P>In iPhone OS, the ultimate target of your Xcode project is an =
+<P>iPhone OS에서 Xcode 프로젝트의 최종 목표는 당신의 어플리케이션의 실행파일과 리소스 파일을 수용할 수 있는 특별한 타잎의 어플리케이션 번들이다. 
+iPhone OS의 번들은 대부분의 파일이 번들 디렉토리의 최상단에 존재하는 평평한(?) 디렉토리 시스템을 가지고 있다. 
+그러나 번들은 현지화된 문자와 다른 언어를 위한 리소스 파일을 저장하기위한 하위디렉토리를 포함할지도 모른다. 
+당신은 이 문서의 목적을 위해 어플리케이션 번들의 정확한 구조를 알아야할 필요가 없다. 
+그러나, 관심이 있다면 iPhone OS Programming Guide의 "The Application Bundle"에서 정보를 찾을 수 있다. <br>
+In iPhone OS, the ultimate target of your Xcode project is an =
 application=20
 bundle, which is a special type of directory that houses your =
 application's=20
@@ -382,19 +403,26 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW7=20
 turn_anchor=3D"yes"></A>
 <H4>Building the MoveMe Application</H4>
-<P>To build the MoveMe application and run it in the simulator, do the=20
+<P>MoveMe 어플리케이션을 빌드하고 시뮬레이터에서 실행하기 위해서는 아래와 같이 한다:<br>
+To build the MoveMe application and run it in the simulator, do the=20
 following: </P>
 <OL class=3Dol>
-  <LI>Open the <CODE>MoveMe.xcodeproj</CODE> file in Xcode.=20
-  <LI>In the project toolbar, make sure the simulator option is selected =
+  <LI>Xcode에서 MoveMe.xcodeprog파일을 연다. <br>
+  Open the <CODE>MoveMe.xcodeproj</CODE> file in Xcode.=20
+  <LI> 프로젝트 툴바에서, Active SDK메뉴에서 시뮬레이터 옵션을 선택한다.
+(Active SDK메뉴가 툴바에서 보이지 않는다면 Project > Set Active SDK > Simulator를 선택한다.)<br>
+   In the project toolbar, make sure the simulator option is selected =
 in the=20
   Active SDK menu. (If the Active SDK menu does not appear in the =
 toolbar,=20
   choose Project &gt; Set Active SDK &gt; Simulator.)=20
-  <LI>Select Build &gt; Build and Go (Run) from the menu, or simply =
+  <LI>Build > Build and Go (Run)를 메뉴에서 선택하거나, 간단히 툴바의 Build and Go 버튼을 누른다.<br>
+  Select Build &gt; Build and Go (Run) from the menu, or simply =
 click the=20
   Build and Go button in the toolbar. </LI></OL>
-<P>When the application finishes building, Xcode loads it into the =
+<P>어플리케이션 빌드가 끝나면, Xcode는 iPhone 시뮬레이터를 로드하고 실행한다. 마우스를 사용해서 어플리케이션의 동작을 보기위해 Welcome버튼을 클릭하고 드래그할 수 있다.만약 당신이 개발을 위해 장치로 설정하면, 그 장치에서 당신의 어플리케이션을 빌드하고 실행할 수 있다.
+개발을 위한 장치로 설정하고, 어플리케이션을 로드하는 방법에 대한 좀 더 많은 정보를 위해서는 iPhone OS Programming Guide의 "Development Environment"를 보라.<br>
+When the application finishes building, Xcode loads it into the =
 iPhone=20
 simulator and launches it. Using your mouse, you can click the Welcome =
 button=20
