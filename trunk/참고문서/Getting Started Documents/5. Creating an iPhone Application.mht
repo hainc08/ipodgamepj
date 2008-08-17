@@ -1001,7 +1001,12 @@ use the=20
 more advanced drawing features found in UIKit or you must use Quartz or =
 OpenGL=20
 ES. </P>
-<P>The <CODE>PlacardView</CODE> class in the MoveMe application draws =
+<P>
+MoveMe 어플리케이션의 PlacardView 클래스는 Welcome버트을 그리고 스크린 상에서 그것의 위치를 관리한다. 
+PlacardView가 UIImageView과 UILabel 객체를 기반으로 사용해서 컨텐츠를 그리더라도, 전 과정을 보여주기위해 내용을 명쾌하게 그린다.(뭔소리야?)
+결과적으로, 이 클래스는 뷰에 위치를 잡고 별도의 드로잉을 하는 drawRect: 메써드는 실행한다.
+<br>
+The <CODE>PlacardView</CODE> class in the MoveMe application draws =
 the=20
 Welcome button and manages its location on the screen. Although the=20
 <CODE>PlacardView</CODE> class could draw its content using an embedded=20
@@ -1012,7 +1017,13 @@ this class=20
 implements a <CODE>drawRect:</CODE> method, which is where all custom =
 drawing=20
 for a view takes place. </P>
-<P>By the time a view's <CODE>drawRect:</CODE> method is called, the =
+<P>
+뷰의 drawRect: 메써드가 불려지는 시간을 통해, 그려지는 환경이 설정되고 시작할 준비가 된다. 
+당신이 해줄 것은 별도의 컨텐츠가 그려지는 명령이 전부이다. 
+PlacardView클래스 안에서, 내용은 배경 이미지(Placard.png 리소스 파일에 저장된)와 별도의 동적으로 바뀔 수 있는 문자열로 구성된다. 
+이 내용을 그리기 위해서, 클래스는 아래와 같은 과정을 거친다:
+<br>
+By the time a view's <CODE>drawRect:</CODE> method is called, the =
 drawing=20
 environment is configured and ready to go. All you have to do is specify =
 the=20
@@ -1026,27 +1037,50 @@ following=20
 steps: </P>
 <OL class=3Dol>
   <LI>
-  <P>Draw the background image at the view's current origin. (Because =
+  <P>
+  뷰의 현재 위치에 배경이미지를 그림. (뷰는 이미지의 크기에 맞게 수정되어있기때문에, 이 과정은 버튼의 전체 배경을 제공한다.)
+  <br>
+  Draw the background image at the view's current origin. (Because =
 the view=20
   is already sized to fit the image, this step provides the entire =
 button=20
   background.) </P>
   <LI>
-  <P>Compute the position of the welcome string so that it is centered =
+  <P>
+  버튼의 중앙으로 welcome문자열의 위치를 계산.
+  (문자열의 크기는 변할 수 있기 때문에, 현재 문자열의 크기에맞춰서 그때 그때 계산이 필요하다.)
+  <br>
+  Compute the position of the welcome string so that it is centered =
 in the=20
   button. (Because the string size can change, the position needs to be =
 computed=20
   each time based on the current string size.) </P>
   <LI>
-  <P>Set the drawing color to black. </P>
+  <P>
+  검정색을 그리는 색을 선택한다.
+  <br>Set the drawing color to black. </P>
   <LI>
-  <P>Draw the string in black, and slightly offset. </P>
+  <P>
+  문자열을 검으색으로 그리고, 조금 움직인다.
+  <br>Draw the string in black, and slightly offset. </P>
   <LI>
-  <P>Set the drawing color to white. </P>
+  <P>
+  흰색으로 그리는 색을 선택한다.
+  <br>Set the drawing color to white. </P>
   <LI>
-  <P>Draw the string again in white at its intended location. =
+  <P>
+  예정된 그것의 위치에 문자열을 흰색으로 그린다.
+  <br>Draw the string again in white at its intended location. =
 </P></LI></OL>
-<P><SPAN class=3Dcontent_text>Listing 4</SPAN> shows the =
+<P>
+Listing 4는 PlacardView클래스를 위한 drawRect:메써드를 보여준다. 
+placardImage 멤버변수는 버튼을 위한 배경과 UIImage객체를 포함하고 있으며, 
+currentDisplayString 멤버변수는 welcome 문자열을 포함하고 있는 NSString 객체이다. 
+이미지를 그린 후, 이 메써드는 뷰안에서 문자열의 위치를 계산한다. 
+문자열의 크기는 이미 알고 있다, 이는 로딩될 때 계산되어 textsize 멤버변수에 저장된다.
+문자열은 NSString의 drawAtPoint:forWidth:withFont:fontSize:lineBreakMode:baselineAdjustment: 메써드를 이용해서(뭐가 이렇게 길어!) 검은색으로 한번, 흰색으로 한번 두번 그려진다. 
+<br>
+<SPAN class=3Dcontent_text>Listing 4</SPAN> shows the =
 <CODE>drawRect:</CODE>=20
 method for the <CODE>PlacardView</CODE> class. The =
 <CODE>placardImage</CODE>=20
@@ -1062,7 +1096,7 @@ size of the string is already known, having been calculated when the =
 string was=20
 loaded and stored in the <CODE>textSize</CODE> member variable. The =
 string is=20
-then drawn twice=97once in black and once in white=97using the=20
+then drawn twice, once in black and once in white, using the=20
 <CODE>drawAtPoint:forWidth:withFont:fontSize:lineBreakMode:baselineAdjust=
 ment:</CODE>=20
 method of <CODE>NSString</CODE>. </P><A=20
@@ -1126,7 +1160,12 @@ lineBreakMode:UILineBreakModeMiddleTruncation<SPAN></SPAN>
 baselineAdjustment:UIBaselineAdjustmentAlignBaselines];<SPAN></SPAN>
 }<SPAN></SPAN>
 </PRE>
-<P>When you need to draw content that is more complex than images and =
+<P>
+이미지와 문자열보다 훨씬 복잡한 내용을 출력할 때, 당신은 Quartz나 OpenGL ES를 사용할 수 있다. 
+Quartz는 벡터기반의 패스, 이미지, 좌표, PDF, 그리고 당신이 동적으로 만들기를 원하는 복잡한 내용을 그리기위해 UIKit와 함께 작동한다. 
+Quartz과 UIKit은 같은 그리기 환경을 기반으로 하고있기 때문에, 당신의 뷰와 drawRect: 메써드에서 Quartz를 직접 호출할 수 있으며, UIKit 클래스들에서 Quartz를 호출해서 섞어거나, 맞추 수도 있다.
+<br>
+When you need to draw content that is more complex than images and =
 strings,=20
 you can use Quartz or OpenGL ES. Quartz works with UIKit to handle the =
 drawing=20
@@ -1138,7 +1177,13 @@ drawing environment, you can call Quartz functions directly from the=20
 <CODE>drawRect:</CODE> method of your view and even mix and match Quartz =
 calls=20
 through the use of UIKit classes. </P>
-<P>OpenGL ES is an alternative to Quartz and UIKit that lets you render =
+<P>
+OpenGL ES는 Mac OS X의 OpenGL에서 찾을 수 있는 함수들과 닮은(그러나 완전히 같지는 않은) 함수들을 이용해서 2D, 3D내용을 랜더링하기 위해 Quartz, UIKit과 양자택일 해서 쓸 수이다.(동시에 못쓰나보네...) 
+Quartz, UIKit과는 다르게, 당신의 드로잉을 위해 뷰의 drawRect: 메써드를 이용할 수 없다. 
+당신은 여전히 뷰를 사용한다, 그러나 뷰 객체를 OpenGL ES 코드를 위한 그림면을 제공하는데 주로 사용된다. 
+얼마나 자주 그림면을 업데이트할 것인지, 그리고 어떤 객체를 사용할 것인지는 당신의 선택이다.
+<br>
+OpenGL ES is an alternative to Quartz and UIKit that lets you render =
 2D and=20
 3D content using a set of functions that resemble (but are not exactly =
 like)=20
@@ -1151,7 +1196,10 @@ for your=20
 OpenGL ES code. How often you update the drawing surface, and which =
 objects you=20
 use to do so, are your decision. </P>
-<P>For detailed information about each of the drawing technologies and =
+<P>
+각각의 드로이 기술과 그것들을 어떻게 쓰는지에 관한 잣한 정보는 "iPhone OS Programming Guide"의 "Graphics and Drawing"를 보기바란다.
+<br>
+For detailed information about each of the drawing technologies and =
 how you=20
 use them, see <SPAN class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/library/documentation/iPhone/Co=
@@ -1167,7 +1215,13 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW30=20
 turn_anchor=3D"yes"></A>
 <H3>Handling Touch Events</H3>
-<P>The Multi-Touch interface in iPhone OS makes it possible for your =
+<P>
+iPhone OS안에 멀티터치 인터페이스는 여러개의 손가락으로 장치를 터치함으로서 당신의 어플리케이션이 독특한 이벤트가 생성되는 것을 인정받고 상응하는 것을 가능하게 만든다.(이뭐...)
+여러개의 손가락에 대응되는 능력은 상당한 힘을 부여하지만, 고전적인 마우스 기반의 이벤트 처리방법에서의 중대한 벗어남을 의미한다. 
+각 손가락은 장치의 표면을 터치한면, 터치센서는 새로운 터치 이벤트를 생성한다. 
+각 손가락이 움직이면, 손가락이 가르키는 새로운 위치에 추가적인 터치 이벤트가 생성된다. 
+손가락이 장치의 표면의 접촉을 잃었을 때, 시스템은 곧 그 사실을 가르키는 터치 이벤트를 전송한다.
+<br>The Multi-Touch interface in iPhone OS makes it possible for your =
 application=20
 to recognize and respond to distinct events generated by multiple =
 fingers=20
@@ -1182,7 +1236,15 @@ finger's new=20
 position. When a finger loses contact with the device surface, the =
 system=20
 delivers yet another touch event to indicate that fact. </P>
-<P>Because there may be multiple fingers touching the device at one =
+<P>
+한번에 여러개 손가락의 터치가 있을수도 있기 때문에, 당신은 복잡한 유저의 제스쳐를 확인하기 위해 사용할 수 있다. 
+시스템은 휘두르는 것과 같이 몇몇 도움이 되는 공통의 제스쳐를 제공하지만, 당신은 더 복잡한 제스쳐를 감지하기위한 책임이 따른다. 
+이벤트 시스템이 새로운 터치 이벤트를 생성햇을 때, 그것은 각 손가락이 터치상태인지 장치의 표면에서 없어졌는지 어느쪽이든 현재의 상태에 대한 정보를 포함한다. 
+각 이벤트 객체는 모든 활성화된 터치들의 정보를 포함하기 떄문에, 당신은 새로운 이벤트가 발생할 때마다 각 손가락의 행동을 감시할 수 있다. 
+당신의 어플리케이션의 내용에 적용할 수 있는 제스쳐를 감지하기위해 이벤트에서 이벤트로 각 손가락의 움직임을 따라갈 수 있다. 
+에를 들어, 이벤트가 유저가 조이거나 벌리는 제스쳐(Figure 4) 수행했음을 가르키고, 뷰가 확대를 지원하는 뷰에 기초하고 있다면, 당신은 이러한 이벤트를 줌 레벨을 바꾸는데 사용할 수 있다.
+<br>
+Because there may be multiple fingers touching the device at one =
 time, it is=20
 possible for you to use those events to identify complex user gestures. =
 The=20
@@ -1219,7 +1281,13 @@ height=3D189 alt=3D"Using touch events to detect gestures"=20
 src=3D"http://devimages.apple.com/iphone/gettingstarted/docs/images/multi=
 -touch.jpg"=20
 width=3D556> <BR>
-<P>The system delivers events to the application's responder objects, =
+<P>
+시스템은 UIResponder 클래스의 인스턴스인 어플리케이션의 대응자 객체로 이벤트를 전달한다. 
+iPhone 어플리케이션 안에서는, 대응자 객체가 대응자 객체의 묶음 중 당신의 어플리케이션의 뷰들이다. 
+MoveMe 어플리케이션 두개의 뷰 클래스를 제공하지만, MoveMeView 클래스만이 이벤트 메시지에 응답한다. 
+이 클래스는 UIResponder: 메써드를 따라 오버라이딩함으로서 welcome버튼의 안쪽과 바깥쪽을 가볍게치는 것 둘다를 감지한다.
+<br>
+The system delivers events to the application's responder objects, =
 which are=20
 instances of the <CODE>UIResponder</CODE> class. In an iPhone =
 application, your=20
@@ -1238,7 +1306,15 @@ of <CODE>UIResponder</CODE>: </P><PRE>- (void)touchesBegan:(NSSet =
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent =
 *)event;<SPAN></SPAN>
 </PRE>
-<P>To simplify its own event-handling behavior, the MoveMe application =
+<P>
+단순하게, MoveMe 어플리케이션의 자신의 이벤트 처리는 장치의 표면을 터치하는 첫번째 손가락만 추적한다. 
+그것은 멀티터치 이벤트가 기본으로 금지되어있는 UIView 객체에서 지원한다. 
+여러개의 손가락을 추적할 필요가 없는 어플리케이션을 위해서는, 이 방식은 굉장한 이득이다. 
+멀티터치가 금지되어 있는 경우, 시스템은 장치를 터치하는 첫번째 손가락과 관계가 있는 이벤트만 전달한다. 
+연달아 일어나는 추가적인 터치에 관한 이벤트는 뷰에 전달되지 않는다. 
+이러한 추가적인 터치에 대한 정보를 알고 싶다면, 당신은 UIView클래스의 setMultipleTouchEnabled: 메써드를 사용함으로서 다시 멀티터치지원을 허용할 수 있다.
+<br>
+To simplify its own event-handling behavior, the MoveMe application =
 tracks=20
 only the first finger to touch the surface of the device. It does this =
 with the=20
@@ -1257,30 +1333,59 @@ reenable=20
 multi-touch support using the <CODE>setMultipleTouchEnabled:</CODE> =
 method of=20
 the <CODE>UIView</CODE> class. </P>
-<P>As part of its event-handling behavior, the <CODE>MoveMeView</CODE> =
+<P>
+이벤트 처리 동작의 부분인, MoveMeView 클래스는 아래와 같은 과정으로 수행된다.
+<br>
+As part of its event-handling behavior, the <CODE>MoveMeView</CODE> =
 class=20
 performs the following steps: </P>
 <OL class=3Dol>
-  <LI>When a touch first arrives, it checks to see where the event =
+  <LI>
+  첫 번째 터치가 들어오면, 이벤트가 어디에서 사용중인지 확인
+  <br>
+  When a touch first arrives, it checks to see where the event =
 occurred.=20
   <UL class=3Dsquare>
-    <LI>Double-taps outside the Welcome button update the string =
+    <LI>
+    welcome버튼의 바깥 쪽에서 더블탭은 버튼의 문자열을 갱신
+    <br>
+    Double-taps outside the Welcome button update the string =
 displayed by=20
     the button.=20
-    <LI>Single taps inside the button center the button underneath the =
+    <LI>
+    버튼안의 싱글탭은 손가락의 바로밑에 버튼의 중앙에 두고, 버튼이 커지는 에니메이션을 발동
+    <br>
+    Single taps inside the button center the button underneath the =
 finger=20
     and trigger an initial animation to enlarge the button.=20
-    <LI>All other touches are ignored. </LI></UL>
+    <LI>
+    나머지 모든 터치는 무시.
+    <br>
+    All other touches are ignored. </LI></UL>
   <LI>
-  <P>If the finger moves and is inside the button, the button's position =
+  <P>
+  손가락이 버튼의 안에서 움직이면, 버튼의 위치는 손라가의 새로운 위치에 맞춰서 갱신된다.
+  <br>
+  If the finger moves and is inside the button, the button's position =
 is=20
   updated to match the new position of the finger. </P>
   <LI>
-  <P>If the finger was inside the button and then lifts off the surface =
+  <P>
+  손가락이 버튼 안에서 장치의 표면을 떠나면, 에니메이션은 원래의 위치로 버튼을 움직인다.
+  <br>
+  If the finger was inside the button and then lifts off the surface =
 of the=20
   device, an animation moves the button back to its original position.=20
 </P></LI></OL>
-<P><SPAN class=3Dcontent_text>Listing 5</SPAN> shows the=20
+<P>
+Listing 5는 MoveMeView클래스를 위한 touchesBegan:withEvent: 메써드를 보여준다. 
+시스템은 장치에 손가락이 처음 터치했을 때 이 메써드를 호출한다. 이 메써드는 모든 터치의 셋을 가지고 그것으로부터 단 하나의 객체를 만든다. 
+UITiuch 객체의 정보는 어떤 뷰(MoveMeView 객체 혹은 PlacardView 객체)가 터치를 발생시켰는지, 터치에의해 몇개의 탭이 구성되었는지 구분하고 위해 사용된다. 
+터치가 버튼 밖에서 더블탭을 재현한다면, touchesBegan:withEvent:메써드는 버튼의 문자열을 바꾸기 위해 setupNextDisplayString 메써드를 호출한다. 
+만약 welcome버튼 안에서 이벤트가 발생했다면, 버튼을 자라게하고 터치한 위치에 옮기기위해 animateFirstTouchAtPoint:를 사용한다. 
+나머지 터치에 관련된 모든 이벤트는 무시된다.
+<br>
+<SPAN class=3Dcontent_text>Listing 5</SPAN> shows the=20
 <CODE>touchesBegan:withEvent:</CODE> method for the =
 <CODE>MoveMeView</CODE>=20
 class. The system calls this method when a finger first touches the =
@@ -1332,7 +1437,13 @@ view,<SPAN></SPAN>
     [self animateFirstTouchAtPoint:touchPoint];<SPAN></SPAN>
 }<SPAN></SPAN>
 </PRE>
-<P><SPAN class=3Dcontent_text>Listing 6</SPAN> shows the=20
+<P>
+Listing 6는 MoveMeView 클래스의 touchesMoved:withEvent: 메써드를 보여준다. 
+시스템은 손가락이 장치를 터치할 후에 이 메써드를 호출하고 원래의 위치에서의 움직임에 반응한다. 
+MoveMe 어플리케이션은 welcome 버튼 안쪽에서 발생한 이러한 움직임만 추적한다. 
+결과적으로, 이 메써드는 이벤트의 위치를 확인하여 PlacardView 클래스의 중심점에 맞추어 사용한다. 
+뷰의 움직임은 자동으로 새로운 위치에 다시 그리는 원인이 된다.
+<br><SPAN class=3Dcontent_text>Listing 6</SPAN> shows the=20
 <CODE>touchesMoved:withEvent:</CODE> method of the =
 <CODE>MoveMeView</CODE>=20
 class. The system calls this method after the finger has touched the =
@@ -1368,7 +1479,11 @@ placardView<SPAN></SPAN>
     }<SPAN></SPAN>
 }<SPAN></SPAN>
 </PRE>
-<P>When the user's finger finally lifts from the screen, the MoveMe =
+<P>
+유저의 손가락이 최종적으로 스크린에서 떨어지면, MoveMe 어플리케이션은 버튼의 위치를 시작위치인 어플리케이션 윈도우의 중심으로 움직이기 시작한다. 
+Listing 7는 애니메이션을 초기화하는 touchesEnded:withEvent: 메써드를 보여준다.
+<br>
+When the user's finger finally lifts from the screen, the MoveMe =
 application=20
 responds by triggering an animation to move the button back to its =
 starting=20
@@ -1399,7 +1514,14 @@ center<SPAN></SPAN>
     }<SPAN></SPAN>
 }<SPAN></SPAN>
 </PRE>
-<P>To simplify the event handling process for the application, the=20
+<P>
+어플리케이션을 위한 이벤트 처리 과정을 단순화하기 위해서, touchesEnded:withEvent: 메써드는 뷰의 터치이벤트를 버튼이 원래의 위치로 돌아갈 때까지 임시로 금지한다. 
+이렇게 하지 않으면, 모든 이벤트 처리 메써드는 버튼이 애니메이션 되는 중에 어떻게 할것인지 결정하는 로직이 포함되어야할 필요가 있을지도 모른다. 
+그리고 이렇게 한다면, 애니메이션은 취소될 것이다. 
+버튼이 스크린의 중심으로 오는 짧은 시간동안 유저의 상호작용을 금지시키는 것은 이벤트 처리 코드를 단순하게 하고, 추가적으로 필요한 로직을 없앤다. 
+원래의 위치로 닿은뒤, MoveMeView 클래스의 animationDidStop:finished: 메써드는 이벤트 사이클을 다시 시작할 수 있는 유저의 상호작용을 재정의합니다.
+<br>
+To simplify the event handling process for the application, the=20
 <CODE>touchesEnded:withEvent:</CODE> method disables touch events for =
 the view=20
 temporarily while the button animates back to its original position. If =
@@ -1419,7 +1541,10 @@ the=20
 <CODE>MoveMeView</CODE> class reenables user interactions so that the =
 event=20
 cycle can begin all over again. </P>
-<P>For more information on handling events in iPhone OS, see <SPAN=20
+<P>
+iPhone OS에서 이벤트를 처리하는 데 관한 더 많은 정보를 위해서는 "iPhone OS Programming Guide"의 "Event Handling"를 보라.
+<br>
+For more information on handling events in iPhone OS, see <SPAN=20
 class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/library/documentation/iPhone/Co=
 nceptual/iPhoneOSProgrammingGuide/EventHandling/chapter_8_section_1.html"=
@@ -1434,7 +1559,14 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW29=20
 turn_anchor=3D"yes"></A>
 <H3>Animating the Button's Movement</H3>
-<P>In iPhone applications, animation plays a very important role. =
+<P>
+iPhone 어플리케이션에서, 에니메이션은 아주 중요한 규칙으로 재생된다. 
+애니메이션은 유저와의 문맥상의 정보와 즉각적인 피드백을 제공되기위해 광범위하게 사용된다. 
+예를 들어, 유저가 생산적인(?) 어플리케이션에서 계층적인 데이터를 탐색할 때, 스크린이 다른 것으로 그냥 바뀌는 것보다, 
+iPhone 어플리케이션은 각 새로운 스크린을 제자리로 움직이는 것을 애니메이션시킨다. 
+움직임의 방향은 유저가 계층의 위아래로 움직이는지를 가르킨다. 그리고 볼 새로운 정보가 있음의 시각적인 사인을 제공한다.
+<br>
+In iPhone applications, animation plays a very important role. =
 Animation is=20
 used extensively to provide the user with contextual information and =
 immediate=20
@@ -1448,7 +1580,14 @@ the=20
 hierarchy and also provides a visual cue that there is new information =
 to look=20
 at. </P>
-<P>Because of its importance, support for animation is built into the =
+<P>
+그것의 중요성 때문에, 애니메이션의 지원은 UIKit에 이미 들어있다. 
+MoveMe 어플리케이션은 welcome버튼의 다른 외관을 애니메이션하는 것에 사용함으로서 지원하는 장점을 가진다.(응?) 
+유저가 처음 버튼을 터치할 때, 어플리케이션은 일시적으로 버튼의 크기가 자라는 원인이 되는 에니메이션을 적용한다. 
+유저가 버튼을 놓았을 때, 또다른 애니메이션이 그것을 물고 원래의 자리로 돌아온다. 
+이러한 애니메이션들을 만드는 기본적인 과정은 본질적으로 같다:
+<br>
+Because of its importance, support for animation is built into the =
 classes of=20
 UIKit already. The MoveMe application takes advantage of this support by =
 using=20
@@ -1463,16 +1602,30 @@ creating=20
 these animations are essentially the same: </P>
 <OL class=3Dol>
   <LI>
-  <P>Call the <CODE>beginAnimations:context:</CODE> method of the view =
+  <P>
+  애니메이션 시키고자하는 뷰의 beginAnimations:context: 메써드 호출
+  <br>Call the <CODE>beginAnimations:context:</CODE> method of the view =
 you want=20
   to animate. </P>
   <LI>
-  <P>Configure the animation properties. </P>
+  <P>
+  애니메이션 프로퍼티 설정
+  <br>
+  Configure the animation properties. </P>
   <LI>
-  <P>Call the <CODE>commitAnimations</CODE> method of the view to begin =
+  <P>
+  뷰의 에니메이션을 시작하기 위해 commitAnimations메써드 호출
+  <br>
+  Call the <CODE>commitAnimations</CODE> method of the view to begin =
 the=20
   animation. </P></LI></OL>
-<P><SPAN class=3Dcontent_text>Listing 8</SPAN> shows the animation code =
+<P>
+Listing 8는 welcome버튼이 처음 터치되었을 때 진동시키기위해 사용된 애니메이션 코드를 보여준다. 
+이 메써드는 기간동안 애니메이션되는 기간동안 설정되고 버튼이 새로운 크기로의 변화가 적용된다.
+이 애니메이션이 성공하면, 그 애니메이션의 기본구조는 애니메이션 대표의 growAnimationDidStop:finished:context:메써드를 부른다. 
+애니메이션은 진동 애니메이션이 살짝 오그라들고, placard뷰를 터치 밑으로 옮기면서 끝난다.(문장이 너무 길어 대충 짤랐다. 헥헥...)
+<br>
+<SPAN class=3Dcontent_text>Listing 8</SPAN> shows the animation code =
 used to=20
 pulse the Welcome button when it is first touched. This method sets the =
 duration=20
@@ -1528,7 +1681,11 @@ setAnimationDuration:MOVE_ANIMATION_DURATION_SECONDS];<SPAN></SPAN>
     [UIView commitAnimations];<SPAN></SPAN>
 }<SPAN></SPAN>
 </PRE>
-<P>For more information about using the built-in view-based animations, =
+<P>
+뷰를 베이스로한 기본 애니메이션을 사용하는데 대한 더 많은 정보를 위해서는, "Phone OS Programming Guide"의 "Animating Views"를 보라. 
+Core Animation에 대한 더 많은 정보를 위해서는 "iPhone OS Programming Guide"의 "Applying Core Animation Effects"를 보라.
+<br>
+For more information about using the built-in view-based animations, =
 see=20
 <SPAN class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/library/documentation/iPhone/Co=
@@ -1554,7 +1711,11 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW5=20
 turn_anchor=3D"yes"></A>
 <H3>Finishing the Application</H3>
-<P>In the preceding sections, you saw how the MoveMe application was=20
+<P>앞선 섹션에서, 당신은 어떻게 MoveMe 어플리케이션이 초기화 되는지, 유저 인터페이스가 어떻게 나타나 보이는지, 이벤트에 대응하는지를 보았다. 
+이러한 어플리케이션이 만들어지는 형태에 더해서,
+there are also smaller details that need to be considered before building an application and loading it onto a device. One of the final pieces to put in place is your application's information property-list (Info.plist) file. It is an XML file that communicates basic information about your application to the system. Xcode creates a default version of this file for you and inserts your application's initial configuration information into it. You can extend this information, however, to provide additional details about your application that the system should know. For example, you would use this file to communicate information about your application version, any custom URL schemes it supports, its launch image, and the default visibility status and style of the system status bar. 
+<br>
+In the preceding sections, you saw how the MoveMe application was=20
 initialized, presented its user interface, and responded to events. In =
 addition=20
 to those aspects of the application creation, there are also smaller =
