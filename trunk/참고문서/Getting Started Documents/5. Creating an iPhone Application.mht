@@ -1904,7 +1904,12 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW31=20
 turn_anchor=3D"yes"></A>
 <H4>Tracking Orientation and Motion Using the Accelerometers</H4>
-<P>The accelerometers in iPhone and iPod touch provide valuable input =
+<P>
+iPhone and iPod touch의 accelerometer는 시스템과 당신의 어플리케이션에 가치있는 입력을 제공한다. 
+accelerometer의 속도는 하나의 축을 따라 변한다. 
+iPhone and iPod touch둘 다 어느방향이건 당신의 움직임을 감지하기 위해서 3차원의 세 개의 주축 각각에 따라 크기가 변하는 세 개의 accelerometer를 가지고 있다. 
+<br>
+The accelerometers in iPhone and iPod touch provide valuable input =
 for the=20
 system and for your own custom applications. An accelerometer measures =
 changes=20
@@ -1922,7 +1927,14 @@ alt=3D"Accelerometer axes"=20
 src=3D"http://devimages.apple.com/iphone/gettingstarted/docs/images/devic=
 e_axes.jpg"=20
 width=3D367> <BR>
-<P>Although you might not think measuring changes in acceleration would =
+<P>
+당신은 가속의 변화는 별로 유용하지 않다고 생각할지 모르겠지만, 사실은 그 정보를 가지고 할 수 있는 일이 정말 많다.
+중력의 힘은 끊임없이 물체를 바닥으로 떨어뜨린다.
+이 힘은 장치가 쉬고 있을 때에도 바닥을 향하는 가속에 대한 측정 가능한 양의 결과를 가져온다.
+Accelerometer가 이 가속을 등록하고 가속의 크기를 추적함으로써, 3차원의 공간에서 적당한 정밀도로 장치의 물리적 방향을 찾을 수 있다.
+당신은 이 방향을 당신의 어플리케이션의 인풋으로 적용할 수 있다.
+<br>
+Although you might not think measuring changes in acceleration would =
 be very=20
 useful, in reality there is a lot you can do with the information. The =
 force of=20
@@ -1937,7 +1949,12 @@ of a=20
 device in 3D space with a fair amount of accuracy. You can then apply =
 this=20
 orientation as input to your application. </P>
-<P>The system uses the accelerometers to monitor a device's current =
+<P>
+그 시스템은 accelerometers를 장치의 현재 방향을 모니터링 하고 방향이 바뀌었을 때 당신의 어플리케이션에 알려주기 위해 사용한다.
+당신의 어플리케이션이 수평과 수직모드 둘 다 표시할 수 있다면, 당신은 기본 디자인 안에 뷰의 컨트롤러들을 구체화 해야 한다.
+UIViewController 클래스는 당신의 인터페이스를 돌리고 뷰의 위치를 방향의 변화에 대응해서 자동으로 맞추기 위해 필요한 기반구조를 제공한다.
+<br>
+The system uses the accelerometers to monitor a device's current =
 orientation=20
 and to notify your application when that orientation changes. If your=20
 application's interface can be displayed in both landscape and portrait =
@@ -1948,7 +1965,13 @@ to rotate=20
 your interface and adjust the position of views automatically in =
 response to=20
 orientation changes. </P>
-<P>If you want access to the raw accelerometer data directly, you can do =
+<P>
+Accelerometer의 데이터를 직접접근하기를 원한다면, UIKit의 공유된 UIAccelerometer객체를 사용할 수 있다. 
+UIAccelerometer객체는 현재의 accelerometer 값을 설정 가능한 간격으로 알린다. 
+당신은 장치의 방향을 감지하는 데이터나 유저의 장치를 앞뒤로 흔드는 것과 같은 즉각적인 모션 역시 사용할 수 있다. 
+당신은 이 정보를 게임이나 다른 어플리케이션의 입력으로 사용할 수 있다. 
+UIAccelerometer 객체를 어떻게 설정하고 accelerometer를 받는지의 샘플은 “iPhone OS Programming Guide”의 "Accessing Accelerometer Events"를 보기 바란다.
+<br>If you want access to the raw accelerometer data directly, you can do =
 so=20
 using the shared <CODE>UIAccelerometer</CODE> object in UIKit. The=20
 <CODE>UIAccelerometer</CODE> object reports the current accelerometer =
@@ -1976,7 +1999,11 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW34=20
 turn_anchor=3D"yes"></A>
 <H4>Accessing the User's Contacts</H4>
-<P>The user's list of contacts is an important resource that all system=20
+<P>
+유저의 주소록는 모든 시스템 어플리케이션이 공유하는 중요한 자원이다. 
+Phone, Mail, SMS 텍스트 어플리케이션은 연락하고, 수월하게 전화걸기, email, text 메시지 등의 기본적인 상호작용을 필요로 하는 유저들에게 사람들을 확인하기 위해 사용한다. 
+당신의 어플리케이션은 동일한 이유나 당신의 어플리케이션의 필요와 관계가 있는 다른 정보를 얻기 위해 주소록을 접근할 수 있다.
+<br>The user's list of contacts is an important resource that all system=20
 applications share. The Phone, Mail, and SMS Text applications use it to =
 
 identify people the user needs to contact and to facilitate basic =
@@ -1996,7 +2023,13 @@ alt=3D"Accessing the user's contacts"=20
 src=3D"http://devimages.apple.com/iphone/gettingstarted/docs/images/conta=
 ct_photo.jpg"=20
 width=3D166> <BR><BR>
-<P>iPhone OS provides both direct access to the user's contacts and =
+<P>
+iPhone OS는 주소록에 직접접근 하는 것과 표준 picker인터페이스를 이용하여 간접적으로 접근하는 두 가지 방식을 다 제공한다. 
+직접접근을 사용하면, 당신은 연락처데이터베이스로부터 직접 정보를 얻을 수 있다. 
+이 정보를 최근 접근정보를 원하거나 어플리케이션의 별도의 규칙으로 거르는 상황에서 쓸지도 모른다. 
+당신이 별도의 인터페이스가 필요하지 않는 곳의 상황에서, iPhone OS는 연락처를 생성하고 고르기 위해 표준 시스템 인터페이스를 역시 제공한다. 
+당신의 어플리케이션에 이 인터페이스를 합치는 것은 노력이 아주 적지만 당신의 어플리케이션을 시스템의 일부로 느껴지게 한다.
+<br>iPhone OS provides both direct access to the user's contacts and =
 indirect=20
 access through a set of standard picker interfaces. Using direct access, =
 you can=20
@@ -2013,7 +2046,10 @@ Incorporating=20
 these interfaces into your applications requires little effort but makes =
 your=20
 application look and feel like it's part of the system. </P>
-<P>You access the user's contact information using the Address Book and =
+<P>
+Address Book과 Address Book UI frameworks를 이용해서 주소록에 접근한다. 
+이것에 대한 더 많은 정보는 “iPhone OS Programming Guide”의 “Address Book Framework Reference”를 보기 바란다.
+<br>You access the user's contact information using the Address Book and =
 Address=20
 Book UI frameworks. For more information about these frameworks, see =
 <SPAN=20
@@ -2030,7 +2066,13 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW32=20
 turn_anchor=3D"yes"></A>
 <H4>Getting the User's Current Location</H4>
-<P>Devices that run iPhone OS are meant for users on the go. Therefore =
+<P>
+iPhone OS가 돌아가는 장비는 끊임없이 움직이는 유저를 위한 것임을 의미한다. 
+그렇기 때문에 이런 장비를 위해 쓰는 소프트웨어 이러한 사실을 계산에 넣어야 한다. 
+그리고 인터넷과 웹은 어디서건 업무를 처리할 수 있게 만들었고, 유저의 현재 위치에 맞는 정보를 제공할 수 있었기 때문에 유저에게 감동을 주는 것이 가능하다. (맞나?) 
+즉, 목마른 로스앤젤레스에 있는 누군가를 위한 뉴욕의 커피샵 리스트가 왜 필요한가? (약간의 의역…)
+그것은 Core Location프레임 워크가 도와주는 점이다.
+<br>Devices that run iPhone OS are meant for users on the go. Therefore =
 the=20
 software you write for these devices should also take this fact into =
 account.=20
@@ -2043,7 +2085,11 @@ for=20
 someone who is thirsty and currently in Los Angeles? That's where the =
 Core=20
 Location framework can help. </P>
-<P>The Core Location framework monitors signals coming from cell phone =
+<P>
+Core Location 프레임워크는 핸드폰 기지국과 Wi-Fi hotspot들의 신호를 모니터링하고, 그것을 유저의 현재 위치를 삼각측량 하는데 사용한다. 
+당신은 이 프레임워크를 초기위치를 고정하거나, 유저의 위치가 어디건 변화하는 것을 인지하는데 사용할 수 있다. 
+이 정보를 가지고,  당신의 어플리케이션이 정보를 걸러 제공하거나 다른 방식으로 사용할 수 있다. 
+<br>The Core Location framework monitors signals coming from cell phone =
 towers=20
 and Wi-Fi hotspots and uses them to triangulate the user's current =
 position. You=20
@@ -2053,7 +2099,10 @@ notified whenever the user's location changes. With this information, =
 you can=20
 filter the information your application provides or use it in other =
 ways. </P>
-<P>For an example of how to get location data in your application, see =
+<P>
+당신의 어플리케이션 안에서 위치 정보를 어떻게 사용하는지에 대한 예제는”iPhone OS Programming Guide”의 "Getting the User's Current Location"을 보기 바란다.
+<Br>
+For an example of how to get location data in your application, see =
 <SPAN=20
 class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/library/documentation/iPhone/Co=
