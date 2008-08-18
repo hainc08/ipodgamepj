@@ -2,6 +2,7 @@
 	- OS: Mac-OS X - VM_ware활용 (영진)
 		http://dory.mncast.com/mncHMovie.swf?movieID=10007547220070330192648&skinNum=1
 		2008-08-11: 영진이 고전중이다. 해킨토시를 성공해도 XCode가 제대로 안돌아간다는 이야기까지...흐음...
+		2008-08-18: 결국 맥북3대 구입예정
 	- iTunes설치
 	- SDK설치
 	- SVN서버 확보 - 청과상작업때 쓰던SVN활용 (인철)
@@ -17,6 +18,7 @@
 3. 관련문서 번역작업 (Sasin)
 	- Apple App Center 기본 Doc 번역작업
 		2008-08-11: iPhone OS Overview, Tools for iPhone OS Development 번역완료 Learning Objective-C 번역중
+		2008-08-18: Learning Objective-C, Creating an iPhone Application, iPhone OS for Cocoa Developers 번역완료
 
 4. Kit확보
 	- 실제 Kit은 작업진행 후에 가능성 확인되면 구입예정
@@ -30,5 +32,4 @@
 6. 게임기획
 	- 고전게임 뒤적뒤적 - 옛날 게임잡지가 있으면 좋으련만...
 	- Multi Touch적극활용~!
-
-7. 
+		2008-08-18: 1차 Sasin기획안 올림
