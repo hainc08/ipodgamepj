@@ -1712,8 +1712,12 @@ evision-SW5=20
 turn_anchor=3D"yes"></A>
 <H3>Finishing the Application</H3>
 <P>앞선 섹션에서, 당신은 어떻게 MoveMe 어플리케이션이 초기화 되는지, 유저 인터페이스가 어떻게 나타나 보이는지, 이벤트에 대응하는지를 보았다. 
-이러한 어플리케이션이 만들어지는 형태에 더해서,
-there are also smaller details that need to be considered before building an application and loading it onto a device. One of the final pieces to put in place is your application's information property-list (Info.plist) file. It is an XML file that communicates basic information about your application to the system. Xcode creates a default version of this file for you and inserts your application's initial configuration information into it. You can extend this information, however, to provide additional details about your application that the system should know. For example, you would use this file to communicate information about your application version, any custom URL schemes it supports, its launch image, and the default visibility status and style of the system status bar. 
+이러한 어플리케이션이 만들어지는 형태에 더해서, 어플리케이션을 빌드하고 장치에 로드하기전에 검토될 필요가 있는 작은 세세한 것들이 있다. 
+집어넣을 마지막조각 중 하나는 당신의 어플리케이션의 정보 프로퍼티파일(Info.plist)이다. 
+그것은 시스템에게 당신의 어플리케이션에 대한 기본적인 정보를 전달하는 XML파일이다. 
+Xcode는 당신을 위해 이 파일의 디폴트버전을 생성ㅏ고 당신의 어플리케이션의 초기화 설정 정보를 추가한다. 
+당신은 정보를 확장할 수 있지만, 당신의 어플리케이션에 대한 추가적인 세부사항을 제공하기 위해서는 시스템을 알고 있어야 한다. 
+예를 들어, 당신의 어플리케이션의 버전정보, 지원하는 custom URL scheme, 런치이미지, 시스템 스테이터스 바의 기본모양등을 전달하기위해 이 파일을 사용할 수도 있다.
 <br>
 In the preceding sections, you saw how the MoveMe application was=20
 initialized, presented its user interface, and responded to events. In =
@@ -1740,7 +1744,14 @@ launch=20
 image, and the default visibility status and style of the system status =
 bar.=20
 </P>
-<P><SPAN class=3Dcontent_text>Listing 9</SPAN> shows the contents of the =
+<P>
+Listing 9는 MoveMe어플리케이션의 Info.plist파일의 내용을 보여준다. 
+이 파일은 실행할 수 있는 이름, 유저의 홈 스크린에 보여줄 이미지파일, 시스템안에서 독자적인 구분 문자열(ID같은 건가?)를 결정한다. 
+MoveMe어플리케이션은 풀 스크린 어플리케이션이기 때문에, 다른 말로 스테이터스바를 보여줄 필요가 없기 때문에, 
+UIStatusBarHidden 키를 포함하고 값은 true로 배정되어있다. 이 키를 true로 설정하면, 시스템은 실행 시나 동작중에 어플리케이션 스테이터스 바를 보여줄 필요가 없음을 안다. 
+MOveMe 어플리케이션이 프로그램적으로 같은 처리를 했다고 하더라도, 어플리케이션이 실행되기 전에는 이상하게 보이면서 적용되지 않을지도 모른다.
+<br>
+<SPAN class=3Dcontent_text>Listing 9</SPAN> shows the contents of the =
 
 <CODE>Info.plist</CODE> file for the MoveMe application. This file =
 identifies=20
@@ -1748,9 +1759,9 @@ the name of the executable, the image file to display on the user's Home =
 screen,=20
 and the string that identifies the application uniquely to the system. =
 Because=20
-the MoveMe application is a full-screen application=97in other words, it =
+the MoveMe application is a full-screen application in other words, it =
 does not=20
-display the status bar=97it also includes the =
+display the status bar, it also includes the =
 <CODE>UIStatusBarHidden</CODE> key=20
 and assigns to it the value <CODE>true</CODE>. Setting this key to=20
 <CODE>true</CODE> lets the system know that it should not display the=20
@@ -1803,12 +1814,19 @@ PAN></SPAN>
 name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW22=20
 turn_anchor=3D"yes"></A>
-<P><B>Note:</B>&nbsp;You can edit the contents of your application's=20
+<P>
+<B>Note:</B>&nbsp;당신은 당신의 어플리케이션의 Info.plist파일을 TextEdit와 Property List Editor를 이용하여 편집할 수 있다, 
+TextEdit는 Info.plist파일의 내용에서 보이는 것 처럼 파일의 XML내용을 보여준다. 
+Property List Editor는 파일의 테이블안에 키와 값을 보여준다. 
+Xcode는 당신의 어플리케이션 타겟(?)을 위한 인포메이션 윈도우에서 이런 어트리뷰트중 몇몇의 접근을 역시 제공한다.
+이 윈도우를 보기 위해서는 당신의 어플리케이션 타겟을 (타겟 그룹에서) 선택하고 File > Get Info.를 선택하면, Properties탭은 몇몇의(전부는 아닌) Info.plist안의 프로퍼티를 포함하고 있다. 
+<br>
+<B>Note:</B>&nbsp;You can edit the contents of your application's=20
 <CODE>Info.plist</CODE> file using TextEdit, which displays the XML =
 contents of=20
-the file as shown in <SPAN class=3Dcontent_text>=93The contents of the =
+the file as shown in The contents of the =
 Info.plist=20
-file=94</SPAN>, or the Property List Editor, which displays the file's =
+file</SPAN>, or the Property List Editor, which displays the file's =
 keys and=20
 values in a table. Xcode also provides access to some of these =
 attributes in the=20
@@ -1819,7 +1837,10 @@ The=20
 Properties tab contains some (but not all) of the properties in the=20
 <CODE>Info.plist</CODE> file. </P>
 <P></P></DIV>
-<P>For information about configuring your application's =
+<P>
+당신의 어플리케이션의 Info.plist파일을 설정하는 것에 대한 정보는 "iPhone OS Programming Guide"의 "The Information Property List"를 보라.
+<br>
+For information about configuring your application's =
 <CODE>Info.plist</CODE>=20
 file, see <SPAN class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/library/documentation/iPhone/Co=
@@ -1830,7 +1851,13 @@ class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/library/documentation/iPhone/Co=
 nceptual/iPhoneOSProgrammingGuide/index.html"=20
 target=3D_top>iPhone OS Programming Guide</A></SPAN>. </P>
-<P>With this final piece in place, you now have all of the basic =
+<P>
+이 마지막 조각을 제자리에 놓음으로서, 당신은 이제 당신의 목적에 맞는 iPhone 어플리케이션을 만들 모든 기본적인 정보를 가지게 되었다. 
+다음 단계는 iPhone OS에 관한 더 많은 문서를 배움으로서 당신이 여기서 배운 정보를 확장하는 것이다. 
+당신이 만드는 어플리케이션은 흥미있고 직관적인 유저의 경험을 만들기 위해 iPhone OS의 특징의 장점을 가져야한다. 
+몇몇 특징은 "Taking Your Applications Further"에 기술되어있다. 하지만 완전한 리스트와 더 많은 정보를 위해 "iPhone OS Programming Guide"를 보라.
+<br>
+With this final piece in place, you now have all of the basic =
 information=20
 needed to create your own functional iPhone application. The next step =
 is to=20
@@ -1840,9 +1867,9 @@ of iPhone OS. The applications you create should take advantage of the =
 built-in=20
 features of iPhone OS to create a pleasant and intuitive user =
 experience. Some=20
-of these features are described in <SPAN class=3Dcontent_text>=93Taking =
+of these features are described in <SPAN class=3Dcontent_text>Taking =
 Your=20
-Applications Further=94</SPAN>, but for a complete list, and for =
+Applications Further</SPAN>, but for a complete list, and for =
 information on=20
 how to use them, see <SPAN class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/library/documentation/iPhone/Co=
@@ -1853,7 +1880,13 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW37=20
 turn_anchor=3D"yes"></A>
 <H3>Taking Your Applications Further</H3>
-<P>There are many features associated with iPhone and iPod touch that =
+<P>
+유저에게 부여된 iPhone과 iPod touch와 연결되는 많은 특징이 있다. 
+이러한 특징 중 몇몇은 장치의 좌표가 바뀌는 뷰의 반응에 자동으로 조절되는 것과 같이 하드웨어와 관련된다. 
+모든 미리만들어진 iPhone 어플리케이션이 모두 single list of contacts(뭐냐 이건?)를 공유한다는 사실과 같은 나머지 특징은 소프트웨어와 관련된다. 
+다음에 소개될 너무 많은 특징들이 기본적인 유저의 경험에 필수불가결하기 떄문에, 당신은 초기 디자인을 하는 동안 그것들을 당신의 어플리케이션에 어떻게 강력히 적용할 수 있을지 검토해야할 것이다. 
+<br>
+There are many features associated with iPhone and iPod touch that =
 users take=20
 for granted. Some of these features are hardware related, such as the =
 automatic=20
@@ -2036,7 +2069,13 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW18=20
 turn_anchor=3D"yes"></A>
 <H4>Playing Audio and Video</H4>
-<P>iPhone OS supports audio features in your application through the =
+<P>
+iPhone OS는 Core Audio와 OpenAL를 통해서 당신의 어플리케이션에 오디오를 제공하며, Media Player 프레임워크를 이용하여 영상재생을 제공하는 것을 지원한다. 
+Core Audio는 재생, 녹음, 음원수정, 녹음된 음원 파싱등 개선된 인터페이스를 제공한다. 
+당신은 간단한 사운드이펙트나 다채널 오디오를 재생하는데, 소리와 오디오필드안의 위치를 섞거나, iPhone의 진동을 발동시키는데까지 사용할 수 있다. 
+당신이 개임 개발자라면 OpenAL에 관한 장점을 가지는 코드를 가지고 있다면, 당신의 게임의 사운드를 위치시키고 재생시키기 위해 iPhone OS에서 당신의 코드를 사용할 수 있다.
+<br>
+iPhone OS supports audio features in your application through the =
 Core Audio=20
 and OpenAL frameworks, and provides video playback support using the =
 Media=20
@@ -2053,7 +2092,13 @@ OpenAL,=20
 you can use your code in iPhone OS to position and play back audio in =
 your=20
 games. </P>
-<P>The Media Player framework is what you use to play back full-screen =
+<P>
+Media Player프레임워크는 풀 스크린 비디오 파일을 재생하는데 사용할 수 있다. 
+이 프레임워크는 많은 표준 영상파일 포멧과 재생과 유저의 컨트롤과 비디오 내용의 외관등을 어떻게 할 것인가를 포함해서 재생환경을 조절하는 것을 지원한다. 
+게임 개발자는 이 프레임워크를 미리 랜더링된 내용의 컷신을 재생하기위해 사용할 지도 모른다. 
+미디어를 기반으로 한 어플리케이션도 역시 이 프레임워크를 이용해서 영상 파일을 재생할 수 있다.
+<br>
+The Media Player framework is what you use to play back full-screen =
 video=20
 files. This framework supports the playback of many standard movie file =
 formats=20
@@ -2075,7 +2120,10 @@ alt=3D"Playing back custom video"=20
 src=3D"http://devimages.apple.com/iphone/gettingstarted/docs/images/video=
 .jpg"=20
 width=3D312> <BR><BR>
-<P>For information about the media technologies in iPhone OS, see <SPAN=20
+<P>
+iPhone OS에서의 미디어 기술에 관한 정보를 위해서는, "iPhone OS Programming Guide"의  "Audio and Video Technologies"를 보라.
+<br>
+For information about the media technologies in iPhone OS, see <SPAN=20
 class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/library/documentation/iPhone/Co=
 nceptual/iPhoneOSProgrammingGuide/AudioandVideoTechnologies/chapter_10_se=
@@ -2090,7 +2138,12 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW35=20
 turn_anchor=3D"yes"></A>
 <H4>Taking Pictures with the Built-in Camera</H4>
-<P>The Camera application on iPhone lets users take pictures and store =
+<P>
+iPhone의 Camera 어플리케이션은 유저가 사진을 찍고 그것을 중앙에서 관리하는 사진 라이브러리에 컴퓨터에서 업로드된 다른 사진들 사이에 저장할 수 있게 수 있게 해준다. 
+그리고 카메라가 없는 iPod touch도 유저의 업로드 사진을 가지고있는 포토 라이브러리를 가지고 있다. 
+iPhone OS는 UIKit프레임워크의 UIImagePickerController 클래스를 통해서 이 두가지 형태 모두 제공한다. 
+<br>
+The Camera application on iPhone lets users take pictures and store =
 them in a=20
 centralized photo library, along with the other pictures they upload =
 from their=20
@@ -2109,7 +2162,12 @@ alt=3D"Taking pictures with the camera"=20
 src=3D"http://devimages.apple.com/iphone/gettingstarted/docs/images/iPhon=
 eBack.jpg"=20
 width=3D155> <BR><BR>
-<P>The <CODE>UIImagePickerController</CODE> class provides the =
+<P>
+UIImagePickerController클래스는 당신의 어플리케이션에 카메라와 사진 라이브러리에 관한 인터페이스를 도구를 제공한다. 
+이것은 Camera와 Photos를 포함한 다른 어플리케이션들에 의해 사용되는 인터페이스이다. 
+당신이 picker인터페이스를 화면에 보여줄 때, picker콘트롤러는 모든 필요한 유저와의 상호관계를 관리하고, 결과 이미지를 어플리케이션에게 반환한다. 
+<br>
+The <CODE>UIImagePickerController</CODE> class provides the =
 implementation=20
 for both the camera and photo library interfaces for your application. =
 These are=20
