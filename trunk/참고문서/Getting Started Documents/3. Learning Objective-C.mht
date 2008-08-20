@@ -192,8 +192,10 @@ href=3D"http://developer.apple.com/iphone/logout.action">Log out</A> =
 <DIV id=3Dmain>
 <DIV id=3Dcontent>
 <H2>Learning Objective-C: A Primer</H2>
-<P>Objective-C는 복잡한 객체지향 프로그래밍이 가능하도록 설계된 단순한 컴퓨터 언어이다. Objective-C는 표준 Ansi C언어로부터 클래스, 메써드, 프로퍼티를 선언하고 게다가 클래스들의 동적 확장을 위한 구조를 제공하는 문법으로 확장되었다. 대부분의 클래스 구문과 디자인은 첫 번째 객체지향프로그래밍 언어 중 하나인 Smalltalk를 기반으로 하고 있다. </P>
-<P>The Objective-C language is a simple computer language designed to =
+<P>Objective-C는 복잡한 객체지향 프로그래밍이 가능하도록 설계된 단순한 컴퓨터 언어이다. 
+Objective-C는 표준 Ansi C언어로부터 클래스, 메써드, 프로퍼티를 선언하고 게다가 클래스들의 동적 확장을 위한 구조를 제공하는 문법으로 확장되었다. 
+대부분의 클래스 구문과 디자인은 첫 번째 객체지향프로그래밍 언어 중 하나인 Smalltalk를 기반으로 하고 있다.
+<br>The Objective-C language is a simple computer language designed to =
 enable=20
 sophisticated object-oriented programming. Objective-C extends the =
 standard ANSI=20
@@ -203,8 +205,10 @@ well as other constructs that promote dynamic extension of classes. The =
 class=20
 syntax and design are based mostly on Smalltalk, one of the first=20
 object-oriented programming languages. </P>
-<P>이전에 객체지향 언어로 프로그래밍해 본적이 있다면 그 정보는 Objective-C의 기본적인 구문을 배우는 기본적인 문법을 배우는 도움이 될 것이다. Objective-C는 캡슐화, 상속, 폴리모피즘 등 대부분의 전통적인 객체지향 개념이 모두 존재한다. 몇 가지 중요한 차이점이 있지만, 이러한 차이는점은 이 문서에서 볼 수 있으며, 필요하다면 좀 더 자세한 정보를 찾아볼 수도 있다.</P>
-<P>If you have programmed with object-oriented languages before, the =
+<P>이전에 객체지향 언어로 프로그래밍해 본적이 있다면 그 정보는 Objective-C의 기본적인 구문을 배우는 기본적인 문법을 배우는 도움이 될 것이다. 
+Objective-C는 캡슐화, 상속, 폴리모피즘 등 대부분의 전통적인 객체지향 개념이 모두 존재한다. 
+몇 가지 중요한 차이점이 있지만, 이러한 차이는점은 이 문서에서 볼 수 있으며, 필요하다면 좀 더 자세한 정보를 찾아볼 수도 있다.
+<br>If you have programmed with object-oriented languages before, the =
 following=20
 information should help you learn the basic syntax of Objective-C. Many =
 of the=20
@@ -214,8 +218,10 @@ polymorphism, are all present in Objective-C. There are a few important=20
 differences, but those differences are called out in this article and =
 more=20
 detailed information is available if you need it. </P>
-<P>이전에 객체지향 언어로 프로그래밍해 본적이 한번도 없다면, 진행하기 전에 최소한 한 기본적인 이해가 있어야한다, 객체와 객체지향 구조의 사용은 iPhone 어플리케이션의 디자인에 기본적이며, 그들이 어떻게 상호 작용하는지 이해하는 것은 당신의 엎플리케이션 제작에 아주 중요하다. 객체지향 개념의 개괄을 위해," Object-Oriented Programming with Objective-C"를 보라. 더해서, Cocoa에서 사용된 객체지향 디자인 패턴에 관한 정보를 위해서는 "Cocoa Fundamentals Guide"를 보기 바란다. </P>
-<P>If you have never programmed using an object-oriented language =
+<P>이전에 객체지향 언어로 프로그래밍해 본적이 한번도 없다면, 진행하기 전에 최소한 한 기본적인 이해가 있어야한다. 
+객체와 객체지향 구조의 사용은 iPhone 어플리케이션의 디자인에 기본적이며, 그들이 어떻게 상호 작용하는지 이해하는 것은 당신의 엎플리케이션 제작에 아주 중요하다. 
+객체지향 개념의 개괄을 위해," Object-Oriented Programming with Objective-C"를 보라. 더해서, Cocoa에서 사용된 객체지향 디자인 패턴에 관한 정보를 위해서는 "Cocoa Fundamentals Guide"를 보기 바란다.
+<br>If you have never programmed using an object-oriented language =
 before, you=20
 need to have at least a basic understanding of the associated concepts =
 before=20
@@ -236,8 +242,8 @@ ceptual/CocoaFundamentals/Introduction/chapter_1_section_1.html"=20
 target=3D_top>Cocoa Fundamentals Guide</A></SPAN> for information about =
 the=20
 object-oriented design patterns used in Cocoa. </P>
-<P>Objective-C라는 언어와 구문에 대해서 좀 더 자세한 정보를 얻기 위해서는 "The Objective-C 2.0 Programming Language."를 보기 바란다. </P><A=20
-<P>For a more detailed introduction to the Objective-C language and =
+<P>Objective-C라는 언어와 구문에 대해서 좀 더 자세한 정보를 얻기 위해서는 "The Objective-C 2.0 Programming Language."를 보기 바란다.
+<br>For a more detailed introduction to the Objective-C language and =
 syntax, see=20
 <SPAN class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/library/documentation/Cocoa/Con=
@@ -249,8 +255,10 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW8=20
 turn_anchor=3D"yes"></A>
 <H3>Objective-C: A Superset of C</H3>
-<P>Objective-C는 ANSI 버전의 C언어 프로그램의 총집합이며, C와 동일한 기본적인 구문을 지원한다. C 코드와 같이, 당신은 코드의 세부적인 구현에서 선언문을 나누기위해 헤더 파일과 소스파일을 정의할 수 있다. Objective-C의 헤더 파일은 Table 1에 목록으로 만들어진 파일 확장을 사용한다. </P><A=20
-<P>Objective-C is a superset of the ANSI version of the C programming =
+<P>Objective-C는 ANSI 버전의 C언어 프로그램의 총집합이며, C와 동일한 기본적인 구문을 지원한다. 
+C 코드와 같이, 당신은 코드의 세부적인 구현에서 선언문을 나누기위해 헤더 파일과 소스파일을 정의할 수 있다. 
+Objective-C의 헤더 파일은 Table 1에 목록으로 만들어진 파일 확장을 사용한다. 
+<br>Objective-C is a superset of the ANSI version of the C programming =
 language=20
 and supports the same basic syntax as C. As with C code, you define =
 header files=20
@@ -280,29 +288,41 @@ bgColor=3D#cccccc>
     <TD scope=3Drow>
       <P><CODE>.h</CODE> </P></TD>
     <TD>
-      <P>Header files. Header files contain class, type, function, and =
+      <P>
+      헤더파일. 헤더파일은 클래스, 타잎, 펑션, 변하지 않는 선언등을 포함한다.
+      <br>
+      Header files. Header files contain class, type, function, and =
 constant=20
       declarations. </P></TD></TR>
   <TR>
     <TD scope=3Drow>
       <P><CODE>.m</CODE> </P></TD>
     <TD>
-      <P>Source files. This is the typical extension used for source =
+      <P>
+      소스파일. 이것은 Objective-C와 C모두 포함하는 소스파일을 위해 사용되는 전형적인 확장자이다.
+      <br>
+      Source files. This is the typical extension used for source =
 files and=20
       can contain both Objective-C and C code. </P></TD></TR>
   <TR>
     <TD scope=3Drow>
       <P><CODE>.mm</CODE> </P></TD>
     <TD>
-      <P>Source files. A source file with this extension can contain C++ =
+      <P>
+      소스파일. Objective-C 와 C 코드에 더해서 C++코드가 포함 될 수 있는 소스파일의 확장자이다.
+      Objective-C코드에서 C++의 클래스와 특징(?)을 실제로 참조할 때만 사용해야한다.
+      <br>
+      Source files. A source file with this extension can contain C++ =
 code in=20
       addition to Objective-C and C code. This extension should be used =
 only if=20
       you actually refer to C++ classes or features from your =
 Objective-C code.=20
       </P></TD></TR></TBODY></TABLE></DIV>
-<P>당신이 당신의 소스코드에 있는 헤더 파일을 포함하고 싶을 때, 표준 #include 를 사용할 수 있다. 그러나 Objective-C 더 나은 방법을 제공한다.  #import는 #include와 동일하지만 추가로 동일한 파일이 결코 한 번 이상 포함되지 않는다는 것을 확인한다.  Objective-C 샘플과 문서는 모두 #import의 사용을 선호하고, 당신의 코드역시 그럴 것이다.</P><A=20
-<P>When you want to include header files in your source code, you can =
+<P>당신이 당신의 소스코드에 있는 헤더 파일을 포함하고 싶을 때, 표준 #include 를 사용할 수 있다. 
+그러나 Objective-C 더 나은 방법을 제공한다.  #import는 #include와 동일하지만 추가로 동일한 파일이 결코 한 번 이상 포함되지 않는다는 것을 확인한다. 
+Objective-C 샘플과 문서는 모두 #import의 사용을 선호하고, 당신의 코드역시 그럴 것이다.
+<br>When you want to include header files in your source code, you can =
 use the=20
 standard <CODE>#include</CODE> compiler directive but Objective-C =
 provides a=20
@@ -317,8 +337,11 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW13=20
 turn_anchor=3D"yes"></A>
 <H3>Strings</H3>
-<P>C의 총집합으로서. Objective-C는 C와 문자열을 위한 동일한 컨벤션을 지원한다. 즉 하나의 문자는 작은 따옴표에 의해서, 문자열은 큰 따옴표에 의해서 둘러쌓이게 된다. 그러나, 대부분의 Objective-C 프레임워크는 C스타일의 문자열을 자주 사용하지는 않는다. 대신, 대부분의 프레임워크는 NSString 객체를 이용해서 문자열을 처리한다.</P>
-<P>As a superset of C, Objective-C supports the same conventions for =
+<P>C의 총집합으로서. Objective-C는 C와 문자열을 위한 동일한 컨벤션을 지원한다. 
+즉 하나의 문자는 작은 따옴표에 의해서, 문자열은 큰 따옴표에 의해서 둘러쌓이게 된다. 
+그러나, 대부분의 Objective-C 프레임워크는 C스타일의 문자열을 자주 사용하지는 않는다. 
+대신, 대부분의 프레임워크는 NSString 객체를 이용해서 문자열을 처리한다.
+<br>As a superset of C, Objective-C supports the same conventions for =
 specifying=20
 strings as C. In other words, single characters are enclosed by single =
 quotes=20
@@ -327,8 +350,10 @@ and strings of characters are surrounded by double quotes. However, most =
 Objective-C frameworks do not use C-style strings very often. Instead, =
 most=20
 frameworks pass strings around in <CODE>NSString</CODE> objects. </P>
-<P>NSString 클래스는 정해진 메모리상에 임의길이의 문자열을 포함하는 법, Unicode의 지원, printf스타일의 포멧팅등 당신이 예상할 수 있는 문자열을 위한 랩핑을 제공한다. 그런 문자열이 일반적으로 이용되기 때문에, Objective-C는 상수에서의 NSString 객체 생성을 위한 속기 표기법을 제공한다. 이 속기를 사용하기 위하여, 당신이 오직 해야 하는 것은 뒤에 오는 보기에서 보이는 것처럼 @기호를 큰 따옴표의 문자열앞에 선행하는 것 뿐이다.: </P>
-<P>The <CODE>NSString</CODE> class provides an object wrapper for =
+<P>NSString 클래스는 정해진 메모리상에 임의길이의 문자열을 포함하는 법, Unicode의 지원, printf스타일의 포멧팅등 당신이 예상할 수 있는 문자열을 위한 랩핑을 제공한다. 
+그런 문자열이 일반적으로 이용되기 때문에, Objective-C는 상수에서의 NSString 객체 생성을 위한 속기 표기법을 제공한다. 
+이 속기를 사용하기 위하여, 당신이 오직 해야 하는 것은 뒤에 오는 보기에서 보이는 것처럼 @기호를 큰 따옴표의 문자열앞에 선행하는 것 뿐이다.:
+<br>The <CODE>NSString</CODE> class provides an object wrapper for =
 strings that=20
 has all of the advantages you would expect, including built-in memory =
 management=20
@@ -354,8 +379,9 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW9=20
 turn_anchor=3D"yes"></A>
 <H3>Classes</H3>
-<P>다른 대부분의 객체 지향 언어에서 것과 같이, Objective-C에 있는 클래스는 약간의 자료들과 그 자료를 처리하는 활동과 캡슐레이션 할 수 있는 기본적인 구조물을 제공한다. 객체는 단순히 클래스의 런타임 인스턴스이고, 클래스의 메써드에 그 클래스 와 포인터에 의해 선언된 인스턴스 변수를 자신의 메모리에 복사해서 포함시킨다.</P>
-<P>As in most other object-oriented languages, classes in Objective-C =
+<P>다른 대부분의 객체 지향 언어에서 것과 같이, Objective-C에 있는 클래스는 약간의 자료들과 그 자료를 처리하는 활동과 캡슐레이션 할 수 있는 기본적인 구조물을 제공한다. 
+객체는 단순히 클래스의 런타임 인스턴스이고, 클래스의 메써드에 그 클래스 와 포인터에 의해 선언된 인스턴스 변수를 자신의 메모리에 복사해서 포함시킨다.
+<br>As in most other object-oriented languages, classes in Objective-C =
 provide=20
 the basic construct for encapsulating some data with the actions that =
 operate on=20
@@ -364,8 +390,14 @@ contains its=20
 own in-memory copy of the instance variables declared by that class and =
 pointers=20
 to the methods of the class. </P>
-<P>Objective-C에 있는 클래스의 명세는 2개의 명백한 조각을 요구한다: 인터페이스 과 수행. 인터페이스 부분은 클래스 선언을 포함하고 클래스와 관련된 변수 및 메써드를 정의한다. 수행 부분은 클래스의 메써드를위한 실제적인 코드를 포함한다. Figure 1은 NSObject 기본 클래스에서 상속하는 MyClass이라고 부르는 클래스 선언을 위한 구문을 보여준다. 클래스 선언은 @interface 구문에서 시작해서 @end 구문에서 끝이난다. 클래스 이름 뒤에 나오는(와 콜론에 의해 분리된)것은 부모 클래스의 이름이다. 클래스의 인스턴스 (또는 멤버) 변수는 중괄호({와})로 표시되는 코드블럭안에 선언된다. 인스턴스 변수 영역 다음은 클래스의 메써드가 선언된 리스트이다. 세미콜론문자는 각 변수와 메써드 선언의 끝을 표시한다.</P><BR>
-<P>The specification of a class in Objective-C requires two distinct =
+<P>Objective-C에 있는 클래스의 명세는 2개의 명백한 조각을 요구한다: 인터페이스 과 수행. 
+인터페이스 부분은 클래스 선언을 포함하고 클래스와 관련된 변수 및 메써드를 정의한다. 
+수행 부분은 클래스의 메써드를위한 실제적인 코드를 포함한다. Figure 1은 NSObject 기본 클래스에서 상속하는 MyClass이라고 부르는 클래스 선언을 위한 구문을 보여준다. 
+클래스 선언은 @interface 구문에서 시작해서 @end 구문에서 끝이난다. 클래스 이름 뒤에 나오는(와 콜론에 의해 분리된)것은 부모 클래스의 이름이다. 
+클래스의 인스턴스 (또는 멤버) 변수는 중괄호({와})로 표시되는 코드블럭안에 선언된다. 
+인스턴스 변수 영역 다음은 클래스의 메써드가 선언된 리스트이다. 
+세미콜론문자는 각 변수와 메써드 선언의 끝을 표시한다.
+<br>The specification of a class in Objective-C requires two distinct =
 pieces: the=20
 interface and the implementation. The interface portion contains the =
 class=20
@@ -400,7 +432,13 @@ alt=3D"A class declaration"=20
 src=3D"http://devimages.apple.com/iphone/gettingstarted/docs/images/class=
 _decl.jpg"=20
 width=3D518> <BR><BR>
-<P><SPAN class=3Dcontent_text>Listing 1</SPAN> shows the implementation =
+<P>
+Listing 1은 앞선 예제의 MyClass의 수행부를 보여준다. 
+클래스의 선언부과 같이, 선언의 수행부는 @implementation, @end 두개의 컴파일러 표시에 의해 확인된다. 
+이 표시들은 둘러쌓여진 메써드가 대응하는 클래스를 결합하는데 컴파일러가 필요로하는 범위정보를 제공한다. 
+그러므로 메써드의 선언은 코드블럭에 포함된 내용을 제외하고 인터페이스안에 그것의 대응선언에 맞춰진다. 
+<br>
+<SPAN class=3Dcontent_text>Listing 1</SPAN> shows the implementation =
 of=20
 <CODE>MyClass</CODE> from the preceding example. Like the class =
 declaration, the=20
@@ -409,7 +447,7 @@ class implementation is identified by two compiler directives-here,=20
 provide the=20
 scoping information the compiler needs to associate the enclosed methods =
 with=20
-the corresponding class. A method=92s definition therefore matches its=20
+the corresponding class. A method's definition therefore matches its=20
 corresponding declaration in the interface, except for the inclusion of =
 a code=20
 block. </P><A title=3D"Listing 1A class implementation"=20
@@ -440,13 +478,22 @@ autorelease];<SPAN></SPAN>
 name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW10=20
 turn_anchor=3D"yes"></A>
-<P><B>Note:</B>&nbsp;Although the preceding class declaration declared =
+<P>
+<B>Note:</B>&nbsp;앞선 클래스의 선언이 메써드의 선언뿐일지라도, 클래스는 프로퍼티의 선언 역시 할 수 있다. 
+이것에 대한 좀 더 자세한 정보는 "Properties"를 보라.
+<br>
+<B>Note:</B>&nbsp;Although the preceding class declaration declared =
 only=20
 methods, classes can also declare properties. For more information on=20
 properties, see <SPAN class=3Dcontent_text> Properties </SPAN>. </P>
 <P></P></DIV>
-<P>변수안에 오브젝트를 저장할 때, 당신은 언제나 포인터 타잎을 사용한다. Object-C는 변수에 객체를 수용하기 위해 강하고 약한 두 가지의 타잎 모두 유지한다. (이하 강포인터 약포인터) 강포인터는 타잎선언시에 클래스 이름을 포함한다. 약포인터는 클래스의 이름 대신에 타잎의 ID를 사용한다. 약포인터는 클래스 콜렉션이나 알려지지 않은 콜렉션 안에서 확실히 알려진 타잎의 오브젝트를 골라내기위해서 빈번하게 사용된다.(이건 뭔소리래?) 당신이 강포인터를 사용하는데 익숙하다면, 당신은 약포인터가 문제를 일으킨다고 생각할지도 모른다. 그러나 그것들은 확실히 엄청난 유연성을 제공하며, Objective-C프로그램 안에서 훨씬 큰 변동성 허락한다.</P>
-<P>When storing objects in variables, you always use a pointer type. =
+<P>변수에 오브젝트를 저장할 때, 당신은 언제나 포인터 타잎을 사용한다. 
+Object-C는 변수에 객체를 수용하기 위해 강하고 약한 두 가지의 타잎 모두 유지한다. (이하 강포인터 약포인터)
+강포인터는 타잎선언 시에 클래스 이름을 포함한다. 약포인터는 클래스의 이름 대신에 타잎의 ID를 사용한다. 
+약포인터는 클래스 콜렉션이나 알려지지 않은 콜렉션 안에서 확실히 알려진 타잎의 오브젝트를 골라내기위해서 빈번하게 사용된다. (뭔소리랴?)
+당신이 강포인터를 사용하는데 익숙하다면, 당신은 약포인터가 문제를 일으킨다고 생각할지도 모른다. 
+그러나 그것들은 확실히 엄청난 유연성을 제공하며, Objective-C프로그램 안에서 훨씬 큰 변동성 허락한다.
+<br>When storing objects in variables, you always use a pointer type. =
 Objective-C=20
 supports both strong and weak typing for variables containing objects. =
 Strongly=20
@@ -463,8 +510,8 @@ typed=20
 variables would cause problems, but they actually provide tremendous =
 flexibility=20
 and allow for much greater dynamism in Objective-C programs. </P>
-<P>뒤의 샘플은 MyClass클래스를 위한 강포인터와 약포인터의 선언을 보여준다.</P>
-<P>The following example shows both strongly and weakly typed variable=20
+<P>뒤의 샘플은 MyClass클래스를 위한 강포인터와 약포인터의 선언을 보여준다.
+<br>The following example shows both strongly and weakly typed variable=20
 declarations for the <CODE>MyClass</CODE> class: </P><PRE>MyClass*  =
 myObject1;    // Strong typing<SPAN></SPAN>
 id        myObject2;    // Weak typing<SPAN></SPAN>
@@ -473,8 +520,11 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW11=20
 turn_anchor=3D"yes"></A>
 <H3>Methods</H3>
-<P>Objective-C에서의 클래스는 인스턴스 메써드와 클래스 메써드, 두 종류의 메써드를 선언할 수 있다. 인스턴스 메써드는 실행시키는 범위가 클래스의 인스턴스에 한정되는 메써드이다. 다시말해 인스턴스 메써드를 부르기전에, 당신은 반드시 클래스의 인스턴스를 생성해야한다. 클래스 메써드는 이와 달리, 클래스의 인스턴스 생성을 요구하지 않는다.</P>
-<P>A class in Objective-C can declare two types of methods: instance =
+<P>Objective-C에서의 클래스는 인스턴스 메써드와 클래스 메써드, 두 종류의 메써드를 선언할 수 있다. 
+인스턴스 메써드는 실행시키는 범위가 클래스의 인스턴스에 한정되는 메써드이다. 
+다시말해 인스턴스 메써드를 부르기전에, 당신은 반드시 클래스의 인스턴스를 생성해야한다. 
+클래스 메써드는 이와 달리, 클래스의 인스턴스 생성을 요구하지 않는다.
+<br>A class in Objective-C can declare two types of methods: instance =
 methods and=20
 class methods. An instance method is a method whose execution is scoped =
 to a=20
@@ -485,8 +535,13 @@ by=20
 comparison, do not require you to create an instance, but more on that =
 later.=20
 </P>
-<P>메써드의 선언은 메써드 타잎, 리턴 타잎, 하나이상의 이름 키워드, 파라미터 타잎과 이름정보로 구성된다. Figure 2는 인스턴스 메써드인 insertObject:atIndex:의 선언을 보여준다. 그 선언은 이것이 인스턴스 메써드임을 가르키는 마이너스(-) 글자가 선행한다. 그 메써드의 실제 이름(insertObject:atIndex:)은 콜론 문자를 포함한 모든 시그니쳐 키워드의 연결이다. 콜론문자는 파라미터의 존재를 선언한다. 만약 메써드가 파라메터가 없다면, 당신은 첫(그리고 유일한) 시그니쳐 키워드 뒤의 콜론을 생략한다. 이 샘플에서는 메써드가 두개의 파라미터를 가진다.</P>
-<P>The declaration of a method consists of the method type identifier, a =
+<P>메써드의 선언은 메써드 타잎, 리턴 타잎, 하나이상의 이름 키워드, 파라미터 타잎과 이름정보로 구성된다. 
+Figure 2는 인스턴스 메써드인 insertObject:atIndex:의 선언을 보여준다. 
+그 선언은 이것이 인스턴스 메써드임을 가르키는 마이너스(-) 글자가 선행한다. 
+그 메써드의 실제 이름(insertObject:atIndex:)은 콜론 문자를 포함한 모든 시그니쳐 키워드의 연결이다. 
+콜론문자는 파라미터의 존재를 선언한다. 만약 메써드가 파라메터가 없다면, 당신은 첫(그리고 유일한) 시그니쳐 키워드 뒤의 콜론을 생략한다. 
+이 샘플에서는 메써드가 두개의 파라미터를 가진다.
+<br>The declaration of a method consists of the method type identifier, a =
 return=20
 type, one or more signature keywords, and the parameter type and name=20
 information. <SPAN class=3Dcontent_text>Figure 2</SPAN> shows the =
@@ -514,8 +569,11 @@ alt=3D"Method declaration syntax"=20
 src=3D"http://devimages.apple.com/iphone/gettingstarted/docs/images/metho=
 d_decl.jpg"=20
 width=3D510> <BR><BR>
-<P>당신이 메써드를 호출하길 원할 때, 오브젝트에 대응하는 "메시징"을 이용해서 그렇게 한다. 이러한 상황에서의 메시지는 메써드가 필요로하는 파라미터 정보와 협력한 메써드 시크니쳐 이다. 당신이 오브젝트에게 보내는 모든 메시지는 자동으로 발송된다. 따라서 Objective-C 클래스의 폴리모피즘을 용이하게 한다. 다른 말로는 만약 부모 클래스와 같은 같은 시그니쳐의 메써드를 가진 하위 클래스를 선언한다면, 그 하위 클래스는 메시지를 첫째로 수신하고 그것의 부모에게 메시지를 발송하는 것(혹은 하지않는 것)을 선택할 수 있다.</P>
-<P>When you want to call a method, you do so by "messaging=94 the =
+<P>당신이 메써드를 호출하길 원할 때, 오브젝트에 대응하는 "메시징"을 이용해서 그렇게 한다. 
+이러한 상황에서의 메시지는 메써드가 필요로하는 파라미터 정보와 협력한 메써드 시그니쳐 이다. 
+당신이 오브젝트에게 보내는 모든 메시지는 자동으로 발송된다. 따라서 Objective-C 클래스의 폴리모피즘을 용이하게 한다. 
+다른 말로는 만약 부모 클래스와 같은 같은 시그니쳐의 메써드를 가진 하위 클래스를 선언한다면, 그 하위 클래스는 메시지를 첫째로 수신하고 그것의 부모에게 메시지를 발송하는 것(혹은 하지않는 것)을 선택할 수 있다.
+<br>When you want to call a method, you do so by "messaging=94 the =
 corresponding=20
 object. The message in this case is the method signature, along with the =
 
@@ -527,8 +585,9 @@ the=20
 same signature as one of its parent classes, the subclass receives the =
 message=20
 first and can opt to forward the message (or not) to its parent. </P>
-<P>메시지는 대괄호 의해 둘러싸인다 ([와]). 대괄호 안쪽에, 메시지를 수신하는 오브젝트는 왼쪽에 있고 메시지는 오른쪽 (메시지에서 요구되는 파라미터와 함께) 있다. 예를 들면, myArray변수에 있는 오브젝트에 insertObject:atIndex 메시지를 보내기 위해서, 당신은 아래의 구문을 사용할 것입니다: </P>
-<P>Messages are enclosed by brackets (<CODE>[</CODE> and =
+<P>메시지는 대괄호 의해 둘러싸인다 ([와]). 대괄호 안쪽에, 메시지를 수신하는 오브젝트는 왼쪽에 있고 메시지는 오른쪽 (메시지에서 요구되는 파라미터와 함께) 있다. 
+예를 들면, myArray변수에 있는 오브젝트에 insertObject:atIndex 메시지를 보내기 위해서, 당신은 아래의 구문을 사용할 것이다: 
+<br>Messages are enclosed by brackets (<CODE>[</CODE> and =
 <CODE>]</CODE>). Inside=20
 the brackets, the object receiving the message is on the left side and =
 the=20
@@ -539,10 +598,13 @@ object in=20
 the <CODE>myArray</CODE> variable, you would use the following syntax: =
 </P><PRE>[myArray insertObject:anObj atIndex:0];<SPAN></SPAN>
 </PRE>
-<P> 임시결과가 저장되는 무수한 로컬 변수의들을 선언하는 것을 피하기 위해, Objective-C는 당신에게 메시지 둥지를 짓게한다.(이하 네스트된 메세지) 각 네스트된 메세지로 부터의 리턴결과값은 파라미터, 혹은 다른 메시지를 위한 타겟처럼 쓰인다. 예를 들면, 당신은 이전의 예에서 사용된 어떠한 변수도 가치를 만회하는 메시지로 교환할 수 있었다.(뭔 소리여?) 따라서, 만약 당신이 배열에 접근하고, 배열안에 오브젝트를 넣는 메써드를 가진 myAppObject라고 불리는 다른 오브젝트를 가지고 있다면,  당신은 따라오는 것 처럼 무언가를 보기위해 이전의 예제를 쓸 수 있었다:(이건 또 뭔소리여?) 
+<P> 임시결과가 저장되는 무수한 로컬 변수의들을 선언하는 것을 피하기 위해, Objective-C는 당신에게 메시지 둥지를 짓게한다.(이하 네스트된 메세지) 
+각 네스트된 메세지로 부터의 리턴결과값은 파라미터, 혹은 다른 메시지를 위한 타겟처럼 쓰인다. 
+예를 들면, 당신은 이전의 예에서 사용된 어떠한 변수도 가치를 만회하는 메시지로 교환할 수 있었다.(뭔 소리여?) 
+따라서, 만약 당신이 배열에 접근하고, 배열안에 오브젝트를 넣는 메써드를 가진 myAppObject라고 불리는 다른 오브젝트를 가지고 있다면, 당신은 따라오는 것 처럼 무언가를 보기위해 이전의 예제를 쓸 수 있었다:(이건 또 뭔소리여?) 
 <br>
-(이거 함수 결과값을 그대로 함수 파라미터로 넘기는 그런것... 뭔 말을 이렇게 쓸데없이 어렵게 적어놨냐?)</P>
-<P>To avoid declaring numerous local variables to store temporary =
+(이거 함수 결과값을 그대로 함수 파라미터로 넘기는 그런것... 뭔 말을 이렇게 쓸데없이 어렵게 적어놨냐?)
+<br>To avoid declaring numerous local variables to store temporary =
 results,=20
 Objective-C lets you nest messages. The return value from each nested =
 message is=20
@@ -558,8 +620,10 @@ to look=20
 something like the following: </P><PRE>[[myAppObject getArray] =
 insertObject:[myAppObject getObjectToInsert] =
 atIndex:0];<SPAN></SPAN></PRE>
-<P>비록 이전의 예들이 클래스의 인스턴스에게 메시지를 보내더라도, 당신은 클래스 자신에게 메시지를 보낼 수도 있다. 클래스를 메시징할 때, 그 메써드는 특별히 인스턴스 메써드가 아닌 클래스 메써드로 선언되어야한다. 당신은 클래스 메써드를 C++의 static멤버와 동족으로(그러나 완전히 같지는 않다.) 생각할 수 있다.</P>
-<P>Although the preceding examples sent messages to an instance of a =
+<P>비록 이전의 예들이 클래스의 인스턴스에게 메시지를 보내더라도, 당신은 클래스 자신에게 메시지를 보낼 수도 있다. 
+클래스를 메시징할 때, 그 메써드는 특별히 인스턴스 메써드가 아닌 클래스 메써드로 선언되어야한다. 
+당신은 클래스 메써드를 C++의 static멤버와 동족으로(그러나 완전히 같지는 않다.) 생각할 수 있다.
+<br>Although the preceding examples sent messages to an instance of a =
 class, you=20
 can also send messages to the class itself. When messaging a class, the =
 method=20
@@ -568,8 +632,9 @@ method. You=20
 can think of class methods as something akin to (but not exactly like) =
 static=20
 members in a C++ class. </P>
-<P>당신은 전형적으로 클래스 메써드를 클래스의 새로운 인스턴스를 만들기 위해서 팩토리 메써드처럼 사용하거나, 그 클래스와 관련된 공유된 정보 조각들을 접근하기위해 사용한다.(뭔소리야!) 클래스 메써드 선언을 위한 구문은 하나만 제외하고 인스턴스 메써드를 만드는 것과 동일하다. 메써드 타잎 식별자로 마이너스(-) 사인을 사용하는 것 대신에 플러스(+) 사인을 사용한다.</P>
-<P>You typically use class methods as factory methods for creating new =
+<P>당신은 전형적으로 클래스 메써드를 클래스의 새로운 인스턴스를 만들기 위해서 팩토리 메써드처럼 사용하거나, 그 클래스와 관련된 공유된 정보 조각들을 접근하기위해 사용한다.(뭔소리야!) 
+클래스 메써드 선언을 위한 구문은 하나만 제외하고 인스턴스 메써드를 만드는 것과 동일하다. 메써드 타잎 식별자로 마이너스(-) 사인을 사용하는 것 대신에 플러스(+) 사인을 사용한다.
+<br>You typically use class methods as factory methods for creating new =
 instances=20
 of the class or for accessing some piece of shared information =
 associated with=20
@@ -578,9 +643,10 @@ that of an=20
 instance method, with one exception. Instead of using a minus sign for =
 the=20
 method type identifier, you use a plus (+) sign. </P>
-<P>따라오는 예제는 클래스 메써드를 팩토리 메써드처럼 사용하는 것을 보여준다. 이러한 경우엔, arrayWithCapacity: 메써드는 NSMutableArray 클래스의 클래스의 새로운 인스턴스를 할당하고 초기화해서 당신의 코드에 넘겨주는 클래스 메써드 이다.
-<br>(생성자 이야기구먼...)</P>
-<P>The following example demonstrates the use of a class method as a =
+<P>따라오는 예제는 클래스 메써드를 팩토리 메써드처럼 사용하는 것을 보여준다. 
+이러한 경우엔, arrayWithCapacity: 메써드는 NSMutableArray 클래스의 클래스의 새로운 인스턴스를 할당하고 초기화해서 당신의 코드에 넘겨주는 클래스 메써드 이다.
+<br>(생성자 이야기구먼...)
+<br>The following example demonstrates the use of a class method as a =
 factory=20
 method for a class. In this case, the <CODE>arrayWithCapacity:</CODE> =
 method is=20
@@ -598,8 +664,11 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW4=20
 turn_anchor=3D"yes"></A>
 <H3>Properties</H3>
-<P>프로퍼티는 메써드 선언 접근자를 대체하기 위해 사용되는 쓰기쉬운 표시이다. 프로퍼티는 당신의 클래스 선언에 새로운 변수를 생성하지 않는다. 그들은 인스턴스 변수를 접근하기 위한 메써드(이하 접근 메써드)를 선언하는 간단한 속기이다. 인스턴스 변수를 드러내는 클래스는 getter,setter를 사용하는 대신에 프로퍼티 표시를 사용하여 이렇게 할 수 있다. 클래스들은 또한 프로퍼티들을 인스턴스 변수에는 저장되지 않은 동적으로 계산된 데이터의 조각인 가상 변수를 드러내는데 사용할 수 있다.</P>
-<P>Properties are a convenience notation used to replace accessor method =
+<P>프로퍼티는 메써드 선언 접근자를 대체하기 위해 사용되는 쓰기쉬운 표시이다. 
+프로퍼티는 당신의 클래스 선언에 새로운 변수를 생성하지 않는다. 그들은 인스턴스 변수를 접근하기 위한 메써드(이하 접근 메써드)를 선언하는 간단한 속기이다. 
+인스턴스 변수를 드러내는 클래스는 getter,setter를 사용하는 대신에 프로퍼티 표시를 사용하여 이렇게 할 수 있다. 
+클래스들은 또한 프로퍼티들을 인스턴스 변수에는 저장되지 않은 동적으로 계산된 데이터의 조각인 가상 변수를 드러내는데 사용할 수 있다.
+<br>Properties are a convenience notation used to replace accessor method =
 declarations. Properties do not create new instance variables in your =
 class=20
 declaration. They are simply a shorthand for defining methods that =
@@ -613,8 +682,10 @@ variables that is, pieces=20
 of data that are computed dynamically and not actually stored in =
 instance=20
 variables. </P>
-<P>사실 말하자면, 프로퍼티는 당신이 써야하는 장황한 코드의 양을 줄인다. 대부분의 접근 메써드는 같은 방법으로 수행되기 때문에, 프로터피는 각각의 변수들을 보여주기 위한 별개의 getter와 setter를 제공하기 위한 필요를 제거한다. 대신, 당신은 프로퍼티 선언을 사용한 후에 선언에 따라 실제적인 getter와 setter를 합성하는 것을 컴파일 시간에 지정한다.</P>
-<P>Practically speaking, properties reduce the amount of redundant code =
+<P>사실 말하자면, 프로퍼티는 당신이 써야하는 장황한 코드의 양을 줄인다. 
+대부분의 접근 메써드는 같은 방법으로 수행되기 때문에, 프로터피는 각각의 변수들을 보여주기 위한 별개의 getter와 setter를 제공하기 위한 필요를 제거한다. 
+대신, 당신은 프로퍼티 선언을 사용한 후에 선언에 따라 실제적인 getter와 setter를 합성하는 것을 컴파일 시간에 지정한다.
+<br>Practically speaking, properties reduce the amount of redundant code =
 you have=20
 to write. Because most accessor methods are implemented in similar ways, =
 
@@ -625,8 +696,11 @@ behavior=20
 you want using the property declaration and then synthesize actual =
 getter and=20
 setter methods based on that declaration at compile time. </P>
-<P>당신은 클래스 인터페이스에 메써드 선언과 함께 프로퍼티 선언을 포함한다. 기본적인 지정은 @property 표시를 사용한다. 프로퍼티의 타잎정보와 이름이 뒤따른다. 당신은 접근 메써드가 어떻게 행동할 것인지에 대한 추가적인 옵션을 설정할 수도 있다. 아래는 프로퍼티 선언의 간단한 몇몇의 예이다. </P>
-<P>You include property declarations with the method declarations in =
+<P>당신은 클래스 인터페이스에 메써드 선언과 함께 프로퍼티 선언을 포함한다. 
+기본적인 지정은 @property 표시를 사용한다. 프로퍼티의 타잎정보와 이름이 뒤따른다. 
+당신은 접근 메써드가 어떻게 행동할 것인지에 대한 추가적인 옵션을 설정할 수도 있다. 
+아래는 프로퍼티 선언의 간단한 몇몇의 예이다.
+<br>You include property declarations with the method declarations in =
 your class=20
 interface. The basic definition uses the <CODE>@property</CODE> compiler =
 
@@ -642,14 +716,20 @@ assignment.<SPAN></SPAN>
 @property (readonly) UIView* rootView;  // Create only a getter =
 method.<SPAN></SPAN>
 </PRE>
-<P>Another benefit of properties is that you can use dot syntax when =
+<P>
+프로퍼티의 또다른 편리함은 아래의 예와 같이 당신의 코드안에서 그것들을 접근하기 위해 dot 구문을 쓸 수 있다는 것이다. 
+<br>Another benefit of properties is that you can use dot syntax when =
 accessing=20
 them in your code, as shown in the following example: </P><PRE>   =
 myObject.flag =3D YES;<SPAN></SPAN>
    CGRect   viewFrame =3D myObject.rootView.frame;<SPAN></SPAN>
 </PRE>
-<P>앞의 예제에 있는 객체와 프로퍼티 이름이 마련되었더라도, 그들은 프로퍼티의 유연성을 보여준다.(엥?) dot구문은 메써드를 부르는 대응들을 가린다. 각 읽는 프로퍼티는 프로퍼티와 같은 이름을 가진 메써드로 대응된다. 각 쓰는 프로퍼티는 set프로퍼티이름: 의 추가 메써드로 대응되며, 여기서 프로퍼티이름의 첫문자는 대문자로 사용한다. (이 메써드들은 프로퍼티의 실제적인 예이며, 인스턴트 변수로 대응되지 않은 클래스의 어트리뷰트를 위한 프로퍼티를 선언할 수 있는 방법이다.) 프로퍼티 대신에 메써드를 사용하여 앞의 코드를 수행하기 위하여는, 당신은 뒤에 오는 코드로 쓸 것이다.</P>
-<P>Although the object and property names in the preceding example are=20
+<P>앞의 예제에 있는 객체와 프로퍼티 이름이 마련되었더라도, 그들은 프로퍼티의 유연성을 보여준다.(엥?) 
+dot구문은 메써드를 부르는 대응들을 가린다. 각 읽는 프로퍼티는 프로퍼티와 같은 이름을 가진 메써드로 대응된다. 
+각 쓰는 프로퍼티는 set프로퍼티이름: 의 추가 메써드로 대응되며, 여기서 프로퍼티이름의 첫문자는 대문자로 사용한다. 
+(이 메써드들은 프로퍼티의 실제적인 예이며, 인스턴트 변수로 대응되지 않은 클래스의 어트리뷰트를 위한 프로퍼티를 선언할 수 있는 방법이다.) 
+프로퍼티 대신에 메써드를 사용하여 앞의 코드를 수행하기 위하여는, 당신은 뒤에 오는 코드로 쓸 것이다.
+<br>Although the object and property names in the preceding example are=20
 contrived, they demonstrate the flexibility of properties. The dot =
 syntax=20
 actually masks the corresponding set of method calls. Each readable =
@@ -669,8 +749,9 @@ write the following code: </P><PRE>   [myObject =
 setFlag:YES];<SPAN></SPAN>
    CGRect   viewFrame =3D [[myObject rootView] frame];<SPAN></SPAN>
 </PRE>
-<P>당신의 클래스들 안에서 프로퍼티를 선언하는 방법에 대한 좀 더 자세한 정보는 "The Objective-C 2.0 Programming Language." 안에 "Properties"를 읽기 바란다.
-<P>For information on how to declare properties in your own classes, =
+<P>당신의 클래스들 안에서 프로퍼티를 선언하는 방법에 대한 좀 더 자세한 정보는 
+"The Objective-C 2.0 Programming Language." 안에 "Properties"를 읽기 바란다.
+<br>For information on how to declare properties in your own classes, =
 read <SPAN=20
 class=3Dcontent_text><A=20
 href=3D"http://developer.apple.com/iphone/library/documentation/Cocoa/Con=
@@ -685,8 +766,10 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW1=20
 turn_anchor=3D"yes"></A>
 <H3>Protocols and Delegates</H3>
-<P>프로토콜은 어느 클래스에서도 수행될 수 있는 메써드를 선언한다. 프로토콜은 그들자신이 클래스는 아니다. 그들은 단순히 이행할 책임을 가지는 다른 객체들과의 경계면에 대한 선언이다. 당신의 클래스들 하나의 프로토콜의 메써드를 수행할때, 그 클래스는 프로토콜에 따라서 말하게 된다.</P>
-<P>A protocol declares methods that can be implemented by any class. =
+<P>프로토콜은 어느 클래스에서도 수행될 수 있는 메써드를 선언한다. 
+프로토콜은 그들자신이 클래스는 아니다. 그들은 단순히 이행할 책임을 가지는 다른 객체들과의 경계면에 대한 선언이다. 
+당신의 클래스들 하나의 프로토콜의 메써드를 수행할때, 그 클래스는 프로토콜에 따라서 말하게 된다.
+<br>A protocol declares methods that can be implemented by any class. =
 Protocols=20
 are not classes themselves. They simply define an interface that other =
 objects=20
@@ -694,17 +777,21 @@ are responsible for implementing. When you implement the methods of a =
 protocol=20
 in one of your classes, your class is said to conform to that protocol. =
 </P>
-<P>iPhone OS안에, 프로토콜은 대표 오브젝트를 실행하기 위해 종종 사용된다. 대표 오브젝트는 남을 대신해서 행동하거나, 다른 오브젝트와 통일을 위한 오브젝트이다. 프로토콜, 델리케이트, 그리고 다른 오브젝트끼리의 상호작용을 보기위한 가장 좋은 방법은 다음 보기를 보라.
-<br>(virtual함수 처럼 사용되는 것들인가?)</P>
-<P>In iPhone OS, protocols are used frequently to implement delegate =
+<P>iPhone OS안에, 프로토콜은 대표 오브젝트를 실행하기 위해 종종 사용된다. 
+대표 오브젝트는 남을 대신해서 행동하거나, 다른 오브젝트와 통일을 위한 오브젝트이다. 
+프로토콜, 델리케이트, 그리고 다른 오브젝트끼리의 상호작용을 보기위한 가장 좋은 방법은 다음 보기를 보라.
+<br>(virtual함수 처럼 사용되는 것들인가?)
+<br>In iPhone OS, protocols are used frequently to implement delegate =
 objects. A=20
 delegate object is an object that acts on behalf of, or in coordination =
 with,=20
 another object. The best way to look at the interplay between protocols, =
 
 delegates, and other objects is to look at an example. </P>
-<P>UIApplication 클래스는 어플리케이션의 필요한 행동을 수행한다. 강제로 당신이 UIApplication의 하위 클래스가 어플리케이션의 현재 상태에 대한 간단한 통지를 받는 것을 대신해서. UIApplication 클래스는 대표오브젝트의 메써드를 부름으로서 그런 통지를 전달한다. UIApplicationDelegate 프로토콜의 메써드를 수행하게 되는 오브젝트는 그러한 통지를 받아 적절한 반응을 할 수 있게 된다. </P>
-<P>The <CODE>UIApplication</CODE> class implements the required behavior =
+<P>UIApplication 클래스는 어플리케이션의 필요한 행동을 수행한다. 
+강제로 당신이 UIApplication의 하위 클래스가 어플리케이션의 현재 상태에 대한 간단한 통지를 받는 것을 대신해서. UIApplication 클래스는 대표오브젝트의 메써드를 부름으로서 그런 통지를 전달한다. 
+UIApplicationDelegate 프로토콜의 메써드를 수행하게 되는 오브젝트는 그러한 통지를 받아 적절한 반응을 할 수 있게 된다.
+<br>The <CODE>UIApplication</CODE> class implements the required behavior =
 of an=20
 application. Instead of forcing you to subclass =
 <CODE>UIApplication</CODE> to=20
@@ -717,8 +804,9 @@ implements the=20
 methods of the <CODE>UIApplicationDelegate</CODE> protocol can receive =
 those=20
 notifications and provide an appropriate response. </P>
-<P>프로토콜의 선언은 부모클래스가 없다는 것과 인스턴스 변수를 선언할 수 없다는 것을 제외하고 클래스의 인터페이스와 유사하다. 뒤의 보기는 하나의 메써드를 가지는 간단한 프로토콜의 선언을 보여준다.</P>
-<P>The declaration of a protocol looks similar to that of a class =
+<P>프로토콜의 선언은 부모클래스가 없다는 것과 인스턴스 변수를 선언할 수 없다는 것을 제외하고 클래스의 인터페이스와 유사하다. 
+뒤의 보기는 하나의 메써드를 가지는 간단한 프로토콜의 선언을 보여준다.
+<br>The declaration of a protocol looks similar to that of a class =
 interface,=20
 with the exceptions that protocols do not have a parent class and they =
 do not=20
@@ -728,8 +816,10 @@ declaration with one method: </P><PRE>@protocol MyProtocol<SPAN></SPAN>
 - (void)myProtocolMethod;<SPAN></SPAN>
 @end<SPAN></SPAN>
 </PRE>
-<P>많은 대표 프로토콜의 경우에서 프로토콜의 채택은 프로토콜에 의해 선언된 메써드를 실행하는 간단한 일이다. 몇몇의 프로토콜은 당신이 그 프로토콜을 지원한다는 것을 명시적으로 필요로한다. 그리고 프로토콜은 요구하거나 선택하는 메써드를 지정할 수 있다.(응?) 당신의 개발이 계속될 수록, 당신은 "Objective-C 2.0 Programming Language"안의 "Protocols"에서 프로토콜과 그것들이 사용되는지에 대해서 배우는데 더 많은 시간을 소요해야한다.</P>
-<P>In the case of many delegate protocols, adopting a protocol is simply =
+<P>많은 대표 프로토콜의 경우에서 프로토콜의 채택은 프로토콜에 의해 선언된 메써드를 실행하는 간단한 일이다. 
+몇몇의 프로토콜은 당신이 그 프로토콜을 지원한다는 것을 명시적으로 필요로한다. 그리고 프로토콜은 요구하거나 선택하는 메써드를 지정할 수 있다.(응?) 
+당신의 개발이 계속될 수록, 당신은 "Objective-C 2.0 Programming Language"안의 "Protocols"에서 프로토콜과 그것들이 사용되는지에 대해서 배우는데 더 많은 시간을 소요해야한다.
+<br>In the case of many delegate protocols, adopting a protocol is simply =
 a=20
 matter of implementing the methods defined by that protocol. There are =
 some=20
@@ -753,8 +843,10 @@ name=3D//apple_ref/doc/uid/TempBookID-ReplacedWhenAssociatingWithMessierR=
 evision-SW12=20
 turn_anchor=3D"yes"></A>
 <H3>For More Information</H3>
-<P>앞의 정보는 Objective-C언어의 기초에 익숙하게 하기 위하여 1차적으로 예정되었다. 여기에서 커버된 주제는 당신이 문서의 나머지를 통해 읽으면서 만날확률이 높은 언어의 특징을 반영한다. 이들은 언어의 유일한 특징은 아니다. 당신이 Objective-C 2.0 Programming Language에 있는 언어에 관하여 더 많은 것을 읽기 바란다. </P>
-<P>The preceding information was intended primarily to familiarize you =
+<P>앞의 정보는 Objective-C언어의 기초에 익숙하게 하기 위하여 1차적으로 예정되었다. 
+여기에서 커버된 주제는 당신이 문서의 나머지를 통해 읽으면서 만날확률이 높은 언어의 특징을 반영한다. 
+이들은 언어의 유일한 특징은 아니다. 당신이 Objective-C 2.0 Programming Language에 있는 언어에 관하여 더 많은 것을 읽기 바란다.
+<br>The preceding information was intended primarily to familiarize you =
 with the=20
 basics of the Objective-C language. The subjects covered here reflect =
 the=20
