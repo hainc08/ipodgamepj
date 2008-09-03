@@ -53,8 +53,20 @@ static ViewManager *viewManagerInst;
  	if (curView != nil) [curView removeFromSuperview];
 	
 	mainController = views[viewConIdx].controller;
-	curView = [mainController view];
+	[curView stopTimer];
+	curView = (BaseView*)[mainController view];
+
+	[curView reset];
 	[mainWindow addSubview:curView];
-	[mainWindow makeKeyAndVisible];		
+	[mainWindow makeKeyAndVisible];
 }
+
+- (UIView*)getInstView:(NSString*)viewName
+{
+	UIViewController *controller = [[UIViewController alloc] initWithNibName:viewName bundle:[NSBundle mainBundle]];
+	UIView* uiview = [controller view];
+	[controller release];
+	return uiview;
+}
+
 @end
