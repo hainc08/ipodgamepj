@@ -26,7 +26,12 @@ static ViewManager *viewManagerInst;
 	}
 }
 
-- (void)changeView:(NSString*)changeViewName;
+- (void)changeView:(NSString*)changeViewName
+{
+	[self changeView:changeViewName param:NULL];
+}
+
+- (void)changeView:(NSString*)changeViewName param:(NSObject*)param
 {
 	int viewConIdx = -1;
 
@@ -56,7 +61,7 @@ static ViewManager *viewManagerInst;
 	[curView stopTimer];
 	curView = (BaseView*)[mainController view];
 
-	[curView reset];
+	[curView reset:param];
 	[mainWindow addSubview:curView];
 	[mainWindow makeKeyAndVisible];
 }

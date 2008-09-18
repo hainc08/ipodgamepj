@@ -2,6 +2,9 @@
 #import "ViewManager.h"
 #import "TouchPoint.h"
 
+@implementation Game2PParam
+@end
+
 @implementation GameView2P
 
 - (id)initWithCoder:(NSCoder *)coder {

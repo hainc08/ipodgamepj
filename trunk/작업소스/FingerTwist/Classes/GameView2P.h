@@ -3,6 +3,13 @@
 
 @class TouchPoint;
 
+@interface Game2PParam : NSObject
+{
+	
+}
+
+@end
+
 @interface GameView2P : BaseView {
 	int pointCount;
 	TouchPoint *touchPoints[11];

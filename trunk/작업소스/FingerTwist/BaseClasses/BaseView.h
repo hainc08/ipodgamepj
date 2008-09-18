@@ -5,7 +5,7 @@
 	NSTimer *updateTimer;
 }
 
-- (void)reset;
+- (void)reset:(NSObject*)param;
 - (void)update;
 - (void)stopTimer;
 - (void)resumeTimer;

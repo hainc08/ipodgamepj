@@ -8,9 +8,9 @@
 	if ( step == 1 ) step=2;
 }
 
-- (void)reset;
+- (void)reset:(NSObject*)param
 {
-	[super reset];
+	[super reset:param];
 	[TeamLogoImg setAlpha:0.f];
 	step = 0;
 }

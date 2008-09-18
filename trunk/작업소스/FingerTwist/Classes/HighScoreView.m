@@ -41,7 +41,7 @@
 	}
 	else if (sender == MainMenuButton)
 	{
-		[[ViewManager getInstance] changeView:@"MainMenuView"];
+		[[ViewManager getInstance] changeView:@"MainMenuView" param:NULL];
 	}
 }
 

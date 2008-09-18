@@ -8,9 +8,9 @@
 	if ( step == 1 ) step=2;
 }
 
-- (void)reset;
+- (void)reset:(NSObject*)param
 {
-	[super reset];
+	[super reset:param];
 	[logoImg setAlpha:0.f];
 	step = 0;
 }
@@ -34,7 +34,7 @@
 			if (alpha <= 0.f) step = 3;
 			break;
 		case 3:
-			//다음뷰로 이동 한다.
+			//?�음뷰로 ?�동 ?�다.
 			[[ViewManager getInstance] changeView:@"MainMenuView"];
 			break;
 	}

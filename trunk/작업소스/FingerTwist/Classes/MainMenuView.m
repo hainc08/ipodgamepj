@@ -1,5 +1,7 @@
 #import "MainMenuView.h"
 #import "ViewManager.h"
+#import "GameView1P.h"
+#import "GameView2P.h"
 
 @implementation MainMenuView
 
@@ -12,11 +14,16 @@
 {
 	if (sender == Game1PButton)
 	{
-		[[ViewManager getInstance] changeView:@"GameView1P"];
+		Game1PParam* param = [Game1PParam alloc];
+		param->stageNumber = 1;
+		param->pointCount = 1;
+		param->difficult = 0;
+		[[ViewManager getInstance] changeView:@"GameView1P" param:param];
 	}
 	else if (sender == Game2PButton)
 	{
-		[[ViewManager getInstance] changeView:@"GameView2P"];
+		Game2PParam* param = [Game2PParam alloc];
+		[[ViewManager getInstance] changeView:@"GameView2P" param:param];
 	}
 	else if (sender == HighScoreButton)
 	{

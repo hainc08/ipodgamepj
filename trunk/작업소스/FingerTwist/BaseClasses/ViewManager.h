@@ -21,6 +21,7 @@ typedef struct
 + (ViewManager*)getInstance;
 + (void)initManager:(UIWindow*)window:(UIViewController*)controller;
 - (void)closeManager;
+- (void)changeView:(NSString*)changeViewName param:(NSObject*)param;
 - (void)changeView:(NSString*)changeViewName;
 - (UIView*)getInstView:(NSString*)viewName;
 

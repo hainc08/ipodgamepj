@@ -13,9 +13,10 @@
 	return self;
 }
 
-- (void)reset
+- (void)reset:(NSObject*)param
 {
 	[self resumeTimer];
+	frameTick = 0;
 }
 
 - (void)update
