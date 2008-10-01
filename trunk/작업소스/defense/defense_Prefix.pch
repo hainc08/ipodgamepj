@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'defense' target in the 'defense' project
+//
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#endif
