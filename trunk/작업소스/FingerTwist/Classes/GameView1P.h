@@ -12,17 +12,17 @@
 	int stageNumber;
 	int pointCount;
 	int difficult;
-	//0: ?��? - 뽑힌 ?�인??주�????�들???�택???�률??많이 ??��?? 50%??.
-	//1: 보통 - 뽄힌 ?�인??주�????�들???�택???�률??조금 ??��?? 20%??.
-	//2: ?�려?� - 100%?�덤?�로 뽑는??
+	//0: 쉬움 - 뽑힌 포인트 주변의 점들이 선택될 확률을 많이 낮춘다. 50%씩..
+	//1: 보통 - 뽄힌 포인트 주변의 점들이 선택될 확률을 조금 낮춘다. 20%씩..
+	//2: 어려움 - 100%랜덤으로 뽑는다.
 }
 
 @end
 
 @interface GameView1P : BaseView
 {
-	//step?� pointCount???�배가 ?�다.
-	//?�겼?? ?��???
+	//step은 pointCount으 두배가 된다.
+	//생겼다, 눌렀다.
 	int stageNumber;
 	int difficult;
 	
@@ -35,7 +35,8 @@
 	int newPointTick;
 
 	bool gameEnd;
-	bool gameStart;
+	int introStep;
+	int introTick;
 
 	CGPoint pointPos[PCOUNT];
 	int prop[PCOUNT];

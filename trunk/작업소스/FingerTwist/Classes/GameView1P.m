@@ -35,7 +35,7 @@
 	stageNumber = gameParam->stageNumber; 
 	pointCount = gameParam->pointCount;
 	gameEnd = false;
-	gameStart = false;
+	introStep = 0;
 
 	difficult = gameParam->difficult;
 
@@ -96,7 +96,7 @@
 	{
 		pos.x = a * 102 + 32;
 		pos.y = b * 57 + 50;
-		//?�제 ?�기가 60?��?�??�에 ?�쩍 ?�려 ?��?�??�문??60???�니??58�??�다.
+		//실제 크기가 60이지만 위에 슬쩍 잘려 나가기 때문에 60이 아니라 58로 한다.
 		//pos.y = b * 60 + 30;
 	}
 	else
@@ -159,8 +159,16 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	if (!gameStart) return;
-	
+	if (introStep < 3)
+	{
+		if (introStep == 1)
+		{
+			introTick = frameTick;
+			introStep = 2;
+		}
+		return;
+	}
+
 	if (gameEnd)
 	{
 		if (processStep == -1)
@@ -169,7 +177,7 @@
 		}
 		else if (stageNumber == 10)
 		{
-			//게임 ?�딩...
+			//게임 엔딩...
 			[[ViewManager getInstance] changeView:@"MainMenuView"];
 		}
 		else
@@ -188,14 +196,14 @@
 	{
 		if (touchCount > 11)
 		{
-			//?�기??종료...
-			//?�단 ?�강만??종료조건...
-			//?�?�머 처리�?추�??�서 밀?�게 만든??
+			//여기서 종료...
+			//일단 대강만든 종료조건...
+			//타이머 처리를 추가해서 밀하게 만든다.
 			processStep = -1;
 			return;
 		}
 
-		//?�제 ?�비?�서 ??부분을 ?�떻�?처리?��?가 관�?..
+		//실제 장비에서 이 부분을 어떻게 처리할지가 관건...
 		touch = [touchEnum nextObject];
 		touchPosition[touchCount] = [touch locationInView: self];
 		++touchCount;
@@ -225,28 +233,36 @@
 	[super update];
 
 	if (gameEnd) return;
-	if (!gameStart)
+
+	if (introStep < 3)
 	{
-		if (frameTick < 10)			[msgView setMessage:@"Ready...3"];
-		else if (frameTick < 20)	[msgView setMessage:@"Ready...2"];
-		else if (frameTick < 30)	[msgView setMessage:@"Ready...1"];
-		else if (frameTick < 40)	[msgView setMessage:@"Start!"];
-		else if (frameTick < 50)
+		switch (introStep)
 		{
-			[msgView reset];
-			gameStart = true;
+			case 0:
+				[msgView showStageInfo:stageNumber button:pointCount diff:difficult];
+				introStep = 1;
+				break;
+			case 2:
+				if (frameTick < (introTick + 10))		[msgView setMessage:@"Ready"];
+				else if (frameTick < (introTick + 20)) 	[msgView setMessage:@"Start"];
+				else if (frameTick < (introTick + 30)) 
+				{
+					[msgView reset];
+					introStep = 3;
+				}
+				break;
 		}
 	}
 	else if (processStep == -1)
 	{
 		//게임종료...
-		[msgView setMessage:@"GameOver"];
+		[msgView setMessage:@"GameOver" showNext:true];
 		gameEnd = true;
 	}
 	else if (processStep == 100)
 	{
-		//?�테?��? ?�리?
-		[msgView setMessage:@"StageClear"];
+		//스테이지 클리어
+		[msgView setMessage:@"StageClear" showNext:true];
 		gameEnd = true;
 	}
 	else if ((processStep % 2) == 0)
@@ -254,11 +270,18 @@
 		int pointIdx = (processStep / 2);
 		if (pointIdx == pointCount)
 		{
-			//?�테?��? ?�리?
+			//스테이지 클리어
 			processStep = 100;
 		}
 		else
 		{
+			[UIView beginAnimations:@"button" context:NULL];
+			[UIView setAnimationDuration:0.15];
+			[UIView setAnimationCurve:UIViewAnimationCurveEaseIn];			
+			touchPoints[pointIdx].transform = CGAffineTransformMakeScale(0.5, 0.5);
+			touchPoints[pointIdx].transform = CGAffineTransformMakeScale(1.0, 1.0);
+			[UIView commitAnimations];
+			
 			[touchPoints[pointIdx] setAlpha:1.f];
 			newPointTick = frameTick;	
 			[targetCircle setCenter: pointPosition[pointIdx]];
@@ -267,13 +290,13 @@
 	}
 	else
 	{
-		//보통?�태...
+		//보통상태...
 		if ((newPointTick + 50) < frameTick)
 		{
 			//TimeOver
 			processStep = -1;		
 		}
-		//?�겟이 ?�용?�용~?�게...
+		//타겟이 띠용띠용~하게...
 	}
 }
 
@@ -289,6 +312,7 @@
 - (void)setUpMessageView
 {
 	msgView = (MessageView*)([[ViewManager getInstance] getInstView:@"MessageView"]);
+	[msgView initImg];
 	[self addSubview:msgView];
 }
 

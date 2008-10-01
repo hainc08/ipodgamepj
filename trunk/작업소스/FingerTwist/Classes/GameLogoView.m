@@ -34,7 +34,7 @@
 			if (alpha <= 0.f) step = 3;
 			break;
 		case 3:
-			//?�음뷰로 ?�동 ?�다.
+			//다음뷰로 이동 한다.
 			[[ViewManager getInstance] changeView:@"MainMenuView"];
 			break;
 	}
