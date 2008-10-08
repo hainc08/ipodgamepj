@@ -13,14 +13,26 @@
 	return self;
 }
 
-- (void)setUpGameBoard
+- (void)update:(UInt32)tick
 {
+	frameTick = tick;
+	for (int i=0; i<20; ++i)
+	{
+		[enemy[i] update:tick];
+	}
+}
+
+- (void)setUpGameBoard:(CGPoint*)p count:(int)c
+{
+	path = p;
+	int waitTime = 0;
 	for (int i=0; i<20; ++i)
 	{
 		enemy[i] = (Enemy*)([[ViewManager getInstance] getInstView:@"Enemy"]);
-		[enemy[i] setEnemy:2 level:0];
+		[enemy[i] setEnemy:5 level:0 wait:waitTime];
+		[enemy[i] setPath:p count:c];
 		[self addSubview:enemy[i]];
-		[enemy[i] setCenter:CGPointMake(320, 70*i-300)];
+		waitTime += 5 + (rand() % 10);
 	}
 }
 

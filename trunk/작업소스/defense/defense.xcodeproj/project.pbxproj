@@ -40,7 +40,6 @@
 		84696D3F0E8A969B003903C3 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84696D3E0E8A969B003903C3 /* GameView.xib */; };
 		84696D430E8A96FD003903C3 /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 84696D410E8A96FD003903C3 /* GameBoard.m */; };
 		84696D460E8A9716003903C3 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84696D440E8A9716003903C3 /* GameView.m */; };
-		846A02590E8DE48A00CD9C83 /* menuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 846A02580E8DE48A00CD9C83 /* menuButton.png */; };
 		846BE84C0E8F4E190015D2D0 /* moveImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 846BE84B0E8F4E190015D2D0 /* moveImg.png */; };
 		846F5D470E9277390059DE4F /* map5.png in Resources */ = {isa = PBXBuildFile; fileRef = 846F5D350E9277390059DE4F /* map5.png */; };
 		846F5D480E9277390059DE4F /* e1.png in Resources */ = {isa = PBXBuildFile; fileRef = 846F5D370E9277390059DE4F /* e1.png */; };
@@ -62,6 +61,14 @@
 		846F5DA40E92788A0059DE4F /* Enemy.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846F5DA30E92788A0059DE4F /* Enemy.xib */; };
 		846F5DA80E9278CC0059DE4F /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F5DA70E9278CC0059DE4F /* Enemy.m */; };
 		846F5E140E927D580059DE4F /* UnitTexManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846F5E130E927D580059DE4F /* UnitTexManager.m */; };
+		84729F730E9BBC09006B8C91 /* menu_bow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84729F6B0E9BBC09006B8C91 /* menu_bow.png */; };
+		84729F740E9BBC09006B8C91 /* menu_build.png in Resources */ = {isa = PBXBuildFile; fileRef = 84729F6C0E9BBC09006B8C91 /* menu_build.png */; };
+		84729F750E9BBC09006B8C91 /* menu_fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 84729F6D0E9BBC09006B8C91 /* menu_fire.png */; };
+		84729F760E9BBC09006B8C91 /* menu_ice.png in Resources */ = {isa = PBXBuildFile; fileRef = 84729F6E0E9BBC09006B8C91 /* menu_ice.png */; };
+		84729F770E9BBC09006B8C91 /* menu_poison.png in Resources */ = {isa = PBXBuildFile; fileRef = 84729F6F0E9BBC09006B8C91 /* menu_poison.png */; };
+		84729F780E9BBC09006B8C91 /* menu_sell.png in Resources */ = {isa = PBXBuildFile; fileRef = 84729F700E9BBC09006B8C91 /* menu_sell.png */; };
+		84729F790E9BBC09006B8C91 /* menu_upgrade.png in Resources */ = {isa = PBXBuildFile; fileRef = 84729F710E9BBC09006B8C91 /* menu_upgrade.png */; };
+		84729F7A0E9BBC09006B8C91 /* menu_web.png in Resources */ = {isa = PBXBuildFile; fileRef = 84729F720E9BBC09006B8C91 /* menu_web.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,7 +119,6 @@
 		84696D420E8A96FD003903C3 /* GameBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoard.h; sourceTree = "<group>"; };
 		84696D440E8A9716003903C3 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
 		84696D450E8A9716003903C3 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
-		846A02580E8DE48A00CD9C83 /* menuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menuButton.png; path = image/menuButton.png; sourceTree = "<group>"; };
 		846BE84B0E8F4E190015D2D0 /* moveImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = moveImg.png; path = image/moveImg.png; sourceTree = "<group>"; };
 		846F5D350E9277390059DE4F /* map5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map5.png; path = image/map5.png; sourceTree = "<group>"; };
 		846F5D370E9277390059DE4F /* e1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e1.png; sourceTree = "<group>"; };
@@ -136,6 +142,14 @@
 		846F5DA70E9278CC0059DE4F /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enemy.m; sourceTree = "<group>"; };
 		846F5E120E927D580059DE4F /* UnitTexManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitTexManager.h; path = BaseClasses/UnitTexManager.h; sourceTree = SOURCE_ROOT; };
 		846F5E130E927D580059DE4F /* UnitTexManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnitTexManager.m; path = BaseClasses/UnitTexManager.m; sourceTree = SOURCE_ROOT; };
+		84729F6B0E9BBC09006B8C91 /* menu_bow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_bow.png; sourceTree = "<group>"; };
+		84729F6C0E9BBC09006B8C91 /* menu_build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_build.png; sourceTree = "<group>"; };
+		84729F6D0E9BBC09006B8C91 /* menu_fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_fire.png; sourceTree = "<group>"; };
+		84729F6E0E9BBC09006B8C91 /* menu_ice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_ice.png; sourceTree = "<group>"; };
+		84729F6F0E9BBC09006B8C91 /* menu_poison.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_poison.png; sourceTree = "<group>"; };
+		84729F700E9BBC09006B8C91 /* menu_sell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_sell.png; sourceTree = "<group>"; };
+		84729F710E9BBC09006B8C91 /* menu_upgrade.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_upgrade.png; sourceTree = "<group>"; };
+		84729F720E9BBC09006B8C91 /* menu_web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_web.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,13 +232,13 @@
 		8467CA950E8A7BD200F70004 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				84729F6A0E9BBC09006B8C91 /* menu */,
 				846F5D360E9277390059DE4F /* enemy */,
 				846F5D350E9277390059DE4F /* map5.png */,
 				8464F7100E8D12BF00D664FF /* move.png */,
 				8464F7110E8D12BF00D664FF /* zoomout.png */,
 				8464F7120E8D12BF00D664FF /* select.png */,
 				8467CAE80E8A7E8300F70004 /* GameLogo.png */,
-				846A02580E8DE48A00CD9C83 /* menuButton.png */,
 				8467CACE0E8A7DCB00F70004 /* oink.png */,
 				8467CA970E8A7BEC00F70004 /* map.png */,
 				8467CA980E8A7BEC00F70004 /* selector.png */,
@@ -322,6 +336,22 @@
 			path = image/enemy;
 			sourceTree = "<group>";
 		};
+		84729F6A0E9BBC09006B8C91 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				84729F6B0E9BBC09006B8C91 /* menu_bow.png */,
+				84729F6C0E9BBC09006B8C91 /* menu_build.png */,
+				84729F6D0E9BBC09006B8C91 /* menu_fire.png */,
+				84729F6E0E9BBC09006B8C91 /* menu_ice.png */,
+				84729F6F0E9BBC09006B8C91 /* menu_poison.png */,
+				84729F700E9BBC09006B8C91 /* menu_sell.png */,
+				84729F710E9BBC09006B8C91 /* menu_upgrade.png */,
+				84729F720E9BBC09006B8C91 /* menu_web.png */,
+			);
+			name = menu;
+			path = image/menu;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -381,7 +411,6 @@
 				8464F7140E8D12BF00D664FF /* move.png in Resources */,
 				8464F7150E8D12BF00D664FF /* zoomout.png in Resources */,
 				8464F7160E8D12BF00D664FF /* select.png in Resources */,
-				846A02590E8DE48A00CD9C83 /* menuButton.png in Resources */,
 				846BE84C0E8F4E190015D2D0 /* moveImg.png in Resources */,
 				846F5D470E9277390059DE4F /* map5.png in Resources */,
 				846F5D480E9277390059DE4F /* e1.png in Resources */,
@@ -401,6 +430,14 @@
 				846F5D560E9277390059DE4F /* e8.png in Resources */,
 				846F5D570E9277390059DE4F /* e8_s.png in Resources */,
 				846F5DA40E92788A0059DE4F /* Enemy.xib in Resources */,
+				84729F730E9BBC09006B8C91 /* menu_bow.png in Resources */,
+				84729F740E9BBC09006B8C91 /* menu_build.png in Resources */,
+				84729F750E9BBC09006B8C91 /* menu_fire.png in Resources */,
+				84729F760E9BBC09006B8C91 /* menu_ice.png in Resources */,
+				84729F770E9BBC09006B8C91 /* menu_poison.png in Resources */,
+				84729F780E9BBC09006B8C91 /* menu_sell.png in Resources */,
+				84729F790E9BBC09006B8C91 /* menu_upgrade.png in Resources */,
+				84729F7A0E9BBC09006B8C91 /* menu_web.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

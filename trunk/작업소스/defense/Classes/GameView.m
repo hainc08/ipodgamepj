@@ -174,8 +174,27 @@
 
 - (void)setUpGameBoard;
 {
+	path[0] = CGPointMake(260, -240);
+	path[1] = CGPointMake(260, -180);
+	path[2] = CGPointMake(420, -180);
+	path[3] = CGPointMake(420, 20);
+	path[4] = CGPointMake(100, 20);
+	path[5] = CGPointMake(100, -180);
+	path[6] = CGPointMake(-100, -180);
+	path[7] = CGPointMake(-100, 180);
+	path[8] = CGPointMake(420, 180);
+	path[9] = CGPointMake(420, 340);
+	path[10] = CGPointMake(-100, 340);
+	path[11] = CGPointMake(-100, 660);
+	path[12] = CGPointMake(100, 660);
+	path[13] = CGPointMake(100, 500);
+	path[14] = CGPointMake(420, 500);
+	path[15] = CGPointMake(420, 660);
+	path[16] = CGPointMake(260, 660);
+	path[17] = CGPointMake(260, 720);
+	
 	board = (GameBoard*)([[ViewManager getInstance] getInstView:@"GameBoard"]);
-	[board setUpGameBoard];
+	[board setUpGameBoard:path count:18];
 	[self addSubview:board];
 	[self sendSubviewToBack:board];
 	
@@ -190,6 +209,11 @@
 - (void)dealloc {
 	[board release];
 	[super dealloc];	
+}
+
+- (void)update
+{
+	[board update:frameTick];
 }
 
 - (void)showMenu:(int)idx Ani:(bool)isAni
@@ -215,7 +239,7 @@
 			[self menuButtonSet:32 show:false];
 			[self menuButtonSet:33 show:false];
 			[self menuButtonSet:34 show:false];
-			[self menuButtonSet:35 show:false];
+			//[self menuButtonSet:35 show:false];
 			break;
 		case 1:
 			[self menuButtonSet:10 show:true];
@@ -226,7 +250,7 @@
 			[self menuButtonSet:32 show:false];
 			[self menuButtonSet:33 show:false];
 			[self menuButtonSet:34 show:false];
-			[self menuButtonSet:35 show:false];
+			//[self menuButtonSet:35 show:false];
 			break;
 		case 2:
 			[self menuButtonSet:10 show:false];
@@ -237,7 +261,7 @@
 			[self menuButtonSet:32 show:false];
 			[self menuButtonSet:33 show:false];
 			[self menuButtonSet:34 show:false];
-			[self menuButtonSet:35 show:false];
+			//[self menuButtonSet:35 show:false];
 			break;
 		case 3:
 			[self menuButtonSet:10 show:false];
@@ -248,7 +272,7 @@
 			[self menuButtonSet:32 show:true];
 			[self menuButtonSet:33 show:true];
 			[self menuButtonSet:34 show:true];
-			[self menuButtonSet:35 show:true];
+			//[self menuButtonSet:35 show:true];
 			break;
 	}
 
@@ -269,7 +293,7 @@
 		case 32: buttonId = build2; break;
 		case 33: buttonId = build3; break;
 		case 34: buttonId = build4; break;
-		case 35: buttonId = build5; break;
+//		case 35: buttonId = build5; break;
 	}
 	
 	if (isShow)

@@ -17,7 +17,7 @@
     IBOutlet id build2;
     IBOutlet id build3;
     IBOutlet id build4;
-    IBOutlet id build5;
+//    IBOutlet id build5;
 		
 	GameBoard*	board;
 	bool		zoomed;
@@ -28,6 +28,7 @@
 	CGPoint		boardPos;
 
 	CGPoint		dragBegin;
+	CGPoint		path[20];
 }
 
 - (IBAction)ButtonClick:(id)sender;

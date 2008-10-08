@@ -3,7 +3,11 @@
 
 @interface GameBoard : UIView {
 	Enemy* enemy[20];
+	CGPoint* path;
+	
+	UInt32 frameTick;
 }
 
-- (void)setUpGameBoard;
+- (void)setUpGameBoard:(CGPoint*)p count:(int)c;
+- (void)update:(UInt32)tick;
 @end
