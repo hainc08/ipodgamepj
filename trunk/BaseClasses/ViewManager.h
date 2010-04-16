@@ -26,4 +26,8 @@ typedef struct
 - (UIView*)getInstView:(NSString*)viewName;
 - (BaseView*)getCurView;
 
+//게임 리소스를 위한 공간 확보를 위해 뷰를 바꾸기 전에 모든 뷰를 초기화한다.
+- (void)changeViewWithInit:(NSString*)changeViewName param:(NSObject*)param;
+- (void)changeViewWithInit:(NSString*)changeViewName;
+
 @end

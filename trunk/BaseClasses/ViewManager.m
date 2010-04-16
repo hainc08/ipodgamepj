@@ -31,6 +31,26 @@ static ViewManager *viewManagerInst;
 	[self changeView:changeViewName param:NULL];
 }
 
+- (void)changeViewWithInit:(NSString*)changeViewName
+{
+	[self changeViewWithInit:changeViewName param:NULL];
+}
+
+- (void)changeViewWithInit:(NSString*)changeViewName param:(NSObject*)param
+{
+ 	if (curView != nil) [curView removeFromSuperview];
+
+	for (int i=0; i<viewCount; ++i)
+	{
+		UIViewController* controller = views[i].controller;
+		[[controller view] release];
+	}
+	
+	viewCount = 0;
+	
+	[self changeView:changeViewName param:param];
+}
+
 - (void)changeView:(NSString*)changeViewName param:(NSObject*)param
 {
 	int viewConIdx = -1;

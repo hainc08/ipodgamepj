@@ -113,7 +113,7 @@
 		}
 		case 2:
 			//다음뷰로 이동 한다.
-			[[ViewManager getInstance] changeView:@"MainTopView"];
+			[[ViewManager getInstance] changeViewWithInit:@"MainTopView"];
 			break;
 	}
 }
