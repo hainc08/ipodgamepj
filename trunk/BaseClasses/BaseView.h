@@ -4,6 +4,7 @@
 	UInt32 frameTick;
 	NSTimer *updateTimer;
 	bool isInit;
+	bool isInit2;
 	
 	float framePerSec;
 }
