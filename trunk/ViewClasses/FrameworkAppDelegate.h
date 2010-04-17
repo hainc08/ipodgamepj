@@ -5,6 +5,8 @@
 @interface FrameworkAppDelegate : NSObject <UIApplicationDelegate> {
 	IBOutlet UIWindow *window;
 	IBOutlet FrameworkViewController *viewController;
+
+	NSThread* bgLoaderThread;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

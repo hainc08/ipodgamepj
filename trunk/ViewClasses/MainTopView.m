@@ -1,5 +1,6 @@
 #import "MainTopView.h"
 #import "ViewManager.h"
+#import "DataManager.h"
 
 @implementation MainTopView
 
@@ -18,6 +19,9 @@
 - (void)reset:(NSObject*)param
 {
 	[super reset:param];
+	
+	loadingDone = false;
+	[start setAlpha:0];
 }
 
 - (IBAction)ButtonClick:(id)sender
@@ -56,6 +60,15 @@
 - (void)update
 {
 	[super update];
+	
+	if (loadingDone == false)
+	{
+		if ([[DataManager getInstance] loadingDone])
+		{
+			loadingDone = true;
+			[start setAlpha:1];
+		}
+	}
 }
 
 @end

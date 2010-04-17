@@ -42,8 +42,8 @@ static ViewManager *viewManagerInst;
 
 	for (int i=0; i<viewCount; ++i)
 	{
-		UIViewController* controller = views[i].controller;
-		[[controller view] release];
+		[views[i].controller release];
+		[views[i].viewName release];
 	}
 	
 	viewCount = 0;
