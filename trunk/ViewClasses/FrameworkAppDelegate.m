@@ -20,14 +20,14 @@
 	[SaveManager initManager];
 	[ViewManager initManager:window:viewController];
 	[application setStatusBarOrientation: UIInterfaceOrientationLandscapeRight animated:NO];
-	
+
 	[[ViewManager getInstance] changeView:@"GameLogoView"];
 }
 
 - (void)loadProc:(id)args
 {
 	[[DataManager getInstance] parseData];
-	[NSThread exit];
+	[[DataManager getInstance] preload];
 }
 
 - (void)dealloc {

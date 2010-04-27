@@ -28,7 +28,7 @@
 {	
 	if (sender == start)
 	{
-		[[ViewManager getInstance] changeView:@"GameView"];
+		[[ViewManager getInstance] changeViewWithInit:@"GameView"];
 	}
 	else if (sender == load)
 	{

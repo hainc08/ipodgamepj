@@ -1,6 +1,5 @@
-#import "MainTopView.h"
+#import "GameView.h"
 #import "ViewManager.h"
-#import "DataManager.h"
 
 @implementation GameView
 
@@ -20,22 +19,36 @@
 {
 	[super reset:param];
 	
-	for (int i=0; i<10; ++i)
+	if (isInit == false)
 	{
-		charCacheIdx[i] = 0;
-		if (charCache[i])
-		{
-			[charCache[i] release];
-			charCache[i] = NULL;
-		}
+		chrView[0] = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 320)];
+		chrView[1] = [[UIImageView alloc] initWithFrame:CGRectMake(50, 0, 300, 320)];
+		chrView[2] = [[UIImageView alloc] initWithFrame:CGRectMake(100, 0, 300, 320)];
+		
+		[self addSubview:chrView[0]];
+		[self addSubview:chrView[1]];
+		[self addSubview:chrView[2]];
+
+		isInit = true;
 	}
 	
-	loadingDone = false;
+	scene = NULL;
+	curSceneId = 0;
+	showOK = false;
+
+	[[DataManager getInstance] resetPreload];
+	[[DataManager getInstance] setCurIdx:curSceneId];
 }
 
 - (IBAction)ButtonClick:(id)sender
-{	
-
+{
+	if ( showOK )
+	{
+		++curSceneId;
+		[[DataManager getInstance] setNextIdx:curSceneId];
+		showOK = false;
+		scene = NULL;
+	}
 }
 
 - (void) BaseSoundPlay
@@ -46,18 +59,45 @@
 	[super dealloc];	
 }
 
-/* Base 사운드 제공 해야 함 */
 - (void)update
 {
-	[super update];
-	
-	if (loadingDone == false)
+	if (scene == NULL)
 	{
-		if ([[DataManager getInstance] loadingDone])
+		scene = [[DataManager getInstance] getCurScene];
+
+		if ([scene isLoaded])
 		{
-			loadingDone = true;
+			//이미지 보여주고...
+			for (int i=0; i<3; ++i)
+			{
+				UIImage* img = [scene getChar:i];
+				if (img == NULL)
+				{
+					[chrView[i] setAlpha:0];
+				}
+				else
+				{
+					[chrView[i] setAlpha:1];
+					[chrView[i] setImage:img];
+				}
+			}
+			showOK = true;
+		}
+		else
+		{
+			scene = NULL;
 		}
 	}
+
+	if ( showOK )
+	{
+		++curSceneId;
+		[[DataManager getInstance] setNextIdx:curSceneId];
+		showOK = false;
+		scene = NULL;
+	}
+
+	[super update];
 }
 
 @end

@@ -119,7 +119,7 @@ static DataManager *DataManagerInst;
 
 @end
 
-@implementation Msg : NSObject
+@implementation Msg
 
 @synthesize valCount;
 
@@ -142,6 +142,43 @@ static DataManager *DataManagerInst;
 - (NSString*)getStrVal:(int)idx
 {
 	return strVal[idx];
+}
+
+@end
+
+@implementation Scene
+
+@synthesize isLoaded;
+@synthesize sceneId;
+@synthesize willSceneId;
+
+- (void)reset
+{
+	sceneId = -1;
+	willSceneId = -1;
+	isLoaded = false;
+	preLoadCharIdx[0] = preLoadCharIdx[1] = preLoadCharIdx[2] = 0;
+	preLoadChar[0] = preLoadChar[1] = preLoadChar[2] = NULL;
+}
+
+- (void)setChar:(int)idx img:(UIImage*)chr chrId:(int)chrId
+{
+	preLoadCharIdx[idx] = chrId;
+	preLoadChar[idx] = chr;
+}
+
+- (UIImage*)getChar:(int)idx
+{
+	return preLoadChar[idx];
+}
+
+- (UIImage*)findChar:(int)chrId
+{
+	for (int i=0; i<3; ++i)
+	{
+		if (preLoadCharIdx[i] == chrId) return preLoadChar[i];
+	}
+	return NULL;
 }
 
 @end
@@ -175,7 +212,20 @@ static DataManager *DataManagerInst;
 
 - (void)closeManager
 {
+	for (int i=0; i<127; ++i)
+		[scenario[i] release];
 
+	for (int i=0; i<18; ++i)
+		[vname[i] release];
+	
+	for (int i=0; i<15; ++i)
+		[eventList[i] release];
+	
+	for (int i=0; i<22031; ++i)
+		[msg[i] release];
+
+	for (int i=0; i<10; ++i)
+		[preloadScene[i] release];
 }
 
 - (bool)parseData
@@ -278,7 +328,7 @@ static DataManager *DataManagerInst;
 	}
 	
 	fclose(hFile);
-
+	
 	loadingDone = true;
 
 	return true;
@@ -453,6 +503,96 @@ static DataManager *DataManagerInst;
 - (Msg*)getMsg:(int)idx idx2:(int)idx2
 {
 	return msg[msgIdx[idx] + idx2];
+}
+
+- (void)preload
+{
+	UIImage* chrImg;
+
+	while(1)
+	{
+		int c = curIdx;
+		for (int i=0; i<10; ++i)
+		{
+			int j = (c + i)%10;
+
+			int willSceneId = [preloadScene[j] willSceneId];
+
+			if ([preloadScene[j] sceneId] != willSceneId)
+			{
+				[preloadScene[j] setIsLoaded:false];
+				
+				//여기서 프리로딩...
+				for (int k=0; k<3; ++k)
+				{
+					int chrId = [msg[willSceneId] getIntVal:k+1];
+					if (chrId == 0)
+					{
+						[preloadScene[j] setChar:k img:NULL chrId:0];
+					}
+					else
+					{
+						//일단 미리로딩되어있는 데이터가 있는지 찾는다.
+						for (int l=0; l<10; ++l)
+						{
+							//같은 캐릭터가 계속 반복적으로 나오는 경우가 많으므로
+							//바로직전의 씬에서부터 찾아본다.
+							int ll = (j + l + 9)%10;
+							chrImg = [preloadScene[ll] findChar:chrId];
+							if (chrImg != NULL) goto FIND_OK;
+						}
+
+						if (chrId < 100)
+							chrImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Achr_0%d.png", chrId]] autorelease];
+						else
+							chrImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Achr_%d.png", chrId]] autorelease];
+					FIND_OK:
+						[preloadScene[j] setChar:k img:chrImg chrId:chrId];
+					}
+				}
+
+				[preloadScene[j] setSceneId:willSceneId];
+				[preloadScene[j] setIsLoaded:true];
+			}
+		}
+		sleep(1);
+	}
+}
+
+- (void)setCurIdx:(int)idx
+{
+	curIdx = 0;
+
+	for (int i=0; i<10; ++i)
+	{
+		[preloadScene[(curIdx+i)%10] setWillSceneId:idx+i];
+	}
+}
+
+- (void)setNextIdx:(int)idx
+{
+	curIdx = (curIdx + 1)%10;
+
+	for (int i=0; i<10; ++i)
+	{
+		[preloadScene[(curIdx+i)%10] setWillSceneId:idx+i];
+	}
+}
+
+- (Scene*)getCurScene
+{
+	return preloadScene[curIdx];
+}
+
+- (void)resetPreload
+{
+	for (int i=0; i<10; ++i)
+	{
+		preloadScene[i] = [Scene alloc];
+		[preloadScene[i] reset];
+	}
+	
+	curScene = preloadScene[0];
 }
 
 @end
