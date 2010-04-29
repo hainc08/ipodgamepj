@@ -4,6 +4,7 @@
 
 @interface GameView : BaseView {
 	UIImageView* chrView[3];
+	UIImageView* bgView;
 	
 	IBOutlet id next;
 	Scene* scene;

@@ -181,6 +181,24 @@ static DataManager *DataManagerInst;
 	return NULL;
 }
 
+- (void)setBg:(UIImage*)bg bgId:(int)bgId;
+{
+	preLoadBgIdx = bgId;
+	preLoadBg = bg;
+}
+
+- (UIImage*)getBg
+{
+	return preLoadBg;
+}
+
+- (UIImage*)findBg:(int)bgId
+{
+	if (bgId == preLoadBgIdx) return preLoadBg;
+
+	return NULL;
+}
+
 @end
 
 @implementation DataManager
@@ -507,7 +525,7 @@ static DataManager *DataManagerInst;
 
 - (void)preload
 {
-	UIImage* chrImg;
+	UIImage* tempImg;
 
 	while(1)
 	{
@@ -538,19 +556,40 @@ static DataManager *DataManagerInst;
 							//같은 캐릭터가 계속 반복적으로 나오는 경우가 많으므로
 							//바로직전의 씬에서부터 찾아본다.
 							int ll = (j + l + 9)%10;
-							chrImg = [preloadScene[ll] findChar:chrId];
-							if (chrImg != NULL) goto FIND_OK;
+							tempImg = [preloadScene[ll] findChar:chrId];
+							if (tempImg != NULL) goto FIND_OK;
 						}
 
 						if (chrId < 100)
-							chrImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Achr_0%d.png", chrId]] autorelease];
+							tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Achr_0%d.png", chrId]] autorelease];
 						else
-							chrImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Achr_%d.png", chrId]] autorelease];
+							tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Achr_%d.png", chrId]] autorelease];
 					FIND_OK:
-						[preloadScene[j] setChar:k img:chrImg chrId:chrId];
+						[preloadScene[j] setChar:k img:tempImg chrId:chrId];
 					}
 				}
 
+				int bgId = [msg[willSceneId] getIntVal:5];
+
+				for (int l=0; l<10; ++l)
+				{
+					//같은 캐릭터가 계속 반복적으로 나오는 경우가 많으므로
+					//바로직전의 씬에서부터 찾아본다.
+					int ll = (j + l + 9)%10;
+					tempImg = [preloadScene[ll] findBg:bgId];
+					if (tempImg != NULL) goto FIND_OK2;
+				}
+				
+				if (bgId < 10)
+					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_00%d.png", bgId]] autorelease];
+				else if (bgId < 100)
+					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_0%d.png", bgId]] autorelease];
+				else
+					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_%d.png", bgId]] autorelease];
+
+			FIND_OK2:
+				[preloadScene[j] setBg:tempImg bgId:bgId];
+				
 				[preloadScene[j] setSceneId:willSceneId];
 				[preloadScene[j] setIsLoaded:true];
 			}

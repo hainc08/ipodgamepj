@@ -62,6 +62,9 @@
 	bool isLoaded;
 	int preLoadCharIdx[3];
 	UIImage* preLoadChar[3];
+
+	int preLoadBgIdx;
+	UIImage* preLoadBg;
 }
 
 @property (readwrite) bool isLoaded;
@@ -72,6 +75,10 @@
 - (void)setChar:(int)idx img:(UIImage*)chr chrId:(int)chrId;
 - (UIImage*)getChar:(int)idx;
 - (UIImage*)findChar:(int)chrId;
+
+- (void)setBg:(UIImage*)bg bgId:(int)bgId;
+- (UIImage*)getBg;
+- (UIImage*)findBg:(int)bgId;
 
 @end
 

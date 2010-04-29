@@ -21,13 +21,17 @@
 	
 	if (isInit == false)
 	{
-		chrView[0] = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 320)];
-		chrView[1] = [[UIImageView alloc] initWithFrame:CGRectMake(50, 0, 300, 320)];
-		chrView[2] = [[UIImageView alloc] initWithFrame:CGRectMake(100, 0, 300, 320)];
+		for (int i=0; i<3; ++i)
+		{
+			chrView[i] = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 320)];
+			[self addSubview:chrView[i]];
+			[self sendSubviewToBack:chrView[i]];
+		}
 		
-		[self addSubview:chrView[0]];
-		[self addSubview:chrView[1]];
-		[self addSubview:chrView[2]];
+		bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 360)];
+		[bgView setCenter:CGPointMake(240, 160)];
+		[self addSubview:bgView];
+		[self sendSubviewToBack:bgView];
 
 		isInit = true;
 	}
@@ -67,6 +71,7 @@
 
 		if ([scene isLoaded])
 		{
+			CGRect imgRect;
 			//이미지 보여주고...
 			for (int i=0; i<3; ++i)
 			{
@@ -77,10 +82,15 @@
 				}
 				else
 				{
+					imgRect = CGRectMake(i*50, 320 - [img size].height, [img size].width, [img size].height);
+
 					[chrView[i] setAlpha:1];
 					[chrView[i] setImage:img];
+					[chrView[i] setFrame:imgRect];
 				}
 			}
+
+			[bgView setImage:[scene getBg]];
 			showOK = true;
 		}
 		else
