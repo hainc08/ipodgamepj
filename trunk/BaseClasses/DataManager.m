@@ -199,6 +199,16 @@ static DataManager *DataManagerInst;
 	return NULL;
 }
 
+- (void)setSerihu:(NSString*)str
+{
+	serihu = str;
+}
+
+- (NSString*)getSerihu
+{
+	return serihu;
+}
+
 @end
 
 @implementation DataManager
@@ -589,6 +599,7 @@ static DataManager *DataManagerInst;
 
 			FIND_OK2:
 				[preloadScene[j] setBg:tempImg bgId:bgId];
+				[preloadScene[j] setSerihu:[msg[willSceneId] getStrVal:1]];
 				
 				[preloadScene[j] setSceneId:willSceneId];
 				[preloadScene[j] setIsLoaded:true];
@@ -632,6 +643,21 @@ static DataManager *DataManagerInst;
 	}
 	
 	curScene = preloadScene[0];
+}
+
+- (NSString*)getSceneIdxStr
+{
+	int idx, idx2;
+	
+	idx = 0;
+	idx2 = [preloadScene[curIdx] sceneId];
+
+	while (idx2 >= msgIdx[idx])
+	{
+		++idx;
+	}
+
+	return [NSString stringWithFormat: @"%d - %d", idx-1, idx2 - msgIdx[idx-1]];
 }
 
 @end

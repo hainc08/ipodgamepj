@@ -65,6 +65,8 @@
 
 	int preLoadBgIdx;
 	UIImage* preLoadBg;
+	
+	NSString* serihu;
 }
 
 @property (readwrite) bool isLoaded;
@@ -79,6 +81,9 @@
 - (void)setBg:(UIImage*)bg bgId:(int)bgId;
 - (UIImage*)getBg;
 - (UIImage*)findBg:(int)bgId;
+
+- (void)setSerihu:(NSString*)str;
+- (NSString*)getSerihu;
 
 @end
 
@@ -136,4 +141,5 @@
 - (NSString*)getItemName:(int)idx idx2:(int)idx2;
 - (Msg*)getMsg:(int)idx idx2:(int)idx2;
 
+- (NSString*)getSceneIdxStr;
 @end
