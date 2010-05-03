@@ -589,13 +589,18 @@ static DataManager *DataManagerInst;
 					tempImg = [preloadScene[ll] findBg:bgId];
 					if (tempImg != NULL) goto FIND_OK2;
 				}
-				
-				if (bgId < 10)
-					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_00%d.png", bgId]] autorelease];
-				else if (bgId < 100)
-					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_0%d.png", bgId]] autorelease];
-				else
+
+				if ((bgId == 254)||(bgId == 254))
+				{
+					//이두놈만 png다 아..귀찮아...
 					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_%d.png", bgId]] autorelease];
+				}
+				else if (bgId < 10)
+					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_00%d.jpg", bgId]] autorelease];
+				else if (bgId < 100)
+					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_0%d.jpg", bgId]] autorelease];
+				else
+					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_%d.jpg", bgId]] autorelease];
 
 			FIND_OK2:
 				[preloadScene[j] setBg:tempImg bgId:bgId];

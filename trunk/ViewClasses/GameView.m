@@ -33,14 +33,14 @@
 			
 			[oldChrView[i] setAlpha:0.f];
 		}
-		
-		bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 360)];
+
+		bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 320)];
 		[bgView setCenter:CGPointMake(240, 160)];
 		[self addSubview:bgView];
 		[self sendSubviewToBack:bgView];
 		
 
-		oldBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 360)];
+		oldBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 320)];
 		[oldBgView setCenter:CGPointMake(240, 160)];
 		[self addSubview:oldBgView];
 		[self sendSubviewToBack:oldBgView];
@@ -107,7 +107,11 @@
 					
 					if (img != NULL)
 					{
-						imgRect = CGRectMake(i*50, 320 - [img size].height, [img size].width, [img size].height);
+						int cen = 240;
+						if (i == 1) cen = 120;
+						else if (i == 2) cen = 360;
+
+						imgRect = CGRectMake(cen - ([img size].width * 0.5f), 320 - [img size].height, [img size].width, [img size].height);
 						[chrView[i] setFrame:imgRect];
 					}
 
