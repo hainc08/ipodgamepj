@@ -1,5 +1,25 @@
 #import "DataManager.h"
 
+//Tag정보와 Index정보 미리 읽어오기위한 부분
+//실제로 어플이 돌아갈 때는 필요없는 부분이라 주석처리...
+//int tagData[1000000];
+//int indexData[1000000];
+//int nowIdx;
+//int nowScene;
+//int tagCount = 0;
+//int maxIndex = 0;
+
+int fReadInt(NSFileHandle* readFile)
+{
+	int temp;
+	
+	NSData *data;
+	data = [readFile readDataOfLength:sizeof(int)];
+	[data getBytes:&temp];
+	
+	return temp;
+}
+
 int readInteger(char* data, int* offset)
 {
 	int intVal = 0;
@@ -49,6 +69,37 @@ NSString* readString(char* data, int* offset)
 		
 		++offsetVal;
 	}
+	
+//	Tag, Index 프리로딩
+//	if ((temp[0] == 't')&&(temp[1] == 'a')&&(temp[2] == 'g')&&(temp[3] == '_'))
+//	{
+//		int test = 0;
+//
+//		for (int i=4; i<idx; ++i)
+//		{
+//			test = test * 10 + (temp[i] - '0');
+//		}
+//
+//		if (test > 1000)
+//		{
+//			int error = 0;
+//		}
+//
+//		if (tagData[nowScene * 1000 + test] == 0) ++tagCount;
+//		tagData[nowScene * 1000 + test] = nowIdx;
+//	}
+//
+//	if ((temp[0] == 'i')&&(temp[1] == 'n')&&(temp[2] == 'd')&&(temp[3] == 'e')&&(temp[4] == 'x')&&(temp[5] == '_'))
+//	{
+//		int test = 0;
+//		
+//		for (int i=6; i<idx; ++i)
+//		{
+//			test = test * 10 + (temp[i] - '0');
+//		}
+//		if (test > maxIndex) maxIndex = test;
+//		indexData[test] = nowIdx;
+//	}
 	
 	offsetVal += 2;
 	temp[idx] = '\0';
@@ -151,6 +202,12 @@ static DataManager *DataManagerInst;
 @synthesize isLoaded;
 @synthesize sceneId;
 @synthesize willSceneId;
+@synthesize sceneType;
+
+- (bool)isLoadOk
+{
+	return isLoaded && (sceneId == willSceneId);
+}
 
 - (void)reset
 {
@@ -209,6 +266,39 @@ static DataManager *DataManagerInst;
 	return serihu;
 }
 
+- (void)setChara:(NSString*)str
+{
+	chara = str;
+}
+
+- (NSString*)getChara
+{
+	return chara;
+}
+
+- (void)setSelect:(int)idx str:(NSString*)str
+{
+	selectStr[idx] = str;
+}
+
+- (NSString*)getSelect:(int)idx
+{
+	return selectStr[idx];
+}
+
+- (void)setSelectTag:(int)tag1 :(int)tag2 :(int)tag3 :(int)tag4
+{
+	selectTag[0] = tag1;
+	selectTag[1] = tag2;
+	selectTag[2] = tag3;
+	selectTag[2] = tag4;
+}
+
+- (int)getSelectTag:(int)idx
+{
+	return selectTag[idx];
+}
+
 @end
 
 @implementation DataManager
@@ -236,6 +326,12 @@ static DataManager *DataManagerInst;
 {
 	DataManagerInst = [DataManager alloc];
 	[DataManagerInst setLoadingDone:false];
+
+// Tag, Index 프리로딩
+//	for (int i=0; i<1000000; ++i)
+//	{
+//		tagData[i] = indexData[i] = 0;
+//	}
 }
 
 - (void)closeManager
@@ -356,6 +452,71 @@ static DataManager *DataManagerInst;
 	}
 	
 	fclose(hFile);
+
+//	Tag, Index 프리로딩
+//	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:@"tagIndex.dat"];
+//	if (writeFile == nil)
+//	{
+//		[[NSFileManager defaultManager] createFileAtPath:@"tagIndex.dat"
+//												contents:nil attributes:nil];
+//		
+//		writeFile = [NSFileHandle fileHandleForWritingAtPath:@"tagIndex.dat"];
+//	}
+//	
+//	if (writeFile == nil)
+//	{
+//		NSLog(@"fail to open file");
+//		return;
+//	}
+//	else
+//	{
+//		[writeFile writeData: [NSData dataWithBytes:&tagCount
+//											 length:sizeof(int)]];
+//		for (int i=0; i<1000000; ++i)
+//		{
+//			if (tagData[i] != 0)
+//			{
+//				[writeFile writeData: [NSData dataWithBytes:&i
+//													 length:sizeof(int)]];
+//				[writeFile writeData: [NSData dataWithBytes:&tagData[i]
+//													 length:sizeof(int)]];
+//			}
+//		}
+//
+//		[writeFile writeData: [NSData dataWithBytes:&maxIndex
+//											 length:sizeof(int)]];
+//		for (int i=0; i<maxIndex; ++i)
+//		{
+//			[writeFile writeData: [NSData dataWithBytes:&indexData[i]
+//												 length:sizeof(int)]];
+//		}
+//	}
+//    
+//	[writeFile closeFile];
+	
+	filePath = [NSString stringWithFormat: @"%@/tagIndex.dat", [[NSBundle mainBundle] resourcePath]];
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:filePath];
+	
+	if ( readFile == nil )
+	{
+		NSLog(@"no file to read");
+		return false;
+	}
+	
+	int tagCount = fReadInt(readFile);
+	for (int i=0; i<tagCount; ++i)
+	{
+		tagInfo[0][i] = fReadInt(readFile);
+		tagInfo[1][i] = fReadInt(readFile);
+	}
+	
+	int indexCount = fReadInt(readFile);
+	for (int i=0; i<indexCount; ++i)
+	{
+		indexInfo[i] = fReadInt(readFile);
+	}
+    
+	[readFile closeFile];	
 	
 	loadingDone = true;
 
@@ -484,6 +645,10 @@ static DataManager *DataManagerInst;
 	Msg* m = [Msg alloc];
 	msg[msgCount] = m;
 
+//	Tag, Index 프리로딩
+//	nowScene = idx;
+//	nowIdx = msgCount;
+
 	[m setValCount:0];
 
 	for (int i=0; i<8; ++i)
@@ -604,7 +769,36 @@ static DataManager *DataManagerInst;
 
 			FIND_OK2:
 				[preloadScene[j] setBg:tempImg bgId:bgId];
+				[preloadScene[j] setChara:[msg[willSceneId] getStrVal:0]];
 				[preloadScene[j] setSerihu:[msg[willSceneId] getStrVal:1]];
+
+				int sceneType = [msg[willSceneId] getIntVal:0];
+				[preloadScene[j] setSceneType:sceneType];
+				if (sceneType == 3)
+				{
+					[preloadScene[j] setSelect:0 str:[msg[willSceneId] getStrVal:2]];
+					[preloadScene[j] setSelect:1 str:[msg[willSceneId] getStrVal:3]];
+					
+					[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8]
+					 :[msg[willSceneId] getIntVal:9]
+					 :[msg[willSceneId] getIntVal:10]
+					 :0];
+				}
+				else if (sceneType == 4)
+				{
+					[preloadScene[j] setSelect:0 str:[msg[willSceneId] getStrVal:2]];
+					[preloadScene[j] setSelect:1 str:[msg[willSceneId] getStrVal:3]];
+					[preloadScene[j] setSelect:2 str:[msg[willSceneId] getStrVal:4]];
+					
+					[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8]
+					 :[msg[willSceneId] getIntVal:9]
+					 :[msg[willSceneId] getIntVal:10]
+					 :[msg[willSceneId] getIntVal:11]];
+				}
+				else if (sceneType == 6)
+				{
+					[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8] :0 :0: 0];
+				}
 				
 				[preloadScene[j] setSceneId:willSceneId];
 				[preloadScene[j] setIsLoaded:true];
@@ -662,7 +856,31 @@ static DataManager *DataManagerInst;
 		++idx;
 	}
 
-	return [NSString stringWithFormat: @"%d - %d", idx-1, idx2 - msgIdx[idx-1]];
+	return [NSString stringWithFormat: @"%d - %d", idx-1, idx2 - msgIdx[idx-1] + 1];
+}
+
+- (int)getIndexInfo:(int)idx
+{
+	return indexInfo[idx];
+}
+
+- (int)getTagInfo:(int)tag
+{
+	int idx, idx2;
+	
+	idx = 0;
+	idx2 = [preloadScene[curIdx] sceneId];
+	
+	while (idx2 >= msgIdx[idx])
+	{
+		++idx;
+	}
+	for (int i=0; i<800; ++i)
+	{
+		if (tagInfo[0][i] == ((idx-1) * 1000) + tag) return tagInfo[1][i];
+	}
+	
+	return 0;
 }
 
 @end

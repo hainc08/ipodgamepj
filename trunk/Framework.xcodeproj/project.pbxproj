@@ -353,6 +353,8 @@
 		847A831E11764F5A00F6A4CE /* scenario.txt in Resources */ = {isa = PBXBuildFile; fileRef = 847A831D11764F5A00F6A4CE /* scenario.txt */; };
 		847FCEFA1170A30F00240F1D /* MainTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847FCEF81170A30F00240F1D /* MainTopView.m */; };
 		847FCEFC1170A31A00240F1D /* MainTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847FCEFB1170A31A00240F1D /* MainTopView.xib */; };
+		849EA812119E5FF2009E096A /* tagIndex.dat in Resources */ = {isa = PBXBuildFile; fileRef = 849EA811119E5FF2009E096A /* tagIndex.dat */; };
+		849EA83C119E6BA7009E096A /* board.png in Resources */ = {isa = PBXBuildFile; fileRef = 849EA83B119E6BA7009E096A /* board.png */; };
 		84CDC3731171A8DC001F0817 /* a.png in Resources */ = {isa = PBXBuildFile; fileRef = 84CDC3651171A8DC001F0817 /* a.png */; };
 		84CDC3741171A8DC001F0817 /* base.png in Resources */ = {isa = PBXBuildFile; fileRef = 84CDC3661171A8DC001F0817 /* base.png */; };
 		84CDC3751171A8DC001F0817 /* enter.png in Resources */ = {isa = PBXBuildFile; fileRef = 84CDC3671171A8DC001F0817 /* enter.png */; };
@@ -942,6 +944,8 @@
 		847FCEF81170A30F00240F1D /* MainTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTopView.m; path = ViewClasses/MainTopView.m; sourceTree = SOURCE_ROOT; };
 		847FCEF91170A30F00240F1D /* MainTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTopView.h; path = ViewClasses/MainTopView.h; sourceTree = SOURCE_ROOT; };
 		847FCEFB1170A31A00240F1D /* MainTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTopView.xib; sourceTree = "<group>"; };
+		849EA811119E5FF2009E096A /* tagIndex.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = tagIndex.dat; sourceTree = "<group>"; };
+		849EA83B119E6BA7009E096A /* board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = board.png; sourceTree = "<group>"; };
 		84CDC3651171A8DC001F0817 /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
 		84CDC3661171A8DC001F0817 /* base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = base.png; sourceTree = "<group>"; };
 		84CDC3671171A8DC001F0817 /* enter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enter.png; sourceTree = "<group>"; };
@@ -1250,6 +1254,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				849EA83B119E6BA7009E096A /* board.png */,
+				849EA811119E5FF2009E096A /* tagIndex.dat */,
 				847A831D11764F5A00F6A4CE /* scenario.txt */,
 				84BA9F8E1189D12900BE8AD7 /* bg */,
 				8444BB6711866B21000B9C21 /* chr */,
@@ -1878,8 +1884,8 @@
 			children = (
 				841A5A97117494BA00F479EB /* DataManager.m */,
 				841A5A98117494BA00F479EB /* DataManager.h */,
-				841A5A94117493B100F479EB /* SaveManager.h */,
 				841A5A95117493B100F479EB /* SaveManager.m */,
+				841A5A94117493B100F479EB /* SaveManager.h */,
 				84E4EE3711203ADE00590373 /* BaseView.h */,
 				84E4EE3811203ADE00590373 /* BaseView.m */,
 				84E4EE4011203ADE00590373 /* ViewManager.h */,
@@ -2502,6 +2508,8 @@
 				84CDF09F118E5F4200E9873C /* Abg_264.jpg in Resources */,
 				84CDF0A0118E5F4200E9873C /* Abg_270.jpg in Resources */,
 				84CDF0A1118E5F4200E9873C /* Abg_271.jpg in Resources */,
+				849EA812119E5FF2009E096A /* tagIndex.dat in Resources */,
+				849EA83C119E6BA7009E096A /* board.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2571,11 +2579,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos2.2.1;
 			};
 			name = Release;

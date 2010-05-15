@@ -57,6 +57,7 @@
 @interface Scene : NSObject
 {
 	int sceneId;
+	int sceneType;
 	int willSceneId;
 
 	bool isLoaded;
@@ -67,11 +68,18 @@
 	UIImage* preLoadBg;
 	
 	NSString* serihu;
+	NSString* chara;
+
+	NSString* selectStr[3];
+	int selectTag[4];
 }
 
 @property (readwrite) bool isLoaded;
 @property (readwrite) int sceneId;
 @property (readwrite) int willSceneId;
+@property (readwrite) int sceneType;
+
+- (bool)isLoadOk;
 
 - (void)reset;
 - (void)setChar:(int)idx img:(UIImage*)chr chrId:(int)chrId;
@@ -85,6 +93,14 @@
 - (void)setSerihu:(NSString*)str;
 - (NSString*)getSerihu;
 
+- (void)setChara:(NSString*)str;
+- (NSString*)getChara;
+
+- (void)setSelect:(int)idx str:(NSString*)str;
+- (NSString*)getSelect:(int)idx;
+
+- (void)setSelectTag:(int)tag1 :(int)tag2 :(int)tag3 :(int)tag4;
+- (int)getSelectTag:(int)idx;
 @end
 
 @interface DataManager : NSObject
@@ -101,6 +117,8 @@
 	NSString* itemName[23][2];
 
 	int msgCount;
+	//생각해보니 너무 많은 것 같기도하고...
+	//나중에 씬단위로 따로따로 로딩할 수 있게 만들어야 할듯...
 	Msg* msg[22031];
 	int msgIdx[91];
 
@@ -108,6 +126,9 @@
 	int curIdx;
 	Scene* preloadScene[10];
 	Scene* curScene;
+	
+	int tagInfo[2][800];
+	int indexInfo[130];
 	
 	bool loadingDone;
 }
@@ -140,6 +161,9 @@
 - (EventList*)getEventList:(int)idx;
 - (NSString*)getItemName:(int)idx idx2:(int)idx2;
 - (Msg*)getMsg:(int)idx idx2:(int)idx2;
+
+- (int)getIndexInfo:(int)idx;
+- (int)getTagInfo:(int)tag;
 
 - (NSString*)getSceneIdxStr;
 @end

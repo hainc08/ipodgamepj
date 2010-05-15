@@ -61,10 +61,51 @@
 {
 	if ( showOK )
 	{
-		++curSceneId;
-		[[DataManager getInstance] setNextIdx:curSceneId];
-		showOK = false;
-		scene = NULL;
+		switch ([scene sceneType])
+		{
+			case 1:
+				if (sender == next)
+				{
+					++curSceneId;
+					[[DataManager getInstance] setNextIdx:curSceneId];
+					showOK = false;
+					scene = NULL;
+				}
+				break;
+			case 6:
+				if (sender == next)
+				{
+					curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:0]];
+					[[DataManager getInstance] setCurIdx:curSceneId];
+					showOK = false;
+					scene = NULL;
+				}
+				break;
+			case 3:
+			case 4:
+				if (sender == selectButton1)
+				{
+					curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:0]];
+					[[DataManager getInstance] setCurIdx:curSceneId];
+					showOK = false;
+					scene = NULL;
+				}
+				else if (sender == selectButton2)
+				{
+					curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:1]];
+					[[DataManager getInstance] setCurIdx:curSceneId];
+					showOK = false;
+					scene = NULL;
+				}
+				else if (sender == selectButton3)
+				{
+					curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:2]];
+					[[DataManager getInstance] setCurIdx:curSceneId];
+					showOK = false;
+					scene = NULL;
+				}
+				break;
+		}
 	}
 }
 
@@ -85,7 +126,7 @@
 	{
 		scene = [[DataManager getInstance] getCurScene];
 
-		if ([scene isLoaded])
+		if ([scene isLoadOk])
 		{
 			CGRect imgRect;
 			UIImage* img;
@@ -111,7 +152,11 @@
 						if (i == 1) cen = 120;
 						else if (i == 2) cen = 360;
 
-						imgRect = CGRectMake(cen - ([img size].width * 0.5f), 320 - [img size].height, [img size].width, [img size].height);
+						if ([img size].height > 150)
+							imgRect = CGRectMake(cen - ([img size].width * 0.5f), 320 - [img size].height, [img size].width, [img size].height);
+						else
+							imgRect = CGRectMake(cen - ([img size].width * 0.5f), 160 - ([img size].height * 0.5f), [img size].width, [img size].height);
+
 						[chrView[i] setFrame:imgRect];
 					}
 
@@ -159,7 +204,46 @@
 				[UIView commitAnimations];
 			}
 			
+			switch ([scene sceneType])
+			{
+				case 1:
+				case 6:
+					[selectPanel1 setAlpha:0];
+					[selectPanel2 setAlpha:0];
+					[selectPanel3 setAlpha:0];
+					[next setAlpha:1];
+					break;
+				case 3:
+					[selectPanel1 setAlpha:1];
+					[selectPanel2 setAlpha:1];
+					[selectPanel3 setAlpha:0];
+					[selectLabel1 setText:[scene getSelect:0]];
+					[selectLabel2 setText:[scene getSelect:1]];
+
+					[selectPanel1 setCenter:CGPointMake(110+65,110)];
+					[selectPanel2 setCenter:CGPointMake(240+65,110)];
+					[next setAlpha:0];
+					break;
+				case 4:
+					[selectPanel1 setAlpha:1];
+					[selectPanel2 setAlpha:1];
+					[selectPanel3 setAlpha:1];
+					[selectLabel1 setText:[scene getSelect:0]];
+					[selectLabel2 setText:[scene getSelect:1]];
+					[selectLabel3 setText:[scene getSelect:2]];
+					[selectPanel1 setCenter:CGPointMake(110,110)];
+					[selectPanel2 setCenter:CGPointMake(240,110)];
+					[selectPanel3 setCenter:CGPointMake(370,110)];
+					[next setAlpha:0];
+					break;
+			}
+			[charaLabel setText:[scene getChara]];
+			[charaLabel2 setText:[scene getChara]];
+			[charaLabel3 setText:[scene getChara]];
+
 			[serihuLabel setText:[scene getSerihu]];
+			[serihuLabel2 setText:[scene getSerihu]];
+			[serihuLabel3 setText:[scene getSerihu]];
 			[debugLabel setText:[[DataManager getInstance] getSceneIdxStr]];
 		}
 		else

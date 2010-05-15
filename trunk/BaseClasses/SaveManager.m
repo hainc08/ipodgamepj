@@ -80,9 +80,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
 	NSString* saveFile = [NSString stringWithFormat: @"%@/save.dat", recordingDirectory];
 	
-	NSFileHandle *readFile;
-	
-	readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
 
 	return (readFile != nil);
 }
@@ -97,9 +95,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
 	NSString* saveFile = [NSString stringWithFormat: @"%@/save.dat", recordingDirectory];
 	
-	NSFileHandle *readFile;
-	
-	readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
 
 	if(readFile == nil)
 	{
