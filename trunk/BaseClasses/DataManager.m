@@ -203,6 +203,9 @@ static DataManager *DataManagerInst;
 @synthesize sceneId;
 @synthesize willSceneId;
 @synthesize sceneType;
+@synthesize nextChapter;
+@synthesize endA;
+@synthesize endB;
 
 - (bool)isLoadOk
 {
@@ -213,6 +216,8 @@ static DataManager *DataManagerInst;
 {
 	sceneId = -1;
 	willSceneId = -1;
+	nextChapter = -1;
+	endA = endB = -1;
 	isLoaded = false;
 	preLoadCharIdx[0] = preLoadCharIdx[1] = preLoadCharIdx[2] = 0;
 	preLoadChar[0] = preLoadChar[1] = preLoadChar[2] = NULL;
@@ -774,30 +779,57 @@ static DataManager *DataManagerInst;
 
 				int sceneType = [msg[willSceneId] getIntVal:0];
 				[preloadScene[j] setSceneType:sceneType];
-				if (sceneType == 3)
+				
+				NSString* optionStr = nil;
+				
+				switch (sceneType)
 				{
-					[preloadScene[j] setSelect:0 str:[msg[willSceneId] getStrVal:2]];
-					[preloadScene[j] setSelect:1 str:[msg[willSceneId] getStrVal:3]];
-					
-					[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8]
-					 :[msg[willSceneId] getIntVal:9]
-					 :[msg[willSceneId] getIntVal:10]
-					 :0];
+					case 1:
+						optionStr = [msg[willSceneId] getStrVal:2];
+						break;
+					case 3:
+						[preloadScene[j] setSelect:0 str:[msg[willSceneId] getStrVal:2]];
+						[preloadScene[j] setSelect:1 str:[msg[willSceneId] getStrVal:3]];
+						
+						[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8]
+						 :[msg[willSceneId] getIntVal:9]
+						 :[msg[willSceneId] getIntVal:10]
+						 :0];
+						break;
+					case 4:
+						[preloadScene[j] setSelect:0 str:[msg[willSceneId] getStrVal:2]];
+						[preloadScene[j] setSelect:1 str:[msg[willSceneId] getStrVal:3]];
+						[preloadScene[j] setSelect:2 str:[msg[willSceneId] getStrVal:4]];
+						
+						[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8]
+						 :[msg[willSceneId] getIntVal:9]
+						 :[msg[willSceneId] getIntVal:10]
+						 :[msg[willSceneId] getIntVal:11]];
+						break;
+					case 6:
+						[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8] :0 :0: 0];
+						optionStr = [msg[willSceneId] getStrVal:2];
+						break;
 				}
-				else if (sceneType == 4)
+				
+				if (optionStr != nil)
 				{
-					[preloadScene[j] setSelect:0 str:[msg[willSceneId] getStrVal:2]];
-					[preloadScene[j] setSelect:1 str:[msg[willSceneId] getStrVal:3]];
-					[preloadScene[j] setSelect:2 str:[msg[willSceneId] getStrVal:4]];
-					
-					[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8]
-					 :[msg[willSceneId] getIntVal:9]
-					 :[msg[willSceneId] getIntVal:10]
-					 :[msg[willSceneId] getIntVal:11]];
-				}
-				else if (sceneType == 6)
-				{
-					[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8] :0 :0: 0];
+					NSArray *listItems = [optionStr componentsSeparatedByString:@"_"];
+					NSString* item0 = (NSString*)[listItems objectAtIndex:0];
+					NSString* item1 = (NSString*)[listItems objectAtIndex:1];
+
+					if ([item0 compare:@"nxtC"] == NSOrderedSame)
+					{
+						[preloadScene[j] setNextChapter:[item1 intValue]];
+					}
+					else if ([item0 compare:@"endA"] == NSOrderedSame)
+					{
+						[preloadScene[j] setEndA:[item1 intValue]];
+					}
+					else if ([item0 compare:@"endB"] == NSOrderedSame)
+					{
+						[preloadScene[j] setEndB:[item1 intValue]];
+					}
 				}
 				
 				[preloadScene[j] setSceneId:willSceneId];
@@ -862,6 +894,17 @@ static DataManager *DataManagerInst;
 - (int)getIndexInfo:(int)idx
 {
 	return indexInfo[idx];
+}
+
+- (int)gotoChapter:(int)chp
+{
+	[self setCurIdx:msgIdx[chp]];
+	return msgIdx[chp];
+}
+
+- (void)gotoEnding:(int)type idx:(int)idx
+{
+	//엔딩처리...
 }
 
 - (int)getTagInfo:(int)tag

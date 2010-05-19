@@ -72,12 +72,18 @@
 
 	NSString* selectStr[3];
 	int selectTag[4];
+	
+	int nextChapter;
+	int endA, endB;
 }
 
 @property (readwrite) bool isLoaded;
 @property (readwrite) int sceneId;
 @property (readwrite) int willSceneId;
 @property (readwrite) int sceneType;
+@property (readwrite) int nextChapter;
+@property (readwrite) int endA;
+@property (readwrite) int endB;
 
 - (bool)isLoadOk;
 
@@ -165,5 +171,7 @@
 - (int)getIndexInfo:(int)idx;
 - (int)getTagInfo:(int)tag;
 
+- (int)gotoChapter:(int)chp;
+- (void)gotoEnding:(int)type idx:(int)idx;
 - (NSString*)getSceneIdxStr;
 @end

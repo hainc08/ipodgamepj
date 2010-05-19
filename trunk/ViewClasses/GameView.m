@@ -66,8 +66,24 @@
 			case 1:
 				if (sender == next)
 				{
-					++curSceneId;
-					[[DataManager getInstance] setNextIdx:curSceneId];
+					if ( [scene endA] != -1 )
+					{
+						[[DataManager getInstance] gotoEnding:0 idx:[scene endA]];
+					}
+					else if ( [scene endB] != -1)
+					{
+						[[DataManager getInstance] gotoEnding:1 idx:[scene endB]];
+					}
+					else if ([scene nextChapter] == -1)
+					{
+						++curSceneId;
+						[[DataManager getInstance] setNextIdx:curSceneId];
+					}
+					else
+					{
+						curSceneId = [[DataManager getInstance] gotoChapter:[scene nextChapter]];
+					}
+
 					showOK = false;
 					scene = NULL;
 				}
@@ -75,8 +91,28 @@
 			case 6:
 				if (sender == next)
 				{
-					curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:0]];
-					[[DataManager getInstance] setCurIdx:curSceneId];
+					int tag = [scene getSelectTag:0];
+					if (tag == 9999)
+					{
+						if ( [scene endA] != -1 )
+						{
+							[[DataManager getInstance] gotoEnding:0 idx:[scene endA]];
+						}
+						else if ( [scene endB] != -1)
+						{
+							[[DataManager getInstance] gotoEnding:1 idx:[scene endB]];
+						}
+						else
+						{
+							curSceneId = [[DataManager getInstance] gotoChapter:[scene nextChapter]];
+						}
+					}
+					else
+					{
+						curSceneId = [[DataManager getInstance] getTagInfo:tag];
+						[[DataManager getInstance] setCurIdx:curSceneId];
+					}
+
 					showOK = false;
 					scene = NULL;
 				}
