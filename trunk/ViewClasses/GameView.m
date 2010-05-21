@@ -21,7 +21,7 @@
 	
 	if (isInit == false)
 	{
-		for (int i=0; i<3; ++i)
+		for (int i=0; i<4; ++i)
 		{
 			chrView[i] = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 320)];
 			[self addSubview:chrView[i]];
@@ -33,6 +33,9 @@
 			
 			[oldChrView[i] setAlpha:0.f];
 		}
+
+		[self bringSubviewToFront:oldChrView[3]];
+		[self bringSubviewToFront:chrView[3]];
 
 		bgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 320)];
 		[bgView setCenter:CGPointMake(240, 160)];
@@ -170,7 +173,7 @@
 			showOkTick = frameTick;
 
 			//이미지 보여주고...
-			for (int i=0; i<3; ++i)
+			for (int i=0; i<4; ++i)
 			{
 				img = [scene getChar:i];
 				
@@ -187,8 +190,9 @@
 						int cen = 240;
 						if (i == 1) cen = 120;
 						else if (i == 2) cen = 360;
+						else if (i == 3) cen = 45;
 
-						if ([img size].height > 150)
+						if ((i == 3) || ([img size].height > 150))
 							imgRect = CGRectMake(cen - ([img size].width * 0.5f), 320 - [img size].height, [img size].width, [img size].height);
 						else
 							imgRect = CGRectMake(cen - ([img size].width * 0.5f), 160 - ([img size].height * 0.5f), [img size].width, [img size].height);
@@ -213,7 +217,7 @@
 
 			//지난 씬은 패이드 아웃
 			if (([oldChrView[0] image] != NULL)||([oldChrView[1] image] != NULL)||
-				([oldChrView[2] image] != NULL)||([oldBgView image] != NULL))
+				([oldChrView[2] image] != NULL)||([oldChrView[3] image] != NULL)||([oldBgView image] != NULL))
 			{
 				[UIView beginAnimations:@"swap1" context:NULL];
 				[UIView setAnimationDuration:0.2];
@@ -221,13 +225,14 @@
 				if ([oldChrView[0] image] != NULL) [oldChrView[0] setAlpha:0];
 				if ([oldChrView[1] image] != NULL) [oldChrView[1] setAlpha:0];
 				if ([oldChrView[2] image] != NULL) [oldChrView[2] setAlpha:0];
+				if ([oldChrView[3] image] != NULL) [oldChrView[3] setAlpha:0];
 				if ([oldBgView image] != NULL) [oldBgView setAlpha:0];
 				[UIView commitAnimations];
 			}
 			
 			//새로운 씬은 패이드 인
 			if (([chrView[0] image] != NULL)||([chrView[1] image] != NULL)||
-				([chrView[2] image] != NULL)||([bgView image] != NULL))
+				([chrView[2] image] != NULL)||([chrView[3] image] != NULL)||([bgView image] != NULL))
 			{
 				[UIView beginAnimations:@"swap2" context:NULL];
 				[UIView setAnimationDuration:0.2];
@@ -236,6 +241,7 @@
 				if ([chrView[0] image] != NULL) [chrView[0] setAlpha:1];
 				if ([chrView[1] image] != NULL) [chrView[1] setAlpha:1];
 				if ([chrView[2] image] != NULL) [chrView[2] setAlpha:1];
+				if ([chrView[3] image] != NULL) [chrView[3] setAlpha:1];
 				if ([bgView image] != NULL) [bgView setAlpha:1];
 				[UIView commitAnimations];
 			}

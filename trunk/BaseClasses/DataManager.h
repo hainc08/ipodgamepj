@@ -61,8 +61,8 @@
 	int willSceneId;
 
 	bool isLoaded;
-	int preLoadCharIdx[3];
-	UIImage* preLoadChar[3];
+	int preLoadCharIdx[4];
+	UIImage* preLoadChar[4];
 
 	int preLoadBgIdx;
 	UIImage* preLoadBg;
@@ -91,6 +91,7 @@
 - (void)setChar:(int)idx img:(UIImage*)chr chrId:(int)chrId;
 - (UIImage*)getChar:(int)idx;
 - (UIImage*)findChar:(int)chrId;
+- (UIImage*)findSChar:(int)chrId;
 
 - (void)setBg:(UIImage*)bg bgId:(int)bgId;
 - (UIImage*)getBg;

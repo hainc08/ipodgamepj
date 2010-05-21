@@ -3,10 +3,10 @@
 #import "DataManager.h"
 
 @interface GameView : BaseView {
-	UIImageView* chrView[3];
+	UIImageView* chrView[4];
 	UIImageView* bgView;
 
-	UIImageView* oldChrView[3];
+	UIImageView* oldChrView[4];
 	UIImageView* oldBgView;
 	
 	IBOutlet id next;

@@ -219,8 +219,8 @@ static DataManager *DataManagerInst;
 	nextChapter = -1;
 	endA = endB = -1;
 	isLoaded = false;
-	preLoadCharIdx[0] = preLoadCharIdx[1] = preLoadCharIdx[2] = 0;
-	preLoadChar[0] = preLoadChar[1] = preLoadChar[2] = NULL;
+	preLoadCharIdx[0] = preLoadCharIdx[1] = preLoadCharIdx[2] = preLoadCharIdx[3] = 0;
+	preLoadChar[0] = preLoadChar[1] = preLoadChar[2] = preLoadChar[3] = NULL;
 }
 
 - (void)setChar:(int)idx img:(UIImage*)chr chrId:(int)chrId
@@ -240,6 +240,12 @@ static DataManager *DataManagerInst;
 	{
 		if (preLoadCharIdx[i] == chrId) return preLoadChar[i];
 	}
+	return NULL;
+}
+
+- (UIImage*)findSChar:(int)chrId
+{
+	if (preLoadCharIdx[3] == chrId) return preLoadChar[3];
 	return NULL;
 }
 
@@ -720,10 +726,12 @@ static DataManager *DataManagerInst;
 			{
 				[preloadScene[j] setIsLoaded:false];
 				
+				int chrId;
+
 				//여기서 프리로딩...
 				for (int k=0; k<3; ++k)
 				{
-					int chrId = [msg[willSceneId] getIntVal:k+1];
+					chrId = [msg[willSceneId] getIntVal:k+1];
 					if (chrId == 0)
 					{
 						[preloadScene[j] setChar:k img:NULL chrId:0];
@@ -749,6 +757,31 @@ static DataManager *DataManagerInst;
 					}
 				}
 
+				chrId = [msg[willSceneId] getIntVal:4];
+				if (chrId == 0)
+				{
+					[preloadScene[j] setChar:4 img:NULL chrId:0];
+				}
+				else
+				{
+					//일단 미리로딩되어있는 데이터가 있는지 찾는다.
+					for (int l=0; l<10; ++l)
+					{
+						//같은 캐릭터가 계속 반복적으로 나오는 경우가 많으므로
+						//바로직전의 씬에서부터 찾아본다.
+						int ll = (j + l + 9)%10;
+						tempImg = [preloadScene[ll] findSChar:chrId];
+						if (tempImg != NULL) goto FIND_OK2;
+					}
+					
+					if (chrId < 100)
+						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Achr_s0%d.png", chrId]] autorelease];
+					else
+						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Achr_s%d.png", chrId]] autorelease];
+				FIND_OK2:
+					[preloadScene[j] setChar:3 img:tempImg chrId:chrId];
+				}
+				
 				int bgId = [msg[willSceneId] getIntVal:5];
 
 				for (int l=0; l<10; ++l)
@@ -757,7 +790,7 @@ static DataManager *DataManagerInst;
 					//바로직전의 씬에서부터 찾아본다.
 					int ll = (j + l + 9)%10;
 					tempImg = [preloadScene[ll] findBg:bgId];
-					if (tempImg != NULL) goto FIND_OK2;
+					if (tempImg != NULL) goto FIND_OK3;
 				}
 
 				if ((bgId == 254)||(bgId == 254))
@@ -772,7 +805,7 @@ static DataManager *DataManagerInst;
 				else
 					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_%d.jpg", bgId]] autorelease];
 
-			FIND_OK2:
+			FIND_OK3:
 				[preloadScene[j] setBg:tempImg bgId:bgId];
 				[preloadScene[j] setChara:[msg[willSceneId] getStrVal:0]];
 				[preloadScene[j] setSerihu:[msg[willSceneId] getStrVal:1]];
