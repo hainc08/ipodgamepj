@@ -7,6 +7,8 @@
 	IBOutlet id config;
 	IBOutlet id extra;
 	IBOutlet id exit;
+
+	IBOutlet id loadingtime;
 	
 	bool loadingDone;
 }

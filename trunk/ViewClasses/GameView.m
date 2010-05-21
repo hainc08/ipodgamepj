@@ -188,11 +188,13 @@
 					if (img != NULL)
 					{
 						int cen = 240;
+
 						if (i == 1) cen = 120;
 						else if (i == 2) cen = 360;
-						else if (i == 3) cen = 45;
 
-						if ((i == 3) || ([img size].height > 150))
+						if (i == 3)
+							imgRect = CGRectMake(0, 320 - [img size].height, [img size].width, [img size].height);
+						else if ([img size].height > 150)
 							imgRect = CGRectMake(cen - ([img size].width * 0.5f), 320 - [img size].height, [img size].width, [img size].height);
 						else
 							imgRect = CGRectMake(cen - ([img size].width * 0.5f), 160 - ([img size].height * 0.5f), [img size].width, [img size].height);
@@ -279,13 +281,21 @@
 					[next setAlpha:0];
 					break;
 			}
-			[charaLabel setText:[scene getChara]];
-			[charaLabel2 setText:[scene getChara]];
-			[charaLabel3 setText:[scene getChara]];
+			
+			NSString* str = [scene getChara];
+			
+			if ([str length] == 0) [nameBoard setAlpha:0];
+			else [nameBoard setAlpha:1];
 
-			[serihuLabel setText:[scene getSerihu]];
-			[serihuLabel2 setText:[scene getSerihu]];
-			[serihuLabel3 setText:[scene getSerihu]];
+			[charaLabel setText:str];
+			[charaLabel2 setText:str];
+			[charaLabel3 setText:str];
+
+			str = [scene getSerihu];
+
+			[serihuLabel setText:str];
+			[serihuLabel2 setText:str];
+			[serihuLabel3 setText:str];
 			[debugLabel setText:[[DataManager getInstance] getSceneIdxStr]];
 		}
 		else

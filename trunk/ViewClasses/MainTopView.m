@@ -65,6 +65,7 @@
 	{
 		if ([[DataManager getInstance] loadingDone])
 		{
+			[loadingtime setText:[NSString stringWithFormat:@"%d", [[DataManager getInstance] loadingTime]]];
 			loadingDone = true;
 			[start setAlpha:1];
 		}

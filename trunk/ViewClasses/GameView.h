@@ -8,7 +8,10 @@
 
 	UIImageView* oldChrView[4];
 	UIImageView* oldBgView;
-	
+
+	IBOutlet id board;
+	IBOutlet id nameBoard;
+
 	IBOutlet id next;
 	Scene* scene;
 	int curSceneId;

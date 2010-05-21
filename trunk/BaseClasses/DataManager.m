@@ -1,4 +1,5 @@
 #import "DataManager.h"
+#import <sys/time.h>
 
 //Tag정보와 Index정보 미리 읽어오기위한 부분
 //실제로 어플이 돌아갈 때는 필요없는 부분이라 주석처리...
@@ -8,17 +9,6 @@
 //int nowScene;
 //int tagCount = 0;
 //int maxIndex = 0;
-
-int fReadInt(NSFileHandle* readFile)
-{
-	int temp;
-	
-	NSData *data;
-	data = [readFile readDataOfLength:sizeof(int)];
-	[data getBytes:&temp];
-	
-	return temp;
-}
 
 int readInteger(char* data, int* offset)
 {
@@ -78,11 +68,6 @@ NSString* readString(char* data, int* offset)
 //		for (int i=4; i<idx; ++i)
 //		{
 //			test = test * 10 + (temp[i] - '0');
-//		}
-//
-//		if (test > 1000)
-//		{
-//			int error = 0;
 //		}
 //
 //		if (tagData[nowScene * 1000 + test] == 0) ++tagCount;
@@ -327,6 +312,7 @@ static DataManager *DataManagerInst;
  */
 
 @synthesize loadingDone;
+@synthesize loadingTime;
 
 + (DataManager*)getInstance
 {
@@ -365,6 +351,20 @@ static DataManager *DataManagerInst;
 
 - (bool)parseData
 {
+	struct timeval newtime;
+	gettimeofday(&newtime,0);
+	int test = newtime.tv_sec;
+
+	for (int i=0; i<22031; ++i)
+	{
+		msg[i] = nil;
+	}
+
+	for (int i=1; i<91; ++i)
+	{
+		msgIdx[i] = 0;
+	}
+	
 	//--------------간단하고 몇개 안되는 것들은 하드코딩...--------------
 	versionNum = @"sn1.0";
 	int temp[39] = {0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 25, 26, 31, 32, 36, 41, 51, 52, 53, 54, 55, 56, 81, 82, 83, 84, 85, 86, 90};
@@ -420,20 +420,18 @@ static DataManager *DataManagerInst;
 	BGMname[27] = @"SonataⅠ\rAdagio";
 	BGMname[28] = @"SonataⅢ\rLargo";
 	//--------------여기까지 하드코딩--------------
-	
-	msgCount = 0;
-	
+
 	char buffer[512];
 
-	NSString *filePath = [NSString stringWithFormat: @"%@/scenario.txt", [[NSBundle mainBundle] resourcePath]];
-    FILE *hFile = fopen([filePath UTF8String] , "r");
+	NSString* filePath = [NSString stringWithFormat: @"%@/scenario.txt", [[NSBundle mainBundle] resourcePath]];
+	FILE *hFile = fopen([filePath UTF8String] , "r");
 	
 	if ( hFile == nil )
 	{
 		NSLog(@"no file to read");
 		return false;
 	}
-	
+
 	while(fgets(buffer, 512, hFile))
 	{
 		buffer[strlen(buffer) - 1] = '\0';
@@ -465,71 +463,51 @@ static DataManager *DataManagerInst;
 	fclose(hFile);
 
 //	Tag, Index 프리로딩
-//	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:@"tagIndex.dat"];
-//	if (writeFile == nil)
+//	hFile = fopen("tagIndex.dat", "w");
 //	{
-//		[[NSFileManager defaultManager] createFileAtPath:@"tagIndex.dat"
-//												contents:nil attributes:nil];
-//		
-//		writeFile = [NSFileHandle fileHandleForWritingAtPath:@"tagIndex.dat"];
-//	}
-//	
-//	if (writeFile == nil)
-//	{
-//		NSLog(@"fail to open file");
-//		return;
-//	}
-//	else
-//	{
-//		[writeFile writeData: [NSData dataWithBytes:&tagCount
-//											 length:sizeof(int)]];
+//		fwrite(&tagCount, 1, sizeof(int), hFile);
 //		for (int i=0; i<1000000; ++i)
 //		{
 //			if (tagData[i] != 0)
 //			{
-//				[writeFile writeData: [NSData dataWithBytes:&i
-//													 length:sizeof(int)]];
-//				[writeFile writeData: [NSData dataWithBytes:&tagData[i]
-//													 length:sizeof(int)]];
+//				fwrite(&i, 1, sizeof(int), hFile);
+//				fwrite(&tagData[i], 1, sizeof(int), hFile);
 //			}
 //		}
+//		
+//		fwrite(&maxIndex, 1, sizeof(int), hFile);
 //
-//		[writeFile writeData: [NSData dataWithBytes:&maxIndex
-//											 length:sizeof(int)]];
 //		for (int i=0; i<maxIndex; ++i)
 //		{
-//			[writeFile writeData: [NSData dataWithBytes:&indexData[i]
-//												 length:sizeof(int)]];
+//			fwrite(&indexData[i], 1, sizeof(int), hFile);
 //		}
 //	}
-//    
-//	[writeFile closeFile];
+//	
+//	fclose(hFile);
 	
 	filePath = [NSString stringWithFormat: @"%@/tagIndex.dat", [[NSBundle mainBundle] resourcePath]];
-	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:filePath];
+	hFile = fopen([filePath UTF8String] , "r");
 	
-	if ( readFile == nil )
-	{
-		NSLog(@"no file to read");
-		return false;
-	}
-	
-	int tagCount = fReadInt(readFile);
+	int tagCount, indexCount;
+
+	fread(&tagCount, 1, sizeof(4), hFile);
 	for (int i=0; i<tagCount; ++i)
 	{
-		tagInfo[0][i] = fReadInt(readFile);
-		tagInfo[1][i] = fReadInt(readFile);
+		fread(&tagInfo[0][i], 1, sizeof(4), hFile);
+		fread(&tagInfo[1][i], 1, sizeof(4), hFile);
 	}
 	
-	int indexCount = fReadInt(readFile);
+	fread(&indexCount, 1, sizeof(4), hFile);
 	for (int i=0; i<indexCount; ++i)
 	{
-		indexInfo[i] = fReadInt(readFile);
+		fread(&indexInfo[i], 1, sizeof(4), hFile);
 	}
     
-	[readFile closeFile];	
-	
+	fclose(hFile);
+
 	loadingDone = true;
+	gettimeofday(&newtime,0);
+	loadingTime = newtime.tv_sec - test;
 
 	return true;
 }
@@ -706,7 +684,7 @@ static DataManager *DataManagerInst;
 	
 - (Msg*)getMsg:(int)idx idx2:(int)idx2
 {
-	return msg[msgIdx[idx] + idx2];
+	return msg[msgIdx[idx] + idx2 - 1];
 }
 
 - (void)preload
@@ -725,7 +703,7 @@ static DataManager *DataManagerInst;
 			if ([preloadScene[j] sceneId] != willSceneId)
 			{
 				[preloadScene[j] setIsLoaded:false];
-				
+
 				int chrId;
 
 				//여기서 프리로딩...
@@ -916,12 +894,13 @@ static DataManager *DataManagerInst;
 	idx = 0;
 	idx2 = [preloadScene[curIdx] sceneId];
 
-	while (idx2 >= msgIdx[idx])
+	for (int i=1; i<91; ++i)
 	{
-		++idx;
+		if (msgIdx[i] > idx2) break;
+		if (msgIdx[i] != 0) idx = i;
 	}
 
-	return [NSString stringWithFormat: @"%d - %d", idx-1, idx2 - msgIdx[idx-1] + 1];
+	return [NSString stringWithFormat: @"%d - %d", idx, idx2 - msgIdx[idx] + 1];
 }
 
 - (int)getIndexInfo:(int)idx

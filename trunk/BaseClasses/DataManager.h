@@ -124,9 +124,7 @@
 	NSString* itemName[23][2];
 
 	int msgCount;
-	//생각해보니 너무 많은 것 같기도하고...
-	//나중에 씬단위로 따로따로 로딩할 수 있게 만들어야 할듯...
-	Msg* msg[22031];
+	Msg* msg[22040];
 	int msgIdx[91];
 
 	//preload데이터
@@ -138,9 +136,11 @@
 	int indexInfo[130];
 	
 	bool loadingDone;
+	int loadingTime;
 }
 
 @property (readwrite) bool loadingDone;
+@property (readwrite) int loadingTime;
 
 + (DataManager*)getInstance;
 + (void)initManager;
@@ -175,4 +175,5 @@
 - (int)gotoChapter:(int)chp;
 - (void)gotoEnding:(int)type idx:(int)idx;
 - (NSString*)getSceneIdxStr;
+
 @end
