@@ -69,13 +69,9 @@
 			case 1:
 				if (sender == next)
 				{
-					if ( [scene endA] != -1 )
+					if ( [scene endNum] != -1 )
 					{
-						[[DataManager getInstance] gotoEnding:0 idx:[scene endA]];
-					}
-					else if ( [scene endB] != -1)
-					{
-						[[DataManager getInstance] gotoEnding:1 idx:[scene endB]];
+						[[DataManager getInstance] gotoEnding:0 idx:[scene endNum]];
 					}
 					else if ([scene nextChapter] == -1)
 					{
@@ -97,13 +93,9 @@
 					int tag = [scene getSelectTag:0];
 					if (tag == 9999)
 					{
-						if ( [scene endA] != -1 )
+						if ( [scene endNum] != -1 )
 						{
-							[[DataManager getInstance] gotoEnding:0 idx:[scene endA]];
-						}
-						else if ( [scene endB] != -1)
-						{
-							[[DataManager getInstance] gotoEnding:1 idx:[scene endB]];
+							[[DataManager getInstance] gotoEnding:0 idx:[scene endNum]];
 						}
 						else
 						{

@@ -74,7 +74,7 @@
 	int selectTag[4];
 	
 	int nextChapter;
-	int endA, endB;
+	int endNum;
 }
 
 @property (readwrite) bool isLoaded;
@@ -82,8 +82,7 @@
 @property (readwrite) int willSceneId;
 @property (readwrite) int sceneType;
 @property (readwrite) int nextChapter;
-@property (readwrite) int endA;
-@property (readwrite) int endB;
+@property (readwrite) int endNum;
 
 - (bool)isLoadOk;
 

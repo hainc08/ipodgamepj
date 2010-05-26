@@ -189,8 +189,7 @@ static DataManager *DataManagerInst;
 @synthesize willSceneId;
 @synthesize sceneType;
 @synthesize nextChapter;
-@synthesize endA;
-@synthesize endB;
+@synthesize endNum;
 
 - (bool)isLoadOk
 {
@@ -202,7 +201,7 @@ static DataManager *DataManagerInst;
 	sceneId = -1;
 	willSceneId = -1;
 	nextChapter = -1;
-	endA = endB = -1;
+	endNum = -1;
 	isLoaded = false;
 	preLoadCharIdx[0] = preLoadCharIdx[1] = preLoadCharIdx[2] = preLoadCharIdx[3] = 0;
 	preLoadChar[0] = preLoadChar[1] = preLoadChar[2] = preLoadChar[3] = NULL;
@@ -835,11 +834,11 @@ static DataManager *DataManagerInst;
 					}
 					else if ([item0 compare:@"endA"] == NSOrderedSame)
 					{
-						[preloadScene[j] setEndA:[item1 intValue]];
+						[preloadScene[j] setEndNum:[item1 intValue]];
 					}
 					else if ([item0 compare:@"endB"] == NSOrderedSame)
 					{
-						[preloadScene[j] setEndB:[item1 intValue]];
+						[preloadScene[j] setEndNum:[item1 intValue] + 100];
 					}
 				}
 				
