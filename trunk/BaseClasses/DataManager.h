@@ -123,7 +123,7 @@
 	NSString* itemName[23][2];
 
 	int msgCount;
-	Msg* msg[22040];
+	Msg* msg[22050];
 	int msgIdx[91];
 
 	//preload데이터
