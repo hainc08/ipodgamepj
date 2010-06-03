@@ -38,7 +38,7 @@
 	{
 		[[ViewManager getInstance] changeView:@"ConfigView"];
 	}
-	else if (sender == config)
+	else if (sender == extra)
 	{
 		[[ViewManager getInstance] changeView:@"ExtraView"];
 	}

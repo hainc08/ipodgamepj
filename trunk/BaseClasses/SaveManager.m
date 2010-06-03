@@ -1,4 +1,5 @@
 #import "SaveManager.h"
+#import "DataManager.h"
 
 static SaveManager *SaveManagerInst;
 
@@ -87,23 +88,67 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)loadFromFile
 {
+}
+
+- (void)saveExtraFile
+{
 	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
 																 NSDocumentDirectory, 
 																 NSUserDomainMask,
 																 YES
 																 ); 
 	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/save.dat", recordingDirectory];
+	NSString* saveFile = [NSString stringWithFormat: @"%@/extra.dat", recordingDirectory];
+	
+	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+	if (writeFile == nil)
+	{
+		[[NSFileManager defaultManager] createFileAtPath:saveFile
+												contents:nil attributes:nil];
+		
+		writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+	}
+	
+	if (writeFile == nil)
+	{
+		NSLog(@"fail to open file");
+		return;
+	}
+	else
+	{
+		for (int i=0; i<15; ++i)
+		{
+			writeInt(writeFile, [[DataManager getInstance] getEventData:i]);
+		}
+	}
+    
+	[writeFile closeFile];
+}
+
+- (void)loadExtraFile
+{
+	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
+																 NSDocumentDirectory, 
+																 NSUserDomainMask,
+																 YES
+																 ); 
+	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
+	NSString* saveFile = [NSString stringWithFormat: @"%@/extra.dat", recordingDirectory];
 	
 	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
 
 	if(readFile == nil)
 	{
+		for (int i=0; i<15; ++i)
+		{
+			[[DataManager getInstance] setEventData:i :0];
+		}
 		return;
 	}
 	
-    {
-		test = readInt(readFile);
+	for (int i=0; i<15; ++i)
+	{
+		[[DataManager getInstance] setEventData:i :readInt(readFile)];
 	}
 
 	[readFile closeFile];

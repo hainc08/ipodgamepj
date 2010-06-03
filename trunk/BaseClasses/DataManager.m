@@ -153,6 +153,24 @@ static DataManager *DataManagerInst;
 	return intVal[idx];
 }
 
+- (bool)getIsShow:(int)idx
+{
+	return isShow[idx];
+}
+
+- (void)setIsShow:(int)idx :(bool)h
+{
+	isShow[idx] = h;
+}
+
+- (void)setIsShowByIdx:(int)eventIdx
+{
+	for (int i=0; i<valCount; ++i)
+	{
+		if (intVal[i] == eventIdx) isShow[i] = true;
+	}
+}
+
 @end
 
 @implementation Msg
@@ -190,6 +208,7 @@ static DataManager *DataManagerInst;
 @synthesize sceneType;
 @synthesize nextChapter;
 @synthesize endNum;
+@synthesize preLoadBgIdx;
 
 - (bool)isLoadOk
 {
@@ -322,7 +341,8 @@ static DataManager *DataManagerInst;
 {
 	DataManagerInst = [DataManager alloc];
 	[DataManagerInst setLoadingDone:false];
-
+	[DataManagerInst reset];
+	
 // Tag, Index 프리로딩
 //	for (int i=0; i<1000000; ++i)
 //	{
@@ -346,6 +366,14 @@ static DataManager *DataManagerInst;
 
 	for (int i=0; i<10; ++i)
 		[preloadScene[i] release];
+}
+
+- (void)reset
+{
+	for (int i=0; i<15; ++i)
+	{
+		eventList[i] = nil;
+	}
 }
 
 - (bool)parseData
@@ -591,13 +619,15 @@ static DataManager *DataManagerInst;
 	
 	offset += 4;
 	
-	eventList[idx] = [EventList alloc];
+	if (eventList[idx] == nil) eventList[idx] = [EventList alloc];
 	[eventList[idx] setValCount:0];
 	
 	while(data[offset] != ';')
 	{
 		[eventList[idx] addIntVal:readInteger(data, &offset)];
 	}
+
+	
 }
 
 - (EventList*)getEventList:(int)idx
@@ -737,7 +767,7 @@ static DataManager *DataManagerInst;
 				chrId = [msg[willSceneId] getIntVal:4];
 				if (chrId == 0)
 				{
-					[preloadScene[j] setChar:4 img:NULL chrId:0];
+					[preloadScene[j] setChar:3 img:NULL chrId:0];
 				}
 				else
 				{
@@ -770,17 +800,33 @@ static DataManager *DataManagerInst;
 					if (tempImg != NULL) goto FIND_OK3;
 				}
 
-				if ((bgId == 254)||(bgId == 254))
+				if (bgId > 500)
 				{
-					//이두놈만 png다 아..귀찮아...
-					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_%d.png", bgId]] autorelease];
+					bgId -= 500;
+
+					if (bgId < 10)
+						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Aev_00%d.jpg", bgId]] autorelease];
+					else if (bgId < 100)
+						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Aev_0%d.jpg", bgId]] autorelease];
+					else
+						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Aev_%d.jpg", bgId]] autorelease];
+					
+					bgId += 500;
 				}
-				else if (bgId < 10)
-					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_00%d.jpg", bgId]] autorelease];
-				else if (bgId < 100)
-					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_0%d.jpg", bgId]] autorelease];
 				else
-					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_%d.jpg", bgId]] autorelease];
+				{
+					if ((bgId == 254)||(bgId == 254))
+					{
+						//이두놈만 png다 아..귀찮아...
+						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_%d.png", bgId]] autorelease];
+					}
+					else if (bgId < 10)
+						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_00%d.jpg", bgId]] autorelease];
+					else if (bgId < 100)
+						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_0%d.jpg", bgId]] autorelease];
+					else
+						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_%d.jpg", bgId]] autorelease];
+				}
 
 			FIND_OK3:
 				[preloadScene[j] setBg:tempImg bgId:bgId];
@@ -790,13 +836,8 @@ static DataManager *DataManagerInst;
 				int sceneType = [msg[willSceneId] getIntVal:0];
 				[preloadScene[j] setSceneType:sceneType];
 				
-				NSString* optionStr = nil;
-				
 				switch (sceneType)
 				{
-					case 1:
-						optionStr = [msg[willSceneId] getStrVal:2];
-						break;
 					case 3:
 						[preloadScene[j] setSelect:0 str:[msg[willSceneId] getStrVal:2]];
 						[preloadScene[j] setSelect:1 str:[msg[willSceneId] getStrVal:3]];
@@ -818,27 +859,39 @@ static DataManager *DataManagerInst;
 						break;
 					case 6:
 						[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8] :0 :0: 0];
-						optionStr = [msg[willSceneId] getStrVal:2];
 						break;
 				}
 				
-				if (optionStr != nil)
+				NSString* optionStr = nil;
+				
+				for (int l=0; l<[msg[willSceneId] valCount]; ++l)
 				{
-					NSArray *listItems = [optionStr componentsSeparatedByString:@"_"];
-					NSString* item0 = (NSString*)[listItems objectAtIndex:0];
-					NSString* item1 = (NSString*)[listItems objectAtIndex:1];
+					optionStr = [msg[willSceneId] getStrVal:l];
 
-					if ([item0 compare:@"nxtC"] == NSOrderedSame)
+					if (optionStr != nil)
 					{
-						[preloadScene[j] setNextChapter:[item1 intValue]];
-					}
-					else if ([item0 compare:@"endA"] == NSOrderedSame)
-					{
-						[preloadScene[j] setEndNum:[item1 intValue]];
-					}
-					else if ([item0 compare:@"endB"] == NSOrderedSame)
-					{
-						[preloadScene[j] setEndNum:[item1 intValue] + 100];
+						NSArray *listItems = [optionStr componentsSeparatedByString:@"_"];
+						if ([listItems count] < 2) continue;
+						
+						NSString* item0 = (NSString*)[listItems objectAtIndex:0];
+						NSString* item1 = (NSString*)[listItems objectAtIndex:1];
+						
+						if ([item0 compare:@"nxtC"] == NSOrderedSame)
+						{
+							[preloadScene[j] setNextChapter:[item1 intValue]];
+						}
+						else if ([item0 compare:@"endA"] == NSOrderedSame)
+						{
+							[preloadScene[j] setEndNum:[item1 intValue]];
+						}
+						else if ([item0 compare:@"endB"] == NSOrderedSame)
+						{
+							[preloadScene[j] setEndNum:[item1 intValue] + 100];
+						}
+						else if ([item0 compare:@"fgE"] == NSOrderedSame)
+						{
+//뭐하라는 거지?
+						}
 					}
 				}
 				
@@ -935,6 +988,33 @@ static DataManager *DataManagerInst;
 	}
 	
 	return 0;
+}
+
+- (void)setEventData:(int)idx :(int)data
+{
+	if (eventList[idx] == nil) eventList[idx] = [EventList alloc];
+	for (int i=0; i<12; ++i)
+	{
+		[eventList[idx] setIsShow:i :(1 == ((data >> i) & 0x01))];
+	}
+}
+
+- (int)getEventData:(int)idx
+{
+	int data = 0;
+	for (int i=0; i<12; ++i)
+	{
+		if ([eventList[idx] getIsShow:i]) data |= (0x01 << i);
+	}
+	return data;
+}
+
+- (void)setEventShow:(int)eventIdx
+{
+	for (int i=0; i<15; ++i)
+	{
+		[eventList[i] setIsShowByIdx:eventIdx];
+	}
 }
 
 @end

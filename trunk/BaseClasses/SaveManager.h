@@ -14,4 +14,7 @@
 - (void)loadFromFile;
 - (void)saveToFile;
 
+- (void)loadExtraFile;
+- (void)saveExtraFile;
+
 @end

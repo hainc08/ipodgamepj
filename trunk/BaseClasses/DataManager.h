@@ -29,12 +29,17 @@
 {
 	int valCount;
 	int intVal[12];
+	bool isShow[12];
 }
 
 @property (readwrite) int valCount;
 
 - (void)addIntVal:(int)val;
 - (int)getIntVal:(int)idx;
+
+- (bool)getIsShow:(int)idx;
+- (void)setIsShow:(int)idx :(bool)h;
+- (void)setIsShowByIdx:(int)eventIdx;
 
 @end
 
@@ -83,6 +88,7 @@
 @property (readwrite) int sceneType;
 @property (readwrite) int nextChapter;
 @property (readwrite) int endNum;
+@property (readonly) int preLoadBgIdx;
 
 - (bool)isLoadOk;
 
@@ -119,7 +125,7 @@
 	CGPoint chrID[82];
 	NSString* BGMname[29];
 	VName* vname[18];
-	EventList* eventList[15];
+	EventList* eventList[15];	
 	NSString* itemName[23][2];
 
 	int msgCount;
@@ -144,6 +150,7 @@
 + (DataManager*)getInstance;
 + (void)initManager;
 - (void)closeManager;
+- (void)reset;
 
 - (bool)parseData;
 - (void)parseSubTitle:(char*)data;
@@ -174,5 +181,9 @@
 - (int)gotoChapter:(int)chp;
 - (void)gotoEnding:(int)type idx:(int)idx;
 - (NSString*)getSceneIdxStr;
+
+- (void)setEventData:(int)idx :(int)data;
+- (int)getEventData:(int)idx;
+- (void)setEventShow:(int)eventIdx;
 
 @end

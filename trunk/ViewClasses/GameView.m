@@ -1,5 +1,6 @@
 #import "GameView.h"
 #import "ViewManager.h"
+#import "SaveManager.h"
 
 @implementation GameView
 
@@ -114,26 +115,21 @@
 				break;
 			case 3:
 			case 4:
-				if (sender == selectButton1)
+				if ((sender == selectButton1) || (sender == selectButton2) || (sender == selectButton3))
 				{
-					curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:0]];
+					int tagIdx = 0;
+					if (sender == selectButton1) tagIdx = 0;
+					else if (sender == selectButton2) tagIdx = 1;
+					else if (sender == selectButton3) tagIdx = 2;
+
+					curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:tagIdx]];
 					[[DataManager getInstance] setCurIdx:curSceneId];
 					showOK = false;
 					scene = NULL;
-				}
-				else if (sender == selectButton2)
-				{
-					curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:1]];
-					[[DataManager getInstance] setCurIdx:curSceneId];
-					showOK = false;
-					scene = NULL;
-				}
-				else if (sender == selectButton3)
-				{
-					curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:2]];
-					[[DataManager getInstance] setCurIdx:curSceneId];
-					showOK = false;
-					scene = NULL;
+					
+					[selectPanel1 setAlpha:0];
+					[selectPanel2 setAlpha:0];
+					[selectPanel3 setAlpha:0];
 				}
 				break;
 		}
@@ -205,6 +201,12 @@
 				[oldBgView setAlpha:1.f];
 				[bgView setImage:img];
 				[bgView setAlpha:0.f];
+				
+				if ([scene preLoadBgIdx] > 500)
+				{
+					[[DataManager getInstance] setEventShow:[scene preLoadBgIdx] - 500];
+					[[SaveManager getInstance] saveExtraFile];
+				}
 
 				showOkTick = frameTick + (0.3 * framePerSec);
 			}

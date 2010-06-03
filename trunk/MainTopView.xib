@@ -76,6 +76,10 @@
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
+						<object class="NSCustomResource" key="IBUISelectedImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">main-startover.png</string>
+						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">main-start.png</string>
@@ -139,6 +143,10 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="71225983"/>
+						<object class="NSCustomResource" key="IBUISelectedImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">main-extraover.png</string>
+						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">main-extra.png</string>
@@ -332,10 +340,10 @@
 							<reference ref="573353460"/>
 							<reference ref="738064075"/>
 							<reference ref="626773434"/>
-							<reference ref="555385813"/>
 							<reference ref="528256802"/>
 							<reference ref="375608561"/>
 							<reference ref="761340092"/>
+							<reference ref="555385813"/>
 						</object>
 						<reference key="parent" ref="838544221"/>
 					</object>

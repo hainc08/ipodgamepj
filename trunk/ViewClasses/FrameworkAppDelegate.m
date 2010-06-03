@@ -26,6 +26,9 @@
 
 - (void)loadProc:(id)args
 {
+	[[SaveManager getInstance] loadFromFile];
+	[[SaveManager getInstance] loadExtraFile];
+
 	[[DataManager getInstance] parseData];
 	[[DataManager getInstance] preload];
 }
