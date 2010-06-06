@@ -1,6 +1,5 @@
 #import "GraphicView.h"
 #import "ViewManager.h"
-#import "DataManager.h"
 
 @implementation GraphicView
 
@@ -22,15 +21,67 @@
 	
 	if (isInit == false)
 	{
-		UIImage* baseImg = [[UIImage imageNamed:@"noimage.jpg"] autorelease];
+		baseImg = [[UIImage imageNamed:@"noimage.jpg"] autorelease];
 		
-		for (int i=0; i<15; ++i)
+		for (int i=0; i<12; ++i)
 		{
 			imageButton[i] = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 75, 56)];
 			[self addSubview:imageButton[i]];
 			[imageButton[i] setImage:baseImg forState:UIControlStateNormal];
-			[imageButton[i] setCenter:CGPointMake((i % 5) * 85 + 70, (i / 5) * 65 + 95)];
+			[imageButton[i] setCenter:CGPointMake((i % 4) * 100 + 90, (i / 4) * 65 + 95)];
 			[imageButton[i] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+		}
+		
+		imageBigButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 480, 360)];
+		[self addSubview:imageBigButton];
+		[self bringSubviewToFront:imageBigButton];
+		[imageBigButton setCenter:CGPointMake(240, 160)];
+		[imageBigButton addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+		[imageBigButton setAlpha:0];
+	}
+	
+	[self loadPage:1];
+}
+
+- (void)loadPage:(int)page
+{
+	curPage = page;
+	if (curPage == 1) [prevButton setAlpha:0];
+	else [prevButton setAlpha:1];
+
+	if (curPage == 14) [nextButton setAlpha:0];
+	else [nextButton setAlpha:1];
+	
+	eList = [[DataManager getInstance] getEventList:page];
+
+	for (int i=0; i<12; ++i)
+	{
+		if ( i < [eList valCount])
+		{
+			UIImage* tempImg;
+
+			if ([eList getIsShow:i])
+			{
+				int imgId = [eList getIntVal:i];
+				
+				if (imgId < 10)
+					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"ev_00%ds.jpg", imgId]] autorelease];
+				else if (imgId < 100)
+					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"ev_0%ds.jpg", imgId]] autorelease];
+				else
+					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"ev_%ds.jpg", imgId]] autorelease];
+			}
+			else
+			{
+				tempImg = baseImg;
+			}
+
+			[imageButton[i] setAlpha:1];
+			[imageButton[i] setImage:tempImg forState:UIControlStateNormal];
+		}
+		else
+		{
+			[imageButton[i] setAlpha:0];
 		}
 	}
 }
@@ -40,6 +91,44 @@
 	if (sender == backButton)
 	{
 		[[ViewManager getInstance] changeView:@"ExtraView"];
+	}
+	else if (sender == nextButton)
+	{
+		[self loadPage:curPage+1];
+	}
+	else if (sender == prevButton)
+	{
+		[self loadPage:curPage-1];
+	}
+	else if (sender == imageBigButton)
+	{
+		[imageBigButton setAlpha:0];
+	}
+	else
+	{
+		for (int i=0; i<12; ++i)
+		{
+			if (sender == imageButton[i])
+			{
+				if ([eList getIsShow:i] == false) return;
+
+				UIImage* tempImg;
+				
+				int imgId = [eList getIntVal:i];
+				
+				if (imgId < 10)
+					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Aev_00%d.jpg", imgId]] autorelease];
+				else if (imgId < 100)
+					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Aev_0%d.jpg", imgId]] autorelease];
+				else
+					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Aev_%d.jpg", imgId]] autorelease];
+				
+				[imageBigButton setImage:tempImg forState:UIControlStateNormal];
+				[imageBigButton setAlpha:1];
+				
+				return;
+			}
+		}
 	}
 }
 
