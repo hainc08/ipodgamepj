@@ -6,7 +6,6 @@
 	IBOutlet id load;
 	IBOutlet id config;
 	IBOutlet id extra;
-	IBOutlet id exit;
 
 	IBOutlet id loadingtime;
 	

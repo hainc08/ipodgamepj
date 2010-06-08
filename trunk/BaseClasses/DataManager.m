@@ -716,6 +716,11 @@ static DataManager *DataManagerInst;
 	return msg[msgIdx[idx] + idx2 - 1];
 }
 
+- (Msg*)getMsg2:(int)idx
+{
+	return msg[idx];
+}
+
 - (void)preload
 {
 	UIImage* tempImg;

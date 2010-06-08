@@ -22,8 +22,6 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 @implementation SaveManager
 
-@synthesize test;
-
 + (SaveManager*)getInstance
 {
 	return SaveManagerInst;
@@ -39,7 +37,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 }
 
-- (void)saveToFile
+- (void)saveSaveFile
 {
 	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
 																 NSDocumentDirectory, 
@@ -65,13 +63,22 @@ void writeInt(NSFileHandle* writeFile, int value)
 	}
 	else
 	{
-		writeInt(writeFile, test);
+		for (int i=0; i<28; ++i)
+		{
+			writeInt(writeFile, saveData[i]);
+
+			if (saveData[i] > 0)
+			{
+				[writeFile writeData: [NSData dataWithBytes:saveDate[i]
+													 length:sizeof(NSDate)]];
+			}
+		}
 	}
     
 	[writeFile closeFile];
 }
 
-- (bool)isSaved
+- (void)loadSaveFile
 {
 	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
 																 NSDocumentDirectory, 
@@ -82,12 +89,29 @@ void writeInt(NSFileHandle* writeFile, int value)
 	NSString* saveFile = [NSString stringWithFormat: @"%@/save.dat", recordingDirectory];
 	
 	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
+	
+	if(readFile == nil)
+	{
+		for (int i=0; i<28; ++i)
+		{
+			saveData[i] = 0;
+		}
+		return;
+	}
+	
+	for (int i=0; i<28; ++i)
+	{
+		saveData[i] = readInt(readFile);
 
-	return (readFile != nil);
-}
-
-- (void)loadFromFile
-{
+		if (saveData[i] > 0)
+		{
+			NSData *data;
+			data = [readFile readDataOfLength:sizeof(NSDate)];
+			[data getBytes:saveDate[i]];
+		}
+	}
+	
+	[readFile closeFile];	
 }
 
 - (void)saveExtraFile
@@ -152,6 +176,16 @@ void writeInt(NSFileHandle* writeFile, int value)
 	}
 
 	[readFile closeFile];
+}
+
+- (int)getSaveData:(int)idx
+{
+	return saveData[idx];
+}
+
+- (NSDate*)getSaveDate:(int)idx
+{
+	return saveDate[idx];
 }
 
 @end

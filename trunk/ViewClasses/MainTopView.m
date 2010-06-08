@@ -42,10 +42,6 @@
 	{
 		[[ViewManager getInstance] changeView:@"ExtraView"];
 	}
-	else if (sender == exit) /* 나중에 빼버려도 될듯 우선 넣어놓고.. */
-	{
-	}
-
 }
 
 - (void) BaseSoundPlay

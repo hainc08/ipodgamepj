@@ -174,6 +174,7 @@
 - (EventList*)getEventList:(int)idx;
 - (NSString*)getItemName:(int)idx idx2:(int)idx2;
 - (Msg*)getMsg:(int)idx idx2:(int)idx2;
+- (Msg*)getMsg2:(int)idx;
 
 - (int)getIndexInfo:(int)idx;
 - (int)getTagInfo:(int)tag;

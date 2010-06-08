@@ -1,5 +1,6 @@
 #import "GraphicView.h"
 #import "ViewManager.h"
+#import "SaveManager.h"
 
 @implementation GraphicView
 
@@ -40,6 +41,7 @@
 		[imageBigButton setAlpha:0];
 	}
 	
+	[[SaveManager getInstance] loadExtraFile];
 	[self loadPage:1];
 }
 
@@ -65,11 +67,11 @@
 				int imgId = [eList getIntVal:i];
 				
 				if (imgId < 10)
-					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"ev_00%ds.jpg", imgId]] autorelease];
+					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_00%ds.jpg", imgId]];
 				else if (imgId < 100)
-					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"ev_0%ds.jpg", imgId]] autorelease];
+					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_0%ds.jpg", imgId]];
 				else
-					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"ev_%ds.jpg", imgId]] autorelease];
+					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_%ds.jpg", imgId]];
 			}
 			else
 			{
@@ -117,11 +119,11 @@
 				int imgId = [eList getIntVal:i];
 				
 				if (imgId < 10)
-					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Aev_00%d.jpg", imgId]] autorelease];
+					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_00%d.jpg", imgId]];
 				else if (imgId < 100)
-					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Aev_0%d.jpg", imgId]] autorelease];
+					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_0%d.jpg", imgId]];
 				else
-					tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Aev_%d.jpg", imgId]] autorelease];
+					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_%d.jpg", imgId]];
 				
 				[imageBigButton setImage:tempImg forState:UIControlStateNormal];
 				[imageBigButton setAlpha:1];
