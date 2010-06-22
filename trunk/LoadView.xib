@@ -52,7 +52,7 @@
 					<object class="IBUIButton" id="74343185">
 						<reference key="NSNextResponder" ref="349670980"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{10, 267}, {80, 43}}</string>
+						<string key="NSFrame">{{10, 268.5}, {80, 43}}</string>
 						<reference key="NSSuperview" ref="349670980"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -96,7 +96,7 @@
 					<object class="IBUIButton" id="230307259">
 						<reference key="NSNextResponder" ref="349670980"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{424, 15}, {23, 35}}</string>
+						<string key="NSFrame">{{418.5, 12.5}, {23, 35}}</string>
 						<reference key="NSSuperview" ref="349670980"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -117,7 +117,7 @@
 					<object class="IBUIButton" id="162643936">
 						<reference key="NSNextResponder" ref="349670980"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{352, 15}, {24, 35}}</string>
+						<string key="NSFrame">{{348, 12.5}, {24, 35}}</string>
 						<reference key="NSSuperview" ref="349670980"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -238,11 +238,11 @@
 						<reference key="object" ref="349670980"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="177653236"/>
 							<reference ref="230307259"/>
 							<reference ref="320042720"/>
 							<reference ref="162643936"/>
 							<reference ref="74343185"/>
+							<reference ref="177653236"/>
 						</object>
 						<reference key="parent" ref="511116064"/>
 					</object>
@@ -296,7 +296,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>LoadView</string>
-					<string>{{423, 333}, {480, 320}}</string>
+					<string>{{464, 120}, {480, 320}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

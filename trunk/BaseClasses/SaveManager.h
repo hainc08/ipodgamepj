@@ -2,7 +2,7 @@
 @interface SaveManager : NSObject
 {	
 	int saveData[28];
-	NSDate* saveDate[28];
+	int saveDate[28];
 }
 
 + (SaveManager*)getInstance;
@@ -17,5 +17,7 @@
 
 - (int)getSaveData:(int)idx;
 - (NSDate*)getSaveDate:(int)idx;
+
+- (void)save:(int)idx data:(int)data;
 
 @end

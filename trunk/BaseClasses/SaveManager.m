@@ -30,6 +30,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 + (void)initManager;
 {
 	SaveManagerInst = [SaveManager alloc];
+	[SaveManagerInst loadSaveFile];
 }
 
 - (void)closeManager
@@ -66,12 +67,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 		for (int i=0; i<28; ++i)
 		{
 			writeInt(writeFile, saveData[i]);
-
-			if (saveData[i] > 0)
-			{
-				[writeFile writeData: [NSData dataWithBytes:saveDate[i]
-													 length:sizeof(NSDate)]];
-			}
+			if (saveData[i] > 0) writeInt(writeFile, saveDate[i]);
 		}
 	}
     
@@ -102,13 +98,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 	for (int i=0; i<28; ++i)
 	{
 		saveData[i] = readInt(readFile);
-
-		if (saveData[i] > 0)
-		{
-			NSData *data;
-			data = [readFile readDataOfLength:sizeof(NSDate)];
-			[data getBytes:saveDate[i]];
-		}
+		if (saveData[i] > 0) saveDate[i] = readInt(readFile);
 	}
 	
 	[readFile closeFile];	
@@ -185,7 +175,15 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (NSDate*)getSaveDate:(int)idx
 {
-	return saveDate[idx];
+	return [NSDate dateWithTimeIntervalSince1970:saveDate[idx]];
+}
+
+- (void)save:(int)idx data:(int)data
+{
+	saveData[idx] = data;
+	saveDate[idx] = [[NSDate date] timeIntervalSince1970];
+	
+	[self saveSaveFile];
 }
 
 @end

@@ -80,10 +80,4 @@
 	[super dealloc];	
 }
 
-/* Base 사운드 제공 해야 함 */
-- (void)update
-{
-	[super update];
-}
-
 @end

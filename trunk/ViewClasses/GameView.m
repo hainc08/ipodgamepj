@@ -22,6 +22,8 @@
 	
 	if (isInit == false)
 	{
+		gameMenu = nil;
+
 		for (int i=0; i<4; ++i)
 		{
 			chrView[i] = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 320)];
@@ -49,7 +51,7 @@
 		[self addSubview:oldBgView];
 		[self sendSubviewToBack:oldBgView];
 		[oldBgView setAlpha:0.f];
-
+		
 		isInit = true;
 	}
 	
@@ -65,6 +67,11 @@
 {
 	if ( showOK )
 	{
+		if ( sender == menuButton )
+		{
+			[self showMenu];
+		}
+		
 		switch ([scene sceneType])
 		{
 			case 1:
@@ -301,6 +308,19 @@
 	if (showOkTick == frameTick) showOK = true;
 
 	[super update];
+}
+
+- (void)showMenu
+{
+	if (gameMenu == nil)
+	{
+		gameMenu = [[ViewManager getInstance] getInstView:@"GameMenu"];
+		[gameMenu reset];
+		[self addSubview:gameMenu];
+		[gameMenu setCenter:CGPointMake(240,160)];
+	}
+	
+	[gameMenu setAlpha:1];
 }
 
 @end

@@ -19,7 +19,9 @@
 	
 	int showOkTick;
 	
+	IBOutlet id menuButton;
 	IBOutlet id debugLabel;
+
 	IBOutlet id serihuLabel;
 	IBOutlet id serihuLabel2;
 	IBOutlet id serihuLabel3;
@@ -39,8 +41,12 @@
 	IBOutlet id selectButton1;
 	IBOutlet id selectButton2;
 	IBOutlet id selectButton3;
+	
+	UIView* gameMenu;
 }
 
 - (IBAction)ButtonClick:(id)sender;
+- (void)showMenu;
+- (void)update;
 
 @end

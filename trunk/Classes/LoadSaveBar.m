@@ -44,11 +44,11 @@
 				bgImgIdx -= 500;
 
 				if (bgImgIdx < 10)
-					bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"en_00%ds.jpg", bgImgIdx]];
+					bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_00%ds.jpg", bgImgIdx]];
 				else if (bgImgIdx < 100)
-					bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"en_0%ds.jpg", bgImgIdx]];
+					bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_0%ds.jpg", bgImgIdx]];
 				else
-					bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"en_%ds.jpg", bgImgIdx]];
+					bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_%ds.jpg", bgImgIdx]];
 			}
 			else
 			{
@@ -77,6 +77,12 @@
 		[dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm"];
 		[dateLabel setText:[dateFormatter stringFromDate:date]];
 	}
+}
+
+-(UIButton*)getButton:(int)idx
+{
+	if (idx == 0) return sceneImg;
+	else return bar;
 }
 
 @end
