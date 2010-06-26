@@ -34,6 +34,10 @@
 	{
 		[saveView setAlpha:1];
 	}
+	else if (sender == exitButton)
+	{
+		[[ViewManager getInstance] changeView:@"MainTopView"];
+	}
 }
 
 @end

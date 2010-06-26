@@ -2,6 +2,12 @@
 #import "ViewManager.h"
 #import "SaveManager.h"
 
+@implementation GameParam
+
+@synthesize startScene;
+
+@end
+
 @implementation GameView
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -19,6 +25,8 @@
 - (void)reset:(NSObject*)param
 {
 	[super reset:param];
+	
+	GameParam* gParam = (GameParam*)param;
 	
 	if (isInit == false)
 	{
@@ -56,9 +64,13 @@
 	}
 	
 	scene = NULL;
-	curSceneId = 0;
+	curSceneId = [gParam startScene];
 	showOK = false;
 
+	[selectPanel1 setAlpha:0];
+	[selectPanel2 setAlpha:0];
+	[selectPanel3 setAlpha:0];
+	
 	[[DataManager getInstance] resetPreload];
 	[[DataManager getInstance] setCurIdx:curSceneId];
 }
@@ -155,13 +167,14 @@
 {
 	//전체적으로 페이드인.아웃을 만들면서 살짝 복잡해보이게 되었지만
 	//페이드인.아웃이 끝나고 다음 씬으로 넘어간다는게 일단의 기본적인 마인드
-
 	if (scene == NULL)
 	{
 		scene = [[DataManager getInstance] getCurScene];
 
 		if ([scene isLoadOk])
 		{
+			[blackBoard setAlpha:0];
+	
 			CGRect imgRect;
 			UIImage* img;
 

@@ -38,7 +38,12 @@ static ViewManager *viewManagerInst;
 
 - (void)changeViewWithInit:(NSString*)changeViewName param:(NSObject*)param
 {
- 	if (curView != nil) [curView removeFromSuperview];
+ 	if (curView != nil)
+	{
+		[curView removeFromSuperview];
+		[curView stopTimer];
+		curView = nil;
+	}
 
 	for (int i=0; i<viewCount; ++i)
 	{

@@ -4,6 +4,7 @@
 @interface GameMenu : UIView {
 	IBOutlet id backButton;
 	IBOutlet id saveButton;
+	IBOutlet id exitButton;
 
 	SaveView* saveView;
 }

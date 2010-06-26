@@ -2,6 +2,14 @@
 #import "BaseView.h"
 #import "DataManager.h"
 
+@interface GameParam : NSObject {
+	int startScene;
+}
+
+@property (readwrite) int startScene;
+
+@end
+
 @interface GameView : BaseView {
 	UIImageView* chrView[4];
 	UIImageView* bgView;
@@ -9,6 +17,8 @@
 	UIImageView* oldChrView[4];
 	UIImageView* oldBgView;
 
+	IBOutlet id blackBoard;
+	
 	IBOutlet id board;
 	IBOutlet id nameBoard;
 

@@ -1,6 +1,7 @@
 #import "MainTopView.h"
 #import "ViewManager.h"
 #import "DataManager.h"
+#import "GameView.h"
 
 @implementation MainTopView
 
@@ -28,7 +29,9 @@
 {	
 	if (sender == start)
 	{
-		[[ViewManager getInstance] changeViewWithInit:@"GameView"];
+		GameParam* param = [GameParam alloc];
+		[param setStartScene:0];
+		[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];
 	}
 	else if (sender == load)
 	{

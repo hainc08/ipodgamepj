@@ -1,6 +1,7 @@
 #import "LoadView.h"
 #import "ViewManager.h"
 #import "SaveManager.h"
+#import "GameView.h"
 
 @implementation LoadView
 
@@ -27,6 +28,8 @@
 			bars[i] = (LoadSaveBar*)[[ViewManager getInstance] getInstView:@"LoadSaveBar"];
 			[self addSubview:bars[i]];
 			[bars[i] setCenter:CGPointMake(290,59*i+80)];
+			[[bars[i] getButton:0] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+			[[bars[i] getButton:1] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 		}
 	}
 	
@@ -66,6 +69,20 @@
 	{
 		[self loadPage:curPage-1];
 	}
+	else
+	{
+		for (int i=0; i<4; ++i)
+		{
+			if ((sender == [bars[i] getButton:0])||
+				(sender == [bars[i] getButton:1]))
+			{
+				GameParam* param = [GameParam alloc];
+				[param setStartScene:[bars[i] saveIdx]];
+				[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];
+				return;
+			}
+		}
+	}
 }
 
 - (void) BaseSoundPlay
@@ -73,10 +90,6 @@
 }
 
 - (void)dealloc {
-	for (int i=0; i<4; ++i)
-	{
-		[bars[i] dealloc];
-	}
 	[super dealloc];	
 }
 

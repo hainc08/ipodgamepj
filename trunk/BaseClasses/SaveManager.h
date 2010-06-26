@@ -1,4 +1,3 @@
-
 @interface SaveManager : NSObject
 {	
 	int saveData[28];

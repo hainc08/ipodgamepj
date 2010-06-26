@@ -374,6 +374,11 @@ static DataManager *DataManagerInst;
 	{
 		eventList[i] = nil;
 	}
+
+	for (int i=0; i<10; ++i)
+	{
+		preloadScene[i] = [Scene alloc];
+	}
 }
 
 - (bool)parseData
@@ -731,7 +736,7 @@ static DataManager *DataManagerInst;
 		for (int i=0; i<10; ++i)
 		{
 			int j = (c + i)%10;
-
+			
 			int willSceneId = [preloadScene[j] willSceneId];
 
 			if ([preloadScene[j] sceneId] != willSceneId)
@@ -793,7 +798,7 @@ static DataManager *DataManagerInst;
 				FIND_OK2:
 					[preloadScene[j] setChar:3 img:tempImg chrId:chrId];
 				}
-				
+
 				int bgId = [msg[willSceneId] getIntVal:5];
 
 				for (int l=0; l<10; ++l)
@@ -937,7 +942,6 @@ static DataManager *DataManagerInst;
 {
 	for (int i=0; i<10; ++i)
 	{
-		preloadScene[i] = [Scene alloc];
 		[preloadScene[i] reset];
 	}
 	
