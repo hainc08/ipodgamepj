@@ -53,6 +53,8 @@
 	IBOutlet id selectButton3;
 	
 	UIView* gameMenu;
+	
+	int nowBgmIdx;
 }
 
 - (IBAction)ButtonClick:(id)sender;

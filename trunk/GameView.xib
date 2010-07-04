@@ -257,13 +257,16 @@
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<reference key="IBUIFont" ref="1037716388"/>
-								<int key="IBUIButtonType">1</int>
 								<reference key="IBUIHighlightedTitleColor" ref="989580487"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="354615847"/>
+								<object class="NSCustomResource" key="IBUINormalImage" id="331584006">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">selectCard.jpg</string>
+								</object>
 							</object>
 							<object class="IBUILabel" id="388555073">
 								<reference key="NSNextResponder" ref="227237488"/>
@@ -274,7 +277,10 @@
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="IBUIText">Label</string>
-								<reference key="IBUITextColor" ref="1030854474"/>
+								<object class="NSColor" key="IBUITextColor" id="540011612">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MSAxIDEAA</bytes>
+								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">1.000000e+01</float>
@@ -282,7 +288,7 @@
 								<int key="IBUITextAlignment">1</int>
 							</object>
 						</object>
-						<string key="NSFrame">{{53, 39}, {119, 142}}</string>
+						<string key="NSFrame">{{53, 49}, {119, 142}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -305,13 +311,13 @@
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<reference key="IBUIFont" ref="1037716388"/>
-								<int key="IBUIButtonType">1</int>
 								<reference key="IBUIHighlightedTitleColor" ref="989580487"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="354615847"/>
+								<reference key="IBUINormalImage" ref="331584006"/>
 							</object>
 							<object class="IBUILabel" id="485961400">
 								<reference key="NSNextResponder" ref="137256979"/>
@@ -322,7 +328,7 @@
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="IBUIText">Label</string>
-								<reference key="IBUITextColor" ref="1030854474"/>
+								<reference key="IBUITextColor" ref="540011612"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">1.000000e+01</float>
@@ -330,7 +336,7 @@
 								<int key="IBUITextAlignment">1</int>
 							</object>
 						</object>
-						<string key="NSFrame">{{180, 39}, {119, 142}}</string>
+						<string key="NSFrame">{{180, 49}, {119, 142}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -378,13 +384,13 @@
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<reference key="IBUIFont" ref="1037716388"/>
-								<int key="IBUIButtonType">1</int>
 								<reference key="IBUIHighlightedTitleColor" ref="989580487"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="354615847"/>
+								<reference key="IBUINormalImage" ref="331584006"/>
 							</object>
 							<object class="IBUILabel" id="240575481">
 								<reference key="NSNextResponder" ref="1031331646"/>
@@ -395,7 +401,7 @@
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="IBUIText">Label</string>
-								<reference key="IBUITextColor" ref="1030854474"/>
+								<reference key="IBUITextColor" ref="540011612"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">1.000000e+01</float>
@@ -403,7 +409,7 @@
 								<int key="IBUITextAlignment">1</int>
 							</object>
 						</object>
-						<string key="NSFrame">{{307, 39}, {119, 142}}</string>
+						<string key="NSFrame">{{307, 49}, {119, 142}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -856,7 +862,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>GameView</string>
-					<string>{{453, 91}, {480, 320}}</string>
+					<string>{{415, 153}, {480, 320}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

@@ -1,6 +1,7 @@
 #import "FrameworkAppDelegate.h"
 #import "ViewManager.h"
 #import "SaveManager.h"
+#import "SoundManager.h"
 #import "DataManager.h"
 
 @implementation FrameworkAppDelegate
@@ -16,6 +17,8 @@
 
 	bgLoaderThread = [[NSThread alloc] initWithTarget:self selector:@selector(loadProc:) object:@""];
 	[bgLoaderThread start];
+	
+	[SoundManager initManager];
 	
 	[SaveManager initManager];
 	[ViewManager initManager:window:viewController];
@@ -33,6 +36,7 @@
 - (void)dealloc {
 	[[ViewManager getInstance] closeManager];
 	[[SaveManager getInstance] closeManager];
+	[[SoundManager getInstance] closeManager];
 	[[DataManager getInstance] closeManager];
     [window release];
 	[super dealloc];

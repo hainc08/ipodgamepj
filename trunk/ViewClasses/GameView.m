@@ -1,6 +1,7 @@
 #import "GameView.h"
 #import "ViewManager.h"
 #import "SaveManager.h"
+#import "SoundManager.h"
 
 @implementation GameParam
 
@@ -60,9 +61,11 @@
 		[self sendSubviewToBack:oldBgView];
 		[oldBgView setAlpha:0.f];
 		
+		
 		isInit = true;
 	}
 	
+	nowBgmIdx = 0;
 	scene = NULL;
 	curSceneId = [gParam startScene];
 	showOK = false;
@@ -213,7 +216,45 @@
 					showOkTick = frameTick + (0.2 * framePerSec);
 				}
 			}
+			
+			NSString* bgmName;
+			int bgmIdx = [scene preLoadBgmIdx];
+			
+			if (nowBgmIdx != bgmIdx)
+			{
+				if (bgmIdx == 0)
+				{
+					[[SoundManager getInstance] stopBGM];
+				}
+				else
+				{
+					if (bgmIdx < 10) bgmName = [[NSString alloc] initWithFormat:@"Abgm_0%d-1.mp3",bgmIdx];
+					else bgmName = [[NSString alloc] initWithFormat:@"Abgm_%d-1.mp3",bgmIdx];
+					
+					[[SoundManager getInstance] playBGM:bgmName];
+					[bgmName dealloc];
+				}
+				
+				nowBgmIdx = bgmIdx;
+			}
 
+			int fxIdx = [scene FXIdx];
+			if (fxIdx == 0)
+			{
+				[[SoundManager getInstance] stopFX];
+			}
+			else if (fxIdx != -1)
+			{
+				if ([scene FXrepeat])
+				{
+					[[SoundManager getInstance] playFX:[[NSString alloc] initWithFormat:@"seLoop-%d.mp3",fxIdx] repeat:true];
+				}
+				else
+				{
+					[[SoundManager getInstance] playFX:[[NSString alloc] initWithFormat:@"se-%d.mp3",fxIdx] repeat:false];
+				}
+			}
+			
 			img = [scene getBg];
 			if ([bgView image] != img)
 			{

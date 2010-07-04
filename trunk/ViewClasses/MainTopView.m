@@ -2,6 +2,7 @@
 #import "ViewManager.h"
 #import "DataManager.h"
 #import "GameView.h"
+#import "SoundManager.h"
 
 @implementation MainTopView
 
@@ -26,20 +27,23 @@
 }
 
 - (IBAction)ButtonClick:(id)sender
-{	
+{
 	if (sender == start)
 	{
+		[[SoundManager getInstance] stopBGM];
 		GameParam* param = [GameParam alloc];
 		[param setStartScene:0];
+		[[SoundManager getInstance] stopBGM];
 		[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];
 	}
 	else if (sender == load)
 	{
-		[[ViewManager getInstance] changeView:@"LoadView"];
+		[[SoundManager getInstance] playBGM:@"Abgm_03-1.mp3"];
+//		[[ViewManager getInstance] changeView:@"LoadView"];
 	}
 	else if (sender == config)
 	{
-		[[ViewManager getInstance] changeView:@"ConfigView"];
+		[[ViewManager getInstance] changeView:@"ConfigurationView"];
 	}
 	else if (sender == extra)
 	{
@@ -62,6 +66,8 @@
 	
 	if (loadingDone == false)
 	{
+		[[SoundManager getInstance] playBGM:@"Abgm_10-1.mp3"];
+
 		if ([[DataManager getInstance] loadingDone])
 		{
 			[loadingtime setText:[NSString stringWithFormat:@"%d", [[DataManager getInstance] loadingTime]]];
