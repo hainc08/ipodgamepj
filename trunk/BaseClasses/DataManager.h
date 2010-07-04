@@ -71,6 +71,8 @@
 
 	int preLoadBgIdx;
 	UIImage* preLoadBg;
+
+	int preLoadBgmIdx;
 	
 	NSString* serihu;
 	NSString* chara;
@@ -80,6 +82,9 @@
 	
 	int nextChapter;
 	int endNum;
+	
+	int FXIdx;
+	bool FXrepeat;
 }
 
 @property (readwrite) bool isLoaded;
@@ -89,6 +94,9 @@
 @property (readwrite) int nextChapter;
 @property (readwrite) int endNum;
 @property (readonly) int preLoadBgIdx;
+@property (readwrite) int preLoadBgmIdx;
+@property (readwrite) int FXIdx;
+@property (readwrite) bool FXrepeat;
 
 - (bool)isLoadOk;
 

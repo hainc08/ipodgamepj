@@ -209,6 +209,9 @@ static DataManager *DataManagerInst;
 @synthesize nextChapter;
 @synthesize endNum;
 @synthesize preLoadBgIdx;
+@synthesize preLoadBgmIdx;
+@synthesize FXIdx;
+@synthesize FXrepeat;
 
 - (bool)isLoadOk
 {
@@ -224,6 +227,9 @@ static DataManager *DataManagerInst;
 	isLoaded = false;
 	preLoadCharIdx[0] = preLoadCharIdx[1] = preLoadCharIdx[2] = preLoadCharIdx[3] = 0;
 	preLoadChar[0] = preLoadChar[1] = preLoadChar[2] = preLoadChar[3] = NULL;
+	
+	FXIdx = -1;
+	preLoadBgmIdx = 0;
 }
 
 - (void)setChar:(int)idx img:(UIImage*)chr chrId:(int)chrId
@@ -745,6 +751,8 @@ static DataManager *DataManagerInst;
 
 				int chrId;
 
+				[preloadScene[j] setPreLoadBgmIdx:[msg[willSceneId] getIntVal:6]];
+
 				//여기서 프리로딩...
 				for (int k=0; k<3; ++k)
 				{
@@ -873,6 +881,9 @@ static DataManager *DataManagerInst;
 				}
 				
 				NSString* optionStr = nil;
+				int fxIdx = [msg[willSceneId] getIntVal:7];
+				if (fxIdx == 0) fxIdx = -1;
+				[preloadScene[j] setFXrepeat:false];
 				
 				for (int l=0; l<[msg[willSceneId] valCount]; ++l)
 				{
@@ -898,12 +909,19 @@ static DataManager *DataManagerInst;
 						{
 							[preloadScene[j] setEndNum:[item1 intValue] + 100];
 						}
+						else if ([item0 compare:@"seL"] == NSOrderedSame)
+						{
+							fxIdx = [item1 intValue];
+							[preloadScene[j] setFXrepeat:true];
+						}
 						else if ([item0 compare:@"fgE"] == NSOrderedSame)
 						{
 //뭐하라는 거지?
 						}
 					}
 				}
+				
+				[preloadScene[j] setFXIdx:fxIdx];
 				
 				[preloadScene[j] setSceneId:willSceneId];
 				[preloadScene[j] setIsLoaded:true];

@@ -22,6 +22,9 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 @implementation SaveManager
 
+@synthesize opt1;
+@synthesize opt2;
+
 + (SaveManager*)getInstance
 {
 	return SaveManagerInst;
@@ -31,6 +34,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 {
 	SaveManagerInst = [SaveManager alloc];
 	[SaveManagerInst loadSaveFile];
+	[SaveManagerInst loadOptionFile];
 }
 
 - (void)closeManager
@@ -168,6 +172,66 @@ void writeInt(NSFileHandle* writeFile, int value)
 	[readFile closeFile];
 }
 
+- (void)saveOptionFile
+{
+	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
+																 NSDocumentDirectory, 
+																 NSUserDomainMask,
+																 YES
+																 ); 
+	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
+	NSString* saveFile = [NSString stringWithFormat: @"%@/option.dat", recordingDirectory];
+	
+	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+	if (writeFile == nil)
+	{
+		[[NSFileManager defaultManager] createFileAtPath:saveFile
+												contents:nil attributes:nil];
+		
+		writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+	}
+	
+	if (writeFile == nil)
+	{
+		NSLog(@"fail to open file");
+		return;
+	}
+	else
+	{
+		writeInt(writeFile, opt1);
+		writeInt(writeFile, opt2);
+	}
+    
+	[writeFile closeFile];
+}
+
+- (void)loadOptionFile
+{
+	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
+																 NSDocumentDirectory, 
+																 NSUserDomainMask,
+																 YES
+																 ); 
+	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
+	NSString* saveFile = [NSString stringWithFormat: @"%@/option.dat", recordingDirectory];
+	
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
+	
+	if(readFile == nil)
+	{
+		for (int i=0; i<15; ++i)
+		{
+			opt1 = opt2 = 3;
+		}
+		return;
+	}
+	
+	opt1 = readInt(readFile);
+	opt2 = readInt(readFile);
+	
+	[readFile closeFile];
+}
+
 - (int)getSaveData:(int)idx
 {
 	return saveData[idx];
@@ -184,6 +248,13 @@ void writeInt(NSFileHandle* writeFile, int value)
 	saveDate[idx] = [[NSDate date] timeIntervalSince1970];
 	
 	[self saveSaveFile];
+}
+
+- (void)setOpt:(int)o1 :(int)o2
+{
+	opt1 = o1;
+	opt2 = o2;
+	[self saveOptionFile];
 }
 
 @end
