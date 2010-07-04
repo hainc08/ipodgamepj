@@ -1005,7 +1005,7 @@ static DataManager *DataManagerInst;
 	for (int i=0; i<12; ++i)
 	{
 		[eventList[idx] setIsShow:i :(1 == ((data >> i) & 0x01))];
-	}
+	} 
 }
 
 - (int)getEventData:(int)idx

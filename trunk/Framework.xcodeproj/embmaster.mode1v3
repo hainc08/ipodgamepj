@@ -277,7 +277,6 @@
 								<array>
 									<integer>18</integer>
 									<integer>17</integer>
-									<integer>16</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -326,10 +325,6 @@
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
 										<string>GameView.m</string>
-										<key>_historyCapacity</key>
-										<integer>0</integer>
-										<key>bookmark</key>
-										<string>56A54B6E116EF8F20076E6BA</string>
 										<key>history</key>
 										<array>
 											<string>56EECE581148C43900AF90F9</string>
@@ -391,7 +386,6 @@
 											<string>5671D1D41153DDC20026A623</string>
 											<string>5671D1D61153DDC20026A623</string>
 											<string>5671D1D81153DDC20026A623</string>
-											<string>56A5499D116CE05A0076E6BA</string>
 											<string>56A5499E116CE05A0076E6BA</string>
 											<string>56A5499F116CE05A0076E6BA</string>
 											<string>56A549A0116CE05A0076E6BA</string>
@@ -452,9 +446,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>56A549A2116CE05A0076E6BA</string>
+				<string>5609A14111E0223D00476990</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>56A549A3116CE05A0076E6BA</string>
+				<string>5609A14211E0223D00476990</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -588,10 +582,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>56EECE7C1148C43900AF90F9</string>
-		<string>/Volumes/Data/New Project/PrincessNightmare/Framework.xcodeproj</string>
+		<string>/Users/embmaster/Code/ipodgamepj/Framework.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>-1 58 1280 719 0 0 1280 778 </string>
@@ -671,7 +663,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>56EECE7C1148C43900AF90F9</string>
-				<string>56A549A4116CE05A0076E6BA</string>
+				<string>5609A14311E0223D00476990</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
