@@ -131,10 +131,12 @@
 	Scenario* scenario[127];
 	int moveBG[16];
 	CGPoint chrID[82];
-	NSString* BGMname[29];
+	NSString* BGMname[34];
 	VName* vname[18];
 	EventList* eventList[15];	
 	NSString* itemName[23][2];
+	
+	bool musicShowData[34];
 
 	int msgCount;
 	Msg* msg[22050];
@@ -194,5 +196,9 @@
 - (void)setEventData:(int)idx :(int)data;
 - (int)getEventData:(int)idx;
 - (void)setEventShow:(int)eventIdx;
+
+- (void)resetMusicShow;
+- (void)setMusicShow:(int)idx;
+- (bool)getMusicShow:(int)idx;
 
 @end

@@ -19,6 +19,9 @@
 - (void)loadExtraFile;
 - (void)saveExtraFile;
 
+- (void)loadMusicFile;
+- (void)saveMusicFile;
+
 - (void)loadOptionFile;
 - (void)saveOptionFile;
 

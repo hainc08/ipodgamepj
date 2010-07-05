@@ -23,7 +23,7 @@
 	[SaveManager initManager];
 	[ViewManager initManager:window:viewController];
 	[application setStatusBarOrientation: UIInterfaceOrientationLandscapeRight animated:NO];
-
+	
 	[[ViewManager getInstance] changeView:@"GameLogoView"];
 }
 

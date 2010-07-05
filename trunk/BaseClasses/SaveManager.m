@@ -172,6 +172,75 @@ void writeInt(NSFileHandle* writeFile, int value)
 	[readFile closeFile];
 }
 
+- (void)saveMusicFile
+{
+	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
+																 NSDocumentDirectory, 
+																 NSUserDomainMask,
+																 YES
+																 ); 
+	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
+	NSString* saveFile = [NSString stringWithFormat: @"%@/music.dat", recordingDirectory];
+	
+	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+	if (writeFile == nil)
+	{
+		[[NSFileManager defaultManager] createFileAtPath:saveFile
+												contents:nil attributes:nil];
+		
+		writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+	}
+	
+	if (writeFile == nil)
+	{
+		NSLog(@"fail to open file");
+		return;
+	}
+	else
+	{
+		for (int i=0; i<34; ++i)
+		{
+			[[DataManager getInstance] setEventData:i :0];
+			writeInt(writeFile, [[DataManager getInstance] getEventData:i]);
+		}
+	}
+    
+	[writeFile closeFile];
+}
+
+- (void)loadMusicFile
+{
+	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
+																 NSDocumentDirectory, 
+																 NSUserDomainMask,
+																 YES
+																 ); 
+	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
+	NSString* saveFile = [NSString stringWithFormat: @"%@/music.dat", recordingDirectory];
+	
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
+	
+	if(readFile == nil)
+	{
+		for (int i=0; i<34; ++i)
+		{
+			[[DataManager getInstance] setMusicShow:false];
+		}
+		return;
+	}
+	
+	for (int i=0; i<34; ++i)
+	{
+		int temp = readInt(readFile);
+		if (temp != 0)
+		{
+			[[DataManager getInstance] setMusicShow:i];
+		}
+	}
+	
+	[readFile closeFile];
+}
+
 - (void)saveOptionFile
 {
 	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (

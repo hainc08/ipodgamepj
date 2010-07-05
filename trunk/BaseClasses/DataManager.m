@@ -1,4 +1,5 @@
 #import "DataManager.h"
+#import "SaveManager.h"
 #import <sys/time.h>
 
 //Tag정보와 Index정보 미리 읽어오기위한 부분
@@ -348,6 +349,7 @@ static DataManager *DataManagerInst;
 	DataManagerInst = [DataManager alloc];
 	[DataManagerInst setLoadingDone:false];
 	[DataManagerInst reset];
+	[DataManagerInst resetMusicShow];
 	
 // Tag, Index 프리로딩
 //	for (int i=0; i<1000000; ++i)
@@ -430,33 +432,34 @@ static DataManager *DataManagerInst;
 	moveBG[15] = 793;
 
 	BGMname[1] = @"プリンセス\rナイトメア";
-	BGMname[2] = @"愛すべき日?";
+	BGMname[2] = @"愛すべき日々";
 	BGMname[3] = @"百万回の朝食";
-	BGMname[4] = @"どうか??に";
+	BGMname[4] = @"どうか内緒に";
 	BGMname[5] = @"不吉な予兆";
 	BGMname[6] = @"高まる緊張";
 	BGMname[7] = @"クライマックス";
 	BGMname[8] = @"彷徨う思惑";
-	BGMname[9] = @"聖ロ?ザ?園";
-	BGMname[10] = @"ハロウィンで\r?の胸?ぎ！";
-	BGMname[11] = @"魔界のテ?マ";
+	BGMname[9] = @"聖ローザ学園";
+	BGMname[10] = @"ハロウィンで\r恋の胸騒ぎ！";
+	BGMname[11] = @"魔界のテーマ";
 	BGMname[12] = @"夕暮れピエロ";
 	BGMname[13] = @"スラップスティック";
-	BGMname[14] = @"?つきエンジェルの\r??話";
+	BGMname[14] = @"嘘つきエンジェルの\r内緒話";
 	BGMname[15] = @"誰にも言えない";
 	BGMname[16] = @"OP\r東京ジオラマ";
-	BGMname[17] = @"ED \r?夢の?君";
+	BGMname[17] = @"ED\r?夢の?君";
 	BGMname[18] = @"ラドウ\r千の?＋唯一の愛";
 	BGMname[19] = @"ドラクレア\r煉獄への警鐘";
 	BGMname[20] = @"フランケン\rイコ?ル";
 	BGMname[21] = @"犬飼\rお前だけのヒ?ロ?";
-	BGMname[22] = @"ヘルシング\rアレストゲ?ム";
+	BGMname[22] = @"ヘルシング\rアレストゲーム";
 	BGMname[23] = @"プリンス\r共犯者";
 	BGMname[24] = @"ファントム\r不可侵グランドオペラ";
 	BGMname[25] = @"メフィスト\r光を憎み、闇を抱くもの";
 	BGMname[26] = @"月光";
 	BGMname[27] = @"SonataⅠ\rAdagio";
 	BGMname[28] = @"SonataⅢ\rLargo";
+
 	//--------------여기까지 하드코딩--------------
 
 	char buffer[512];
@@ -1042,6 +1045,28 @@ static DataManager *DataManagerInst;
 	{
 		[eventList[i] setIsShowByIdx:eventIdx];
 	}
+}
+
+- (void)resetMusicShow
+{
+	for (int i=0; i>34; ++i)
+	{
+		musicShowData[i] = false;
+	}
+}
+
+- (void)setMusicShow:(int)idx
+{
+	if (musicShowData[idx] == false)
+	{
+		musicShowData[idx] = true;
+		[[SaveManager getInstance] saveMusicFile];
+	}
+}
+
+- (bool)getMusicShow:(int)idx
+{
+	return musicShowData[idx];
 }
 
 @end
