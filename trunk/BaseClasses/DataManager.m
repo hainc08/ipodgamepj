@@ -1053,6 +1053,9 @@ static DataManager *DataManagerInst;
 	{
 		musicShowData[i] = false;
 	}
+
+	//메인로고 배경음
+	musicShowData[10] = true;
 }
 
 - (void)setMusicShow:(int)idx
@@ -1067,6 +1070,11 @@ static DataManager *DataManagerInst;
 - (bool)getMusicShow:(int)idx
 {
 	return musicShowData[idx];
+}
+
+- (NSString*)getBGMname:(int)idx
+{
+	return BGMname[idx];
 }
 
 @end

@@ -131,7 +131,7 @@
 	Scenario* scenario[127];
 	int moveBG[16];
 	CGPoint chrID[82];
-	NSString* BGMname[34];
+	NSString* BGMname[29];
 	VName* vname[18];
 	EventList* eventList[15];	
 	NSString* itemName[23][2];
@@ -200,5 +200,7 @@
 - (void)resetMusicShow;
 - (void)setMusicShow:(int)idx;
 - (bool)getMusicShow:(int)idx;
+
+- (NSString*)getBGMname:(int)idx;
 
 @end

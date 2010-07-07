@@ -10,6 +10,7 @@
 	IBOutlet id stopButton;
 
 	UIButton* imageButton[16];
+	UILabel* buttonLabel[16];
 	
 	int curPage;
 }

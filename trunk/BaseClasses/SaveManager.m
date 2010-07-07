@@ -200,8 +200,10 @@ void writeInt(NSFileHandle* writeFile, int value)
 	{
 		for (int i=0; i<34; ++i)
 		{
-			[[DataManager getInstance] setEventData:i :0];
-			writeInt(writeFile, [[DataManager getInstance] getEventData:i]);
+			if ([[DataManager getInstance] getMusicShow:i])
+				writeInt(writeFile, 1);
+			else
+				writeInt(writeFile, 0);
 		}
 	}
     
@@ -222,10 +224,6 @@ void writeInt(NSFileHandle* writeFile, int value)
 	
 	if(readFile == nil)
 	{
-		for (int i=0; i<34; ++i)
-		{
-			[[DataManager getInstance] setMusicShow:false];
-		}
 		return;
 	}
 	
