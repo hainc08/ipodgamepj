@@ -53,7 +53,6 @@
 		[bgView setCenter:CGPointMake(240, 160)];
 		[self addSubview:bgView];
 		[self sendSubviewToBack:bgView];
-		
 
 		oldBgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 320)];
 		[oldBgView setCenter:CGPointMake(240, 160)];
@@ -61,10 +60,16 @@
 		[self sendSubviewToBack:oldBgView];
 		[oldBgView setAlpha:0.f];
 		
+		sceneView = (SceneView*)[[ViewManager getInstance] getInstView:@"SceneView"];
+		[self addSubview:sceneView];
+		[sceneView setAlpha:0];
 		
+		[self bringSubviewToFront:blackBoard];
+
 		isInit = true;
 	}
 	
+	isShowScene = false;
 	nowBgmIdx = 0;
 	scene = NULL;
 	curSceneId = [gParam startScene];
@@ -168,9 +173,27 @@
 
 - (void)update
 {
+	if (isShowScene)
+	{
+		if ([sceneView showEnd])
+		{
+			isShowScene = false;
+			[UIView beginAnimations:@"scene" context:NULL];
+			[UIView setAnimationDuration:0.2];
+			[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+			[sceneView setAlpha:0];
+			[UIView commitAnimations];
+			
+			[self willShow:0.4];
+		}
+		else
+		{
+			[sceneView update];
+		}
+	}
 	//전체적으로 페이드인.아웃을 만들면서 살짝 복잡해보이게 되었지만
 	//페이드인.아웃이 끝나고 다음 씬으로 넘어간다는게 일단의 기본적인 마인드
-	if (scene == NULL)
+	else if (scene == NULL)
 	{
 		scene = [[DataManager getInstance] getCurScene];
 
@@ -182,7 +205,7 @@
 			UIImage* img;
 
 			showOkTick = frameTick;
-
+			
 			//이미지 보여주고...
 			for (int i=0; i<4; ++i)
 			{
@@ -277,31 +300,23 @@
 			if (([oldChrView[0] image] != NULL)||([oldChrView[1] image] != NULL)||
 				([oldChrView[2] image] != NULL)||([oldChrView[3] image] != NULL)||([oldBgView image] != NULL))
 			{
-				[UIView beginAnimations:@"swap1" context:NULL];
-				[UIView setAnimationDuration:0.2];
-				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-				if ([oldChrView[0] image] != NULL) [oldChrView[0] setAlpha:0];
-				if ([oldChrView[1] image] != NULL) [oldChrView[1] setAlpha:0];
-				if ([oldChrView[2] image] != NULL) [oldChrView[2] setAlpha:0];
-				if ([oldChrView[3] image] != NULL) [oldChrView[3] setAlpha:0];
-				if ([oldBgView image] != NULL) [oldBgView setAlpha:0];
-				[UIView commitAnimations];
+				[self nowHide];
 			}
 			
-			//새로운 씬은 패이드 인
-			if (([chrView[0] image] != NULL)||([chrView[1] image] != NULL)||
-				([chrView[2] image] != NULL)||([chrView[3] image] != NULL)||([bgView image] != NULL))
+			isShowScene = [sceneView makeScene:scene];
+			if (isShowScene)
 			{
-				[UIView beginAnimations:@"swap2" context:NULL];
+				[UIView beginAnimations:@"scene" context:NULL];
 				[UIView setAnimationDuration:0.2];
 				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-				[UIView setAnimationDelay:0.1];
-				if ([chrView[0] image] != NULL) [chrView[0] setAlpha:1];
-				if ([chrView[1] image] != NULL) [chrView[1] setAlpha:1];
-				if ([chrView[2] image] != NULL) [chrView[2] setAlpha:1];
-				if ([chrView[3] image] != NULL) [chrView[3] setAlpha:1];
-				if ([bgView image] != NULL) [bgView setAlpha:1];
+				[sceneView setAlpha:1];
 				[UIView commitAnimations];
+			}
+			//새로운 씬은 패이드 인
+			else if (([chrView[0] image] != NULL)||([chrView[1] image] != NULL)||
+				([chrView[2] image] != NULL)||([chrView[3] image] != NULL)||([bgView image] != NULL))
+			{
+				[self willShow:0.2];
 			}
 			
 			switch ([scene sceneType])
@@ -363,6 +378,33 @@
 	if (showOkTick == frameTick) showOK = true;
 
 	[super update];
+}
+
+- (void)nowHide
+{
+	[UIView beginAnimations:@"swap1" context:NULL];
+	[UIView setAnimationDuration:0.2];
+	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	if ([oldChrView[0] image] != NULL) [oldChrView[0] setAlpha:0];
+	if ([oldChrView[1] image] != NULL) [oldChrView[1] setAlpha:0];
+	if ([oldChrView[2] image] != NULL) [oldChrView[2] setAlpha:0];
+	if ([oldChrView[3] image] != NULL) [oldChrView[3] setAlpha:0];
+	if ([oldBgView image] != NULL) [oldBgView setAlpha:0];
+	[UIView commitAnimations];
+}
+
+- (void)willShow:(float)delay
+{
+	[UIView beginAnimations:@"swap2" context:NULL];
+	[UIView setAnimationDuration:delay];
+	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	[UIView setAnimationDelay:0.1];
+	if ([chrView[0] image] != NULL) [chrView[0] setAlpha:1];
+	if ([chrView[1] image] != NULL) [chrView[1] setAlpha:1];
+	if ([chrView[2] image] != NULL) [chrView[2] setAlpha:1];
+	if ([chrView[3] image] != NULL) [chrView[3] setAlpha:1];
+	if ([bgView image] != NULL) [bgView setAlpha:1];
+	[UIView commitAnimations];
 }
 
 - (void)showMenu

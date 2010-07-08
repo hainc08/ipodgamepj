@@ -85,6 +85,8 @@
 	
 	int FXIdx;
 	bool FXrepeat;
+	
+	int subTitleIdx;
 }
 
 @property (readwrite) bool isLoaded;
@@ -97,6 +99,7 @@
 @property (readwrite) int preLoadBgmIdx;
 @property (readwrite) int FXIdx;
 @property (readwrite) bool FXrepeat;
+@property (readwrite) int subTitleIdx;
 
 - (bool)isLoadOk;
 

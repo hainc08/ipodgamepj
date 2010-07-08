@@ -550,6 +550,8 @@
 		845B793011E4981900852E73 /* exit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 845B792D11E4981900852E73 /* exit.jpg */; };
 		84703132118668D1005B623C /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84703131118668D1005B623C /* GameView.xib */; };
 		847031361186690E005B623C /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847031351186690E005B623C /* GameView.m */; };
+		8472B3FA11E584F200E20294 /* SceneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8472B3F911E584F200E20294 /* SceneView.xib */; };
+		8472B3FE11E5852F00E20294 /* SceneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8472B3FD11E5852F00E20294 /* SceneView.m */; };
 		847734B011AD806D0082522D /* Aev_001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 847733FA11AD806D0082522D /* Aev_001.jpg */; };
 		847734B111AD806D0082522D /* Aev_002.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 847733FB11AD806D0082522D /* Aev_002.jpg */; };
 		847734B211AD806D0082522D /* Aev_003.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 847733FC11AD806D0082522D /* Aev_003.jpg */; };
@@ -2171,6 +2173,9 @@
 		84703131118668D1005B623C /* GameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
 		847031341186690E005B623C /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameView.h; path = ViewClasses/GameView.h; sourceTree = SOURCE_ROOT; };
 		847031351186690E005B623C /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameView.m; path = ViewClasses/GameView.m; sourceTree = SOURCE_ROOT; };
+		8472B3F911E584F200E20294 /* SceneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneView.xib; sourceTree = "<group>"; };
+		8472B3FC11E5852F00E20294 /* SceneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneView.h; path = ViewClasses/SceneView.h; sourceTree = "<group>"; };
+		8472B3FD11E5852F00E20294 /* SceneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneView.m; path = ViewClasses/SceneView.m; sourceTree = "<group>"; };
 		847733FA11AD806D0082522D /* Aev_001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aev_001.jpg; sourceTree = "<group>"; };
 		847733FB11AD806D0082522D /* Aev_002.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aev_002.jpg; sourceTree = "<group>"; };
 		847733FC11AD806D0082522D /* Aev_003.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Aev_003.jpg; sourceTree = "<group>"; };
@@ -3494,6 +3499,7 @@
 		56A54B6C116EF8DE0076E6BA /* MenuXib */ = {
 			isa = PBXGroup;
 			children = (
+				8472B3F911E584F200E20294 /* SceneView.xib */,
 				8450814011BBE2E000BA8CFB /* LoadSaveBar.xib */,
 				8450814111BBE2E000BA8CFB /* SaveView.xib */,
 				84703131118668D1005B623C /* GameView.xib */,
@@ -5054,6 +5060,8 @@
 		84E4EFC911203E1B00590373 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8472B3FC11E5852F00E20294 /* SceneView.h */,
+				8472B3FD11E5852F00E20294 /* SceneView.m */,
 				8450814A11BBE4B000BA8CFB /* SaveView.h */,
 				8450814B11BBE4B000BA8CFB /* SaveView.m */,
 				849F561811C90EFB005D2449 /* GameMenu.m */,
@@ -6687,6 +6695,7 @@
 				845B792E11E4981900852E73 /* title.jpg in Resources */,
 				845B792F11E4981900852E73 /* title2.jpg in Resources */,
 				845B793011E4981900852E73 /* exit.jpg in Resources */,
+				8472B3FA11E584F200E20294 /* SceneView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6715,6 +6724,7 @@
 				849183B311D8DBF800D649E8 /* ConfigurationView.m in Sources */,
 				8426B88211DDDBA300A43C57 /* SoundManager.m in Sources */,
 				8412F61911E0B82A00358D84 /* MusicView.m in Sources */,
+				8472B3FE11E5852F00E20294 /* SceneView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

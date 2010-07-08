@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "BaseView.h"
+#import "SceneView.h"
 #import "DataManager.h"
 
 @interface GameParam : NSObject {
@@ -11,6 +12,9 @@
 @end
 
 @interface GameView : BaseView {
+	SceneView* sceneView;
+	bool isShowScene;
+	
 	UIImageView* chrView[4];
 	UIImageView* bgView;
 
@@ -51,7 +55,7 @@
 	IBOutlet id selectButton1;
 	IBOutlet id selectButton2;
 	IBOutlet id selectButton3;
-	
+
 	UIView* gameMenu;
 	
 	int nowBgmIdx;
@@ -60,5 +64,8 @@
 - (IBAction)ButtonClick:(id)sender;
 - (void)showMenu;
 - (void)update;
+
+- (void)nowHide;
+- (void)willShow:(float)delay;
 
 @end

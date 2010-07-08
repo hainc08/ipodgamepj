@@ -213,6 +213,7 @@ static DataManager *DataManagerInst;
 @synthesize preLoadBgmIdx;
 @synthesize FXIdx;
 @synthesize FXrepeat;
+@synthesize subTitleIdx;
 
 - (bool)isLoadOk
 {
@@ -231,6 +232,7 @@ static DataManager *DataManagerInst;
 	
 	FXIdx = -1;
 	preLoadBgmIdx = 0;
+	subTitleIdx = -1;
 }
 
 - (void)setChar:(int)idx img:(UIImage*)chr chrId:(int)chrId
@@ -751,6 +753,17 @@ static DataManager *DataManagerInst;
 			if ([preloadScene[j] sceneId] != willSceneId)
 			{
 				[preloadScene[j] setIsLoaded:false];
+				
+				[preloadScene[j] setSubTitleIdx:-1];
+				for (int k=1; k<91; ++k)
+				{
+					if (msgIdx[k] > willSceneId) break;
+					if (msgIdx[k] == willSceneId)
+					{
+						[preloadScene[j] setSubTitleIdx:k];
+						break;
+					}
+				}
 
 				int chrId;
 

@@ -39,7 +39,7 @@
 					<object class="IBUIImageView" id="447124829">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{91, 197}, {137, 25}}</string>
+						<string key="NSFrame">{{111, 197}, {137, 25}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -53,7 +53,7 @@
 					<object class="IBUIImageView" id="977804510">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{63, 221}, {417, 99}}</string>
+						<string key="NSFrame">{{83, 221}, {417, 99}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -67,7 +67,7 @@
 					<object class="IBUILabel" id="328248317">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{102, 236}, {340, 71}}</string>
+						<string key="NSFrame">{{122, 236}, {340, 71}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -92,7 +92,7 @@
 					<object class="IBUILabel" id="457235248">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{100, 236}, {340, 71}}</string>
+						<string key="NSFrame">{{120, 236}, {340, 71}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -110,7 +110,7 @@
 					<object class="IBUILabel" id="585546747">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{101, 237}, {340, 71}}</string>
+						<string key="NSFrame">{{121, 237}, {340, 71}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -137,7 +137,7 @@
 					<object class="IBUILabel" id="1012968541">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{99, 198}, {120, 27}}</string>
+						<string key="NSFrame">{{119, 198}, {120, 27}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -155,7 +155,7 @@
 					<object class="IBUILabel" id="710848373">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{99, 196}, {120, 27}}</string>
+						<string key="NSFrame">{{119, 196}, {120, 27}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -173,7 +173,7 @@
 					<object class="IBUILabel" id="664862475">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{100, 197}, {120, 27}}</string>
+						<string key="NSFrame">{{120, 197}, {120, 27}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -688,8 +688,6 @@
 							<reference ref="227237488"/>
 							<reference ref="137256979"/>
 							<reference ref="1031331646"/>
-							<reference ref="281874797"/>
-							<reference ref="977804510"/>
 							<reference ref="328248317"/>
 							<reference ref="457235248"/>
 							<reference ref="585546747"/>
@@ -698,7 +696,9 @@
 							<reference ref="710848373"/>
 							<reference ref="664862475"/>
 							<reference ref="699885363"/>
+							<reference ref="281874797"/>
 							<reference ref="566087698"/>
+							<reference ref="977804510"/>
 						</object>
 						<reference key="parent" ref="58880970"/>
 					</object>
@@ -901,7 +901,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">116</int>
+			<int key="maxID">120</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

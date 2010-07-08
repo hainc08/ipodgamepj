@@ -34,7 +34,7 @@ static SoundManager *SoundManagerInst;
 
 -(void)playBGM:(NSString*)name
 {
-//	return;
+	return;
 
 	// make file URL
 	NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
