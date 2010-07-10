@@ -26,6 +26,7 @@
 {
 	if ([scene subTitleIdx] != -1)
 	{
+		[subTitle setImage:[UIImage imageNamed:[NSString stringWithFormat:@"subtitle_%d.png", [scene subTitleIdx]]]];
 		showOK = false;
 		showEnd = false;
 		waitTick = 5;

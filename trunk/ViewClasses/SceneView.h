@@ -5,6 +5,9 @@
 	bool showOK;
 	bool showEnd;
 	int waitTick;
+
+	IBOutlet id backImg;
+	IBOutlet id subTitle;
 }
 
 @property (readonly) bool showEnd;

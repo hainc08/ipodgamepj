@@ -347,7 +347,7 @@
 					<object class="IBUIButton" id="699885363">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{398, 0}, {82, 104}}</string>
+						<string key="NSFrame">{{423, 0}, {57, 73}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -695,10 +695,10 @@
 							<reference ref="1012968541"/>
 							<reference ref="710848373"/>
 							<reference ref="664862475"/>
-							<reference ref="699885363"/>
 							<reference ref="281874797"/>
-							<reference ref="566087698"/>
 							<reference ref="977804510"/>
+							<reference ref="566087698"/>
+							<reference ref="699885363"/>
 						</object>
 						<reference key="parent" ref="58880970"/>
 					</object>
