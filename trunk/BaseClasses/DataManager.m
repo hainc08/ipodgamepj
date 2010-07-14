@@ -337,6 +337,12 @@ static DataManager *DataManagerInst;
 	flagStr[flagStrCount] = str;
 	++flagStrCount;
 }
+
+- (NSString*)getFlagStr:(int)idx
+{
+	return flagStr[idx];
+}
+
 @end
 
 @implementation DataManager

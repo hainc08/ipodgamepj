@@ -47,6 +47,12 @@ void writeInt(NSFileHandle* writeFile, int value)
 {
 	memset(flag, 0x00, 20);
 	memset(flag2, 0x00, 30);
+	
+	for (int i=0; i<28; ++i)
+	{
+		saveFlag[i] = nil;
+		saveFlag2[i] = nil;
+	}
 }
 
 - (void)setFlag:(int)idx
@@ -77,55 +83,43 @@ void writeInt(NSFileHandle* writeFile, int value)
 	return (int)flag2[idx];
 }
 
+- (void)setFlagData:(int)idx
+{
+	memcpy(flag, saveFlag[idx], 20);
+	memcpy(flag2, saveFlag2[idx], 30);
+}
+
 - (void)saveSaveFile
 {
-	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
-																 NSDocumentDirectory, 
-																 NSUserDomainMask,
-																 YES
-																 ); 
-	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/save.dat", recordingDirectory];
+	NSString* filePath = [NSString stringWithFormat: @"%@/save.txt", [[NSBundle mainBundle] resourcePath]];
+	FILE *hFile = fopen([filePath UTF8String] , "wb+");
 
-	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
-	if (writeFile == nil)
+	if ( hFile == nil )
 	{
-		[[NSFileManager defaultManager] createFileAtPath:saveFile
-												contents:nil attributes:nil];
-		
-		writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
-	}
-	
-	if (writeFile == nil)
-	{
-		NSLog(@"fail to open file");
+		NSLog(@"write file make error");
 		return;
 	}
-	else
+
+	for (int i=0; i<28; ++i)
 	{
-		for (int i=0; i<28; ++i)
+		fwrite(&saveData[i], 1, sizeof(int), hFile);
+		if (saveData[i] > 0)
 		{
-			writeInt(writeFile, saveData[i]);
-			if (saveData[i] > 0) writeInt(writeFile, saveDate[i]);
+			fwrite(&saveDate[i], 1, sizeof(int), hFile);
+			fwrite(saveFlag[i], 20, sizeof(char), hFile);
+			fwrite(saveFlag2[i], 30, sizeof(char), hFile);
 		}
 	}
     
-	[writeFile closeFile];
+	fclose(hFile);
 }
 
 - (void)loadSaveFile
 {
-	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
-																 NSDocumentDirectory, 
-																 NSUserDomainMask,
-																 YES
-																 ); 
-	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/save.dat", recordingDirectory];
+	NSString* filePath = [NSString stringWithFormat: @"%@/save.txt", [[NSBundle mainBundle] resourcePath]];
+	FILE *hFile = fopen([filePath UTF8String] , "rb");
 	
-	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
-	
-	if(readFile == nil)
+	if ( hFile == nil )
 	{
 		for (int i=0; i<28; ++i)
 		{
@@ -136,11 +130,16 @@ void writeInt(NSFileHandle* writeFile, int value)
 	
 	for (int i=0; i<28; ++i)
 	{
-		saveData[i] = readInt(readFile);
-		if (saveData[i] > 0) saveDate[i] = readInt(readFile);
+		fread(&saveData[i], 1, sizeof(int), hFile);
+		if (saveData[i] > 0)
+		{
+			fread(&saveDate[i], 1, sizeof(int), hFile);
+			fread(saveFlag[i], 20, sizeof(char), hFile);
+			fread(saveFlag2[i], 30, sizeof(char), hFile);
+		}
 	}
-	
-	[readFile closeFile];	
+    
+	fclose(hFile);
 }
 
 - (void)saveExtraFile
@@ -348,6 +347,10 @@ void writeInt(NSFileHandle* writeFile, int value)
 {
 	saveData[idx] = data;
 	saveDate[idx] = [[NSDate date] timeIntervalSince1970];
+	if (saveFlag[idx] == nil) saveFlag[idx] = (char*)malloc(20);
+	if (saveFlag2[idx] == nil) saveFlag2[idx] = (char*)malloc(30);
+	memcpy(saveFlag[idx], flag, 20);
+	memcpy(saveFlag2[idx], flag2, 30);
 	
 	[self saveSaveFile];
 }

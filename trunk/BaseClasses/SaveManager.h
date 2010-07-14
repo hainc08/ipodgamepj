@@ -4,6 +4,8 @@
 
 	int saveData[28];
 	int saveDate[28];
+	char* saveFlag[28];
+	char* saveFlag2[28];
 	
 	char flag[20];
 	char flag2[30];
@@ -21,6 +23,7 @@
 - (bool)getFlag:(int)idx;
 - (void)setFlag2:(int)idx data:(int)data;
 - (int)getFlag2:(int)idx;
+- (void)setFlagData:(int)idx;
 
 - (void)loadSaveFile;
 - (void)saveSaveFile;

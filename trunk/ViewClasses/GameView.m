@@ -126,23 +126,54 @@
 		if ( sender == menuButton )
 		{
 			[self showMenu];
+		}
+
+		bool isMoved = false;
+		for (int i=0; i<[scene flagStrCount]; ++i)
+		{
+			NSArray *listItems = [[scene getFlagStr:i] componentsSeparatedByString:@"_"];
+			if ([listItems count] < 2) continue;
 			
-//			동영상플레이
-//			SerihuBoard* sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
-//			[sBoard setTransform:CGAffineTransformMake(0, 1, -1, 0, 0, 0)];
-//			[sBoard setCenter:CGPointMake(60, 300)];
-//
-//			[self playAnime:@"sample_iPod"];
-//			
-//			NSArray *windows = [[UIApplication sharedApplication] windows];
-//			if ([windows count] > 1)
-//			{
-//				// Locate the movie player window
-//				UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
-//				// Add our overlay view to the movie player's subviews so it is 
-//				// displayed above it.
-//				[moviePlayerWindow addSubview:sBoard];
-//			}
+			NSString* item0 = (NSString*)[listItems objectAtIndex:0];
+			int idx = [(NSString*)[listItems objectAtIndex:1] intValue];
+			int data = 1;
+			if ([listItems count] > 2) data = [(NSString*)[listItems objectAtIndex:2] intValue];
+
+			if ([item0 compare:@"fgE"] == NSOrderedSame)
+				[[SaveManager getInstance] setFlag:idx];
+			else if ([item0 compare:@"fgE2"] == NSOrderedSame)
+				[[SaveManager getInstance] setFlag2:idx data:data];
+
+			if (isMoved == false)
+			{
+				if ([item0 compare:@"fgS"] == NSOrderedSame)
+				{
+					if ([[SaveManager getInstance] getFlag:idx])
+					{
+						curSceneId = [[DataManager getInstance] getTagInfo:data];
+						[[DataManager getInstance] setCurIdx:curSceneId];
+						isMoved = true;
+					}
+				}
+				else if ([item0 compare:@"fgS2"] == NSOrderedSame)
+				{
+					if ([[SaveManager getInstance] getFlag2:idx] == data)
+					{
+						int tag = [(NSString*)[listItems objectAtIndex:3] intValue];
+						
+						curSceneId = [[DataManager getInstance] getTagInfo:tag];
+						[[DataManager getInstance] setCurIdx:curSceneId];
+						isMoved = true;
+					}
+				}
+			}
+		}
+
+		if (isMoved)
+		{
+			showOK = false;
+			scene = NULL;
+			return;
 		}
 		
 		switch ([scene sceneType])
@@ -371,7 +402,26 @@
 						[UIView commitAnimations];
 						break;
 					case 2:
+					{
+						//동영상플레이
+						SerihuBoard* sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
+						[sBoard setTransform:CGAffineTransformMake(0, 1, -1, 0, 0, 0)];
+						[sBoard setCenter:CGPointMake(60, 300)];
+						
+						//여기는 적당한 파일이름을 정해주자.
+						[self playAnime:@"sample_iPod"];
+						
+						NSArray *windows = [[UIApplication sharedApplication] windows];
+						if ([windows count] > 1)
+						{
+							// Locate the movie player window
+							UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
+							// Add our overlay view to the movie player's subviews so it is 
+							// displayed above it.
+							[moviePlayerWindow addSubview:sBoard];
+						}
 						break;
+					}
 				}
 			}
 

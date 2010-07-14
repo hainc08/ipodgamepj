@@ -133,6 +133,7 @@
 - (int)getSelectTag:(int)idx;
 
 - (void)addFlagStr:(NSString*)str;
+- (NSString*)getFlagStr:(int)idx;
 
 @end
 
