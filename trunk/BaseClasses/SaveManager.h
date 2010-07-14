@@ -4,6 +4,9 @@
 
 	int saveData[28];
 	int saveDate[28];
+	
+	char flag[20];
+	char flag2[30];
 }
 
 @property (readonly) int opt1;
@@ -12,6 +15,12 @@
 + (SaveManager*)getInstance;
 + (void)initManager;
 - (void)closeManager;
+
+- (void)resetFlag;
+- (void)setFlag:(int)idx;
+- (bool)getFlag:(int)idx;
+- (void)setFlag2:(int)idx data:(int)data;
+- (int)getFlag2:(int)idx;
 
 - (void)loadSaveFile;
 - (void)saveSaveFile;

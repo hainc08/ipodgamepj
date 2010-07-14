@@ -79,7 +79,10 @@
 
 	NSString* selectStr[3];
 	int selectTag[4];
-	
+
+	int flagStrCount;
+	NSString* flagStr[10];
+
 	int nextChapter;
 	int endNum;
 	
@@ -87,6 +90,8 @@
 	bool FXrepeat;
 	
 	int subTitleIdx;
+	
+	int animeType;
 }
 
 @property (readwrite) bool isLoaded;
@@ -100,6 +105,8 @@
 @property (readwrite) int FXIdx;
 @property (readwrite) bool FXrepeat;
 @property (readwrite) int subTitleIdx;
+@property (readwrite) int flagStrCount;
+@property (readwrite) int animeType;
 
 - (bool)isLoadOk;
 
@@ -124,6 +131,9 @@
 
 - (void)setSelectTag:(int)tag1 :(int)tag2 :(int)tag3 :(int)tag4;
 - (int)getSelectTag:(int)idx;
+
+- (void)addFlagStr:(NSString*)str;
+
 @end
 
 @interface DataManager : NSObject

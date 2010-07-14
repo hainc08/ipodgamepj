@@ -11,6 +11,8 @@
 
 @implementation GameView
 
+@synthesize player;
+
 - (id)initWithCoder:(NSCoder *)coder {
 	self = [super initWithCoder:coder];
 	
@@ -21,6 +23,36 @@
 	self = [super initWithFrame:frame];
 
 	return self;
+}
+
+- (void)playVideoWithURL:(NSURL *)url showControls:(BOOL)showControls {
+    if (!player) {
+        player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+		
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishPlaying:) name:MPMoviePlayerPlaybackDidFinishNotification object:player];
+		
+        if (!showControls) {
+            player.scalingMode = MPMovieScalingModeAspectFill;
+            player.movieControlMode = MPMovieControlModeHidden;
+        }
+		
+        [player play];
+    }
+}
+
+- (IBAction)playAnime:(NSString*)name {
+    NSString *moviePath = [[NSBundle mainBundle] pathForResource:name ofType:@"m4v"];
+    NSURL *url = [NSURL fileURLWithPath:moviePath];
+	
+    [self playVideoWithURL:url showControls:NO];
+}
+
+- (void)didFinishPlaying:(NSNotification *)notification {
+    if (player == [notification object]) {   
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
+        [player release];
+        player = nil;
+    }
 }
 
 - (void)reset:(NSObject*)param
@@ -46,6 +78,10 @@
 			[oldChrView[i] setAlpha:0.f];
 		}
 
+		serihuBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
+		[serihuBoard setCenter:CGPointMake(300, 260)];
+		[self addSubview:serihuBoard];
+		
 		[self bringSubviewToFront:oldChrView[3]];
 		[self bringSubviewToFront:chrView[3]];
 
@@ -90,6 +126,23 @@
 		if ( sender == menuButton )
 		{
 			[self showMenu];
+			
+//			동영상플레이
+//			SerihuBoard* sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
+//			[sBoard setTransform:CGAffineTransformMake(0, 1, -1, 0, 0, 0)];
+//			[sBoard setCenter:CGPointMake(60, 300)];
+//
+//			[self playAnime:@"sample_iPod"];
+//			
+//			NSArray *windows = [[UIApplication sharedApplication] windows];
+//			if ([windows count] > 1)
+//			{
+//				// Locate the movie player window
+//				UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
+//				// Add our overlay view to the movie player's subviews so it is 
+//				// displayed above it.
+//				[moviePlayerWindow addSubview:sBoard];
+//			}
 		}
 		
 		switch ([scene sceneType])
@@ -282,7 +335,10 @@
 			img = [scene getBg];
 			if ([bgView image] != img)
 			{
-				[oldBgView setImage:[bgView image]];
+				UIImageView* tempBGView = oldBgView;
+				oldBgView = bgView;
+				bgView = tempBGView;
+
 				[oldBgView setAlpha:1.f];
 				[bgView setImage:img];
 				[bgView setAlpha:0.f];
@@ -293,7 +349,30 @@
 					[[SaveManager getInstance] saveExtraFile];
 				}
 
+				[bgView setFrame:CGRectMake(0, 0, [img size].width, [img size].height)];
+				
 				showOkTick = frameTick + (0.3 * framePerSec);
+
+				switch ([scene animeType])
+				{
+					case 0:
+						[bgView setCenter:CGPointMake(240, 160)];
+						break;
+					case 1:
+						showOkTick = frameTick + (3.0 * framePerSec);
+
+						[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
+
+						[UIView beginAnimations:@"anime" context:NULL];
+						[UIView setAnimationDuration:2];
+						[UIView setAnimationDelay:1];
+						[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+						[bgView setCenter:CGPointMake(240, (int)([img size].height / 2) - 20)];
+						[UIView commitAnimations];
+						break;
+					case 2:
+						break;
+				}
 			}
 
 			//지난 씬은 패이드 아웃
@@ -353,20 +432,7 @@
 					break;
 			}
 			
-			NSString* str = [scene getChara];
-			
-			if ([str length] == 0) [nameBoard setAlpha:0];
-			else [nameBoard setAlpha:1];
-
-			[charaLabel setText:str];
-			[charaLabel2 setText:str];
-			[charaLabel3 setText:str];
-
-			str = [scene getSerihu];
-
-			[serihuLabel setText:str];
-			[serihuLabel2 setText:str];
-			[serihuLabel3 setText:str];
+			[serihuBoard setSerihu:[scene getChara] serihu:[scene getSerihu]];
 			[debugLabel setText:[[DataManager getInstance] getSceneIdxStr]];
 		}
 		else

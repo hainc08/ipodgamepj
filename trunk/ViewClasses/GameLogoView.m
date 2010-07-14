@@ -1,5 +1,6 @@
 #import "GameLogoView.h"
 #import "ViewManager.h"
+#import "SoundManager.h"
 
 @implementation GameLogoView
 
@@ -92,6 +93,8 @@
 
 		[UIView commitAnimations];
 	}
+	
+	[[SoundManager getInstance] playBGM:@"logo"];
 }
 
 - (void)update

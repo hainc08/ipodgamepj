@@ -1,5 +1,7 @@
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "BaseView.h"
+#import "SerihuBoard.h"
 #import "SceneView.h"
 #import "DataManager.h"
 
@@ -12,6 +14,9 @@
 @end
 
 @interface GameView : BaseView {
+	SerihuBoard* serihuBoard;
+    MPMoviePlayerController *player;
+
 	SceneView* sceneView;
 	bool isShowScene;
 	
@@ -24,7 +29,6 @@
 	IBOutlet id blackBoard;
 	
 	IBOutlet id board;
-	IBOutlet id nameBoard;
 
 	IBOutlet id next;
 	Scene* scene;
@@ -35,14 +39,6 @@
 	
 	IBOutlet id menuButton;
 	IBOutlet id debugLabel;
-
-	IBOutlet id serihuLabel;
-	IBOutlet id serihuLabel2;
-	IBOutlet id serihuLabel3;
-
-	IBOutlet id charaLabel;
-	IBOutlet id charaLabel2;
-	IBOutlet id charaLabel3;
 
 	IBOutlet id selectLabel1;
 	IBOutlet id selectLabel2;
@@ -60,6 +56,10 @@
 	
 	int nowBgmIdx;
 }
+
+@property (nonatomic, retain) MPMoviePlayerController *player;
+
+- (IBAction)playAnime:(NSString*)name;
 
 - (IBAction)ButtonClick:(id)sender;
 - (void)showMenu;

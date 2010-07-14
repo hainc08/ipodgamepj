@@ -35,11 +35,46 @@ void writeInt(NSFileHandle* writeFile, int value)
 	SaveManagerInst = [SaveManager alloc];
 	[SaveManagerInst loadSaveFile];
 	[SaveManagerInst loadOptionFile];
+	[SaveManagerInst resetFlag];
 }
 
 - (void)closeManager
 {
 
+}
+
+- (void)resetFlag
+{
+	memset(flag, 0x00, 20);
+	memset(flag2, 0x00, 30);
+}
+
+- (void)setFlag:(int)idx
+{
+	if (idx > 500) idx -= 400;
+	int i = (int)(idx / 8);
+	int j = idx % 8;
+	flag[i] |= (0x01 << j);
+}
+
+- (bool)getFlag:(int)idx
+{
+	if (idx > 500) idx -= 400;
+	int i = (int)(idx / 8);
+	int j = idx % 8;
+	return ((flag[i] & (0x01 << j)) != 0x00);
+}
+
+- (void)setFlag2:(int)idx data:(int)data
+{
+	idx -= 400;
+	flag2[idx] = (char)data;
+}
+
+- (int)getFlag2:(int)idx
+{
+	idx -= 400;
+	return (int)flag2[idx];
 }
 
 - (void)saveSaveFile

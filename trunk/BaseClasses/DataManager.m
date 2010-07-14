@@ -214,6 +214,8 @@ static DataManager *DataManagerInst;
 @synthesize FXIdx;
 @synthesize FXrepeat;
 @synthesize subTitleIdx;
+@synthesize flagStrCount;
+@synthesize animeType;
 
 - (bool)isLoadOk
 {
@@ -233,6 +235,14 @@ static DataManager *DataManagerInst;
 	FXIdx = -1;
 	preLoadBgmIdx = 0;
 	subTitleIdx = -1;
+
+	for (int i=0; i<flagStrCount; ++i)
+	{
+		[flagStr[i] release];
+	}
+	
+	flagStrCount = 0;
+	animeType = 0;
 }
 
 - (void)setChar:(int)idx img:(UIImage*)chr chrId:(int)chrId
@@ -322,6 +332,11 @@ static DataManager *DataManagerInst;
 	return selectTag[idx];
 }
 
+- (void)addFlagStr:(NSString*)str
+{
+	flagStr[flagStrCount] = str;
+	++flagStrCount;
+}
 @end
 
 @implementation DataManager
@@ -388,6 +403,7 @@ static DataManager *DataManagerInst;
 	for (int i=0; i<10; ++i)
 	{
 		preloadScene[i] = [Scene alloc];
+		[preloadScene[i] setFlagStrCount:0];
 	}
 }
 
@@ -433,34 +449,34 @@ static DataManager *DataManagerInst;
 	moveBG[15] = 963;
 	moveBG[15] = 793;
 
-	BGMname[1] = "プリンセス\rナイトメア";
-	BGMname[2] = "愛すべき日々";
-	BGMname[3] = "百万回の朝食";
-	BGMname[4] = "どうか内緒に";
-	BGMname[5] = "不吉な予兆";
-	BGMname[6] = "高まる緊張";
-	BGMname[7] = "クライマックス";
-	BGMname[8] = "彷徨う思惑";
-	BGMname[9] = "聖ローザ学園";
-	BGMname[10] = "ハロウィンで\r恋の胸騒ぎ！";
-	BGMname[11] = "魔界のテーマ";
-	BGMname[12] = "夕暮れピエロ";
-	BGMname[13] = "スラップスティック";
-	BGMname[14] = "嘘つきエンジェルの\r内緒話";
-	BGMname[15] = "誰にも言えない";
-	BGMname[16] = "OP\r東京ジオラマ";
-	BGMname[17] = "ED \r悪夢の姫君";
-	BGMname[18] = "ラドウ\r千の嘘＋唯一の愛";
-	BGMname[19] = "ドラクレア\r煉獄への警鐘";
-	BGMname[20] = "フランケン\rイコール";
-	BGMname[21] = "犬飼\rお前だけのヒーロー";
-	BGMname[22] = "ヘルシング\rアレストゲーム";
-	BGMname[23] = "プリンス\r共犯者";
-	BGMname[24] = "ファントム\r不可侵グランドオペラ";
-	BGMname[25] = "メフィスト\r光を憎み、闇を抱くもの";
-	BGMname[26] = "月光";
-	BGMname[27] = "SonataⅠ\rAdagio";
-	BGMname[28] = "SonataⅢ\rLargo";
+	BGMname[1] = @"プリンセス\rナイトメア";
+	BGMname[2] = @"愛すべき日々";
+	BGMname[3] = @"百万回の朝食";
+	BGMname[4] = @"どうか内緒に";
+	BGMname[5] = @"不吉な予兆";
+	BGMname[6] = @"高まる緊張";
+	BGMname[7] = @"クライマックス";
+	BGMname[8] = @"彷徨う思惑";
+	BGMname[9] = @"聖ローザ学園";
+	BGMname[10] = @"ハロウィンで\r恋の胸騒ぎ！";
+	BGMname[11] = @"魔界のテーマ";
+	BGMname[12] = @"夕暮れピエロ";
+	BGMname[13] = @"スラップスティック";
+	BGMname[14] = @"嘘つきエンジェルの\r内緒話";
+	BGMname[15] = @"誰にも言えない";
+	BGMname[16] = @"OP\r東京ジオラマ";
+	BGMname[17] = @"ED \r悪夢の姫君";
+	BGMname[18] = @"ラドウ\r千の嘘＋唯一の愛";
+	BGMname[19] = @"ドラクレア\r煉獄への警鐘";
+	BGMname[20] = @"フランケン\rイコール";
+	BGMname[21] = @"犬飼\rお前だけのヒーロー";
+	BGMname[22] = @"ヘルシング\rアレストゲーム";
+	BGMname[23] = @"プリンス\r共犯者";
+	BGMname[24] = @"ファントム\r不可侵グランドオペラ";
+	BGMname[25] = @"メフィスト\r光を憎み、闇を抱くもの";
+	BGMname[26] = @"月光";
+	BGMname[27] = @"SonataⅠ\rAdagio";
+	BGMname[28] = @"SonataⅢ\rLargo";
 	
 	//--------------여기까지 하드코딩--------------
 
@@ -907,6 +923,14 @@ static DataManager *DataManagerInst;
 
 					if (optionStr != nil)
 					{
+						if ([optionStr compare:@"anime"] == NSOrderedSame)
+						{
+							int temp = [msg[willSceneId] getIntVal:5] - 500;
+							if (temp < 400) [preloadScene[j] setAnimeType:1];
+							else [preloadScene[j] setAnimeType:2];
+							continue;
+						}
+						
 						NSArray *listItems = [optionStr componentsSeparatedByString:@"_"];
 						if ([listItems count] < 2) continue;
 						
@@ -930,9 +954,12 @@ static DataManager *DataManagerInst;
 							fxIdx = [item1 intValue];
 							[preloadScene[j] setFXrepeat:true];
 						}
-						else if ([item0 compare:@"fgE"] == NSOrderedSame)
+						else if (([item0 compare:@"fgE"] == NSOrderedSame)||
+								([item0 compare:@"fgE2"] == NSOrderedSame)||
+								([item0 compare:@"fgS"] == NSOrderedSame)||
+								([item0 compare:@"fgS2"] == NSOrderedSame))
 						{
-//뭐하라는 거지?
+							[preloadScene[j] addFlagStr:optionStr];
 						}
 					}
 				}

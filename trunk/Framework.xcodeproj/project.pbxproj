@@ -189,6 +189,8 @@
 		8425017F11C7755F0085E69E /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 8425017D11C7755F0085E69E /* exit.png */; };
 		8426B88211DDDBA300A43C57 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426B88111DDDBA300A43C57 /* SoundManager.m */; };
 		8435964211DC400A00BA1B8D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8435964111DC400A00BA1B8D /* AVFoundation.framework */; };
+		8442F68A11EADD29000BCAAE /* SerihuBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 8442F68911EADD29000BCAAE /* SerihuBoard.m */; };
+		8442F6A811EAE0A7000BCAAE /* SerihuBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8442F6A711EAE0A7000BCAAE /* SerihuBoard.xib */; };
 		8444BC3711866B21000B9C21 /* Achr_020.png in Resources */ = {isa = PBXBuildFile; fileRef = 8444BB6811866B21000B9C21 /* Achr_020.png */; };
 		8444BC3811866B21000B9C21 /* Achr_021.png in Resources */ = {isa = PBXBuildFile; fileRef = 8444BB6911866B21000B9C21 /* Achr_021.png */; };
 		8444BC3911866B21000B9C21 /* Achr_022.png in Resources */ = {isa = PBXBuildFile; fileRef = 8444BB6A11866B21000B9C21 /* Achr_022.png */; };
@@ -588,6 +590,7 @@
 		845B792E11E4981900852E73 /* title.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 845B792B11E4981900852E73 /* title.jpg */; };
 		845B792F11E4981900852E73 /* title2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 845B792C11E4981900852E73 /* title2.jpg */; };
 		845B793011E4981900852E73 /* exit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 845B792D11E4981900852E73 /* exit.jpg */; };
+		846DADB311E99A55000BEC64 /* logo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 846DADB211E99A55000BEC64 /* logo.mp3 */; };
 		84703132118668D1005B623C /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84703131118668D1005B623C /* GameView.xib */; };
 		847031361186690E005B623C /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847031351186690E005B623C /* GameView.m */; };
 		8472B3FA11E584F200E20294 /* SceneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8472B3F911E584F200E20294 /* SceneView.xib */; };
@@ -807,6 +810,8 @@
 		847ACF1111DDCF7000C873EF /* Abgm_32-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 847ACEF111DDCF7000C873EF /* Abgm_32-1.mp3 */; };
 		847ACF1211DDCF7000C873EF /* Abgm_33-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 847ACEF211DDCF7000C873EF /* Abgm_33-1.mp3 */; };
 		847ACF1311DDCF7000C873EF /* Abgm_34-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 847ACEF311DDCF7000C873EF /* Abgm_34-1.mp3 */; };
+		847B8F2F11EA8A3300A167E7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847B8F2E11EA8A3300A167E7 /* MediaPlayer.framework */; };
+		847B8F3C11EA8A3300A167E7 /* sample_iPod.m4v in Resources */ = {isa = PBXBuildFile; fileRef = 847B8F3B11EA8A3300A167E7 /* sample_iPod.m4v */; };
 		847C54B111BE92AC000A2280 /* bg_003s-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 847C53E111BE92AC000A2280 /* bg_003s-1.jpg */; };
 		847C54B211BE92AC000A2280 /* bg_004s-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 847C53E211BE92AC000A2280 /* bg_004s-1.jpg */; };
 		847C54B311BE92AC000A2280 /* bg_005s-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 847C53E311BE92AC000A2280 /* bg_005s-1.jpg */; };
@@ -1848,6 +1853,9 @@
 		8426B88011DDDBA300A43C57 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		8426B88111DDDBA300A43C57 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
 		8435964111DC400A00BA1B8D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8442F68811EADD29000BCAAE /* SerihuBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SerihuBoard.h; path = Classes/SerihuBoard.h; sourceTree = "<group>"; };
+		8442F68911EADD29000BCAAE /* SerihuBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SerihuBoard.m; path = Classes/SerihuBoard.m; sourceTree = "<group>"; };
+		8442F6A711EAE0A7000BCAAE /* SerihuBoard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerihuBoard.xib; sourceTree = "<group>"; };
 		8444BB6811866B21000B9C21 /* Achr_020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Achr_020.png; sourceTree = "<group>"; };
 		8444BB6911866B21000B9C21 /* Achr_021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Achr_021.png; sourceTree = "<group>"; };
 		8444BB6A11866B21000B9C21 /* Achr_022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Achr_022.png; sourceTree = "<group>"; };
@@ -2250,6 +2258,7 @@
 		845B792B11E4981900852E73 /* title.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = title.jpg; sourceTree = "<group>"; };
 		845B792C11E4981900852E73 /* title2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = title2.jpg; sourceTree = "<group>"; };
 		845B792D11E4981900852E73 /* exit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = exit.jpg; sourceTree = "<group>"; };
+		846DADB211E99A55000BEC64 /* logo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = logo.mp3; sourceTree = "<group>"; };
 		84703131118668D1005B623C /* GameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
 		847031341186690E005B623C /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameView.h; path = ViewClasses/GameView.h; sourceTree = SOURCE_ROOT; };
 		847031351186690E005B623C /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameView.m; path = ViewClasses/GameView.m; sourceTree = SOURCE_ROOT; };
@@ -2471,6 +2480,8 @@
 		847ACEF111DDCF7000C873EF /* Abgm_32-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Abgm_32-1.mp3"; sourceTree = "<group>"; };
 		847ACEF211DDCF7000C873EF /* Abgm_33-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Abgm_33-1.mp3"; sourceTree = "<group>"; };
 		847ACEF311DDCF7000C873EF /* Abgm_34-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Abgm_34-1.mp3"; sourceTree = "<group>"; };
+		847B8F2E11EA8A3300A167E7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		847B8F3B11EA8A3300A167E7 /* sample_iPod.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample_iPod.m4v; sourceTree = "<group>"; };
 		847C53E111BE92AC000A2280 /* bg_003s-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_003s-1.jpg"; sourceTree = "<group>"; };
 		847C53E211BE92AC000A2280 /* bg_004s-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_004s-1.jpg"; sourceTree = "<group>"; };
 		847C53E311BE92AC000A2280 /* bg_005s-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg_005s-1.jpg"; sourceTree = "<group>"; };
@@ -3341,6 +3352,7 @@
 				84E4F0151120440000590373 /* SystemConfiguration.framework in Frameworks */,
 				84E4F0181120441C00590373 /* QuartzCore.framework in Frameworks */,
 				8435964211DC400A00BA1B8D /* AVFoundation.framework in Frameworks */,
+				847B8F2F11EA8A3300A167E7 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3411,6 +3423,7 @@
 				8487E89311DE4EFA0022B797 /* FX */,
 				847ACED311DDCF7000C873EF /* BGM */,
 				849EA83B119E6BA7009E096A /* board.png */,
+				847B8F3B11EA8A3300A167E7 /* sample_iPod.m4v */,
 				8481724011A6F25D00DCEEEA /* nameBoard.png */,
 				849EA811119E5FF2009E096A /* tagIndex.dat */,
 				847A831D11764F5A00F6A4CE /* scenario.txt */,
@@ -3435,6 +3448,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				847B8F2E11EA8A3300A167E7 /* MediaPlayer.framework */,
 				8435964111DC400A00BA1B8D /* AVFoundation.framework */,
 				84E4F0171120441C00590373 /* QuartzCore.framework */,
 				84E4F0141120440000590373 /* SystemConfiguration.framework */,
@@ -3581,6 +3595,7 @@
 		56A54B6C116EF8DE0076E6BA /* MenuXib */ = {
 			isa = PBXGroup;
 			children = (
+				8442F6A711EAE0A7000BCAAE /* SerihuBoard.xib */,
 				8472B3F911E584F200E20294 /* SceneView.xib */,
 				8450814011BBE2E000BA8CFB /* LoadSaveBar.xib */,
 				8450814111BBE2E000BA8CFB /* SaveView.xib */,
@@ -4931,6 +4946,7 @@
 		84CDC3641171A8DC001F0817 /* logo */ = {
 			isa = PBXGroup;
 			children = (
+				846DADB211E99A55000BEC64 /* logo.mp3 */,
 				84CDC3651171A8DC001F0817 /* a.png */,
 				84CDC3661171A8DC001F0817 /* base.png */,
 				84CDC3671171A8DC001F0817 /* enter.png */,
@@ -5188,6 +5204,8 @@
 		84E4EFC911203E1B00590373 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8442F68811EADD29000BCAAE /* SerihuBoard.h */,
+				8442F68911EADD29000BCAAE /* SerihuBoard.m */,
 				8472B3FC11E5852F00E20294 /* SceneView.h */,
 				8472B3FD11E5852F00E20294 /* SceneView.m */,
 				8450814A11BBE4B000BA8CFB /* SaveView.h */,
@@ -6864,6 +6882,9 @@
 				840877F311E8DC7B00D28DB9 /* subtitle_85.png in Resources */,
 				840877F411E8DC7B00D28DB9 /* subtitle_86.png in Resources */,
 				840877F511E8DC7B00D28DB9 /* subtitle_90.png in Resources */,
+				846DADB311E99A55000BEC64 /* logo.mp3 in Resources */,
+				847B8F3C11EA8A3300A167E7 /* sample_iPod.m4v in Resources */,
+				8442F6A811EAE0A7000BCAAE /* SerihuBoard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6893,6 +6914,7 @@
 				8426B88211DDDBA300A43C57 /* SoundManager.m in Sources */,
 				8412F61911E0B82A00358D84 /* MusicView.m in Sources */,
 				8472B3FE11E5852F00E20294 /* SceneView.m in Sources */,
+				8442F68A11EADD29000BCAAE /* SerihuBoard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
