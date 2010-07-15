@@ -1660,6 +1660,8 @@
 		84E4F013112043EF00590373 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E4F012112043EF00590373 /* AudioToolbox.framework */; };
 		84E4F0151120440000590373 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E4F0141120440000590373 /* SystemConfiguration.framework */; };
 		84E4F0181120441C00590373 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E4F0171120441C00590373 /* QuartzCore.framework */; };
+		84F4CFDE11EED4B000D2F04A /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4CFDC11EED4B000D2F04A /* ItemView.m */; };
+		84F4CFF311EEE3A700D2F04A /* ScineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4CFF211EEE3A700D2F04A /* ScineView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -3337,6 +3339,10 @@
 		84E4F012112043EF00590373 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		84E4F0141120440000590373 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		84E4F0171120441C00590373 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		84F4CFDC11EED4B000D2F04A /* ItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemView.m; path = ViewClasses/ItemView.m; sourceTree = SOURCE_ROOT; };
+		84F4CFDD11EED4B000D2F04A /* ItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemView.h; path = ViewClasses/ItemView.h; sourceTree = SOURCE_ROOT; };
+		84F4CFF111EEE3A700D2F04A /* ScineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScineView.h; path = ViewClasses/ScineView.h; sourceTree = SOURCE_ROOT; };
+		84F4CFF211EEE3A700D2F04A /* ScineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScineView.m; path = ViewClasses/ScineView.m; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3362,6 +3368,10 @@
 		080E96DDFE201D6D7F000001 /* ViewClasses */ = {
 			isa = PBXGroup;
 			children = (
+				84F4CFF111EEE3A700D2F04A /* ScineView.h */,
+				84F4CFF211EEE3A700D2F04A /* ScineView.m */,
+				84F4CFDC11EED4B000D2F04A /* ItemView.m */,
+				84F4CFDD11EED4B000D2F04A /* ItemView.h */,
 				849183B111D8DBF800D649E8 /* ConfigurationView.m */,
 				849183B211D8DBF800D649E8 /* ConfigurationView.h */,
 				841EFB6511B65853005B7F4D /* GraphicView.m */,
@@ -6915,6 +6925,8 @@
 				8412F61911E0B82A00358D84 /* MusicView.m in Sources */,
 				8472B3FE11E5852F00E20294 /* SceneView.m in Sources */,
 				8442F68A11EADD29000BCAAE /* SerihuBoard.m in Sources */,
+				84F4CFDE11EED4B000D2F04A /* ItemView.m in Sources */,
+				84F4CFF311EEE3A700D2F04A /* ScineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
