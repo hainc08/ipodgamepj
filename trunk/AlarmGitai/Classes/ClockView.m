@@ -38,8 +38,8 @@
 	u_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	b_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 
-	//폰트에따라 글자 back이 up을 덮는 경우가 없도록
-	//back먼저 add하고 up을 add하자.
+	//폰트에따라 글자 down이 up을 덮는 경우가 없도록
+	//down먼저 add하고 up을 add하자.
 	[self addSubview:b_HourT];
 	[self addSubview:b_HourM];
 	[self addSubview:b_MinT];
@@ -60,15 +60,15 @@
 	[b_Dot setFrame:CGRectMake(220,0,240, 360)];
 	[u_Dot setFrame:CGRectMake(220,0,240, 360)];
 
-	[b_HourT setFrame:CGRectMake(20,0,240, 360)];
+	[b_HourT setFrame:CGRectMake(25,0,240, 360)];
 	[b_HourM setFrame:CGRectMake(140,0,240, 360)];
 	[b_MinT setFrame:CGRectMake(300,0,240, 360)];
-	[b_MinM setFrame:CGRectMake(420,0,240, 360)];
+	[b_MinM setFrame:CGRectMake(415,0,240, 360)];
 
-	[u_HourT setFrame:CGRectMake(20,0,240, 360)];
+	[u_HourT setFrame:CGRectMake(25,0,240, 360)];
 	[u_HourM setFrame:CGRectMake(140,0,240, 360)];
 	[u_MinT setFrame:CGRectMake(300,0,240, 360)];
-	[u_MinM setFrame:CGRectMake(420,0,240, 360)];
+	[u_MinM setFrame:CGRectMake(415,0,240, 360)];
 }
 
 
