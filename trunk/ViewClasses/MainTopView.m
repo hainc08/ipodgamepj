@@ -32,7 +32,7 @@
 	{
 		[[SoundManager getInstance] stopBGM];
 		GameParam* param = [GameParam alloc];
-		[param setStartScene:0];
+		[param setStartScene:72];
 		[[SoundManager getInstance] stopBGM];
 		[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];
 	}

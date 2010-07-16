@@ -22,7 +22,7 @@
 	
 	if (isInit == false)
 	{
-		baseImg = [[UIImage imageNamed:@"noimage.jpg"] autorelease];
+		baseImg = [UIImage imageNamed:@"noimage.jpg"];
 		
 		for (int i=0; i<12; ++i)
 		{

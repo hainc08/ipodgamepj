@@ -6,6 +6,8 @@
 	int saveDate[28];
 	char* saveFlag[28];
 	char* saveFlag2[28];
+
+	char sceneExp[127];
 	
 	char flag[20];
 	char flag2[30];
@@ -37,8 +39,14 @@
 - (void)loadOptionFile;
 - (void)saveOptionFile;
 
+- (void)loadSceneExpFile;
+- (void)saveSceneExpFile;
+
 - (int)getSaveData:(int)idx;
 - (NSDate*)getSaveDate:(int)idx;
+
+- (void)setSceneExp:(int)idx;
+- (bool)getSceneExp:(int)idx;
 
 - (void)save:(int)idx data:(int)data;
 

@@ -3,7 +3,12 @@
 	//뭔내용인지 모르니 네이밍이 이따위...
 	int intVal[3];
 	NSString* strVal;
+	
+	int startIdx, endIdx;
 }
+
+@property (readwrite) int startIdx;
+@property (readwrite) int endIdx;
 
 - (void)setIntVal:(int)idx val:(int)val;
 - (int)getIntVal:(int)idx;
@@ -216,5 +221,6 @@
 - (bool)getMusicShow:(int)idx;
 
 - (NSString*)getBGMname:(int)idx;
+- (void)checkSceneExp:(int)idx;
 
 @end

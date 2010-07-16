@@ -1662,6 +1662,10 @@
 		84E4F0181120441C00590373 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E4F0171120441C00590373 /* QuartzCore.framework */; };
 		84F4CFDE11EED4B000D2F04A /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4CFDC11EED4B000D2F04A /* ItemView.m */; };
 		84F4CFF311EEE3A700D2F04A /* ScineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F4CFF211EEE3A700D2F04A /* ScineView.m */; };
+		84FD1A3E11F05E4200CEDD3E /* 400.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84FD1A3A11F05E4200CEDD3E /* 400.mp4 */; };
+		84FD1A3F11F05E4200CEDD3E /* 401.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84FD1A3B11F05E4200CEDD3E /* 401.mp4 */; };
+		84FD1A4011F05E4200CEDD3E /* 402.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84FD1A3C11F05E4200CEDD3E /* 402.mp4 */; };
+		84FD1A4111F05E4200CEDD3E /* 403.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 84FD1A3D11F05E4200CEDD3E /* 403.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -3343,6 +3347,10 @@
 		84F4CFDD11EED4B000D2F04A /* ItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemView.h; path = ViewClasses/ItemView.h; sourceTree = SOURCE_ROOT; };
 		84F4CFF111EEE3A700D2F04A /* ScineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScineView.h; path = ViewClasses/ScineView.h; sourceTree = SOURCE_ROOT; };
 		84F4CFF211EEE3A700D2F04A /* ScineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScineView.m; path = ViewClasses/ScineView.m; sourceTree = SOURCE_ROOT; };
+		84FD1A3A11F05E4200CEDD3E /* 400.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 400.mp4; sourceTree = "<group>"; };
+		84FD1A3B11F05E4200CEDD3E /* 401.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 401.mp4; sourceTree = "<group>"; };
+		84FD1A3C11F05E4200CEDD3E /* 402.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 402.mp4; sourceTree = "<group>"; };
+		84FD1A3D11F05E4200CEDD3E /* 403.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 403.mp4; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3429,6 +3437,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84FD1A3911F05E4200CEDD3E /* Movie */,
 				840877A711E8DC7B00D28DB9 /* subtitle */,
 				8487E89311DE4EFA0022B797 /* FX */,
 				847ACED311DDCF7000C873EF /* BGM */,
@@ -5228,6 +5237,17 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		84FD1A3911F05E4200CEDD3E /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				84FD1A3A11F05E4200CEDD3E /* 400.mp4 */,
+				84FD1A3B11F05E4200CEDD3E /* 401.mp4 */,
+				84FD1A3C11F05E4200CEDD3E /* 402.mp4 */,
+				84FD1A3D11F05E4200CEDD3E /* 403.mp4 */,
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -6895,6 +6915,10 @@
 				846DADB311E99A55000BEC64 /* logo.mp3 in Resources */,
 				847B8F3C11EA8A3300A167E7 /* sample_iPod.m4v in Resources */,
 				8442F6A811EAE0A7000BCAAE /* SerihuBoard.xib in Resources */,
+				84FD1A3E11F05E4200CEDD3E /* 400.mp4 in Resources */,
+				84FD1A3F11F05E4200CEDD3E /* 401.mp4 in Resources */,
+				84FD1A4011F05E4200CEDD3E /* 402.mp4 in Resources */,
+				84FD1A4111F05E4200CEDD3E /* 403.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

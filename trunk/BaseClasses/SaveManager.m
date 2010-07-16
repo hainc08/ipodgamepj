@@ -35,6 +35,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 	SaveManagerInst = [SaveManager alloc];
 	[SaveManagerInst loadSaveFile];
 	[SaveManagerInst loadOptionFile];
+	[SaveManagerInst loadSceneExpFile];
 	[SaveManagerInst resetFlag];
 }
 
@@ -333,6 +334,64 @@ void writeInt(NSFileHandle* writeFile, int value)
 	[readFile closeFile];
 }
 
+- (void)saveSceneExpFile
+{
+	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
+																 NSDocumentDirectory, 
+																 NSUserDomainMask,
+																 YES
+																 ); 
+	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
+	NSString* saveFile = [NSString stringWithFormat: @"%@/sceneExp.dat", recordingDirectory];
+	
+	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+	if (writeFile == nil)
+	{
+		[[NSFileManager defaultManager] createFileAtPath:saveFile
+												contents:nil attributes:nil];
+		
+		writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+	}
+	
+	if (writeFile == nil)
+	{
+		NSLog(@"fail to open file");
+		return;
+	}
+	else
+	{
+		[writeFile writeData: [NSData dataWithBytes:sceneExp
+											 length:127]];
+	}
+    
+	[writeFile closeFile];
+}
+
+- (void)loadSceneExpFile
+{
+	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
+																 NSDocumentDirectory, 
+																 NSUserDomainMask,
+																 YES
+																 ); 
+	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
+	NSString* saveFile = [NSString stringWithFormat: @"%@/sceneExp.dat", recordingDirectory];
+	
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
+	
+	if(readFile == nil)
+	{
+		memset(sceneExp, 0x00, 127);
+		return;
+	}
+	
+	NSData *data;
+	data = [readFile readDataOfLength:127];
+	[data getBytes:sceneExp];
+
+	[readFile closeFile];
+}
+
 - (int)getSaveData:(int)idx
 {
 	return saveData[idx];
@@ -341,6 +400,19 @@ void writeInt(NSFileHandle* writeFile, int value)
 - (NSDate*)getSaveDate:(int)idx
 {
 	return [NSDate dateWithTimeIntervalSince1970:saveDate[idx]];
+}
+
+- (void)setSceneExp:(int)idx
+{
+	if (sceneExp[idx]) return;
+	
+	sceneExp[idx] = true;
+	[self saveSceneExpFile];
+}
+
+- (bool)getSceneExp:(int)idx
+{
+	return sceneExp[idx];
 }
 
 - (void)save:(int)idx data:(int)data

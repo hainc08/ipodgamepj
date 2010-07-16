@@ -22,16 +22,25 @@
 	
 	if (isInit == false)
 	{
-		baseImg[0] = [[UIImage imageNamed:@"scine-expbox.png"] autorelease];
-		baseImg[1] = [[UIImage imageNamed:@"scine-msgbox.png"] autorelease];
-		
+		baseImg[0] = [UIImage imageNamed:@"scine-expbox.png"];
+		baseImg[1] = [UIImage imageNamed:@"scine-msgbox.png"];
+
 		for (int i=0; i<10; ++i)
 		{
 			imageButton[i] = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 194, 27)];
 			[self addSubview:imageButton[i]];
-			[imageButton[i] setImage:baseImg[0] forState:UIControlStateNormal];
+			[imageButton[i] setImage:baseImg[1] forState:UIControlStateNormal];
 			[imageButton[i] setCenter:CGPointMake((i / 5) * 216 + 35 + 97, (i % 5) * 38 + 90)];
 			[imageButton[i] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+			
+			buttonLabel[i] = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 194, 27)];
+			[self addSubview:buttonLabel[i]];
+			[buttonLabel[i] setCenter:CGPointMake((i / 5) * 216 + 35 + 97, (i % 5) * 38 + 90)];
+			[buttonLabel[i] setTextColor:[UIColor blackColor]];
+			[buttonLabel[i] setFont:[UIFont fontWithName:@"Helvetica" size:10]];
+			[buttonLabel[i] setBackgroundColor:[UIColor clearColor]];
+			[buttonLabel[i] setTextAlignment:UITextAlignmentCenter]; 
+			[buttonLabel[i] setNumberOfLines:2];
 		}
 		
 		imageBigButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 480, 360)];
@@ -60,11 +69,23 @@
 		int idx = (curPage-1) * 10 + i + 1;
 		if (idx > 127)
 		{
+			[buttonLabel[i] setAlpha:0];
 			[imageButton[i] setAlpha:0];
 		}
 		else
 		{
-			[imageButton[i] setAlpha:1];
+			if ([[SaveManager getInstance] getSceneExp:idx])
+			{
+				[buttonLabel[i] setText:[[[DataManager getInstance] getScenario:idx] getStrVal]];
+				[imageButton[i] setAlpha:1];
+				[imageButton[i] setImage:baseImg[1] forState:UIControlStateNormal];
+			}
+			else
+			{
+				[buttonLabel[i] setAlpha:0];
+				[imageButton[i] setAlpha:1];
+				[imageButton[i] setImage:baseImg[0] forState:UIControlStateNormal];
+			}
 		}
 	}
 }

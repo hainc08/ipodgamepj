@@ -283,6 +283,7 @@
 
 		if ([scene isLoadOk])
 		{
+			[[DataManager getInstance] checkSceneExp:[scene sceneId]];
 			[blackBoard setAlpha:0];
 	
 			CGRect imgRect;

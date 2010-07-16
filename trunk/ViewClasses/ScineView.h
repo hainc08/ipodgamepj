@@ -7,6 +7,7 @@
 	IBOutlet id nextButton;
 	IBOutlet id prevButton;
 
+	UILabel* buttonLabel[10];
 	UIButton* imageButton[10];
 	UIButton* imageBigButton;
 	

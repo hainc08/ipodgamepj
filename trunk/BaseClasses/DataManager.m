@@ -100,6 +100,9 @@ static DataManager *DataManagerInst;
 
 @implementation Scenario
 
+@synthesize startIdx;
+@synthesize endIdx;
+
 - (void)setIntVal:(int)idx val:(int)val
 {
 	intVal[idx] = val;
@@ -526,6 +529,13 @@ static DataManager *DataManagerInst;
 	}
 	
 	fclose(hFile);
+	
+	for (int i=1; i<127; ++i)
+	{
+		int idx1 = [scenario[i] getIntVal:0];
+		[scenario[i] setStartIdx:msgIdx[idx1] + [scenario[i] getIntVal:1]];
+		[scenario[i] setEndIdx:msgIdx[idx1] + [scenario[i] getIntVal:2]];
+	}
 
 //	Tag, Index 프리로딩
 //	hFile = fopen("tagIndex.dat", "w");
@@ -1121,6 +1131,19 @@ static DataManager *DataManagerInst;
 - (NSString*)getBGMname:(int)idx
 {
 	return BGMname[idx];
+}
+
+- (void)checkSceneExp:(int)idx
+{
+	for (int i=1; i<127; ++i)
+	{
+		int endIdx = [scenario[i] endIdx];
+		if (endIdx < idx) return;
+		if (endIdx == idx)
+		{
+			[[SaveManager getInstance] setSceneExp:i];
+		}
+	}
 }
 
 @end
