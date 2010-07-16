@@ -29,40 +29,46 @@
 {
 	u_HourT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	b_HourT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	[b_HourT addSubview:u_HourT];
-	[self addSubview:b_HourT];
-	
-	
 	u_HourM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	b_HourM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	[b_HourM addSubview:u_HourM];
-	[self addSubview:b_HourM];
-	
-	
 	u_MinT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	b_MinT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	[b_MinT addSubview:u_MinT];
-	
-	[self addSubview:b_MinT];
-	
 	u_MinM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	b_MinM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	[b_MinM addSubview:u_MinM];
-	
-	[self addSubview:b_MinM];
-	
-	
 	u_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	b_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	[b_Dot addSubview:u_Dot];
+
+	//폰트에따라 글자 back이 up을 덮는 경우가 없도록
+	//back먼저 add하고 up을 add하자.
+	[self addSubview:b_HourT];
+	[self addSubview:b_HourM];
+	[self addSubview:b_MinT];
+	[self addSubview:b_MinM];
 	[self addSubview:b_Dot];
 	
-
+	[self addSubview:u_HourT];
+	[self addSubview:u_HourM];
+	[self addSubview:u_MinT];
+	[self addSubview:u_MinM];
+	[self addSubview:u_Dot];
+	
 	[u_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@dot.png", 
 										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getUpImageType]]]];
 	[b_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@dot.png", 
 										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getBgImageType]]]];
+
 	[b_Dot setFrame:CGRectMake(220,0,240, 360)];
+	[u_Dot setFrame:CGRectMake(220,0,240, 360)];
+
+	[b_HourT setFrame:CGRectMake(20,0,240, 360)];
+	[b_HourM setFrame:CGRectMake(140,0,240, 360)];
+	[b_MinT setFrame:CGRectMake(300,0,240, 360)];
+	[b_MinM setFrame:CGRectMake(420,0,240, 360)];
+
+	[u_HourT setFrame:CGRectMake(20,0,240, 360)];
+	[u_HourM setFrame:CGRectMake(140,0,240, 360)];
+	[u_MinT setFrame:CGRectMake(300,0,240, 360)];
+	[u_MinM setFrame:CGRectMake(420,0,240, 360)];
 }
 
 
@@ -72,29 +78,21 @@
 	{
 		[u_HourT setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
 		[b_HourT setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
-
-		[b_HourT setFrame:CGRectMake(0,0,240, 360)];
 	}
 	else if(type == HOUR_M)
 	{
 		[u_HourM setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
 		[b_HourM setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
-		
-			[b_HourM setFrame:CGRectMake(110,0,240, 360)];
 	}
 	else if(type == MIN_T)
 	{
 		[u_MinT setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
 		[b_MinT setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
-		[b_MinT setFrame:CGRectMake(330,0,240, 360)];
 	}
 	else if(type == MIN_M)
 	{
 		[u_MinM setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
 		[b_MinM setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
-				
-		
-		[b_MinM setFrame:CGRectMake(440,0,240, 360)];
 	}
 	
 }
