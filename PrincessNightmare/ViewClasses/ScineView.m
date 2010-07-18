@@ -1,12 +1,20 @@
 #import "ScineView.h"
 #import "ViewManager.h"
 #import "SaveManager.h"
+#import "GameView.h"
+
+@implementation ScineParam
+
+@synthesize replayIdx;
+
+@end
+
 
 @implementation ScineView
 
 - (id)initWithCoder:(NSCoder *)coder {
 	self = [super initWithCoder:coder];
-	
+
 	return self;
 }
 
@@ -51,8 +59,16 @@
 		[imageBigButton setAlpha:0];
 	}
 	
+	int page = 1;
+	
+	if (param != NULL)
+	{
+		ScineParam* sparam = (ScineParam*)param;
+		page = ([sparam replayIdx] - 1) / 10 + 1;
+	}
+
 	[[SaveManager getInstance] loadExtraFile];
-	[self loadPage:1];
+	[self loadPage:page];
 }
 
 - (void)loadPage:(int)page
@@ -114,7 +130,20 @@
 		{
 			if (sender == imageButton[i])
 			{
+				int idx = (curPage-1) * 10 + i + 1;
 
+				if ([[SaveManager getInstance] getSceneExp:idx])
+				{
+					Scenario* scenario = [[DataManager getInstance] getScenario:idx];
+					
+					GameParam* param = [GameParam alloc];
+					[param setStartScene:[scenario startIdx]];
+					[param setEndScene:[scenario endIdx]];
+					[param setIsReplay:true];
+					[param setReplayIdx:idx];
+					
+					[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];
+				}
 			}
 		}
 	}

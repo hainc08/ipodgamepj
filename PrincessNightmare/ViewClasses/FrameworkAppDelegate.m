@@ -3,6 +3,7 @@
 #import "SaveManager.h"
 #import "SoundManager.h"
 #import "DataManager.h"
+#import "ErrorManager.h"
 
 @implementation FrameworkAppDelegate
 
@@ -12,6 +13,10 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
 	srand(time(nil));
+
+#ifdef __DEBUGGING__
+	[ErrorManager initManager];
+#endif
 
 	[DataManager initManager];
 
@@ -38,6 +43,11 @@
 	[[SaveManager getInstance] closeManager];
 	[[SoundManager getInstance] closeManager];
 	[[DataManager getInstance] closeManager];
+
+#ifdef __DEBUGGING__
+	[[ErrorManager getInstance] closeManager];
+#endif
+
     [window release];
 	[super dealloc];
 }

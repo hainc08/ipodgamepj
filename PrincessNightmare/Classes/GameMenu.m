@@ -15,13 +15,22 @@
 	return self;
 }
 
-- (void)reset
+- (void)reset:(bool)isReplay
 {
-	saveView = (SaveView*)[[ViewManager getInstance] getInstView:@"SaveView"];
-	[saveView reset:nil];
-	[self addSubview:saveView];
-	[saveView setCenter:CGPointMake(240,160)];
-	[saveView setAlpha:0];
+	if (isReplay)
+	{
+		[saveButton setAlpha:0];
+	}
+	else
+	{
+		[saveButton setAlpha:1];
+		
+		saveView = (SaveView*)[[ViewManager getInstance] getInstView:@"SaveView"];
+		[saveView reset:nil];
+		[self addSubview:saveView];
+		[saveView setCenter:CGPointMake(240,160)];
+		[saveView setAlpha:0];
+	}
 }
 
 - (IBAction)ButtonClick:(id)sender

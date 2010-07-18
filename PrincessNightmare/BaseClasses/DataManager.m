@@ -421,6 +421,7 @@ static DataManager *DataManagerInst;
 	struct timeval newtime;
 	gettimeofday(&newtime,0);
 	int test = newtime.tv_sec;
+	msgCount = 0;
 
 	for (int i=0; i<22031; ++i)
 	{
@@ -533,8 +534,8 @@ static DataManager *DataManagerInst;
 	for (int i=1; i<127; ++i)
 	{
 		int idx1 = [scenario[i] getIntVal:0];
-		[scenario[i] setStartIdx:msgIdx[idx1] + [scenario[i] getIntVal:1]];
-		[scenario[i] setEndIdx:msgIdx[idx1] + [scenario[i] getIntVal:2]];
+		[scenario[i] setStartIdx:msgIdx[idx1] + [scenario[i] getIntVal:1] - 1];
+		[scenario[i] setEndIdx:msgIdx[idx1] + [scenario[i] getIntVal:2] - 1];
 	}
 
 //	Tag, Index 프리로딩
@@ -932,6 +933,7 @@ static DataManager *DataManagerInst;
 				int fxIdx = [msg[willSceneId] getIntVal:7];
 				if (fxIdx == 0) fxIdx = -1;
 				[preloadScene[j] setFXrepeat:false];
+				[preloadScene[j] setNextChapter:-1];
 				
 				for (int l=0; l<[msg[willSceneId] valCount]; ++l)
 				{
@@ -1138,7 +1140,7 @@ static DataManager *DataManagerInst;
 	for (int i=1; i<127; ++i)
 	{
 		int endIdx = [scenario[i] endIdx];
-		if (endIdx < idx) return;
+		if (endIdx > idx) return;
 		if (endIdx == idx)
 		{
 			[[SaveManager getInstance] setSceneExp:i];

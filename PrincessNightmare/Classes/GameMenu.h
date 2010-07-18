@@ -9,7 +9,7 @@
 	SaveView* saveView;
 }
 
-- (void)reset;
+- (void)reset:(bool)isReplay;
 - (IBAction)ButtonClick:(id)sender;
 
 @end

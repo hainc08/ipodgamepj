@@ -40,6 +40,8 @@
 	}
 	
 	[[SaveManager getInstance] loadExtraFile];
+	[descView setAlpha:0];
+	[self bringSubviewToFront:descView];
 	[self loadPage:1];
 }
 
@@ -55,6 +57,7 @@
 	for (int i=0; i<15; ++i)
 	{
 		int idx = (curPage-1) * 15 + i + 1;
+		//		if ((idx > 19) || ([[SaveManager getInstance] getFlag:500+idx] == false))
 		if (idx > 19)
 		{
 			[imageButton[i] setAlpha:0];
@@ -69,8 +72,12 @@
 }
 
 - (IBAction)ButtonClick:(id)sender
-{	
-	if (sender == backButton)
+{
+	if (sender == closeButton)
+	{
+		[descView setAlpha:0];
+	}
+	else if (sender == backButton)
 	{
 		[[ViewManager getInstance] changeView:@"ExtraView"];
 	}
@@ -88,26 +95,19 @@
 	}
 	else
 	{
-		for (int i=0; i<12; ++i)
+		for (int i=0; i<15; ++i)
 		{
 			if (sender == imageButton[i])
 			{
-				if ([eList getIsShow:i] == false) return;
-
-				UIImage* tempImg;
+				int idx = (curPage - 1) * 15 + i + 1;
+				[descView setCenter:CGPointMake(240,160)];
+				[descView setAlpha:1];
+				[itemImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"image%d.jpg", idx]]];
 				
-				int imgId = [eList getIntVal:i];
-				
-				if (imgId < 10)
-					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_00%d.jpg", imgId]];
-				else if (imgId < 100)
-					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_0%d.jpg", imgId]];
-				else
-					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_%d.jpg", imgId]];
-				
-				[imageBigButton setImage:tempImg forState:UIControlStateNormal];
-				[imageBigButton setAlpha:1];
-				
+				//이건 왜 건너띄게 스크립트를 만들어서...짱나...
+				if (idx == 19) idx = 22;
+				[itemName setText:[[DataManager getInstance] getItemName:idx idx2:0]];
+				[itemDesc setText:[[DataManager getInstance] getItemName:idx idx2:1]];
 				return;
 			}
 		}
