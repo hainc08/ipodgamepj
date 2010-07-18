@@ -24,6 +24,12 @@
 	
 	loadingDone = false;
 	[start setAlpha:0];
+
+	loadView = (LoadView*)[[ViewManager getInstance] getInstView:@"LoadView"];
+	[loadView reset:nil];
+	[self addSubview:loadView];
+	[loadView setCenter:CGPointMake(240,160)];
+	[loadView setAlpha:0];
 }
 
 - (IBAction)ButtonClick:(id)sender
@@ -39,7 +45,7 @@
 	}
 	else if (sender == load)
 	{
-		[[ViewManager getInstance] changeView:@"LoadView"];
+		[loadView setAlpha:1];
 	}
 	else if (sender == config)
 	{

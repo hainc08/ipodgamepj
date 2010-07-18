@@ -19,18 +19,13 @@
 
 - (void)reset:(NSObject*)param
 {
-	[super reset:param];
-	
-	if (isInit == false)
+	for (int i=0; i<4; ++i)
 	{
-		for (int i=0; i<4; ++i)
-		{
-			bars[i] = (LoadSaveBar*)[[ViewManager getInstance] getInstView:@"LoadSaveBar"];
-			[self addSubview:bars[i]];
-			[bars[i] setCenter:CGPointMake(290,59*i+80)];
-			[[bars[i] getButton:0] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-			[[bars[i] getButton:1] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-		}
+		bars[i] = (LoadSaveBar*)[[ViewManager getInstance] getInstView:@"LoadSaveBar"];
+		[self addSubview:bars[i]];
+		[bars[i] setCenter:CGPointMake(290,59*i+80)];
+		[[bars[i] getButton:0] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+		[[bars[i] getButton:1] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	
 	[[SaveManager getInstance] loadSaveFile];
@@ -59,7 +54,7 @@
 {	
 	if (sender == backButton)
 	{
-		[[ViewManager getInstance] changeView:@"MainTopView"];
+		[self setAlpha:0];
 	}
 	else if (sender == nextButton)
 	{

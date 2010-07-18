@@ -586,7 +586,6 @@
 		8450814311BBE2E000BA8CFB /* SaveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8450814111BBE2E000BA8CFB /* SaveView.xib */; };
 		8450814911BBE40F00BA8CFB /* LoadSaveBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8450814811BBE40F00BA8CFB /* LoadSaveBar.m */; };
 		8450814E11BBE4B000BA8CFB /* SaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8450814B11BBE4B000BA8CFB /* SaveView.m */; };
-		8450814F11BBE4B000BA8CFB /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8450814D11BBE4B000BA8CFB /* LoadView.m */; };
 		845B792E11E4981900852E73 /* title.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 845B792B11E4981900852E73 /* title.jpg */; };
 		845B792F11E4981900852E73 /* title2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 845B792C11E4981900852E73 /* title2.jpg */; };
 		84681ADE11F216A8002164E4 /* msgClose.png in Resources */ = {isa = PBXBuildFile; fileRef = 84681ADD11F216A8002164E4 /* msgClose.png */; };
@@ -1444,6 +1443,7 @@
 		84CDF0A0118E5F4200E9873C /* Abg_270.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84CDEFCD118E5F4200E9873C /* Abg_270.jpg */; };
 		84CDF0A1118E5F4200E9873C /* Abg_271.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84CDEFCE118E5F4200E9873C /* Abg_271.jpg */; };
 		84D78262117378C000958BCD /* enter2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D78261117378C000958BCD /* enter2.png */; };
+		84DD54BC11F300E8004A75E6 /* LoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD54BB11F300E8004A75E6 /* LoadView.m */; };
 		84DD9F8E11A6636A0091D6F5 /* Achr_s020.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DD9EBB11A6636A0091D6F5 /* Achr_s020.png */; };
 		84DD9F8F11A6636A0091D6F5 /* Achr_s021.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DD9EBC11A6636A0091D6F5 /* Achr_s021.png */; };
 		84DD9F9011A6636A0091D6F5 /* Achr_s022.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DD9EBD11A6636A0091D6F5 /* Achr_s022.png */; };
@@ -2262,8 +2262,6 @@
 		8450814811BBE40F00BA8CFB /* LoadSaveBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadSaveBar.m; path = Classes/LoadSaveBar.m; sourceTree = "<group>"; };
 		8450814A11BBE4B000BA8CFB /* SaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveView.h; path = ViewClasses/SaveView.h; sourceTree = "<group>"; };
 		8450814B11BBE4B000BA8CFB /* SaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SaveView.m; path = ViewClasses/SaveView.m; sourceTree = "<group>"; };
-		8450814C11BBE4B000BA8CFB /* LoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadView.h; path = ViewClasses/LoadView.h; sourceTree = SOURCE_ROOT; };
-		8450814D11BBE4B000BA8CFB /* LoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadView.m; path = ViewClasses/LoadView.m; sourceTree = SOURCE_ROOT; };
 		845B792B11E4981900852E73 /* title.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = title.jpg; sourceTree = "<group>"; };
 		845B792C11E4981900852E73 /* title2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = title2.jpg; sourceTree = "<group>"; };
 		84681ADD11F216A8002164E4 /* msgClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = msgClose.png; sourceTree = "<group>"; };
@@ -3127,6 +3125,8 @@
 		84CDEFCD118E5F4200E9873C /* Abg_270.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Abg_270.jpg; sourceTree = "<group>"; };
 		84CDEFCE118E5F4200E9873C /* Abg_271.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Abg_271.jpg; sourceTree = "<group>"; };
 		84D78261117378C000958BCD /* enter2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enter2.png; sourceTree = "<group>"; };
+		84DD54BA11F300E8004A75E6 /* LoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadView.h; path = ViewClasses/LoadView.h; sourceTree = "<group>"; };
+		84DD54BB11F300E8004A75E6 /* LoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadView.m; path = ViewClasses/LoadView.m; sourceTree = "<group>"; };
 		84DD9EBB11A6636A0091D6F5 /* Achr_s020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Achr_s020.png; sourceTree = "<group>"; };
 		84DD9EBC11A6636A0091D6F5 /* Achr_s021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Achr_s021.png; sourceTree = "<group>"; };
 		84DD9EBD11A6636A0091D6F5 /* Achr_s022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Achr_s022.png; sourceTree = "<group>"; };
@@ -3401,8 +3401,6 @@
 				84E4EFCF11203E3E00590373 /* GameLogoView.h */,
 				84E4EFCE11203E3E00590373 /* FrameworkAppDelegate.m */,
 				84E4EFD011203E3E00590373 /* FrameworkAppDelegate.h */,
-				8450814C11BBE4B000BA8CFB /* LoadView.h */,
-				8450814D11BBE4B000BA8CFB /* LoadView.m */,
 				8412F60C11E085B100358D84 /* MusicView.h */,
 				8412F61811E0B82A00358D84 /* MusicView.m */,
 			);
@@ -5238,6 +5236,8 @@
 				8442F68911EADD29000BCAAE /* SerihuBoard.m */,
 				8472B3FC11E5852F00E20294 /* SceneView.h */,
 				8472B3FD11E5852F00E20294 /* SceneView.m */,
+				84DD54BA11F300E8004A75E6 /* LoadView.h */,
+				84DD54BB11F300E8004A75E6 /* LoadView.m */,
 				8450814A11BBE4B000BA8CFB /* SaveView.h */,
 				8450814B11BBE4B000BA8CFB /* SaveView.m */,
 				849F561811C90EFB005D2449 /* GameMenu.m */,
@@ -6955,7 +6955,6 @@
 				841EFB6A11B65853005B7F4D /* ExtraView.m in Sources */,
 				8450814911BBE40F00BA8CFB /* LoadSaveBar.m in Sources */,
 				8450814E11BBE4B000BA8CFB /* SaveView.m in Sources */,
-				8450814F11BBE4B000BA8CFB /* LoadView.m in Sources */,
 				849F561A11C90EFB005D2449 /* GameMenu.m in Sources */,
 				849183B311D8DBF800D649E8 /* ConfigurationView.m in Sources */,
 				8426B88211DDDBA300A43C57 /* SoundManager.m in Sources */,
@@ -6965,6 +6964,7 @@
 				84F4CFDE11EED4B000D2F04A /* ItemView.m in Sources */,
 				84F4CFF311EEE3A700D2F04A /* ScineView.m in Sources */,
 				8474EEF611F176C6001EB8D1 /* ErrorManager.m in Sources */,
+				84DD54BC11F300E8004A75E6 /* LoadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
