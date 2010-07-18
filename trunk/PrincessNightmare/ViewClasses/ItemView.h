@@ -3,10 +3,17 @@
 #import "DataManager.h"
 
 @interface ItemView : BaseView {
+	IBOutlet id closeButton;
+
 	IBOutlet id backButton;
 	IBOutlet id nextButton;
 	IBOutlet id prevButton;
 
+	IBOutlet id descView;
+	IBOutlet id itemImg;
+	IBOutlet id itemName;
+	IBOutlet id itemDesc;
+	
 	UIButton* imageButton[15];
 	UIButton* imageBigButton;
 	

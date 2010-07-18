@@ -7,13 +7,23 @@
 
 @interface GameParam : NSObject {
 	int startScene;
+	int endScene;
+	bool isReplay;
+	int replayIdx;
 }
 
 @property (readwrite) int startScene;
+@property (readwrite) int endScene;
+@property (readwrite) bool isReplay;
+@property (readwrite) int replayIdx;
 
 @end
 
 @interface GameView : BaseView {
+	IBOutlet id msgClose;
+
+	GameParam* gParam;
+
 	SerihuBoard* serihuBoard;
     MPMoviePlayerController *player;
 

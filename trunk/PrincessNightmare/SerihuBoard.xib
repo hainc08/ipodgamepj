@@ -39,7 +39,7 @@
 					<object class="IBUIImageView" id="915360528">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{18, 1}, {137, 25}}</string>
+						<string key="NSFrame">{{28, 1}, {137, 25}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -53,7 +53,7 @@
 					<object class="IBUIImageView" id="505761310">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{-10, 25}, {417, 99}}</string>
+						<string key="NSFrame">{{0, 25}, {417, 99}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -67,7 +67,7 @@
 					<object class="IBUILabel" id="828136463">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{29, 40}, {340, 71}}</string>
+						<string key="NSFrame">{{39, 40}, {340, 71}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -92,7 +92,7 @@
 					<object class="IBUILabel" id="1041895476">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{27, 40}, {340, 71}}</string>
+						<string key="NSFrame">{{37, 40}, {340, 71}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -110,7 +110,7 @@
 					<object class="IBUILabel" id="628237814">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{28, 41}, {340, 71}}</string>
+						<string key="NSFrame">{{38, 41}, {340, 71}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -137,7 +137,7 @@
 					<object class="IBUILabel" id="754587102">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{26, 2}, {120, 27}}</string>
+						<string key="NSFrame">{{36, 2}, {120, 27}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -155,7 +155,7 @@
 					<object class="IBUILabel" id="313264831">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{26, 0}, {120, 27}}</string>
+						<string key="NSFrame">{{36, 0}, {120, 27}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -173,7 +173,7 @@
 					<object class="IBUILabel" id="26894065">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{27, 1}, {120, 27}}</string>
+						<string key="NSFrame">{{37, 1}, {120, 27}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -196,13 +196,14 @@
 						<int key="IBUINumberOfLines">4</int>
 					</object>
 				</object>
-				<string key="NSFrameSize">{407, 124}</string>
+				<string key="NSFrameSize">{417, 124}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MCAwIDAgMAA</bytes>
 				</object>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+				<bool key="IBUIUserInteractionEnabled">NO</bool>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -380,7 +381,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>SerihuBoard</string>
-					<string>{{369, 521}, {407, 124}}</string>
+					<string>{{368, 522}, {417, 124}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
@@ -404,7 +405,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">137</int>
+			<int key="maxID">140</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

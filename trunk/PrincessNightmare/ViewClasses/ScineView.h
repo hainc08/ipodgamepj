@@ -2,6 +2,14 @@
 #import "BaseView.h"
 #import "DataManager.h"
 
+@interface ScineParam : NSObject {
+	int replayIdx;
+}
+
+@property (readwrite) int replayIdx;
+
+@end
+
 @interface ScineView : BaseView {
 	IBOutlet id backButton;
 	IBOutlet id nextButton;

@@ -1,5 +1,6 @@
 #import "SaveManager.h"
 #import "DataManager.h"
+#import "ErrorManager.h"
 
 static SaveManager *SaveManagerInst;
 
@@ -58,28 +59,54 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)setFlag:(int)idx
 {
+#ifdef __DEBUGGING__
+	int originIdx = idx;
+#endif
+
 	if (idx > 500) idx -= 400;
 	int i = (int)(idx / 8);
 	int j = idx % 8;
+
+#ifdef __DEBUGGING__	
+	if (i > 19) [[ErrorManager getInstance] ERROR:"setFlag : flag개수 초과" value:originIdx];
+#endif
+	
 	flag[i] |= (0x01 << j);
 }
 
 - (bool)getFlag:(int)idx
 {
+#ifdef __DEBUGGING__
+	int originIdx = idx;
+#endif
+
 	if (idx > 500) idx -= 400;
 	int i = (int)(idx / 8);
 	int j = idx % 8;
+
+#ifdef __DEBUGGING__	
+	if (i > 19) [[ErrorManager getInstance] ERROR:"getFlag : flag개수 초과" value:originIdx];
+#endif
+	
 	return ((flag[i] & (0x01 << j)) != 0x00);
 }
 
 - (void)setFlag2:(int)idx data:(int)data
 {
+#ifdef __DEBUGGING__	
+	if ((idx < 400) || (idx > 429)) [[ErrorManager getInstance] ERROR:"setFlag2 : flag개수 초과" value:idx];
+#endif
+	
 	idx -= 400;
 	flag2[idx] = (char)data;
 }
 
 - (int)getFlag2:(int)idx
 {
+#ifdef __DEBUGGING__	
+	if ((idx < 400) || (idx > 429)) [[ErrorManager getInstance] ERROR:"getFlag2 : flag개수 초과" value:idx];
+#endif
+	
 	idx -= 400;
 	return (int)flag2[idx];
 }
@@ -100,6 +127,10 @@ void writeInt(NSFileHandle* writeFile, int value)
 		NSLog(@"write file make error");
 		return;
 	}
+
+	//버전정보심기
+	char ver = 0x01;
+	fwrite(&ver, 1, sizeof(char), hFile);
 
 	for (int i=0; i<28; ++i)
 	{
@@ -128,18 +159,31 @@ void writeInt(NSFileHandle* writeFile, int value)
 		}
 		return;
 	}
+
+	//버전정보확인
+	char ver;
+	fread(&ver, 1, sizeof(char), hFile);
 	
-	for (int i=0; i<28; ++i)
+	if (ver == 0x01)
 	{
-		fread(&saveData[i], 1, sizeof(int), hFile);
-		if (saveData[i] > 0)
+		for (int i=0; i<28; ++i)
 		{
-			fread(&saveDate[i], 1, sizeof(int), hFile);
-			fread(saveFlag[i], 20, sizeof(char), hFile);
-			fread(saveFlag2[i], 30, sizeof(char), hFile);
+			fread(&saveData[i], 1, sizeof(int), hFile);
+			if (saveData[i] > 0)
+			{
+				fread(&saveDate[i], 1, sizeof(int), hFile);
+				fread(saveFlag[i], 20, sizeof(char), hFile);
+				fread(saveFlag2[i], 30, sizeof(char), hFile);
+			}
 		}
 	}
-    
+#ifdef __DEBUGGING__	
+	else
+	{
+		[[ErrorManager getInstance] ERROR:"loadSaveFile : 버전정보이상" value:0];
+	}
+#endif
+	
 	fclose(hFile);
 }
 
@@ -167,12 +211,14 @@ void writeInt(NSFileHandle* writeFile, int value)
 		NSLog(@"fail to open file");
 		return;
 	}
-	else
+
+	//버전정보심기
+	int ver = 1;
+	writeInt(writeFile, ver);
+
+	for (int i=0; i<15; ++i)
 	{
-		for (int i=0; i<15; ++i)
-		{
-			writeInt(writeFile, [[DataManager getInstance] getEventData:i]);
-		}
+		writeInt(writeFile, [[DataManager getInstance] getEventData:i]);
 	}
     
 	[writeFile closeFile];
@@ -198,12 +244,24 @@ void writeInt(NSFileHandle* writeFile, int value)
 		}
 		return;
 	}
-	
-	for (int i=0; i<15; ++i)
-	{
-		[[DataManager getInstance] setEventData:i :readInt(readFile)];
-	}
 
+	//버전정보확인
+	int ver = readInt(readFile);
+
+	if (ver == 1)
+	{
+		for (int i=0; i<15; ++i)
+		{
+			[[DataManager getInstance] setEventData:i :readInt(readFile)];
+		}
+	}
+#ifdef __DEBUGGING__	
+	else
+	{
+		[[ErrorManager getInstance] ERROR:"loadExtraFile : 버전정보이상" value:0];
+	}
+#endif
+	
 	[readFile closeFile];
 }
 
@@ -231,15 +289,17 @@ void writeInt(NSFileHandle* writeFile, int value)
 		NSLog(@"fail to open file");
 		return;
 	}
-	else
+
+	//버전정보심기
+	int ver = 1;
+	writeInt(writeFile, ver);
+	
+	for (int i=0; i<34; ++i)
 	{
-		for (int i=0; i<34; ++i)
-		{
-			if ([[DataManager getInstance] getMusicShow:i])
-				writeInt(writeFile, 1);
-			else
-				writeInt(writeFile, 0);
-		}
+		if ([[DataManager getInstance] getMusicShow:i])
+			writeInt(writeFile, 1);
+		else
+			writeInt(writeFile, 0);
 	}
     
 	[writeFile closeFile];
@@ -261,15 +321,27 @@ void writeInt(NSFileHandle* writeFile, int value)
 	{
 		return;
 	}
+
+	//버전정보확인
+	int ver = readInt(readFile);
 	
-	for (int i=0; i<34; ++i)
+	if (ver == 1)
 	{
-		int temp = readInt(readFile);
-		if (temp != 0)
+		for (int i=0; i<34; ++i)
 		{
-			[[DataManager getInstance] setMusicShow:i];
+			int temp = readInt(readFile);
+			if (temp != 0)
+			{
+				[[DataManager getInstance] setMusicShow:i];
+			}
 		}
 	}
+#ifdef __DEBUGGING__	
+	else
+	{
+		[[ErrorManager getInstance] ERROR:"loadMusicFile : 버전정보이상" value:0];
+	}
+#endif
 	
 	[readFile closeFile];
 }
@@ -298,11 +370,13 @@ void writeInt(NSFileHandle* writeFile, int value)
 		NSLog(@"fail to open file");
 		return;
 	}
-	else
-	{
-		writeInt(writeFile, opt1);
-		writeInt(writeFile, opt2);
-	}
+
+	//버전정보심기
+	int ver = 1;
+	writeInt(writeFile, ver);
+
+	writeInt(writeFile, opt1);
+	writeInt(writeFile, opt2);
     
 	[writeFile closeFile];
 }
@@ -328,8 +402,20 @@ void writeInt(NSFileHandle* writeFile, int value)
 		return;
 	}
 	
-	opt1 = readInt(readFile);
-	opt2 = readInt(readFile);
+	//버전정보확인
+	int ver = readInt(readFile);
+	
+	if (ver == 1)
+	{
+		opt1 = readInt(readFile);
+		opt2 = readInt(readFile);
+	}
+#ifdef __DEBUGGING__	
+	else
+	{
+		[[ErrorManager getInstance] ERROR:"loadOptionFile : 버전정보이상" value:0];
+	}
+#endif
 	
 	[readFile closeFile];
 }
@@ -358,11 +444,13 @@ void writeInt(NSFileHandle* writeFile, int value)
 		NSLog(@"fail to open file");
 		return;
 	}
-	else
-	{
-		[writeFile writeData: [NSData dataWithBytes:sceneExp
-											 length:127]];
-	}
+
+	//버전정보심기
+	int ver = 1;
+	writeInt(writeFile, ver);
+
+	[writeFile writeData: [NSData dataWithBytes:sceneExp
+										 length:127]];
     
 	[writeFile closeFile];
 }
@@ -385,9 +473,21 @@ void writeInt(NSFileHandle* writeFile, int value)
 		return;
 	}
 	
-	NSData *data;
-	data = [readFile readDataOfLength:127];
-	[data getBytes:sceneExp];
+	//버전정보확인
+	int ver = readInt(readFile);
+
+	if (ver == 1)
+	{
+		NSData *data;
+		data = [readFile readDataOfLength:127];
+		[data getBytes:sceneExp];
+	}
+#ifdef __DEBUGGING__	
+	else
+	{
+		[[ErrorManager getInstance] ERROR:"loadSceneExpFile : 버전정보이상" value:0];
+	}
+#endif
 
 	[readFile closeFile];
 }

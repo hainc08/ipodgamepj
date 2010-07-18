@@ -32,14 +32,14 @@
 	{
 		[[SoundManager getInstance] stopBGM];
 		GameParam* param = [GameParam alloc];
-		[param setStartScene:72];
+		[param setStartScene:70];
+		[param setIsReplay:false];
 		[[SoundManager getInstance] stopBGM];
 		[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];
 	}
 	else if (sender == load)
 	{
-		[[SoundManager getInstance] playBGM:@"Abgm_03-1.mp3"];
-//		[[ViewManager getInstance] changeView:@"LoadView"];
+		[[ViewManager getInstance] changeView:@"LoadView"];
 	}
 	else if (sender == config)
 	{

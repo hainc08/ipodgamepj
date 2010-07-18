@@ -2,10 +2,14 @@
 #import "ViewManager.h"
 #import "SaveManager.h"
 #import "SoundManager.h"
+#import "ScineView.h"
 
 @implementation GameParam
 
 @synthesize startScene;
+@synthesize endScene;
+@synthesize isReplay;
+@synthesize replayIdx;
 
 @end
 
@@ -59,7 +63,7 @@
 {
 	[super reset:param];
 	
-	GameParam* gParam = (GameParam*)param;
+	gParam = (GameParam*)param;
 	
 	if (isInit == false)
 	{
@@ -79,7 +83,7 @@
 		}
 
 		serihuBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
-		[serihuBoard setCenter:CGPointMake(300, 260)];
+		[serihuBoard setCenter:CGPointMake(290, 260)];
 		[self addSubview:serihuBoard];
 		
 		[self bringSubviewToFront:oldChrView[3]];
@@ -96,6 +100,8 @@
 		[self sendSubviewToBack:oldBgView];
 		[oldBgView setAlpha:0.f];
 		
+		[self bringSubviewToFront:msgClose];
+
 		sceneView = (SceneView*)[[ViewManager getInstance] getInstView:@"SceneView"];
 		[self addSubview:sceneView];
 		[sceneView setAlpha:0];
@@ -123,9 +129,26 @@
 {
 	if ( showOK )
 	{
+		if ( sender == msgClose )
+		{
+			[msgClose setAlpha:0];
+			[chrView[3] setAlpha:0];
+			[menuButton setAlpha:0];
+			[serihuBoard setAlpha:0];
+			return;
+		}
 		if ( sender == menuButton )
 		{
 			[self showMenu];
+			return;
+		}
+		if ( [msgClose alpha] == 0)
+		{
+			[msgClose setAlpha:1];
+			[chrView[3] setAlpha:1];
+			[menuButton setAlpha:1];
+			[serihuBoard setAlpha:1];
+			return;
 		}
 
 		bool isMoved = false;
@@ -281,6 +304,16 @@
 	{
 		scene = [[DataManager getInstance] getCurScene];
 
+		if ([gParam isReplay])
+		{
+			if ([gParam endScene] < [scene sceneId])
+			{
+				ScineParam* param = [ScineParam alloc];
+				[param setReplayIdx:[gParam replayIdx]];
+				[[ViewManager getInstance] changeView:@"ScineView" param:param];
+			}
+		}
+
 		if ([scene isLoadOk])
 		{
 			[[DataManager getInstance] checkSceneExp:[scene sceneId]];
@@ -407,7 +440,7 @@
 						//동영상플레이
 						SerihuBoard* sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
 						[sBoard setTransform:CGAffineTransformMake(0, 1, -1, 0, 0, 0)];
-						[sBoard setCenter:CGPointMake(60, 300)];
+						[sBoard setCenter:CGPointMake(60, 290)];
 						
 						//여기는 적당한 파일이름을 정해주자.
 						[self playAnime:@"sample_iPod"];
@@ -529,7 +562,7 @@
 	if (gameMenu == nil)
 	{
 		gameMenu = [[ViewManager getInstance] getInstView:@"GameMenu"];
-		[gameMenu reset];
+		[gameMenu reset:[gParam isReplay]];
 		[self addSubview:gameMenu];
 		[gameMenu setCenter:CGPointMake(240,160)];
 	}
