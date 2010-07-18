@@ -31,48 +31,57 @@
 {
 	b_Week = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	u_Week = [[UIImageView alloc]  initWithFrame:CGRectMake(0, 0,240, 360)];
-	[b_Week addSubview:u_Week];
-	[self addSubview:b_Week];
-
-
-	
 	b_MonT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	u_MonT = [[UIImageView alloc]  initWithFrame:CGRectMake(0, 0,240, 360)];
-	
-	[b_MonT addSubview:u_MonT];
-	[self addSubview:b_MonT];
-
-	
-	
 	u_MonM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	b_MonM = [[UIImageView alloc]  initWithFrame:CGRectMake(0, 0,240, 360)];
-	[b_MonM addSubview:u_MonM];
-	[self addSubview:b_MonM];
-	
-	
 	u_DayT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	b_DayT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	[b_DayT addSubview:u_DayT];
-	[self addSubview:b_DayT];
-	
 	u_DayM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	b_DayM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	[b_DayM addSubview:u_DayM];
-	[self addSubview:b_DayM];
-	
-	
 	u_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	b_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	[b_Dot addSubview:u_Dot];
-	[self addSubview:b_Dot];
-	
 	
 	[u_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@Div.png", 
 										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getUpImageType]]]];
 	[b_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@Div.png", 
 										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getBgImageType]]]];
+	
+	[self addSubview:b_Dot];
+	[self addSubview:u_Dot];
+
+	
+	[self addSubview:b_Week];
+	[self addSubview:b_MonT];
+	[self addSubview:b_MonM];
+	[self addSubview:b_DayT];
+	[self addSubview:b_DayM];
+	
+	
+	
+	[self addSubview:u_Week];
+	[self addSubview:u_MonT];
+	[self addSubview:u_MonM];
+	[self addSubview:u_DayT];
+	[self addSubview:u_DayM];
+
+	[u_Dot setFrame:CGRectMake(220,23,240, 360)];
 	[b_Dot setFrame:CGRectMake(220,23,240, 360)];
 	
+	[u_Week setFrame:CGRectMake(220,180,240, 360)];
+	[b_Week setFrame:CGRectMake(220,180,240, 360)];
+	
+
+	[u_MonT setFrame:CGRectMake(25,0,240, 360)];
+	[u_MonM setFrame:CGRectMake(140,0,240, 360)];
+	[u_DayT setFrame:CGRectMake(300,0,240, 360)];
+	[u_DayM setFrame:CGRectMake(415,0,240, 360)];
+	
+	[b_MonT setFrame:CGRectMake(25,0,240, 360)];
+	[b_MonM setFrame:CGRectMake(140,0,240, 360)];
+	[b_DayT setFrame:CGRectMake(310,0,240, 360)];
+	[b_DayM setFrame:CGRectMake(425,0,240, 360)];
+
 }
 
 
@@ -84,8 +93,7 @@
 		[u_MonT setImage:[[ImgManager getInstance] getUp:(int)number-0x30]];
 		[b_MonT setImage:[[ImgManager getInstance] getDown:(int)number-0x30]];
 		
-		//[u_MonT setFrame:CGRectMake(0,0,240, 360)];
-		[b_MonT setFrame:CGRectMake(0,0,240, 360)];
+
 		
 
 	}
@@ -94,8 +102,6 @@
 		[u_MonM setImage:[[ImgManager getInstance] getUp:(int)number-0x30]];
 		[b_MonM setImage:[[ImgManager getInstance] getDown:(int)number-0x30]];
 		
-	//	[u_MonM setFrame:CGRectMake(30,0,240, 360)];
-		[b_MonM setFrame:CGRectMake(110,0,240, 360)];
 
 	}
 	else if(type == DAY_T)
@@ -104,8 +110,7 @@
 		[b_DayT setImage:[[ImgManager getInstance] getDown:(int)number-0x30]];
 
 		
-	//	[u_DayT setFrame:CGRectMake(60,0,240, 360)];
-		[b_DayT setFrame:CGRectMake(330,0,240, 360)];
+
 
 	}
 	else if(type == DAY_M)
@@ -114,8 +119,7 @@
 		[b_DayM setImage:[[ImgManager getInstance] getDown:(int)number-0x30]];
 	
 		
-	//	[u_DayM setFrame:CGRectMake(90,0,240, 360)];
-		[b_DayM setFrame:CGRectMake(440,0,240, 360)];
+
 	}
 }
 - (void)UpdateDate
@@ -132,13 +136,12 @@
 		[b_Week setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@%@.png", 
 											  [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getBgImageType], Week]]];
 		
-		//	[u_MonM setFrame:CGRectMake(30,0,240, 360)];
-		[b_Week setFrame:CGRectMake(150,180,240, 360)];
-		
 	}
 	
 	
 	NSString *tmpMon = [[DateFormat getInstance] getIMon];
+	NSString *tmpDay = [[DateFormat getInstance] getDay];
+	
 	if((![Mon isEqualToString:tmpMon]) || Day == nil)
 	{
 		if([tmpMon length] < 2)
@@ -161,7 +164,7 @@
 		Mon = [[NSString alloc] initWithFormat:@"%@", tmpMon];
 	}	
 	
-	NSString *tmpDay = [[DateFormat getInstance] getDay];
+
 	if((![Day isEqualToString:tmpDay]) || Day == nil)
 	{
 		if([tmpDay length] < 2)
@@ -187,6 +190,23 @@
 
 - (void)dealloc {
 	[super dealloc];	
+	[Week release];
+	[Mon release];
+	[Day release];
+	
+	[u_Week release];
+	[u_DayT	release];
+	[u_DayM	 release];
+	[u_MonT	release];
+	[u_MonM	release];
+	[u_Dot	release];
+	
+	[b_Week release];
+	[b_DayT	release];
+	[b_DayM	 release];
+	[b_MonT	release];
+	[b_MonM	release];
+	[b_Dot	release];
 }
 
 @end

@@ -19,6 +19,7 @@ static ImgManager *ImgManagerInst;
 		ImgManagerInst->u_image[j] = [UIImage imageNamed:[NSString stringWithFormat:@"%d_ub%d.png", i,j]];
 		}
 	}
+	
 }
 
 - (UIImage*)getUp:(int)idx

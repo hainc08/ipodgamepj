@@ -7,10 +7,6 @@
 //
 
 #import "MainAlarm.h"
-#import "MenuView.h"
-#import "ViewManager.h"
-#import "DateView.h"
-#import	"ClockView.h"
 
 @implementation MainAlarm
 - (id)initWithCoder:(NSCoder *)coder {

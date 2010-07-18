@@ -14,6 +14,13 @@
 	NSString *FontBgImageType;
 	NSString *FontUpImageType;
 	
+	CGAffineTransform ClockTrans;
+	CGAffineTransform DateTrans;
+	
+	CGPoint			ClockPoint;
+	CGPoint			DatePoint;
+	
+	
 	NSLocale *locale;		/* 나라 설정 */
 	NSDateFormatter *AlarmCDate[10]; /* 알람 설정 */
 	

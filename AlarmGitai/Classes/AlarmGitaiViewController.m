@@ -22,27 +22,23 @@
 {
 	
 	[UIView	 beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.5];
-	
-	for(UIView *view in self.view.subviews)
+	[UIView setAnimationDuration:0.7];
+	if(hiddenButton)
+		[MenuButton setFrame:CGRectMake(0, -100, 112, 98)];
+	else 
 	{
-		if([view isKindOfClass :[menuview class]])
-		{
-			if(hiddenMenu)
-			{
-				
-				[view setFrame:CGRectMake(view.frame.origin.x, -100, view.frame.size.width, view.frame.size.height)];
-			}
-			else
-			{
-				
-				[view setFrame:CGRectMake(view.frame.origin.x, 0, view.frame.size.width, view.frame.size.height)];
-			}
-		}
-		
+		[MenuButton setTransform:CGAffineTransformMake(1, 0.0, 0.0, 1, 0.0, 0.0)];
+		[MenuButton setFrame:CGRectMake(0, 0, 112, 98)];
 	}
+	if(menuEnable)
+	{
+		
+		[menuview setFrame:CGRectMake(-300, -480, 300, 480)];
+		menuEnable = !menuEnable;
+	}
+		
 	[UIView commitAnimations];
-	hiddenMenu = !hiddenMenu;
+	hiddenButton = !hiddenButton;
 	
 }
 
@@ -67,8 +63,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	hiddenMenu = false;
-
+	hiddenButton = false;
+	menuEnable   = false;
 
 	
 	mainAlarm = (MainAlarm *)[[ViewManager getInstance] getInstView:@"MainAlarm"];
@@ -98,10 +94,19 @@
 	menuview.transform =  CGAffineTransformMake(1, 0.0, 0.0, 1, 0.0, 0.0);
 	[self.view addSubview:menuview];
 	
-	[menuview setCenter:CGPointMake(160, 0)];
+	[menuview setCenter:CGPointMake(-300, -480)];
 	[menuview setAlpha:1];
-//	[self.view sendSubviewToBack:dateview];
+
+	MenuButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 112, 98)];
 	
+																																  
+	[MenuButton setBackgroundImage:[ [UIImage imageNamed:@"menu_b.png" ] stretchableImageWithLeftCapWidth:112.0 topCapHeight:98.0] forState:UIControlStateNormal];
+	
+	
+	[MenuButton setCenter:CGPointMake(55, -90)];
+	[MenuButton addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+	[MenuButton setAlpha:1];
+	[self.view addSubview:MenuButton];
 	
 	frameTick = 0;
 	framePerSec = 10.f;
@@ -134,6 +139,7 @@
 		[clockview setTransform:CGAffineTransformMake(0.7, 0.0, 0.0, 0.7, 0.0, 0.0)];
 	}
 	
+	
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
@@ -159,6 +165,40 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+	
+}
+
+- (void)ButtonClick:(id)sender
+{
+	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) { 
+	
+	}
+	else
+	{
+		
+	}
+	
+	
+	[UIView	 beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.7];
+	
+	if(menuEnable)
+	{
+		[menuview setFrame:CGRectMake(-320, -480, 320, 480)];
+		[MenuButton setTransform:CGAffineTransformMake(1, 0.0, 0.0, 1, 0.0, 0.0)];
+		[MenuButton setCenter:CGPointMake(0, 0)];
+	}
+	else
+	{
+		[menuview setFrame:CGRectMake(0, -150, 320, 480)];
+		[MenuButton setTransform:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
+		[MenuButton setCenter:CGPointMake(297, 305)];
+	}
+	
+	
+	[UIView commitAnimations];
+	
+	menuEnable = !menuEnable;
 	
 }
 

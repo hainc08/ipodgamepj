@@ -7,10 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class AlarmView;
 @interface MenuView : UIView {
-	IBOutlet id menuButton;
+
+	CGAffineTransform ClockTrans[5];
+	CGAffineTransform DateTrans[5];
+	CGPoint			ClockPoint[5];
+	CGPoint			DatePoint[5];
+	AlarmView *View[5];
 	
+	UIButton *buttonView[5];
+	
+	UIButton *Xbox;
+	
+	int choicenum;
 }
 - (IBAction)ButtonClick:(id)sender;
+- (void)CreatedAlarmView;
 @end
