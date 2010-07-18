@@ -4,8 +4,8 @@
 {
 	UIImage* u_image[20];
 	UIImage* d_image[20];
-	
-	/* 0~9 */
+
+
 }
 
 + (ImgManager*)getInstance;

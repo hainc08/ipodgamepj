@@ -68,6 +68,9 @@
 		5608985D11F0B33C00C1F800 /* 1_ubdot.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608985711F0B33C00C1F800 /* 1_ubdot.png */; };
 		5608985F11F0B33C00C1F800 /* 1_ubSat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608985911F0B33C00C1F800 /* 1_ubSat.png */; };
 		560898DC11F0B77600C1F800 /* ImgManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 560898DB11F0B77600C1F800 /* ImgManager.m */; };
+		569DE53711F1BB4F00A4E58F /* AlarmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569DE53611F1BB4F00A4E58F /* AlarmView.xib */; };
+		569DE53A11F1BB7000A4E58F /* AlarmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 569DE53911F1BB7000A4E58F /* AlarmView.m */; };
+		569DE96311F22DE700A4E58F /* xbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 569DE96211F22DE700A4E58F /* xbox.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +148,10 @@
 		5608985911F0B33C00C1F800 /* 1_ubSat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ubSat.png; sourceTree = "<group>"; };
 		560898DA11F0B77600C1F800 /* ImgManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImgManager.h; path = BaseClasses/ImgManager.h; sourceTree = "<group>"; };
 		560898DB11F0B77600C1F800 /* ImgManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImgManager.m; path = BaseClasses/ImgManager.m; sourceTree = "<group>"; };
+		569DE53611F1BB4F00A4E58F /* AlarmView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmView.xib; sourceTree = "<group>"; };
+		569DE53811F1BB7000A4E58F /* AlarmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmView.h; sourceTree = "<group>"; };
+		569DE53911F1BB7000A4E58F /* AlarmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmView.m; sourceTree = "<group>"; };
+		569DE96211F22DE700A4E58F /* xbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xbox.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* AlarmGitai-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AlarmGitai-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +184,8 @@
 				1D3623250D0F684500981E51 /* AlarmGitaiAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* AlarmGitaiViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* AlarmGitaiViewController.m */,
+				569DE53811F1BB7000A4E58F /* AlarmView.h */,
+				569DE53911F1BB7000A4E58F /* AlarmView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -224,6 +233,7 @@
 				5608931011ECAE8500C1F800 /* MenuView.xib */,
 				5608932511ECAED500C1F800 /* ClockView.xib */,
 				5608932811ECAEE300C1F800 /* DateView.xib */,
+				569DE53611F1BB4F00A4E58F /* AlarmView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -272,6 +282,7 @@
 		5608961A11F0931700C1F800 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				569DE96211F22DE700A4E58F /* xbox.png */,
 				5608985411F0B33C00C1F800 /* 1_dwDiv.png */,
 				5608985511F0B33C00C1F800 /* 1_dwSat.png */,
 				5608985611F0B33C00C1F800 /* 1_ubDiv.png */,
@@ -404,6 +415,8 @@
 				5608985C11F0B33C00C1F800 /* 1_ubDiv.png in Resources */,
 				5608985D11F0B33C00C1F800 /* 1_ubdot.png in Resources */,
 				5608985F11F0B33C00C1F800 /* 1_ubSat.png in Resources */,
+				569DE53711F1BB4F00A4E58F /* AlarmView.xib in Resources */,
+				569DE96311F22DE700A4E58F /* xbox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +439,7 @@
 				5608910311ECA5BA00C1F800 /* BaseView.m in Sources */,
 				5608910411ECA5BA00C1F800 /* ViewManager.m in Sources */,
 				560898DC11F0B77600C1F800 /* ImgManager.m in Sources */,
+				569DE53A11F1BB7000A4E58F /* AlarmView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

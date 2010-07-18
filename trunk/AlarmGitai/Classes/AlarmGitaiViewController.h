@@ -13,8 +13,8 @@
 @class DateView;
 @class MenuView;
 @interface AlarmGitaiViewController : UIViewController {
-	BOOL hiddenMenu;
-	
+	BOOL hiddenButton;
+	BOOL menuEnable;
 	
 	MainAlarm *mainAlarm;
 	MenuView *menuview;
@@ -26,6 +26,8 @@
 	bool isInit;
 	
 	float framePerSec;
+	
+	UIButton *MenuButton;
 	
 }
 

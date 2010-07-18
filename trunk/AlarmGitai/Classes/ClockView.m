@@ -99,20 +99,24 @@
 - (void)UpdateTime
 {	
 	
-	if((![Hour isEqualToString:[[DateFormat getInstance] getHour]]) || Hour == nil)
+	NSString *tmpMin = [[DateFormat getInstance] getMin];
+	
+	NSString *tmpHour = [[DateFormat getInstance] getHour];
+	
+	if( ![Hour isEqualToString:tmpHour] || Hour == nil)
 	{
-		if([[[DateFormat getInstance] getHour] length] < 2)
+		if([tmpHour length] < 2)
 		{		
 			if([Hour length] > 1)
 			{
 				[self ChageNumberImage:HOUR_T changeImage:0];
 			}
-			[self ChageNumberImage:HOUR_M changeImage:[[[DateFormat getInstance] getHour] characterAtIndex:0]];
+			[self ChageNumberImage:HOUR_M changeImage:[tmpHour characterAtIndex:0]];
 		}
 		else
 		{
-			[self ChageNumberImage:HOUR_T changeImage:[[[DateFormat getInstance] getHour] characterAtIndex:0]];
-			[self ChageNumberImage:HOUR_M changeImage:[[[DateFormat getInstance] getHour] characterAtIndex:1]];
+			[self ChageNumberImage:HOUR_T changeImage:[tmpHour characterAtIndex:0]];
+			[self ChageNumberImage:HOUR_M changeImage:[tmpHour characterAtIndex:1]];
 		
 		}
 
@@ -121,9 +125,7 @@
 		
 		Hour = [[NSString alloc] initWithFormat:@"%@", [[DateFormat getInstance] getHour]];
 	}
-	
-	NSString *tmpMin = [[DateFormat getInstance] getMin];
-	
+
 	if((![Min isEqualToString:tmpMin]) || Min == nil)
 	{
 		if([tmpMin length] < 2)
@@ -139,13 +141,8 @@
 		{
 			[self ChageNumberImage:MIN_T changeImage:[tmpMin characterAtIndex:0]];
 			[self ChageNumberImage:MIN_M changeImage:[tmpMin characterAtIndex:1]];
-			
-			
 		}
-		if([Min isEqualToString:@"11"])
-		{
-		//	[b_MinM 
-		}
+
 		if( Min != nil )
 			[Min release];
 		Min = [[NSString alloc] initWithFormat:@"%@",tmpMin];
@@ -156,6 +153,22 @@
 
 - (void)dealloc {
 	[super dealloc];	
+	
+	[Hour release];
+	[Min release];
+	[Sec release];;
+	
+	[u_HourT release];
+	[u_HourM release];
+	[u_MinT release];
+	[u_MinM release]; 
+	[u_Dot release];
+	
+	[b_HourT release];
+	[b_HourM release];
+	[b_MinT release];
+	[b_MinM release];
+	[b_Dot release];
 }
 
 

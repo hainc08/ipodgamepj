@@ -21,20 +21,20 @@ enum DATETYPE {
 	NSString *Mon;
 	NSString *Day;
 	
-	IBOutlet UIImageView *u_DayT;
-	IBOutlet UIImageView *u_DayM;
-	IBOutlet UIImageView *u_MonT;
-	IBOutlet UIImageView *u_MonM;
-	IBOutlet UIImageView *u_Week;
-	IBOutlet UIImageView *u_Dot;
+	UIImageView *u_DayT;
+	UIImageView *u_DayM;
+	UIImageView *u_MonT;
+	UIImageView *u_MonM;
+	UIImageView *u_Week;
+	UIImageView *u_Dot;
 	
 	
-	IBOutlet UIImageView *b_DayT;
-	IBOutlet UIImageView *b_DayM;
-	IBOutlet UIImageView *b_MonT;
-	IBOutlet UIImageView *b_MonM;
-	IBOutlet UIImageView *b_Week;
-	IBOutlet UIImageView *b_Dot;
+	UIImageView *b_DayT;
+	UIImageView *b_DayM;
+	UIImageView *b_MonT;
+	UIImageView *b_MonM;
+	UIImageView *b_Week;
+	UIImageView *b_Dot;
 }
 - (void)UpdateDate;
 - (void)CreatedImageView ;
