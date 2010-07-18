@@ -1,8 +1,7 @@
 #import <UIKit/UIKit.h>
-#import "BaseView.h"
 #import "LoadSaveBar.h"
 
-@interface LoadView : BaseView {
+@interface LoadView : UIView {
 	IBOutlet id backButton;
 	IBOutlet id nextButton;
 	IBOutlet id prevButton;

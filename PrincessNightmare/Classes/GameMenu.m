@@ -20,16 +20,24 @@
 	if (isReplay)
 	{
 		[saveButton setAlpha:0];
+		[loadButton setAlpha:0];
 	}
 	else
 	{
 		[saveButton setAlpha:1];
+		[loadButton setAlpha:1];
 		
 		saveView = (SaveView*)[[ViewManager getInstance] getInstView:@"SaveView"];
 		[saveView reset:nil];
 		[self addSubview:saveView];
 		[saveView setCenter:CGPointMake(240,160)];
 		[saveView setAlpha:0];
+		
+		loadView = (LoadView*)[[ViewManager getInstance] getInstView:@"LoadView"];
+		[loadView reset:nil];
+		[self addSubview:loadView];
+		[loadView setCenter:CGPointMake(240,160)];
+		[loadView setAlpha:0];
 	}
 }
 
@@ -42,6 +50,10 @@
 	else if (sender == saveButton)
 	{
 		[saveView setAlpha:1];
+	}
+	else if (sender == loadButton)
+	{
+		[loadView setAlpha:1];
 	}
 	else if (sender == exitButton)
 	{
