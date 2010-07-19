@@ -12,6 +12,8 @@
 @class ClockView;
 @class DateView;
 @class MenuView;
+@class CharView;
+
 @interface AlarmGitaiViewController : UIViewController {
 	BOOL hiddenButton;
 	BOOL menuEnable;
@@ -19,14 +21,14 @@
 	MainAlarm *mainAlarm;
 	MenuView *menuview;
 	ClockView *clockview;
-	DateView  *dateview;
+	DateView *dateview;
+	CharView *charView;
 	
 	UInt32 frameTick;
 	NSTimer *updateTimer;
 	bool isInit;
 	
 	float framePerSec;
-	
 	UIButton *MenuButton;
 	
 }

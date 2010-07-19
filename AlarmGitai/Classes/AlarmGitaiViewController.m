@@ -13,6 +13,7 @@
 #import "DateView.h"
 #import	"ClockView.h"
 #import "BaseView.h"
+#import "CharView.h"
 
 @implementation AlarmGitaiViewController
 
@@ -66,6 +67,11 @@
 	hiddenButton = false;
 	menuEnable   = false;
 
+	charView = (CharView *)[[ViewManager getInstance] getInstView:@"CharView"];
+	[self.view addSubview:charView];
+	[charView setTransform:CGAffineTransformMake(1, 0, 0, -1, 0, 0)];
+	[charView setCenter:CGPointMake(160,240)];
+	[charView setChar:@"natsuko" idx:1 isNight:false];
 	
 	mainAlarm = (MainAlarm *)[[ViewManager getInstance] getInstView:@"MainAlarm"];
 	[self.view addSubview:mainAlarm];
@@ -158,7 +164,7 @@
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-	
+
 	// Release any cached data, images, etc that aren't in use.
 }
 
