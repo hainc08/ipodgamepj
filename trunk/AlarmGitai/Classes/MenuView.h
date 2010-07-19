@@ -15,7 +15,7 @@
 	CGPoint			ClockPoint[5];
 	CGPoint			DatePoint[5];
 	AlarmView *View[5];
-	
+
 	UIButton *buttonView[5];
 	
 	UIButton *Xbox;
