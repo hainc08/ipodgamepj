@@ -6,6 +6,10 @@
 	
 	float bgmVolume;
 	float fxVolume;
+	
+	NSString* lastFX;
+	bool lastFXRepeat;
+	NSString* lastBGM;
 }
 
 + (SoundManager*)getInstance;
@@ -23,4 +27,5 @@
 -(void)stopBGM;
 -(void)stopFX;
 
+-(void)restart;
 @end

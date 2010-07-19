@@ -285,8 +285,10 @@
 		if ([sceneView showEnd])
 		{
 			isShowScene = false;
+			[[SoundManager getInstance] restart];
+			
 			[UIView beginAnimations:@"scene" context:NULL];
-			[UIView setAnimationDuration:0.2];
+			[UIView setAnimationDuration:1];
 			[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 			[sceneView setAlpha:0];
 			[UIView commitAnimations];
@@ -469,8 +471,10 @@
 			isShowScene = [sceneView makeScene:scene];
 			if (isShowScene)
 			{
+				[[SoundManager getInstance] stopAll];
+
 				[UIView beginAnimations:@"scene" context:NULL];
-				[UIView setAnimationDuration:0.2];
+				[UIView setAnimationDuration:1];
 				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 				[sceneView setAlpha:1];
 				[UIView commitAnimations];
