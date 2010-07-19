@@ -1,7 +1,11 @@
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "BaseView.h"
+#import "MovieEndView.h"
 
 @interface GameLogoView : BaseView {
+    MPMoviePlayerController *player;
+
 	IBOutlet id k;
 	IBOutlet id a;
 	IBOutlet id r;
@@ -27,8 +31,13 @@
 
 	int step;
 	int maxDelay;
-}
 
+	MovieEndView* endView;
+}
+@property (nonatomic, retain) MPMoviePlayerController *player;
+
+- (IBAction)playAnime:(NSString*)name;
+- (void)playVideoWithURL:(NSURL *)url showControls:(BOOL)showControls;
 - (void)makeAni:(int)idx offset:(CGPoint)off delay:(float)d life:(float)l alpha:(float)al;
 
 @end

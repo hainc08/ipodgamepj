@@ -4,6 +4,8 @@
 
 @implementation GameLogoView
 
+@synthesize player;
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	step=1;
@@ -93,8 +95,8 @@
 
 		[UIView commitAnimations];
 	}
-	
-	[[SoundManager getInstance] playBGM:@"logo"];
+
+	[[SoundManager getInstance] playBGM:@"logo.mp3"];
 }
 
 - (void)update
@@ -102,7 +104,7 @@
 	[super update];
 	
 	if (frameTick == maxDelay) step = 1;
-
+	
 	switch (step)
 	{
 		case 1:
@@ -116,9 +118,63 @@
 		}
 		case 2:
 			//다음뷰로 이동 한다.
-			[[ViewManager getInstance] changeViewWithInit:@"MainTopView"];
+			[[SoundManager getInstance] stopBGM];
+			[self playAnime:@"opening"];
+
+			NSArray *windows = [[UIApplication sharedApplication] windows];
+			if ([windows count] > 1)
+			{
+				// Locate the movie player window
+				UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
+				// Add our overlay view to the movie player's subviews so it is 
+				// displayed above it.
+				
+				endView = (MovieEndView*)[[ViewManager getInstance] getInstView:@"MovieEndView"];
+				[moviePlayerWindow addSubview:endView];
+				[endView setCenter:CGPointMake(240,160)];
+			}
+			step = 3;
 			break;
+		case 3:
+			if ([endView showEnd])
+			{
+				[endView setShowEnd:false];
+				[endView setUserInteractionEnabled:false];
+				[player stop];
+				return;
+			}
 	}
+}
+
+- (void)didFinishPlaying:(NSNotification *)notification {
+    if (player == [notification object]) {   
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
+        [player release];
+        player = nil;
+    }
+	[[ViewManager getInstance] changeViewWithInit:@"MainTopView"];
+}
+
+- (IBAction)playAnime:(NSString*)name {
+    NSString *moviePath = [[NSBundle mainBundle] pathForResource:name ofType:@"mp4"];
+    NSURL *url = [NSURL fileURLWithPath:moviePath];
+	
+    [self playVideoWithURL:url showControls:NO];
+}
+
+- (void)playVideoWithURL:(NSURL *)url showControls:(BOOL)showControls {
+    if (!player) {
+        player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+		
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishPlaying:) name:MPMoviePlayerPlaybackDidFinishNotification object:player];
+		
+        if (!showControls) {
+            player.scalingMode = MPMovieScalingModeAspectFill;
+            player.movieControlMode = MPMovieControlModeHidden;
+        }
+		
+        [player play];
+    }
 }
 
 @end
