@@ -37,6 +37,8 @@
 		[imageBigButton setCenter:CGPointMake(240, 160)];
 		[imageBigButton addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 		[imageBigButton setAlpha:0];
+
+		isInit = true;
 	}
 	
 	[[SaveManager getInstance] loadExtraFile];

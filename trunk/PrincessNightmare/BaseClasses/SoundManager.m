@@ -20,6 +20,9 @@ static SoundManager *SoundManagerInst;
 	bgmPlayer = nil;
 	fxPlayer = nil;
 
+	lastFX = @"";
+	lastBGM = @"";
+
 	fxVolume = bgmVolume = 1; // default 설정
 }
 
@@ -108,7 +111,6 @@ static SoundManager *SoundManagerInst;
 {
 	if (bgmPlayer != nil)
 	{
-		lastBGM = @"";
 		[bgmPlayer stop];
 		[bgmPlayer setCurrentTime:0];
 	}
@@ -118,13 +120,21 @@ static SoundManager *SoundManagerInst;
 {
 	if (fxPlayer != nil)
 	{
-		lastFX = @"";
 		[fxPlayer stop];
 		[fxPlayer setCurrentTime:0];
 	}
 }
 
 -(void) stopAll
+{
+	lastFX = @"";
+	lastBGM = @"";
+
+	[self stopBGM];
+	[self stopFX];
+}
+
+-(void) pause
 {
 	[self stopBGM];
 	[self stopFX];
