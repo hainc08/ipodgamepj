@@ -45,6 +45,8 @@
 			[buttonLabel[i] setTextAlignment:UITextAlignmentCenter]; 
 			[buttonLabel[i] setNumberOfLines:2];
 		}
+
+		isInit = true;
 	}
 	
 	[self loadPage:1];

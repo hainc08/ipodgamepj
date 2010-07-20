@@ -3,6 +3,7 @@
 #import "SaveManager.h"
 #import "SoundManager.h"
 #import "ScineView.h"
+#import "EndView.h"
 
 @implementation GameParam
 
@@ -45,7 +46,7 @@
 }
 
 - (IBAction)playAnime:(NSString*)name {
-    NSString *moviePath = [[NSBundle mainBundle] pathForResource:name ofType:@"m4v"];
+    NSString *moviePath = [[NSBundle mainBundle] pathForResource:name ofType:@"mp4"];
     NSURL *url = [NSURL fileURLWithPath:moviePath];
 	
     [self playVideoWithURL:url showControls:NO];
@@ -116,6 +117,7 @@
 	scene = NULL;
 	curSceneId = [gParam startScene];
 	showOK = false;
+	gameEnd = -1;
 
 	[selectPanel1 setAlpha:0];
 	[selectPanel2 setAlpha:0];
@@ -306,18 +308,29 @@
 	{
 		scene = [[DataManager getInstance] getCurScene];
 
-		if ([gParam isReplay])
+		if ((scene != NULL) && [scene isLoadOk])
 		{
-			if ([gParam endScene] < [scene sceneId])
+			if ([gParam isReplay])
 			{
-				ScineParam* param = [ScineParam alloc];
-				[param setReplayIdx:[gParam replayIdx]];
-				[[ViewManager getInstance] changeView:@"ScineView" param:param];
+				if ([gParam endScene] < [scene sceneId])
+				{
+					ScineParam* param = [ScineParam alloc];
+					[param setReplayIdx:[gParam replayIdx]];
+					[[ViewManager getInstance] changeView:@"ScineView" param:param];
+				}
 			}
-		}
+			
+			if (gameEnd != -1)
+			{
+				[[SoundManager getInstance] stopAll];
+				EndParam* endParam = [EndParam alloc];
+				[endParam setEndNum:gameEnd];
+				[[ViewManager getInstance] changeView:@"EndView" param:endParam];
+				return;
+			}
+			
+			gameEnd = [scene endNum];
 
-		if ([scene isLoadOk])
-		{
 			[[DataManager getInstance] checkSceneExp:[scene sceneId]];
 			[blackBoard setAlpha:0];
 	
@@ -471,7 +484,7 @@
 			isShowScene = [sceneView makeScene:scene];
 			if (isShowScene)
 			{
-				[[SoundManager getInstance] stopAll];
+				[[SoundManager getInstance] pause];
 
 				[UIView beginAnimations:@"scene" context:NULL];
 				[UIView setAnimationDuration:1];

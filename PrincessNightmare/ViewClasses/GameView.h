@@ -65,6 +65,7 @@
 	UIView* gameMenu;
 	
 	int nowBgmIdx;
+	int gameEnd;
 }
 
 @property (nonatomic, retain) MPMoviePlayerController *player;

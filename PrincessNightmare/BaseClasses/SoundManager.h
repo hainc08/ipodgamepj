@@ -27,5 +27,6 @@
 -(void)stopBGM;
 -(void)stopFX;
 
+-(void) pause;
 -(void)restart;
 @end

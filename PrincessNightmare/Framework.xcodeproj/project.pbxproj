@@ -1024,6 +1024,8 @@
 		847C558011BE92AC000A2280 /* bg_271s-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 847C54B011BE92AC000A2280 /* bg_271s-1.jpg */; };
 		847FCEFA1170A30F00240F1D /* MainTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847FCEF81170A30F00240F1D /* MainTopView.m */; };
 		847FCEFC1170A31A00240F1D /* MainTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847FCEFB1170A31A00240F1D /* MainTopView.xib */; };
+		8480D90A11F59B4900A317EA /* EndView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8480D90911F59B4900A317EA /* EndView.m */; };
+		8480D91411F59B6300A317EA /* EndView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480D91311F59B6300A317EA /* EndView.xib */; };
 		8481724111A6F25D00DCEEEA /* nameBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 8481724011A6F25D00DCEEEA /* nameBoard.png */; };
 		84874F0B11DE60EC009E849B /* 001_jg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84874E4F11DE60EC009E849B /* 001_jg.mp3 */; };
 		84874F0C11DE60EC009E849B /* 001_se.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84874E5011DE60EC009E849B /* 001_se.mp3 */; };
@@ -2709,6 +2711,9 @@
 		847FCEF81170A30F00240F1D /* MainTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTopView.m; path = ViewClasses/MainTopView.m; sourceTree = SOURCE_ROOT; };
 		847FCEF91170A30F00240F1D /* MainTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTopView.h; path = ViewClasses/MainTopView.h; sourceTree = SOURCE_ROOT; };
 		847FCEFB1170A31A00240F1D /* MainTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTopView.xib; sourceTree = "<group>"; };
+		8480D90811F59B4900A317EA /* EndView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndView.h; path = ViewClasses/EndView.h; sourceTree = SOURCE_ROOT; };
+		8480D90911F59B4900A317EA /* EndView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndView.m; path = ViewClasses/EndView.m; sourceTree = SOURCE_ROOT; };
+		8480D91311F59B6300A317EA /* EndView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndView.xib; sourceTree = "<group>"; };
 		8481724011A6F25D00DCEEEA /* nameBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nameBoard.png; sourceTree = "<group>"; };
 		84874E4F11DE60EC009E849B /* 001_jg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 001_jg.mp3; sourceTree = "<group>"; };
 		84874E5011DE60EC009E849B /* 001_se.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 001_se.mp3; sourceTree = "<group>"; };
@@ -3394,6 +3399,8 @@
 		080E96DDFE201D6D7F000001 /* ViewClasses */ = {
 			isa = PBXGroup;
 			children = (
+				8480D90811F59B4900A317EA /* EndView.h */,
+				8480D90911F59B4900A317EA /* EndView.m */,
 				84F4CFF111EEE3A700D2F04A /* ScineView.h */,
 				84F4CFF211EEE3A700D2F04A /* ScineView.m */,
 				84F4CFDC11EED4B000D2F04A /* ItemView.m */,
@@ -3631,6 +3638,7 @@
 		56A54B6C116EF8DE0076E6BA /* MenuXib */ = {
 			isa = PBXGroup;
 			children = (
+				8480D91311F59B6300A317EA /* EndView.xib */,
 				84DCA63A11F4883700265A4E /* MovieEndView.xib */,
 				8442F6A711EAE0A7000BCAAE /* SerihuBoard.xib */,
 				8472B3F911E584F200E20294 /* SceneView.xib */,
@@ -6953,6 +6961,7 @@
 				84A473AB11F4BA2C003FC06C /* Abg_003.jpg in Resources */,
 				84E710D311F4D8360029E85D /* opening.mp4 in Resources */,
 				84E710D411F4D8360029E85D /* edA_2.mp4 in Resources */,
+				8480D91411F59B6300A317EA /* EndView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6987,6 +6996,7 @@
 				8474EEF611F176C6001EB8D1 /* ErrorManager.m in Sources */,
 				84DD54BC11F300E8004A75E6 /* LoadView.m in Sources */,
 				84DCA64011F4888C00265A4E /* MovieEndView.m in Sources */,
+				8480D90A11F59B4900A317EA /* EndView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
