@@ -770,6 +770,11 @@ static DataManager *DataManagerInst;
 	return msg[idx];
 }
 
+- (int)getMsgIdx:(int)idx idx2:(int)idx2
+{
+	return msgIdx[idx] + idx2 - 1;
+}
+
 - (void)preload
 {
 	UIImage* tempImg;
@@ -782,6 +787,12 @@ static DataManager *DataManagerInst;
 			int j = (c + i)%10;
 			
 			int willSceneId = [preloadScene[j] willSceneId];
+			
+			if (willSceneId >= 22050)
+			{
+				continue;
+				sleep(1);
+			}
 
 			if ([preloadScene[j] sceneId] != willSceneId)
 			{

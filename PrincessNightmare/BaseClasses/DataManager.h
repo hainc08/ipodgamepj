@@ -204,6 +204,7 @@
 - (NSString*)getItemName:(int)idx idx2:(int)idx2;
 - (Msg*)getMsg:(int)idx idx2:(int)idx2;
 - (Msg*)getMsg2:(int)idx;
+- (int)getMsgIdx:(int)idx idx2:(int)idx2;
 
 - (int)getIndexInfo:(int)idx;
 - (int)getTagInfo:(int)tag;

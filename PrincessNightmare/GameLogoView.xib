@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1"/>
+			<integer value="48"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -234,7 +234,7 @@
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">line.png</string>
+									<string key="NSResourceName">line2.png</string>
 								</object>
 							</object>
 							<object class="IBUIImageView" id="137302523">
@@ -578,6 +578,10 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">GameLogoView</string>
 					<string key="superclassName">BaseView</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">playAnime:</string>
+						<string key="NS.object.0">NSString</string>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
