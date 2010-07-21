@@ -2,6 +2,7 @@
 #import "ViewManager.h"
 #import "DataManager.h"
 #import "GameView.h"
+#import "Timer.h"
 #import "SoundManager.h"
 
 @implementation MainTopView
@@ -26,10 +27,15 @@
 	[start setAlpha:0];
 
 	loadView = (LoadView*)[[ViewManager getInstance] getInstView:@"LoadView"];
-	[loadView reset:nil];
+	[loadView reset];
 	[self addSubview:loadView];
 	[loadView setCenter:CGPointMake(240,160)];
 	[loadView setAlpha:0];
+	
+	Timer* timer = (Timer*)[[ViewManager getInstance] getInstView:@"Timer"];
+	[self addSubview:timer];
+	[timer setCenter:CGPointMake(100,100)];
+	[timer startTimer:5];
 }
 
 - (IBAction)ButtonClick:(id)sender
@@ -38,7 +44,7 @@
 	{
 		[[SoundManager getInstance] stopBGM];
 		GameParam* param = [GameParam alloc];
-		[param setStartScene:0];
+		[param setStartScene:[[DataManager getInstance] getMsgIdx:13 idx2:600]];
 		[param setIsReplay:false];
 		[[SoundManager getInstance] stopBGM];
 		[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];

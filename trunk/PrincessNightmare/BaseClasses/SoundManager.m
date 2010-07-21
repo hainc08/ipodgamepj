@@ -37,6 +37,8 @@ static SoundManager *SoundManagerInst;
 
 -(void)playBGM:(NSString*)name
 {
+	return;
+
 	lastBGM = name;
 
 	// make file URL
@@ -67,6 +69,8 @@ static SoundManager *SoundManagerInst;
 	
 -(void)playFX:(NSString*)name repeat:(bool)repeat
 {
+	return;
+	
 	lastFXRepeat = repeat;
 	lastFX = name;
 	
