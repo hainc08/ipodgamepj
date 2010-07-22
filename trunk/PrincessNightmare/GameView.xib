@@ -134,7 +134,7 @@
 								<int key="IBUITextAlignment">1</int>
 							</object>
 						</object>
-						<string key="NSFrame">{{53, 49}, {119, 142}}</string>
+						<string key="NSFrame">{{53, 79}, {119, 142}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -182,7 +182,7 @@
 								<int key="IBUITextAlignment">1</int>
 							</object>
 						</object>
-						<string key="NSFrame">{{180, 49}, {119, 142}}</string>
+						<string key="NSFrame">{{180, 79}, {119, 142}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -230,7 +230,7 @@
 								<int key="IBUITextAlignment">1</int>
 							</object>
 						</object>
-						<string key="NSFrame">{{307, 49}, {119, 142}}</string>
+						<string key="NSFrame">{{307, 79}, {119, 142}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -507,10 +507,10 @@
 							<reference ref="227237488"/>
 							<reference ref="137256979"/>
 							<reference ref="1031331646"/>
-							<reference ref="566087698"/>
 							<reference ref="871370309"/>
 							<reference ref="766416515"/>
 							<reference ref="137051291"/>
+							<reference ref="566087698"/>
 							<reference ref="281874797"/>
 						</object>
 						<reference key="parent" ref="58880970"/>
@@ -634,7 +634,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>GameView</string>
-					<string>{{412, 154}, {480, 320}}</string>
+					<string>{{410, 164}, {480, 320}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

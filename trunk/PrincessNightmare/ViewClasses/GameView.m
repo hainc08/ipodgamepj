@@ -106,6 +106,12 @@
 		sceneView = (SceneView*)[[ViewManager getInstance] getInstView:@"SceneView"];
 		[self addSubview:sceneView];
 		[sceneView setAlpha:0];
+
+		timer = (Timer*)[[ViewManager getInstance] getInstView:@"Timer"];
+		[self addSubview:timer];
+		[timer setCenter:CGPointMake(40,50)];
+		[timer setTransform:CGAffineTransformMake(0.8f, 0, 0, 0.8f, 0, 0)];
+		[timer setAlpha:0];
 		
 		[self bringSubviewToFront:blackBoard];
 
@@ -118,6 +124,7 @@
 	curSceneId = [gParam startScene];
 	showOK = false;
 	gameEnd = -1;
+	updateWait = 0;
 
 	[selectPanel1 setAlpha:0];
 	[selectPanel2 setAlpha:0];
@@ -266,6 +273,8 @@
 					[selectPanel1 setAlpha:0];
 					[selectPanel2 setAlpha:0];
 					[selectPanel3 setAlpha:0];
+					
+					[timer stop];
 				}
 				break;
 		}
@@ -282,6 +291,33 @@
 
 - (void)update
 {
+	if (updateWait > 0)
+	{
+		--updateWait;
+		[super update];
+		return;
+	}
+	
+	if ([timer update] == false)
+	{
+		//타이머 다되었음...
+		updateWait = (1 * framePerSec);
+
+		int tagIdx = 0;
+
+		if ([scene sceneType] == 3) tagIdx = 2;
+		else tagIdx = 3;
+		
+		curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:tagIdx]];
+		[[DataManager getInstance] setCurIdx:curSceneId];
+		showOK = false;
+		scene = NULL;
+		
+		[selectPanel1 setAlpha:0];
+		[selectPanel2 setAlpha:0];
+		[selectPanel3 setAlpha:0];
+	}
+	
 	if (isShowScene)
 	{
 		if ([sceneView showEnd])
@@ -509,6 +545,8 @@
 					[next setAlpha:1];
 					break;
 				case 3:
+					[timer setAlpha:1];
+					[timer startTimer:5];
 					[selectPanel1 setAlpha:1];
 					[selectPanel2 setAlpha:1];
 					[selectPanel3 setAlpha:0];
@@ -520,6 +558,8 @@
 					[next setAlpha:0];
 					break;
 				case 4:
+					[timer setAlpha:1];
+					[timer startTimer:5];
 					[selectPanel1 setAlpha:1];
 					[selectPanel2 setAlpha:1];
 					[selectPanel3 setAlpha:1];
