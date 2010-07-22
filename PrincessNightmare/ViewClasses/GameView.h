@@ -4,6 +4,7 @@
 #import "SerihuBoard.h"
 #import "SceneView.h"
 #import "DataManager.h"
+#import "Timer.h"
 
 @interface GameParam : NSObject {
 	int startScene;
@@ -46,6 +47,7 @@
 	bool showOK;
 	
 	int showOkTick;
+	int updateWait;
 	
 	IBOutlet id menuButton;
 	IBOutlet id debugLabel;
@@ -63,6 +65,7 @@
 	IBOutlet id selectButton3;
 
 	UIView* gameMenu;
+	Timer* timer;
 	
 	int nowBgmIdx;
 	int gameEnd;

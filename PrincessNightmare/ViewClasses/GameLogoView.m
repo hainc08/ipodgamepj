@@ -113,7 +113,6 @@
 			al -= 0.1f;
 			[background setAlpha:al];
 			if (al <= 0.f) step = 2;
-			[[ViewManager getInstance] changeViewWithInit:@"MainTopView"];
 
 			break;
 		}

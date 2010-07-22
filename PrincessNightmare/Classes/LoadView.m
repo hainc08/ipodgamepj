@@ -17,7 +17,7 @@
 	return self;
 }
 
-- (void)reset
+- (void)reset:(NSObject*)param
 {
 	for (int i=0; i<4; ++i)
 	{

@@ -36,20 +36,6 @@
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIImageView" id="998101444">
-						<reference key="NSNextResponder" ref="349670980"/>
-						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{85, -1}, {63, 124}}</string>
-						<reference key="NSSuperview" ref="349670980"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">4</int>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">TimeOver.png</string>
-						</object>
-					</object>
 					<object class="IBUIImageView" id="705108888">
 						<reference key="NSNextResponder" ref="349670980"/>
 						<int key="NSvFlags">256</int>
@@ -119,8 +105,22 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 					</object>
+					<object class="IBUIImageView" id="998101444">
+						<reference key="NSNextResponder" ref="349670980"/>
+						<int key="NSvFlags">256</int>
+						<string key="NSFrameSize">{63, 124}</string>
+						<reference key="NSSuperview" ref="349670980"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">4</int>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">TimeOver.png</string>
+						</object>
+					</object>
 				</object>
-				<string key="NSFrameSize">{171, 209}</string>
+				<string key="NSFrameSize">{70, 124}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -172,6 +172,22 @@
 					</object>
 					<int key="connectionID">45</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">timeOver</string>
+						<reference key="source" ref="349670980"/>
+						<reference key="destination" ref="998101444"/>
+					</object>
+					<int key="connectionID">46</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">timerBase</string>
+						<reference key="source" ref="349670980"/>
+						<reference key="destination" ref="705108888"/>
+					</object>
+					<int key="connectionID">47</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -202,8 +218,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="940898433"/>
 							<reference ref="116134855"/>
-							<reference ref="998101444"/>
 							<reference ref="705108888"/>
+							<reference ref="998101444"/>
 						</object>
 						<reference key="parent" ref="511116064"/>
 					</object>
@@ -264,7 +280,7 @@
 					<string>UIViewController</string>
 					<string>UIResponder</string>
 					<string>Timer</string>
-					<string>{{422, 445}, {171, 209}}</string>
+					<string>{{422, 530}, {70, 124}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -290,7 +306,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">45</int>
+			<int key="maxID">47</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -306,9 +322,13 @@
 							<string>sandDownMask</string>
 							<string>sandUp</string>
 							<string>sandUpMask</string>
+							<string>timeOver</string>
+							<string>timerBase</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>

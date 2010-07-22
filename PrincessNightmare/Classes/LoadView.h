@@ -11,8 +11,8 @@
 	int curPage;
 }
 
-- (void)reset;
 - (IBAction)ButtonClick:(id)sender;
 - (void)loadPage:(int)page;
+- (void)reset:(NSObject*)param;
 
 @end

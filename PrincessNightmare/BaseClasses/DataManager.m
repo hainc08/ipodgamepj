@@ -327,7 +327,7 @@ static DataManager *DataManagerInst;
 	selectTag[0] = tag1;
 	selectTag[1] = tag2;
 	selectTag[2] = tag3;
-	selectTag[2] = tag4;
+	selectTag[3] = tag4;
 }
 
 - (int)getSelectTag:(int)idx
