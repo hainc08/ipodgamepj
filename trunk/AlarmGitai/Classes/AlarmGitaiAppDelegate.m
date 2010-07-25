@@ -21,11 +21,17 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     
-    // Override point for customization after app launch   
-	[DateFormat initmanager];
+    // Override point for customization after app launch  
+	/* config load */ 
 	[AlarmConfig initmanager];
 	
+	/* 시간설정 */
+	[DateFormat initmanager];
+	
+	/* image load*/
 	[ImgManager initManager];
+	
+	/* view Controller */ 
 	[ViewManager initManager:window:viewController];
 //	[[ViewManager getInstance] changeView:@"MainAlarm"];
    [window addSubview:viewController.view];

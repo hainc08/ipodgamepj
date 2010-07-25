@@ -19,11 +19,9 @@
 		560890D611ECA55400C1F800 /* DateFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 560890D511ECA55400C1F800 /* DateFormat.m */; };
 		560890DF11ECA56F00C1F800 /* ClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560890D811ECA56F00C1F800 /* ClockView.m */; };
 		560890E011ECA56F00C1F800 /* DateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560890DA11ECA56F00C1F800 /* DateView.m */; };
-		560890E111ECA56F00C1F800 /* MainAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 560890DC11ECA56F00C1F800 /* MainAlarm.m */; };
 		560890E211ECA56F00C1F800 /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560890DE11ECA56F00C1F800 /* MenuView.m */; };
 		5608910311ECA5BA00C1F800 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608910011ECA5BA00C1F800 /* BaseView.m */; };
 		5608910411ECA5BA00C1F800 /* ViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5608910211ECA5BA00C1F800 /* ViewManager.m */; };
-		5608929C11ECAD0400C1F800 /* MainAlarm.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5608929B11ECAD0400C1F800 /* MainAlarm.xib */; };
 		5608931111ECAE8500C1F800 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5608931011ECAE8500C1F800 /* MenuView.xib */; };
 		5608932611ECAED500C1F800 /* ClockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5608932511ECAED500C1F800 /* ClockView.xib */; };
 		5608932911ECAEE300C1F800 /* DateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5608932811ECAEE300C1F800 /* DateView.xib */; };
@@ -68,9 +66,15 @@
 		5608985D11F0B33C00C1F800 /* 1_ubdot.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608985711F0B33C00C1F800 /* 1_ubdot.png */; };
 		5608985F11F0B33C00C1F800 /* 1_ubSat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608985911F0B33C00C1F800 /* 1_ubSat.png */; };
 		560898DC11F0B77600C1F800 /* ImgManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 560898DB11F0B77600C1F800 /* ImgManager.m */; };
+		5621D4CD11F77004009236C7 /* layout0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5621D4C911F77004009236C7 /* layout0.png */; };
+		5621D4CE11F77004009236C7 /* layout1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5621D4CA11F77004009236C7 /* layout1.png */; };
+		5621D4CF11F77004009236C7 /* layout2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5621D4CB11F77004009236C7 /* layout2.png */; };
+		5621D4D011F77004009236C7 /* layout3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5621D4CC11F77004009236C7 /* layout3.png */; };
 		569DE53711F1BB4F00A4E58F /* AlarmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569DE53611F1BB4F00A4E58F /* AlarmView.xib */; };
 		569DE53A11F1BB7000A4E58F /* AlarmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 569DE53911F1BB7000A4E58F /* AlarmView.m */; };
 		569DE96311F22DE700A4E58F /* xbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 569DE96211F22DE700A4E58F /* xbox.png */; };
+		56FF142711FB1A7500427935 /* config0.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FF142511FB1A7500427935 /* config0.png */; };
+		56FF142811FB1A7500427935 /* config1.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FF142611FB1A7500427935 /* config1.png */; };
 		841CF22611F3FB9E00677616 /* CharView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841CF22511F3FB9E00677616 /* CharView.m */; };
 		841CF22811F3FBBB00677616 /* CharView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841CF22711F3FBBB00677616 /* CharView.xib */; };
 		84E59C5211F404B600FA3E89 /* natsuko_0_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E59C4E11F404B600FA3E89 /* natsuko_0_d.png */; };
@@ -99,15 +103,12 @@
 		560890D811ECA56F00C1F800 /* ClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockView.m; sourceTree = "<group>"; };
 		560890D911ECA56F00C1F800 /* DateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateView.h; sourceTree = "<group>"; };
 		560890DA11ECA56F00C1F800 /* DateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateView.m; sourceTree = "<group>"; };
-		560890DB11ECA56F00C1F800 /* MainAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainAlarm.h; sourceTree = "<group>"; };
-		560890DC11ECA56F00C1F800 /* MainAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAlarm.m; sourceTree = "<group>"; };
 		560890DD11ECA56F00C1F800 /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
 		560890DE11ECA56F00C1F800 /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		560890FF11ECA5BA00C1F800 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
 		5608910011ECA5BA00C1F800 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		5608910111ECA5BA00C1F800 /* ViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewManager.h; sourceTree = "<group>"; };
 		5608910211ECA5BA00C1F800 /* ViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewManager.m; sourceTree = "<group>"; };
-		5608929B11ECAD0400C1F800 /* MainAlarm.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainAlarm.xib; sourceTree = "<group>"; };
 		5608931011ECAE8500C1F800 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
 		5608932511ECAED500C1F800 /* ClockView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClockView.xib; sourceTree = "<group>"; };
 		5608932811ECAEE300C1F800 /* DateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateView.xib; sourceTree = "<group>"; };
@@ -153,10 +154,16 @@
 		5608985911F0B33C00C1F800 /* 1_ubSat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ubSat.png; sourceTree = "<group>"; };
 		560898DA11F0B77600C1F800 /* ImgManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImgManager.h; path = BaseClasses/ImgManager.h; sourceTree = "<group>"; };
 		560898DB11F0B77600C1F800 /* ImgManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImgManager.m; path = BaseClasses/ImgManager.m; sourceTree = "<group>"; };
+		5621D4C911F77004009236C7 /* layout0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = layout0.png; path = image/layout0.png; sourceTree = "<group>"; };
+		5621D4CA11F77004009236C7 /* layout1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = layout1.png; path = image/layout1.png; sourceTree = "<group>"; };
+		5621D4CB11F77004009236C7 /* layout2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = layout2.png; path = image/layout2.png; sourceTree = "<group>"; };
+		5621D4CC11F77004009236C7 /* layout3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = layout3.png; path = image/layout3.png; sourceTree = "<group>"; };
 		569DE53611F1BB4F00A4E58F /* AlarmView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmView.xib; sourceTree = "<group>"; };
 		569DE53811F1BB7000A4E58F /* AlarmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmView.h; sourceTree = "<group>"; };
 		569DE53911F1BB7000A4E58F /* AlarmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmView.m; sourceTree = "<group>"; };
-		569DE96211F22DE700A4E58F /* xbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xbox.png; sourceTree = "<group>"; };
+		569DE96211F22DE700A4E58F /* xbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xbox.png; path = image/xbox.png; sourceTree = "<group>"; };
+		56FF142511FB1A7500427935 /* config0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = config0.png; path = image/config0.png; sourceTree = "<group>"; };
+		56FF142611FB1A7500427935 /* config1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = config1.png; path = image/config1.png; sourceTree = "<group>"; };
 		841CF22411F3FB9E00677616 /* CharView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharView.h; sourceTree = "<group>"; };
 		841CF22511F3FB9E00677616 /* CharView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharView.m; sourceTree = "<group>"; };
 		841CF22711F3FBBB00677616 /* CharView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharView.xib; sourceTree = "<group>"; };
@@ -189,8 +196,6 @@
 				560890D811ECA56F00C1F800 /* ClockView.m */,
 				560890D911ECA56F00C1F800 /* DateView.h */,
 				560890DA11ECA56F00C1F800 /* DateView.m */,
-				560890DB11ECA56F00C1F800 /* MainAlarm.h */,
-				560890DC11ECA56F00C1F800 /* MainAlarm.m */,
 				560890DD11ECA56F00C1F800 /* MenuView.h */,
 				560890DE11ECA56F00C1F800 /* MenuView.m */,
 				1D3623240D0F684500981E51 /* AlarmGitaiAppDelegate.h */,
@@ -218,7 +223,7 @@
 				560890D011ECA52F00C1F800 /* ConfigClasses */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
+				5621D75111FA0A58009236C7 /* Resource */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -234,23 +239,14 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		29B97317FDCFA39411CA2CEA /* Resources */ = {
+		29B97317FDCFA39411CA2CEA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5621D75811FA0A83009236C7 /* Menu */,
 				841CF25111F4003700677616 /* Char */,
 				5608961A11F0931700C1F800 /* image */,
-				5608932711ECAED800C1F800 /* New Group */,
-				2899E5210DE3E06400AC0155 /* AlarmGitaiViewController.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* AlarmGitai-Info.plist */,
-				5608929B11ECAD0400C1F800 /* MainAlarm.xib */,
-				5608931011ECAE8500C1F800 /* MenuView.xib */,
-				5608932511ECAED500C1F800 /* ClockView.xib */,
-				5608932811ECAEE300C1F800 /* DateView.xib */,
-				569DE53611F1BB4F00A4E58F /* AlarmView.xib */,
-				841CF22711F3FBBB00677616 /* CharView.xib */,
 			);
-			name = Resources;
+			name = Images;
 			sourceTree = "<group>";
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
@@ -287,17 +283,9 @@
 			path = BaseClasses;
 			sourceTree = "<group>";
 		};
-		5608932711ECAED800C1F800 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		5608961A11F0931700C1F800 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				569DE96211F22DE700A4E58F /* xbox.png */,
 				5608985411F0B33C00C1F800 /* 1_dwDiv.png */,
 				5608985511F0B33C00C1F800 /* 1_dwSat.png */,
 				5608985611F0B33C00C1F800 /* 1_ubDiv.png */,
@@ -340,6 +328,44 @@
 				5608963F11F0931700C1F800 /* menu_w.png */,
 			);
 			path = image;
+			sourceTree = "<group>";
+		};
+		5621D75111FA0A58009236C7 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				5621D75911FA0AAD009236C7 /* Xib */,
+				29B97317FDCFA39411CA2CEA /* Images */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		5621D75811FA0A83009236C7 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				56FF142511FB1A7500427935 /* config0.png */,
+				56FF142611FB1A7500427935 /* config1.png */,
+				569DE96211F22DE700A4E58F /* xbox.png */,
+				5621D4C911F77004009236C7 /* layout0.png */,
+				5621D4CA11F77004009236C7 /* layout1.png */,
+				5621D4CB11F77004009236C7 /* layout2.png */,
+				5621D4CC11F77004009236C7 /* layout3.png */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		5621D75911FA0AAD009236C7 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				5608931011ECAE8500C1F800 /* MenuView.xib */,
+				841CF22711F3FBBB00677616 /* CharView.xib */,
+				5608932811ECAEE300C1F800 /* DateView.xib */,
+				569DE53611F1BB4F00A4E58F /* AlarmView.xib */,
+				5608932511ECAED500C1F800 /* ClockView.xib */,
+				2899E5210DE3E06400AC0155 /* AlarmGitaiViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* AlarmGitai-Info.plist */,
+			);
+			name = Xib;
 			sourceTree = "<group>";
 		};
 		841CF25111F4003700677616 /* Char */ = {
@@ -422,7 +448,6 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* AlarmGitaiViewController.xib in Resources */,
-				5608929C11ECAD0400C1F800 /* MainAlarm.xib in Resources */,
 				5608931111ECAE8500C1F800 /* MenuView.xib in Resources */,
 				5608932611ECAED500C1F800 /* ClockView.xib in Resources */,
 				5608932911ECAEE300C1F800 /* DateView.xib in Resources */,
@@ -472,6 +497,12 @@
 				84E59C5211F404B600FA3E89 /* natsuko_0_d.png in Resources */,
 				84E59C5311F404B600FA3E89 /* natsuko_1_d.png in Resources */,
 				84E59C5411F404B600FA3E89 /* natsuko_1_face_d.png in Resources */,
+				5621D4CD11F77004009236C7 /* layout0.png in Resources */,
+				5621D4CE11F77004009236C7 /* layout1.png in Resources */,
+				5621D4CF11F77004009236C7 /* layout2.png in Resources */,
+				5621D4D011F77004009236C7 /* layout3.png in Resources */,
+				56FF142711FB1A7500427935 /* config0.png in Resources */,
+				56FF142811FB1A7500427935 /* config1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,7 +520,6 @@
 				560890D611ECA55400C1F800 /* DateFormat.m in Sources */,
 				560890DF11ECA56F00C1F800 /* ClockView.m in Sources */,
 				560890E011ECA56F00C1F800 /* DateView.m in Sources */,
-				560890E111ECA56F00C1F800 /* MainAlarm.m in Sources */,
 				560890E211ECA56F00C1F800 /* MenuView.m in Sources */,
 				5608910311ECA5BA00C1F800 /* BaseView.m in Sources */,
 				5608910411ECA5BA00C1F800 /* ViewManager.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class MainAlarm;
+
 @class ClockView;
 @class DateView;
 @class MenuView;
@@ -17,8 +17,8 @@
 @interface AlarmGitaiViewController : UIViewController {
 	BOOL hiddenButton;
 	BOOL menuEnable;
+
 	
-	MainAlarm *mainAlarm;
 	MenuView *menuview;
 	ClockView *clockview;
 	DateView *dateview;
@@ -36,5 +36,6 @@
 - (void)update;
 - (void)stopTimer;
 - (void)resumeTimer;
+- (void)FrameUpdate;
 @end
 

@@ -8,13 +8,13 @@
 
 #import "AlarmGitaiViewController.h"
 #import "ViewManager.h"
-#import "MainAlarm.h"
+
 #import "MenuView.h"
 #import "DateView.h"
 #import	"ClockView.h"
 #import "BaseView.h"
 #import "CharView.h"
-
+#import "AlarmConfig.h"
 @implementation AlarmGitaiViewController
 
 
@@ -25,22 +25,26 @@
 	[UIView	 beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.7];
 	if(hiddenButton)
+	{
 		[MenuButton setFrame:CGRectMake(0, -100, 112, 98)];
+		if(menuEnable)
+		{
+			[menuview setFrame:CGRectMake(-300, -480, 300, 480)];
+			menuEnable = !menuEnable;
+
+		}
+
+	}
 	else 
 	{
 		[MenuButton setTransform:CGAffineTransformMake(1, 0.0, 0.0, 1, 0.0, 0.0)];
 		[MenuButton setFrame:CGRectMake(0, 0, 112, 98)];
+
 	}
-	if(menuEnable)
-	{
-		
-		[menuview setFrame:CGRectMake(-300, -480, 300, 480)];
-		menuEnable = !menuEnable;
-	}
-		
 	[UIView commitAnimations];
+/* 보이는게 구리네..;; 나중에 조정 */
 	hiddenButton = !hiddenButton;
-	
+	[MenuButton setAlpha:1];
 }
 
 /*
@@ -66,42 +70,42 @@
 	
 	hiddenButton = false;
 	menuEnable   = false;
-
+	
+	ViewCgPoint	*alarmviewpoint	= [[AlarmConfig getInstance] getHeigthViewPoint];
+	
 	charView = (CharView *)[[ViewManager getInstance] getInstView:@"CharView"];
 	[self.view addSubview:charView];
 	[charView setTransform:CGAffineTransformMake(1, 0, 0, -1, 0, 0)];
 	[charView setCenter:CGPointMake(160,240)];
 	[charView setChar:@"natsuko" idx:1 isNight:false];
 	
-	mainAlarm = (MainAlarm *)[[ViewManager getInstance] getInstView:@"MainAlarm"];
-	[self.view addSubview:mainAlarm];
-	
-	
 	clockview = (ClockView *)[[ViewManager getInstance] getInstView:@"ClockView"];
-	[clockview UpdateTime];
-	clockview.transform =  CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0);
 	
+	[clockview setTransform:alarmviewpoint.ClockTrans]; 
+	[clockview setCenter:alarmviewpoint.ClockPoint ];
+	
+	[clockview UpdateTime];
 	[self.view addSubview:clockview];
-	[clockview setCenter:CGPointMake(65,410)];
-
 	[clockview setAlpha:1];
 
-	dateview = (DateView *)[[ViewManager getInstance] getInstView:@"DateView"];
-	[dateview UpdateDate];
-	dateview.transform =  CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0);
 	
+	dateview = (DateView *)[[ViewManager getInstance] getInstView:@"DateView"];
+
+	[dateview setTransform:alarmviewpoint.DateTrans];
+	[dateview setCenter:alarmviewpoint.DatePoint];
+	[dateview UpdateDate];
 	[self.view addSubview:dateview];
-	[dateview setCenter:CGPointMake(35,50)];
 	[dateview setAlpha:1];
 	
-
-	
+	//menuview  = (MenuView *) [[ViewManager getInstance] addSubInstView:@"MenuView"];
 	menuview = (MenuView *)[[ViewManager getInstance] getInstView:@"MenuView"];
 	menuview.transform =  CGAffineTransformMake(1, 0.0, 0.0, 1, 0.0, 0.0);
 	[self.view addSubview:menuview];
 	
 	[menuview setCenter:CGPointMake(-300, -480)];
 	[menuview setAlpha:1];
+	
+	
 
 	MenuButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 112, 98)];
 	
@@ -130,21 +134,8 @@
 - (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation: (UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration {    
 		UIInterfaceOrientation interfaceOrientation = self.interfaceOrientation;
 #endif
-	
-	if( interfaceOrientation == UIInterfaceOrientationPortrait ||interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) { 
-	
-		[clockview setCenter:CGPointMake(65,410)];
-		[dateview setCenter:CGPointMake(35,50)];
-		[clockview setTransform:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
-	}
-	else 
-	{
-		
-		[clockview setCenter:CGPointMake(65,260)];
-		[dateview setCenter:CGPointMake(45,50)];
-		[clockview setTransform:CGAffineTransformMake(0.7, 0.0, 0.0, 0.7, 0.0, 0.0)];
-	}
-	
+
+	[self FrameUpdate];
 	
 }
 
@@ -184,37 +175,52 @@
 		
 	}
 	
-	
-	[UIView	 beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.7];
-	
-	if(menuEnable)
+	if(sender == MenuButton )
 	{
-		[menuview setFrame:CGRectMake(-320, -480, 320, 480)];
-		[MenuButton setTransform:CGAffineTransformMake(1, 0.0, 0.0, 1, 0.0, 0.0)];
-		[MenuButton setCenter:CGPointMake(0, 0)];
+		[MenuButton setAlpha:0];
+		
+		[UIView	 beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:0.7];
+		[menuview setFrame:CGRectMake(0, -100, 320, 480)];
+		[UIView commitAnimations];
+	
+		menuEnable = !menuEnable;
 	}
-	else
-	{
-		[menuview setFrame:CGRectMake(0, -150, 320, 480)];
-		[MenuButton setTransform:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
-		[MenuButton setCenter:CGPointMake(297, 305)];
-	}
-	
-	
-	[UIView commitAnimations];
-	
-	menuEnable = !menuEnable;
-	
 }
 
 	
 - (void)update
 {
 		++frameTick;
+	if(frameTick % 10)
+		[self FrameUpdate];
 	[clockview UpdateTime];
 	[dateview UpdateDate];
 }
+		
+- (void)FrameUpdate
+{
+	ViewCgPoint	*alarmviewpoint	;
+	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) { 
+		alarmviewpoint	= [[AlarmConfig getInstance] getHeigthViewPoint];	
+		
+		[clockview setTransform:alarmviewpoint.ClockTrans]; 
+		[clockview setCenter:alarmviewpoint.ClockPoint ];
+		
+		[dateview setTransform:alarmviewpoint.DateTrans];
+		[dateview setCenter:alarmviewpoint.DatePoint];
+	}
+	else 
+	{
+		alarmviewpoint	= [[AlarmConfig getInstance] getWidthViewPoint];
+		[clockview setTransform:alarmviewpoint.ClockTrans]; 
+		[clockview setCenter:alarmviewpoint.ClockPoint ];
+		
+		[dateview setTransform:alarmviewpoint.DateTrans];
+		[dateview setCenter:alarmviewpoint.DatePoint];
+	}
+}
+		
 	
 - (void)stopTimer
 {

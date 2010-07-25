@@ -11,8 +11,8 @@
 static AlarmConfig *AlarmConfigInst;
 
 @implementation AlarmConfig
-
-
+@synthesize heightnum;
+@synthesize widthnum;
 
 + (AlarmConfig *)getInstance
 {
@@ -22,11 +22,39 @@ static AlarmConfig *AlarmConfigInst;
 	AlarmConfigInst = [AlarmConfig alloc];
 	[AlarmConfigInst loadConfig];
 }
+
 - (void)loadConfig
 {
+	heightnum = 2;
+	widthnum = 2;
+	
 	FontType = 1;
 	FontUpImageType = [[NSString alloc] initWithString:@"ub"];
 	FontBgImageType = [[NSString alloc] initWithString:@"dw"];
+	for(int loop = 0; loop < 4; loop ++)
+		heigthviewpoint[loop] = [ViewCgPoint alloc];
+	
+	[heigthviewpoint[0] setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
+	[heigthviewpoint[0] setClockPoint:CGPointMake(65,410)];
+	[heigthviewpoint[0] setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
+	[heigthviewpoint[0] setDatePoint:CGPointMake(35,50)];
+
+	
+	[heigthviewpoint[1] setClockTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
+	[heigthviewpoint[1] setClockPoint:CGPointMake(40,450)];
+	[heigthviewpoint[1] setDateTrans:CGAffineTransformMake(0.16, 0.0, 0.0, 0.16, 0.0, 0.0)];
+	[heigthviewpoint[1] setDatePoint:CGPointMake(33,370)];
+	
+	[heigthviewpoint[2] setClockTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
+	[heigthviewpoint[2] setClockPoint:CGPointMake(35,130)];	
+	[heigthviewpoint[2] setDateTrans:CGAffineTransformMake(0.25, 0.0, 0.0, 0.25, 0.0, 0.0)];
+	[heigthviewpoint[2] setDatePoint:CGPointMake(45,200)];
+
+	[heigthviewpoint[3] setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
+	[heigthviewpoint[3] setClockPoint:CGPointMake(65,410)];	
+	[heigthviewpoint[3] setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
+	[heigthviewpoint[3] setDatePoint:CGPointMake(35,50)];
+	
 }
 - (int)getFontType
 {
@@ -43,6 +71,20 @@ static AlarmConfig *AlarmConfigInst;
 	return FontBgImageType;
 }
 
+- (ViewCgPoint *) getHeigthViewPoint
+{
+	return heigthviewpoint[heightnum];
+}
+
+- (ViewCgPoint *) getWidthViewPoint
+{
+	return heigthviewpoint[heightnum];
+}
+
+
+
+
+
 - (void)dealloc {
 	[super dealloc];	
 	[FontUpImageType  release];
@@ -52,3 +94,12 @@ static AlarmConfig *AlarmConfigInst;
 }
 
 @end
+
+
+@implementation ViewCgPoint
+@synthesize ClockTrans;	
+@synthesize DateTrans;
+@synthesize ClockPoint;
+@synthesize DatePoint;
+@end
+
