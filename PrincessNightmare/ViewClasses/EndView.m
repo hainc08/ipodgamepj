@@ -1,6 +1,7 @@
 #import "EndView.h"
 #import "ViewManager.h"
 #import "DataManager.h"
+#import "SoundManager.h"
 
 @implementation EndParam
 
@@ -60,6 +61,8 @@
 	int endNum = [p endNum];
 	if (endNum > 100)
 	{
+		[[SoundManager getInstance] playFX:@"009_jg.mp3" repeat:false];
+
 		//엔딩처리...
 		[bad_end_View setAlpha:1];
 		Scene* scene = [[DataManager getInstance] getCurScene];

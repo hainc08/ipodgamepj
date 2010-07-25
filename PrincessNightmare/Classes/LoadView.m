@@ -2,6 +2,7 @@
 #import "ViewManager.h"
 #import "SaveManager.h"
 #import "GameView.h"
+#import "SoundManager.h"
 
 @implementation LoadView
 
@@ -45,7 +46,10 @@
 
 	for (int i=0; i<4; ++i)
 	{
-		[bars[i] setSaveIdx:[[SaveManager getInstance] getSaveData:(page * 4 + i)]];
+		int saveIdx = [[SaveManager getInstance] getSaveData:(page * 4 + i)];
+		[[bars[i] getButton:0] setEnabled:(saveIdx > 0)];
+		[[bars[i] getButton:1] setEnabled:(saveIdx > 0)];
+		[bars[i] setSaveIdx:saveIdx];
 		[bars[i] setSaveDate:[[SaveManager getInstance] getSaveDate:(page * 4 + i)]];
 	}
 }
@@ -54,14 +58,17 @@
 {	
 	if (sender == backButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[self setAlpha:0];
 	}
 	else if (sender == nextButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[self loadPage:curPage+1];
 	}
 	else if (sender == prevButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[self loadPage:curPage-1];
 	}
 	else

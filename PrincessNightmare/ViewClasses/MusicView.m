@@ -87,10 +87,12 @@
 	}
 	else if (sender == nextButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[self loadPage:curPage+1];
 	}
 	else if (sender == prevButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[self loadPage:curPage-1];
 	}
 	else if (sender == stopButton)

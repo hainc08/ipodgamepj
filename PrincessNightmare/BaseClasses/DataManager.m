@@ -219,6 +219,7 @@ static DataManager *DataManagerInst;
 @synthesize subTitleIdx;
 @synthesize flagStrCount;
 @synthesize animeType;
+@synthesize serihuIdx;
 
 - (bool)isLoadOk
 {
@@ -798,15 +799,12 @@ static DataManager *DataManagerInst;
 			{
 				[preloadScene[j] setIsLoaded:false];
 				
-				[preloadScene[j] setSubTitleIdx:-1];
 				for (int k=1; k<91; ++k)
 				{
 					if (msgIdx[k] > willSceneId) break;
-					if (msgIdx[k] == willSceneId)
-					{
-						[preloadScene[j] setSubTitleIdx:k];
-						break;
-					}
+
+					[preloadScene[j] setSubTitleIdx:k];
+					[preloadScene[j] setSerihuIdx:(willSceneId - msgIdx[k])];
 				}
 
 				int chrId;

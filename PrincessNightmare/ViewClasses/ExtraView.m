@@ -1,5 +1,6 @@
 #import "ExtraView.h"
 #import "ViewManager.h"
+#import "SoundManager.h"
 
 @implementation ExtraView
 
@@ -24,22 +25,27 @@
 {	
 	if (sender == musicButton)
 	{
+		[[SoundManager getInstance] playFX:@"001_se.mp3" repeat:false];
 		[[ViewManager getInstance] changeView:@"MusicView"];
 	}
 	else if (sender == graphicButton)
 	{
+		[[SoundManager getInstance] playFX:@"001_se.mp3" repeat:false];
 		[[ViewManager getInstance] changeView:@"GraphicView"];
 	}
 	else if (sender == scineButton)
 	{
+		[[SoundManager getInstance] playFX:@"001_se.mp3" repeat:false];
 		[[ViewManager getInstance] changeView:@"ScineView"];
 	}
 	else if (sender == itemButton)
 	{
+		[[SoundManager getInstance] playFX:@"001_se.mp3" repeat:false];
 		[[ViewManager getInstance] changeView:@"ItemView"];
 	}
 	else if (sender == backButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[[ViewManager getInstance] changeView:@"MainTopView"];
 	}
 }

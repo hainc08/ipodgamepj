@@ -2,6 +2,7 @@
 #import "ViewManager.h"
 #import "SaveManager.h"
 #import "DataManager.h"
+#import "SoundManager.h"
 
 @implementation SaveView
 
@@ -54,14 +55,17 @@
 {	
 	if (sender == backButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[self setAlpha:0];
 	}
 	else if (sender == nextButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[self loadPage:curPage+1];
 	}
 	else if (sender == prevButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[self loadPage:curPage-1];
 	}
 	else

@@ -1,6 +1,7 @@
 #import "ConfigurationView.h"
 #import "ViewManager.h"
 #import "SaveManager.h"
+#import "SoundManager.h"
 
 @implementation ConfigurationView
 
@@ -33,6 +34,7 @@
 {	
 	if (sender == backButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[[SaveManager getInstance] setOpt:opt1 :opt2];
 		[[ViewManager getInstance] changeView:@"MainTopView"];
 	}

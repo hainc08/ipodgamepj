@@ -20,9 +20,6 @@ static SoundManager *SoundManagerInst;
 	bgmPlayer = nil;
 	fxPlayer = nil;
 
-	lastFX = @"";
-	lastBGM = @"";
-
 	fxVolume = bgmVolume = 1; // default 설정
 }
 
@@ -37,10 +34,6 @@ static SoundManager *SoundManagerInst;
 
 -(void)playBGM:(NSString*)name
 {
-	return;
-
-	lastBGM = name;
-
 	// make file URL
 	NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
 	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
@@ -69,11 +62,6 @@ static SoundManager *SoundManagerInst;
 	
 -(void)playFX:(NSString*)name repeat:(bool)repeat
 {
-	return;
-	
-	lastFXRepeat = repeat;
-	lastFX = name;
-	
 	NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
 	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
 
@@ -131,15 +119,6 @@ static SoundManager *SoundManagerInst;
 
 -(void) stopAll
 {
-	lastFX = @"";
-	lastBGM = @"";
-
-	[self stopBGM];
-	[self stopFX];
-}
-
--(void) pause
-{
 	[self stopBGM];
 	[self stopFX];
 }
@@ -147,12 +126,6 @@ static SoundManager *SoundManagerInst;
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer*)player successfully:(BOOL)flag
 {
     // This is protocol's callback function. But we do not use this.
-}
-
--(void)restart
-{
-	if ([lastBGM length] > 0) [self playBGM:lastBGM];
-	if ([lastFX length] > 0) [self playFX:lastFX repeat:lastFXRepeat];
 }
 
 @end
