@@ -2,10 +2,6 @@
 
 @implementation CharView
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	
-}
 
 - (id)initWithCoder:(NSCoder *)coder {
 	self = [super initWithCoder:coder];

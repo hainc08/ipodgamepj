@@ -11,9 +11,9 @@
 #import "ViewManager.h"
 #import "DateView.h"
 #import "ClockView.h"
+#import "AlarmConfig.h"
 
 @implementation MenuView
-
 
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -26,6 +26,8 @@
 
 - (id)initWithCoder:(NSCoder *)coder {
 	self = [super initWithCoder:coder];
+	
+//	[self initValue];
 	[self CreatedAlarmView];
 	return self;
 }
@@ -36,32 +38,36 @@
 	return self;
 }
 
+
 - (void)CreatedAlarmView
 {
 
-	for( int loop = 0 ; loop < 5 ;loop++)
+	for( int loop = 0 ; loop < 4 ;loop++)
 	{
-		View[loop] = (AlarmView *)[[ViewManager getInstance] getInstView:@"AlarmView"];
-		buttonView[loop] = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
 		
-		[View[loop] setFrame:CGRectMake(0, 0, 320, 480) ];
+		alarmView[loop] = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
 		
-		[View[loop] setDate:CGPointMake(100, 200) transform:CGAffineTransformMake(0.4, 0,0,0.4, 0,0)  enable:1];
-		[View[loop] setClock:CGPointMake(100, 200) transform:CGAffineTransformMake(0.4, 0,0,0.4, 0,0)   enable:1];
-		[View[loop] setCenter:CGPointMake(85 + ((loop/2)*110),235 + ((loop%2)*160))];
-		[View[loop] setTransform:CGAffineTransformMake(0.32, 0,0,0.32, 0,0)];
-			
-		if(loop == 4)
-			[View[loop] setAlpha:0];
-		else
-			[View[loop] setAlpha:1];
+		[alarmView[loop] setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"layout%d.png", loop]] forState:UIControlStateNormal];
+		[alarmView[loop] setTransform:CGAffineTransformMake(0.32, 0,0,0.32, 0,0)];
+		[alarmView[loop] setCenter:CGPointMake(85 + ((loop/2)*110),235 + ((loop%2)*160))];
+		[alarmView[loop] setAlpha:1];
 
-		[buttonView[loop] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-		
-		[View[loop] addSubview:buttonView[loop]];
-		[self addSubview:View[loop]];
-	}
+		[alarmView[loop] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+		[self addSubview:alarmView[loop]];
 	
+/* config menu */
+		if(loop  < 2 )
+		{
+		configmenu[loop] = [[UIButton alloc] initWithFrame:CGRectMake(50 + (loop*50), 115, 87, 46) ];
+		[configmenu[loop] setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"config%d.png", loop] ] forState:UIControlStateNormal];
+		[configmenu[loop] addTarget:self action:@selector(ConfigButton:) forControlEvents:UIControlEventTouchUpInside];
+		[configmenu[loop] setTransform:CGAffineTransformMake(0.7, 0,0,0.7, 0,0)];
+		[configmenu[loop] setAlpha:1];
+		[self addSubview:configmenu[loop]];
+		}
+	}
+
+/* xbox Button */
 	Xbox = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30) ];
 	[Xbox setBackgroundImage:[UIImage imageNamed:@"xbox.png" ] forState:UIControlStateNormal];
 	[Xbox addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -69,16 +75,21 @@
 //	[Xbox setCenter:CGPointMake(40, 160)];
 	[Xbox setAlpha:0];
 	[self addSubview:Xbox];
+	choice=1;
+	
+	
+
 }
 
 - (IBAction)ButtonClick:(id)sender
 {
-	
+	if(choice)
+	{
 	for( int loop = 0 ; loop < 4 ;loop++)
 	{
-		if(sender == buttonView[loop])
+		if(sender == alarmView[loop])
 		{
-			[View[4] setCenter:CGPointMake(85 + ((loop/2)*110),235 + ((loop%2)*160))];
+			[alarmView[loop] setCenter:CGPointMake(85 + ((loop/2)*110),235 + ((loop%2)*160))];
 			[Xbox setCenter:CGPointMake(45 + ((loop/2)*110), 165 + ((loop%2)*160))];
 
 			[UIView	 beginAnimations:@"View" context:NULL];
@@ -86,63 +97,99 @@
 			[Xbox setCenter:CGPointMake(45,165)];
 			[Xbox setAlpha:1];
 			
-			[View[4] setAlpha:1];
-			[View[4] setCenter:CGPointMake(140,312)];
-			[View[4] setTransform:CGAffineTransformMake(0.6, 0,0,0.6, 0,0)];
-			for( int loop = 0 ; loop < 4 ;loop++)
+
+			[alarmView[loop] setCenter:CGPointMake(140,312)];
+			[alarmView[loop] setTransform:CGAffineTransformMake(0.6, 0,0,0.6, 0,0)];
+			for( int l_loop = 0 ; l_loop < 4 ;l_loop++)
 			{
-				[View[loop] setAlpha:0.3];
+				if(l_loop != loop)
+				[alarmView[l_loop] setAlpha:0.3];
 			}
+			[alarmView[loop] setAlpha:1];
+			
 			[UIView commitAnimations];
 			
 			choicenum = loop;
+			[self bringSubviewToFront:alarmView[loop]];
+			[self bringSubviewToFront:Xbox];
 			break;
 		}
 	}	
+	}
 
 	if( sender == Xbox)
 	{
 		[UIView beginAnimations:@"Xbox" context:nil];
 		[UIView setAnimationDuration:0.7];		
 
-		[View[4] setCenter:CGPointMake(85 + ((choicenum/2)*110),235 + ((choicenum%2)*160))];
+		[alarmView[choicenum] setCenter:CGPointMake(85 + ((choicenum/2)*110),235 + ((choicenum%2)*160))];
 		[Xbox	 setCenter:CGPointMake(45 + ((choicenum/2)*110), 165 + ((choicenum%2)*160))];
 		
-		[View[4] setTransform:CGAffineTransformMake(0.32, 0,0,0.32, 0,0)];
+		[alarmView[choicenum] setTransform:CGAffineTransformMake(0.32, 0,0,0.32, 0,0)];
 	
 		for( int loop = 0 ; loop < 4 ;loop++)
-			[View[loop] setAlpha:1];
+		{
+			[alarmView[loop] setAlpha:1];
+		}
 	
-		[View[4] setAlpha:0];
 		[Xbox    setAlpha:0];
 		
 		[UIView commitAnimations];
-		
-		
+		choice= 1;
 	}
 	
 	
-	if( sender == buttonView[4])
+	if( sender == alarmView[choicenum] )
 	{
+		if(!choice)
+		{
 		[Xbox    setAlpha:0];
 		
 		[UIView	 beginAnimations:@"full" context:NULL];
 		[UIView setAnimationDuration:0.7];
 		
-		[View[4] setCenter:CGPointMake(160,390)];
-		[View[4] setTransform:CGAffineTransformMake(1, 0,0,1, 0,0)];
+		[alarmView[choicenum] setCenter:CGPointMake(160,390)];
+		[alarmView[choicenum] setTransform:CGAffineTransformMake(1, 0,0,1, 0,0)];
 		
 		for( int loop = 0 ; loop < 4 ;loop++)
-			[View[loop] setAlpha:0];
+			[alarmView[loop] setAlpha:0];
 		
 
 		[UIView commitAnimations];
+			choice= 1;
 		
+			[AlarmConfig getInstance].heightnum = choicenum;
+		}
+		else
+			choice = 0;
 	}
 }
 
-- (void) BaseSoundPlay
+- (void)initAlarmView
 {
+	for( int loop = 0 ; loop < 4 ;loop++)
+	{
+		[alarmView[loop] setTransform:CGAffineTransformMake(0.32, 0,0,0.32, 0,0)];
+		[alarmView[loop] setCenter:CGPointMake(85 + ((loop/2)*110),235 + ((loop%2)*160))];
+		[alarmView[loop] setAlpha:1];
+	}
+	[Xbox setAlpha:0];
+}
+
+- (IBAction)ConfigButton:(id)sender
+{
+	if(sender == configmenu[0])
+	{
+		for(int loop = 0 ; loop < 4 ; loop++ )
+			[alarmView[loop] setAlpha:0];
+		
+	}
+	else if ( sender == configmenu[1])
+	{
+		[self initAlarmView];
+	}
+	
+	
 }
 
 - (void)dealloc {

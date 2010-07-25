@@ -27,7 +27,7 @@ static DateFormat *DateFormatInst;
 	locale	=	[[NSLocale alloc] init];
 	FormatDate	=	[[NSDateFormatter alloc] init];
 	[self initContry:@"en_KR"];
-
+	
 }
 - (void) initContry:(NSString *)Country
 {/* en_US , en_JP */

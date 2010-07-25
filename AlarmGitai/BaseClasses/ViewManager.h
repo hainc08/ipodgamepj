@@ -26,4 +26,7 @@ typedef struct
 - (UIView*)getInstView:(NSString*)viewName;
 - (BaseView*)getCurView;
 
+
+- (UIView*)addSubInstView:(NSString*)viewName;
+- (void)changeSuperView:(NSString*)changeSuperName param:(NSObject*)param;
 @end
