@@ -5,6 +5,14 @@
 #import "ScineView.h"
 #import "EndView.h"
 
+void swapView(UIView* v1, UIView* v2)
+{
+	UIView* swap;
+	swap = v1;
+	v1 = v2;
+	v2 = swap;
+}
+
 @implementation GameParam
 
 @synthesize startScene;
@@ -118,17 +126,16 @@
 		isInit = true;
 	}
 	
-	isShowScene = false;
 	nowBgmIdx = 0;
+	lastScene = NULL;
 	scene = NULL;
 	curSceneId = [gParam startScene];
 	showOK = false;
-	gameEnd = -1;
 	updateWait = 0;
+	phase = LOAD;
 
-	[selectPanel1 setAlpha:0];
-	[selectPanel2 setAlpha:0];
-	[selectPanel3 setAlpha:0];
+	[self clearView];
+	[blackBoard setAlpha:1];
 	
 	[[DataManager getInstance] resetPreload];
 	[[DataManager getInstance] setCurIdx:curSceneId];
@@ -157,6 +164,27 @@
 			[chrView[3] setAlpha:1];
 			[menuButton setAlpha:1];
 			[serihuBoard setAlpha:1];
+			return;
+		}
+
+		if (phase != PLAYWAIT) return;
+		
+		if ([self checkEnd:scene]) return;
+
+		if ([sceneView makeAfterScene:scene])
+		{
+			phase = AFTER;
+
+			[self hideChr:0.4];
+
+			[[SoundManager getInstance] stopAll];
+			
+			[UIView beginAnimations:@"scene" context:NULL];
+			[UIView setAnimationDuration:1];
+			[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+			[sceneView setAlpha:1];
+			[UIView commitAnimations];
+			nowBgmIdx = 0;
 			return;
 		}
 
@@ -204,7 +232,8 @@
 		if (isMoved)
 		{
 			showOK = false;
-			scene = NULL;
+			lastScene = scene;
+			phase = LOAD;
 			return;
 		}
 		
@@ -228,7 +257,8 @@
 					}
 
 					showOK = false;
-					scene = NULL;
+					lastScene = scene;
+					phase = LOAD;
 				}
 				break;
 			case 6:
@@ -253,13 +283,16 @@
 					}
 
 					showOK = false;
-					scene = NULL;
+					lastScene = scene;
+					phase = LOAD;
 				}
 				break;
 			case 3:
 			case 4:
 				if ((sender == selectButton1) || (sender == selectButton2) || (sender == selectButton3))
 				{
+					[[SoundManager getInstance] playFX:@"009_jg.mp3" repeat:false];
+					
 					int tagIdx = 0;
 					if (sender == selectButton1) tagIdx = 0;
 					else if (sender == selectButton2) tagIdx = 1;
@@ -268,7 +301,8 @@
 					curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:tagIdx]];
 					[[DataManager getInstance] setCurIdx:curSceneId];
 					showOK = false;
-					scene = NULL;
+					lastScene = scene;
+					phase = LOAD;
 					
 					[selectPanel1 setAlpha:0];
 					[selectPanel2 setAlpha:0];
@@ -311,36 +345,41 @@
 		curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:tagIdx]];
 		[[DataManager getInstance] setCurIdx:curSceneId];
 		showOK = false;
-		scene = NULL;
+
+		lastScene = scene;
+		phase = LOAD;
 		
 		[selectPanel1 setAlpha:0];
 		[selectPanel2 setAlpha:0];
 		[selectPanel3 setAlpha:0];
 	}
 	
-	if (isShowScene)
+	if ((phase == BEFORE)||(phase == AFTER))
 	{
 		if ([sceneView showEnd])
 		{
-			isShowScene = false;
-			[[SoundManager getInstance] restart];
+			lastScene = NULL;
 			
-			[UIView beginAnimations:@"scene" context:NULL];
-			[UIView setAnimationDuration:1];
-			[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-			[sceneView setAlpha:0];
-			[UIView commitAnimations];
-			
-			[self willShow:0.4];
+			if (phase == BEFORE) phase = PLAY;
+			else if (phase == AFTER)
+			{
+				curSceneId = [[DataManager getInstance] gotoChapter:[scene nextChapter]];
+				phase = LOAD;
+			}
 		}
 		else
 		{
 			[sceneView update];
 		}
 	}
+	else if (phase == PLAY)
+	{
+		[self playScene:scene];
+		phase = PLAYWAIT;
+	}
 	//전체적으로 페이드인.아웃을 만들면서 살짝 복잡해보이게 되었지만
 	//페이드인.아웃이 끝나고 다음 씬으로 넘어간다는게 일단의 기본적인 마인드
-	else if (scene == NULL)
+	else if (phase == LOAD)
 	{
 		scene = [[DataManager getInstance] getCurScene];
 
@@ -356,261 +395,67 @@
 				}
 			}
 			
-			if (gameEnd != -1)
+			[[DataManager getInstance] checkSceneExp:[scene sceneId]];
+			if ([blackBoard alpha] == 1)
 			{
+				[UIView beginAnimations:@"start" context:NULL];
+				[UIView setAnimationDuration:1];
+				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+				[blackBoard setAlpha:0];
+				[UIView commitAnimations];
+			}
+
+			[self hideScene];
+
+			if ([sceneView makeBeforeScene:scene])
+			{
+				[self clearView];
+				phase = BEFORE;
+
 				[[SoundManager getInstance] stopAll];
-				EndParam* endParam = [EndParam alloc];
-				[endParam setEndNum:gameEnd];
-				[[ViewManager getInstance] changeView:@"EndView" param:endParam];
+				[[SoundManager getInstance] playFX:@"002_jg.mp3" repeat:false];
+				[sceneView setAlpha:1];
+
+				nowBgmIdx = 0;
 				return;
 			}
 			
-			gameEnd = [scene endNum];
-
-			[[DataManager getInstance] checkSceneExp:[scene sceneId]];
-			[blackBoard setAlpha:0];
-	
-			CGRect imgRect;
-			UIImage* img;
-
-			showOkTick = frameTick;
-			
-			//이미지 보여주고...
-			for (int i=0; i<4; ++i)
-			{
-				img = [scene getChar:i];
-				
-				if ([chrView[i] image] != img)
-				{
-					[oldChrView[i] setImage:[chrView[i] image]];
-					[oldChrView[i] setFrame:[chrView[i] frame]];
-					[oldChrView[i] setAlpha:1.f];
-					[chrView[i] setImage:img];
-					[chrView[i] setAlpha:0.f];
-					
-					if (img != NULL)
-					{
-						int cen = 240;
-
-						if (i == 1) cen = 120;
-						else if (i == 2) cen = 360;
-
-						if (i == 3)
-							imgRect = CGRectMake(0, 320 - [img size].height, [img size].width, [img size].height);
-						else if ([img size].height > 150)
-							imgRect = CGRectMake(cen - ([img size].width * 0.5f), 320 - [img size].height, [img size].width, [img size].height);
-						else
-							imgRect = CGRectMake(cen - ([img size].width * 0.5f), 160 - ([img size].height * 0.5f), [img size].width, [img size].height);
-
-						[chrView[i] setFrame:imgRect];
-					}
-
-					showOkTick = frameTick + (0.2 * framePerSec);
-				}
-			}
-			
-			NSString* bgmName;
-			int bgmIdx = [scene preLoadBgmIdx];
-			
-			if (nowBgmIdx != bgmIdx)
-			{
-				if (bgmIdx == 0)
-				{
-					[[SoundManager getInstance] stopBGM];
-				}
-				else
-				{
-					[[DataManager getInstance] setMusicShow:bgmIdx];
-					if (bgmIdx < 10) bgmName = [[NSString alloc] initWithFormat:@"Abgm_0%d-1.mp3",bgmIdx];
-					else bgmName = [[NSString alloc] initWithFormat:@"Abgm_%d-1.mp3",bgmIdx];
-					
-					[[SoundManager getInstance] playBGM:bgmName];
-					[bgmName dealloc];
-				}
-				
-				nowBgmIdx = bgmIdx;
-			}
-
-			int fxIdx = [scene FXIdx];
-			if (fxIdx == 0)
-			{
-				[[SoundManager getInstance] stopFX];
-			}
-			else if (fxIdx != -1)
-			{
-				if ([scene FXrepeat])
-				{
-					[[SoundManager getInstance] playFX:[[NSString alloc] initWithFormat:@"seLoop-%d.mp3",fxIdx] repeat:true];
-				}
-				else
-				{
-					[[SoundManager getInstance] playFX:[[NSString alloc] initWithFormat:@"se-%d.mp3",fxIdx] repeat:false];
-				}
-			}
-			
-			img = [scene getBg];
-			if ([bgView image] != img)
-			{
-				UIImageView* tempBGView = oldBgView;
-				oldBgView = bgView;
-				bgView = tempBGView;
-
-				[oldBgView setAlpha:1.f];
-				[bgView setImage:img];
-				[bgView setAlpha:0.f];
-				
-				if ([scene preLoadBgIdx] > 500)
-				{
-					[[DataManager getInstance] setEventShow:[scene preLoadBgIdx] - 500];
-					[[SaveManager getInstance] saveExtraFile];
-				}
-
-				[bgView setFrame:CGRectMake(0, 0, [img size].width, [img size].height)];
-				
-				showOkTick = frameTick + (0.3 * framePerSec);
-
-				switch ([scene animeType])
-				{
-					case 0:
-						[bgView setCenter:CGPointMake(240, 160)];
-						break;
-					case 1:
-						showOkTick = frameTick + (3.0 * framePerSec);
-
-						[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
-
-						[UIView beginAnimations:@"anime" context:NULL];
-						[UIView setAnimationDuration:2];
-						[UIView setAnimationDelay:1];
-						[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-						[bgView setCenter:CGPointMake(240, (int)([img size].height / 2) - 20)];
-						[UIView commitAnimations];
-						break;
-					case 2:
-					{
-						//동영상플레이
-						SerihuBoard* sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
-						[sBoard setTransform:CGAffineTransformMake(0, 1, -1, 0, 0, 0)];
-						[sBoard setCenter:CGPointMake(60, 290)];
-						
-						//여기는 적당한 파일이름을 정해주자.
-						[self playAnime:@"sample_iPod"];
-						
-						NSArray *windows = [[UIApplication sharedApplication] windows];
-						if ([windows count] > 1)
-						{
-							// Locate the movie player window
-							UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
-							// Add our overlay view to the movie player's subviews so it is 
-							// displayed above it.
-							[moviePlayerWindow addSubview:sBoard];
-						}
-						break;
-					}
-				}
-			}
-
-			//지난 씬은 패이드 아웃
-			if (([oldChrView[0] image] != NULL)||([oldChrView[1] image] != NULL)||
-				([oldChrView[2] image] != NULL)||([oldChrView[3] image] != NULL)||([oldBgView image] != NULL))
-			{
-				[self nowHide];
-			}
-			
-			isShowScene = [sceneView makeScene:scene];
-			if (isShowScene)
-			{
-				[[SoundManager getInstance] pause];
-
-				[UIView beginAnimations:@"scene" context:NULL];
-				[UIView setAnimationDuration:1];
-				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-				[sceneView setAlpha:1];
-				[UIView commitAnimations];
-			}
-			//새로운 씬은 패이드 인
-			else if (([chrView[0] image] != NULL)||([chrView[1] image] != NULL)||
-				([chrView[2] image] != NULL)||([chrView[3] image] != NULL)||([bgView image] != NULL))
-			{
-				[self willShow:0.2];
-			}
-			
-			switch ([scene sceneType])
-			{
-				case 1:
-				case 6:
-					[selectPanel1 setAlpha:0];
-					[selectPanel2 setAlpha:0];
-					[selectPanel3 setAlpha:0];
-					[next setAlpha:1];
-					break;
-				case 3:
-					[timer setAlpha:1];
-					[timer startTimer:5];
-					[selectPanel1 setAlpha:1];
-					[selectPanel2 setAlpha:1];
-					[selectPanel3 setAlpha:0];
-					[selectLabel1 setText:[scene getSelect:0]];
-					[selectLabel2 setText:[scene getSelect:1]];
-
-					[selectPanel1 setCenter:CGPointMake(110+65,110)];
-					[selectPanel2 setCenter:CGPointMake(240+65,110)];
-					[next setAlpha:0];
-					break;
-				case 4:
-					[timer setAlpha:1];
-					[timer startTimer:5];
-					[selectPanel1 setAlpha:1];
-					[selectPanel2 setAlpha:1];
-					[selectPanel3 setAlpha:1];
-					[selectLabel1 setText:[scene getSelect:0]];
-					[selectLabel2 setText:[scene getSelect:1]];
-					[selectLabel3 setText:[scene getSelect:2]];
-					[selectPanel1 setCenter:CGPointMake(110,110)];
-					[selectPanel2 setCenter:CGPointMake(240,110)];
-					[selectPanel3 setCenter:CGPointMake(370,110)];
-					[next setAlpha:0];
-					break;
-			}
-			
-			[serihuBoard setSerihu:[scene getChara] serihu:[scene getSerihu]];
-			[debugLabel setText:[[DataManager getInstance] getSceneIdxStr]];
-		}
-		else
-		{
-			scene = NULL;
+			phase = PLAY;
 		}
 	}
-
-	if (showOkTick == frameTick) showOK = true;
+	
+	if (showOkTick <= frameTick) showOK = true;
 
 	[super update];
 }
 
-- (void)nowHide
+- (void)showChr:(float)delay
 {
-	[UIView beginAnimations:@"swap1" context:NULL];
-	[UIView setAnimationDuration:0.2];
+	[UIView beginAnimations:@"show" context:NULL];
+	
+	[UIView setAnimationDuration:delay];
+	[UIView setAnimationDuration:0.4];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-	if ([oldChrView[0] image] != NULL) [oldChrView[0] setAlpha:0];
-	if ([oldChrView[1] image] != NULL) [oldChrView[1] setAlpha:0];
-	if ([oldChrView[2] image] != NULL) [oldChrView[2] setAlpha:0];
-	if ([oldChrView[3] image] != NULL) [oldChrView[3] setAlpha:0];
-	if ([oldBgView image] != NULL) [oldBgView setAlpha:0];
+	[chrView[0] setAlpha:1];
+	[chrView[1] setAlpha:1];
+	[chrView[2] setAlpha:1];
+	[chrView[3] setAlpha:1];
+	[bgView setAlpha:1];
 	[UIView commitAnimations];
 }
 
-- (void)willShow:(float)delay
+- (void)hideChr:(float)delay
 {
-	[UIView beginAnimations:@"swap2" context:NULL];
+	[UIView beginAnimations:@"hide" context:NULL];
+	
 	[UIView setAnimationDuration:delay];
+	[UIView setAnimationDuration:0.4];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-	[UIView setAnimationDelay:0.1];
-	if ([chrView[0] image] != NULL) [chrView[0] setAlpha:1];
-	if ([chrView[1] image] != NULL) [chrView[1] setAlpha:1];
-	if ([chrView[2] image] != NULL) [chrView[2] setAlpha:1];
-	if ([chrView[3] image] != NULL) [chrView[3] setAlpha:1];
-	if ([bgView image] != NULL) [bgView setAlpha:1];
+	[oldChrView[0] setAlpha:0];
+	[oldChrView[1] setAlpha:0];
+	[oldChrView[2] setAlpha:0];
+	[oldChrView[3] setAlpha:0];
+	[oldBgView setAlpha:0];
 	[UIView commitAnimations];
 }
 
@@ -624,7 +469,237 @@
 		[gameMenu setCenter:CGPointMake(240,160)];
 	}
 	
+	[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 	[gameMenu setAlpha:1];
+}
+
+- (void)playBGM:(Scene*)s
+{
+	NSString* bgmName;
+	int bgmIdx = [s preLoadBgmIdx];
+	
+	if (bgmIdx == 0)
+	{
+		[[SoundManager getInstance] stopBGM];
+	}
+	else
+	{
+		[[DataManager getInstance] setMusicShow:bgmIdx];
+		if (bgmIdx < 10) bgmName = [[NSString alloc] initWithFormat:@"Abgm_0%d-1.mp3",bgmIdx];
+		else bgmName = [[NSString alloc] initWithFormat:@"Abgm_%d-1.mp3",bgmIdx];
+		
+		[[SoundManager getInstance] playBGM:bgmName];
+		[bgmName dealloc];
+	}
+}	
+
+- (void)playFx:(Scene*)s
+{
+	int fxIdx = [s FXIdx];
+	if (fxIdx == 0)
+	{
+		[[SoundManager getInstance] stopFX];
+	}
+	else if (fxIdx != -1)
+	{
+		if ([scene FXrepeat])
+		{
+			[[SoundManager getInstance] playFX:[[NSString alloc] initWithFormat:@"seLoop-%d.mp3",fxIdx] repeat:true];
+		}
+		else
+		{
+			[[SoundManager getInstance] playFX:[[NSString alloc] initWithFormat:@"se-%d.mp3",fxIdx] repeat:false];
+		}
+	}
+}
+
+- (void)showChar:(Scene*)s idx:(int)i
+{
+	CGRect imgRect;
+	UIImage* img;
+
+	//이미지 보여주고...
+	img = [s getChar:i];
+	if ([chrView[i] image] != img)
+	{
+		swapView(chrView[i], oldChrView[i]);
+
+		[chrView[i] setImage:img];
+
+		[oldChrView[i] setAlpha:1];
+		[chrView[i] setAlpha:0];
+		
+		if (img != NULL)
+		{
+			int cen = 240;
+			
+			if (i == 1) cen = 120;
+			else if (i == 2) cen = 360;
+			
+			if (i == 3)
+				imgRect = CGRectMake(0, 320 - [img size].height, [img size].width, [img size].height);
+			else if ([img size].height > 150)
+				imgRect = CGRectMake(cen - ([img size].width * 0.5f), 320 - [img size].height, [img size].width, [img size].height);
+			else
+				imgRect = CGRectMake(cen - ([img size].width * 0.5f), 160 - ([img size].height * 0.5f), [img size].width, [img size].height);
+			
+			[chrView[i] setFrame:imgRect];
+		}
+		
+		showOkTick = frameTick + (0.2 * framePerSec);
+	}
+}
+
+- (void)showBg:(Scene*)s
+{
+	UIImage* img = [s getBg];
+	if ([bgView image] != img)
+	{
+		swapView(bgView, oldBgView);
+		
+		[bgView setImage:img];
+
+		[oldBgView setAlpha:1];
+		[bgView setAlpha:0];
+		
+		if ([s preLoadBgIdx] > 500)
+		{
+			[[DataManager getInstance] setEventShow:[s preLoadBgIdx] - 500];
+			[[SaveManager getInstance] saveExtraFile];
+		}
+		
+		[bgView setFrame:CGRectMake(0, 0, [img size].width, [img size].height)];
+		
+		switch ([s animeType])
+		{
+			case 0:
+				[bgView setCenter:CGPointMake(240, 160)];
+				showOkTick = frameTick + (0.2 * framePerSec);
+				break;
+			case 1:
+				[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
+				
+				[UIView beginAnimations:@"anime" context:NULL];
+				[UIView setAnimationDuration:2];
+				[UIView setAnimationDelay:1];
+				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+				[bgView setCenter:CGPointMake(240, (int)([img size].height / 2) - 20)];
+				[UIView commitAnimations];
+
+				showOkTick = frameTick + (3.0 * framePerSec);
+				break;
+			case 2:
+			{
+				//동영상플레이
+				SerihuBoard* sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
+				[sBoard setTransform:CGAffineTransformMake(0, 1, -1, 0, 0, 0)];
+				[sBoard setCenter:CGPointMake(60, 290)];
+				
+				//여기는 적당한 파일이름을 정해주자.
+				[self playAnime:@"sample_iPod"];
+				
+				NSArray *windows = [[UIApplication sharedApplication] windows];
+				if ([windows count] > 1)
+				{
+					// Locate the movie player window
+					UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
+					// Add our overlay view to the movie player's subviews so it is 
+					// displayed above it.
+					[moviePlayerWindow addSubview:sBoard];
+				}
+			}
+		}
+	}
+}
+
+- (bool)checkEnd:(Scene*)s
+{
+	if ([s endNum] != -1)
+	{
+		[[SoundManager getInstance] stopAll];
+		EndParam* endParam = [EndParam alloc];
+		[endParam setEndNum:[s endNum]];
+		[[ViewManager getInstance] changeView:@"EndView" param:endParam];
+		
+		return true;
+	}
+	
+	return false;
+}
+
+- (void)playScene:(Scene*)s
+{
+	for (int i=0; i<4; ++i)
+		[self showChar:s idx:i];
+	
+	[self showBg:s];
+	[self showChr:0];
+
+	switch ([scene sceneType])
+	{
+		case 1:
+		case 6:
+			[selectPanel1 setAlpha:0];
+			[selectPanel2 setAlpha:0];
+			[selectPanel3 setAlpha:0];
+			[next setAlpha:1];
+			break;
+		case 3:
+			[timer setAlpha:1];
+			[timer startTimer:5];
+			[selectPanel1 setAlpha:1];
+			[selectPanel2 setAlpha:1];
+			[selectPanel3 setAlpha:0];
+			[selectLabel1 setText:[scene getSelect:0]];
+			[selectLabel2 setText:[scene getSelect:1]];
+			
+			[selectPanel1 setCenter:CGPointMake(110+65,110)];
+			[selectPanel2 setCenter:CGPointMake(240+65,110)];
+			[next setAlpha:0];
+			break;
+		case 4:
+			[timer setAlpha:1];
+			[timer startTimer:5];
+			[selectPanel1 setAlpha:1];
+			[selectPanel2 setAlpha:1];
+			[selectPanel3 setAlpha:1];
+			[selectLabel1 setText:[scene getSelect:0]];
+			[selectLabel2 setText:[scene getSelect:1]];
+			[selectLabel3 setText:[scene getSelect:2]];
+			[selectPanel1 setCenter:CGPointMake(110,110)];
+			[selectPanel2 setCenter:CGPointMake(240,110)];
+			[selectPanel3 setCenter:CGPointMake(370,110)];
+			[next setAlpha:0];
+			break;
+	}
+	
+	if ((lastScene == NULL) || ([lastScene preLoadBgmIdx] != [s preLoadBgmIdx])) [self playBGM:s];
+	[self playFx:s];
+
+	[serihuBoard setAlpha:1];
+	[serihuBoard setSerihu:[scene getChara] serihu:[scene getSerihu]];
+	[debugLabel setText:[[DataManager getInstance] getSceneIdxStr]];
+}
+
+- (void)hideScene
+{
+	[self hideChr:0.0];
+}
+
+- (void)clearView
+{
+	[chrView[0] setAlpha:0];
+	[chrView[1] setAlpha:0];
+	[chrView[2] setAlpha:0];
+	[chrView[3] setAlpha:0];
+	[bgView setAlpha:0];
+	[serihuBoard setAlpha:0];
+
+	nowBgmIdx = 0;
+	
+	[selectPanel1 setAlpha:0];
+	[selectPanel2 setAlpha:0];
+	[selectPanel3 setAlpha:0];
 }
 
 @end

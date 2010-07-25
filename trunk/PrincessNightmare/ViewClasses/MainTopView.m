@@ -34,11 +34,13 @@
 
 - (IBAction)ButtonClick:(id)sender
 {
+	[[SoundManager getInstance] playFX:@"001_se.mp3" repeat:false];
+
 	if (sender == start)
 	{
 		[[SoundManager getInstance] stopBGM];
 		GameParam* param = [GameParam alloc];
-		[param setStartScene:[[DataManager getInstance] getMsgIdx:1 idx2:1]];
+		[param setStartScene:0];//[[DataManager getInstance] getMsgIdx:1 idx2:365]];
 		[param setIsReplay:false];
 		[[SoundManager getInstance] stopBGM];
 		[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];

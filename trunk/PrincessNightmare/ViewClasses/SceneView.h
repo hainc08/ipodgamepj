@@ -11,6 +11,7 @@
 	IBOutlet id backImg2;
 	IBOutlet id backImg3;
 	IBOutlet id subTitle;
+	IBOutlet id subTitle2;
 
 	IBOutlet id saveButton;
 	IBOutlet id yesButton;
@@ -25,6 +26,7 @@
 
 - (IBAction)ButtonClick:(id)sender;
 - (void)update;
-- (bool)makeScene:(Scene*)scene;
+- (bool)makeAfterScene:(Scene*)scene;
+- (bool)makeBeforeScene:(Scene*)scene;
 
 @end

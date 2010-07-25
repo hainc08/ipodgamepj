@@ -21,6 +21,15 @@
 @end
 
 @interface GameView : BaseView {
+	enum GamePhase{
+		LOAD = 0,
+		BEFORE = 1,
+		PLAY = 2,
+		PLAYWAIT = 3,
+		TIMERWAIT = 4,
+		AFTER = 5,
+	};
+
 	IBOutlet id msgClose;
 
 	GameParam* gParam;
@@ -29,7 +38,6 @@
     MPMoviePlayerController *player;
 
 	SceneView* sceneView;
-	bool isShowScene;
 	
 	UIImageView* chrView[4];
 	UIImageView* bgView;
@@ -68,7 +76,10 @@
 	Timer* timer;
 	
 	int nowBgmIdx;
-	int gameEnd;
+	
+	Scene* lastScene;
+	
+	int phase;
 }
 
 @property (nonatomic, retain) MPMoviePlayerController *player;
@@ -79,7 +90,19 @@
 - (void)showMenu;
 - (void)update;
 
-- (void)nowHide;
-- (void)willShow:(float)delay;
+- (void)showChr:(float)delay;
+- (void)hideChr:(float)delay;
+
+- (void)showChar:(Scene*)s idx:(int)i;
+- (void)showBg:(Scene*)s;
+
+- (void)playBGM:(Scene*)s;
+- (void)playFx:(Scene*)s;
+- (bool)checkEnd:(Scene*)s;
+
+- (void)playScene:(Scene*)s;
+- (void)hideScene;
+
+- (void)clearView;
 
 @end

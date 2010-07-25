@@ -1,6 +1,7 @@
 #import "ItemView.h"
 #import "ViewManager.h"
 #import "SaveManager.h"
+#import "SoundManager.h"
 
 @implementation ItemView
 
@@ -81,14 +82,17 @@
 	}
 	else if (sender == backButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[[ViewManager getInstance] changeView:@"ExtraView"];
 	}
 	else if (sender == nextButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[self loadPage:curPage+1];
 	}
 	else if (sender == prevButton)
 	{
+		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[self loadPage:curPage-1];
 	}
 	else if (sender == imageBigButton)

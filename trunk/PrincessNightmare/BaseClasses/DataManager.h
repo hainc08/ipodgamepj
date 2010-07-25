@@ -95,6 +95,7 @@
 	bool FXrepeat;
 	
 	int subTitleIdx;
+	int serihuIdx;
 	
 	int animeType;
 }
@@ -112,6 +113,7 @@
 @property (readwrite) int subTitleIdx;
 @property (readwrite) int flagStrCount;
 @property (readwrite) int animeType;
+@property (readwrite) int serihuIdx;
 
 - (bool)isLoadOk;
 

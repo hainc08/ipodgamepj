@@ -1,5 +1,6 @@
 #import "GameMenu.h"
 #import "ViewManager.h"
+#import "SoundManager.h"
 
 @implementation GameMenu
 
@@ -43,16 +44,20 @@
 
 - (IBAction)ButtonClick:(id)sender
 {
+	[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
+
 	if (sender == backButton)
 	{
 		[self setAlpha:0];
 	}
 	else if (sender == saveButton)
 	{
+		[saveView loadPage:0];
 		[saveView setAlpha:1];
 	}
 	else if (sender == loadButton)
 	{
+		[loadView loadPage:0];
 		[loadView setAlpha:1];
 	}
 	else if (sender == exitButton)
