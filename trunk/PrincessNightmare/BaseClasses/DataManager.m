@@ -723,6 +723,25 @@ static DataManager *DataManagerInst;
 	{
 		[m setIntVal:i val:readInteger(data, &offset)];
 	}
+	
+	int bgIdx = [m getIntVal:5];
+	switch (bgIdx)
+	{
+		case 606:
+		case 607:
+		case 610:
+		case 612:
+		case 616:
+		case 618:
+		case 629:
+		case 690:
+		case 739:
+		case 754:
+		case 790:
+		case 792:
+		case 794:
+			[m setIntVal:5 val:bgIdx-1];
+	}
 
 	int strCount, intCount;
 	
@@ -802,6 +821,7 @@ static DataManager *DataManagerInst;
 				for (int k=1; k<91; ++k)
 				{
 					if (msgIdx[k] > willSceneId) break;
+					if (msgIdx[k] == 0) continue;
 
 					[preloadScene[j] setSubTitleIdx:k];
 					[preloadScene[j] setSerihuIdx:(willSceneId - msgIdx[k])];
@@ -891,12 +911,7 @@ static DataManager *DataManagerInst;
 				}
 				else
 				{
-					if ((bgId == 254)||(bgId == 254))
-					{
-						//이두놈만 png다 아..귀찮아...
-						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_%d.png", bgId]] autorelease];
-					}
-					else if (bgId < 10)
+					if (bgId < 10)
 						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_00%d.jpg", bgId]] autorelease];
 					else if (bgId < 100)
 						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_0%d.jpg", bgId]] autorelease];
@@ -943,6 +958,7 @@ static DataManager *DataManagerInst;
 				if (fxIdx == 0) fxIdx = -1;
 				[preloadScene[j] setFXrepeat:false];
 				[preloadScene[j] setNextChapter:-1];
+				[preloadScene[j] setAnimeType:0];
 				
 				for (int l=0; l<[msg[willSceneId] valCount]; ++l)
 				{
@@ -953,7 +969,11 @@ static DataManager *DataManagerInst;
 						if ([optionStr compare:@"anime"] == NSOrderedSame)
 						{
 							int temp = [msg[willSceneId] getIntVal:5] - 500;
-							if (temp < 400) [preloadScene[j] setAnimeType:1];
+							if (temp < 400)
+							{
+								if (temp == 291) [preloadScene[j] setAnimeType:3];
+								else [preloadScene[j] setAnimeType:1];
+							}
 							else [preloadScene[j] setAnimeType:2];
 							continue;
 						}
@@ -1075,13 +1095,17 @@ static DataManager *DataManagerInst;
 	idx = 0;
 	idx2 = [preloadScene[curIdx] sceneId];
 	
-	while (idx2 >= msgIdx[idx])
+	for (int k=1; k<91; ++k)
 	{
-		++idx;
+		if (msgIdx[k] > idx2) break;
+		if (msgIdx[k] == 0) continue;
+		
+		idx = k;
 	}
+
 	for (int i=0; i<800; ++i)
 	{
-		if (tagInfo[0][i] == ((idx-1) * 1000) + tag) return tagInfo[1][i];
+		if (tagInfo[0][i] == (idx * 1000) + tag) return tagInfo[1][i];
 	}
 	
 	return 0;
