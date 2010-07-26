@@ -130,7 +130,6 @@ void swapView(UIView* v1, UIView* v2)
 	lastScene = NULL;
 	scene = NULL;
 	curSceneId = [gParam startScene];
-	showOK = false;
 	updateWait = 0;
 	phase = LOAD;
 
@@ -143,175 +142,169 @@ void swapView(UIView* v1, UIView* v2)
 
 - (IBAction)ButtonClick:(id)sender
 {
-	if ( showOK )
+	if (phase != WAITINPUT) return;
+	
+	if ( sender == msgClose )
 	{
-		if ( sender == msgClose )
-		{
-			[msgClose setAlpha:0];
-			[chrView[3] setAlpha:0];
-			[menuButton setAlpha:0];
-			[serihuBoard setAlpha:0];
-			return;
-		}
-		if ( sender == menuButton )
-		{
-			[self showMenu];
-			return;
-		}
-		if ( [msgClose alpha] == 0)
-		{
-			[msgClose setAlpha:1];
-			[chrView[3] setAlpha:1];
-			[menuButton setAlpha:1];
-			[serihuBoard setAlpha:1];
-			return;
-		}
+		[msgClose setAlpha:0];
+		[chrView[3] setAlpha:0];
+		[menuButton setAlpha:0];
+		[serihuBoard setAlpha:0];
+		return;
+	}
+	if ( sender == menuButton )
+	{
+		[self showMenu];
+		return;
+	}
 
-		if (phase != PLAYWAIT) return;
+	if ( [msgClose alpha] == 0)
+	{
+		[msgClose setAlpha:1];
+		[chrView[3] setAlpha:1];
+		[menuButton setAlpha:1];
+		[serihuBoard setAlpha:1];
+		return;
+	}
+
+	if ([self checkEnd:scene]) return;
+	
+	if ([sceneView makeAfterScene:scene])
+	{
+		phase = AFTER;
 		
-		if ([self checkEnd:scene]) return;
-
-		if ([sceneView makeAfterScene:scene])
+		[self hideChr:0.6];
+		
+		[[SoundManager getInstance] stopAll];
+		
+		[UIView beginAnimations:@"scene" context:NULL];
+		[UIView setAnimationDuration:1];
+		[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+		[sceneView setAlpha:1];
+		[UIView commitAnimations];
+		nowBgmIdx = 0;
+		return;
+	}
+	
+	bool isMoved = false;
+	for (int i=0; i<[scene flagStrCount]; ++i)
+	{
+		NSArray *listItems = [[scene getFlagStr:i] componentsSeparatedByString:@"_"];
+		if ([listItems count] < 2) continue;
+		
+		NSString* item0 = (NSString*)[listItems objectAtIndex:0];
+		int idx = [(NSString*)[listItems objectAtIndex:1] intValue];
+		int data = 1;
+		if ([listItems count] > 2) data = [(NSString*)[listItems objectAtIndex:2] intValue];
+		
+		if ([item0 compare:@"fgE"] == NSOrderedSame)
+			[[SaveManager getInstance] setFlag:idx];
+		else if ([item0 compare:@"fgE2"] == NSOrderedSame)
+			[[SaveManager getInstance] setFlag2:idx data:data];
+		
+		if (isMoved == false)
 		{
-			phase = AFTER;
-
-			[self hideChr:0.4];
-
-			[[SoundManager getInstance] stopAll];
-			
-			[UIView beginAnimations:@"scene" context:NULL];
-			[UIView setAnimationDuration:1];
-			[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-			[sceneView setAlpha:1];
-			[UIView commitAnimations];
-			nowBgmIdx = 0;
-			return;
-		}
-
-		bool isMoved = false;
-		for (int i=0; i<[scene flagStrCount]; ++i)
-		{
-			NSArray *listItems = [[scene getFlagStr:i] componentsSeparatedByString:@"_"];
-			if ([listItems count] < 2) continue;
-			
-			NSString* item0 = (NSString*)[listItems objectAtIndex:0];
-			int idx = [(NSString*)[listItems objectAtIndex:1] intValue];
-			int data = 1;
-			if ([listItems count] > 2) data = [(NSString*)[listItems objectAtIndex:2] intValue];
-
-			if ([item0 compare:@"fgE"] == NSOrderedSame)
-				[[SaveManager getInstance] setFlag:idx];
-			else if ([item0 compare:@"fgE2"] == NSOrderedSame)
-				[[SaveManager getInstance] setFlag2:idx data:data];
-
-			if (isMoved == false)
+			if ([item0 compare:@"fgS"] == NSOrderedSame)
 			{
-				if ([item0 compare:@"fgS"] == NSOrderedSame)
+				if ([[SaveManager getInstance] getFlag:idx])
 				{
-					if ([[SaveManager getInstance] getFlag:idx])
-					{
-						curSceneId = [[DataManager getInstance] getTagInfo:data];
-						[[DataManager getInstance] setCurIdx:curSceneId];
-						isMoved = true;
-					}
+					curSceneId = [[DataManager getInstance] getTagInfo:data];
+					[[DataManager getInstance] setCurIdx:curSceneId];
+					isMoved = true;
 				}
-				else if ([item0 compare:@"fgS2"] == NSOrderedSame)
+			}
+			else if ([item0 compare:@"fgS2"] == NSOrderedSame)
+			{
+				if ([[SaveManager getInstance] getFlag2:idx] == data)
 				{
-					if ([[SaveManager getInstance] getFlag2:idx] == data)
-					{
-						int tag = [(NSString*)[listItems objectAtIndex:3] intValue];
-						
-						curSceneId = [[DataManager getInstance] getTagInfo:tag];
-						[[DataManager getInstance] setCurIdx:curSceneId];
-						isMoved = true;
-					}
+					int tag = [(NSString*)[listItems objectAtIndex:3] intValue];
+					
+					curSceneId = [[DataManager getInstance] getTagInfo:tag];
+					[[DataManager getInstance] setCurIdx:curSceneId];
+					isMoved = true;
 				}
 			}
 		}
-
-		if (isMoved)
-		{
-			showOK = false;
-			lastScene = scene;
-			phase = LOAD;
-			return;
-		}
-		
-		switch ([scene sceneType])
-		{
-			case 1:
-				if (sender == next)
+	}
+	
+	if (isMoved)
+	{
+		lastScene = scene;
+		phase = LOAD;
+		return;
+	}
+	
+	switch ([scene sceneType])
+	{
+		case 1:
+			if (sender == next)
+			{
+				if ( [scene endNum] != -1 )
+				{
+					[[DataManager getInstance] gotoEnding:0 idx:[scene endNum]];
+				}
+				else if ([scene nextChapter] == -1)
+				{
+					++curSceneId;
+					[[DataManager getInstance] setNextIdx:curSceneId];
+				}
+				else
+				{
+					curSceneId = [[DataManager getInstance] gotoChapter:[scene nextChapter]];
+				}
+				
+				lastScene = scene;
+				phase = LOAD;
+			}
+			break;
+		case 6:
+			if (sender == next)
+			{
+				int tag = [scene getSelectTag:0];
+				if (tag == 9999)
 				{
 					if ( [scene endNum] != -1 )
 					{
 						[[DataManager getInstance] gotoEnding:0 idx:[scene endNum]];
 					}
-					else if ([scene nextChapter] == -1)
-					{
-						++curSceneId;
-						[[DataManager getInstance] setNextIdx:curSceneId];
-					}
 					else
 					{
 						curSceneId = [[DataManager getInstance] gotoChapter:[scene nextChapter]];
 					}
-
-					showOK = false;
-					lastScene = scene;
-					phase = LOAD;
 				}
-				break;
-			case 6:
-				if (sender == next)
+				else
 				{
-					int tag = [scene getSelectTag:0];
-					if (tag == 9999)
-					{
-						if ( [scene endNum] != -1 )
-						{
-							[[DataManager getInstance] gotoEnding:0 idx:[scene endNum]];
-						}
-						else
-						{
-							curSceneId = [[DataManager getInstance] gotoChapter:[scene nextChapter]];
-						}
-					}
-					else
-					{
-						curSceneId = [[DataManager getInstance] getTagInfo:tag];
-						[[DataManager getInstance] setCurIdx:curSceneId];
-					}
-
-					showOK = false;
-					lastScene = scene;
-					phase = LOAD;
-				}
-				break;
-			case 3:
-			case 4:
-				if ((sender == selectButton1) || (sender == selectButton2) || (sender == selectButton3))
-				{
-					[[SoundManager getInstance] playFX:@"009_jg.mp3" repeat:false];
-					
-					int tagIdx = 0;
-					if (sender == selectButton1) tagIdx = 0;
-					else if (sender == selectButton2) tagIdx = 1;
-					else if (sender == selectButton3) tagIdx = 2;
-
-					curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:tagIdx]];
+					curSceneId = [[DataManager getInstance] getTagInfo:tag];
 					[[DataManager getInstance] setCurIdx:curSceneId];
-					showOK = false;
-					lastScene = scene;
-					phase = LOAD;
-					
-					[selectPanel1 setAlpha:0];
-					[selectPanel2 setAlpha:0];
-					[selectPanel3 setAlpha:0];
-					
-					[timer stop];
 				}
-				break;
-		}
+				
+				lastScene = scene;
+				phase = LOAD;
+			}
+			break;
+		case 3:
+		case 4:
+			if ((sender == selectButton1) || (sender == selectButton2) || (sender == selectButton3))
+			{
+				[[SoundManager getInstance] playFX:@"009_jg.mp3" repeat:false];
+				
+				int tagIdx = 0;
+				if (sender == selectButton1) tagIdx = 0;
+				else if (sender == selectButton2) tagIdx = 1;
+				else if (sender == selectButton3) tagIdx = 2;
+				
+				curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:tagIdx]];
+				[[DataManager getInstance] setCurIdx:curSceneId];
+				lastScene = scene;
+				phase = LOAD;
+				
+				[selectPanel1 setAlpha:0];
+				[selectPanel2 setAlpha:0];
+				[selectPanel3 setAlpha:0];
+				
+				[timer stop];
+			}
+			break;
 	}
 }
 
@@ -344,7 +337,6 @@ void swapView(UIView* v1, UIView* v2)
 		
 		curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:tagIdx]];
 		[[DataManager getInstance] setCurIdx:curSceneId];
-		showOK = false;
 
 		lastScene = scene;
 		phase = LOAD;
@@ -354,78 +346,78 @@ void swapView(UIView* v1, UIView* v2)
 		[selectPanel3 setAlpha:0];
 	}
 	
-	if ((phase == BEFORE)||(phase == AFTER))
-	{
-		if ([sceneView showEnd])
-		{
-			lastScene = NULL;
-			
-			if (phase == BEFORE) phase = PLAY;
-			else if (phase == AFTER)
+	switch (phase) {
+		case BEFORE:
+		case AFTER:
+			if ([sceneView showEnd])
 			{
-				curSceneId = [[DataManager getInstance] gotoChapter:[scene nextChapter]];
-				phase = LOAD;
-			}
-		}
-		else
-		{
-			[sceneView update];
-		}
-	}
-	else if (phase == PLAY)
-	{
-		[self playScene:scene];
-		phase = PLAYWAIT;
-	}
-	//전체적으로 페이드인.아웃을 만들면서 살짝 복잡해보이게 되었지만
-	//페이드인.아웃이 끝나고 다음 씬으로 넘어간다는게 일단의 기본적인 마인드
-	else if (phase == LOAD)
-	{
-		scene = [[DataManager getInstance] getCurScene];
-
-		if ((scene != NULL) && [scene isLoadOk])
-		{
-			if ([gParam isReplay])
-			{
-				if ([gParam endScene] < [scene sceneId])
+				lastScene = NULL;
+				
+				if (phase == BEFORE) phase = PLAY;
+				else if (phase == AFTER)
 				{
-					ScineParam* param = [ScineParam alloc];
-					[param setReplayIdx:[gParam replayIdx]];
-					[[ViewManager getInstance] changeView:@"ScineView" param:param];
+					curSceneId = [[DataManager getInstance] gotoChapter:[scene nextChapter]];
+					phase = LOAD;
 				}
 			}
-			
-			[[DataManager getInstance] checkSceneExp:[scene sceneId]];
-			if ([blackBoard alpha] == 1)
+			else
 			{
-				[UIView beginAnimations:@"start" context:NULL];
-				[UIView setAnimationDuration:1];
-				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-				[blackBoard setAlpha:0];
-				[UIView commitAnimations];
+				[sceneView update];
 			}
-
-			[self hideScene];
-
-			if ([sceneView makeBeforeScene:scene])
-			{
-				[self clearView];
-				phase = BEFORE;
-
-				[[SoundManager getInstance] stopAll];
-				[[SoundManager getInstance] playFX:@"002_jg.mp3" repeat:false];
-				[sceneView setAlpha:1];
-
-				nowBgmIdx = 0;
-				return;
-			}
+			break;
+		case PLAY:
+			[self playScene:scene];
+			phase = PLAYWAIT;
+			break;
+		case LOAD:
+			//전체적으로 페이드인.아웃을 만들면서 살짝 복잡해보이게 되었지만
+			//페이드인.아웃이 끝나고 다음 씬으로 넘어간다는게 일단의 기본적인 마인드
+			scene = [[DataManager getInstance] getCurScene];
 			
-			phase = PLAY;
-		}
+			if ((scene != NULL) && [scene isLoadOk])
+			{
+				if ([gParam isReplay])
+				{
+					if ([gParam endScene] < [scene sceneId])
+					{
+						ScineParam* param = [ScineParam alloc];
+						[param setReplayIdx:[gParam replayIdx]];
+						[[ViewManager getInstance] changeView:@"ScineView" param:param];
+					}
+				}
+				
+				[[DataManager getInstance] checkSceneExp:[scene sceneId]];
+				if ([blackBoard alpha] == 1)
+				{
+					[UIView beginAnimations:@"start" context:NULL];
+					[UIView setAnimationDuration:1];
+					[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+					[blackBoard setAlpha:0];
+					[UIView commitAnimations];
+				}
+				
+				[self hideScene];
+				
+				if ([sceneView makeBeforeScene:scene])
+				{
+					[self clearView];
+					phase = BEFORE;
+					
+					[[SoundManager getInstance] stopAll];
+					[[SoundManager getInstance] playFX:@"002_jg.mp3" repeat:false];
+					[sceneView setAlpha:1];
+					
+					nowBgmIdx = 0;
+					return;
+				}
+				
+				phase = PLAY;
+			}
+			break;
+		case PLAYWAIT:
+			if (showOkTick <= frameTick) phase = WAITINPUT;
 	}
 	
-	if (showOkTick <= frameTick) showOK = true;
-
 	[super update];
 }
 
@@ -433,7 +425,7 @@ void swapView(UIView* v1, UIView* v2)
 {
 	[UIView beginAnimations:@"show" context:NULL];
 	
-	[UIView setAnimationDuration:delay];
+	[UIView setAnimationDelay:delay];
 	[UIView setAnimationDuration:0.4];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 	[chrView[0] setAlpha:1];
@@ -448,7 +440,7 @@ void swapView(UIView* v1, UIView* v2)
 {
 	[UIView beginAnimations:@"hide" context:NULL];
 	
-	[UIView setAnimationDuration:delay];
+	[UIView setAnimationDelay:delay];
 	[UIView setAnimationDuration:0.4];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 	[oldChrView[0] setAlpha:0];
@@ -518,6 +510,7 @@ void swapView(UIView* v1, UIView* v2)
 	CGRect imgRect;
 	UIImage* img;
 
+	//985번에 대한 처리가 필요하다.
 	//이미지 보여주고...
 	img = [s getChar:i];
 	if ([chrView[i] image] != img)
@@ -569,11 +562,19 @@ void swapView(UIView* v1, UIView* v2)
 		}
 		
 		[bgView setFrame:CGRectMake(0, 0, [img size].width, [img size].height)];
-		
+
 		switch ([s animeType])
 		{
 			case 0:
-				[bgView setCenter:CGPointMake(240, 160)];
+				if ([[bgView image] size].height == 320)
+					[bgView setCenter:CGPointMake(240, 160)];
+				else
+				{
+					if ([s preLoadBgIdx] == 791)
+						[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
+					else
+						[bgView setCenter:CGPointMake(240, (int)([[bgView image] size].height * 0.5f) - 20)];
+				}
 				showOkTick = frameTick + (0.2 * framePerSec);
 				break;
 			case 1:
@@ -583,9 +584,21 @@ void swapView(UIView* v1, UIView* v2)
 				[UIView setAnimationDuration:2];
 				[UIView setAnimationDelay:1];
 				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-				[bgView setCenter:CGPointMake(240, (int)([img size].height / 2) - 20)];
+				[bgView setCenter:CGPointMake(240, (int)([img size].height * 0.5f) - 20)];
 				[UIView commitAnimations];
-
+				
+				showOkTick = frameTick + (3.0 * framePerSec);
+				break;
+			case 3:
+				[bgView setCenter:CGPointMake(240, (int)([img size].height * 0.5f) - 20)];
+				
+				[UIView beginAnimations:@"anime" context:NULL];
+				[UIView setAnimationDuration:2];
+				[UIView setAnimationDelay:1];
+				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+				[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
+				[UIView commitAnimations];
+				
 				showOkTick = frameTick + (3.0 * framePerSec);
 				break;
 			case 2:
@@ -683,7 +696,7 @@ void swapView(UIView* v1, UIView* v2)
 
 - (void)hideScene
 {
-	[self hideChr:0.0];
+	[self hideChr:0.4];
 }
 
 - (void)clearView

@@ -34,6 +34,9 @@ static SoundManager *SoundManagerInst;
 
 -(void)playBGM:(NSString*)name
 {
+#ifdef __SIMUL
+	return;
+#endif
 	// make file URL
 	NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
 	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
@@ -62,6 +65,10 @@ static SoundManager *SoundManagerInst;
 	
 -(void)playFX:(NSString*)name repeat:(bool)repeat
 {
+#ifdef __SIMUL
+	return;
+#endif
+	
 	NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
 	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
 

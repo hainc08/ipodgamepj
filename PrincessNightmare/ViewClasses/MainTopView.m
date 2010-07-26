@@ -40,7 +40,8 @@
 	{
 		[[SoundManager getInstance] stopBGM];
 		GameParam* param = [GameParam alloc];
-		[param setStartScene:0];//[[DataManager getInstance] getMsgIdx:1 idx2:365]];
+		//[param setStartScene:0];//[[DataManager getInstance] getMsgIdx:1 idx2:365]];
+		[param setStartScene:[[DataManager getInstance] getMsgIdx:25 idx2:10]];
 		[param setIsReplay:false];
 		[[SoundManager getInstance] stopBGM];
 		[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];

@@ -26,8 +26,9 @@
 		BEFORE = 1,
 		PLAY = 2,
 		PLAYWAIT = 3,
-		TIMERWAIT = 4,
-		AFTER = 5,
+		WAITINPUT = 4,
+		TIMERWAIT = 5,
+		AFTER = 6,
 	};
 
 	IBOutlet id msgClose;
