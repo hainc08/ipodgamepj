@@ -65,6 +65,8 @@ void swapView(UIView* v1, UIView* v2)
         [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
         [player release];
         player = nil;
+		
+		[self playBGM:scene];
     }
 }
 
@@ -562,64 +564,68 @@ void swapView(UIView* v1, UIView* v2)
 		}
 		
 		[bgView setFrame:CGRectMake(0, 0, [img size].width, [img size].height)];
-
-		switch ([s animeType])
-		{
-			case 0:
-				if ([[bgView image] size].height == 320)
-					[bgView setCenter:CGPointMake(240, 160)];
-				else
-				{
-					if ([s preLoadBgIdx] == 791)
-						[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
-					else
-						[bgView setCenter:CGPointMake(240, (int)([[bgView image] size].height * 0.5f) - 20)];
-				}
-				showOkTick = frameTick + (0.2 * framePerSec);
-				break;
-			case 1:
-				[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
-				
-				[UIView beginAnimations:@"anime" context:NULL];
-				[UIView setAnimationDuration:2];
-				[UIView setAnimationDelay:1];
-				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-				[bgView setCenter:CGPointMake(240, (int)([img size].height * 0.5f) - 20)];
-				[UIView commitAnimations];
-				
-				showOkTick = frameTick + (3.0 * framePerSec);
-				break;
-			case 3:
-				[bgView setCenter:CGPointMake(240, (int)([img size].height * 0.5f) - 20)];
-				
-				[UIView beginAnimations:@"anime" context:NULL];
-				[UIView setAnimationDuration:2];
-				[UIView setAnimationDelay:1];
-				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-				[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
-				[UIView commitAnimations];
-				
-				showOkTick = frameTick + (3.0 * framePerSec);
-				break;
-			case 2:
+	}
+	
+	switch ([s animeType])
+	{
+		case 0:
+			if ([[bgView image] size].height == 320)
+				[bgView setCenter:CGPointMake(240, 160)];
+			else
 			{
-				//동영상플레이
-				SerihuBoard* sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
-				[sBoard setTransform:CGAffineTransformMake(0, 1, -1, 0, 0, 0)];
-				[sBoard setCenter:CGPointMake(60, 290)];
-				
-				//여기는 적당한 파일이름을 정해주자.
-				[self playAnime:@"sample_iPod"];
-				
-				NSArray *windows = [[UIApplication sharedApplication] windows];
-				if ([windows count] > 1)
-				{
-					// Locate the movie player window
-					UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
-					// Add our overlay view to the movie player's subviews so it is 
-					// displayed above it.
-					[moviePlayerWindow addSubview:sBoard];
-				}
+				if ([s preLoadBgIdx] == 791)
+					[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
+				else
+					[bgView setCenter:CGPointMake(240, (int)([[bgView image] size].height * 0.5f) - 20)];
+			}
+			showOkTick = frameTick + (0.2 * framePerSec);
+			break;
+		case 1:
+			[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
+			
+			[UIView beginAnimations:@"anime" context:NULL];
+			[UIView setAnimationDuration:2];
+			[UIView setAnimationDelay:1];
+			[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+			[bgView setCenter:CGPointMake(240, (int)([img size].height * 0.5f) - 20)];
+			[UIView commitAnimations];
+			
+			showOkTick = frameTick + (3.0 * framePerSec);
+			break;
+		case 3:
+			[bgView setCenter:CGPointMake(240, (int)([img size].height * 0.5f) - 20)];
+			
+			[UIView beginAnimations:@"anime" context:NULL];
+			[UIView setAnimationDuration:2];
+			[UIView setAnimationDelay:1];
+			[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+			[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
+			[UIView commitAnimations];
+			
+			showOkTick = frameTick + (3.0 * framePerSec);
+			break;
+		case 400:
+		case 401:
+		case 402:
+		case 403:
+		{
+			//동영상플레이
+			SerihuBoard* sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
+			[sBoard setTransform:CGAffineTransformMake(0, 1, -1, 0, 0, 0)];
+			[sBoard setCenter:CGPointMake(60, 290)];
+			[sBoard setSerihu:[s getChara] serihu:[s getSerihu]];
+			
+			//여기는 적당한 파일이름을 정해주자.
+			[self playAnime:[[NSString alloc] initWithFormat:@"%d",[s animeType]]];
+			
+			NSArray *windows = [[UIApplication sharedApplication] windows];
+			if ([windows count] > 1)
+			{
+				// Locate the movie player window
+				UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
+				// Add our overlay view to the movie player's subviews so it is 
+				// displayed above it.
+				[moviePlayerWindow addSubview:sBoard];
 			}
 		}
 	}
@@ -646,8 +652,37 @@ void swapView(UIView* v1, UIView* v2)
 		[self showChar:s idx:i];
 	
 	[self showBg:s];
-	[self showChr:0];
 
+	if ([s animeType] == 4)
+	{
+		[UIView beginAnimations:@"show" context:NULL];
+		[UIView setAnimationDuration:0.4];
+		[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+		[chrView[2] setAlpha:1];
+		[chrView[3] setAlpha:1];
+		[bgView setAlpha:1];
+		[UIView commitAnimations];
+		
+		[chrView[0] setAlpha:1];
+		[chrView[1] setAlpha:1];
+		[chrView[0] setCenter:CGPointMake(240, 160)];
+		[chrView[1] setCenter:CGPointMake(240, 160)];
+
+		[UIView beginAnimations:@"anime" context:NULL];
+		[UIView setAnimationDuration:4];
+		[UIView setAnimationDelay:1];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+		[chrView[0] setCenter:CGPointMake(480 + 240 + 120, 0 - 160 - 80)];
+		[chrView[1] setCenter:CGPointMake(0 - 240 - 120, 320 + 160 + 80)];
+		[UIView commitAnimations];
+		
+		showOkTick = frameTick + (5.0 * framePerSec);
+	}
+	else
+	{
+		[self showChr:0];
+	}
+	
 	switch ([scene sceneType])
 	{
 		case 1:
