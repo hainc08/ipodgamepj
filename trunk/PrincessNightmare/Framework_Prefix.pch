@@ -8,3 +8,4 @@
 #endif
 
 #define __SIMUL
+//#define __DEVICE

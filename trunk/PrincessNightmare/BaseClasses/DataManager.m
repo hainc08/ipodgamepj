@@ -830,6 +830,7 @@ static DataManager *DataManagerInst;
 				int chrId;
 
 				[preloadScene[j] setPreLoadBgmIdx:[msg[willSceneId] getIntVal:6]];
+				[preloadScene[j] setAnimeType:0];
 
 				//여기서 프리로딩...
 				for (int k=0; k<3; ++k)
@@ -858,6 +859,8 @@ static DataManager *DataManagerInst;
 					FIND_OK:
 						[preloadScene[j] setChar:k img:tempImg chrId:chrId];
 					}
+
+					if (chrId == 985) [preloadScene[j] setAnimeType:4];
 				}
 
 				chrId = [msg[willSceneId] getIntVal:4];
@@ -958,7 +961,6 @@ static DataManager *DataManagerInst;
 				if (fxIdx == 0) fxIdx = -1;
 				[preloadScene[j] setFXrepeat:false];
 				[preloadScene[j] setNextChapter:-1];
-				[preloadScene[j] setAnimeType:0];
 				
 				for (int l=0; l<[msg[willSceneId] valCount]; ++l)
 				{
@@ -974,7 +976,7 @@ static DataManager *DataManagerInst;
 								if (temp == 291) [preloadScene[j] setAnimeType:3];
 								else [preloadScene[j] setAnimeType:1];
 							}
-							else [preloadScene[j] setAnimeType:2];
+							else [preloadScene[j] setAnimeType:temp];
 							continue;
 						}
 						

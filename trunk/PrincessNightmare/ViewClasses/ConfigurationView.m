@@ -23,7 +23,6 @@
 	
 	if (isInit == false)
 	{
-		//나중에는 파일에서 읽어오자
 		opt1 = [[SaveManager getInstance] opt1];
 		opt2 = [[SaveManager getInstance] opt2];
 		[self setOption];

@@ -1,6 +1,7 @@
 #import "SaveManager.h"
 #import "DataManager.h"
 #import "ErrorManager.h"
+#import "SoundManager.h"
 
 static SaveManager *SaveManagerInst;
 
@@ -426,6 +427,9 @@ void writeInt(NSFileHandle* writeFile, int value)
 		for (int i=0; i<15; ++i)
 		{
 			opt1 = opt2 = 3;
+
+			[[SoundManager getInstance] setBGMVolume:(opt1 - 1) * 0.25f];
+			[[SoundManager getInstance] setFxVolume:(opt2 - 1) * 0.25f];
 		}
 		return;
 	}
@@ -437,6 +441,9 @@ void writeInt(NSFileHandle* writeFile, int value)
 	{
 		opt1 = readInt(readFile);
 		opt2 = readInt(readFile);
+
+		[[SoundManager getInstance] setBGMVolume:(opt1 - 1) * 0.25f];
+		[[SoundManager getInstance] setFxVolume:(opt2 - 1) * 0.25f];
 	}
 #ifdef __DEBUGGING__	
 	else
