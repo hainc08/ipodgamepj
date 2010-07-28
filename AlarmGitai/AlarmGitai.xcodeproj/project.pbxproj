@@ -77,6 +77,10 @@
 		56FF142811FB1A7500427935 /* config1.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FF142611FB1A7500427935 /* config1.png */; };
 		841CF22611F3FB9E00677616 /* CharView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841CF22511F3FB9E00677616 /* CharView.m */; };
 		841CF22811F3FBBB00677616 /* CharView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841CF22711F3FBBB00677616 /* CharView.xib */; };
+		84D6A231120042B00044ECE2 /* MaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6A230120042B00044ECE2 /* MaskView.m */; };
+		84D6A252120043D40044ECE2 /* lina_0_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6A24F120043D40044ECE2 /* lina_0_d.png */; };
+		84D6A253120043D40044ECE2 /* lina_1_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6A250120043D40044ECE2 /* lina_1_d.png */; };
+		84D6A26F120045000044ECE2 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6A26E120045000044ECE2 /* mask.png */; };
 		84E59C5211F404B600FA3E89 /* natsuko_0_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E59C4E11F404B600FA3E89 /* natsuko_0_d.png */; };
 		84E59C5311F404B600FA3E89 /* natsuko_1_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E59C4F11F404B600FA3E89 /* natsuko_1_d.png */; };
 		84E59C5411F404B600FA3E89 /* natsuko_1_face_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E59C5011F404B600FA3E89 /* natsuko_1_face_d.png */; };
@@ -167,6 +171,11 @@
 		841CF22411F3FB9E00677616 /* CharView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharView.h; sourceTree = "<group>"; };
 		841CF22511F3FB9E00677616 /* CharView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharView.m; sourceTree = "<group>"; };
 		841CF22711F3FBBB00677616 /* CharView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharView.xib; sourceTree = "<group>"; };
+		84D6A22F120042B00044ECE2 /* MaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskView.h; sourceTree = "<group>"; };
+		84D6A230120042B00044ECE2 /* MaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaskView.m; sourceTree = "<group>"; };
+		84D6A24F120043D40044ECE2 /* lina_0_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lina_0_d.png; sourceTree = "<group>"; };
+		84D6A250120043D40044ECE2 /* lina_1_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lina_1_d.png; sourceTree = "<group>"; };
+		84D6A26E120045000044ECE2 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
 		84E59C4E11F404B600FA3E89 /* natsuko_0_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = natsuko_0_d.png; sourceTree = "<group>"; };
 		84E59C4F11F404B600FA3E89 /* natsuko_1_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = natsuko_1_d.png; sourceTree = "<group>"; };
 		84E59C5011F404B600FA3E89 /* natsuko_1_face_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = natsuko_1_face_d.png; sourceTree = "<group>"; };
@@ -190,6 +199,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				84D6A22F120042B00044ECE2 /* MaskView.h */,
+				84D6A230120042B00044ECE2 /* MaskView.m */,
 				841CF22411F3FB9E00677616 /* CharView.h */,
 				841CF22511F3FB9E00677616 /* CharView.m */,
 				560890D711ECA56F00C1F800 /* ClockView.h */,
@@ -242,6 +253,7 @@
 		29B97317FDCFA39411CA2CEA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				84D6A26E120045000044ECE2 /* mask.png */,
 				5621D75811FA0A83009236C7 /* Menu */,
 				841CF25111F4003700677616 /* Char */,
 				5608961A11F0931700C1F800 /* image */,
@@ -371,6 +383,7 @@
 		841CF25111F4003700677616 /* Char */ = {
 			isa = PBXGroup;
 			children = (
+				84D6A24C120043C60044ECE2 /* Lina */,
 				841CF25211F4003D00677616 /* Natsuko */,
 			);
 			name = Char;
@@ -383,6 +396,33 @@
 				84E59C5111F404B600FA3E89 /* Night */,
 			);
 			name = Natsuko;
+			sourceTree = "<group>";
+		};
+		84D6A24C120043C60044ECE2 /* Lina */ = {
+			isa = PBXGroup;
+			children = (
+				84D6A24E120043D40044ECE2 /* Day */,
+				84D6A251120043D40044ECE2 /* Night */,
+			);
+			name = Lina;
+			sourceTree = "<group>";
+		};
+		84D6A24E120043D40044ECE2 /* Day */ = {
+			isa = PBXGroup;
+			children = (
+				84D6A24F120043D40044ECE2 /* lina_0_d.png */,
+				84D6A250120043D40044ECE2 /* lina_1_d.png */,
+			);
+			name = Day;
+			path = "char/レイナ/Day";
+			sourceTree = "<group>";
+		};
+		84D6A251120043D40044ECE2 /* Night */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Night;
+			path = "char/レイナ/Night";
 			sourceTree = "<group>";
 		};
 		84E59C4D11F404B600FA3E89 /* Day */ = {
@@ -503,6 +543,9 @@
 				5621D4D011F77004009236C7 /* layout3.png in Resources */,
 				56FF142711FB1A7500427935 /* config0.png in Resources */,
 				56FF142811FB1A7500427935 /* config1.png in Resources */,
+				84D6A252120043D40044ECE2 /* lina_0_d.png in Resources */,
+				84D6A253120043D40044ECE2 /* lina_1_d.png in Resources */,
+				84D6A26F120045000044ECE2 /* mask.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +569,7 @@
 				560898DC11F0B77600C1F800 /* ImgManager.m in Sources */,
 				569DE53A11F1BB7000A4E58F /* AlarmView.m in Sources */,
 				841CF22611F3FB9E00677616 /* CharView.m in Sources */,
+				84D6A231120042B00044ECE2 /* MaskView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

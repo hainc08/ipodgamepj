@@ -13,6 +13,7 @@
 @class DateView;
 @class MenuView;
 @class CharView;
+@class MaskView;
 
 @interface AlarmGitaiViewController : UIViewController {
 	BOOL hiddenButton;
@@ -23,6 +24,7 @@
 	ClockView *clockview;
 	DateView *dateview;
 	CharView *charView;
+	MaskView *maskView;
 	
 	UInt32 frameTick;
 	NSTimer *updateTimer;

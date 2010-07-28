@@ -15,6 +15,8 @@
 #import "BaseView.h"
 #import "CharView.h"
 #import "AlarmConfig.h"
+#import "MaskView.h"
+
 @implementation AlarmGitaiViewController
 
 
@@ -121,10 +123,15 @@
 	frameTick = 0;
 	framePerSec = 10.f;
 	isInit = false;
-	
-	
+
+	maskView = (MaskView *)[[ViewManager getInstance] getInstView:@"MaskView"];
+	[maskView setTransform:CGAffineTransformMake(1, 0, 0, -1, 0, 0)];
+	[maskView reset];
+	[self.view addSubview:maskView];
+	[maskView setAlpha:1];	
+	[menuview setCenter:CGPointMake(160, 240)];
+
 	[self resumeTimer];
-	
 }
 
 

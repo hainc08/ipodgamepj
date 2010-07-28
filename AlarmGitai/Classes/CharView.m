@@ -30,12 +30,15 @@
 		case 0:
 			baseIdx = 0;
 			faceIdx = -1;
+			break;
 		case 1:
 			baseIdx = 0;
 			faceIdx = 1;
+			break;
 		case 2:
 			baseIdx = 1;
 			faceIdx = -1;
+			break;
 	}
 	
 	imgBase = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@.png", name, baseIdx, timeStr]];
@@ -48,7 +51,7 @@
 	{
 		imgFace = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_face_%@.png", name, faceIdx, timeStr]];
 	}
-	
+
 	[self setNeedsDisplay];
 }
 
@@ -56,9 +59,9 @@
 {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextBeginPath(context);
-	
-	CGContextDrawImage(context, CGRectMake(0, -100, 288, 600), [imgBase CGImage]);
-	CGContextDrawImage(context, CGRectMake(97, 307, 116, 121), [imgFace CGImage]);
+
+	CGContextDrawImage(context, CGRectMake(0, 0, 320, 480), [imgBase CGImage]);
+//	CGContextDrawImage(context, CGRectMake(97, 307, 116, 121), [imgFace CGImage]);
 
 	CGContextStrokePath(context);
 }
