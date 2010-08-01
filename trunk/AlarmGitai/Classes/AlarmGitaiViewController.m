@@ -9,7 +9,6 @@
 #import "AlarmGitaiViewController.h"
 #import "ViewManager.h"
 
-#import "MenuView.h"
 #import "DateView.h"
 #import	"ClockView.h"
 #import "BaseView.h"
@@ -103,9 +102,14 @@
 	[self.view addSubview:MenuButton];
 	
 	
-	MenuController *menuconfig = [[MenuController alloc] initWithStyle:UITableViewStylePlain];
-	menuNavi = [[UINavigationController alloc] initWithRootViewController:menuconfig];
+	MenuController *menuconfig = [[MenuController alloc] initWithStyle:UITableViewStyleGrouped];
+	
+	
+	menuNavi = [[UINavigationController alloc] initWithRootViewController:menuconfig] ;
+	[menuNavi.view setFrame:CGRectMake(0, 0, 320, 300)];
+
 	[menuconfig release];
+
 	[self.view addSubview:menuNavi.view];
 	
 	frameTick = 0;
