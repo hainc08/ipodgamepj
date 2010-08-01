@@ -13,6 +13,8 @@
 #import "ClockView.h"
 #import "AlarmConfig.h"
 
+#import "MenuController.h"
+
 @implementation MenuView
 
 
@@ -31,16 +33,27 @@
 	[self CreatedAlarmView];
 	return self;
 }
-
+/*
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 		
 	return self;
 }
+*/
 
-
-- (void)CreatedAlarmView
+- (void)viewDidLoad
 {
+	[self viewDidLoad];
+	MenuController *menucontrol = [[MenuController alloc]  initWithStyle:UITableViewStyleGrouped]; 
+	
+	menuNavi = [[UINavigationController alloc] 
+				initWithRootViewController:menucontrol];
+	
+	[menucontrol release];
+
+	[self addSubview:menuNavi.view];
+	
+#if 0
 
 	for( int loop = 0 ; loop < 4 ;loop++)
 	{
@@ -65,6 +78,14 @@
 		[configmenu[loop] setAlpha:1];
 		[self addSubview:configmenu[loop]];
 		}
+/*Font */
+		Font[loop] = [[UIButton alloc] initWithFrame:CGRectMake(50 + (loop*50), 115, 87, 46) ];
+		//[configmenu[loop] setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"config%d.png", loop] ] forState:UIControlStateNormal];
+		
+		[Font[loop] addTarget:self action:@selector(FontButton:) forControlEvents:UIControlEventTouchUpInside];
+		[Font[loop] setTransform:CGAffineTransformMake(0.7, 0,0,0.7, 0,0)];
+		[Font[loop] setAlpha:0];
+		[self addSubview:Font[loop]];
 	}
 
 /* xbox Button */
@@ -76,8 +97,8 @@
 	[Xbox setAlpha:0];
 	[self addSubview:Xbox];
 	choice=1;
-	
-	
+
+#endif
 
 }
 

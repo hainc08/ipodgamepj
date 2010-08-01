@@ -33,10 +33,10 @@
 	
 	/* view Controller */ 
 	[ViewManager initManager:window:viewController];
-//	[[ViewManager getInstance] changeView:@"MainAlarm"];
-   [window addSubview:viewController.view];
+	[window addSubview:viewController.view];
     [window makeKeyAndVisible];
-}
+
+   }
 
 
 - (void)dealloc {

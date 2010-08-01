@@ -15,10 +15,10 @@ static ViewManager *viewManagerInst;
 	viewManagerInst->mainWindow = window;
 	viewManagerInst->mainController = controller;
 	viewManagerInst->curView = nil;
-	
+/*
 	viewManagerInst->views[0].controller = controller;
 	viewManagerInst->views[0].viewName = @"Main";
-	viewManagerInst->viewCount = 1;
+	viewManagerInst->viewCount = 1;*/
 }
 
 - (void)closeManager

@@ -24,6 +24,20 @@
 
 @end
 
+@interface  AlarmDate : NSObject
+{
+	NSString *Name;
+	NSString *SoundName;
+	
+	
+	int type;  // 매일 / 하루만 / 평일만/ 주말만 / 몇시간후    
+	int hour;
+	int min;
+}
+
+@end
+
+
 
 @interface AlarmConfig : NSObject {
 	int FontType;

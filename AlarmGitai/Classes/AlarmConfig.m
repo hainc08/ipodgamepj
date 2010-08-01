@@ -32,8 +32,10 @@ static AlarmConfig *AlarmConfigInst;
 	FontUpImageType = [[NSString alloc] initWithString:@"ub"];
 	FontBgImageType = [[NSString alloc] initWithString:@"dw"];
 	for(int loop = 0; loop < 4; loop ++)
+	{
 		heigthviewpoint[loop] = [ViewCgPoint alloc];
-	
+		widthviewpoint[loop] = [ViewCgPoint alloc];
+	}
 	[heigthviewpoint[0] setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
 	[heigthviewpoint[0] setClockPoint:CGPointMake(65,410)];
 	[heigthviewpoint[0] setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
@@ -54,6 +56,30 @@ static AlarmConfig *AlarmConfigInst;
 	[heigthviewpoint[3] setClockPoint:CGPointMake(65,410)];	
 	[heigthviewpoint[3] setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
 	[heigthviewpoint[3] setDatePoint:CGPointMake(35,50)];
+	
+	
+	
+	
+	[widthviewpoint[0] setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
+	[widthviewpoint[0] setClockPoint:CGPointMake(65,410)];
+	[widthviewpoint[0] setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
+	[widthviewpoint[0] setDatePoint:CGPointMake(35,50)];
+	
+	
+	[widthviewpoint[1] setClockTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
+	[widthviewpoint[1] setClockPoint:CGPointMake(40,450)];
+	[widthviewpoint[1] setDateTrans:CGAffineTransformMake(0.16, 0.0, 0.0, 0.16, 0.0, 0.0)];
+	[widthviewpoint[1] setDatePoint:CGPointMake(33,370)];
+	
+	[widthviewpoint[2] setClockTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
+	[widthviewpoint[2] setClockPoint:CGPointMake(35,130)];	
+	[widthviewpoint[2] setDateTrans:CGAffineTransformMake(0.25, 0.0, 0.0, 0.25, 0.0, 0.0)];
+	[widthviewpoint[2] setDatePoint:CGPointMake(45,200)];
+	
+	[widthviewpoint[3] setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
+	[widthviewpoint[3] setClockPoint:CGPointMake(65,410)];	
+	[widthviewpoint[3] setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
+	[widthviewpoint[3] setDatePoint:CGPointMake(35,50)];
 	
 }
 - (int)getFontType
@@ -78,12 +104,8 @@ static AlarmConfig *AlarmConfigInst;
 
 - (ViewCgPoint *) getWidthViewPoint
 {
-	return heigthviewpoint[heightnum];
+	return widthviewpoint[widthnum];
 }
-
-
-
-
 
 - (void)dealloc {
 	[super dealloc];	
