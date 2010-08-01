@@ -17,6 +17,8 @@
 #import "AlarmConfig.h"
 #import "MaskView.h"
 
+
+#import "MenuController.h"
 @implementation AlarmGitaiViewController
 
 
@@ -29,12 +31,6 @@
 	if(hiddenButton)
 	{
 		[MenuButton setFrame:CGRectMake(0, -100, 112, 98)];
-		if(menuEnable)
-		{
-			[menuview setFrame:CGRectMake(-300, -480, 300, 480)];
-			menuEnable = !menuEnable;
-
-		}
 
 	}
 	else 
@@ -72,7 +68,7 @@
 	
 	hiddenButton = false;
 	menuEnable   = false;
-	
+
 	ViewCgPoint	*alarmviewpoint	= [[AlarmConfig getInstance] getHeigthViewPoint];
 	
 	charView = (CharView *)[[ViewManager getInstance] getInstView:@"CharView"];
@@ -98,40 +94,32 @@
 	[dateview UpdateDate];
 	[self.view addSubview:dateview];
 	[dateview setAlpha:1];
-	
-	//menuview  = (MenuView *) [[ViewManager getInstance] addSubInstView:@"MenuView"];
-	menuview = (MenuView *)[[ViewManager getInstance] getInstView:@"MenuView"];
-	menuview.transform =  CGAffineTransformMake(1, 0.0, 0.0, 1, 0.0, 0.0);
-	[self.view addSubview:menuview];
-	
-	[menuview setCenter:CGPointMake(-300, -480)];
-	[menuview setAlpha:1];
-	
-	
 
 	MenuButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 112, 98)];
-	
-																																  
 	[MenuButton setBackgroundImage:[ [UIImage imageNamed:@"menu_b.png" ] stretchableImageWithLeftCapWidth:112.0 topCapHeight:98.0] forState:UIControlStateNormal];
-	
-	
 	[MenuButton setCenter:CGPointMake(55, -90)];
 	[MenuButton addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 	[MenuButton setAlpha:1];
 	[self.view addSubview:MenuButton];
 	
+	
+	MenuController *menuconfig = [[MenuController alloc] initWithStyle:UITableViewStylePlain];
+	menuNavi = [[UINavigationController alloc] initWithRootViewController:menuconfig];
+	[menuconfig release];
+	[self.view addSubview:menuNavi.view];
+	
 	frameTick = 0;
 	framePerSec = 10.f;
 	isInit = false;
-
+/* 
 	maskView = (MaskView *)[[ViewManager getInstance] getInstView:@"MaskView"];
 	[maskView setTransform:CGAffineTransformMake(1, 0, 0, -1, 0, 0)];
 	[maskView reset];
 	[self.view addSubview:maskView];
 	[maskView setAlpha:1];	
 	[menuview setCenter:CGPointMake(160, 240)];
-
-	[self resumeTimer];
+*/		
+		[self resumeTimer];
 }
 
 
@@ -143,6 +131,7 @@
 #endif
 
 	[self FrameUpdate];
+	
 	
 }
 
@@ -174,25 +163,7 @@
 
 - (void)ButtonClick:(id)sender
 {
-	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) { 
-	
-	}
-	else
-	{
-		
-	}
-	
-	if(sender == MenuButton )
-	{
-		[MenuButton setAlpha:0];
-		
-		[UIView	 beginAnimations:nil context:NULL];
-		[UIView setAnimationDuration:0.7];
-		[menuview setFrame:CGRectMake(0, -100, 320, 480)];
-		[UIView commitAnimations];
-	
-		menuEnable = !menuEnable;
-	}
+
 }
 
 	

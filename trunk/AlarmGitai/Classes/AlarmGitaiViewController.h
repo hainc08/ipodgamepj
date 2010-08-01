@@ -19,8 +19,8 @@
 	BOOL hiddenButton;
 	BOOL menuEnable;
 
+	UINavigationController *menuNavi;
 	
-	MenuView *menuview;
 	ClockView *clockview;
 	DateView *dateview;
 	CharView *charView;

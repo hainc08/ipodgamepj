@@ -92,34 +92,21 @@
 	{
 		[u_MonT setImage:[[ImgManager getInstance] getUp:(int)number-0x30]];
 		[b_MonT setImage:[[ImgManager getInstance] getDown:(int)number-0x30]];
-		
-
-		
-
 	}
 	else if(type == MON_M)
 	{
 		[u_MonM setImage:[[ImgManager getInstance] getUp:(int)number-0x30]];
 		[b_MonM setImage:[[ImgManager getInstance] getDown:(int)number-0x30]];
-		
-
 	}
 	else if(type == DAY_T)
 	{
 		[u_DayT setImage:[[ImgManager getInstance] getUp:(int)number-0x30]];
 		[b_DayT setImage:[[ImgManager getInstance] getDown:(int)number-0x30]];
-
-		
-
-
 	}
 	else if(type == DAY_M)
 	{
 		[u_DayM setImage:[[ImgManager getInstance] getUp:(int)number-0x30]];
 		[b_DayM setImage:[[ImgManager getInstance] getDown:(int)number-0x30]];
-	
-		
-
 	}
 }
 - (void)UpdateDate
