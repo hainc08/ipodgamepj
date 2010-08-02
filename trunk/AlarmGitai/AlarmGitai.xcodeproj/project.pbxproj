@@ -80,6 +80,7 @@
 		56FF142811FB1A7500427935 /* config1.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FF142611FB1A7500427935 /* config1.png */; };
 		841CF22611F3FB9E00677616 /* CharView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841CF22511F3FB9E00677616 /* CharView.m */; };
 		841CF22811F3FBBB00677616 /* CharView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841CF22711F3FBBB00677616 /* CharView.xib */; };
+		84C02BF5120676CA00F90942 /* SaveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C02BF4120676CA00F90942 /* SaveManager.m */; };
 		84D6A231120042B00044ECE2 /* MaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6A230120042B00044ECE2 /* MaskView.m */; };
 		84D6A252120043D40044ECE2 /* lina_0_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6A24F120043D40044ECE2 /* lina_0_d.png */; };
 		84D6A253120043D40044ECE2 /* lina_1_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6A250120043D40044ECE2 /* lina_1_d.png */; };
@@ -179,6 +180,8 @@
 		841CF22411F3FB9E00677616 /* CharView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharView.h; sourceTree = "<group>"; };
 		841CF22511F3FB9E00677616 /* CharView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharView.m; sourceTree = "<group>"; };
 		841CF22711F3FBBB00677616 /* CharView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharView.xib; sourceTree = "<group>"; };
+		84C02BF3120676CA00F90942 /* SaveManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveManager.h; sourceTree = "<group>"; };
+		84C02BF4120676CA00F90942 /* SaveManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveManager.m; sourceTree = "<group>"; };
 		84D6A22F120042B00044ECE2 /* MaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskView.h; sourceTree = "<group>"; };
 		84D6A230120042B00044ECE2 /* MaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaskView.m; sourceTree = "<group>"; };
 		84D6A24F120043D40044ECE2 /* lina_0_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lina_0_d.png; sourceTree = "<group>"; };
@@ -294,6 +297,8 @@
 		560890FE11ECA5BA00C1F800 /* BaseClasses */ = {
 			isa = PBXGroup;
 			children = (
+				84C02BF3120676CA00F90942 /* SaveManager.h */,
+				84C02BF4120676CA00F90942 /* SaveManager.m */,
 				560890FF11ECA5BA00C1F800 /* BaseView.h */,
 				5608910011ECA5BA00C1F800 /* BaseView.m */,
 				5608910111ECA5BA00C1F800 /* ViewManager.h */,
@@ -594,6 +599,7 @@
 				5631A9FF1204218700EA05F9 /* MenuController.m in Sources */,
 				567D5E731205DCDF009472A3 /* CharSelectController.m in Sources */,
 				567D5E741205DCDF009472A3 /* MenuCustomCell.m in Sources */,
+				84C02BF5120676CA00F90942 /* SaveManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

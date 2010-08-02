@@ -9,6 +9,7 @@
 #import "AlarmGitaiAppDelegate.h"
 #import "AlarmGitaiViewController.h"
 #import "ViewManager.h"
+#import "SaveManager.h"
 #import "DateFormat.h"
 #import "AlarmConfig.h"
 #import "ImgManager.h"
@@ -23,6 +24,7 @@
     
     // Override point for customization after app launch  
 	/* config load */ 
+	[SaveManager initManager];
 	[AlarmConfig initmanager];
 	
 	/* 시간설정 */
@@ -40,6 +42,8 @@
 
 
 - (void)dealloc {
+	[[SaveManager getInstance] closeManager];
+
     [viewController release];
     [window release];
     [super dealloc];
