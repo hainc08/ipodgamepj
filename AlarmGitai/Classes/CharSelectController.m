@@ -58,7 +58,7 @@
                       @"ひとみ (Hitomi)", @"レイナ (Reina)", @"文子 (Fumiko)",
                       @"우주인 (Utsyuzin)", nil];
 	NSArray *imagenames = [[NSArray alloc] initWithObjects:@"natsuko", @"natsuko", @"natsuko", @"natsuko", 
-						   @"natsuko", @"natsuko", @"natsuko", @"natsuko", nil];
+						   @"natsuko", @"reina", @"natsuko", @"natsuko", nil];
 /*	NSArray *imagenames = [[NSArray alloc] initWithObjects:@"akari", @"arika", @"natsuko", @"haruka", 
 						  @"hitomi", @"reina", @"fumiko", @"utsyuzin", nil];*/
     self.charlist = array;
