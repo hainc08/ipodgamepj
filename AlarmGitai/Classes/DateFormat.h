@@ -32,5 +32,6 @@
 - (NSString *)getMin;
 - (NSString *)getSec;
 - (NSString *)getAP;
+- (BOOL)getNight ;
 
 @end

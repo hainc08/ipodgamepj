@@ -13,6 +13,8 @@ static AlarmConfig *AlarmConfigInst;
 @implementation AlarmConfig
 @synthesize heightnum;
 @synthesize widthnum;
+@synthesize FontType;
+@synthesize CharName;
 
 + (AlarmConfig *)getInstance
 {
@@ -25,8 +27,12 @@ static AlarmConfig *AlarmConfigInst;
 
 - (void)loadConfig
 {
+	
+	fontArr = [[NSArray alloc] initWithObjects:@"굴림",
+                      @"TEST", nil];
 	heightnum = 2;
 	widthnum = 2;
+	CharName = @"natsuko";
 	
 	FontType = 1;
 	FontUpImageType = [[NSString alloc] initWithString:@"ub"];
@@ -82,11 +88,18 @@ static AlarmConfig *AlarmConfigInst;
 	[widthviewpoint[3] setDatePoint:CGPointMake(35,50)];
 	
 }
-- (int)getFontType
+- (int )getFontType
 {
-	return FontType;
+	return  FontType;
 }
-
+- (NSArray *)getFontArr
+{
+	return fontArr;
+}
+- (NSString *)getCurrFontName
+{
+	return [fontArr objectAtIndex:FontType] ;
+}
 - (NSString *)getUpImageType
 {
 	return FontUpImageType;

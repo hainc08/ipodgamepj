@@ -23,7 +23,8 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     
     // Override point for customization after app launch  
-	/* config load */ 
+	/* config load */
+
 	[SaveManager initManager];
 	[AlarmConfig initmanager];
 	

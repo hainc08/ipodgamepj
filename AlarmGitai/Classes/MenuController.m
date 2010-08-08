@@ -10,6 +10,34 @@
 #import "CharSelectController.h"
 #import "MenuCustomCell.h"
 
+#import "SelectViewController.h"
+#import "MenuBaseController.h"
+#import "FontSelectController.h"
+#import	"AlarmConfig.h"
+
+@implementation UINavigationBar (UINavigationBarCategory)
+- (void)setBackgroundImage:(UIImage *)image {
+	if(image == nil)
+	{
+		return;
+	}
+	
+	UIImageView *aTabBarImage = [[UIImageView alloc] initWithImage:image];
+	aTabBarImage.frame = CGRectMake(0,0, self.frame.size.width	, self.frame.size.height );
+	[self addSubview:aTabBarImage];
+	[self sendSubviewToBack:aTabBarImage];
+	[aTabBarImage release];
+}
+- (void)drawRect:(CGRect)rect{
+	
+	UIColor *color = [UIColor redColor];
+	CGContextRef context  = UIGraphicsGetCurrentContext();
+	CGContextSetFillColor(context, CGColorGetComponents([color CGColor]) );
+	CGContextFillRect(context, rect);
+}
+
+@end
+
 
 @implementation MenuController
 @synthesize controllers;
@@ -19,26 +47,39 @@
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
     if (self = [super initWithStyle:style]) {
     }
+	
+	
+		
     return self;
 }
 
 
 
 - (void)viewDidLoad {
-	self.title = @"Menu";
+	self.title = [AlarmConfig getInstance].CharName;
     NSMutableArray *array = [[NSMutableArray alloc] init];
-    
+  /*  UINavigationBar *txt  = [[UINavigationBar alloc] init	];
+	self.navigationController  = txt;*/
     // Disclosure Button
-    CharSelectController *charselectController = [[CharSelectController alloc] initWithStyle:UITableViewStylePlain];
-    charselectController.title = @"CharSelect";
-	[array addObject:charselectController];		
-    [charselectController release];  
-
-    // Disclosure Button
-    CharSelectController *charselectController2 = [[CharSelectController alloc] initWithStyle:UITableViewStylePlain];
-    charselectController2.title = @"CharSelect2";
-	[array addObject:charselectController2];
-    [charselectController2 release];  
+	//MenuBaseController *Char	= [[MenuBaseController alloc] init];
+	
+    SelectViewController *hightviewController = [[SelectViewController alloc] init];
+    hightviewController.title = @"HightViewType";
+	hightviewController.type  = [[NSString alloc] initWithFormat:@"Type%d", [AlarmConfig getInstance].heightnum];
+	[array addObject:hightviewController]; 
+    [hightviewController release]; 
+	
+    SelectViewController *widthviewController = [[SelectViewController alloc] init];
+    widthviewController.title = @"WidthViewType";
+	widthviewController.type  = [[NSString alloc] initWithFormat:@"Type%d", [AlarmConfig getInstance].widthnum];
+	[array addObject:widthviewController];		
+    [widthviewController release];  
+	
+    FontSelectController *FontColtroller = [[FontSelectController alloc] initWithStyle:UITableViewStylePlain];
+    FontColtroller.title = @"Font";
+	FontColtroller.type  = [[AlarmConfig getInstance] getCurrFontName];
+	[array addObject:FontColtroller];
+    [FontColtroller release]; 
     
 	self.controllers = array;
     [array release];
@@ -49,16 +90,16 @@
 }
 
 
-/*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	[self.tableView reloadData];
 }
-*/
-/*
+
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
-*/
+
 /*
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
@@ -90,7 +131,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *MenuName= @"MENU";
-    
+   
     MenuCustomCell *cell = (MenuCustomCell *)[tableView dequeueReusableCellWithIdentifier: 
                              MenuName];
 	
@@ -105,17 +146,26 @@
 	
 	
     NSUInteger row = [indexPath row];
-    CharSelectController *controller = [controllers objectAtIndex:row];
+	
+	if( row < 2 )
+	{
+    MenuBaseController *controller = [controllers objectAtIndex:row];
 	
     cell.titleName.text = controller.title;
-	cell.selectName.text = @"ABCDE"; /* 선택된 캐릭명, 폰트명 .. 등등 표시 */
+	cell.selectName.text = controller.type ; /* 선택된 캐릭명, 폰트명 .. 등등 표시 */
+//	[cell.charImage setBackgroundImage:controller.image forState:];	
 
-	if(row == 0 )
-	cell.charImage  = nil;	         /* 캐릭이선택된경우 캐릭 이미지도 보여주면 좋을듯 */
-	else
-	cell.charImage  = nil;
-	
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	}
+	else
+	{
+		FontSelectController *controller = [controllers objectAtIndex:row];
+		
+		cell.titleName.text = controller.title;
+		cell.selectName.text = controller.type ; /* 선택된 캐릭명, 폰트명 .. 등등 표시 */
+		//	[cell.charImage setBackgroundImage:controller.image forState:];	
+		
+	}
     return cell;
 }
 
@@ -123,8 +173,17 @@
 #pragma mark Table View Delegate Methods
 - (void)tableView:(UITableView *)tableView  didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger row = [indexPath row];
-   CharSelectController *nextController = [self.controllers  objectAtIndex:row];
+	if( row < 2 )
+	{
+		MenuBaseController *nextController = [self.controllers  objectAtIndex:row];
+		[self.navigationController pushViewController:nextController animated:YES];
+	}
+	else
+	{
+		FontSelectController *nextController = [self.controllers  objectAtIndex:row];
+	    [self.navigationController pushViewController:nextController animated:YES];
+	}
 
-    [self.navigationController pushViewController:nextController animated:YES];
+
 }
 @end

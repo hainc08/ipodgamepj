@@ -76,6 +76,9 @@
 		569DE53711F1BB4F00A4E58F /* AlarmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569DE53611F1BB4F00A4E58F /* AlarmView.xib */; };
 		569DE53A11F1BB7000A4E58F /* AlarmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 569DE53911F1BB7000A4E58F /* AlarmView.m */; };
 		569DE96311F22DE700A4E58F /* xbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 569DE96211F22DE700A4E58F /* xbox.png */; };
+		56B0B1B7120F0C48004F9D97 /* FontSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1B6120F0C48004F9D97 /* FontSelectController.m */; };
+		56B0B1BA120F0C61004F9D97 /* MenuBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1B9120F0C61004F9D97 /* MenuBaseController.m */; };
+		56B0B1BD120F0C71004F9D97 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1BC120F0C71004F9D97 /* SelectViewController.m */; };
 		56FF142711FB1A7500427935 /* config0.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FF142511FB1A7500427935 /* config0.png */; };
 		56FF142811FB1A7500427935 /* config1.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FF142611FB1A7500427935 /* config1.png */; };
 		841CF22611F3FB9E00677616 /* CharView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841CF22511F3FB9E00677616 /* CharView.m */; };
@@ -525,6 +528,12 @@
 		569DE53811F1BB7000A4E58F /* AlarmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmView.h; sourceTree = "<group>"; };
 		569DE53911F1BB7000A4E58F /* AlarmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmView.m; sourceTree = "<group>"; };
 		569DE96211F22DE700A4E58F /* xbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xbox.png; path = image/xbox.png; sourceTree = "<group>"; };
+		56B0B1B5120F0C48004F9D97 /* FontSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontSelectController.h; path = Classes/FontSelectController.h; sourceTree = "<group>"; };
+		56B0B1B6120F0C48004F9D97 /* FontSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontSelectController.m; path = Classes/FontSelectController.m; sourceTree = "<group>"; };
+		56B0B1B8120F0C61004F9D97 /* MenuBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuBaseController.h; path = Classes/MenuBaseController.h; sourceTree = "<group>"; };
+		56B0B1B9120F0C61004F9D97 /* MenuBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuBaseController.m; path = Classes/MenuBaseController.m; sourceTree = "<group>"; };
+		56B0B1BB120F0C71004F9D97 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectViewController.h; path = Classes/SelectViewController.h; sourceTree = "<group>"; };
+		56B0B1BC120F0C71004F9D97 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectViewController.m; path = Classes/SelectViewController.m; sourceTree = "<group>"; };
 		56FF142511FB1A7500427935 /* config0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = config0.png; path = image/config0.png; sourceTree = "<group>"; };
 		56FF142611FB1A7500427935 /* config1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = config1.png; path = image/config1.png; sourceTree = "<group>"; };
 		841CF22411F3FB9E00677616 /* CharView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharView.h; sourceTree = "<group>"; };
@@ -939,9 +948,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				5631AA02120424CF00EA05F9 /* MenuClasses */,
 				560890FE11ECA5BA00C1F800 /* BaseClasses */,
 				560890D011ECA52F00C1F800 /* ConfigClasses */,
+				5631AA02120424CF00EA05F9 /* MenuClasses */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				5621D75111FA0A58009236C7 /* Resource */,
@@ -1101,6 +1110,12 @@
 				567D5E721205DCDF009472A3 /* MenuCustomCell.m */,
 				567D5E751205DD02009472A3 /* CharSelectController.h */,
 				567D5E701205DCDF009472A3 /* CharSelectController.m */,
+				56B0B1BB120F0C71004F9D97 /* SelectViewController.h */,
+				56B0B1BC120F0C71004F9D97 /* SelectViewController.m */,
+				56B0B1B5120F0C48004F9D97 /* FontSelectController.h */,
+				56B0B1B6120F0C48004F9D97 /* FontSelectController.m */,
+				56B0B1B8120F0C61004F9D97 /* MenuBaseController.h */,
+				56B0B1B9120F0C61004F9D97 /* MenuBaseController.m */,
 			);
 			name = MenuClasses;
 			sourceTree = "<group>";
@@ -2000,6 +2015,9 @@
 				567D5E731205DCDF009472A3 /* CharSelectController.m in Sources */,
 				567D5E741205DCDF009472A3 /* MenuCustomCell.m in Sources */,
 				84C02BF5120676CA00F90942 /* SaveManager.m in Sources */,
+				56B0B1B7120F0C48004F9D97 /* FontSelectController.m in Sources */,
+				56B0B1BA120F0C61004F9D97 /* MenuBaseController.m in Sources */,
+				56B0B1BD120F0C71004F9D97 /* SelectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

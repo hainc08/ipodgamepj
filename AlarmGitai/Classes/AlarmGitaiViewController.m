@@ -15,7 +15,7 @@
 #import "CharView.h"
 #import "AlarmConfig.h"
 #import "MaskView.h"
-
+#import "DateFormat.h"
 
 #import "MenuController.h"
 @implementation AlarmGitaiViewController
@@ -74,7 +74,7 @@
 	[self.view addSubview:charView];
 	[charView setTransform:CGAffineTransformMake(1, 0, 0, -1, 0, 0)];
 	[charView setCenter:CGPointMake(160,240)];
-	[charView setChar:@"natsuko" idx:1 isNight:false];
+	[charView setChar:[AlarmConfig getInstance].CharName idx:1 isNight:[[DateFormat getInstance] getNight] ];
 	
 	clockview = (ClockView *)[[ViewManager getInstance] getInstView:@"ClockView"];
 	
@@ -103,13 +103,9 @@
 	
 	
 	MenuController *menuconfig = [[MenuController alloc] initWithStyle:UITableViewStyleGrouped];
-	
-	
 	menuNavi = [[UINavigationController alloc] initWithRootViewController:menuconfig] ;
 	[menuNavi.view setFrame:CGRectMake(0, 0, 320, 300)];
-
 	[menuconfig release];
-
 	[self.view addSubview:menuNavi.view];
 	
 	frameTick = 0;

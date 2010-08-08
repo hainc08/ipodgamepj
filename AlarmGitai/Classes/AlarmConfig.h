@@ -10,6 +10,7 @@
 
 @interface ViewCgPoint : NSObject
 {
+	
 	CGAffineTransform ClockTrans;
 	CGAffineTransform DateTrans;
 	
@@ -40,31 +41,36 @@
 
 
 @interface AlarmConfig : NSObject {
-	int FontType;
-	NSString *FontBgImageType;
-	NSString *FontUpImageType;
+	NSString		*CharName;
+	NSArray			*fontArr; 
+	int				FontType;
+	NSString		*FontBgImageType;
+	NSString		*FontUpImageType;
 	
-	int			heightnum;
-	int			widthnum;
-	ViewCgPoint	*heigthviewpoint[5];
-	ViewCgPoint	*widthviewpoint[5];
+	int				heightnum;
+	int				widthnum;
+	ViewCgPoint		*heigthviewpoint[5];
+	ViewCgPoint		*widthviewpoint[5];
 	
 	
 	
-	NSString *locale;		/* 나라 설정 */
-	NSDateFormatter AlarmCDate[10]; /* 알람 설정 */
+	NSString		*locale;		/* 나라 설정 */
+	NSDateFormatter	AlarmCDate[10]; /* 알람 설정 */
 	
-	/* 배경사진 sec */
-	int RotationTime;
+	/* 배경사진 sec  Default : 5 */
+	int				RotationTime;
 	
 	
 }
 @property (readwrite) int heightnum;
 @property (readwrite) int widthnum;
-
+@property (readwrite) int FontType;
+@property (readwrite, retain) NSString *CharName;
 + (AlarmConfig *)getInstance;
 + (void) initmanager;
 - (void) closeManager;
+- (NSArray *)getFontArr;
+- (NSString *)getCurrFontName;
 - (int)getFontType;
 - (NSString *)getUpImageType;
 - (NSString *)getBgImageType;
