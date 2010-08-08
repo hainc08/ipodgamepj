@@ -97,6 +97,23 @@ static DateFormat *DateFormatInst;
 	[FormatDate release];
 
 }
+
+- (BOOL)getNight 
+{
+	BOOL ret = FALSE;
+	NSUInteger value ;
+	[FormatDate setDateFormat:@"hh"];
+	NSString *Hour = [FormatDate stringFromDate:[[NSDate date] autorelease]];
+	
+	value = [Hour intValue];
+	if(value > 18 || value < 6 )
+	{
+		ret = TRUE;
+	}
+	[Hour release];
+	return ret;
+}
+
 - (void) closeManager {
 }
 @end
