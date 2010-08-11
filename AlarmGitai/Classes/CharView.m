@@ -28,7 +28,7 @@
 	switch (idx)
 	{
 		case 0:
-			baseIdx = 0;
+			baseIdx = 41;
 			faceIdx = -1;
 			break;
 		case 1:
@@ -55,12 +55,29 @@
 	[self setNeedsDisplay];
 }
 
+- (void)setBackGround:(int)idx isNight:(bool)isNight
+{
+	NSString *timeStr;
+	if (isNight) timeStr = @"n";
+	else timeStr = @"d";
+
+	imgBack = [UIImage imageNamed:[NSString stringWithFormat:@"back_%d_%@.png", idx, timeStr]];
+
+	[self setNeedsDisplay];
+}
+
 -(void)drawRect:(CGRect)rect
 {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextBeginPath(context);
 
-	CGContextDrawImage(context, CGRectMake(0, 0, 320, 480), [imgBase CGImage]);
+	CGContextDrawImage(context, CGRectMake(-160, 0, 640, 480), [imgBack CGImage]);
+	CGContextDrawImage(context,
+					   CGRectMake((320 - [imgBase size].width)/2,
+								  480 - [imgBase size].height,
+								  [imgBase size].width,
+								  [imgBase size].height),
+					   [imgBase CGImage]);
 //	CGContextDrawImage(context, CGRectMake(97, 307, 116, 121), [imgFace CGImage]);
 
 	CGContextStrokePath(context);

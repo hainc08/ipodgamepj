@@ -74,7 +74,8 @@
 	[self.view addSubview:charView];
 	[charView setTransform:CGAffineTransformMake(1, 0, 0, -1, 0, 0)];
 	[charView setCenter:CGPointMake(160,240)];
-	[charView setChar:[AlarmConfig getInstance].CharName idx:1 isNight:[[DateFormat getInstance] getNight] ];
+	[charView setChar:[AlarmConfig getInstance].CharName idx:0 isNight:[[DateFormat getInstance] getNight] ];
+	[charView setBackGround:10 isNight:[[DateFormat getInstance] getNight]];
 	
 	clockview = (ClockView *)[[ViewManager getInstance] getInstView:@"ClockView"];
 	
@@ -119,7 +120,7 @@
 	[maskView setAlpha:1];	
 	[menuview setCenter:CGPointMake(160, 240)];
 */		
-		[self resumeTimer];
+	[self resumeTimer];
 }
 
 
