@@ -18,9 +18,8 @@
 #import "DateFormat.h"
 
 #import "MenuController.h"
+
 @implementation AlarmGitaiViewController
-
-
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -71,11 +70,13 @@
 	ViewCgPoint	*alarmviewpoint	= [[AlarmConfig getInstance] getHeigthViewPoint];
 	
 	charView = (CharView *)[[ViewManager getInstance] getInstView:@"CharView"];
-	[self.view addSubview:charView];
+
 	[charView setTransform:CGAffineTransformMake(1, 0, 0, -1, 0, 0)];
 	[charView setCenter:CGPointMake(160,240)];
 	[charView setChar:[AlarmConfig getInstance].CharName idx:0 isNight:[[DateFormat getInstance] getNight] ];
 	[charView setBackGround:10 isNight:[[DateFormat getInstance] getNight]];
+	[self.view addSubview:charView];
+	
 	
 	clockview = (ClockView *)[[ViewManager getInstance] getInstView:@"ClockView"];
 	
@@ -104,6 +105,7 @@
 	
 	
 	MenuController *menuconfig = [[MenuController alloc] initWithStyle:UITableViewStyleGrouped];
+	menuconfig.title = @"Menu";
 	menuNavi = [[UINavigationController alloc] initWithRootViewController:menuconfig] ;
 	[menuNavi.view setFrame:CGRectMake(0, 0, 320, 300)];
 	[menuconfig release];
@@ -172,7 +174,12 @@
 {
 		++frameTick;
 	if(frameTick % 10)
+	{
 		[self FrameUpdate];
+//		if(frameTick % (10 * [AlarmConfig getInstance].
+//		[charView setChar:[AlarmConfig getInstance].CharName idx:1 isNight:[[DateFormat getInstance] getNight] ];
+		frameTick = 0;
+	}
 	[clockview UpdateTime];
 	[dateview UpdateDate];
 }
@@ -198,6 +205,7 @@
 		[dateview setTransform:alarmviewpoint.DateTrans];
 		[dateview setCenter:alarmviewpoint.DatePoint];
 	}
+
 }
 		
 	

@@ -7,6 +7,7 @@
 //
 
 #import "AlarmConfig.h"
+#import "SaveManager.h"
 
 static AlarmConfig *AlarmConfigInst;
 
@@ -25,18 +26,35 @@ static AlarmConfig *AlarmConfigInst;
 	[AlarmConfigInst loadConfig];
 }
 
+- (void)defaultConfig
+{
+	/* file save 도 같이 하자 */
+	[[SaveManager getInstance] setIntData:@"RotationTime" idx:0 value:5];
+	[[SaveManager getInstance] setIntData:@"heigthnum" idx:0 value:0];
+	[[SaveManager getInstance] setIntData:@"widthnum" idx:0 value:0];
+	[[SaveManager getInstance] setIntData:@"FontType" idx:0 value:0];
+	[[SaveManager getInstance] setStringData:@"FontType" idx:1 value:@"ub"];
+	[[SaveManager getInstance] setStringData:@"FontType" idx:2 value:@"dw"];
+	
+	[[SaveManager getInstance] saveFile];
+	
+
+}
+
 - (void)loadConfig
 {
-	
-	fontArr = [[NSArray alloc] initWithObjects:@"굴림",
-                      @"TEST", nil];
-	heightnum = 2;
-	widthnum = 2;
 	CharName = @"natsuko";
+	fontArr = [[NSArray alloc] initWithObjects:@"굴림", @"TEST", nil];
 	
-	FontType = 1;
-	FontUpImageType = [[NSString alloc] initWithString:@"ub"];
-	FontBgImageType = [[NSString alloc] initWithString:@"dw"];
+	RotationTime = [[SaveManager getInstance] getIntData:@"RotationTime" idx:0 base:5];
+	
+	heightnum = [[SaveManager getInstance] getIntData:@"heigthnum" idx:0 base:0];
+	widthnum =  [[SaveManager getInstance] getIntData:@"widthnum" idx:0 base:0];
+	
+	FontType =		  [[SaveManager getInstance] getIntData:@"FontType" idx:0 base:0];
+	FontUpImageType = [[SaveManager getInstance] getStringData:@"FontType" idx:1 base:@"ub"];
+	FontBgImageType = [[SaveManager getInstance] getStringData:@"FontType" idx:2 base:@"dw"];
+	
 	for(int loop = 0; loop < 4; loop ++)
 	{
 		heigthviewpoint[loop] = [ViewCgPoint alloc];
@@ -120,6 +138,26 @@ static AlarmConfig *AlarmConfigInst;
 	return widthviewpoint[widthnum];
 }
 
+- (void) setRotationTime:(int)value
+{
+	RotationTime = value;
+}
+- (int) getRotationTime
+{
+	return RotationTime;
+}
+
+- (void)SaveConfig
+{
+	[[SaveManager getInstance] setIntData:@"RotationTime" idx:0 value:RotationTime];
+	[[SaveManager getInstance] setIntData:@"heigthnum" idx:0 value:heightnum];
+	[[SaveManager getInstance] setIntData:@"widthnum" idx:0 value:widthnum];
+	[[SaveManager getInstance] setIntData:@"FontType" idx:0 value:FontType];
+	[[SaveManager getInstance] setStringData:@"FontType" idx:1 value:FontUpImageType];
+	[[SaveManager getInstance] setStringData:@"FontType" idx:2 value:FontBgImageType];
+	
+	[[SaveManager getInstance] saveFile];
+}
 - (void)dealloc {
 	[super dealloc];	
 	[FontUpImageType  release];

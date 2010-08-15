@@ -65,7 +65,7 @@
 @property (readwrite) int heightnum;
 @property (readwrite) int widthnum;
 @property (readwrite) int FontType;
-@property (readwrite, retain) NSString *CharName;
+@property (readwrite) NSString *CharName;
 + (AlarmConfig *)getInstance;
 + (void) initmanager;
 - (void) closeManager;
@@ -77,4 +77,8 @@
 - (void)loadConfig;
 - (ViewCgPoint *) getHeigthViewPoint;
 - (ViewCgPoint *) getWidthViewPoint;
+
+- (void)SaveConfig;
+- (int) getRotationTime;
+- (void) setRotationTime:(int)value;
 @end

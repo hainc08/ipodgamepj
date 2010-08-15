@@ -118,7 +118,7 @@
 	{
 		if(!choice)
 		{
-			[self setType:@"Type2"];
+			[self setType:[[NSString alloc] initWithFormat:@"Type_%d", choicenum]];
 			[self.navigationController viewDidAppear:YES];
 			[self.navigationController popToRootViewControllerAnimated:YES];
 		}

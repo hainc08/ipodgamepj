@@ -28,7 +28,7 @@
 	switch (idx)
 	{
 		case 0:
-			baseIdx = 41;
+			baseIdx = 1;
 			faceIdx = -1;
 			break;
 		case 1:
