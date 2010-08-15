@@ -28,6 +28,7 @@
 	[self sendSubviewToBack:aTabBarImage];
 	[aTabBarImage release];
 }
+
 - (void)drawRect:(CGRect)rect{
 	
 	UIColor *color = [UIColor redColor];
@@ -42,26 +43,23 @@
 @implementation MenuController
 @synthesize controllers;
 
-
 - (id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
     if (self = [super initWithStyle:style]) {
     }
-	
-	
-		
+
     return self;
 }
 
 
 
 - (void)viewDidLoad {
+	OldPath = nil;
 	self.title = [AlarmConfig getInstance].CharName;
     NSMutableArray *array = [[NSMutableArray alloc] init];
-  /*  UINavigationBar *txt  = [[UINavigationBar alloc] init	];
-	self.navigationController  = txt;*/
+
     // Disclosure Button
-	//MenuBaseController *Char	= [[MenuBaseController alloc] init];
+
 	
     SelectViewController *hightviewController = [[SelectViewController alloc] init];
     hightviewController.title = @"HightViewType";
@@ -81,6 +79,13 @@
 	[array addObject:FontColtroller];
     [FontColtroller release]; 
     
+	
+	MenuBaseController *charrotatetime	= [[MenuBaseController alloc] init];
+	charrotatetime.title = @"Char Rotate";
+	charrotatetime.type  = @"Time (sec)" ;
+	[array addObject:charrotatetime]; 
+    [charrotatetime release]; 
+
 	self.controllers = array;
     [array release];
     [super viewDidLoad];
@@ -131,7 +136,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *MenuName= @"MENU";
-   
+	self.title = MenuName;
     MenuCustomCell *cell = (MenuCustomCell *)[tableView dequeueReusableCellWithIdentifier: 
                              MenuName];
 	
@@ -147,7 +152,7 @@
 	
     NSUInteger row = [indexPath row];
 	
-	if( row < 2 )
+	if( row != 2)
 	{
     MenuBaseController *controller = [controllers objectAtIndex:row];
 	
@@ -155,7 +160,18 @@
 	cell.selectName.text = controller.type ; /* 선택된 캐릭명, 폰트명 .. 등등 표시 */
 //	[cell.charImage setBackgroundImage:controller.image forState:];	
 
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+		if( row ==3)
+		{
+			[ cell.textField setAlpha:1];
+			cell.accessoryType = UITableViewCellAccessoryNone;
+		}
+		else
+		{
+			[ cell.textField setAlpha:0];
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		}
+		
 	}
 	else
 	{
@@ -164,8 +180,12 @@
 		cell.titleName.text = controller.title;
 		cell.selectName.text = controller.type ; /* 선택된 캐릭명, 폰트명 .. 등등 표시 */
 		//	[cell.charImage setBackgroundImage:controller.image forState:];	
-		
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		[ cell.textField setAlpha:0];
 	}
+	[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+	
+	OldPath = indexPath;
     return cell;
 }
 
@@ -173,8 +193,21 @@
 #pragma mark Table View Delegate Methods
 - (void)tableView:(UITableView *)tableView  didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger row = [indexPath row];
-	if( row < 2 )
+	
+	if( OldPath != nil  )
 	{
+		MenuCustomCell *oldcell  = (MenuCustomCell *)[tableView cellForRowAtIndexPath:OldPath];
+		[oldcell.textField resignFirstResponder];
+	}
+	
+	if( row  != 2 )
+	{
+		if(row == 3)
+		{
+			MenuCustomCell *cell  = (MenuCustomCell *)[tableView cellForRowAtIndexPath:indexPath];
+			[cell.textField  becomeFirstResponder];
+			return;
+		}
 		MenuBaseController *nextController = [self.controllers  objectAtIndex:row];
 		[self.navigationController pushViewController:nextController animated:YES];
 	}
@@ -184,6 +217,7 @@
 	    [self.navigationController pushViewController:nextController animated:YES];
 	}
 
-
 }
+
+		 
 @end

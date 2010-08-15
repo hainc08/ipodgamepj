@@ -110,7 +110,6 @@ static DateFormat *DateFormatInst;
 	{
 		ret = TRUE;
 	}
-	[Hour release];
 	return ret;
 }
 

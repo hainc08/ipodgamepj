@@ -11,9 +11,9 @@
 
 @class ClockView;
 @class DateView;
-@class MenuView;
 @class CharView;
 @class MaskView;
+
 
 @interface AlarmGitaiViewController : UIViewController {
 	BOOL hiddenButton;

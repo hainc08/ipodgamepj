@@ -9,12 +9,18 @@
 #import <UIKit/UIKit.h>
 
 
-@interface MenuCustomCell : UITableViewCell {
+@interface MenuCustomCell : UITableViewCell < UITextFieldDelegate > {
 	UILabel *titleName;
     UILabel *selectName;
 	UIImageView *charImage;
+	UITextField *textField;
+	BOOL keyboardHiden ;
 }
 @property (nonatomic, retain) IBOutlet UILabel *titleName;
 @property (nonatomic, retain) IBOutlet UILabel *selectName;
 @property (nonatomic, retain) IBOutlet UIImageView *charImage;
+@property (nonatomic, retain) IBOutlet	UITextField *textField;
+
+- (void)setHidenTextField;
 @end
+

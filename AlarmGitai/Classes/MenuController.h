@@ -11,6 +11,7 @@
 
 @interface MenuController : UITableViewController  {
 	NSArray *controllers;
+	NSIndexPath *OldPath;
 }
 @property (nonatomic ,retain) NSArray *controllers;
 @end
