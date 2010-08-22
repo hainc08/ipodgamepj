@@ -23,7 +23,6 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	
 	[UIView	 beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.7];
 	if(hiddenButton)
@@ -73,10 +72,9 @@
 
 	[charView setTransform:CGAffineTransformMake(1, 0, 0, -1, 0, 0)];
 	[charView setCenter:CGPointMake(160,240)];
-	[charView setChar:[AlarmConfig getInstance].CharName idx:0 isNight:[[DateFormat getInstance] getNight] ];
+	[charView setChar:[AlarmConfig getInstance].CharName idx:48 isNight:[[DateFormat getInstance] getNight] ];
 	[charView setBackGround:10 isNight:[[DateFormat getInstance] getNight]];
 	[self.view addSubview:charView];
-	
 	
 	clockview = (ClockView *)[[ViewManager getInstance] getInstView:@"ClockView"];
 	
@@ -104,7 +102,7 @@
 	[self.view addSubview:MenuButton];
 	
 	
-	MenuController *menuconfig = [[MenuController alloc] initWithStyle:UITableViewStyleGrouped];
+/*	MenuController *menuconfig = [[MenuController alloc] initWithStyle:UITableViewStyleGrouped];
 	menuconfig.title = @"Menu";
 	menuNavi = [[UINavigationController alloc] initWithRootViewController:menuconfig] ;
 	[menuNavi.view setFrame:CGRectMake(0, 0, 320, 300)];
