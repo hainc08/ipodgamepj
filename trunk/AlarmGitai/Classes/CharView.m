@@ -25,32 +25,11 @@
 	else timeStr = @"d";
 
 	//나중에 이부분을 데이터화 시켜서 로딩해서 쓴다.
-	switch (idx)
-	{
-		case 0:
-			baseIdx = 1;
-			faceIdx = -1;
-			break;
-		case 1:
-			baseIdx = 0;
-			faceIdx = 1;
-			break;
-		case 2:
-			baseIdx = 1;
-			faceIdx = -1;
-			break;
-	}
-	
-	imgBase = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@.png", name, baseIdx, timeStr]];
+	baseIdx = idx / 9;
+	faceIdx = idx % 18;
 
-	if (faceIdx == -1)
-	{
-		imgFace = nil;
-	}
-	else
-	{
-		imgFace = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_face_%@.png", name, faceIdx, timeStr]];
-	}
+	imgBase = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@_b.png", name, baseIdx, timeStr]];
+	imgFace = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@.png", name, faceIdx, timeStr]];
 
 	[self setNeedsDisplay];
 }
@@ -78,8 +57,13 @@
 								  [imgBase size].width,
 								  [imgBase size].height),
 					   [imgBase CGImage]);
-//	CGContextDrawImage(context, CGRectMake(97, 307, 116, 121), [imgFace CGImage]);
-
+	CGContextDrawImage(context,
+					   CGRectMake((320 - [imgFace size].width)/2,
+								  480 - [imgFace size].height,
+								  [imgFace size].width,
+								  [imgFace size].height),
+					   [imgFace CGImage]);
+	
 	CGContextStrokePath(context);
 }
 
