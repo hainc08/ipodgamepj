@@ -23,6 +23,12 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+	//캐릭터 리소스 확인용
+	//static int k = 0;
+	//[charView setChar:@"Fumiko" idx:k isNight:false];
+	//k++;
+	//return;
+	
 	[UIView	 beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.7];
 	if(hiddenButton)

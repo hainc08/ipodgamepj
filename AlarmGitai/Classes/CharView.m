@@ -29,7 +29,11 @@
 	faceIdx = idx % 18;
 
 	imgBase = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@_b.png", name, baseIdx, timeStr]];
-	imgFace = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@.png", name, faceIdx, timeStr]];
+	
+	if ((faceIdx == 0)||(faceIdx == 9))
+		imgFace = nil;
+	else
+		imgFace = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@.png", name, faceIdx, timeStr]];
 
 	[self setNeedsDisplay];
 }
@@ -57,13 +61,16 @@
 								  [imgBase size].width,
 								  [imgBase size].height),
 					   [imgBase CGImage]);
-	CGContextDrawImage(context,
-					   CGRectMake((320 - [imgFace size].width)/2,
-								  480 - [imgFace size].height,
-								  [imgFace size].width,
-								  [imgFace size].height),
-					   [imgFace CGImage]);
-	
+	if (imgFace != nil)
+	{
+		CGContextDrawImage(context,
+						   CGRectMake((320 - [imgFace size].width)/2,
+									  480 - [imgFace size].height,
+									  [imgFace size].width,
+									  [imgFace size].height),
+						   [imgFace CGImage]);
+	}
+		
 	CGContextStrokePath(context);
 }
 
