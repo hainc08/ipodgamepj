@@ -436,6 +436,62 @@
 		84B3B3E11222EF9F00D20B44 /* fumiko_16_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B3B3C31222EF9F00D20B44 /* fumiko_16_n.png */; };
 		84B3B3E21222EF9F00D20B44 /* fumiko_17_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B3B3C41222EF9F00D20B44 /* fumiko_17_n.png */; };
 		84C02BF5120676CA00F90942 /* SaveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C02BF4120676CA00F90942 /* SaveManager.m */; };
+		84D5631F122302250060C2F7 /* haruka_0_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562E6122302250060C2F7 /* haruka_0_d_b.png */; };
+		84D56320122302250060C2F7 /* haruka_11_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562E7122302250060C2F7 /* haruka_11_d.png */; };
+		84D56321122302250060C2F7 /* haruka_12_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562E8122302250060C2F7 /* haruka_12_d.png */; };
+		84D56322122302250060C2F7 /* haruka_13_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562E9122302250060C2F7 /* haruka_13_d.png */; };
+		84D56323122302250060C2F7 /* haruka_14_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562EA122302250060C2F7 /* haruka_14_d.png */; };
+		84D56324122302250060C2F7 /* haruka_15_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562EB122302250060C2F7 /* haruka_15_d.png */; };
+		84D56325122302250060C2F7 /* haruka_16_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562EC122302250060C2F7 /* haruka_16_d.png */; };
+		84D56326122302250060C2F7 /* haruka_17_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562ED122302250060C2F7 /* haruka_17_d.png */; };
+		84D56327122302250060C2F7 /* haruka_18_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562EE122302250060C2F7 /* haruka_18_d.png */; };
+		84D56328122302250060C2F7 /* haruka_19_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562EF122302250060C2F7 /* haruka_19_d.png */; };
+		84D56329122302250060C2F7 /* haruka_1_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562F0122302250060C2F7 /* haruka_1_d.png */; };
+		84D5632A122302250060C2F7 /* haruka_1_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562F1122302250060C2F7 /* haruka_1_d_b.png */; };
+		84D5632B122302250060C2F7 /* haruka_2_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562F2122302250060C2F7 /* haruka_2_d.png */; };
+		84D5632C122302250060C2F7 /* haruka_2_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562F3122302250060C2F7 /* haruka_2_d_b.png */; };
+		84D5632D122302250060C2F7 /* haruka_3_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562F4122302250060C2F7 /* haruka_3_d.png */; };
+		84D5632E122302250060C2F7 /* haruka_3_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562F5122302250060C2F7 /* haruka_3_d_b.png */; };
+		84D5632F122302250060C2F7 /* haruka_4_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562F6122302250060C2F7 /* haruka_4_d.png */; };
+		84D56330122302250060C2F7 /* haruka_4_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562F7122302250060C2F7 /* haruka_4_d_b.png */; };
+		84D56331122302250060C2F7 /* haruka_5_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562F8122302250060C2F7 /* haruka_5_d.png */; };
+		84D56332122302250060C2F7 /* haruka_5_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562F9122302250060C2F7 /* haruka_5_d_b.png */; };
+		84D56333122302250060C2F7 /* haruka_6_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562FA122302250060C2F7 /* haruka_6_d.png */; };
+		84D56334122302250060C2F7 /* haruka_6_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562FB122302250060C2F7 /* haruka_6_d_b.png */; };
+		84D56335122302250060C2F7 /* haruka_7_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562FC122302250060C2F7 /* haruka_7_d.png */; };
+		84D56336122302250060C2F7 /* haruka_7_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562FD122302250060C2F7 /* haruka_7_d_b.png */; };
+		84D56337122302250060C2F7 /* haruka_8_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562FE122302250060C2F7 /* haruka_8_d.png */; };
+		84D56338122302250060C2F7 /* haruka_8_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D562FF122302250060C2F7 /* haruka_8_d_b.png */; };
+		84D56339122302250060C2F7 /* haruka_9_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56300122302250060C2F7 /* haruka_9_d.png */; };
+		84D5633A122302250060C2F7 /* haruka_9_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56301122302250060C2F7 /* haruka_9_d_b.png */; };
+		84D5633B122302250060C2F7 /* haruka_0_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56303122302250060C2F7 /* haruka_0_n_b.png */; };
+		84D5633C122302250060C2F7 /* haruka_11_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56304122302250060C2F7 /* haruka_11_n.png */; };
+		84D5633D122302250060C2F7 /* haruka_12_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56305122302250060C2F7 /* haruka_12_n.png */; };
+		84D5633E122302250060C2F7 /* haruka_13_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56306122302250060C2F7 /* haruka_13_n.png */; };
+		84D5633F122302250060C2F7 /* haruka_14_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56307122302250060C2F7 /* haruka_14_n.png */; };
+		84D56340122302250060C2F7 /* haruka_15_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56308122302250060C2F7 /* haruka_15_n.png */; };
+		84D56341122302250060C2F7 /* haruka_16_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56309122302250060C2F7 /* haruka_16_n.png */; };
+		84D56342122302250060C2F7 /* haruka_17_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D5630A122302250060C2F7 /* haruka_17_n.png */; };
+		84D56343122302250060C2F7 /* haruka_18_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D5630B122302250060C2F7 /* haruka_18_n.png */; };
+		84D56344122302250060C2F7 /* haruka_19_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D5630C122302250060C2F7 /* haruka_19_n.png */; };
+		84D56345122302250060C2F7 /* haruka_1_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D5630D122302250060C2F7 /* haruka_1_n.png */; };
+		84D56346122302250060C2F7 /* haruka_1_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D5630E122302250060C2F7 /* haruka_1_n_b.png */; };
+		84D56347122302250060C2F7 /* haruka_2_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D5630F122302250060C2F7 /* haruka_2_n.png */; };
+		84D56348122302250060C2F7 /* haruka_2_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56310122302250060C2F7 /* haruka_2_n_b.png */; };
+		84D56349122302250060C2F7 /* haruka_3_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56311122302250060C2F7 /* haruka_3_n.png */; };
+		84D5634A122302250060C2F7 /* haruka_3_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56312122302250060C2F7 /* haruka_3_n_b.png */; };
+		84D5634B122302250060C2F7 /* haruka_4_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56313122302250060C2F7 /* haruka_4_n.png */; };
+		84D5634C122302250060C2F7 /* haruka_4_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56314122302250060C2F7 /* haruka_4_n_b.png */; };
+		84D5634D122302250060C2F7 /* haruka_5_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56315122302250060C2F7 /* haruka_5_n.png */; };
+		84D5634E122302250060C2F7 /* haruka_5_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56316122302250060C2F7 /* haruka_5_n_b.png */; };
+		84D5634F122302250060C2F7 /* haruka_6_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56317122302250060C2F7 /* haruka_6_n.png */; };
+		84D56350122302250060C2F7 /* haruka_6_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56318122302250060C2F7 /* haruka_6_n_b.png */; };
+		84D56351122302250060C2F7 /* haruka_7_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D56319122302250060C2F7 /* haruka_7_n.png */; };
+		84D56352122302250060C2F7 /* haruka_7_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D5631A122302250060C2F7 /* haruka_7_n_b.png */; };
+		84D56353122302250060C2F7 /* haruka_8_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D5631B122302250060C2F7 /* haruka_8_n.png */; };
+		84D56354122302250060C2F7 /* haruka_8_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D5631C122302250060C2F7 /* haruka_8_n_b.png */; };
+		84D56355122302250060C2F7 /* haruka_9_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D5631D122302250060C2F7 /* haruka_9_n.png */; };
+		84D56356122302250060C2F7 /* haruka_9_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D5631E122302250060C2F7 /* haruka_9_n_b.png */; };
 		84D6A231120042B00044ECE2 /* MaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6A230120042B00044ECE2 /* MaskView.m */; };
 		84D6A26F120045000044ECE2 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6A26E120045000044ECE2 /* mask.png */; };
 		84EB682D12088F9F0086B4CB /* char_reina.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EB682C12088F9F0086B4CB /* char_reina.png */; };
@@ -891,6 +947,62 @@
 		84B3B3C41222EF9F00D20B44 /* fumiko_17_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fumiko_17_n.png; path = "char/文子/night/fumiko_17_n.png"; sourceTree = "<group>"; };
 		84C02BF3120676CA00F90942 /* SaveManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveManager.h; sourceTree = "<group>"; };
 		84C02BF4120676CA00F90942 /* SaveManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveManager.m; sourceTree = "<group>"; };
+		84D562E6122302250060C2F7 /* haruka_0_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_0_d_b.png; sourceTree = "<group>"; };
+		84D562E7122302250060C2F7 /* haruka_11_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_11_d.png; sourceTree = "<group>"; };
+		84D562E8122302250060C2F7 /* haruka_12_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_12_d.png; sourceTree = "<group>"; };
+		84D562E9122302250060C2F7 /* haruka_13_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_13_d.png; sourceTree = "<group>"; };
+		84D562EA122302250060C2F7 /* haruka_14_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_14_d.png; sourceTree = "<group>"; };
+		84D562EB122302250060C2F7 /* haruka_15_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_15_d.png; sourceTree = "<group>"; };
+		84D562EC122302250060C2F7 /* haruka_16_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_16_d.png; sourceTree = "<group>"; };
+		84D562ED122302250060C2F7 /* haruka_17_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_17_d.png; sourceTree = "<group>"; };
+		84D562EE122302250060C2F7 /* haruka_18_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_18_d.png; sourceTree = "<group>"; };
+		84D562EF122302250060C2F7 /* haruka_19_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_19_d.png; sourceTree = "<group>"; };
+		84D562F0122302250060C2F7 /* haruka_1_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_1_d.png; sourceTree = "<group>"; };
+		84D562F1122302250060C2F7 /* haruka_1_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_1_d_b.png; sourceTree = "<group>"; };
+		84D562F2122302250060C2F7 /* haruka_2_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_2_d.png; sourceTree = "<group>"; };
+		84D562F3122302250060C2F7 /* haruka_2_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_2_d_b.png; sourceTree = "<group>"; };
+		84D562F4122302250060C2F7 /* haruka_3_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_3_d.png; sourceTree = "<group>"; };
+		84D562F5122302250060C2F7 /* haruka_3_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_3_d_b.png; sourceTree = "<group>"; };
+		84D562F6122302250060C2F7 /* haruka_4_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_4_d.png; sourceTree = "<group>"; };
+		84D562F7122302250060C2F7 /* haruka_4_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_4_d_b.png; sourceTree = "<group>"; };
+		84D562F8122302250060C2F7 /* haruka_5_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_5_d.png; sourceTree = "<group>"; };
+		84D562F9122302250060C2F7 /* haruka_5_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_5_d_b.png; sourceTree = "<group>"; };
+		84D562FA122302250060C2F7 /* haruka_6_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_6_d.png; sourceTree = "<group>"; };
+		84D562FB122302250060C2F7 /* haruka_6_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_6_d_b.png; sourceTree = "<group>"; };
+		84D562FC122302250060C2F7 /* haruka_7_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_7_d.png; sourceTree = "<group>"; };
+		84D562FD122302250060C2F7 /* haruka_7_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_7_d_b.png; sourceTree = "<group>"; };
+		84D562FE122302250060C2F7 /* haruka_8_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_8_d.png; sourceTree = "<group>"; };
+		84D562FF122302250060C2F7 /* haruka_8_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_8_d_b.png; sourceTree = "<group>"; };
+		84D56300122302250060C2F7 /* haruka_9_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_9_d.png; sourceTree = "<group>"; };
+		84D56301122302250060C2F7 /* haruka_9_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_9_d_b.png; sourceTree = "<group>"; };
+		84D56303122302250060C2F7 /* haruka_0_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_0_n_b.png; sourceTree = "<group>"; };
+		84D56304122302250060C2F7 /* haruka_11_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_11_n.png; sourceTree = "<group>"; };
+		84D56305122302250060C2F7 /* haruka_12_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_12_n.png; sourceTree = "<group>"; };
+		84D56306122302250060C2F7 /* haruka_13_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_13_n.png; sourceTree = "<group>"; };
+		84D56307122302250060C2F7 /* haruka_14_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_14_n.png; sourceTree = "<group>"; };
+		84D56308122302250060C2F7 /* haruka_15_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_15_n.png; sourceTree = "<group>"; };
+		84D56309122302250060C2F7 /* haruka_16_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_16_n.png; sourceTree = "<group>"; };
+		84D5630A122302250060C2F7 /* haruka_17_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_17_n.png; sourceTree = "<group>"; };
+		84D5630B122302250060C2F7 /* haruka_18_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_18_n.png; sourceTree = "<group>"; };
+		84D5630C122302250060C2F7 /* haruka_19_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_19_n.png; sourceTree = "<group>"; };
+		84D5630D122302250060C2F7 /* haruka_1_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_1_n.png; sourceTree = "<group>"; };
+		84D5630E122302250060C2F7 /* haruka_1_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_1_n_b.png; sourceTree = "<group>"; };
+		84D5630F122302250060C2F7 /* haruka_2_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_2_n.png; sourceTree = "<group>"; };
+		84D56310122302250060C2F7 /* haruka_2_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_2_n_b.png; sourceTree = "<group>"; };
+		84D56311122302250060C2F7 /* haruka_3_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_3_n.png; sourceTree = "<group>"; };
+		84D56312122302250060C2F7 /* haruka_3_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_3_n_b.png; sourceTree = "<group>"; };
+		84D56313122302250060C2F7 /* haruka_4_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_4_n.png; sourceTree = "<group>"; };
+		84D56314122302250060C2F7 /* haruka_4_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_4_n_b.png; sourceTree = "<group>"; };
+		84D56315122302250060C2F7 /* haruka_5_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_5_n.png; sourceTree = "<group>"; };
+		84D56316122302250060C2F7 /* haruka_5_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_5_n_b.png; sourceTree = "<group>"; };
+		84D56317122302250060C2F7 /* haruka_6_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_6_n.png; sourceTree = "<group>"; };
+		84D56318122302250060C2F7 /* haruka_6_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_6_n_b.png; sourceTree = "<group>"; };
+		84D56319122302250060C2F7 /* haruka_7_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_7_n.png; sourceTree = "<group>"; };
+		84D5631A122302250060C2F7 /* haruka_7_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_7_n_b.png; sourceTree = "<group>"; };
+		84D5631B122302250060C2F7 /* haruka_8_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_8_n.png; sourceTree = "<group>"; };
+		84D5631C122302250060C2F7 /* haruka_8_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_8_n_b.png; sourceTree = "<group>"; };
+		84D5631D122302250060C2F7 /* haruka_9_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_9_n.png; sourceTree = "<group>"; };
+		84D5631E122302250060C2F7 /* haruka_9_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haruka_9_n_b.png; sourceTree = "<group>"; };
 		84D6A22F120042B00044ECE2 /* MaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskView.h; sourceTree = "<group>"; };
 		84D6A230120042B00044ECE2 /* MaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaskView.m; sourceTree = "<group>"; };
 		84D6A26E120045000044ECE2 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
@@ -1163,6 +1275,7 @@
 		841CF25111F4003700677616 /* Char */ = {
 			isa = PBXGroup;
 			children = (
+				84D562E31223020C0060C2F7 /* Haruka */,
 				84EB682C12088F9F0086B4CB /* char_reina.png */,
 				5641726112044FB70035DD81 /* char_natsuko.png */,
 				84D6A24C120043C60044ECE2 /* reina */,
@@ -1550,6 +1663,87 @@
 				84B3B3861222EF9600D20B44 /* fumiko_17_d.png */,
 			);
 			name = Day;
+			sourceTree = "<group>";
+		};
+		84D562E31223020C0060C2F7 /* Haruka */ = {
+			isa = PBXGroup;
+			children = (
+				84D562E5122302250060C2F7 /* Day */,
+				84D56302122302250060C2F7 /* Night */,
+			);
+			name = Haruka;
+			sourceTree = "<group>";
+		};
+		84D562E5122302250060C2F7 /* Day */ = {
+			isa = PBXGroup;
+			children = (
+				84D562E6122302250060C2F7 /* haruka_0_d_b.png */,
+				84D562E7122302250060C2F7 /* haruka_11_d.png */,
+				84D562E8122302250060C2F7 /* haruka_12_d.png */,
+				84D562E9122302250060C2F7 /* haruka_13_d.png */,
+				84D562EA122302250060C2F7 /* haruka_14_d.png */,
+				84D562EB122302250060C2F7 /* haruka_15_d.png */,
+				84D562EC122302250060C2F7 /* haruka_16_d.png */,
+				84D562ED122302250060C2F7 /* haruka_17_d.png */,
+				84D562EE122302250060C2F7 /* haruka_18_d.png */,
+				84D562EF122302250060C2F7 /* haruka_19_d.png */,
+				84D562F0122302250060C2F7 /* haruka_1_d.png */,
+				84D562F1122302250060C2F7 /* haruka_1_d_b.png */,
+				84D562F2122302250060C2F7 /* haruka_2_d.png */,
+				84D562F3122302250060C2F7 /* haruka_2_d_b.png */,
+				84D562F4122302250060C2F7 /* haruka_3_d.png */,
+				84D562F5122302250060C2F7 /* haruka_3_d_b.png */,
+				84D562F6122302250060C2F7 /* haruka_4_d.png */,
+				84D562F7122302250060C2F7 /* haruka_4_d_b.png */,
+				84D562F8122302250060C2F7 /* haruka_5_d.png */,
+				84D562F9122302250060C2F7 /* haruka_5_d_b.png */,
+				84D562FA122302250060C2F7 /* haruka_6_d.png */,
+				84D562FB122302250060C2F7 /* haruka_6_d_b.png */,
+				84D562FC122302250060C2F7 /* haruka_7_d.png */,
+				84D562FD122302250060C2F7 /* haruka_7_d_b.png */,
+				84D562FE122302250060C2F7 /* haruka_8_d.png */,
+				84D562FF122302250060C2F7 /* haruka_8_d_b.png */,
+				84D56300122302250060C2F7 /* haruka_9_d.png */,
+				84D56301122302250060C2F7 /* haruka_9_d_b.png */,
+			);
+			name = Day;
+			path = "char/はるか/Day";
+			sourceTree = "<group>";
+		};
+		84D56302122302250060C2F7 /* Night */ = {
+			isa = PBXGroup;
+			children = (
+				84D56303122302250060C2F7 /* haruka_0_n_b.png */,
+				84D56304122302250060C2F7 /* haruka_11_n.png */,
+				84D56305122302250060C2F7 /* haruka_12_n.png */,
+				84D56306122302250060C2F7 /* haruka_13_n.png */,
+				84D56307122302250060C2F7 /* haruka_14_n.png */,
+				84D56308122302250060C2F7 /* haruka_15_n.png */,
+				84D56309122302250060C2F7 /* haruka_16_n.png */,
+				84D5630A122302250060C2F7 /* haruka_17_n.png */,
+				84D5630B122302250060C2F7 /* haruka_18_n.png */,
+				84D5630C122302250060C2F7 /* haruka_19_n.png */,
+				84D5630D122302250060C2F7 /* haruka_1_n.png */,
+				84D5630E122302250060C2F7 /* haruka_1_n_b.png */,
+				84D5630F122302250060C2F7 /* haruka_2_n.png */,
+				84D56310122302250060C2F7 /* haruka_2_n_b.png */,
+				84D56311122302250060C2F7 /* haruka_3_n.png */,
+				84D56312122302250060C2F7 /* haruka_3_n_b.png */,
+				84D56313122302250060C2F7 /* haruka_4_n.png */,
+				84D56314122302250060C2F7 /* haruka_4_n_b.png */,
+				84D56315122302250060C2F7 /* haruka_5_n.png */,
+				84D56316122302250060C2F7 /* haruka_5_n_b.png */,
+				84D56317122302250060C2F7 /* haruka_6_n.png */,
+				84D56318122302250060C2F7 /* haruka_6_n_b.png */,
+				84D56319122302250060C2F7 /* haruka_7_n.png */,
+				84D5631A122302250060C2F7 /* haruka_7_n_b.png */,
+				84D5631B122302250060C2F7 /* haruka_8_n.png */,
+				84D5631C122302250060C2F7 /* haruka_8_n_b.png */,
+				84D5631D122302250060C2F7 /* haruka_9_n.png */,
+				84D5631E122302250060C2F7 /* haruka_9_n_b.png */,
+			);
+			name = Night;
+			path = "char/はるか/Night";
 			sourceTree = "<group>";
 		};
 		84D6A24C120043C60044ECE2 /* reina */ = {
@@ -2012,6 +2206,62 @@
 				84B3B3E01222EF9F00D20B44 /* fumiko_14_n.png in Resources */,
 				84B3B3E11222EF9F00D20B44 /* fumiko_16_n.png in Resources */,
 				84B3B3E21222EF9F00D20B44 /* fumiko_17_n.png in Resources */,
+				84D5631F122302250060C2F7 /* haruka_0_d_b.png in Resources */,
+				84D56320122302250060C2F7 /* haruka_11_d.png in Resources */,
+				84D56321122302250060C2F7 /* haruka_12_d.png in Resources */,
+				84D56322122302250060C2F7 /* haruka_13_d.png in Resources */,
+				84D56323122302250060C2F7 /* haruka_14_d.png in Resources */,
+				84D56324122302250060C2F7 /* haruka_15_d.png in Resources */,
+				84D56325122302250060C2F7 /* haruka_16_d.png in Resources */,
+				84D56326122302250060C2F7 /* haruka_17_d.png in Resources */,
+				84D56327122302250060C2F7 /* haruka_18_d.png in Resources */,
+				84D56328122302250060C2F7 /* haruka_19_d.png in Resources */,
+				84D56329122302250060C2F7 /* haruka_1_d.png in Resources */,
+				84D5632A122302250060C2F7 /* haruka_1_d_b.png in Resources */,
+				84D5632B122302250060C2F7 /* haruka_2_d.png in Resources */,
+				84D5632C122302250060C2F7 /* haruka_2_d_b.png in Resources */,
+				84D5632D122302250060C2F7 /* haruka_3_d.png in Resources */,
+				84D5632E122302250060C2F7 /* haruka_3_d_b.png in Resources */,
+				84D5632F122302250060C2F7 /* haruka_4_d.png in Resources */,
+				84D56330122302250060C2F7 /* haruka_4_d_b.png in Resources */,
+				84D56331122302250060C2F7 /* haruka_5_d.png in Resources */,
+				84D56332122302250060C2F7 /* haruka_5_d_b.png in Resources */,
+				84D56333122302250060C2F7 /* haruka_6_d.png in Resources */,
+				84D56334122302250060C2F7 /* haruka_6_d_b.png in Resources */,
+				84D56335122302250060C2F7 /* haruka_7_d.png in Resources */,
+				84D56336122302250060C2F7 /* haruka_7_d_b.png in Resources */,
+				84D56337122302250060C2F7 /* haruka_8_d.png in Resources */,
+				84D56338122302250060C2F7 /* haruka_8_d_b.png in Resources */,
+				84D56339122302250060C2F7 /* haruka_9_d.png in Resources */,
+				84D5633A122302250060C2F7 /* haruka_9_d_b.png in Resources */,
+				84D5633B122302250060C2F7 /* haruka_0_n_b.png in Resources */,
+				84D5633C122302250060C2F7 /* haruka_11_n.png in Resources */,
+				84D5633D122302250060C2F7 /* haruka_12_n.png in Resources */,
+				84D5633E122302250060C2F7 /* haruka_13_n.png in Resources */,
+				84D5633F122302250060C2F7 /* haruka_14_n.png in Resources */,
+				84D56340122302250060C2F7 /* haruka_15_n.png in Resources */,
+				84D56341122302250060C2F7 /* haruka_16_n.png in Resources */,
+				84D56342122302250060C2F7 /* haruka_17_n.png in Resources */,
+				84D56343122302250060C2F7 /* haruka_18_n.png in Resources */,
+				84D56344122302250060C2F7 /* haruka_19_n.png in Resources */,
+				84D56345122302250060C2F7 /* haruka_1_n.png in Resources */,
+				84D56346122302250060C2F7 /* haruka_1_n_b.png in Resources */,
+				84D56347122302250060C2F7 /* haruka_2_n.png in Resources */,
+				84D56348122302250060C2F7 /* haruka_2_n_b.png in Resources */,
+				84D56349122302250060C2F7 /* haruka_3_n.png in Resources */,
+				84D5634A122302250060C2F7 /* haruka_3_n_b.png in Resources */,
+				84D5634B122302250060C2F7 /* haruka_4_n.png in Resources */,
+				84D5634C122302250060C2F7 /* haruka_4_n_b.png in Resources */,
+				84D5634D122302250060C2F7 /* haruka_5_n.png in Resources */,
+				84D5634E122302250060C2F7 /* haruka_5_n_b.png in Resources */,
+				84D5634F122302250060C2F7 /* haruka_6_n.png in Resources */,
+				84D56350122302250060C2F7 /* haruka_6_n_b.png in Resources */,
+				84D56351122302250060C2F7 /* haruka_7_n.png in Resources */,
+				84D56352122302250060C2F7 /* haruka_7_n_b.png in Resources */,
+				84D56353122302250060C2F7 /* haruka_8_n.png in Resources */,
+				84D56354122302250060C2F7 /* haruka_8_n_b.png in Resources */,
+				84D56355122302250060C2F7 /* haruka_9_n.png in Resources */,
+				84D56356122302250060C2F7 /* haruka_9_n_b.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

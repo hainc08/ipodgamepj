@@ -25,12 +25,14 @@
 	else timeStr = @"d";
 
 	//나중에 이부분을 데이터화 시켜서 로딩해서 쓴다.
-	baseIdx = idx / 9;
-	faceIdx = idx % 18;
+	int step = 9;
+	if ([name compare:@"haruka"] == NSOrderedSame) step = 10;
+	baseIdx = idx / step;
+	faceIdx = idx % (step * 2);
 
 	imgBase = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@_b.png", name, baseIdx, timeStr]];
 	
-	if ((faceIdx == 0)||(faceIdx == 9))
+	if ((faceIdx == 0)||(faceIdx == step))
 		imgFace = nil;
 	else
 		imgFace = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@.png", name, faceIdx, timeStr]];
