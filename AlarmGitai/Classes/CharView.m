@@ -26,9 +26,22 @@
 
 	//나중에 이부분을 데이터화 시켜서 로딩해서 쓴다.
 	int step = 9;
+	int faceOffset = 0;
+	int baseOffset = 0;
+	
 	if ([name compare:@"haruka"] == NSOrderedSame) step = 10;
-	baseIdx = idx / step;
-	faceIdx = idx % (step * 2);
+	else if ([name compare:@"hitomi"] == NSOrderedSame)
+	{
+		if (idx >= 84)
+		{
+			faceOffset = 14;
+			baseOffset = -12;
+		}
+		step = 7;
+	}
+
+	baseIdx = idx / step + baseOffset;
+	faceIdx = idx % (step * 2) + faceOffset;
 
 	imgBase = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@_b.png", name, baseIdx, timeStr]];
 	
