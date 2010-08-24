@@ -25,7 +25,7 @@
 {
 	//캐릭터 리소스 확인용
 	//static int k = 0;
-	//[charView setChar:@"Fumiko" idx:k isNight:false];
+	//[charView setChar:@"hitomi" idx:k isNight:true];
 	//k++;
 	//return;
 	
