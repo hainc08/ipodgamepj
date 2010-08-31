@@ -29,7 +29,10 @@
 	int faceOffset = 0;
 	int baseOffset = 0;
 	
+	//fumiko, akari, natsuko 는 해줄게 없음...
 	if ([name compare:@"haruka"] == NSOrderedSame) step = 10;
+	else if ([name compare:@"irika"] == NSOrderedSame) step = 6;
+	else if ([name compare:@"reina"] == NSOrderedSame) step = 8;
 	else if ([name compare:@"hitomi"] == NSOrderedSame)
 	{
 		if (idx >= 84)

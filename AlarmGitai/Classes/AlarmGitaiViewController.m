@@ -108,7 +108,7 @@
 	[self.view addSubview:MenuButton];
 	
 	
-/*	MenuController *menuconfig = [[MenuController alloc] initWithStyle:UITableViewStyleGrouped];
+	MenuController *menuconfig = [[MenuController alloc] initWithStyle:UITableViewStyleGrouped];
 	menuconfig.title = @"Menu";
 	menuNavi = [[UINavigationController alloc] initWithRootViewController:menuconfig] ;
 	[menuNavi.view setFrame:CGRectMake(0, 0, 320, 300)];
