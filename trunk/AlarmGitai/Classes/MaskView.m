@@ -57,8 +57,8 @@
 {
 	baseImg = [UIImage imageNamed:@"base.png"];
 	maskImg = [UIImage imageNamed:@"mask.png"];
-	char1 = [UIImage imageNamed:@"lina_0_d.png"];
-	char2 = [UIImage imageNamed:@"lina_1_d.png"];
+	char1 = [UIImage imageNamed:@"fumiko_10_d_b.png"];
+	char2 = [UIImage imageNamed:@"fumiko_2_d_b.png"];
 
     CGColorSpaceRef     colorSpace;
     void *                  bitmapData;
@@ -87,9 +87,9 @@
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextBeginPath(context);
 
-	CGContextDrawImage(context, CGRectMake(0, 0, 320, 480), [char1 CGImage]);
+	CGContextDrawImage(context, CGRectMake(0, -120, 384, 600), [char1 CGImage]);
 	CGContextClipToMask(context, CGRectMake(0, 0, 320, 480), temp);
-	CGContextDrawImage(context, CGRectMake(0, 0, 320, 480), [char2 CGImage]);
+	CGContextDrawImage(context, CGRectMake(0, -120, 384, 600), [char2 CGImage]);
 	
 	CGContextStrokePath(context);
 }
