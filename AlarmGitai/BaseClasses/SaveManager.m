@@ -1,70 +1,38 @@
 #import "SaveManager.h"
-
-//제너럴한 세이브시스템을 목표로 만든 메니저
-//많은 양의 데이터를 처리하기에는 무리가 있지만 적응량의 데이터를 편리하게 관리하고자 만들었심
-//계속 업데이트 시켜서 쓸만하게 만들 예정 by Sasin...
-
-//setIntData, setStringData를 사용하고 나서는 꼭 [[SaveManager getInstance] saveFile]을 호출해야함
-//setIntData, setStringData를 여러번 호출하면 그 때마다 saveFile이 호출되는 걸 방지하기 위해서
-//해당 함수를 명시적으로 호출해야한다.
-
-//사용예
-//[[SaveManager getInstance] setIntData:@"key1" idx:0 value:100];
-//[[SaveManager getInstance] setIntData:@"key1" idx:2 value:200];
-//[[SaveManager getInstance] setStringData:@"key2" idx:0 value:@"Sasin!!!"];
-//[[SaveManager getInstance] saveFile];
+#import "FileIO.h"
 
 static SaveManager *SaveManagerInst;
-
-int readInt(NSFileHandle* readFile)
-{
-	int temp;
-
-	NSData *data;
-	data = [readFile readDataOfLength:sizeof(int)];
-	[data getBytes:&temp];
-
-	return temp;
-}
-
-void writeInt(NSFileHandle* writeFile, int value)
-{
-	[writeFile writeData: [NSData dataWithBytes:&value
-										 length:sizeof(int)]];
-}
-
-void writeString(NSFileHandle* writeFile, NSString* value)
-{
-	NSData* d = [value dataUsingEncoding:NSUTF8StringEncoding];
-	int len = [d length];
-	
-	[writeFile writeData: [NSData dataWithBytes:&len
-										 length:sizeof(int)]];
-	[writeFile writeData: d];
-}
-
-NSString* readString(NSFileHandle* readFile)
-{
-	int len;
-	NSData *lenData = [readFile readDataOfLength:sizeof(int)];
-	[lenData getBytes:&len];
-	
-	NSData *data = [readFile readDataOfLength:len];
-	NSString* result = [[NSString alloc] initWithData: data 
-											encoding: NSUTF8StringEncoding];
-	return result;
-}
 
 @implementation DataKey
 @synthesize key;
 @synthesize idx;
+
+-(void)saveData:(NSFileHandle*)writeFile
+{
+	writeString(writeFile, key);
+	writeInt(writeFile, idx);
+}
+-(void)loadData:(NSFileHandle*)loadFile
+{
+	key = readString(loadFile);
+	idx = readInt(loadFile);
+}
+
 @end
 
 @implementation BaseData
 @synthesize keyIdx;
 @synthesize idx;
--(void)saveData:(NSFileHandle*)writeFile{}
--(void)loadData:(NSFileHandle*)loadFile{}
+-(void)saveData:(NSFileHandle*)writeFile
+{
+	writeInt(writeFile, keyIdx);
+	writeInt(writeFile, idx);
+}
+-(void)loadData:(NSFileHandle*)loadFile
+{
+	keyIdx = readInt(loadFile);
+	idx = readInt(loadFile);
+}
 @end
 
 @implementation StringData
@@ -160,6 +128,13 @@ NSString* readString(NSFileHandle* readFile)
 		[iData saveData:writeFile];
 	}
 
+	writeInt(writeFile, [keys count]);
+	for (id data in keys)
+	{
+		DataKey* kData = (DataKey*)data;
+		[kData saveData:writeFile];
+	}
+	
 	[writeFile closeFile];
 
 	isDirty = false;
@@ -167,8 +142,9 @@ NSString* readString(NSFileHandle* readFile)
 
 - (void)loadFile
 {
-	stringData = [NSMutableArray alloc];
-	intData = [NSMutableArray alloc];
+	stringData = [[NSMutableArray alloc] initWithCapacity:0];
+	intData = [[NSMutableArray alloc] initWithCapacity:0];
+	keys = [[NSMutableArray alloc] initWithCapacity:0];
 	
 	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
 																 NSDocumentDirectory, 
@@ -188,7 +164,7 @@ NSString* readString(NSFileHandle* readFile)
 	if (ver == 1)
 	{
 		int count = readInt(readFile);
-		for (int i=0; i<count; +i)
+		for (int i=0; i<count; ++i)
 		{
 			StringData* data = [StringData alloc];
 			[data loadData:readFile];
@@ -196,11 +172,19 @@ NSString* readString(NSFileHandle* readFile)
 		}
 		
 		count = readInt(readFile);
-		for (int i=0; i<count; +i)
+		for (int i=0; i<count; ++i)
 		{
 			IntData* data = [IntData alloc];
 			[data loadData:readFile];
 			[intData addObject:data];
+		}
+		
+		count = readInt(readFile);
+		for (int i=0; i<count; ++i)
+		{
+			DataKey* kd = [DataKey alloc];
+			[kd loadData:readFile];
+			[keys addObject:kd];
 		}
 	}
 	
@@ -279,7 +263,7 @@ FINDKEY:
 		if ([key compare:[kd key]] == NSOrderedSame) goto FINDKEY;
 	}
 
-	kd = [DataKey alloc];
+	kd = [[DataKey alloc] init];
 	[kd setIdx:[keys count]];
 	[kd setKey:key];
 	
@@ -308,6 +292,8 @@ FINDKEY:
 	[iData setValue:value];
 	
 	[intData addObject:iData];
+
+	isDirty = true;
 }
 
 - (void)setStringData:(NSString*)key idx:(int)idx value:(NSString*)value
@@ -322,7 +308,7 @@ FINDKEY:
 		if ([key compare:[kd key]] == NSOrderedSame) goto FINDKEY;
 	}
 	
-	kd = [DataKey alloc];
+	kd = [[DataKey alloc] init];
 	[kd setIdx:[keys count]];
 	[kd setKey:key];
 	
@@ -351,6 +337,7 @@ FINDKEY:
 	[sData setValue:value];
 	
 	[stringData addObject:sData];
+	isDirty = true;
 }
 
 @end
