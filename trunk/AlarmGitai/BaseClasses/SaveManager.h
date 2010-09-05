@@ -6,7 +6,8 @@
 
 @property (retain) NSString* key;
 @property (readwrite) int idx;
-
+-(void)saveData:(NSFileHandle*)writeFile;
+-(void)loadData:(NSFileHandle*)loadFile;
 @end
 
 @interface BaseData : NSObject
