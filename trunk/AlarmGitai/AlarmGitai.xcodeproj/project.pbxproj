@@ -360,6 +360,7 @@
 		84590D361223C2DD00CCF4D1 /* hitomi_8_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84590D101223C2DD00CCF4D1 /* hitomi_8_n_b.png */; };
 		84590D371223C2DD00CCF4D1 /* hitomi_9_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84590D111223C2DD00CCF4D1 /* hitomi_9_n.png */; };
 		84590D381223C2DD00CCF4D1 /* hitomi_9_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84590D121223C2DD00CCF4D1 /* hitomi_9_n_b.png */; };
+		8485F0721234A8B9009F9234 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485F0711234A8B9009F9234 /* FileIO.m */; };
 		84B3B3871222EF9600D20B44 /* fumiko_0_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B3B3671222EF9600D20B44 /* fumiko_0_d_b.png */; };
 		84B3B3891222EF9600D20B44 /* fumiko_1_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B3B3691222EF9600D20B44 /* fumiko_1_d_b.png */; };
 		84B3B38A1222EF9600D20B44 /* fumiko_1_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B3B36A1222EF9600D20B44 /* fumiko_1_d.png */; };
@@ -891,6 +892,8 @@
 		84590D101223C2DD00CCF4D1 /* hitomi_8_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hitomi_8_n_b.png; path = "char/ひとみ/Night/hitomi_8_n_b.png"; sourceTree = "<group>"; };
 		84590D111223C2DD00CCF4D1 /* hitomi_9_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hitomi_9_n.png; path = "char/ひとみ/Night/hitomi_9_n.png"; sourceTree = "<group>"; };
 		84590D121223C2DD00CCF4D1 /* hitomi_9_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hitomi_9_n_b.png; path = "char/ひとみ/Night/hitomi_9_n_b.png"; sourceTree = "<group>"; };
+		8485F0701234A8B9009F9234 /* FileIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileIO.h; sourceTree = "<group>"; };
+		8485F0711234A8B9009F9234 /* FileIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileIO.m; sourceTree = "<group>"; };
 		84B3B3671222EF9600D20B44 /* fumiko_0_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fumiko_0_d_b.png; path = "char/文子/day/fumiko_0_d_b.png"; sourceTree = "<group>"; };
 		84B3B3691222EF9600D20B44 /* fumiko_1_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fumiko_1_d_b.png; path = "char/文子/day/fumiko_1_d_b.png"; sourceTree = "<group>"; };
 		84B3B36A1222EF9600D20B44 /* fumiko_1_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fumiko_1_d.png; path = "char/文子/day/fumiko_1_d.png"; sourceTree = "<group>"; };
@@ -1157,6 +1160,8 @@
 		560890FE11ECA5BA00C1F800 /* BaseClasses */ = {
 			isa = PBXGroup;
 			children = (
+				8485F0701234A8B9009F9234 /* FileIO.h */,
+				8485F0711234A8B9009F9234 /* FileIO.m */,
 				84C02BF3120676CA00F90942 /* SaveManager.h */,
 				84C02BF4120676CA00F90942 /* SaveManager.m */,
 				560890FF11ECA5BA00C1F800 /* BaseView.h */,
@@ -2452,6 +2457,7 @@
 				56B0B1B7120F0C48004F9D97 /* FontSelectController.m in Sources */,
 				56B0B1BA120F0C61004F9D97 /* MenuBaseController.m in Sources */,
 				56B0B1BD120F0C71004F9D97 /* SelectViewController.m in Sources */,
+				8485F0721234A8B9009F9234 /* FileIO.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
