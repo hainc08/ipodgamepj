@@ -46,23 +46,44 @@
 	baseIdx = idx / step + baseOffset;
 	faceIdx = idx % (step * 2) + faceOffset;
 
-	imgBase = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@_b.png", name, baseIdx, timeStr]];
+	UIImage* imgBase = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@_b.png", name, baseIdx, timeStr]];
+
+    CGColorSpaceRef     colorSpace;
+    void*				bitmapData;
+    int                 bitmapByteCount;
+    int                 bitmapBytesPerRow;
 	
-	if ((faceIdx == 0)||(faceIdx == step))
-		imgFace = nil;
-	else
-		imgFace = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@.png", name, faceIdx, timeStr]];
+	size_t pixelsWide = 320;
+	size_t pixelsHigh = 480;
+	bitmapBytesPerRow = (pixelsWide * 4);
+	bitmapByteCount = (bitmapBytesPerRow * pixelsHigh);
+	colorSpace = CGColorSpaceCreateDeviceRGB();
 
-	[self setNeedsDisplay];
-}
+	bitmapData = malloc(bitmapByteCount);
+    charContext = CGBitmapContextCreate(bitmapData, pixelsWide, pixelsHigh, 8, bitmapBytesPerRow, colorSpace, kCGImageAlphaPremultipliedFirst);
+	
+	CGContextBeginPath(charContext);
 
-- (void)setBackGround:(int)idx isNight:(bool)isNight
-{
-	NSString *timeStr;
-	if (isNight) timeStr = @"n";
-	else timeStr = @"d";
+	CGContextDrawImage(charContext,
+					   CGRectMake((320 - [imgBase size].width)/2,
+								  480 - [imgBase size].height,
+								  [imgBase size].width,
+								  [imgBase size].height),
+					   [imgBase CGImage]);
 
-	imgBack = [UIImage imageNamed:[NSString stringWithFormat:@"back_%d_%@.png", idx, timeStr]];
+	if ((faceIdx != 0)&&(faceIdx != step))
+	{
+		UIImage* imgFace = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@.png", name, faceIdx, timeStr]];
+		CGContextDrawImage(charContext,
+						   CGRectMake((320 - [imgFace size].width)/2,
+									  480 - [imgFace size].height,
+									  [imgFace size].width,
+									  [imgFace size].height),
+						   [imgFace CGImage]);
+	}
+	CGContextStrokePath(charContext);
+	
+	temp = CGBitmapContextCreateImage(charContext);
 
 	[self setNeedsDisplay];
 }
@@ -71,24 +92,7 @@
 {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextBeginPath(context);
-
-	CGContextDrawImage(context, CGRectMake(-160, 0, 640, 480), [imgBack CGImage]);
-	CGContextDrawImage(context,
-					   CGRectMake((320 - [imgBase size].width)/2,
-								  480 - [imgBase size].height,
-								  [imgBase size].width,
-								  [imgBase size].height),
-					   [imgBase CGImage]);
-	if (imgFace != nil)
-	{
-		CGContextDrawImage(context,
-						   CGRectMake((320 - [imgFace size].width)/2,
-									  480 - [imgFace size].height,
-									  [imgFace size].width,
-									  [imgFace size].height),
-						   [imgFace CGImage]);
-	}
-		
+	CGContextDrawImage(context, CGRectMake(0, 0, 320, 480), temp);
 	CGContextStrokePath(context);
 }
 

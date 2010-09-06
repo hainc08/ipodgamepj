@@ -12,7 +12,7 @@
 #import "DateView.h"
 #import	"ClockView.h"
 #import "BaseView.h"
-#import "CharView.h"
+#import "SceneView.h"
 #import "AlarmConfig.h"
 #import "MaskView.h"
 #import "DateFormat.h"
@@ -74,13 +74,12 @@
 
 	ViewCgPoint	*alarmviewpoint	= [[AlarmConfig getInstance] getHeigthViewPoint];
 	
-	charView = (CharView *)[[ViewManager getInstance] getInstView:@"CharView"];
-
-	[charView setTransform:CGAffineTransformMake(1, 0, 0, -1, 0, 0)];
-	[charView setCenter:CGPointMake(160,240)];
-	[charView setChar:[AlarmConfig getInstance].CharName idx:48 isNight:[[DateFormat getInstance] getNight] ];
-	[charView setBackGround:10 isNight:[[DateFormat getInstance] getNight]];
-	[self.view addSubview:charView];
+	sceneView = (SceneView *)[[ViewManager getInstance] getInstView:@"SceneView"];
+	[sceneView reset];
+	[sceneView setCenter:CGPointMake(160,240)];
+	[sceneView setChar:[AlarmConfig getInstance].CharName];
+	[sceneView next];
+	[self.view addSubview:sceneView];
 	
 	clockview = (ClockView *)[[ViewManager getInstance] getInstView:@"ClockView"];
 	
@@ -99,7 +98,7 @@
 	[dateview UpdateDate];
 	[self.view addSubview:dateview];
 	[dateview setAlpha:1];
-
+/*
  	MenuButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 112, 98)];
 	[MenuButton setBackgroundImage:[ [UIImage imageNamed:@"menu_b.png" ] stretchableImageWithLeftCapWidth:112.0 topCapHeight:98.0] forState:UIControlStateNormal];
 	[MenuButton setCenter:CGPointMake(55, -90)];
@@ -113,9 +112,10 @@
 	[menuNavi.view setFrame:CGRectMake(0, 0, 320, 300)];
 	[menuconfig release];
 	[self.view addSubview:menuNavi.view];
-	
+*/	
 	frameTick = 0;
-	framePerSec = 10.f;
+	//너무 자주 업데잇할 필요가 없을 듯~
+	framePerSec = 1.f;
 	isInit = false;
 /* 
 	maskView = (MaskView *)[[ViewManager getInstance] getInstView:@"MaskView"];
@@ -175,14 +175,13 @@
 	
 - (void)update
 {
-		++frameTick;
-	if(frameTick % 10)
+	++frameTick;
+	if((frameTick % 5) == 0)
 	{
-		[self FrameUpdate];
-//		if(frameTick % (10 * [AlarmConfig getInstance].
-//		[charView setChar:[AlarmConfig getInstance].CharName idx:1 isNight:[[DateFormat getInstance] getNight] ];
-		frameTick = 0;
+		[sceneView next];
 	}
+	
+	[self FrameUpdate];
 	[clockview UpdateTime];
 	[dateview UpdateDate];
 }

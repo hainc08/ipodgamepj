@@ -11,7 +11,7 @@
 
 @class ClockView;
 @class DateView;
-@class CharView;
+@class SceneView;
 @class MaskView;
 
 
@@ -23,7 +23,7 @@
 	
 	ClockView *clockview;
 	DateView *dateview;
-	CharView *charView;
+	SceneView *sceneView;
 	MaskView *maskView;
 	
 	UInt32 frameTick;
