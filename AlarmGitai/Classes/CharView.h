@@ -1,13 +1,10 @@
 #import <UIKit/UIKit.h>
 
 @interface CharView : UIView {
-	UIImage* imgBack;
-
-	UIImage* imgBase;
-	UIImage* imgFace;
+	CGImageRef temp;
+	CGContextRef charContext;
 }
 
 - (void)setChar:(NSString*)name idx:(int)idx isNight:(bool)isNight;
-- (void)setBackGround:(int)idx isNight:(bool)isNight;
 
 @end

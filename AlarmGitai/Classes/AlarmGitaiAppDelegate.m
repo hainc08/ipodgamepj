@@ -21,7 +21,7 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-    
+    srand(time(NULL));
     // Override point for customization after app launch  
 	/* config load */
 
@@ -43,6 +43,7 @@
 
 
 - (void)dealloc {
+	[[ViewManager getInstance] closeManager];
 	[[SaveManager getInstance] closeManager];
 
     [viewController release];
