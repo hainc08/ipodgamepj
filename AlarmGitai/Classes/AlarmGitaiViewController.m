@@ -100,13 +100,12 @@
 	[self.view addSubview:dateview];
 	[dateview setAlpha:1];
 
-	MenuButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 112, 98)];
+ 	MenuButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 112, 98)];
 	[MenuButton setBackgroundImage:[ [UIImage imageNamed:@"menu_b.png" ] stretchableImageWithLeftCapWidth:112.0 topCapHeight:98.0] forState:UIControlStateNormal];
 	[MenuButton setCenter:CGPointMake(55, -90)];
 	[MenuButton addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 	[MenuButton setAlpha:1];
 	[self.view addSubview:MenuButton];
-	
 	
 	MenuController *menuconfig = [[MenuController alloc] initWithStyle:UITableViewStyleGrouped];
 	menuconfig.title = @"Menu";

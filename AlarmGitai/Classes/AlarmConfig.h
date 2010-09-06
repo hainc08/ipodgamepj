@@ -65,7 +65,9 @@
 @property (readwrite) int heightnum;
 @property (readwrite) int widthnum;
 @property (readwrite) int FontType;
-@property (readwrite) NSString *CharName;
+@property (retain) NSString *CharName;
+//NSObject를 상속받은 객체의 경우 retain을 사용해야한다.
+
 + (AlarmConfig *)getInstance;
 + (void) initmanager;
 - (void) closeManager;
