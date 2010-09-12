@@ -19,7 +19,7 @@
 	time_t profile2;
 }
 
--(void)reset;
+- (void)reset;
 - (void)stopTimer;
 - (void)resumeTimer;
 
