@@ -16,6 +16,7 @@
 #import "AlarmConfig.h"
 #import "MaskView.h"
 #import "DateFormat.h"
+#import "LogoView.h"
 
 #import "MenuController.h"
 
@@ -124,7 +125,11 @@
 	[self.view addSubview:maskView];
 	[maskView setAlpha:1];	
 	[menuview setCenter:CGPointMake(160, 240)];
-*/		
+*/
+	LogoView* logoView = (LogoView *)[[ViewManager getInstance] getInstView:@"LogoView"];
+	[self.view addSubview:logoView];
+	[logoView setAlpha:1];	
+
 	[self resumeTimer];
 }
 
