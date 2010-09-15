@@ -21,6 +21,5 @@
 @property (nonatomic, retain) IBOutlet UIImageView *charImage;
 @property (nonatomic, retain) IBOutlet	UITextField *textField;
 
-- (void)setHidenTextField;
 @end
 

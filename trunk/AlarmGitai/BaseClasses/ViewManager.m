@@ -76,6 +76,7 @@ static ViewManager *viewManagerInst;
 - (UIView*)getInstView:(NSString*)viewName
  {
 	UIViewController *controller = [[UIViewController alloc] initWithNibName:viewName bundle:[NSBundle mainBundle]];
+
 	UIView* uiview = [controller view];
 	[controller release];
 	return uiview;

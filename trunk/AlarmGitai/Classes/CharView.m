@@ -71,7 +71,9 @@
 								  [imgBase size].height),
 					   [imgBase CGImage]);
 
+
 	if ((faceIdx != 0)&&(faceIdx != step))
+
 	{
 		UIImage* imgFace = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@.png", name, faceIdx, timeStr]];
 		CGContextDrawImage(charContext,
