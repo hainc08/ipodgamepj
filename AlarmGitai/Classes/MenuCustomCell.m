@@ -15,11 +15,6 @@
 @synthesize titleName;
 @synthesize textField;
 
-- (void)setHidenTextField
-{
-	[textField resignFirstResponder];
-	keyboardHiden = FALSE;
-}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -28,7 +23,7 @@
 	 textField.keyboardType = UIKeyboardTypeNumberPad;
 	 textField.returnKeyType = UIReturnKeyDone;
 	 textField.textAlignment = UITextAlignmentLeft;
-	 textField.text = @"5";
+	//textField.text = @"5";
 	 
 	 // add observer for the respective notifications (depending on the os version)
 	 if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 3.2) {
@@ -42,7 +37,6 @@
 													  name:UIKeyboardWillShowNotification 
 													object:nil];
 	 }
-	keyboardHiden = FALSE;
  }
  
 
@@ -78,7 +72,6 @@
 }
 
 - (void)keyboardWillShow:(NSNotification *)note {
-	keyboardHiden = !keyboardHiden;
 	// if clause is just an additional precaution, you could also dismiss it
 	if ([[[UIDevice currentDevice] systemVersion] floatValue] < 3.2) {
 		[self addButtonToKeyboard];
@@ -86,7 +79,6 @@
 }
 
 - (void)keyboardDidShow:(NSNotification *)note {
-	keyboardHiden = !keyboardHiden;
 	// if clause is just an additional precaution, you could also dismiss it
 	if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 3.2) {
 		[self addButtonToKeyboard];

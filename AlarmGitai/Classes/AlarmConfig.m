@@ -128,6 +128,11 @@ static AlarmConfig *AlarmConfigInst;
 	return FontBgImageType;
 }
 
+- (NSString *)getCharName
+{
+	return CharName;
+}
+
 - (ViewCgPoint *) getHeigthViewPoint
 {
 	return heigthviewpoint[heightnum];

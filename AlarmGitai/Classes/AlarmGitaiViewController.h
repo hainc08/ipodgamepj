@@ -20,6 +20,7 @@
 	BOOL menuEnable;
 
 	UINavigationController *menuNavi;
+	UINavigationController *alarmNavi;
 	
 	ClockView *clockview;
 	DateView *dateview;
@@ -32,7 +33,7 @@
 	
 	float framePerSec;
 	UIButton *MenuButton;
-	
+	UIButton *AlarmButton;
 }
 
 - (void)update;

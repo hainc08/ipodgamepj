@@ -12,6 +12,7 @@
 @interface MenuBaseController : UIViewController  {
 	NSString *type;
 	UIImage  *image;
+	NSString *typevalue;
 }
 @property (nonatomic , retain) NSString *type;
 @property (nonatomic , retain) UIImage  *image;

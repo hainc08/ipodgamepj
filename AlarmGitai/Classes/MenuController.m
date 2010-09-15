@@ -30,7 +30,6 @@
 }
 
 - (void)drawRect:(CGRect)rect{
-	
 	UIColor *color = [UIColor redColor];
 	CGContextRef context  = UIGraphicsGetCurrentContext();
 	CGContextSetFillColor(context, CGColorGetComponents([color CGColor]) );
@@ -52,10 +51,35 @@
 }
 
 
+-(IBAction)toggleSave:(id)sender {
+#if 0 
+ for (id oneObject in nib)
+ {
+			MenuCustomCell *cell  = (MenuCustomCell *)[tableView  ];
+			[cell.textField  becomeFirstResponder];
+			return;
+		}
+		MenuBaseController *nextController = [self.controllers  objectAtIndex:row];
+		[self.navigationController pushViewController:nextController animated:YES];
+	}
+	else
+	{
+		FontSelectController *nextController = [self.controllers  objectAtIndex:row];
+	    [self.navigationController pushViewController:nextController animated:YES];
+	}
+}
+#endif
+}
 
+-(IBAction)toggleCancle:(id)sender {
+	[super.navigationController.view removeFromSuperview  ];
+}
+
+
+		
 - (void)viewDidLoad {
 	OldPath = nil;
-	self.title = [AlarmConfig getInstance].CharName;
+	self.title = [[AlarmConfig getInstance] getCharName];
     NSMutableArray *array = [[NSMutableArray alloc] init];
 
     // Disclosure Button
@@ -88,6 +112,21 @@
 
 	self.controllers = array;
     [array release];
+	
+	
+	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Save"
+                                   style:UIBarButtonItemStyleBordered
+                                   target:self
+                                   action:@selector(toggleSave:)];
+    self.navigationItem.rightBarButtonItem = editButton;
+	
+	UIBarButtonItem *closeButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Close"
+                                   style:UIBarButtonItemStyleBordered
+                                   target:self
+                                   action:@selector(toggleCancle:)];
+    self.navigationItem.leftBarButtonItem	= closeButton;
     [super viewDidLoad];
 	// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -136,7 +175,7 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *MenuName= @"MENU";
-	self.title = MenuName;
+	//self.title = MenuName;
     MenuCustomCell *cell = (MenuCustomCell *)[tableView dequeueReusableCellWithIdentifier: 
                              MenuName];
 	
@@ -163,7 +202,8 @@
 
 		if( row ==3)
 		{
-			[ cell.textField setAlpha:1];
+			cell.textField.text = [[NSString alloc] initWithFormat:@"%d", [[AlarmConfig getInstance] getRotationTime]];
+			[cell.textField setAlpha:1];
 			cell.accessoryType = UITableViewCellAccessoryNone;
 		}
 		else

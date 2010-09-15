@@ -9,6 +9,8 @@
 #import "FontSelectController.h"
 #import "AlarmConfig.h"
 
+#import "MenuBaseController.h"
+
 
 @implementation FontSelectController
 @synthesize type;

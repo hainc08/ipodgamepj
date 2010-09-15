@@ -19,6 +19,7 @@
 #import "LogoView.h"
 
 #import "MenuController.h"
+#import "AlarmController.h"
 
 @implementation AlarmGitaiViewController
 
@@ -41,7 +42,6 @@
 	{
 		[MenuButton setTransform:CGAffineTransformMake(1, 0.0, 0.0, 1, 0.0, 0.0)];
 		[MenuButton setFrame:CGRectMake(0, 0, 112, 98)];
-
 	}
 	[UIView commitAnimations];
 /* 보이는게 구리네..;; 나중에 조정 */
@@ -75,45 +75,61 @@
 
 	ViewCgPoint	*alarmviewpoint	= [[AlarmConfig getInstance] getHeigthViewPoint];
 	
+
 	sceneView = (SceneView *)[[ViewManager getInstance] getInstView:@"SceneView"];
 	[sceneView reset];
 	[sceneView setCenter:CGPointMake(160,240)];
 	[sceneView setChar:[AlarmConfig getInstance].CharName];
 	[sceneView next];
 	[self.view addSubview:sceneView];
+
 	
-	clockview = (ClockView *)[[ViewManager getInstance] getInstView:@"ClockView"];
-	
+	clockview = (ClockView *)[[ViewManager getInstance] getInstView:@"ClockView"];	
 	[clockview setTransform:alarmviewpoint.ClockTrans]; 
 	[clockview setCenter:alarmviewpoint.ClockPoint ];
-	
 	[clockview UpdateTime];
-	[self.view addSubview:clockview];
 	[clockview setAlpha:1];
+	[self.view addSubview:clockview];
+
 
 	
 	dateview = (DateView *)[[ViewManager getInstance] getInstView:@"DateView"];
-
 	[dateview setTransform:alarmviewpoint.DateTrans];
 	[dateview setCenter:alarmviewpoint.DatePoint];
 	[dateview UpdateDate];
-	[self.view addSubview:dateview];
 	[dateview setAlpha:1];
+	[self.view addSubview:dateview];
+
+
 /*
  	MenuButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 112, 98)];
+
 	[MenuButton setBackgroundImage:[ [UIImage imageNamed:@"menu_b.png" ] stretchableImageWithLeftCapWidth:112.0 topCapHeight:98.0] forState:UIControlStateNormal];
 	[MenuButton setCenter:CGPointMake(55, -90)];
 	[MenuButton addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 	[MenuButton setAlpha:1];
 	[self.view addSubview:MenuButton];
 	
+
+	AlarmButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 32, 31)];
+	[AlarmButton setBackgroundImage:[ [UIImage imageNamed:@"alarm.png" ] stretchableImageWithLeftCapWidth:32.0 topCapHeight:31.0] forState:UIControlStateNormal];
+	[AlarmButton setCenter:CGPointMake(300, 20)];
+	[AlarmButton addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+	[AlarmButton setAlpha:1];
+	[self.view addSubview:AlarmButton];
+	
+	
+
 	MenuController *menuconfig = [[MenuController alloc] initWithStyle:UITableViewStyleGrouped];
-	menuconfig.title = @"Menu";
+
 	menuNavi = [[UINavigationController alloc] initWithRootViewController:menuconfig] ;
-	[menuNavi.view setFrame:CGRectMake(0, 0, 320, 300)];
 	[menuconfig release];
-	[self.view addSubview:menuNavi.view];
+
 */	
+	AlarmController *alarmconfig = [[AlarmController alloc] initWithStyle:UITableViewStylePlain];
+	alarmNavi = [[UINavigationController alloc] initWithRootViewController:alarmconfig] ;
+	[alarmconfig release];
+	
 	frameTick = 0;
 	//너무 자주 업데잇할 필요가 없을 듯~
 	framePerSec = 1.f;
@@ -174,7 +190,16 @@
 
 - (void)ButtonClick:(id)sender
 {
-
+	if(sender == AlarmButton)
+	{
+		[self.view addSubview:alarmNavi.view];
+		[alarmNavi.view setAlpha:1];
+	}
+	else if( sender == MenuButton )
+	{
+		[self.view addSubview:menuNavi.view];
+		[menuNavi.view setAlpha:1];
+	}
 }
 
 	
@@ -212,6 +237,7 @@
 		[dateview setTransform:alarmviewpoint.DateTrans];
 		[dateview setCenter:alarmviewpoint.DatePoint];
 	}
+
 
 }
 		

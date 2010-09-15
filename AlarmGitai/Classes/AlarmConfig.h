@@ -76,6 +76,7 @@
 - (int)getFontType;
 - (NSString *)getUpImageType;
 - (NSString *)getBgImageType;
+- (NSString *)getCharName;
 - (void)loadConfig;
 - (ViewCgPoint *) getHeigthViewPoint;
 - (ViewCgPoint *) getWidthViewPoint;
