@@ -1,11 +1,3 @@
-//
-//  DateView.m
-//  AlarmGitai
-//
-//  Created by embmaster on 10. 07. 08.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
-//
-
 #import "DateView.h"
 #import "DateFormat.h"
 #import "AlarmConfig.h"
@@ -14,18 +6,11 @@
 @implementation DateView
 
 
-- (id)initWithCoder:(NSCoder *)coder {
-	self = [super initWithCoder:coder];
+- (id)init
+{
 	[self CreatedImageView];
 	return self;
 }
-
-- (id)initWithFrame:(CGRect)frame {
-	self = [super initWithFrame:frame];
-	
-	return self;
-}
-
 
 - (void)CreatedImageView 
 {
@@ -47,30 +32,26 @@
 	[b_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@Div.png", 
 										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getBgImageType]]]];
 	
-	[self addSubview:b_Dot];
-	[self addSubview:u_Dot];
+	[self.view addSubview:b_Dot];
+	[self.view addSubview:u_Dot];
 
+	[self.view addSubview:b_Week];
+	[self.view addSubview:b_MonT];
+	[self.view addSubview:b_MonM];
+	[self.view addSubview:b_DayT];
+	[self.view addSubview:b_DayM];
 	
-	[self addSubview:b_Week];
-	[self addSubview:b_MonT];
-	[self addSubview:b_MonM];
-	[self addSubview:b_DayT];
-	[self addSubview:b_DayM];
-	
-	
-	
-	[self addSubview:u_Week];
-	[self addSubview:u_MonT];
-	[self addSubview:u_MonM];
-	[self addSubview:u_DayT];
-	[self addSubview:u_DayM];
+	[self.view addSubview:u_Week];
+	[self.view addSubview:u_MonT];
+	[self.view addSubview:u_MonM];
+	[self.view addSubview:u_DayT];
+	[self.view addSubview:u_DayM];
 
 	[u_Dot setFrame:CGRectMake(220,23,240, 360)];
 	[b_Dot setFrame:CGRectMake(220,23,240, 360)];
 	
 	[u_Week setFrame:CGRectMake(220,180,240, 360)];
 	[b_Week setFrame:CGRectMake(220,180,240, 360)];
-	
 
 	[u_MonT setFrame:CGRectMake(25,0,240, 360)];
 	[u_MonM setFrame:CGRectMake(140,0,240, 360)];
@@ -81,9 +62,7 @@
 	[b_MonM setFrame:CGRectMake(140,0,240, 360)];
 	[b_DayT setFrame:CGRectMake(310,0,240, 360)];
 	[b_DayM setFrame:CGRectMake(425,0,240, 360)];
-
 }
-
 
 - (void)ChageNumberImage:(int)type changeImage:(char)number
 {

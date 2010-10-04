@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "CharView.h"
 
-@interface SceneView : UIView {
+@interface SceneView : UIViewController {
 	IBOutlet UIImageView* imgBack1;
 	IBOutlet UIImageView* imgBack2;
 

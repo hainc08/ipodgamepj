@@ -16,7 +16,7 @@ enum DATETYPE {
 	MON_M,
 	WEEK
 };
-@interface DateView : UIView {
+@interface DateView : UIViewController {
 	NSString *Week;
 	NSString *Mon;
 	NSString *Day;

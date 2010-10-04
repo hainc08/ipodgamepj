@@ -11,9 +11,12 @@
 @end
 
 @interface ScineView : BaseView {
+
 	IBOutlet id backButton;
 	IBOutlet id nextButton;
 	IBOutlet id prevButton;
+
+	IBOutlet UILabel* pageLabel;
 
 	UILabel* buttonLabel[10];
 	UIButton* imageButton[10];

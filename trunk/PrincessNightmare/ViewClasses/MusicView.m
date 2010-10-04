@@ -55,6 +55,9 @@
 - (void)loadPage:(int)page
 {
 	curPage = page;
+
+	[pageLabel setText:[NSString stringWithFormat:@"%d / 2", curPage]];
+
 	if (curPage == 1) [prevButton setAlpha:0];
 	else [prevButton setAlpha:1];
 	

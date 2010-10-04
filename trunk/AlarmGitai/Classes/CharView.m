@@ -1,19 +1,23 @@
 #import "CharView.h"
 
+@implementation CharUIView
+
+- (void)setTemp:(CGImageRef)img
+{
+	temp = img;
+}
+
+-(void)drawRect:(CGRect)rect
+{
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextBeginPath(context);
+	CGContextDrawImage(context, CGRectMake(0, 0, 320, 480), temp);
+	CGContextStrokePath(context);
+}
+
+@end
+
 @implementation CharView
-
-
-- (id)initWithCoder:(NSCoder *)coder {
-	self = [super initWithCoder:coder];
-	
-	return self;
-}
-
-- (id)initWithFrame:(CGRect)frame {
-	self = [super initWithFrame:frame];
-		
-	return self;
-}
 
 - (void)setChar:(NSString*)name idx:(int)idx isNight:(bool)isNight
 {
@@ -87,15 +91,8 @@
 	
 	temp = CGBitmapContextCreateImage(charContext);
 
-	[self setNeedsDisplay];
-}
-
--(void)drawRect:(CGRect)rect
-{
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextBeginPath(context);
-	CGContextDrawImage(context, CGRectMake(0, 0, 320, 480), temp);
-	CGContextStrokePath(context);
+	[(CharUIView*)self.view setTemp:temp];
+	[self.view setNeedsDisplay];
 }
 
 - (void)dealloc {

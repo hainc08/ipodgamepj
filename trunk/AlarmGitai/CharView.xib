@@ -101,9 +101,9 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>UIViewController</string>
-					<string>UIResponder</string>
 					<string>CharView</string>
+					<string>UIResponder</string>
+					<string>CharUIView</string>
 					<string>{{354, 276}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
@@ -134,12 +134,17 @@
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">CharView</string>
+					<string key="className">CharUIView</string>
 					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="39273939">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/CharView.h</string>
 					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">CharView</string>
+					<string key="superclassName">UIViewController</string>
+					<reference key="sourceIdentifier" ref="39273939"/>
 				</object>
 			</object>
 		</object>

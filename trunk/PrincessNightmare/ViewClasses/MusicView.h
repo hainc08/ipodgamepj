@@ -9,6 +9,8 @@
 
 	IBOutlet id stopButton;
 
+	IBOutlet UILabel* pageLabel;
+
 	UIButton* imageButton[16];
 	UILabel* buttonLabel[16];
 	

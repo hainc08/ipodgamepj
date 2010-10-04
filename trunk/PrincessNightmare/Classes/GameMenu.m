@@ -39,6 +39,13 @@
 		[self addSubview:loadView];
 		[loadView setCenter:CGPointMake(240,160)];
 		[loadView setAlpha:0];
+
+		configView = (ConfigurationView*)[[ViewManager getInstance] getInstView:@"ConfigurationView"];
+		[configView reset:nil];
+		[self addSubview:configView];
+		[configView setCenter:CGPointMake(240,160)];
+		[configView setAlpha:0];
+		[configView setViewtype:1];
 	}
 }
 
@@ -63,6 +70,10 @@
 	else if (sender == exitButton)
 	{
 		[[ViewManager getInstance] changeView:@"MainTopView"];
+	}
+	else if (sender == configButton)
+	{
+		[configView setAlpha:1];
 	}
 }
 

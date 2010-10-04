@@ -1,6 +1,14 @@
 #import <UIKit/UIKit.h>
 
-@interface CharView : UIView {
+@interface CharUIView : UIView {
+	CGImageRef temp;
+}
+
+- (void)setTemp:(CGImageRef)img;
+
+@end
+
+@interface CharView : UIViewController {
 	CGImageRef temp;
 	CGContextRef charContext;
 }

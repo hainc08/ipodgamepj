@@ -11,7 +11,7 @@
 
 @class ClockView;
 @class DateView;
-@interface AlarmView : BaseView {
+@interface AlarmView : UIViewController {
 	UIImageView	*BgImage;
 	ClockView *clockview;
 	DateView  *dateview;

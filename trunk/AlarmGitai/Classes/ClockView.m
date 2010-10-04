@@ -13,15 +13,9 @@
 @implementation ClockView
 
 
-- (id)initWithCoder:(NSCoder *)coder {
-	self = [super initWithCoder:coder];
+- (id)init
+{
 	[self CreatedImageView];
-	return self;
-}
-
-- (id)initWithFrame:(CGRect)frame {
-	self = [super initWithFrame:frame];
-
 	return self;
 }
 
@@ -40,17 +34,17 @@
 
 	//폰트에따라 글자 down이 up을 덮는 경우가 없도록
 	//down먼저 add하고 up을 add하자.
-	[self addSubview:b_HourT];
-	[self addSubview:b_HourM];
-	[self addSubview:b_MinT];
-	[self addSubview:b_MinM];
-	[self addSubview:b_Dot];
+	[self.view addSubview:b_HourT];
+	[self.view addSubview:b_HourM];
+	[self.view addSubview:b_MinT];
+	[self.view addSubview:b_MinM];
+	[self.view addSubview:b_Dot];
 	
-	[self addSubview:u_HourT];
-	[self addSubview:u_HourM];
-	[self addSubview:u_MinT];
-	[self addSubview:u_MinM];
-	[self addSubview:u_Dot];
+	[self.view addSubview:u_HourT];
+	[self.view addSubview:u_HourM];
+	[self.view addSubview:u_MinT];
+	[self.view addSubview:u_MinM];
+	[self.view addSubview:u_Dot];
 	
 	[u_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@dot.png", 
 										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getUpImageType]]]];

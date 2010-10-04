@@ -38,6 +38,8 @@
 {
 	curPage = page;
 	
+	[pageLabel setText:[NSString stringWithFormat:@"%d / 7", curPage + 1]];
+
 	if (page == 0) [prevButton setAlpha:0];
 	else [prevButton setAlpha:1];
 	
