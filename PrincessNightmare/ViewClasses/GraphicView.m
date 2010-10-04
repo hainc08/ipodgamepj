@@ -51,6 +51,9 @@
 - (void)loadPage:(int)page
 {
 	curPage = page;
+
+	[pageLabel setText:[NSString stringWithFormat:@"%d / 14", curPage]];
+
 	if (curPage == 1) [prevButton setAlpha:0];
 	else [prevButton setAlpha:1];
 
@@ -124,16 +127,32 @@
 				
 				int imgId = [eList getIntVal:i];
 				
-				if (imgId < 10)
-					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_00%d.jpg", imgId]];
-				else if (imgId < 100)
-					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_0%d.jpg", imgId]];
+				if (imgId >= 400)
+				{
+					[self playAnime:[NSString stringWithFormat:@"%d", imgId]];
+					
+					NSArray *windows = [[UIApplication sharedApplication] windows];
+					if ([windows count] > 1)
+					{
+						UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
+						endView = (MovieEndView*)[[ViewManager getInstance] getInstView:@"MovieEndView"];
+						[moviePlayerWindow addSubview:endView];
+						[endView setCenter:CGPointMake(240,160)];
+					}
+				}
 				else
-					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_%d.jpg", imgId]];
-				
-				[imageBigButton setImage:tempImg forState:UIControlStateNormal];
-				[imageBigButton setAlpha:1];
-				
+				{
+					if (imgId < 10)
+						tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_00%d.jpg", imgId]];
+					else if (imgId < 100)
+						tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_0%d.jpg", imgId]];
+					else
+						tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_%d.jpg", imgId]];
+					
+					[imageBigButton setImage:tempImg forState:UIControlStateNormal];
+					[imageBigButton setAlpha:1];
+				}
+
 				return;
 			}
 		}
@@ -152,6 +171,43 @@
 - (void)update
 {
 	[super update];
+
+	if ([endView showEnd])
+	{
+		[endView setShowEnd:false];
+		[endView setUserInteractionEnabled:false];
+		[player stop];
+	}
+}
+
+- (void)didFinishPlaying:(NSNotification *)notification {
+    if (player == [notification object]) {   
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
+        [player release];
+        player = nil;
+    }
+}
+
+- (IBAction)playAnime:(NSString*)name {
+    NSString *moviePath = [[NSBundle mainBundle] pathForResource:name ofType:@"mp4"];
+    NSURL *url = [NSURL fileURLWithPath:moviePath];
+	
+    [self playVideoWithURL:url showControls:NO];
+}
+
+- (void)playVideoWithURL:(NSURL *)url showControls:(BOOL)showControls {
+    if (!player) {
+        player = [[MPMoviePlayerController alloc] initWithContentURL:url];
+		
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishPlaying:) name:MPMoviePlayerPlaybackDidFinishNotification object:player];
+		
+        if (!showControls) {
+            player.scalingMode = MPMovieScalingModeAspectFill;
+            player.movieControlMode = MPMovieControlModeHidden;
+        }
+		
+        [player play];
+    }
 }
 
 @end

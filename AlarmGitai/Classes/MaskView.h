@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface MaskView : UIView {
+@interface MaskView : UIViewController {
 	CGImageRef temp;
 	UIImage* baseImg;
 	UIImage* maskImg;

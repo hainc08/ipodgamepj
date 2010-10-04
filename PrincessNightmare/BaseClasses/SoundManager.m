@@ -55,7 +55,7 @@ static SoundManager *SoundManagerInst;
 	[bgmPlayer prepareToPlay];
 	[bgmPlayer setDelegate:self];
 
-	[bgmPlayer setVolume: fxVolume];
+	[bgmPlayer setVolume: bgmVolume];
 	[bgmPlayer setNumberOfLoops:-1];
 	[bgmPlayer play];
 
@@ -104,6 +104,7 @@ static SoundManager *SoundManagerInst;
 -(void) setBGMVolume : (float) level 
 {
     bgmVolume = level; // 볼륨 설정
+	if (bgmPlayer != nil) [bgmPlayer setVolume: bgmVolume];
 }
 
 -(void)stopBGM

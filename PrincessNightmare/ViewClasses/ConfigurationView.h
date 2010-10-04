@@ -2,6 +2,8 @@
 #import "BaseView.h"
 
 @interface ConfigurationView : BaseView {
+	int viewtype;
+	
 	IBOutlet id backButton;
 
 	IBOutlet id opt1_1;
@@ -24,6 +26,8 @@
 	int opt1;
 	int opt2;
 }
+
+@property (readwrite) int viewtype;
 
 - (IBAction)ButtonClick:(id)sender;
 - (void)setOption;

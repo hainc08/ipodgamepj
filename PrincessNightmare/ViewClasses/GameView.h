@@ -32,6 +32,7 @@
 	};
 
 	IBOutlet id msgClose;
+	IBOutlet id skip;
 
 	GameParam* gParam;
 
@@ -81,12 +82,15 @@
 	Scene* lastScene;
 	
 	int phase;
+	bool isSkipMode;
+	int skipEnd;
 }
 
 @property (nonatomic, retain) MPMoviePlayerController *player;
 
 - (IBAction)playAnime:(NSString*)name;
 
+- (IBAction)SkipButtonClick:(id)sender;
 - (IBAction)ButtonClick:(id)sender;
 - (void)showMenu;
 - (void)update;

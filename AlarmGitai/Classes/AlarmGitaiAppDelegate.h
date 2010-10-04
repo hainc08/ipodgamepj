@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class AlarmGitaiViewController;
-
 @interface AlarmGitaiAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-    AlarmGitaiViewController *viewController;
+    UINavigationController *navigationController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet AlarmGitaiViewController *viewController;
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 @end
 

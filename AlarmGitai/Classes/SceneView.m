@@ -1,20 +1,7 @@
 #import "SceneView.h"
 #import "DateFormat.h"
-#import "ViewManager.h"
 
 @implementation SceneView
-
-- (id)initWithCoder:(NSCoder *)coder {
-	self = [super initWithCoder:coder];
-	
-	return self;
-}
-
-- (id)initWithFrame:(CGRect)frame {
-	self = [super initWithFrame:frame];
-		
-	return self;
-}
 
 - (void)setChar:(NSString*)name
 {
@@ -34,10 +21,10 @@
 {
 	for (int i=0; i<2; ++i)
 	{
-		charView[i] = (CharView*)[[ViewManager getInstance] getInstView:@"CharView"];
-		[charView[i] setTransform:CGAffineTransformMake(1, 0, 0, -1, 0, 0)];
-		[self addSubview:charView[i]];
-		[charView[i] setCenter:CGPointMake(160,240)];
+		charView[i] = [[CharView alloc] init];
+		[charView[i].view setTransform:CGAffineTransformMake(1, 0, 0, -1, 0, 0)];
+		[self.view addSubview:charView[i].view];
+		[charView[i].view setCenter:CGPointMake(160,240)];
 	}
 	
 	backView[0] = imgBack1;
@@ -78,8 +65,8 @@
 	[UIView beginAnimations:@"anime2" context:NULL];
 	[UIView setAnimationDuration:1];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-	[charView[curCharIdx] setAlpha:1];
-	[charView[oldCharIdx] setAlpha:0];
+	[charView[curCharIdx].view setAlpha:1];
+	[charView[oldCharIdx].view setAlpha:0];
 	[UIView commitAnimations];
 
 	++nextCount;

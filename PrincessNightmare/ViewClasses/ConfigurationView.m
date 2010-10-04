@@ -5,6 +5,8 @@
 
 @implementation ConfigurationView
 
+@synthesize viewtype;
+
 - (id)initWithCoder:(NSCoder *)coder {
 	self = [super initWithCoder:coder];
 	
@@ -27,15 +29,24 @@
 		opt2 = [[SaveManager getInstance] opt2];
 		[self setOption];
 	}
+	
+	viewtype = 0;
 }
 
 - (IBAction)ButtonClick:(id)sender
 {	
 	if (sender == backButton)
 	{
-		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
-		[[SaveManager getInstance] setOpt:opt1 :opt2];
-		[[ViewManager getInstance] changeView:@"MainTopView"];
+		if (viewtype == 1)
+		{
+			[self setAlpha:0];
+		}
+		else
+		{
+			[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
+			[[SaveManager getInstance] setOpt:opt1 :opt2];
+			[[ViewManager getInstance] changeView:@"MainTopView"];
+		}
 	}
 	else if (sender == opt1_p)
 	{
@@ -43,6 +54,7 @@
 		{
 			--opt1;
 			[self setOption];
+			[[SoundManager getInstance] setBGMVolume:(opt1 - 1) * 0.25f];
 		}
 	}
 	else if (sender == opt1_n)
@@ -51,6 +63,7 @@
 		{
 			++opt1;
 			[self setOption];
+			[[SoundManager getInstance] setBGMVolume:(opt1 - 1) * 0.25f];
 		}
 	}
 	else if (sender == opt2_p)
@@ -59,6 +72,8 @@
 		{
 			--opt2;
 			[self setOption];
+			[[SoundManager getInstance] setFxVolume:(opt2 - 1) * 0.25f];
+			[[SoundManager getInstance] playFX:@"001_se.mp3" repeat:false];
 		}
 	}
 	else if (sender == opt2_n)
@@ -67,6 +82,8 @@
 		{
 			++opt2;
 			[self setOption];
+			[[SoundManager getInstance] setFxVolume:(opt2 - 1) * 0.25f];
+			[[SoundManager getInstance] playFX:@"001_se.mp3" repeat:false];
 		}
 	}
 }

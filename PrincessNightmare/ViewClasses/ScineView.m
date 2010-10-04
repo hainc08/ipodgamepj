@@ -77,12 +77,15 @@
 - (void)loadPage:(int)page
 {
 	curPage = page;
+
+	[pageLabel setText:[NSString stringWithFormat:@"%d / 13", curPage]];
+
 	if (curPage == 1) [prevButton setAlpha:0];
 	else [prevButton setAlpha:1];
 
 	if (curPage == 13) [nextButton setAlpha:0];
 	else [nextButton setAlpha:1];
-	
+
 	for (int i=0; i<10; ++i)
 	{
 		int idx = (curPage-1) * 10 + i + 1;
@@ -96,6 +99,7 @@
 			if ([[SaveManager getInstance] getSceneExp:idx])
 			{
 				[buttonLabel[i] setText:[[[DataManager getInstance] getScenario:idx] getStrVal]];
+				[buttonLabel[i] setAlpha:1];
 				[imageButton[i] setAlpha:1];
 				[imageButton[i] setImage:baseImg[1] forState:UIControlStateNormal];
 			}

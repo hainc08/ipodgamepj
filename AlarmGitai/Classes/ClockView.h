@@ -17,7 +17,7 @@ enum CLOCKTYPE {
 	SEC_M
 };
 
-@interface ClockView : UIView{
+@interface ClockView : UIViewController{
 	NSString *Hour;
 	NSString *Min;
 	NSString *Sec;

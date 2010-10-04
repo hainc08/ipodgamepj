@@ -8,7 +8,7 @@
 	NSEnumerator *touchEnum = [touches objectEnumerator];
 
 	touch = [touchEnum nextObject];
-	drawTo = drawAt = [touch locationInView: self];
+	drawTo = drawAt = [touch locationInView: self.view];
 	isDirty = false;
 }
 
@@ -22,7 +22,7 @@
 	NSEnumerator *touchEnum = [touches objectEnumerator];
 	
 	touch = [touchEnum nextObject];
-	drawTo = [touch locationInView: self];
+	drawTo = [touch locationInView: self.view];
 
 	float x = (drawTo.x - drawAt.x);
 	float y = (drawTo.y - drawAt.y);
@@ -41,16 +41,6 @@
 	drawAt = drawTo;
 
 	isDirty = true;
-}
-
-- (id)initWithCoder:(NSCoder *)coder {
-	self = [super initWithCoder:coder];
-	return self;
-}
-
-- (id)initWithFrame:(CGRect)frame {
-	self = [super initWithFrame:frame];
-	return self;
 }
 
 -(void)reset
@@ -100,7 +90,7 @@
 
 	temp = CGBitmapContextCreateImage(testContext);
 	
-	[self setNeedsDisplay];
+	[self.view setNeedsDisplay];
 }
 
 - (void)stopTimer

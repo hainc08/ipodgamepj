@@ -13,6 +13,8 @@
 	IBOutlet id itemImg;
 	IBOutlet id itemName;
 	IBOutlet id itemDesc;
+
+	IBOutlet UILabel* pageLabel;
 	
 	UIButton* imageButton[15];
 	UIButton* imageBigButton;

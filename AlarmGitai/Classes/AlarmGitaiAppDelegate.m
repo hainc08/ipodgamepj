@@ -1,14 +1,6 @@
-//
-//  AlarmGitaiAppDelegate.m
-//  AlarmGitai
-//
-//  Created by embmaster on 10. 07. 13.
-//  Copyright __MyCompanyName__ 2010. All rights reserved.
-//
-
 #import "AlarmGitaiAppDelegate.h"
 #import "AlarmGitaiViewController.h"
-#import "ViewManager.h"
+#import "ActionManager.h"
 #import "SaveManager.h"
 #import "DateFormat.h"
 #import "AlarmConfig.h"
@@ -17,8 +9,7 @@
 @implementation AlarmGitaiAppDelegate
 
 @synthesize window;
-@synthesize viewController;
-
+@synthesize navigationController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     srand(time(NULL));
@@ -33,20 +24,20 @@
 	
 	/* image load*/
 	[ImgManager initManager];
+	[ActionManager initManager];
+	[[ActionManager getInstance] setNavigationController:navigationController];
 	
 	/* view Controller */ 
-	[ViewManager initManager:window:viewController];
-	[window addSubview:viewController.view];
+	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
-
-   }
-
+}
 
 - (void)dealloc {
-	[[ViewManager getInstance] closeManager];
+	[navigationController release];
+
+	[[ActionManager getInstance] closeManager];
 	[[SaveManager getInstance] closeManager];
 
-    [viewController release];
     [window release];
     [super dealloc];
 }

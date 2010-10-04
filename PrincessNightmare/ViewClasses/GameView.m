@@ -112,6 +112,7 @@ void swapView(UIView* v1, UIView* v2)
 		[oldBgView setAlpha:0.f];
 		
 		[self bringSubviewToFront:msgClose];
+		[self bringSubviewToFront:skip];
 
 		sceneView = (SceneView*)[[ViewManager getInstance] getInstView:@"SceneView"];
 		[self addSubview:sceneView];
@@ -140,6 +141,31 @@ void swapView(UIView* v1, UIView* v2)
 	
 	[[DataManager getInstance] resetPreload];
 	[[DataManager getInstance] setCurIdx:curSceneId];
+
+	isSkipMode = false;
+}
+
+- (IBAction)SkipButtonClick:(id)sender
+{
+	if (isSkipMode) isSkipMode = false;
+	else
+	{
+		for (int i=1; i<=127; ++i)
+		{
+			Scenario* scenario = [[DataManager getInstance] getScenario:i];
+			if ([scenario startIdx] > curSceneId) return;
+			if ([scenario endIdx] < curSceneId) continue;
+			
+			if ([[SaveManager getInstance] getSceneExp:i])
+			{
+				isSkipMode = true;
+				skipEnd = [scenario endIdx];
+				[self ButtonClick:next];
+			}
+			return;
+		}
+	}
+	return;
 }
 
 - (IBAction)ButtonClick:(id)sender
@@ -152,6 +178,7 @@ void swapView(UIView* v1, UIView* v2)
 		[chrView[3] setAlpha:0];
 		[menuButton setAlpha:0];
 		[serihuBoard setAlpha:0];
+		[skip setAlpha:0];
 		return;
 	}
 	if ( sender == menuButton )
@@ -162,6 +189,7 @@ void swapView(UIView* v1, UIView* v2)
 
 	if ( [msgClose alpha] == 0)
 	{
+		[skip setAlpha:1];
 		[msgClose setAlpha:1];
 		[chrView[3] setAlpha:1];
 		[menuButton setAlpha:1];
@@ -286,6 +314,8 @@ void swapView(UIView* v1, UIView* v2)
 			break;
 		case 3:
 		case 4:
+			isSkipMode = false;
+			
 			if ((sender == selectButton1) || (sender == selectButton2) || (sender == selectButton3))
 			{
 				[[SoundManager getInstance] playFX:@"009_jg.mp3" repeat:false];
@@ -418,6 +448,11 @@ void swapView(UIView* v1, UIView* v2)
 			break;
 		case PLAYWAIT:
 			if (showOkTick <= frameTick) phase = WAITINPUT;
+			if (isSkipMode)
+			{
+				if (curSceneId == skipEnd) isSkipMode = false;
+				else [self ButtonClick:next];
+			}
 	}
 	
 	[super update];
@@ -627,6 +662,9 @@ void swapView(UIView* v1, UIView* v2)
 				// displayed above it.
 				[moviePlayerWindow addSubview:sBoard];
 			}
+
+			[[DataManager getInstance] setEventShow:[s animeType]];
+			[[SaveManager getInstance] saveExtraFile];
 		}
 	}
 }
@@ -749,5 +787,6 @@ void swapView(UIView* v1, UIView* v2)
 	[selectPanel2 setAlpha:0];
 	[selectPanel3 setAlpha:0];
 }
+
 
 @end

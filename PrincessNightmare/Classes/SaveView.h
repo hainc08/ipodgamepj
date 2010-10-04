@@ -5,6 +5,8 @@
 	IBOutlet id backButton;
 	IBOutlet id nextButton;
 	IBOutlet id prevButton;
+
+	IBOutlet UILabel* pageLabel;
 	
 	LoadSaveBar* bars[4];
 

@@ -43,6 +43,7 @@
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
+						<float key="IBUIAlpha">0.000000e+00</float>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="IBUIText">Label</string>
 						<object class="NSColor" key="IBUITextColor">
@@ -257,6 +258,27 @@
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">msgClose.png</string>
+						</object>
+					</object>
+					<object class="IBUIButton" id="182951672">
+						<reference key="NSNextResponder" ref="773793330"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{373, 208}, {60, 35}}</string>
+						<reference key="NSSuperview" ref="773793330"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="1037716388"/>
+						<reference key="IBUIHighlightedTitleColor" ref="989580487"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="354615847"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">skip.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="137051291">
@@ -476,6 +498,23 @@
 					</object>
 					<int key="connectionID">128</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">skip</string>
+						<reference key="source" ref="773793330"/>
+						<reference key="destination" ref="182951672"/>
+					</object>
+					<int key="connectionID">130</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">SkipButtonClick:</string>
+						<reference key="source" ref="182951672"/>
+						<reference key="destination" ref="773793330"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">132</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -510,8 +549,9 @@
 							<reference ref="871370309"/>
 							<reference ref="766416515"/>
 							<reference ref="137051291"/>
-							<reference ref="566087698"/>
 							<reference ref="281874797"/>
+							<reference ref="182951672"/>
+							<reference ref="566087698"/>
 						</object>
 						<reference key="parent" ref="58880970"/>
 					</object>
@@ -581,11 +621,6 @@
 						<reference key="parent" ref="1031331646"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">114</int>
-						<reference key="object" ref="566087698"/>
-						<reference key="parent" ref="773793330"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">121</int>
 						<reference key="object" ref="871370309"/>
 						<reference key="parent" ref="773793330"/>
@@ -600,6 +635,16 @@
 						<reference key="object" ref="137051291"/>
 						<reference key="parent" ref="773793330"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">129</int>
+						<reference key="object" ref="182951672"/>
+						<reference key="parent" ref="773793330"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">114</int>
+						<reference key="object" ref="566087698"/>
+						<reference key="parent" ref="773793330"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -611,6 +656,7 @@
 					<string>114.IBPluginDependency</string>
 					<string>121.IBPluginDependency</string>
 					<string>126.IBPluginDependency</string>
+					<string>129.IBPluginDependency</string>
 					<string>2.CustomClassName</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
@@ -633,8 +679,9 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>GameView</string>
-					<string>{{410, 164}, {480, 320}}</string>
+					<string>{{410, 165}, {480, 320}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -669,7 +716,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">128</int>
+			<int key="maxID">132</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -690,10 +737,12 @@
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>ButtonClick:</string>
+							<string>SkipButtonClick:</string>
 							<string>playAnime:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>NSString</string>
 						</object>
@@ -717,9 +766,11 @@
 							<string>selectPanel1</string>
 							<string>selectPanel2</string>
 							<string>selectPanel3</string>
+							<string>skip</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
