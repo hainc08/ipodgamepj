@@ -11,7 +11,6 @@
 	[self CreatedImageView];
 	return self;
 }
-
 - (void)CreatedImageView 
 {
 	b_Week = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];

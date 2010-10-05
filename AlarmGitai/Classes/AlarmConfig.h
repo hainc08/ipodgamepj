@@ -49,8 +49,8 @@
 	
 	int				heightnum;
 	int				widthnum;
-	ViewCgPoint		*heigthviewpoint[5];
-	ViewCgPoint		*widthviewpoint[5];
+	ViewCgPoint		*heigthviewpoint;
+	ViewCgPoint		*widthviewpoint;
 	
 	
 	
@@ -80,8 +80,10 @@
 - (void)loadConfig;
 - (ViewCgPoint *) getHeigthViewPoint;
 - (ViewCgPoint *) getWidthViewPoint;
+- (void) setHeigthViewPoint:(ViewCgPoint *) _inPoint;
+- (void) setWidthViewPoint:(ViewCgPoint *) _inPoint;
 
-- (void)SaveConfig;
+- (void) SaveConfig;
 - (int) getRotationTime;
 - (void) setRotationTime:(int)value;
 @end

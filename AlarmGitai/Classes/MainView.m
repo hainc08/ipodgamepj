@@ -19,22 +19,61 @@
 	//k++;
 	//return;
 	
-	[UIView	 beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.7];
-	if(hiddenButton)
+	if(editenable)
 	{
-		[MenuButton setFrame:CGRectMake(0, -100, 112, 98)];
+		UITouch *currentTouch = [[event allTouches] anyObject];
+		CGPoint touchPoint = [currentTouch locationInView:self.view];
+		
+		if (CGRectContainsPoint(clockview.view.frame, touchPoint)) {
+			CGRect type = clockview.view.frame;
+			clockViewTouched = YES;
+		}	
+		else if (CGRectContainsPoint(dateview.view.frame, touchPoint)) {
+			dateViewTouched = YES;
+		}
+		else if (CGRectContainsPoint(weekview.view.frame, touchPoint)) {
+			weekViewTouched = YES;
+		}
+	}
+}
 
-	}
-	else 
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	if(editenable)
 	{
-		[MenuButton setTransform:CGAffineTransformMake(1, 0.0, 0.0, 1, 0.0, 0.0)];
-		[MenuButton setFrame:CGRectMake(0, 0, 112, 98)];
+		UITouch *currentTouch = [[event allTouches] anyObject];	
+		CGPoint currentPoint = [currentTouch locationInView:self.view];
+	
+		if(clockViewTouched == YES) {
+			clockview.view.center = CGPointMake(currentPoint.x,currentPoint.y);
+		}
+		else if(dateViewTouched == YES) {
+			dateview.view.center = CGPointMake(currentPoint.x,currentPoint.y);
+		}
+		else if(weekViewTouched == YES) {
+			weekview.view.center = CGPointMake(currentPoint.x,currentPoint.y);
+		}
 	}
-	[UIView commitAnimations];
-/* 보이는게 구리네..;; 나중에 조정 */
-	hiddenButton = !hiddenButton;
-	[MenuButton setAlpha:1];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	if(editenable)
+	{
+		/* 메뉴를 화면에 보여주자..  글씨체.. 사이즈 조정 표현방식등 MenuClass 변경 */
+		
+		if(clockViewTouched == YES) {
+			clockViewTouched = NO;
+		}
+		else if(dateViewTouched == YES) {
+		dateViewTouched = NO;
+		}
+		else if(weekViewTouched == YES) {
+		weekViewTouched = NO;
+		}
+		
+	}
+	
 }
 
 /*
@@ -58,6 +97,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	editenable	= false;
 	hiddenButton = false;
 	menuEnable   = false;
 
@@ -71,29 +111,47 @@
 	[self.view addSubview:sceneView.view];
 	
 	clockview = [[ClockView alloc] init];
+	[clockview.view setFrame:CGRectMake(0, 0, 500, 360)];
 	[clockview.view setTransform:alarmviewpoint.ClockTrans]; 
 	[clockview.view setCenter:alarmviewpoint.ClockPoint ];
 	[clockview UpdateTime];
-	[clockview.view setAlpha:1];
 	[self.view addSubview:clockview.view];
 	
+	dateview = [[DateView alloc] init];
+	[dateview.view setFrame:CGRectMake(0, 0, 500, 360)];
+	[dateview.view setTransform:alarmviewpoint.DateTrans];
+	[dateview.view setCenter:alarmviewpoint.DatePoint ];
+	[dateview UpdateDate];
+	[self.view addSubview:dateview.view];
+	
+	
+/*
 	dateview = [[DateView alloc] init];
 	[dateview.view setTransform:alarmviewpoint.DateTrans];
 	[dateview.view setCenter:alarmviewpoint.DatePoint];
 	[dateview UpdateDate];
 	[dateview.view setAlpha:1];
 	[self.view addSubview:dateview.view];
+*/
 
-/*
  	MenuButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 112, 98)];
-
-	[MenuButton setBackgroundImage:[ [UIImage imageNamed:@"menu_b.png" ] stretchableImageWithLeftCapWidth:112.0 topCapHeight:98.0] forState:UIControlStateNormal];
-	[MenuButton setCenter:CGPointMake(55, -90)];
+	[MenuButton setTitle:@"enable" forState:UIControlStateNormal];
 	[MenuButton addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+	[MenuButton setCenter:CGPointMake(290,10)];
 	[MenuButton setAlpha:1];
 	[self.view addSubview:MenuButton];
 	
-
+	
+	/* xbox Button */
+	MenuXbox = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30) ];
+	[MenuXbox setBackgroundImage:[UIImage imageNamed:@"xbox.png" ] forState:UIControlStateNormal];
+	[MenuXbox addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+	[MenuXbox setTransform:CGAffineTransformMake(0.7, 0,0,0.7, 0,0)];
+	[MenuXbox setCenter:CGPointMake(290, 10)];
+	[MenuXbox setAlpha:0];
+	[self.view addSubview:MenuXbox];
+	
+/*
 	AlarmButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 32, 31)];
 	[AlarmButton setBackgroundImage:[ [UIImage imageNamed:@"alarm.png" ] stretchableImageWithLeftCapWidth:32.0 topCapHeight:31.0] forState:UIControlStateNormal];
 	[AlarmButton setCenter:CGPointMake(300, 20)];
@@ -128,7 +186,6 @@
 - (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation: (UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration {    
 		UIInterfaceOrientation interfaceOrientation = self.interfaceOrientation;
 #endif
-
 	[self FrameUpdate];
 }
 
@@ -157,7 +214,22 @@
 	// e.g. self.myOutlet = nil;
 	
 }
+- (void)ConfigSetup{
+	ViewCgPoint *config = [ViewCgPoint alloc];
+	
+	[config setClockTrans:clockview.view.transform];
+	[config setClockPoint:clockview.view.center];
+	[config setDateTrans:dateview.view.transform];
+	[config setDatePoint:dateview.view.center];
 
+	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
+		[[AlarmConfig getInstance] setHeigthViewPoint:config];
+	else	
+		[[AlarmConfig getInstance] setWidthViewPoint:config];
+	
+	[config release];
+}
+	
 - (void)ButtonClick:(id)sender
 {
 	if(sender == AlarmButton)
@@ -167,21 +239,32 @@
 	}
 	else if( sender == MenuButton )
 	{
-		[self.view addSubview:menuNavi.view];
-		[menuNavi.view setAlpha:1];
+		[self stopTimer];
+		
+		[MenuXbox setAlpha:1];
+		[MenuButton setAlpha:0];
+		editenable = true;
+	}
+	else if( sender == MenuXbox)
+	{
+		[self resumeTimer];
+		[self ConfigSetup];
+		[MenuXbox setAlpha:0];
+		[MenuButton setAlpha:1];
 	}
 }
 
-	
+
 - (void)update
 {
 	++frameTick;
 	if((frameTick % 5) == 0)
 	{
 		[sceneView next];
+		[self FrameUpdate];
 	}
 	
-	[self FrameUpdate];
+
 	[clockview UpdateTime];
 	[dateview UpdateDate];
 }
@@ -197,6 +280,11 @@
 		
 		[dateview.view setTransform:alarmviewpoint.DateTrans];
 		[dateview.view setCenter:alarmviewpoint.DatePoint];
+		
+		/* Button Update */
+		[MenuButton setCenter:CGPointMake(290, 10)];
+		[MenuXbox	setCenter:CGPointMake(290, 10)];
+		
 	}
 	else 
 	{
@@ -206,12 +294,15 @@
 		
 		[dateview.view setTransform:alarmviewpoint.DateTrans];
 		[dateview.view setCenter:alarmviewpoint.DatePoint];
+		
+		
+		[MenuButton setCenter:CGPointMake(450, 10)];
+		[MenuXbox	setCenter:CGPointMake(450, 10)];
 	}
 
 
 }
-		
-	
+
 - (void)stopTimer
 {
 	[updateTimer invalidate]; 

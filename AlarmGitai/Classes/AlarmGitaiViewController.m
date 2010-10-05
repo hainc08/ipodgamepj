@@ -20,6 +20,7 @@
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 	[touch setAlpha:1];
 	[UIView commitAnimations];
+
 }
 
 /*
@@ -41,7 +42,6 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
-
 
 - (void)dealloc {
     [super dealloc];

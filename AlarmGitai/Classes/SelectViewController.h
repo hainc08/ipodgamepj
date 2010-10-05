@@ -11,6 +11,7 @@
 
 @interface SelectViewController : MenuBaseController {
 	
+
 	UIButton *alarmView[4];
 	UIButton *Xbox;
 	
