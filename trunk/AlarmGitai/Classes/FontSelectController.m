@@ -23,6 +23,11 @@
  
 }
 */
+-(IBAction)toggleChoice:(id)sender {
+	[self.navigationController viewWillAppear:YES];
+	[self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 - (void)viewDidLoad {
 
@@ -30,6 +35,12 @@
 	SelectIndex = [[AlarmConfig getInstance] getFontType]; 
 	
 	
+	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Choice"
+                                   style:UIBarButtonItemStyleBordered
+                                   target:self
+                                   action:@selector(toggleChoice:)];
+    self.navigationItem.rightBarButtonItem = editButton;
     [super viewDidLoad];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -87,13 +98,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CharSelect = @"Font";
+    static NSString *FontSelect = @"Font";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             CharSelect];
+                             FontSelect];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                       reuseIdentifier:CharSelect] autorelease];
+                                       reuseIdentifier:FontSelect] autorelease];
     }
     NSUInteger row = [indexPath row];
 	if (row == SelectIndex )   lastIndexPath = indexPath;
@@ -123,6 +134,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         oldCell.accessoryType = UITableViewCellAccessoryNone;
         lastIndexPath = indexPath;
     }
+	else if (newRow == SelectIndex)
+	{
+		[self.navigationController viewWillAppear:YES];
+		[self.navigationController popToRootViewControllerAnimated:YES];
+	}
     SelectIndex = newRow;
 	type = [FontArrName objectAtIndex:SelectIndex];
 	[self.navigationController viewWillAppear:YES];

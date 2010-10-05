@@ -14,7 +14,7 @@
 #import "MenuBaseController.h"
 #import "FontSelectController.h"
 #import	"AlarmConfig.h"
-
+/*
 @implementation UINavigationBar (UINavigationBarCategory)
 - (void)setBackgroundImage:(UIImage *)image {
 	if(image == nil)
@@ -28,7 +28,6 @@
 	[self sendSubviewToBack:aTabBarImage];
 	[aTabBarImage release];
 }
-
 - (void)drawRect:(CGRect)rect{
 	UIColor *color = [UIColor redColor];
 	CGContextRef context  = UIGraphicsGetCurrentContext();
@@ -37,7 +36,7 @@
 }
 
 @end
-
+*/
 
 @implementation MenuController
 @synthesize controllers;
@@ -50,7 +49,7 @@
     return self;
 }
 
-
+/*
 -(IBAction)toggleSave:(id)sender {
 #if 0 
  for (id oneObject in nib)
@@ -74,16 +73,16 @@
 -(IBAction)toggleCancle:(id)sender {
 	[super.navigationController.view removeFromSuperview  ];
 }
+ */
 
 
 		
 - (void)viewDidLoad {
+
+
 	OldPath = nil;
-	self.title = [[AlarmConfig getInstance] getCharName];
+//	self.title = [[AlarmConfig getInstance] getCharName];
     NSMutableArray *array = [[NSMutableArray alloc] init];
-
-    // Disclosure Button
-
 	
     SelectViewController *hightviewController = [[SelectViewController alloc] init];
     hightviewController.title = @"HightViewType";
@@ -113,7 +112,7 @@
 	self.controllers = array;
     [array release];
 	
-	
+	/*
 	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
                                    initWithTitle:@"Save"
                                    style:UIBarButtonItemStyleBordered
@@ -126,7 +125,7 @@
                                    style:UIBarButtonItemStyleBordered
                                    target:self
                                    action:@selector(toggleCancle:)];
-    self.navigationItem.leftBarButtonItem	= closeButton;
+    self.navigationItem.leftBarButtonItem	= closeButton; */
     [super viewDidLoad];
 	// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;

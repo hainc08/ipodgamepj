@@ -21,16 +21,16 @@
 
 - (void)CreatedImageView 
 {
-	u_HourT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	b_HourT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	u_HourM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	b_HourM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	u_MinT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	b_MinT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	u_MinM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	b_MinM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	u_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
-	b_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
+	u_HourT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	b_HourT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	u_HourM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	b_HourM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	u_MinT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	b_MinT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	u_MinM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	b_MinM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	u_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	b_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
 
 	//폰트에따라 글자 down이 up을 덮는 경우가 없도록
 	//down먼저 add하고 up을 add하자.

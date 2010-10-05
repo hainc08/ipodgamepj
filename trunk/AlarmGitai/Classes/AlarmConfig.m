@@ -26,6 +26,17 @@ static AlarmConfig *AlarmConfigInst;
 	[AlarmConfigInst loadConfig];
 }
 
+- (void)SaveConfig
+{
+	[[SaveManager getInstance] setIntData:@"RotationTime" idx:0 value:RotationTime];
+	[[SaveManager getInstance] setIntData:@"heigthnum" idx:0 value:heightnum];
+	[[SaveManager getInstance] setIntData:@"widthnum" idx:0 value:widthnum];
+	[[SaveManager getInstance] setIntData:@"FontType" idx:0 value:FontType];
+	[[SaveManager getInstance] setStringData:@"FontType" idx:1 value:FontUpImageType];
+	[[SaveManager getInstance] setStringData:@"FontType" idx:2 value:FontBgImageType];
+	
+	[[SaveManager getInstance] saveFile];
+}
 - (void)defaultConfig
 {
 	/* file save 도 같이 하자 */
@@ -55,56 +66,19 @@ static AlarmConfig *AlarmConfigInst;
 	FontUpImageType = [[SaveManager getInstance] getStringData:@"FontType" idx:1 base:@"ub"];
 	FontBgImageType = [[SaveManager getInstance] getStringData:@"FontType" idx:2 base:@"dw"];
 	
-	for(int loop = 0; loop < 4; loop ++)
-	{
-		heigthviewpoint[loop] = [ViewCgPoint alloc];
-		widthviewpoint[loop] = [ViewCgPoint alloc];
-	}
-	[heigthviewpoint[0] setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
-	[heigthviewpoint[0] setClockPoint:CGPointMake(65,410)];
-	[heigthviewpoint[0] setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
-	[heigthviewpoint[0] setDatePoint:CGPointMake(35,50)];
+	heigthviewpoint = [ViewCgPoint alloc];
+	widthviewpoint = [ViewCgPoint alloc];
+
+	[heigthviewpoint setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
+	[heigthviewpoint setClockPoint:CGPointMake(65,410)];
+	[heigthviewpoint setDateTrans:CGAffineTransformMake(0.2, 0.0, 0.0, 0.2, 0.0, 0.0)];
+	[heigthviewpoint setDatePoint:CGPointMake(35,50)];
 
 	
-	[heigthviewpoint[1] setClockTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
-	[heigthviewpoint[1] setClockPoint:CGPointMake(40,450)];
-	[heigthviewpoint[1] setDateTrans:CGAffineTransformMake(0.16, 0.0, 0.0, 0.16, 0.0, 0.0)];
-	[heigthviewpoint[1] setDatePoint:CGPointMake(33,370)];
-	
-	[heigthviewpoint[2] setClockTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
-	[heigthviewpoint[2] setClockPoint:CGPointMake(35,130)];	
-	[heigthviewpoint[2] setDateTrans:CGAffineTransformMake(0.25, 0.0, 0.0, 0.25, 0.0, 0.0)];
-	[heigthviewpoint[2] setDatePoint:CGPointMake(45,200)];
-
-	[heigthviewpoint[3] setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
-	[heigthviewpoint[3] setClockPoint:CGPointMake(65,410)];	
-	[heigthviewpoint[3] setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
-	[heigthviewpoint[3] setDatePoint:CGPointMake(35,50)];
-	
-	
-	
-	
-	[widthviewpoint[0] setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
-	[widthviewpoint[0] setClockPoint:CGPointMake(65,410)];
-	[widthviewpoint[0] setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
-	[widthviewpoint[0] setDatePoint:CGPointMake(35,50)];
-	
-	
-	[widthviewpoint[1] setClockTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
-	[widthviewpoint[1] setClockPoint:CGPointMake(40,450)];
-	[widthviewpoint[1] setDateTrans:CGAffineTransformMake(0.16, 0.0, 0.0, 0.16, 0.0, 0.0)];
-	[widthviewpoint[1] setDatePoint:CGPointMake(33,370)];
-	
-	[widthviewpoint[2] setClockTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
-	[widthviewpoint[2] setClockPoint:CGPointMake(35,130)];	
-	[widthviewpoint[2] setDateTrans:CGAffineTransformMake(0.25, 0.0, 0.0, 0.25, 0.0, 0.0)];
-	[widthviewpoint[2] setDatePoint:CGPointMake(45,200)];
-	
-	[widthviewpoint[3] setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
-	[widthviewpoint[3] setClockPoint:CGPointMake(65,410)];	
-	[widthviewpoint[3] setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
-	[widthviewpoint[3] setDatePoint:CGPointMake(35,50)];
-	
+	[widthviewpoint setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
+	[widthviewpoint setClockPoint:CGPointMake(65,230)];
+	[widthviewpoint setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
+	[widthviewpoint setDatePoint:CGPointMake(35,50)];	
 }
 - (int )getFontType
 {
@@ -135,14 +109,29 @@ static AlarmConfig *AlarmConfigInst;
 
 - (ViewCgPoint *) getHeigthViewPoint
 {
-	return heigthviewpoint[heightnum];
+	return heigthviewpoint;
 }
 
 - (ViewCgPoint *) getWidthViewPoint
 {
-	return widthviewpoint[widthnum];
+	return widthviewpoint;
 }
 
+- (void) setHeigthViewPoint:(ViewCgPoint *) _inPoint
+{
+	[heigthviewpoint setClockTrans:_inPoint.ClockTrans]; 
+	[heigthviewpoint setClockPoint:_inPoint.ClockPoint];
+	[heigthviewpoint setDateTrans:_inPoint.DateTrans];
+	[heigthviewpoint setDatePoint:_inPoint.DatePoint];
+}
+
+- (void) setWidthViewPoint:(ViewCgPoint *) _inPoint
+{
+	[widthviewpoint setClockTrans:_inPoint.ClockTrans]; 
+	[widthviewpoint setClockPoint:_inPoint.ClockPoint];
+	[widthviewpoint setDateTrans:_inPoint.DateTrans];
+	[widthviewpoint setDatePoint:_inPoint.DatePoint];	
+}
 - (void) setRotationTime:(int)value
 {
 	RotationTime = value;
@@ -152,17 +141,7 @@ static AlarmConfig *AlarmConfigInst;
 	return RotationTime;
 }
 
-- (void)SaveConfig
-{
-	[[SaveManager getInstance] setIntData:@"RotationTime" idx:0 value:RotationTime];
-	[[SaveManager getInstance] setIntData:@"heigthnum" idx:0 value:heightnum];
-	[[SaveManager getInstance] setIntData:@"widthnum" idx:0 value:widthnum];
-	[[SaveManager getInstance] setIntData:@"FontType" idx:0 value:FontType];
-	[[SaveManager getInstance] setStringData:@"FontType" idx:1 value:FontUpImageType];
-	[[SaveManager getInstance] setStringData:@"FontType" idx:2 value:FontBgImageType];
-	
-	[[SaveManager getInstance] saveFile];
-}
+
 - (void)dealloc {
 	[super dealloc];	
 	[FontUpImageType  release];

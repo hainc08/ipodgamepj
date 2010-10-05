@@ -23,7 +23,7 @@
 	 textField.keyboardType = UIKeyboardTypeNumberPad;
 	 textField.returnKeyType = UIReturnKeyDone;
 	 textField.textAlignment = UITextAlignmentLeft;
-	//textField.text = @"5";
+	//textField.text = @"5";	
 	 
 	 // add observer for the respective notifications (depending on the os version)
 	 if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 3.2) {
