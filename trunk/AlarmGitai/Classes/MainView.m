@@ -18,14 +18,15 @@
 	//[charView setChar:@"hitomi" idx:k isNight:true];
 	//k++;
 	//return;
-	
+	clockViewTouched = NO;
+	dateViewTouched = NO;
+	weekViewTouched = NO;
 	if(editenable)
 	{
 		UITouch *currentTouch = [[event allTouches] anyObject];
 		CGPoint touchPoint = [currentTouch locationInView:self.view];
 		
 		if (CGRectContainsPoint(clockview.view.frame, touchPoint)) {
-			CGRect type = clockview.view.frame;
 			clockViewTouched = YES;
 		}	
 		else if (CGRectContainsPoint(dateview.view.frame, touchPoint)) {
@@ -60,18 +61,23 @@
 {
 	if(editenable)
 	{
-		/* 메뉴를 화면에 보여주자..  글씨체.. 사이즈 조정 표현방식등 MenuClass 변경 */
+		ViewCgPoint	*alarmviewpoint	;
+		if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
+		alarmviewpoint	= [[AlarmConfig getInstance] getHeigthViewPoint];
+		else	
+		alarmviewpoint	= [[AlarmConfig getInstance] getWidthViewPoint];
 		
+		/* 메뉴를 화면에 보여주자..  글씨체.. 사이즈 조정 표현방식등 MenuClass 변경 */
 		if(clockViewTouched == YES) {
-			clockViewTouched = NO;
+			[menuconfig reset:(clockview.view.transform.a)*10];
 		}
 		else if(dateViewTouched == YES) {
-		dateViewTouched = NO;
+		[menuconfig reset:dateview.view.transform.a];
 		}
 		else if(weekViewTouched == YES) {
-		weekViewTouched = NO;
+		[menuconfig reset:weekview.view.transform.a];
 		}
-		
+		menuEnable = true;
 	}
 	
 }
@@ -151,6 +157,12 @@
 	[MenuXbox setAlpha:0];
 	[self.view addSubview:MenuXbox];
 	
+	menuconfig = [[MenuController alloc] initWithStyle:UITableViewStylePlain];
+	[menuconfig.tableView setFrame:CGRectMake(0, 0, 150, 100)];
+	[self.view addSubview:[menuconfig view]];
+	
+	
+
 /*
 	AlarmButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 32, 31)];
 	[AlarmButton setBackgroundImage:[ [UIImage imageNamed:@"alarm.png" ] stretchableImageWithLeftCapWidth:32.0 topCapHeight:31.0] forState:UIControlStateNormal];
@@ -161,7 +173,6 @@
 	
 	
 
-	MenuController *menuconfig = [[MenuController alloc] initWithStyle:UITableViewStyleGrouped];
 
 	menuNavi = [[UINavigationController alloc] initWithRootViewController:menuconfig] ;
 	[menuconfig release];
@@ -179,7 +190,6 @@
 	[self resumeTimer];
 }
 
-
 #ifdef __IPHONE_3_0
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
 #else
@@ -192,7 +202,8 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
-	
+
+
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -240,7 +251,6 @@
 	else if( sender == MenuButton )
 	{
 		[self stopTimer];
-		
 		[MenuXbox setAlpha:1];
 		[MenuButton setAlpha:0];
 		editenable = true;
@@ -248,12 +258,33 @@
 	else if( sender == MenuXbox)
 	{
 		[self resumeTimer];
-		[self ConfigSetup];
+		[self ConfigSetup];	
 		[MenuXbox setAlpha:0];
 		[MenuButton setAlpha:1];
+		editenable = false;
+		menuEnable = false;
 	}
 }
-
+- (void) setTransView:(int)_inTrans
+{
+	if(menuEnable)
+	{
+		/* 메뉴를 화면에 보여주자..  글씨체.. 사이즈 조정 표현방식등 MenuClass 변경 */
+		
+		if(clockViewTouched == YES) {
+			[clockview.view setTransform:CGAffineTransformMake((CGFloat)_inTrans/10, 0.0, 0.0, (CGFloat)_inTrans/10, 0.0, 0.0)];
+		}
+		else if(dateViewTouched == YES) {
+			dateViewTouched = NO;
+			[dateview.view setTransform:CGAffineTransformMake((CGFloat)_inTrans/10, 0.0, 0.0, (CGFloat)_inTrans/10, 0.0, 0.0)];
+		}
+		else if(weekViewTouched == YES) {
+			weekViewTouched = NO;
+			[weekview.view setTransform:CGAffineTransformMake((CGFloat)_inTrans/10, 0.0, 0.0, (CGFloat)_inTrans/10, 0.0, 0.0)];
+		}
+		
+	}
+}
 
 - (void)update
 {
@@ -317,8 +348,6 @@
 													  userInfo: self
 													   repeats: YES] retain];	
 }
-	
-
 
 - (void)dealloc {
     [super dealloc];

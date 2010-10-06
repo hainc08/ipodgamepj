@@ -1,5 +1,6 @@
 #import "ActionManager.h"
 #import "MainView.h"
+#import "MenuController.h"
 
 static ActionManager *actionManagerInst;
 
@@ -29,8 +30,22 @@ static ActionManager *actionManagerInst;
 //		NSString* iconName = (NSString*)[actionParam objectAtIndex:2];
 		
 		MainView* mainView = [[MainView alloc] init];
-		[navigationController pushViewController:mainView animated:YES];
+		[navigationController initWithRootViewController:mainView];
 	}
+}
+
+- (void)setRootAction:(int) actionParam
+{
+	NSArray *ctlarr = navigationController.viewControllers;
+	
+	for (id oneObject in ctlarr)
+		if ([oneObject isKindOfClass:[MainView class]])
+		{
+			MainView *root = (MainView *)oneObject;
+			[root setTransView:actionParam];
+			break;
+		}
+	
 }
 
 - (void)setNavigationController:(UINavigationController*)nController

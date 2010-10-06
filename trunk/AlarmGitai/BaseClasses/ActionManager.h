@@ -9,4 +9,6 @@
 - (void)playAction:(NSString*)action param:(NSMutableArray*)actionParam;
 - (void)setNavigationController:(UINavigationController*)nController;
 
+- (void)setRootAction:(int) actionParam;
+
 @end

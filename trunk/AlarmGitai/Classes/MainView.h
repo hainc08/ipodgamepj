@@ -3,9 +3,11 @@
 @class ClockView;
 @class DateView;
 @class SceneView;
+@class MenuController;
 
 @interface MainView : UIViewController {
 	
+	MenuController *menuconfig;
 	
 	BOOL	editenable;
 	BOOL	clockViewTouched;
@@ -34,7 +36,7 @@
 	UIButton *MenuButton;
 	UIButton *AlarmButton;
 }
-
+- (void) setTransView:(int)_inTrans;
 - (void)update;
 - (void)stopTimer;
 - (void)resumeTimer;

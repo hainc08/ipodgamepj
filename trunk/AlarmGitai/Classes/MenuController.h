@@ -10,9 +10,9 @@
 
 
 @interface MenuController : UITableViewController  {
-	NSArray *controllers;
-	NSIndexPath *OldPath;
+	int defaultdata;
 }
-@property (nonatomic ,retain) NSArray *controllers;
+- (void)reset:(int)param;
+- (void)sliderAction:(UISlider*)sender;
 @end
 
