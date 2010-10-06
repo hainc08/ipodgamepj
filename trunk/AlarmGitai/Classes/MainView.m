@@ -61,21 +61,16 @@
 {
 	if(editenable)
 	{
-		ViewCgPoint	*alarmviewpoint	;
-		if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
-		alarmviewpoint	= [[AlarmConfig getInstance] getHeigthViewPoint];
-		else	
-		alarmviewpoint	= [[AlarmConfig getInstance] getWidthViewPoint];
-		
+
 		/* 메뉴를 화면에 보여주자..  글씨체.. 사이즈 조정 표현방식등 MenuClass 변경 */
 		if(clockViewTouched == YES) {
 			[menuconfig reset:(clockview.view.transform.a)*10];
 		}
 		else if(dateViewTouched == YES) {
-		[menuconfig reset:dateview.view.transform.a];
+			[menuconfig reset:(dateview.view.transform.a)*10];
 		}
 		else if(weekViewTouched == YES) {
-		[menuconfig reset:weekview.view.transform.a];
+			[menuconfig reset:(weekview.view.transform.a)*10];
 		}
 		menuEnable = true;
 	}
