@@ -14,6 +14,8 @@
 #import "MenuBaseController.h"
 #import "FontSelectController.h"
 #import	"AlarmConfig.h"
+#include "MainView.h"
+#include "ActionManager.h"
 /*
 @implementation UINavigationBar (UINavigationBarCategory)
 - (void)setBackgroundImage:(UIImage *)image {
@@ -39,7 +41,6 @@
 */
 
 @implementation MenuController
-@synthesize controllers;
 
 - (id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -48,99 +49,9 @@
 
     return self;
 }
-
-/*
--(IBAction)toggleSave:(id)sender {
-#if 0 
- for (id oneObject in nib)
- {
-			MenuCustomCell *cell  = (MenuCustomCell *)[tableView  ];
-			[cell.textField  becomeFirstResponder];
-			return;
-		}
-		MenuBaseController *nextController = [self.controllers  objectAtIndex:row];
-		[self.navigationController pushViewController:nextController animated:YES];
-	}
-	else
-	{
-		FontSelectController *nextController = [self.controllers  objectAtIndex:row];
-	    [self.navigationController pushViewController:nextController animated:YES];
-	}
-}
-#endif
-}
-
--(IBAction)toggleCancle:(id)sender {
-	[super.navigationController.view removeFromSuperview  ];
-}
- */
-
-
 		
 - (void)viewDidLoad {
-
-
-	OldPath = nil;
-//	self.title = [[AlarmConfig getInstance] getCharName];
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-	
-    SelectViewController *hightviewController = [[SelectViewController alloc] init];
-    hightviewController.title = @"HightViewType";
-	hightviewController.type  = [[NSString alloc] initWithFormat:@"Type%d", [AlarmConfig getInstance].heightnum];
-	[array addObject:hightviewController]; 
-    [hightviewController release]; 
-	
-    SelectViewController *widthviewController = [[SelectViewController alloc] init];
-    widthviewController.title = @"WidthViewType";
-	widthviewController.type  = [[NSString alloc] initWithFormat:@"Type%d", [AlarmConfig getInstance].widthnum];
-	[array addObject:widthviewController];		
-    [widthviewController release];  
-	
-    FontSelectController *FontColtroller = [[FontSelectController alloc] initWithStyle:UITableViewStylePlain];
-    FontColtroller.title = @"Font";
-	FontColtroller.type  = [[AlarmConfig getInstance] getCurrFontName];
-	[array addObject:FontColtroller];
-    [FontColtroller release]; 
-    
-	
-	MenuBaseController *charrotatetime	= [[MenuBaseController alloc] init];
-	charrotatetime.title = @"Char Rotate";
-	charrotatetime.type  = @"Time (sec)" ;
-	[array addObject:charrotatetime]; 
-    [charrotatetime release]; 
-
-	self.controllers = array;
-    [array release];
-	
-	/*
-	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Save"
-                                   style:UIBarButtonItemStyleBordered
-                                   target:self
-                                   action:@selector(toggleSave:)];
-    self.navigationItem.rightBarButtonItem = editButton;
-	
-	UIBarButtonItem *closeButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Close"
-                                   style:UIBarButtonItemStyleBordered
-                                   target:self
-                                   action:@selector(toggleCancle:)];
-    self.navigationItem.leftBarButtonItem	= closeButton; */
-    [super viewDidLoad];
-	// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
-}
-
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-	[self.tableView reloadData];
-}
-
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+	defaultdata = 5;
 }
 
 /*
@@ -153,109 +64,90 @@
 	[super viewDidDisappear:animated];
 }
 */
-
+- (void)reset:(int)param
+{
+	defaultdata = param;
+	[self.tableView reloadData];
+}
 - (void)viewDidUnload {
-    self.controllers = nil;
     [super viewDidUnload];
 }
+
 - (void)dealloc {
-    [controllers release];
     [super dealloc];
 }
+
 #pragma mark -
 #pragma mark Table Data Source Methods
-
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section {
-    return [self.controllers count];
+    return 3;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *MenuName= @"MENU";
-	//self.title = MenuName;
-    MenuCustomCell *cell = (MenuCustomCell *)[tableView dequeueReusableCellWithIdentifier: 
-                             MenuName];
-	
-	if (cell == nil)  
-    {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MenuCustomCell" 
-                                                     owner:self options:nil];
-        for (id oneObject in nib)
-            if ([oneObject isKindOfClass:[MenuCustomCell class]])
-                cell = (MenuCustomCell *)oneObject;
-    }
-	
-	
-    NSUInteger row = [indexPath row];
-	
-	if( row != 2)
-	{
-    MenuBaseController *controller = [controllers objectAtIndex:row];
-	
-    cell.titleName.text = controller.title;
-	cell.selectName.text = controller.type ; /* 선택된 캐릭명, 폰트명 .. 등등 표시 */
-//	[cell.charImage setBackgroundImage:controller.image forState:];	
 
-
-		if( row ==3)
-		{
-			cell.textField.text = [[NSString alloc] initWithFormat:@"%d", [[AlarmConfig getInstance] getRotationTime]];
-			[cell.textField setAlpha:1];
-			cell.accessoryType = UITableViewCellAccessoryNone;
-		}
-		else
-		{
-			[ cell.textField setAlpha:0];
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSString *CellIdentifier = [ NSString stringWithFormat: @"%d:%d", [ indexPath indexAtPosition: 0 ], [ indexPath indexAtPosition:1 ]];
+	
+	UITableViewCell *cell = [ tableView dequeueReusableCellWithIdentifier: CellIdentifier];
+	
+	if (cell == nil) {
+		cell = [ [ [ UITableViewCell alloc ] initWithFrame:CGRectMake(0, 0, 20, 20) reuseIdentifier: CellIdentifier] autorelease ];
 		
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+		
+		switch(indexPath.row) {
+			case(0):
+			
+			break;
+			case(1):
+			{
+				UISlider *viewsize = [ [ UISlider alloc ] initWithFrame: CGRectMake(50, 0, 100, 20) ];
+				viewsize.minimumValue = 1.0;
+				viewsize.maximumValue = 10.0;
+				viewsize.tag = 1;
+				viewsize.value = defaultdata;
+				viewsize.continuous = YES;
+				[viewsize addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
+				[cell addSubview:viewsize ];
+				cell.textLabel.text = @"Size"; 
+				[ viewsize release ];
+			}
+				break;
+		}
 	}
 	else
-	{
-		FontSelectController *controller = [controllers objectAtIndex:row];
-		
-		cell.titleName.text = controller.title;
-		cell.selectName.text = controller.type ; /* 선택된 캐릭명, 폰트명 .. 등등 표시 */
-		//	[cell.charImage setBackgroundImage:controller.image forState:];	
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		[ cell.textField setAlpha:0];
+	{ /* Reload */
+		switch(indexPath.row) {
+			case(0):
+				
+				break;
+			case(1):
+			{
+				NSArray *ctlarr = cell.subviews;
+				
+				for (id oneObject in ctlarr)
+					if ([oneObject isKindOfClass:[UISlider class]])
+					{
+						UISlider *viewsize = (UISlider *)oneObject;
+						viewsize.value = defaultdata;
+						break;
+					}
+			}
+			break;
+		}
 	}
-	[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-	
-	OldPath = indexPath;
-    return cell;
+	return cell;
 }
 
-#pragma mark -
-#pragma mark Table View Delegate Methods
-- (void)tableView:(UITableView *)tableView  didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSUInteger row = [indexPath row];
-	
-	if( OldPath != nil  )
-	{
-		MenuCustomCell *oldcell  = (MenuCustomCell *)[tableView cellForRowAtIndexPath:OldPath];
-		[oldcell.textField resignFirstResponder];
-	}
-	
-	if( row  != 2 )
-	{
-		if(row == 3)
-		{
-			MenuCustomCell *cell  = (MenuCustomCell *)[tableView cellForRowAtIndexPath:indexPath];
-			[cell.textField  becomeFirstResponder];
-			return;
-		}
-		MenuBaseController *nextController = [self.controllers  objectAtIndex:row];
-		[self.navigationController pushViewController:nextController animated:YES];
-	}
-	else
-	{
-		FontSelectController *nextController = [self.controllers  objectAtIndex:row];
-	    [self.navigationController pushViewController:nextController animated:YES];
-	}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {  
+	return 20.0;  
+}  
+#pragma mark ControlEventTarget Actions
 
+- (void)sliderAction:(UISlider*)sender
+{
+	[[ActionManager getInstance] setRootAction:sender.value];
 }
 
 		 
