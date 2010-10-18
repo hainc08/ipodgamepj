@@ -67,6 +67,12 @@ static DateFormat *DateFormatInst;
 	NSString *Hour = [FormatDate stringFromDate:[[NSDate date] autorelease]];
 	return Hour;
 }
+- (NSString *)getHour24 
+{
+	[FormatDate setDateFormat:@"kk"];
+	NSString *Hour = [FormatDate stringFromDate:[[NSDate date] autorelease]];
+	return Hour;
+}
 
 - (NSString *)getMin 
 {

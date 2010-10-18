@@ -52,7 +52,7 @@
 	[u_Week setFrame:CGRectMake(220,180,240, 360)];
 	[b_Week setFrame:CGRectMake(220,180,240, 360)];
 
-	[u_MonT setFrame:CGRectMake(25,0,240, 360)];
+/*	[u_MonT setFrame:CGRectMake(25,0,240, 360)];
 	[u_MonM setFrame:CGRectMake(140,0,240, 360)];
 	[u_DayT setFrame:CGRectMake(300,0,240, 360)];
 	[u_DayM setFrame:CGRectMake(415,0,240, 360)];
@@ -61,6 +61,17 @@
 	[b_MonM setFrame:CGRectMake(140,0,240, 360)];
 	[b_DayT setFrame:CGRectMake(310,0,240, 360)];
 	[b_DayM setFrame:CGRectMake(425,0,240, 360)];
+	*/
+	[u_MonT setFrame:CGRectMake(-50,-80,240, 360)];
+	[u_MonM setFrame:CGRectMake(65,-80,240, 360)];
+	[u_DayT setFrame:CGRectMake(225,-80,240, 360)];
+	[u_DayM setFrame:CGRectMake(340,-80,240, 360)];
+	
+	[b_MonT setFrame:CGRectMake(-50,-80,240, 360)];
+	[b_MonM setFrame:CGRectMake(65,-80,240, 360)];
+	[b_DayT setFrame:CGRectMake(225,-80,240, 360)];
+	[b_DayM setFrame:CGRectMake(340,-80,240, 360)];
+	
 }
 
 - (void)ChageNumberImage:(int)type changeImage:(char)number

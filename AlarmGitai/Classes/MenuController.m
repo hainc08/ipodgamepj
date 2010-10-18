@@ -7,11 +7,7 @@
 //
 
 #import "MenuController.h"
-#import "CharSelectController.h"
 #import "MenuCustomCell.h"
-
-#import "SelectViewController.h"
-#import "MenuBaseController.h"
 #import "FontSelectController.h"
 #import	"AlarmConfig.h"
 #include "MainView.h"
@@ -104,7 +100,7 @@
 			{
 				UISlider *viewsize = [ [ UISlider alloc ] initWithFrame: CGRectMake(50, 0, 100, 20) ];
 				viewsize.minimumValue = 1.0;
-				viewsize.maximumValue = 10.0;
+				viewsize.maximumValue = 6.0;
 				viewsize.tag = 1;
 				viewsize.value = defaultdata;
 				viewsize.continuous = YES;
@@ -147,7 +143,10 @@
 
 - (void)sliderAction:(UISlider*)sender
 {
-	[[ActionManager getInstance] setRootAction:sender.value];
+	DataParam *data = [[DataParam alloc ] init];
+	[data setIData:sender.value];
+	[[ActionManager getInstance] setRootAction:TRANSUPDATE value:data];
+	[data	 release];
 }
 
 		 

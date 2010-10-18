@@ -34,7 +34,7 @@ static ActionManager *actionManagerInst;
 	}
 }
 
-- (void)setRootAction:(int) actionParam
+- (void)setRootAction:(int)_inType value:(NSObject *)_inValue
 {
 	NSArray *ctlarr = navigationController.viewControllers;
 	
@@ -42,7 +42,7 @@ static ActionManager *actionManagerInst;
 		if ([oneObject isKindOfClass:[MainView class]])
 		{
 			MainView *root = (MainView *)oneObject;
-			[root setTransView:actionParam];
+			[root reset:_inType value:_inValue];
 			break;
 		}
 	

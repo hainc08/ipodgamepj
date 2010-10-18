@@ -70,16 +70,13 @@
 		5631A9FF1204218700EA05F9 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5631A9FD1204218700EA05F9 /* MenuController.m */; };
 		5641726212044FB70035DD81 /* char_natsuko.png in Resources */ = {isa = PBXBuildFile; fileRef = 5641726112044FB70035DD81 /* char_natsuko.png */; };
 		56417272120454040035DD81 /* MenuCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56417271120454040035DD81 /* MenuCustomCell.xib */; };
-		567D5E741205DCDF009472A3 /* MenuCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 567D5E721205DCDF009472A3 /* MenuCustomCell.m */; };
-		568844B31240877A0080F0A0 /* AlarmConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568844B01240877A0080F0A0 /* AlarmConfigController.m */; };
-		568844B41240877A0080F0A0 /* AlarmController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568844B21240877A0080F0A0 /* AlarmController.m */; };
-		568844C9124089550080F0A0 /* CharSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568844C8124089550080F0A0 /* CharSelectController.m */; };
+		568844B31240877A0080F0A0 /* MenuAlarmController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568844B01240877A0080F0A0 /* MenuAlarmController.m */; };
+		568844C9124089550080F0A0 /* MenuSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568844C8124089550080F0A0 /* MenuSelectController.m */; };
 		569DE53711F1BB4F00A4E58F /* AlarmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569DE53611F1BB4F00A4E58F /* AlarmView.xib */; };
 		569DE53A11F1BB7000A4E58F /* AlarmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 569DE53911F1BB7000A4E58F /* AlarmView.m */; };
 		569DE96311F22DE700A4E58F /* xbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 569DE96211F22DE700A4E58F /* xbox.png */; };
-		56B0B1B7120F0C48004F9D97 /* FontSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1B6120F0C48004F9D97 /* FontSelectController.m */; };
-		56B0B1BA120F0C61004F9D97 /* MenuBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1B9120F0C61004F9D97 /* MenuBaseController.m */; };
-		56B0B1BD120F0C71004F9D97 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1BC120F0C71004F9D97 /* SelectViewController.m */; };
+		56B0B1BA120F0C61004F9D97 /* ButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1B9120F0C61004F9D97 /* ButtonView.m */; };
+		56B0B1BD120F0C71004F9D97 /* MenuTimeOptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1BC120F0C71004F9D97 /* MenuTimeOptionController.m */; };
 		56FA81291217C74000726CAD /* back_0_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA810A1217C74000726CAD /* back_0_d.png */; };
 		56FA812A1217C74000726CAD /* back_0_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA810B1217C74000726CAD /* back_0_n.png */; };
 		56FA812B1217C74000726CAD /* back_10_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA810C1217C74000726CAD /* back_10_d.png */; };
@@ -603,24 +600,18 @@
 		5631A9FD1204218700EA05F9 /* MenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuController.m; path = Classes/MenuController.m; sourceTree = "<group>"; };
 		5641726112044FB70035DD81 /* char_natsuko.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = char_natsuko.png; path = "char/なつこ/char_natsuko.png"; sourceTree = "<group>"; };
 		56417271120454040035DD81 /* MenuCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCustomCell.xib; sourceTree = "<group>"; };
-		567D5E711205DCDF009472A3 /* MenuCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuCustomCell.h; path = Classes/MenuCustomCell.h; sourceTree = "<group>"; };
-		567D5E721205DCDF009472A3 /* MenuCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuCustomCell.m; path = Classes/MenuCustomCell.m; sourceTree = "<group>"; };
-		568844AF1240877A0080F0A0 /* AlarmConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmConfigController.h; path = Classes/AlarmConfigController.h; sourceTree = "<group>"; };
-		568844B01240877A0080F0A0 /* AlarmConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmConfigController.m; path = Classes/AlarmConfigController.m; sourceTree = "<group>"; };
-		568844B11240877A0080F0A0 /* AlarmController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmController.h; path = Classes/AlarmController.h; sourceTree = "<group>"; };
-		568844B21240877A0080F0A0 /* AlarmController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmController.m; path = Classes/AlarmController.m; sourceTree = "<group>"; };
-		568844C7124089550080F0A0 /* CharSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharSelectController.h; path = Classes/CharSelectController.h; sourceTree = "<group>"; };
-		568844C8124089550080F0A0 /* CharSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CharSelectController.m; path = Classes/CharSelectController.m; sourceTree = "<group>"; };
+		568844AF1240877A0080F0A0 /* MenuAlarmController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuAlarmController.h; path = Classes/MenuAlarmController.h; sourceTree = "<group>"; };
+		568844B01240877A0080F0A0 /* MenuAlarmController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuAlarmController.m; path = Classes/MenuAlarmController.m; sourceTree = "<group>"; };
+		568844C7124089550080F0A0 /* MenuSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuSelectController.h; path = Classes/MenuSelectController.h; sourceTree = "<group>"; };
+		568844C8124089550080F0A0 /* MenuSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuSelectController.m; path = Classes/MenuSelectController.m; sourceTree = "<group>"; };
 		569DE53611F1BB4F00A4E58F /* AlarmView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmView.xib; sourceTree = "<group>"; };
 		569DE53811F1BB7000A4E58F /* AlarmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmView.h; sourceTree = "<group>"; };
 		569DE53911F1BB7000A4E58F /* AlarmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmView.m; sourceTree = "<group>"; };
 		569DE96211F22DE700A4E58F /* xbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xbox.png; path = image/xbox.png; sourceTree = "<group>"; };
-		56B0B1B5120F0C48004F9D97 /* FontSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontSelectController.h; path = Classes/FontSelectController.h; sourceTree = "<group>"; };
-		56B0B1B6120F0C48004F9D97 /* FontSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontSelectController.m; path = Classes/FontSelectController.m; sourceTree = "<group>"; };
-		56B0B1B8120F0C61004F9D97 /* MenuBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuBaseController.h; path = Classes/MenuBaseController.h; sourceTree = "<group>"; };
-		56B0B1B9120F0C61004F9D97 /* MenuBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuBaseController.m; path = Classes/MenuBaseController.m; sourceTree = "<group>"; };
-		56B0B1BB120F0C71004F9D97 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectViewController.h; path = Classes/SelectViewController.h; sourceTree = "<group>"; };
-		56B0B1BC120F0C71004F9D97 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectViewController.m; path = Classes/SelectViewController.m; sourceTree = "<group>"; };
+		56B0B1B8120F0C61004F9D97 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonView.h; path = Classes/ButtonView.h; sourceTree = "<group>"; };
+		56B0B1B9120F0C61004F9D97 /* ButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ButtonView.m; path = Classes/ButtonView.m; sourceTree = "<group>"; };
+		56B0B1BB120F0C71004F9D97 /* MenuTimeOptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuTimeOptionController.h; path = Classes/MenuTimeOptionController.h; sourceTree = "<group>"; };
+		56B0B1BC120F0C71004F9D97 /* MenuTimeOptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuTimeOptionController.m; path = Classes/MenuTimeOptionController.m; sourceTree = "<group>"; };
 		56FA810A1217C74000726CAD /* back_0_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_0_d.png; sourceTree = "<group>"; };
 		56FA810B1217C74000726CAD /* back_0_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_0_n.png; sourceTree = "<group>"; };
 		56FA810C1217C74000726CAD /* back_10_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_10_d.png; sourceTree = "<group>"; };
@@ -1129,7 +1120,6 @@
 			children = (
 				560890FE11ECA5BA00C1F800 /* BaseClasses */,
 				560890D011ECA52F00C1F800 /* ConfigClasses */,
-				568844AE124087550080F0A0 /* AlarmClasses */,
 				5631AA02120424CF00EA05F9 /* MenuClasses */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -1297,31 +1287,18 @@
 		5631AA02120424CF00EA05F9 /* MenuClasses */ = {
 			isa = PBXGroup;
 			children = (
+				568844AF1240877A0080F0A0 /* MenuAlarmController.h */,
+				568844B01240877A0080F0A0 /* MenuAlarmController.m */,
 				5631A9FC1204218700EA05F9 /* MenuController.h */,
 				5631A9FD1204218700EA05F9 /* MenuController.m */,
-				567D5E711205DCDF009472A3 /* MenuCustomCell.h */,
-				567D5E721205DCDF009472A3 /* MenuCustomCell.m */,
-				568844C7124089550080F0A0 /* CharSelectController.h */,
-				568844C8124089550080F0A0 /* CharSelectController.m */,
-				56B0B1BB120F0C71004F9D97 /* SelectViewController.h */,
-				56B0B1BC120F0C71004F9D97 /* SelectViewController.m */,
-				56B0B1B5120F0C48004F9D97 /* FontSelectController.h */,
-				56B0B1B6120F0C48004F9D97 /* FontSelectController.m */,
-				56B0B1B8120F0C61004F9D97 /* MenuBaseController.h */,
-				56B0B1B9120F0C61004F9D97 /* MenuBaseController.m */,
+				568844C7124089550080F0A0 /* MenuSelectController.h */,
+				568844C8124089550080F0A0 /* MenuSelectController.m */,
+				56B0B1BB120F0C71004F9D97 /* MenuTimeOptionController.h */,
+				56B0B1BC120F0C71004F9D97 /* MenuTimeOptionController.m */,
+				56B0B1B8120F0C61004F9D97 /* ButtonView.h */,
+				56B0B1B9120F0C61004F9D97 /* ButtonView.m */,
 			);
 			name = MenuClasses;
-			sourceTree = "<group>";
-		};
-		568844AE124087550080F0A0 /* AlarmClasses */ = {
-			isa = PBXGroup;
-			children = (
-				568844AF1240877A0080F0A0 /* AlarmConfigController.h */,
-				568844B01240877A0080F0A0 /* AlarmConfigController.m */,
-				568844B11240877A0080F0A0 /* AlarmController.h */,
-				568844B21240877A0080F0A0 /* AlarmController.m */,
-			);
-			name = AlarmClasses;
 			sourceTree = "<group>";
 		};
 		56FA81091217C74000726CAD /* background */ = {
@@ -2498,16 +2475,13 @@
 				841CF22611F3FB9E00677616 /* CharView.m in Sources */,
 				84D6A231120042B00044ECE2 /* MaskView.m in Sources */,
 				5631A9FF1204218700EA05F9 /* MenuController.m in Sources */,
-				567D5E741205DCDF009472A3 /* MenuCustomCell.m in Sources */,
 				84C02BF5120676CA00F90942 /* SaveManager.m in Sources */,
-				56B0B1B7120F0C48004F9D97 /* FontSelectController.m in Sources */,
-				56B0B1BA120F0C61004F9D97 /* MenuBaseController.m in Sources */,
-				56B0B1BD120F0C71004F9D97 /* SelectViewController.m in Sources */,
+				56B0B1BA120F0C61004F9D97 /* ButtonView.m in Sources */,
+				56B0B1BD120F0C71004F9D97 /* MenuTimeOptionController.m in Sources */,
 				8485F0721234A8B9009F9234 /* FileIO.m in Sources */,
 				846DB6A51235951A00820F5F /* SceneView.m in Sources */,
-				568844B31240877A0080F0A0 /* AlarmConfigController.m in Sources */,
-				568844B41240877A0080F0A0 /* AlarmController.m in Sources */,
-				568844C9124089550080F0A0 /* CharSelectController.m in Sources */,
+				568844B31240877A0080F0A0 /* MenuAlarmController.m in Sources */,
+				568844C9124089550080F0A0 /* MenuSelectController.m in Sources */,
 				84742D1E12597540005859ED /* ActionManager.m in Sources */,
 				84742D2D125977E3005859ED /* MainView.m in Sources */,
 			);

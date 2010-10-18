@@ -35,6 +35,9 @@ static AlarmConfig *AlarmConfigInst;
 	[[SaveManager getInstance] setStringData:@"FontType" idx:1 value:FontUpImageType];
 	[[SaveManager getInstance] setStringData:@"FontType" idx:2 value:FontBgImageType];
 	
+	[[SaveManager getInstance] setIntData:@"HourMode" idx:0 value:HourMode == TRUE ? 1 : 0 ];
+	[[SaveManager getInstance] setIntData:@"DateMode" idx:0 value:DateMode == TRUE ? 1 : 0];
+	
 	[[SaveManager getInstance] saveFile];
 }
 - (void)defaultConfig
@@ -46,6 +49,10 @@ static AlarmConfig *AlarmConfigInst;
 	[[SaveManager getInstance] setIntData:@"FontType" idx:0 value:0];
 	[[SaveManager getInstance] setStringData:@"FontType" idx:1 value:@"ub"];
 	[[SaveManager getInstance] setStringData:@"FontType" idx:2 value:@"dw"];
+	
+	[[SaveManager getInstance] getIntData:@"HourMode" idx:0 base:1];
+	[[SaveManager getInstance] getIntData:@"DateMode" idx:0 base:1];
+	
 	
 	[[SaveManager getInstance] saveFile];
 	
@@ -66,6 +73,12 @@ static AlarmConfig *AlarmConfigInst;
 	FontUpImageType = [[SaveManager getInstance] getStringData:@"FontType" idx:1 base:@"ub"];
 	FontBgImageType = [[SaveManager getInstance] getStringData:@"FontType" idx:2 base:@"dw"];
 	
+	
+	
+	HourMode =		[[SaveManager getInstance] getIntData:@"HourMode" idx:0 base:1]  == 1 ? TRUE : FALSE;
+	DateMode =		[[SaveManager getInstance] getIntData:@"DateMode" idx:0 base:1]  == 1 ? TRUE : FALSE;
+	
+	
 	heigthviewpoint = [ViewCgPoint alloc];
 	widthviewpoint = [ViewCgPoint alloc];
 
@@ -79,6 +92,22 @@ static AlarmConfig *AlarmConfigInst;
 	[widthviewpoint setClockPoint:CGPointMake(65,230)];
 	[widthviewpoint setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
 	[widthviewpoint setDatePoint:CGPointMake(35,50)];	
+}
+- (BOOL) getHourMode
+{
+	return  HourMode;
+}
+- (void) setHourMode
+{
+	!HourMode;
+}
+- (BOOL) getDateMode
+{
+	return  DateMode;
+}
+- (void) setDateMode
+{
+	!DateMode;
 }
 - (int )getFontType
 {

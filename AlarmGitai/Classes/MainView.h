@@ -4,11 +4,29 @@
 @class DateView;
 @class SceneView;
 @class MenuController;
+@class MenuSelectController;
 
-@interface MainView : UIViewController {
+@interface DataParam : NSObject {
+	int iData;
+	NSString *sData;
+}
+
+@property (readwrite)	int iData;
+@property (retain)	NSString *sData;
+
+@end
+
+enum ROOTUPDATE {
+	TRANSUPDATE = 0,
+	ROTAGEUPDATE
+};
 	
+@interface MainView : UIViewController {
+
+	MenuSelectController *selectmenu;
 	MenuController *menuconfig;
 	
+	BOOL	viewrotate;
 	BOOL	editenable;
 	BOOL	clockViewTouched;
 	BOOL	dateViewTouched;
@@ -18,8 +36,6 @@
 	BOOL hiddenButton;
 	BOOL menuEnable;
 
-	UINavigationController *menuNavi;
-	UINavigationController *alarmNavi;
 	
 	DateView *weekview;
 	ClockView *clockview;
@@ -36,7 +52,10 @@
 	UIButton *MenuButton;
 	UIButton *AlarmButton;
 }
-- (void) setTransView:(int)_inTrans;
+
+-(CGRect)viewcentersettle:(CGRect) rect;
+-(void)menuViewFrameUpdate:(CGRect ) rect;
+- (void) reset:(int)_type value:(NSObject *)_inValue;
 - (void)update;
 - (void)stopTimer;
 - (void)resumeTimer;
