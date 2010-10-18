@@ -69,7 +69,6 @@
 		5621D4D011F77004009236C7 /* layout3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5621D4CC11F77004009236C7 /* layout3.png */; };
 		5631A9FF1204218700EA05F9 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5631A9FD1204218700EA05F9 /* MenuController.m */; };
 		5641726212044FB70035DD81 /* char_natsuko.png in Resources */ = {isa = PBXBuildFile; fileRef = 5641726112044FB70035DD81 /* char_natsuko.png */; };
-		56417272120454040035DD81 /* MenuCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56417271120454040035DD81 /* MenuCustomCell.xib */; };
 		568844B31240877A0080F0A0 /* MenuAlarmController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568844B01240877A0080F0A0 /* MenuAlarmController.m */; };
 		568844C9124089550080F0A0 /* MenuSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568844C8124089550080F0A0 /* MenuSelectController.m */; };
 		569DE53711F1BB4F00A4E58F /* AlarmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569DE53611F1BB4F00A4E58F /* AlarmView.xib */; };
@@ -599,7 +598,6 @@
 		5631A9FC1204218700EA05F9 /* MenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuController.h; path = Classes/MenuController.h; sourceTree = "<group>"; };
 		5631A9FD1204218700EA05F9 /* MenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuController.m; path = Classes/MenuController.m; sourceTree = "<group>"; };
 		5641726112044FB70035DD81 /* char_natsuko.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = char_natsuko.png; path = "char/なつこ/char_natsuko.png"; sourceTree = "<group>"; };
-		56417271120454040035DD81 /* MenuCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCustomCell.xib; sourceTree = "<group>"; };
 		568844AF1240877A0080F0A0 /* MenuAlarmController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuAlarmController.h; path = Classes/MenuAlarmController.h; sourceTree = "<group>"; };
 		568844B01240877A0080F0A0 /* MenuAlarmController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuAlarmController.m; path = Classes/MenuAlarmController.m; sourceTree = "<group>"; };
 		568844C7124089550080F0A0 /* MenuSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuSelectController.h; path = Classes/MenuSelectController.h; sourceTree = "<group>"; };
@@ -1279,7 +1277,6 @@
 				2899E5210DE3E06400AC0155 /* AlarmGitaiViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* AlarmGitai-Info.plist */,
-				56417271120454040035DD81 /* MenuCustomCell.xib */,
 			);
 			name = Xib;
 			sourceTree = "<group>";
@@ -2016,7 +2013,6 @@
 				56FF142811FB1A7500427935 /* config1.png in Resources */,
 				84D6A26F120045000044ECE2 /* mask.png in Resources */,
 				5641726212044FB70035DD81 /* char_natsuko.png in Resources */,
-				56417272120454040035DD81 /* MenuCustomCell.xib in Resources */,
 				84EB682D12088F9F0086B4CB /* char_reina.png in Resources */,
 				56FA81291217C74000726CAD /* back_0_d.png in Resources */,
 				56FA812A1217C74000726CAD /* back_0_n.png in Resources */,
