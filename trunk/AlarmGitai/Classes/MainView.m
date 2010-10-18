@@ -8,8 +8,38 @@
 
 #import "MenuController.h"
 #import "AlarmController.h"
+#import "MenuSelectController.h"
+@implementation DataParam
+
+@synthesize  iData;
+@synthesize sData;
+
+@end
+
 
 @implementation MainView
+
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+
+	if(viewrotate)
+	{
+	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
+	{	
+		selectmenu.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
+		[selectmenu.view setFrame:CGRectMake(0, 0, 320, 480 )];
+		[self.navigationController pushViewController:selectmenu animated:YES];
+	}
+	else
+	{
+		selectmenu.view.transform =  CGAffineTransformMakeRotation(0);
+		[selectmenu.view setFrame:CGRectMake(0, -320, 480, 320 )];
+		[self.navigationController pushViewController:selectmenu animated:YES];
+	}
+		viewrotate = FALSE;
+	}
+}
+
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -20,61 +50,188 @@
 	//return;
 	clockViewTouched = NO;
 	dateViewTouched = NO;
-	weekViewTouched = NO;
+
+	UITouch *touch = [touches anyObject];
+
+	
+	[menuconfig.view setAlpha:0];
 	if(editenable)
 	{
-		UITouch *currentTouch = [[event allTouches] anyObject];
-		CGPoint touchPoint = [currentTouch locationInView:self.view];
+		if( [touch tapCount] == 1 )
+		{
+			UITouch *currentTouch = [[event allTouches] anyObject];
+			CGPoint touchPoint = [currentTouch locationInView:self.view];
 		
-		if (CGRectContainsPoint(clockview.view.frame, touchPoint)) {
-			clockViewTouched = YES;
-		}	
-		else if (CGRectContainsPoint(dateview.view.frame, touchPoint)) {
-			dateViewTouched = YES;
+			if (CGRectContainsPoint(clockview.view.frame, touchPoint)) {
+				clockViewTouched = YES;
+			}	
+			else if (CGRectContainsPoint(dateview.view.frame, touchPoint)) {
+				dateViewTouched = YES;
+			}
 		}
-		else if (CGRectContainsPoint(weekview.view.frame, touchPoint)) {
-			weekViewTouched = YES;
+		else if ( [touch tapCount] == 2)
+		{
+			UITouch *currentTouch = [[event allTouches] anyObject];
+			CGPoint touchPoint = [currentTouch locationInView:self.view];
+			
+			if (CGRectContainsPoint(clockview.view.frame, touchPoint)) {
+				clockViewTouched = YES;
+			}	
+			else if (CGRectContainsPoint(dateview.view.frame, touchPoint)) {
+				dateViewTouched = YES;
+			}
 		}
 	}
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+	
+	UITouch *touch = [touches anyObject];
+		
 	if(editenable)
 	{
-		UITouch *currentTouch = [[event allTouches] anyObject];	
-		CGPoint currentPoint = [currentTouch locationInView:self.view];
+		if( [touch tapCount] == 1 )
+		{
+			UITouch *currentTouch = [[event allTouches] anyObject];	
+			CGPoint currentPoint = [currentTouch locationInView:self.view];
 	
-		if(clockViewTouched == YES) {
-			clockview.view.center = CGPointMake(currentPoint.x,currentPoint.y);
+			if(clockViewTouched == YES) {
+				clockview.view.center = CGPointMake(currentPoint.x,currentPoint.y);
+			}
+			else if(dateViewTouched == YES) {
+				dateview.view.center = CGPointMake(currentPoint.x,currentPoint.y);
+			}
 		}
-		else if(dateViewTouched == YES) {
-			dateview.view.center = CGPointMake(currentPoint.x,currentPoint.y);
-		}
-		else if(weekViewTouched == YES) {
-			weekview.view.center = CGPointMake(currentPoint.x,currentPoint.y);
+		else if ( [touch tapCount] == 2)
+		{
+			
 		}
 	}
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+		UITouch *touch = [touches anyObject];
 	if(editenable)
 	{
-
+		if( [touch tapCount] == 1 )
+		{
 		/* 메뉴를 화면에 보여주자..  글씨체.. 사이즈 조정 표현방식등 MenuClass 변경 */
-		if(clockViewTouched == YES) {
-			[menuconfig reset:(clockview.view.transform.a)*10];
-		}
-		else if(dateViewTouched == YES) {
+			if(clockViewTouched == YES) {
+				[clockview.view setFrame:[self viewcentersettle:clockview.view.frame]];
+				[menuconfig reset:(clockview.view.transform.a)*10];
+				[self menuViewFrameUpdate:clockview.view.frame];
+
+			}
+			else if(dateViewTouched == YES) {
+				[dateview.view setFrame:[self viewcentersettle:dateview.view.frame]];
 			[menuconfig reset:(dateview.view.transform.a)*10];
+				[self menuViewFrameUpdate:dateview.view.frame];
+			}
 		}
-		else if(weekViewTouched == YES) {
-			[menuconfig reset:(weekview.view.transform.a)*10];
-		}
+
 		menuEnable = true;
 	}
+}
+
+-(CGRect)viewcentersettle:(CGRect) rect
+{
+	if( rect.origin.x + rect.size.width > self.view.frame.size.width )
+		rect.origin.x -= ((rect.origin.x + rect.size.width )- self.view.frame.size.width);
+	else if( rect.origin.x < 0)
+		rect.origin.x = 1;
 	
+	if( rect.origin.y + rect.size.height > self.view.frame.size.height)
+		rect.origin.y -= ((rect.origin.y + rect.size.height )- self.view.frame.size.height);
+	else if (rect.origin.y < 0 )
+		rect.origin.y = 1;
+	
+	return rect;
+}
+
+-(void)menuViewFrameUpdate:(CGRect ) rect
+{
+	int	x, y;
+
+	x = rect.origin.x;
+	if ( self.view.frame.size.height/2	< rect.origin.y ) 
+		y = rect.origin.y  - 100;
+	else
+		y = rect.origin.y +rect.size.height ;
+
+	[menuconfig.view setFrame:CGRectMake(x , y , 150, 100) ];
+	[menuconfig.view setAlpha:1	];	
+}
+
+/* 각각 보여지는 크기를 조절 */
+- (void) reset:(int)_type value:(NSObject *)_inValue
+{
+	if(_type == TRANSUPDATE)
+	{
+		if(menuEnable)
+		{
+			DataParam  *Trans = (DataParam *)_inValue;
+			/* 메뉴를 화면에 보여주자..  글씨체.. 사이즈 조정 표현방식등 MenuClass 변경 */
+			if(clockViewTouched == YES) {
+				[clockview.view setTransform:CGAffineTransformMake((CGFloat)[Trans iData]/10, 0.0, 0.0, (CGFloat)[Trans iData]/10, 0.0, 0.0)];
+			}
+			else if(dateViewTouched == YES) {
+				[dateview.view setTransform:CGAffineTransformMake((CGFloat)[Trans iData]/10, 0.0, 0.0, (CGFloat)[Trans iData]/10, 0.0, 0.0)];
+			}
+		}
+	}
+	else if (_type	== ROTAGEUPDATE)
+	{
+		viewrotate = TRUE;
+		
+	}
+}
+
+/* 흔들기를 사용하기 위해서 추가 */
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	[self becomeFirstResponder];
+}
+
+- (BOOL)canBecomeFirstResponder {
+	return YES;
+}
+
+- (void)ConfigSetup{
+	ViewCgPoint *config = [ViewCgPoint alloc];
+	
+	[config setClockTrans:clockview.view.transform];
+	[config setClockPoint:clockview.view.center];
+	[config setDateTrans:dateview.view.transform];
+	[config setDatePoint:dateview.view.center];
+	
+	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
+		[[AlarmConfig getInstance] setHeigthViewPoint:config];
+	else
+		[[AlarmConfig getInstance] setWidthViewPoint:config];
+	
+	[config release];
+}
+
+- (void)ButtonClick:(id)sender
+{
+	if( sender == MenuButton )
+	{
+		[self stopTimer];
+		[MenuXbox setAlpha:1];
+		[MenuButton setAlpha:0];
+		editenable = true;
+	}
+	else if( sender == MenuXbox)
+	{
+		[self resumeTimer];
+		[self ConfigSetup];	
+		[MenuXbox setAlpha:0];
+		[MenuButton setAlpha:1];
+		editenable = false;
+		menuEnable = false;
+	}
 }
 
 /*
@@ -97,7 +254,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+//	self.view.autoresizesSubviews = NO;
+//	self.view.autoresizingMask =UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	
+	viewrotate	= TRUE;
 	editenable	= false;
 	hiddenButton = false;
 	menuEnable   = false;
@@ -112,28 +272,19 @@
 	[self.view addSubview:sceneView.view];
 	
 	clockview = [[ClockView alloc] init];
-	[clockview.view setFrame:CGRectMake(0, 0, 500, 360)];
+	[clockview.view setFrame:CGRectMake(0, 0, 520, 200)];
 	[clockview.view setTransform:alarmviewpoint.ClockTrans]; 
 	[clockview.view setCenter:alarmviewpoint.ClockPoint ];
 	[clockview UpdateTime];
 	[self.view addSubview:clockview.view];
 	
 	dateview = [[DateView alloc] init];
-	[dateview.view setFrame:CGRectMake(0, 0, 500, 360)];
+	[dateview.view setFrame:CGRectMake(0, 0, 520, 200)];
 	[dateview.view setTransform:alarmviewpoint.DateTrans];
 	[dateview.view setCenter:alarmviewpoint.DatePoint ];
 	[dateview UpdateDate];
 	[self.view addSubview:dateview.view];
 	
-	
-/*
-	dateview = [[DateView alloc] init];
-	[dateview.view setTransform:alarmviewpoint.DateTrans];
-	[dateview.view setCenter:alarmviewpoint.DatePoint];
-	[dateview UpdateDate];
-	[dateview.view setAlpha:1];
-	[self.view addSubview:dateview.view];
-*/
 
  	MenuButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 112, 98)];
 	[MenuButton setTitle:@"enable" forState:UIControlStateNormal];
@@ -157,6 +308,8 @@
 	[self.view addSubview:[menuconfig view]];
 	
 	
+	selectmenu = [[MenuSelectController alloc] init];
+	[selectmenu.view setFrame:CGRectMake(0, 0, 320, 480)];
 
 /*
 	AlarmButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 32, 31)];
@@ -165,18 +318,8 @@
 	[AlarmButton addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 	[AlarmButton setAlpha:1];
 	[self.view addSubview:AlarmButton];
-	
-	
 
-
-	menuNavi = [[UINavigationController alloc] initWithRootViewController:menuconfig] ;
-	[menuconfig release];
-
-*/	
-	AlarmController *alarmconfig = [[AlarmController alloc] initWithStyle:UITableViewStylePlain];
-	alarmNavi = [[UINavigationController alloc] initWithRootViewController:alarmconfig] ;
-	[alarmconfig release];
-	
+ */	
 	frameTick = 0;
 	//너무 자주 업데잇할 필요가 없을 듯~
 	framePerSec = 1.f;
@@ -198,16 +341,6 @@
 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    //return (interfaceOrientation == UIInterfaceOrientationPortrait);
-//	return YES;
-}
- */
-
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -219,66 +352,6 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 	
-}
-- (void)ConfigSetup{
-	ViewCgPoint *config = [ViewCgPoint alloc];
-	
-	[config setClockTrans:clockview.view.transform];
-	[config setClockPoint:clockview.view.center];
-	[config setDateTrans:dateview.view.transform];
-	[config setDatePoint:dateview.view.center];
-
-	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
-		[[AlarmConfig getInstance] setHeigthViewPoint:config];
-	else	
-		[[AlarmConfig getInstance] setWidthViewPoint:config];
-	
-	[config release];
-}
-	
-- (void)ButtonClick:(id)sender
-{
-	if(sender == AlarmButton)
-	{
-		[self.view addSubview:alarmNavi.view];
-		[alarmNavi.view setAlpha:1];
-	}
-	else if( sender == MenuButton )
-	{
-		[self stopTimer];
-		[MenuXbox setAlpha:1];
-		[MenuButton setAlpha:0];
-		editenable = true;
-	}
-	else if( sender == MenuXbox)
-	{
-		[self resumeTimer];
-		[self ConfigSetup];	
-		[MenuXbox setAlpha:0];
-		[MenuButton setAlpha:1];
-		editenable = false;
-		menuEnable = false;
-	}
-}
-- (void) setTransView:(int)_inTrans
-{
-	if(menuEnable)
-	{
-		/* 메뉴를 화면에 보여주자..  글씨체.. 사이즈 조정 표현방식등 MenuClass 변경 */
-		
-		if(clockViewTouched == YES) {
-			[clockview.view setTransform:CGAffineTransformMake((CGFloat)_inTrans/10, 0.0, 0.0, (CGFloat)_inTrans/10, 0.0, 0.0)];
-		}
-		else if(dateViewTouched == YES) {
-			dateViewTouched = NO;
-			[dateview.view setTransform:CGAffineTransformMake((CGFloat)_inTrans/10, 0.0, 0.0, (CGFloat)_inTrans/10, 0.0, 0.0)];
-		}
-		else if(weekViewTouched == YES) {
-			weekViewTouched = NO;
-			[weekview.view setTransform:CGAffineTransformMake((CGFloat)_inTrans/10, 0.0, 0.0, (CGFloat)_inTrans/10, 0.0, 0.0)];
-		}
-		
-	}
 }
 
 - (void)update
@@ -297,35 +370,29 @@
 		
 - (void)FrameUpdate
 {
+	//self.view.autoresizesSubviews = YES;
 	ViewCgPoint	*alarmviewpoint	;
-	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) { 
+	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) 
 		alarmviewpoint	= [[AlarmConfig getInstance] getHeigthViewPoint];	
-		
-		[clockview.view setTransform:alarmviewpoint.ClockTrans]; 
-		[clockview.view setCenter:alarmviewpoint.ClockPoint ];
-		
+	else 
+		alarmviewpoint	= [[AlarmConfig getInstance] getWidthViewPoint];
+	
+	
+	[clockview.view setTransform:alarmviewpoint.ClockTrans]; 
+	[clockview.view setCenter:alarmviewpoint.ClockPoint ];
+	
+	if( [[AlarmConfig getInstance] getDateMode] )
+	{
 		[dateview.view setTransform:alarmviewpoint.DateTrans];
 		[dateview.view setCenter:alarmviewpoint.DatePoint];
-		
-		/* Button Update */
-		[MenuButton setCenter:CGPointMake(290, 10)];
-		[MenuXbox	setCenter:CGPointMake(290, 10)];
-		
+		[dateview.view setAlpha:1];
 	}
 	else 
-	{
-		alarmviewpoint	= [[AlarmConfig getInstance] getWidthViewPoint];
-		[clockview.view setTransform:alarmviewpoint.ClockTrans]; 
-		[clockview.view setCenter:alarmviewpoint.ClockPoint ];
-		
-		[dateview.view setTransform:alarmviewpoint.DateTrans];
-		[dateview.view setCenter:alarmviewpoint.DatePoint];
-		
-		
-		[MenuButton setCenter:CGPointMake(450, 10)];
-		[MenuXbox	setCenter:CGPointMake(450, 10)];
-	}
-
+		[dateview.view setAlpha:0];
+	
+	/* Button Update */
+	[MenuButton setCenter:CGPointMake(self.view.frame.size.width - 30, 10)];
+	[MenuXbox	setCenter:CGPointMake(self.view.frame.size.width - 30, 10)];
 
 }
 

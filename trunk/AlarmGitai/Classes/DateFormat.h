@@ -29,6 +29,7 @@
 - (NSString *)getIMon;
 - (NSString *)getDay;
 - (NSString *)getHour;
+- (NSString *)getHour24;
 - (NSString *)getMin;
 - (NSString *)getSec;
 - (NSString *)getAP;

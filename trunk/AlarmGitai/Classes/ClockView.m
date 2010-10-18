@@ -54,15 +54,15 @@
 	[b_Dot setFrame:CGRectMake(220,0,240, 360)];
 	[u_Dot setFrame:CGRectMake(220,0,240, 360)];
 
-	[b_HourT setFrame:CGRectMake(25,0,240, 360)];
-	[b_HourM setFrame:CGRectMake(140,0,240, 360)];
-	[b_MinT setFrame:CGRectMake(300,0,240, 360)];
-	[b_MinM setFrame:CGRectMake(415,0,240, 360)];
+	[b_HourT setFrame:CGRectMake(-50,-80,240, 360)];
+	[b_HourM setFrame:CGRectMake(65,-80,240, 360)];
+	[b_MinT setFrame:CGRectMake(225,-80,240, 360)];
+	[b_MinM setFrame:CGRectMake(340,-80,240, 360)];
 
-	[u_HourT setFrame:CGRectMake(25,0,240, 360)];
-	[u_HourM setFrame:CGRectMake(140,0,240, 360)];
-	[u_MinT setFrame:CGRectMake(300,0,240, 360)];
-	[u_MinM setFrame:CGRectMake(415,0,240, 360)];
+	[u_HourT setFrame:CGRectMake(-50,-80,240, 360)];
+	[u_HourM setFrame:CGRectMake(65,-80,240, 360)];
+	[u_MinT setFrame:CGRectMake(225,-80,240, 360)];
+	[u_MinM setFrame:CGRectMake(340,-80,240, 360)];
 }
 
 
@@ -95,7 +95,11 @@
 	
 	NSString *tmpMin = [[DateFormat getInstance] getMin];
 	
-	NSString *tmpHour = [[DateFormat getInstance] getHour];
+	NSString *tmpHour;
+	if([[AlarmConfig getInstance] getHourMode])
+		tmpHour = [[DateFormat getInstance] getHour24];
+	else
+		tmpHour = [[DateFormat getInstance] getHour];
 	
 	if( ![Hour isEqualToString:tmpHour] || Hour == nil)
 	{

@@ -61,6 +61,13 @@
 	int				RotationTime;
 	
 	
+	/* 환경설정 */
+	
+	BOOL			HourMode;
+	BOOL			DateMode; 
+	
+	
+	
 }
 @property (readwrite) int heightnum;
 @property (readwrite) int widthnum;
@@ -82,6 +89,11 @@
 - (ViewCgPoint *) getWidthViewPoint;
 - (void) setHeigthViewPoint:(ViewCgPoint *) _inPoint;
 - (void) setWidthViewPoint:(ViewCgPoint *) _inPoint;
+
+- (BOOL) getHourMode;
+- (BOOL) getDateMode;
+- (void) setHourMode;
+- (void) setDateMode;
 
 - (void) SaveConfig;
 - (int) getRotationTime;
