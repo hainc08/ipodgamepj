@@ -87,12 +87,12 @@ static AlarmConfig *AlarmConfigInst;
 	[heigthviewpoint setDateTrans:CGAffineTransformMake(0.2, 0.0, 0.0, 0.2, 0.0, 0.0)];
 	[heigthviewpoint setDatePoint:CGPointMake(35,50)];
 
-	
 	[widthviewpoint setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
 	[widthviewpoint setClockPoint:CGPointMake(65,230)];
 	[widthviewpoint setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
 	[widthviewpoint setDatePoint:CGPointMake(35,50)];	
 }
+
 - (BOOL) getHourMode
 {
 	return  HourMode;

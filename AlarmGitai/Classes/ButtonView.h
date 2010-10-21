@@ -16,7 +16,8 @@
 
 @interface ButtonView : UIView  {
 	FontLabel *label;
-
+	int		TYPE;
 }
+- (void)setTYPE:(int)_inTYPE;
 - (void)setText:(NSString *)_inText;
 @end

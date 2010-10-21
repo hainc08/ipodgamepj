@@ -9,11 +9,18 @@
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         // Initialization code
+		TYPE = 0; // box 
 		self.backgroundColor =[UIColor redColor];
 		label = [[FontLabel alloc] initWithFrame:CGRectMake(5, 5, 0, 0) fontName:@"Unisect Extra Bold Oblique" pointSize:12.0f];
 		[self addSubview:label];
     }
     return self;
+}
+
+- (void)setTYPE:(int)_inTYPE
+{
+	TYPE = _inTYPE;
+	[self setNeedsDisplay];
 }
 
 - (void)setText:(NSString *)_inText
@@ -28,31 +35,35 @@
 
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextSetRGBStrokeColor(context, 1,1,1,1);
-	CGContextSetLineWidth(context, 1);
 	
-	int i = 0;
+	if(TYPE == 0 )
+	{
+		CGContextRef context = UIGraphicsGetCurrentContext();
+		CGContextSetRGBStrokeColor(context, 1,1,1,1);
+		CGContextSetLineWidth(context, 1);
 	
-	while(i < BUTTON_Y){
-		if( i > ARRAY && i < BUTTON_Y - ARRAY )
-		{
-			CGContextMoveToPoint(context, 0, i);
-			CGContextAddLineToPoint(context, ARRAY, i);
-			CGContextStrokePath(context);
-			CGContextMoveToPoint(context, BUTTON_X - ARRAY, i);
-			CGContextAddLineToPoint(context, BUTTON_X, i);
-			CGContextStrokePath(context);
+		int i = 0;
+	
+		while(i < BUTTON_Y){
+			if( i > ARRAY && i < BUTTON_Y - ARRAY )
+			{
+				CGContextMoveToPoint(context, 0, i);
+				CGContextAddLineToPoint(context, ARRAY, i);
+				CGContextStrokePath(context);
+				CGContextMoveToPoint(context, BUTTON_X - ARRAY, i);
+				CGContextAddLineToPoint(context, BUTTON_X, i);
+				CGContextStrokePath(context);
 			
-		}
-		else 
-		{
-			CGContextMoveToPoint(context, 0, i);
-			CGContextAddLineToPoint(context, BUTTON_X, i);
-			CGContextStrokePath(context);
+			}
+			else 
+			{
+				CGContextMoveToPoint(context, 0, i);
+				CGContextAddLineToPoint(context, BUTTON_X, i);
+				CGContextStrokePath(context);
 			
+			}
+			i++;
 		}
-		i++;
 	}
 }
 
