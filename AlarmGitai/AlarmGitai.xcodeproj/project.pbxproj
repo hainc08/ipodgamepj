@@ -76,6 +76,24 @@
 		569DE96311F22DE700A4E58F /* xbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 569DE96211F22DE700A4E58F /* xbox.png */; };
 		56B0B1BA120F0C61004F9D97 /* ButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1B9120F0C61004F9D97 /* ButtonView.m */; };
 		56B0B1BD120F0C71004F9D97 /* MenuTimeOptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1BC120F0C71004F9D97 /* MenuTimeOptionController.m */; };
+		56B6883C12705719005E1039 /* FontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B6883212705719005E1039 /* FontLabel.m */; };
+		56B6883D12705719005E1039 /* FontLabelStringDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B6883412705719005E1039 /* FontLabelStringDrawing.m */; };
+		56B6883E12705719005E1039 /* FontManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B6883612705719005E1039 /* FontManager.m */; };
+		56B6883F12705719005E1039 /* ZAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B6883812705719005E1039 /* ZAttributedString.m */; };
+		56B6884012705719005E1039 /* ZFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B6883B12705719005E1039 /* ZFont.m */; };
+		56B6884F12705744005E1039 /* Unisect Black Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884212705744005E1039 /* Unisect Black Oblique.ttf */; };
+		56B6885012705744005E1039 /* Unisect Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884312705744005E1039 /* Unisect Black.ttf */; };
+		56B6885112705744005E1039 /* Unisect Bold Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884412705744005E1039 /* Unisect Bold Oblique.ttf */; };
+		56B6885212705744005E1039 /* Unisect Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884512705744005E1039 /* Unisect Bold.ttf */; };
+		56B6885312705744005E1039 /* Unisect Extra Bold Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884612705744005E1039 /* Unisect Extra Bold Oblique.ttf */; };
+		56B6885412705744005E1039 /* Unisect Extra Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884712705744005E1039 /* Unisect Extra Bold.ttf */; };
+		56B6885512705744005E1039 /* Unisect Light Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884812705744005E1039 /* Unisect Light Oblique.ttf */; };
+		56B6885612705744005E1039 /* Unisect Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884912705744005E1039 /* Unisect Light.ttf */; };
+		56B6885712705744005E1039 /* Unisect Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884A12705744005E1039 /* Unisect Oblique.ttf */; };
+		56B6885812705744005E1039 /* Unisect.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884B12705744005E1039 /* Unisect.ttf */; };
+		56B6885912705744005E1039 /* UniversCon.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884C12705744005E1039 /* UniversCon.TTF */; };
+		56B6885A12705744005E1039 /* UniversConBol.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884D12705744005E1039 /* UniversConBol.TTF */; };
+		56B6885B12705744005E1039 /* UniversConBolObl.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884E12705744005E1039 /* UniversConBolObl.TTF */; };
 		56FA81291217C74000726CAD /* back_0_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA810A1217C74000726CAD /* back_0_d.png */; };
 		56FA812A1217C74000726CAD /* back_0_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA810B1217C74000726CAD /* back_0_n.png */; };
 		56FA812B1217C74000726CAD /* back_10_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA810C1217C74000726CAD /* back_10_d.png */; };
@@ -610,6 +628,30 @@
 		56B0B1B9120F0C61004F9D97 /* ButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ButtonView.m; path = Classes/ButtonView.m; sourceTree = "<group>"; };
 		56B0B1BB120F0C71004F9D97 /* MenuTimeOptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuTimeOptionController.h; path = Classes/MenuTimeOptionController.h; sourceTree = "<group>"; };
 		56B0B1BC120F0C71004F9D97 /* MenuTimeOptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuTimeOptionController.m; path = Classes/MenuTimeOptionController.m; sourceTree = "<group>"; };
+		56B6883112705718005E1039 /* FontLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontLabel.h; path = FontLabel/FontLabel.h; sourceTree = "<group>"; };
+		56B6883212705719005E1039 /* FontLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontLabel.m; path = FontLabel/FontLabel.m; sourceTree = "<group>"; };
+		56B6883312705719005E1039 /* FontLabelStringDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontLabelStringDrawing.h; path = FontLabel/FontLabelStringDrawing.h; sourceTree = "<group>"; };
+		56B6883412705719005E1039 /* FontLabelStringDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontLabelStringDrawing.m; path = FontLabel/FontLabelStringDrawing.m; sourceTree = "<group>"; };
+		56B6883512705719005E1039 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontManager.h; path = FontLabel/FontManager.h; sourceTree = "<group>"; };
+		56B6883612705719005E1039 /* FontManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontManager.m; path = FontLabel/FontManager.m; sourceTree = "<group>"; };
+		56B6883712705719005E1039 /* ZAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZAttributedString.h; path = FontLabel/ZAttributedString.h; sourceTree = "<group>"; };
+		56B6883812705719005E1039 /* ZAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZAttributedString.m; path = FontLabel/ZAttributedString.m; sourceTree = "<group>"; };
+		56B6883912705719005E1039 /* ZAttributedStringPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZAttributedStringPrivate.h; path = FontLabel/ZAttributedStringPrivate.h; sourceTree = "<group>"; };
+		56B6883A12705719005E1039 /* ZFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZFont.h; path = FontLabel/ZFont.h; sourceTree = "<group>"; };
+		56B6883B12705719005E1039 /* ZFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZFont.m; path = FontLabel/ZFont.m; sourceTree = "<group>"; };
+		56B6884212705744005E1039 /* Unisect Black Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Black Oblique.ttf"; path = "Font/Unisect Black Oblique.ttf"; sourceTree = "<group>"; };
+		56B6884312705744005E1039 /* Unisect Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Black.ttf"; path = "Font/Unisect Black.ttf"; sourceTree = "<group>"; };
+		56B6884412705744005E1039 /* Unisect Bold Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Bold Oblique.ttf"; path = "Font/Unisect Bold Oblique.ttf"; sourceTree = "<group>"; };
+		56B6884512705744005E1039 /* Unisect Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Bold.ttf"; path = "Font/Unisect Bold.ttf"; sourceTree = "<group>"; };
+		56B6884612705744005E1039 /* Unisect Extra Bold Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Extra Bold Oblique.ttf"; path = "Font/Unisect Extra Bold Oblique.ttf"; sourceTree = "<group>"; };
+		56B6884712705744005E1039 /* Unisect Extra Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Extra Bold.ttf"; path = "Font/Unisect Extra Bold.ttf"; sourceTree = "<group>"; };
+		56B6884812705744005E1039 /* Unisect Light Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Light Oblique.ttf"; path = "Font/Unisect Light Oblique.ttf"; sourceTree = "<group>"; };
+		56B6884912705744005E1039 /* Unisect Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Light.ttf"; path = "Font/Unisect Light.ttf"; sourceTree = "<group>"; };
+		56B6884A12705744005E1039 /* Unisect Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Oblique.ttf"; path = "Font/Unisect Oblique.ttf"; sourceTree = "<group>"; };
+		56B6884B12705744005E1039 /* Unisect.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Unisect.ttf; path = Font/Unisect.ttf; sourceTree = "<group>"; };
+		56B6884C12705744005E1039 /* UniversCon.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = UniversCon.TTF; path = Font/UniversCon.TTF; sourceTree = "<group>"; };
+		56B6884D12705744005E1039 /* UniversConBol.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = UniversConBol.TTF; path = Font/UniversConBol.TTF; sourceTree = "<group>"; };
+		56B6884E12705744005E1039 /* UniversConBolObl.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = UniversConBolObl.TTF; path = Font/UniversConBolObl.TTF; sourceTree = "<group>"; };
 		56FA810A1217C74000726CAD /* back_0_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_0_d.png; sourceTree = "<group>"; };
 		56FA810B1217C74000726CAD /* back_0_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_0_n.png; sourceTree = "<group>"; };
 		56FA810C1217C74000726CAD /* back_10_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_10_d.png; sourceTree = "<group>"; };
@@ -1116,6 +1158,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				56B68830127056FA005E1039 /* FontLabel */,
 				560890FE11ECA5BA00C1F800 /* BaseClasses */,
 				560890D011ECA52F00C1F800 /* ConfigClasses */,
 				5631AA02120424CF00EA05F9 /* MenuClasses */,
@@ -1243,6 +1286,7 @@
 		5621D75111FA0A58009236C7 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				56B6884112705730005E1039 /* Font */,
 				84EE5EC4123D1A5600A655B1 /* Default.png */,
 				5621D75911FA0AAD009236C7 /* Xib */,
 				29B97317FDCFA39411CA2CEA /* Images */,
@@ -1296,6 +1340,44 @@
 				56B0B1B9120F0C61004F9D97 /* ButtonView.m */,
 			);
 			name = MenuClasses;
+			sourceTree = "<group>";
+		};
+		56B68830127056FA005E1039 /* FontLabel */ = {
+			isa = PBXGroup;
+			children = (
+				56B6883112705718005E1039 /* FontLabel.h */,
+				56B6883212705719005E1039 /* FontLabel.m */,
+				56B6883312705719005E1039 /* FontLabelStringDrawing.h */,
+				56B6883412705719005E1039 /* FontLabelStringDrawing.m */,
+				56B6883512705719005E1039 /* FontManager.h */,
+				56B6883612705719005E1039 /* FontManager.m */,
+				56B6883712705719005E1039 /* ZAttributedString.h */,
+				56B6883812705719005E1039 /* ZAttributedString.m */,
+				56B6883912705719005E1039 /* ZAttributedStringPrivate.h */,
+				56B6883A12705719005E1039 /* ZFont.h */,
+				56B6883B12705719005E1039 /* ZFont.m */,
+			);
+			name = FontLabel;
+			sourceTree = "<group>";
+		};
+		56B6884112705730005E1039 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				56B6884212705744005E1039 /* Unisect Black Oblique.ttf */,
+				56B6884312705744005E1039 /* Unisect Black.ttf */,
+				56B6884412705744005E1039 /* Unisect Bold Oblique.ttf */,
+				56B6884512705744005E1039 /* Unisect Bold.ttf */,
+				56B6884612705744005E1039 /* Unisect Extra Bold Oblique.ttf */,
+				56B6884712705744005E1039 /* Unisect Extra Bold.ttf */,
+				56B6884812705744005E1039 /* Unisect Light Oblique.ttf */,
+				56B6884912705744005E1039 /* Unisect Light.ttf */,
+				56B6884A12705744005E1039 /* Unisect Oblique.ttf */,
+				56B6884B12705744005E1039 /* Unisect.ttf */,
+				56B6884C12705744005E1039 /* UniversCon.TTF */,
+				56B6884D12705744005E1039 /* UniversConBol.TTF */,
+				56B6884E12705744005E1039 /* UniversConBolObl.TTF */,
+			);
+			name = Font;
 			sourceTree = "<group>";
 		};
 		56FA81091217C74000726CAD /* background */ = {
@@ -2448,6 +2530,19 @@
 				8486073E1251A7A100075E87 /* top.png in Resources */,
 				84742D31125978D4005859ED /* touch.png in Resources */,
 				84742DDD1259832C005859ED /* MainView.xib in Resources */,
+				56B6884F12705744005E1039 /* Unisect Black Oblique.ttf in Resources */,
+				56B6885012705744005E1039 /* Unisect Black.ttf in Resources */,
+				56B6885112705744005E1039 /* Unisect Bold Oblique.ttf in Resources */,
+				56B6885212705744005E1039 /* Unisect Bold.ttf in Resources */,
+				56B6885312705744005E1039 /* Unisect Extra Bold Oblique.ttf in Resources */,
+				56B6885412705744005E1039 /* Unisect Extra Bold.ttf in Resources */,
+				56B6885512705744005E1039 /* Unisect Light Oblique.ttf in Resources */,
+				56B6885612705744005E1039 /* Unisect Light.ttf in Resources */,
+				56B6885712705744005E1039 /* Unisect Oblique.ttf in Resources */,
+				56B6885812705744005E1039 /* Unisect.ttf in Resources */,
+				56B6885912705744005E1039 /* UniversCon.TTF in Resources */,
+				56B6885A12705744005E1039 /* UniversConBol.TTF in Resources */,
+				56B6885B12705744005E1039 /* UniversConBolObl.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2480,6 +2575,11 @@
 				568844C9124089550080F0A0 /* MenuSelectController.m in Sources */,
 				84742D1E12597540005859ED /* ActionManager.m in Sources */,
 				84742D2D125977E3005859ED /* MainView.m in Sources */,
+				56B6883C12705719005E1039 /* FontLabel.m in Sources */,
+				56B6883D12705719005E1039 /* FontLabelStringDrawing.m in Sources */,
+				56B6883E12705719005E1039 /* FontManager.m in Sources */,
+				56B6883F12705719005E1039 /* ZAttributedString.m in Sources */,
+				56B6884012705719005E1039 /* ZFont.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

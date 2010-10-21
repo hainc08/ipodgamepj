@@ -9,6 +9,7 @@
 #import "MenuSelectController.h"
 #import "ButtonView.h"
 #import "MenuTimeOptionController.h"
+#import "AlarmConfig.h"
 
 @implementation MenuSelectController
 
@@ -21,10 +22,16 @@
 	
 	[self.view setBackgroundColor:[UIColor grayColor]];
 	[self.view setAlpha:1];
+		
+	UIImageView *CharImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 90,238, 99)];
+	 [CharImage setImage:[UIImage imageNamed:[NSString stringWithFormat:@"char_%@.png", 
+										  [[AlarmConfig getInstance] getCharName]]]];
+	[self.view addSubview:CharImage];
+	[CharImage release];
 	
-	DisplayOption = [[ButtonView alloc] initWithFrame:CGRectMake(0, 40,  BUTTON_X, BUTTON_Y)];
+	DisplayOption = [[ButtonView alloc] initWithFrame:CGRectMake(340, 40,  BUTTON_X, BUTTON_Y)];
+	[DisplayOption setText:@"DISPLAY OPTION"];
 	UIButton *OptionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,  BUTTON_X, BUTTON_Y) ];
-	[OptionButton setTitle:@"DisplayOption" forState:UIControlStateNormal];
 	[OptionButton addTarget:self action:@selector(OptionButton:) forControlEvents:UIControlEventTouchUpInside];
 	[DisplayOption setBackgroundColor:[UIColor redColor]];
 	[DisplayOption addSubview:OptionButton];
@@ -33,8 +40,8 @@
 	
 	
 	AlarmOption = [[ButtonView alloc] initWithFrame:CGRectMake(340, 140,  BUTTON_X, BUTTON_Y)];
+	[AlarmOption setText:@"ALARM OPTION"];
 	UIButton *AlarmButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,  BUTTON_X, BUTTON_Y) ];
-	[AlarmButton setTitle:@"AlarmOption" forState:UIControlStateNormal];
 	[AlarmButton addTarget:self action:@selector(OptionButton:) forControlEvents:UIControlEventTouchUpInside];
 	[AlarmOption addSubview:AlarmButton];
 	[self.view addSubview:AlarmOption];
@@ -42,8 +49,8 @@
 	
 	
 	Done = [[ButtonView alloc] initWithFrame:CGRectMake(340, 240,  BUTTON_X, BUTTON_Y)];
+	[Done setText:@"DONE"];
 	UIButton *DoneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
-	[DoneButton setTitle:@"Done" forState:UIControlStateNormal];
 	[DoneButton addTarget:self action:@selector(DoneButton:) forControlEvents:UIControlEventTouchUpInside];
 	[Done addSubview:DoneButton];
 	[self.view addSubview:Done];
