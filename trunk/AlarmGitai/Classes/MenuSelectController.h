@@ -12,7 +12,8 @@
 @class MenuTimeOptionController;
 
 @interface MenuSelectController : UIViewController {
-	MenuTimeOptionController *TimeOption;
+	MenuTimeOptionController *CT_TimeOption;
+	MenuTimeOptionController *CT_AlarmOption;
 	
 	ButtonView *DisplayOption;
 	ButtonView *AlarmOption;

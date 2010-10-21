@@ -9,6 +9,7 @@
 #import "MenuSelectController.h"
 #import "ButtonView.h"
 #import "MenuTimeOptionController.h"
+#import "MenuAlarmController.h"
 #import "AlarmConfig.h"
 
 @implementation MenuSelectController
@@ -32,7 +33,7 @@
 	DisplayOption = [[ButtonView alloc] initWithFrame:CGRectMake(340, 40,  BUTTON_X, BUTTON_Y)];
 	[DisplayOption setText:@"DISPLAY OPTION"];
 	UIButton *OptionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,  BUTTON_X, BUTTON_Y) ];
-	[OptionButton addTarget:self action:@selector(OptionButton:) forControlEvents:UIControlEventTouchUpInside];
+	[OptionButton addTarget:self action:@selector(DisplayOptionButton:) forControlEvents:UIControlEventTouchUpInside];
 	[DisplayOption setBackgroundColor:[UIColor redColor]];
 	[DisplayOption addSubview:OptionButton];
 	[self.view addSubview:DisplayOption];
@@ -42,7 +43,7 @@
 	AlarmOption = [[ButtonView alloc] initWithFrame:CGRectMake(340, 140,  BUTTON_X, BUTTON_Y)];
 	[AlarmOption setText:@"ALARM OPTION"];
 	UIButton *AlarmButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,  BUTTON_X, BUTTON_Y) ];
-	[AlarmButton addTarget:self action:@selector(OptionButton:) forControlEvents:UIControlEventTouchUpInside];
+	[AlarmButton addTarget:self action:@selector(AlarmOptionButton:) forControlEvents:UIControlEventTouchUpInside];
 	[AlarmOption addSubview:AlarmButton];
 	[self.view addSubview:AlarmOption];
 	[AlarmButton release];
@@ -57,9 +58,13 @@
 	[DoneButton release];
 	
 	
-	TimeOption = [[MenuTimeOptionController alloc] init];
-	[TimeOption.view setFrame:CGRectMake(0, 0, 320, 480)];
-	TimeOption.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
+	CT_TimeOption = [[MenuTimeOptionController alloc] init];
+	[CT_TimeOption.view setFrame:CGRectMake(0, 0, 320, 480)];
+	CT_TimeOption.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
+	
+	CT_AlarmOption = [[MenuAlarmController alloc] init];
+	[CT_AlarmOption.view setFrame:CGRectMake(0, 0, 320, 480)];
+	CT_AlarmOption.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
 }
 
 
@@ -84,9 +89,13 @@
 	[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (void)OptionButton:(id)sender
+- (void)DisplayOptionButton:(id)sender
 {
-	[self.navigationController pushViewController:TimeOption animated:YES];
+	[self.navigationController pushViewController:CT_TimeOption animated:YES];
+}
+- (void)AlarmOptionButton:(id)sender
+{
+	[self.navigationController pushViewController:CT_AlarmOption animated:YES];
 }
 
 - (void)dealloc {
