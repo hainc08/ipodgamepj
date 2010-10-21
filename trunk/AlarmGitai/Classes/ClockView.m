@@ -121,7 +121,7 @@
 		if( Hour != nil )
 			[Hour release];
 		
-		Hour = [[NSString alloc] initWithFormat:@"%@", [[DateFormat getInstance] getHour]];
+		Hour = [[NSString alloc] initWithFormat:@"%@", tmpHour];
 	}
 
 	if((![Min isEqualToString:tmpMin]) || Min == nil)

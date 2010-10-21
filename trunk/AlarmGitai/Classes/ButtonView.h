@@ -12,6 +12,11 @@
 
 #define ARRAY		5
 
+@class FontLabel;
+
 @interface ButtonView : UIView  {
+	FontLabel *label;
+
 }
+- (void)setText:(NSString *)_inText;
 @end

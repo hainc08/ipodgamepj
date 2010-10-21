@@ -99,7 +99,7 @@ static AlarmConfig *AlarmConfigInst;
 }
 - (void) setHourMode
 {
-	!HourMode;
+	HourMode = !HourMode;
 }
 - (BOOL) getDateMode
 {
@@ -107,7 +107,7 @@ static AlarmConfig *AlarmConfigInst;
 }
 - (void) setDateMode
 {
-	!DateMode;
+	DateMode = !DateMode;
 }
 - (int )getFontType
 {
