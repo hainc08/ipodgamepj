@@ -18,6 +18,6 @@
 	FontLabel *label;
 	int		TYPE;
 }
-- (void)setTYPE:(int)_inTYPE;
+- (void)setView:(int)_inTYPE  fontsize:(float)_insize fontName:(NSString *)_inname fontColor:(UIColor *)_inColor;
 - (void)setText:(NSString *)_inText;
 @end

@@ -10,10 +10,10 @@
 
 @class ButtonView;
 @class MenuTimeOptionController;
-
+@class MenuAlarmController;
 @interface MenuSelectController : UIViewController {
 	MenuTimeOptionController *CT_TimeOption;
-	MenuTimeOptionController *CT_AlarmOption;
+	MenuAlarmController *CT_AlarmOption;
 	
 	ButtonView *DisplayOption;
 	ButtonView *AlarmOption;

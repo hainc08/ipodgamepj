@@ -17,9 +17,17 @@
     return self;
 }
 
-- (void)setTYPE:(int)_inTYPE
+- (void)setView:(int)_inTYPE  fontsize:(float)_insize fontName:(NSString *)_inname fontColor:(UIColor *)_inColor
 {
 	TYPE = _inTYPE;
+	
+/*	if(_insize > 0.0f)
+		label.pointSize = _insize;
+	if(_inname != nil)
+		label.zFont = [[FontManager sharedManager] fontWithName:_inname];*/
+	if(_inColor != nil)
+		label.textColor = _inColor;
+	
 	[self setNeedsDisplay];
 }
 
