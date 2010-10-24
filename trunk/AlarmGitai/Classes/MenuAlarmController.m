@@ -1,13 +1,12 @@
 //
-//  AlarmConfigController.m
+//  MenuAlarmController.m
 //  AlarmGitai
 //
-//  Created by embmaster on 10. 08. 20.
+//  Created by embmaster on 10. 10. 24.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
 #import "MenuAlarmController.h"
-#import "ButtonView.h"
 
 
 @implementation MenuAlarmController
@@ -20,45 +19,16 @@
     return self;
 }
 */
+
+/*
 - (void)viewDidLoad {
     [super viewDidLoad];
- 	
-	Save = [[ButtonView alloc] initWithFrame:CGRectMake(40, 40,  50, 50)];
-	[Save setText:@"SAVE"];
-	[Edit setTYPE:1];
-	UIButton *SaveButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 50) ];
-	[SaveButton addTarget:self action:@selector(OptionButton:) forControlEvents:UIControlEventTouchUpInside];
-	[Save setBackgroundColor:[UIColor redColor]];
-	[Save addSubview:SaveButton];
-	[self.view addSubview:Save];
-	[SaveButton release];
-	
-	Edit = [[ButtonView alloc] initWithFrame:CGRectMake(40, 40,  50, 50)];
-	[Edit setText:@"EDIT"];
-	[Edit setTYPE:1];
-	UIButton *EditButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,  50, 50) ];
-	[EditButton addTarget:self action:@selector(OptionButton:) forControlEvents:UIControlEventTouchUpInside];
-	[Edit setBackgroundColor:[UIColor redColor]];
-	[Edit addSubview:EditButton];
-	[self.view addSubview:Edit];
-	[EditButton release];
-	
-	
-	Done = [[ButtonView alloc] initWithFrame:CGRectMake(300, 200,  BUTTON_X, BUTTON_Y)];
-	[Done setText:@"DONE"];
-	UIButton *DoneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
-	[DoneButton addTarget:self action:@selector(DoneButton:) forControlEvents:UIControlEventTouchUpInside];
-	[Done addSubview:DoneButton];
-	[self.view addSubview:Done];
-	[DoneButton release];
-}
 
-
-- (void)DoneButton:(id)sender
-{
-	[self.navigationController popViewControllerAnimated:YES];
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
- 
+*/
+
 /*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -99,8 +69,6 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
-
-
 
 - (void)dealloc {
     [super dealloc];

@@ -8,6 +8,8 @@
 
 #import "MenuController.h"
 #import "MenuSelectController.h"
+
+
 @implementation DataParam
 
 @synthesize  iData;
@@ -17,7 +19,6 @@
 
 
 @implementation MainView
-
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
 

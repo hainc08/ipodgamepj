@@ -7,34 +7,10 @@
 //
 
 #import "MenuController.h"
-#import "MenuCustomCell.h"
-#import "FontSelectController.h"
 #import	"AlarmConfig.h"
 #include "MainView.h"
 #include "ActionManager.h"
-/*
-@implementation UINavigationBar (UINavigationBarCategory)
-- (void)setBackgroundImage:(UIImage *)image {
-	if(image == nil)
-	{
-		return;
-	}
-	
-	UIImageView *aTabBarImage = [[UIImageView alloc] initWithImage:image];
-	aTabBarImage.frame = CGRectMake(0,0, self.frame.size.width	, self.frame.size.height );
-	[self addSubview:aTabBarImage];
-	[self sendSubviewToBack:aTabBarImage];
-	[aTabBarImage release];
-}
-- (void)drawRect:(CGRect)rect{
-	UIColor *color = [UIColor redColor];
-	CGContextRef context  = UIGraphicsGetCurrentContext();
-	CGContextSetFillColor(context, CGColorGetComponents([color CGColor]) );
-	CGContextFillRect(context, rect);
-}
 
-@end
-*/
 
 @implementation MenuController
 
@@ -64,9 +40,6 @@
 {
 	defaultdata = param;
 	[self.tableView reloadData];
-}
-- (void)viewDidUnload {
-    [super viewDidUnload];
 }
 
 - (void)dealloc {
@@ -106,7 +79,6 @@
 				viewsize.continuous = YES;
 				[viewsize addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
 				[cell addSubview:viewsize ];
-				cell.textLabel.text = @"Size"; 
 				[ viewsize release ];
 			}
 				break;
