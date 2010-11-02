@@ -14,8 +14,6 @@
 @implementation MenuTimeOptionController
 
 
-
-
 - (CGRect) ButtonPlace:(int) row	y:(int) col
 {
 	int x = 0;

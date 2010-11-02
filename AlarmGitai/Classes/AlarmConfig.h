@@ -66,6 +66,7 @@
 	BOOL			HourMode;
 	BOOL			DateMode; 
 	
+	BOOL			AlamONOFF;
 	
 	
 }
@@ -94,6 +95,9 @@
 - (BOOL) getDateMode;
 - (void) setHourMode;
 - (void) setDateMode;
+
+- (void) setAlarmONOFF;
+- (BOOL) getAlarmONOFF;
 
 - (void) SaveConfig;
 - (int) getRotationTime;
