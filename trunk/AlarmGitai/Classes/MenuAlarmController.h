@@ -11,8 +11,15 @@
 @class ButtonView;
 
 @interface MenuAlarmController : UIViewController {
+	ButtonView	*AlarmTxt;
+	ButtonView	*AlarmSetTxt;
+	ButtonView *AlarmSet;
+	ButtonView *Shake;
+	ButtonView *Snooze;
 	ButtonView *Save;
 	ButtonView *Edit;
 	ButtonView *Done;
+	UIActionSheet	*action;
+	UIDatePicker *datePicker;
 }
 @end

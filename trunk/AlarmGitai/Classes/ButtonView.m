@@ -13,6 +13,9 @@
 		self.backgroundColor =[UIColor redColor];
 		label = [[FontLabel alloc] initWithFrame:CGRectMake(5, 5, 0, 0) fontName:@"Unisect Extra Bold Oblique" pointSize:12.0f];
 		[self addSubview:label];
+		
+		x	= frame.size.width;
+		y	= frame.size.height;
     }
     return self;
 }
@@ -52,21 +55,21 @@
 	
 		int i = 0;
 	
-		while(i < BUTTON_Y){
-			if( i > ARRAY && i < BUTTON_Y - ARRAY )
+		while(i < y){
+			if( i > ARRAY && i < y - ARRAY )
 			{
 				CGContextMoveToPoint(context, 0, i);
 				CGContextAddLineToPoint(context, ARRAY, i);
 				CGContextStrokePath(context);
-				CGContextMoveToPoint(context, BUTTON_X - ARRAY, i);
-				CGContextAddLineToPoint(context, BUTTON_X, i);
+				CGContextMoveToPoint(context, x - ARRAY, i);
+				CGContextAddLineToPoint(context, x, i);
 				CGContextStrokePath(context);
 			
 			}
 			else 
 			{
 				CGContextMoveToPoint(context, 0, i);
-				CGContextAddLineToPoint(context, BUTTON_X, i);
+				CGContextAddLineToPoint(context, x, i);
 				CGContextStrokePath(context);
 			
 			}

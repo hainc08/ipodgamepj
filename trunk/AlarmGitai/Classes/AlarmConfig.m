@@ -93,6 +93,14 @@ static AlarmConfig *AlarmConfigInst;
 	[widthviewpoint setDatePoint:CGPointMake(35,50)];	
 }
 
+- (BOOL) getAlarmONOFF
+{
+	return  AlamONOFF;
+}
+- (void) setAlarmONOFF
+{
+	AlamONOFF = !AlamONOFF;
+}
 - (BOOL) getHourMode
 {
 	return  HourMode;
