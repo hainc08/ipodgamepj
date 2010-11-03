@@ -84,7 +84,7 @@
 - (void)DoneButton:(id)sender
 {
 	DataParam *data = [[DataParam alloc] init];
-	[[ActionManager getInstance] setRootAction:ROTAGEUPDATE value:data];
+	//[[ActionManager getInstance] setRootAction:ROTAGEUPDATE value:data];
 	[data release];
 	[self.navigationController popToRootViewControllerAnimated:YES];
 }
@@ -99,6 +99,11 @@
 }
 
 - (void)dealloc {
+	[CT_TimeOption release];
+	[CT_AlarmOption release];
+	[DisplayOption release];
+	[AlarmOption release];
+	[Done release]; 
     [super dealloc];
 }
 

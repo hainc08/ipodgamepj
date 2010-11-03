@@ -45,11 +45,9 @@
 	DisplayDate = [[ButtonView alloc] initWithFrame:[self ButtonPlace:1	y:2]];
 	[DisplayDate setText:@"DISPLAY DATE"];
 	UIButton *DisplayButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ]; 
-	
 	[DisplayButton addTarget:self action:@selector(DisplayButton:) forControlEvents:UIControlEventTouchUpInside];
 	[DisplayButton setBackgroundColor:nil];
 	[DisplayDate addSubview:DisplayButton];
-	
 	[self.view addSubview:DisplayDate];
 	[DisplayButton release];
 	
@@ -76,14 +74,6 @@
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -98,6 +88,9 @@
 
 
 - (void)dealloc {
+	 [HourMode release];
+	[DisplayDate release];
+	[Done release]; 
     [super dealloc];
 }
 

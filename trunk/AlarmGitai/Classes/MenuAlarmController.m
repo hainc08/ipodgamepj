@@ -59,7 +59,6 @@
 	[SetButton release];
 	
 
-	
 	Shake = [[ButtonView alloc] initWithFrame:CGRectMake(40, 180,  BUTTON_X, BUTTON_Y)];
 	[Shake setText:@"SHAKE"];
 	UIButton *ShakeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
@@ -123,7 +122,7 @@
 -(void)SaveButton:(id)sender
 {
 	[Edit setAlpha:1];
-[datePicker setAlpha:0];
+	[datePicker setAlpha:0];
 }
 -(void)ShakeButton:(id)sender
 {
@@ -173,6 +172,15 @@
 }
 
 - (void)dealloc {
+	[AlarmTxt release];
+	[AlarmSetTxt release];
+	[AlarmSet release];
+	[Shake release];
+	[Snooze release];
+	[Save release];
+	[Edit release];
+	[Done release];
+	[datePicker release];
     [super dealloc];
 }
 
