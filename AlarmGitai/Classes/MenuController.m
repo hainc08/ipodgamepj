@@ -117,7 +117,7 @@
 {
 	DataParam *data = [[DataParam alloc ] init];
 	[data setIData:sender.value];
-	[[ActionManager getInstance] setRootAction:TRANSUPDATE value:data];
+//	[[ActionManager getInstance] setRootAction:TRANSUPDATE value:data];
 	[data	 release];
 }
 

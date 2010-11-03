@@ -71,7 +71,6 @@
 				CGContextMoveToPoint(context, 0, i);
 				CGContextAddLineToPoint(context, x, i);
 				CGContextStrokePath(context);
-			
 			}
 			i++;
 		}

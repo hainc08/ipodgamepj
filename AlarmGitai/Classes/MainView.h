@@ -16,15 +16,15 @@
 
 @end
 
-enum ROOTUPDATE {
-	TRANSUPDATE = 0,
-	ROTAGEUPDATE
+enum VIEWMODE {
+	VIEWNORMAL = 0,
+	VIEWUPDATE
 };
 	
 @interface MainView : UIViewController {
-
+	CGFloat initTouchPoint;
+	
 	MenuSelectController *selectmenu;
-	MenuController *menuconfig;
 	
 	BOOL	viewrotate;
 	BOOL	editenable;
@@ -36,7 +36,7 @@ enum ROOTUPDATE {
 	BOOL hiddenButton;
 	BOOL menuEnable;
 
-	
+	int		viewmode;
 	DateView *weekview;
 	ClockView *clockview;
 	DateView *dateview;
@@ -48,17 +48,15 @@ enum ROOTUPDATE {
 	
 	float framePerSec;
 /* Button */
-	UIButton *MenuXbox;
-	UIButton *MenuButton;
 	UIButton *AlarmButton;
 }
 
 -(CGRect)viewcentersettle:(CGRect) rect;
--(void)menuViewFrameUpdate:(CGRect ) rect;
-- (void) reset:(int)_type value:(NSObject *)_inValue;
+- (void) resizeview:(int)_type value:(int)value;
 - (void)update;
 - (void)stopTimer;
 - (void)resumeTimer;
 - (void)FrameUpdate;
+- (void)ConfigSetup;
 @end
 

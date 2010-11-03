@@ -69,10 +69,10 @@
 		5621D4D011F77004009236C7 /* layout3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5621D4CC11F77004009236C7 /* layout3.png */; };
 		5631A9FF1204218700EA05F9 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5631A9FD1204218700EA05F9 /* MenuController.m */; };
 		5641726212044FB70035DD81 /* char_natsuko.png in Resources */ = {isa = PBXBuildFile; fileRef = 5641726112044FB70035DD81 /* char_natsuko.png */; };
+		567249DB1280403F00132254 /* AlarmShakeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567249DA1280403F00132254 /* AlarmShakeController.m */; };
 		568844C9124089550080F0A0 /* MenuSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568844C8124089550080F0A0 /* MenuSelectController.m */; };
 		569D071F12747BE200F8B09F /* MenuAlarmController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D071E12747BE200F8B09F /* MenuAlarmController.m */; };
 		569DE53711F1BB4F00A4E58F /* AlarmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569DE53611F1BB4F00A4E58F /* AlarmView.xib */; };
-		569DE53A11F1BB7000A4E58F /* AlarmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 569DE53911F1BB7000A4E58F /* AlarmView.m */; };
 		569DE96311F22DE700A4E58F /* xbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 569DE96211F22DE700A4E58F /* xbox.png */; };
 		56B0B1BA120F0C61004F9D97 /* ButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1B9120F0C61004F9D97 /* ButtonView.m */; };
 		56B0B1BD120F0C71004F9D97 /* MenuTimeOptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1BC120F0C71004F9D97 /* MenuTimeOptionController.m */; };
@@ -616,13 +616,13 @@
 		5631A9FC1204218700EA05F9 /* MenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuController.h; path = Classes/MenuController.h; sourceTree = "<group>"; };
 		5631A9FD1204218700EA05F9 /* MenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuController.m; path = Classes/MenuController.m; sourceTree = "<group>"; };
 		5641726112044FB70035DD81 /* char_natsuko.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = char_natsuko.png; path = "char/なつこ/char_natsuko.png"; sourceTree = "<group>"; };
+		567249D91280403F00132254 /* AlarmShakeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmShakeController.h; sourceTree = "<group>"; };
+		567249DA1280403F00132254 /* AlarmShakeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmShakeController.m; sourceTree = "<group>"; };
 		568844C7124089550080F0A0 /* MenuSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuSelectController.h; path = Classes/MenuSelectController.h; sourceTree = "<group>"; };
 		568844C8124089550080F0A0 /* MenuSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuSelectController.m; path = Classes/MenuSelectController.m; sourceTree = "<group>"; };
 		569D071E12747BE200F8B09F /* MenuAlarmController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuAlarmController.m; path = Classes/MenuAlarmController.m; sourceTree = "<group>"; };
 		569D072F12747C6F00F8B09F /* MenuAlarmController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuAlarmController.h; path = Classes/MenuAlarmController.h; sourceTree = "<group>"; };
 		569DE53611F1BB4F00A4E58F /* AlarmView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmView.xib; sourceTree = "<group>"; };
-		569DE53811F1BB7000A4E58F /* AlarmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmView.h; sourceTree = "<group>"; };
-		569DE53911F1BB7000A4E58F /* AlarmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmView.m; sourceTree = "<group>"; };
 		569DE96211F22DE700A4E58F /* xbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xbox.png; path = image/xbox.png; sourceTree = "<group>"; };
 		56B0B1B8120F0C61004F9D97 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonView.h; path = Classes/ButtonView.h; sourceTree = "<group>"; };
 		56B0B1B9120F0C61004F9D97 /* ButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ButtonView.m; path = Classes/ButtonView.m; sourceTree = "<group>"; };
@@ -1141,8 +1141,6 @@
 				1D3623250D0F684500981E51 /* AlarmGitaiAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* AlarmGitaiViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* AlarmGitaiViewController.m */,
-				569DE53811F1BB7000A4E58F /* AlarmView.h */,
-				569DE53911F1BB7000A4E58F /* AlarmView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1328,6 +1326,8 @@
 		5631AA02120424CF00EA05F9 /* MenuClasses */ = {
 			isa = PBXGroup;
 			children = (
+				567249D91280403F00132254 /* AlarmShakeController.h */,
+				567249DA1280403F00132254 /* AlarmShakeController.m */,
 				5631A9FC1204218700EA05F9 /* MenuController.h */,
 				5631A9FD1204218700EA05F9 /* MenuController.m */,
 				568844C7124089550080F0A0 /* MenuSelectController.h */,
@@ -2562,7 +2562,6 @@
 				560890E011ECA56F00C1F800 /* DateView.m in Sources */,
 				5608910311ECA5BA00C1F800 /* BaseView.m in Sources */,
 				560898DC11F0B77600C1F800 /* ImgManager.m in Sources */,
-				569DE53A11F1BB7000A4E58F /* AlarmView.m in Sources */,
 				841CF22611F3FB9E00677616 /* CharView.m in Sources */,
 				84D6A231120042B00044ECE2 /* MaskView.m in Sources */,
 				5631A9FF1204218700EA05F9 /* MenuController.m in Sources */,
@@ -2580,6 +2579,7 @@
 				56B6883F12705719005E1039 /* ZAttributedString.m in Sources */,
 				56B6884012705719005E1039 /* ZFont.m in Sources */,
 				569D071F12747BE200F8B09F /* MenuAlarmController.m in Sources */,
+				567249DB1280403F00132254 /* AlarmShakeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2590,6 +2590,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (N65PC63996)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2597,6 +2598,8 @@
 				GCC_PREFIX_HEADER = AlarmGitai_Prefix.pch;
 				INFOPLIST_FILE = "AlarmGitai-Info.plist";
 				PRODUCT_NAME = AlarmGitai;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DAE48A-6F6A-4805-9340-5FC42D867E20";
+				SDKROOT = iphoneos3.1.3;
 			};
 			name = Debug;
 		};
@@ -2604,11 +2607,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (N65PC63996)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitai_Prefix.pch;
 				INFOPLIST_FILE = "AlarmGitai-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AlarmGitai;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DAE48A-6F6A-4805-9340-5FC42D867E20";
+				SDKROOT = iphoneos3.1.3;
 			};
 			name = Release;
 		};

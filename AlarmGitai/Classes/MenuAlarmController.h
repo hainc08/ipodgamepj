@@ -19,7 +19,6 @@
 	ButtonView *Save;
 	ButtonView *Edit;
 	ButtonView *Done;
-	UIActionSheet	*action;
 	UIDatePicker *datePicker;
 }
 @end
