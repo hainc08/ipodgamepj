@@ -70,9 +70,13 @@
 				
 			if (CGRectContainsPoint(clockview.view.frame, touchPoint)) {
 				clockViewTouched = YES;
+				dragOffset = CGPointMake(touchPoint.x - clockview.view.center.x,
+										 touchPoint.y - clockview.view.center.y);
 			}	
 			else if (CGRectContainsPoint(dateview.view.frame, touchPoint)) {
 				dateViewTouched = YES;
+				dragOffset = CGPointMake(touchPoint.x - dateview.view.center.x,
+										 touchPoint.y - dateview.view.center.y);
 			}
 		}
 			break;
@@ -109,10 +113,12 @@
 			CGPoint currentPoint = [currentTouch locationInView:self.view];
 				
 			if(clockViewTouched == YES) {
-				clockview.view.center = CGPointMake(currentPoint.x,currentPoint.y);
+				clockview.view.center = CGPointMake(currentPoint.x - dragOffset.x,
+													currentPoint.y - dragOffset.y);
 			}
 			else if(dateViewTouched == YES) {
-				dateview.view.center = CGPointMake(currentPoint.x,currentPoint.y);
+				dateview.view.center = CGPointMake(currentPoint.x - dragOffset.x,
+												   currentPoint.y - dragOffset.y);
 			}
 
 		}
