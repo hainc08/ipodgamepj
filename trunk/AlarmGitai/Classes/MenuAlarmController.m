@@ -26,7 +26,7 @@
     [super viewDidLoad];
 	
 	AlarmTxt = [[ButtonView alloc] initWithFrame:CGRectMake(140, 50,  240, 50)];
-	[AlarmTxt setText:@" 3:2 오전 "];
+	[AlarmTxt setText: @" 3:2 오전 "];
 	[self.view addSubview:AlarmTxt];
 	
 	Save = [[ButtonView alloc] initWithFrame:CGRectMake(40, 50,  70, 50)];
@@ -44,7 +44,6 @@
 	[Edit addSubview:EditButton];
 	[self.view addSubview:Edit];
 	[EditButton release];
-	
 	
 	AlarmSetTxt = [[ButtonView alloc] initWithFrame:CGRectMake(40, 100,  240, 50)];
 	[AlarmSetTxt setText:@" ALARM SET ? "];
@@ -75,6 +74,13 @@
 	[self.view addSubview:Snooze];
 	[SnoozeButton release];
 	
+	Vibration = [[ButtonView alloc] initWithFrame:CGRectMake(320 , 180,  BUTTON_X, BUTTON_Y)];
+	[Vibration setText:@"VIBRATION"];
+	UIButton *VibrationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
+	[VibrationButton addTarget:self action:@selector(ShakeButton:) forControlEvents:UIControlEventTouchUpInside];
+	[Vibration addSubview:VibrationButton];
+	[self.view addSubview:Vibration];
+	[VibrationButton release];
 	
 	Done = [[ButtonView alloc] initWithFrame:CGRectMake(340, 100,  BUTTON_X, BUTTON_Y)];
 	[Done setText:@"DONE"];
@@ -98,8 +104,8 @@
 	[dateFormatter setDateStyle:NSDateFormatterNoStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
 	[dateFormatter setDateFormat:(NSString*) @"h:mm a"];
-
-	[AlarmTxt setText:[dateFormatter stringFromDate:[datePicker date]]];	
+	NSString *DateTxt = [[NSString alloc]  initWithUTF8String:[dateFormatter stringFromDate:[datePicker date]]];
+	[AlarmTxt setText:DateTxt];	
 	[dateFormatter dealloc];
 }
 
@@ -129,7 +135,9 @@
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
-
+- (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
+	return NO;
+}
 /*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

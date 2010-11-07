@@ -41,8 +41,8 @@ static ActionManager *actionManagerInst;
 	for (id oneObject in ctlarr)
 		if ([oneObject isKindOfClass:[MainView class]])
 		{
-		//	MainView *root = (MainView *)oneObject;
-		//	[root reset:_inType value:_inValue];
+			MainView *root = (MainView *)oneObject;
+			[root reset:_inType value:_inValue];
 			break;
 		}
 	

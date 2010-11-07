@@ -92,6 +92,7 @@
 }
 - (void)UpdateTime
 {	
+
 	
 	NSString *tmpMin = [[DateFormat getInstance] getMin];
 	
@@ -145,7 +146,7 @@
 			[Min release];
 		Min = [[NSString alloc] initWithFormat:@"%@",tmpMin];
 	}
-	
+
 }
 
 

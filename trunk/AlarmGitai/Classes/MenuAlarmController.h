@@ -19,6 +19,7 @@
 	ButtonView *Save;
 	ButtonView *Edit;
 	ButtonView *Done;
+	ButtonView *Vibration;
 	UIDatePicker *datePicker;
 }
 @end

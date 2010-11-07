@@ -16,9 +16,13 @@
 
 @end
 
+enum RESETTYPE {
+	ROTAGEUPDATE = 0,
+};
+
 enum VIEWMODE {
 	VIEWNORMAL = 0,
-	VIEWUPDATE
+	VIEWUPDATE,
 };
 	
 @interface MainView : UIViewController {
@@ -51,7 +55,7 @@ enum VIEWMODE {
 /* Button */
 	UIButton *AlarmButton;
 }
-
+- (void) reset:(int)_type value:(NSObject *)_inValue;
 -(CGRect)viewcentersettle:(CGRect) rect;
 - (void) resizeview:(int)_type value:(int)value;
 - (void)update;

@@ -249,6 +249,18 @@
 }
 #endif
 
+/* 각각 보여지는 크기를 조절 */
+- (void) reset:(int)_type value:(NSObject *)_inValue
+{
+	if (_type	== ROTAGEUPDATE)
+	{
+		[self resumeTimer];
+
+		viewrotate = TRUE;
+		
+	}
+}
+
 /* 흔들기를 사용하기 위해서 추가 */
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
@@ -360,7 +372,6 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
-	viewmode == VIEWNORMAL;
 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
