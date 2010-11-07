@@ -32,6 +32,7 @@ enum VIEWMODE {
 	BOOL	dateViewTouched;
 	BOOL	weekViewTouched;
 	
+	CGPoint dragOffset;
 	
 	BOOL hiddenButton;
 	BOOL menuEnable;
