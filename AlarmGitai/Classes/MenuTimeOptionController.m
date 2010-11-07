@@ -80,7 +80,9 @@
 	
 	// Release any cached data, images, etc that aren't in use.
 }
-
+- (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
+	return NO;
+}
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;

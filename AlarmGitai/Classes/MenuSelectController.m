@@ -17,9 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];	
-	/* resize 막기 */
-//	self.view.autoresizesSubviews = NO;
-//	self.view.autoresizingMask =UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+	
 	
 	[self.view setBackgroundColor:[UIColor grayColor]];
 	[self.view setAlpha:1];
@@ -80,11 +78,13 @@
 	// e.g. self.myOutlet = nil;
 	
 }
-
+- (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
+	return NO;
+}
 - (void)DoneButton:(id)sender
 {
 	DataParam *data = [[DataParam alloc] init];
-	//[[ActionManager getInstance] setRootAction:ROTAGEUPDATE value:data];
+	[[ActionManager getInstance] setRootAction:ROTAGEUPDATE value:data];
 	[data release];
 	[self.navigationController popToRootViewControllerAnimated:YES];
 }

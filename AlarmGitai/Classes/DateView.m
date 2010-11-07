@@ -100,6 +100,10 @@
 }
 - (void)UpdateDate
 {
+	if( [[AlarmConfig getInstance] getDateMode] )
+	{
+		[self.view setAlpha:1];
+		
 	if((![Week isEqualToString:[[DateFormat getInstance] getWeek]]) || Week == nil)
 	{
 	
@@ -162,6 +166,9 @@
 		
 		Day = [[NSString alloc] initWithFormat:@"%@", tmpDay];
 	}		
+	}
+	else 
+		[self.view setAlpha:0];
 }
 
 - (void)dealloc {

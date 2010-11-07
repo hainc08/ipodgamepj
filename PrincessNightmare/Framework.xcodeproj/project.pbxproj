@@ -3367,7 +3367,7 @@
 		84E4F012112043EF00590373 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		84E4F0141120440000590373 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		84E4F0171120441C00590373 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		84E710D111F4D8360029E85D /* opening.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = opening.mp4; sourceTree = "<group>"; };
+		84E710D111F4D8360029E85D /* opening.mp4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = opening.mp4; sourceTree = "<group>"; };
 		84E710D211F4D8360029E85D /* edA_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = edA_2.mp4; sourceTree = "<group>"; };
 		84F4CFDC11EED4B000D2F04A /* ItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemView.m; path = ViewClasses/ItemView.m; sourceTree = SOURCE_ROOT; };
 		84F4CFDD11EED4B000D2F04A /* ItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemView.h; path = ViewClasses/ItemView.h; sourceTree = SOURCE_ROOT; };
