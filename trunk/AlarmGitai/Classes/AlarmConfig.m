@@ -37,26 +37,71 @@ static AlarmConfig *AlarmConfigInst;
 	
 	[[SaveManager getInstance] setIntData:@"HourMode" idx:0 value:HourMode == TRUE ? 1 : 0 ];
 	[[SaveManager getInstance] setIntData:@"DateMode" idx:0 value:DateMode == TRUE ? 1 : 0];
+
+	CGAffineTransform trans;
+	CGPoint pos;
 	
+	//세로 세팅정보 저장----------------------
+	trans = heigthviewpoint.ClockTrans;
+	pos = heigthviewpoint.ClockPoint;
+	[[SaveManager getInstance] setFloatData:@"ClockZoom" idx:0 value:trans.a];
+	[[SaveManager getInstance] setIntData:@"ClockPos" idx:0 value:pos.x];
+	[[SaveManager getInstance] setIntData:@"ClockPos" idx:1 value:pos.y];
+	
+	trans = heigthviewpoint.DateTrans;
+	pos = heigthviewpoint.DatePoint;
+	[[SaveManager getInstance] setFloatData:@"DateZoom" idx:0 value:trans.a];
+	[[SaveManager getInstance] setIntData:@"DatePos" idx:0 value:pos.x];
+	[[SaveManager getInstance] setIntData:@"DatePos" idx:1 value:pos.y];
+	//-------------------------------------
+	
+	//가로 세팅정보 저장----------------------
+	trans = widthviewpoint.ClockTrans;
+	pos = widthviewpoint.ClockPoint;
+	[[SaveManager getInstance] setFloatData:@"ClockZoom" idx:1 value:trans.a];
+	[[SaveManager getInstance] setIntData:@"ClockPos" idx:2 value:pos.x];
+	[[SaveManager getInstance] setIntData:@"ClockPos" idx:3 value:pos.y];
+
+	trans = widthviewpoint.DateTrans;
+	pos = widthviewpoint.DatePoint;
+	[[SaveManager getInstance] setFloatData:@"DateZoom" idx:1 value:trans.a];
+	[[SaveManager getInstance] setIntData:@"DatePos" idx:2 value:pos.x];
+	[[SaveManager getInstance] setIntData:@"DatePos" idx:3 value:pos.y];
+	//-------------------------------------
+
 	[[SaveManager getInstance] saveFile];
 }
+
 - (void)defaultConfig
 {
 	/* file save 도 같이 하자 */
 	[[SaveManager getInstance] setIntData:@"RotationTime" idx:0 value:5];
 	[[SaveManager getInstance] setIntData:@"heigthnum" idx:0 value:0];
 	[[SaveManager getInstance] setIntData:@"widthnum" idx:0 value:0];
-	[[SaveManager getInstance] setIntData:@"FontType" idx:0 value:0];
+	[[SaveManager getInstance] setIntData:@"FontType" idx:0 value:1];
 	[[SaveManager getInstance] setStringData:@"FontType" idx:1 value:@"ub"];
 	[[SaveManager getInstance] setStringData:@"FontType" idx:2 value:@"dw"];
 	
-	[[SaveManager getInstance] getIntData:@"HourMode" idx:0 base:1];
-	[[SaveManager getInstance] getIntData:@"DateMode" idx:0 base:1];
+	[[SaveManager getInstance] setIntData:@"HourMode" idx:0 value:1];
+	[[SaveManager getInstance] setIntData:@"DateMode" idx:0 value:1];
+
+	[[SaveManager getInstance] setFloatData:@"ClockZoom" idx:0 value:1.f];
+	[[SaveManager getInstance] setIntData:@"ClockPos" idx:0 value:160];
+	[[SaveManager getInstance] setIntData:@"ClockPos" idx:1 value:300];
 	
+	[[SaveManager getInstance] setFloatData:@"DateZoom" idx:0 value:0.5f];
+	[[SaveManager getInstance] setIntData:@"DatePos" idx:0 value:200];
+	[[SaveManager getInstance] setIntData:@"DatePos" idx:1 value:50];
+
+	[[SaveManager getInstance] setFloatData:@"ClockZoom" idx:1 value:1.f];
+	[[SaveManager getInstance] setIntData:@"ClockPos" idx:2 value:300];
+	[[SaveManager getInstance] setIntData:@"ClockPos" idx:3 value:300];
+	
+	[[SaveManager getInstance] setFloatData:@"DateZoom" idx:1 value:0.5f];
+	[[SaveManager getInstance] setIntData:@"DatePos" idx:2 value:50];
+	[[SaveManager getInstance] setIntData:@"DatePos" idx:3 value:50];
 	
 	[[SaveManager getInstance] saveFile];
-	
-
 }
 
 - (void)loadConfig
@@ -69,7 +114,7 @@ static AlarmConfig *AlarmConfigInst;
 	heightnum = [[SaveManager getInstance] getIntData:@"heigthnum" idx:0 base:0];
 	widthnum =  [[SaveManager getInstance] getIntData:@"widthnum" idx:0 base:0];
 	
-	FontType =		  [[SaveManager getInstance] getIntData:@"FontType" idx:0 base:0];
+	FontType =		  [[SaveManager getInstance] getIntData:@"FontType" idx:0 base:1];
 	FontUpImageType = [[SaveManager getInstance] getStringData:@"FontType" idx:1 base:@"ub"];
 	FontBgImageType = [[SaveManager getInstance] getStringData:@"FontType" idx:2 base:@"dw"];
 	
@@ -82,15 +127,25 @@ static AlarmConfig *AlarmConfigInst;
 	heigthviewpoint = [ViewCgPoint alloc];
 	widthviewpoint = [ViewCgPoint alloc];
 
-	[heigthviewpoint setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
-	[heigthviewpoint setClockPoint:CGPointMake(65,410)];
-	[heigthviewpoint setDateTrans:CGAffineTransformMake(0.2, 0.0, 0.0, 0.2, 0.0, 0.0)];
-	[heigthviewpoint setDatePoint:CGPointMake(35,50)];
+	float cz = [[SaveManager getInstance] getFloatData:@"ClockZoom" idx:0 base:1.f];
+	[heigthviewpoint setClockTrans:CGAffineTransformMake(cz, 0.0, 0.0, cz, 0.0, 0.0)];
+	[heigthviewpoint setClockPoint:CGPointMake([[SaveManager getInstance] getIntData:@"ClockPos" idx:0 base:160],
+											   [[SaveManager getInstance] getIntData:@"ClockPos" idx:1 base:300])];
 
-	[widthviewpoint setClockTrans:CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, 0.0, 0.0)];
-	[widthviewpoint setClockPoint:CGPointMake(65,230)];
-	[widthviewpoint setDateTrans:CGAffineTransformMake(0.3, 0.0, 0.0, 0.3, 0.0, 0.0)];
-	[widthviewpoint setDatePoint:CGPointMake(35,50)];	
+	float dz = [[SaveManager getInstance] getFloatData:@"DateZoom" idx:0 base:0.5f];
+	[heigthviewpoint setDateTrans:CGAffineTransformMake(dz, 0.0, 0.0, dz, 0.0, 0.0)];
+	[heigthviewpoint setDatePoint:CGPointMake([[SaveManager getInstance] getIntData:@"DatePos" idx:0 base:200],
+											  [[SaveManager getInstance] getIntData:@"DatePos" idx:1 base:50])];
+
+	cz = [[SaveManager getInstance] getFloatData:@"ClockZoom" idx:1 base:1.f];
+	[widthviewpoint setClockTrans:CGAffineTransformMake(cz, 0.0, 0.0, cz, 0.0, 0.0)];
+	[widthviewpoint setClockPoint:CGPointMake([[SaveManager getInstance] getIntData:@"ClockPos" idx:2 base:160],
+											   [[SaveManager getInstance] getIntData:@"ClockPos" idx:3 base:300])];
+	
+	dz = [[SaveManager getInstance] getFloatData:@"DateZoom" idx:1 base:0.5f];
+	[widthviewpoint setDateTrans:CGAffineTransformMake(dz, 0.0, 0.0, dz, 0.0, 0.0)];
+	[widthviewpoint setDatePoint:CGPointMake([[SaveManager getInstance] getIntData:@"DatePos" idx:2 base:200],
+											  [[SaveManager getInstance] getIntData:@"DatePos" idx:3 base:50])];
 }
 
 - (BOOL) getAlarmONOFF

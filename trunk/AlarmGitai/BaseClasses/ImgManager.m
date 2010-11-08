@@ -15,8 +15,8 @@ static ImgManager *ImgManagerInst;
 	{
 		for(int j=0; j< 10; ++j)
 		{
-		ImgManagerInst->d_image[j] = [UIImage imageNamed:[NSString stringWithFormat:@"%d_dw%d.png", i,j]];
-		ImgManagerInst->u_image[j] = [UIImage imageNamed:[NSString stringWithFormat:@"%d_ub%d.png", i,j]];
+			ImgManagerInst->d_image[j] = [UIImage imageNamed:[NSString stringWithFormat:@"%d_dw%d.png", i,j]];
+			ImgManagerInst->u_image[j] = [UIImage imageNamed:[NSString stringWithFormat:@"%d_ub%d.png", i,j]];
 		}
 	}
 	

@@ -26,11 +26,6 @@
 	u_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	b_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,240, 360)];
 	
-	[u_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@Div.png", 
-										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getUpImageType]]]];
-	[b_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@Div.png", 
-										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getBgImageType]]]];
-	
 	[self.view addSubview:b_Dot];
 	[self.view addSubview:u_Dot];
 
@@ -46,32 +41,26 @@
 	[self.view addSubview:u_DayT];
 	[self.view addSubview:u_DayM];
 
-	[u_Dot setFrame:CGRectMake(220,23,240, 360)];
-	[b_Dot setFrame:CGRectMake(220,23,240, 360)];
+	[u_Dot setFrame:CGRectMake(110,-10,100,150)];
+	[b_Dot setFrame:CGRectMake(110,-10,100,150)];
 	
-	[u_Week setFrame:CGRectMake(220,180,240, 360)];
-	[b_Week setFrame:CGRectMake(220,180,240, 360)];
+	[u_Week setFrame:CGRectMake(160,100,130,100)];
+	[b_Week setFrame:CGRectMake(160,100,130,100)];
 
-/*	[u_MonT setFrame:CGRectMake(25,0,240, 360)];
-	[u_MonM setFrame:CGRectMake(140,0,240, 360)];
-	[u_DayT setFrame:CGRectMake(300,0,240, 360)];
-	[u_DayM setFrame:CGRectMake(415,0,240, 360)];
+	[u_MonT setFrame:CGRectMake(-10,-10,100,150)];
+	[u_MonM setFrame:CGRectMake(60,-10,100,150)];
+	[u_DayT setFrame:CGRectMake(160,-10,100,150)];
+	[u_DayM setFrame:CGRectMake(230,-10,100,150)];
 	
-	[b_MonT setFrame:CGRectMake(25,0,240, 360)];
-	[b_MonM setFrame:CGRectMake(140,0,240, 360)];
-	[b_DayT setFrame:CGRectMake(310,0,240, 360)];
-	[b_DayM setFrame:CGRectMake(425,0,240, 360)];
-	*/
-	[u_MonT setFrame:CGRectMake(-50,-80,240, 360)];
-	[u_MonM setFrame:CGRectMake(65,-80,240, 360)];
-	[u_DayT setFrame:CGRectMake(225,-80,240, 360)];
-	[u_DayM setFrame:CGRectMake(340,-80,240, 360)];
+	[b_MonT setFrame:CGRectMake(-10,-10,100,150)];
+	[b_MonM setFrame:CGRectMake(60,-10,100,150)];
+	[b_DayT setFrame:CGRectMake(160,-10,100,150)];
+	[b_DayM setFrame:CGRectMake(230,-10,100,150)];
 	
-	[b_MonT setFrame:CGRectMake(-50,-80,240, 360)];
-	[b_MonM setFrame:CGRectMake(65,-80,240, 360)];
-	[b_DayT setFrame:CGRectMake(225,-80,240, 360)];
-	[b_DayM setFrame:CGRectMake(340,-80,240, 360)];
-	
+	[u_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@Div.png", 
+										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getUpImageType]]]];
+	[b_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@Div.png", 
+										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getBgImageType]]]];
 }
 
 - (void)ChageNumberImage:(int)type changeImage:(char)number

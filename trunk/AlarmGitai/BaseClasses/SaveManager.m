@@ -65,6 +65,21 @@ static SaveManager *SaveManagerInst;
 }
 @end
 
+@implementation FloatData
+-(float)getValue { return value; }
+-(void)setValue:(float)v { value = v; }
+-(void)saveData:(NSFileHandle*)writeFile
+{
+	[super saveData:writeFile];
+	writeFloat(writeFile, value);
+}
+-(void)loadData:(NSFileHandle*)loadFile
+{
+	[super loadData:loadFile];
+	value = readFloat(loadFile);
+}
+@end
+
 @implementation SaveManager
 
 + (SaveManager*)getInstance
@@ -111,28 +126,31 @@ static SaveManager *SaveManagerInst;
 	}
 	
 	//버전정보심기
-	int ver = 1;
+	int ver = 2;
 	writeInt(writeFile, ver);
 
 	writeInt(writeFile, [stringData count]);
-	for (id data in stringData)
+	for (BaseData* data in stringData)
 	{
-		BaseData* sData = (BaseData*)data;
-		[sData saveData:writeFile];
+		[data saveData:writeFile];
 	}
 
 	writeInt(writeFile, [intData count]);
-	for (id data in intData)
+	for (BaseData* data in intData)
 	{
-		BaseData* iData = (BaseData*)data;
-		[iData saveData:writeFile];
+		[data saveData:writeFile];
 	}
 
-	writeInt(writeFile, [keys count]);
-	for (id data in keys)
+	writeInt(writeFile, [floatData count]);
+	for (BaseData* data in floatData)
 	{
-		DataKey* kData = (DataKey*)data;
-		[kData saveData:writeFile];
+		[data saveData:writeFile];
+	}
+	
+	writeInt(writeFile, [keys count]);
+	for (DataKey* data in keys)
+	{
+		[data saveData:writeFile];
 	}
 	
 	[writeFile closeFile];
@@ -144,6 +162,7 @@ static SaveManager *SaveManagerInst;
 {
 	stringData = [[NSMutableArray alloc] initWithCapacity:0];
 	intData = [[NSMutableArray alloc] initWithCapacity:0];
+	floatData = [[NSMutableArray alloc] initWithCapacity:0];
 	keys = [[NSMutableArray alloc] initWithCapacity:0];
 	
 	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
@@ -160,8 +179,9 @@ static SaveManager *SaveManagerInst;
 	
 	//버전정보확인
 	int ver = readInt(readFile);
-	
-	if (ver == 1)
+
+	//Float추가되면서 Ver올림
+	if (ver <= 2)
 	{
 		int count = readInt(readFile);
 		for (int i=0; i<count; ++i)
@@ -178,7 +198,18 @@ static SaveManager *SaveManagerInst;
 			[data loadData:readFile];
 			[intData addObject:data];
 		}
-		
+
+		if (ver >= 2)
+		{
+			count = readInt(readFile);
+			for (int i=0; i<count; ++i)
+			{
+				FloatData* data = [FloatData alloc];
+				[data loadData:readFile];
+				[floatData addObject:data];
+			}
+		}
+
 		count = readInt(readFile);
 		for (int i=0; i<count; ++i)
 		{
@@ -216,6 +247,35 @@ FINDKEY:
 		if ((keyIdx == [iData keyIdx]) && (idx == [iData idx]))
 		{
 			return [iData getValue];
+		}
+	}
+	
+	return base;
+}
+
+- (float)getFloatData:(NSString*)key idx:(int)idx base:(float)base;
+{
+	int keyIdx;
+	
+	for (id k in keys)
+	{
+		DataKey* kd = (DataKey*)k;
+		if ([key compare:[kd key]] == NSOrderedSame)
+		{
+			keyIdx = [kd idx];
+			goto FINDKEY;
+		}
+	}
+	
+	return base;
+FINDKEY:
+	
+	for (id data in floatData)
+	{
+		FloatData* fData = (FloatData*)data;
+		if ((keyIdx == [fData keyIdx]) && (idx == [fData idx]))
+		{
+			return [fData getValue];
 		}
 	}
 	
@@ -293,6 +353,51 @@ FINDKEY:
 	
 	[intData addObject:iData];
 
+	isDirty = true;
+}
+
+- (void)setFloatData:(NSString*)key idx:(int)idx value:(float)value
+{
+	int keyIdx;
+	DataKey* kd;
+	FloatData* fData;
+	
+	for (id k in keys)
+	{
+		kd = (DataKey*)k;
+		if ([key compare:[kd key]] == NSOrderedSame) goto FINDKEY;
+	}
+	
+	kd = [[DataKey alloc] init];
+	[kd setIdx:[keys count]];
+	[kd setKey:key];
+	
+	[keys addObject:kd];
+	
+FINDKEY:
+	keyIdx = [kd idx];
+	
+	for (id data in floatData)
+	{
+		fData = (FloatData*)data;
+		if ((keyIdx == [fData keyIdx]) && (idx == [fData idx]))
+		{
+			if ([fData getValue] != value)
+			{
+				isDirty = true;
+				[fData setValue:value];
+			}
+			return;
+		}
+	}
+	
+	fData = [FloatData alloc];
+	[fData setKeyIdx:keyIdx];
+	[fData setIdx:idx];
+	[fData setValue:value];
+	
+	[floatData addObject:fData];
+	
 	isDirty = true;
 }
 

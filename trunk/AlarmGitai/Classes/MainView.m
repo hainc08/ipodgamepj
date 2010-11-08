@@ -12,7 +12,7 @@
 
 @implementation DataParam
 
-@synthesize  iData;
+@synthesize iData;
 @synthesize sData;
 
 @end
@@ -57,8 +57,7 @@
 	//[charView setChar:@"hitomi" idx:k isNight:true];
 	//k++;
 	//return;
-	clockViewTouched = NO;
-	dateViewTouched = NO;
+	touchedCon = nil;
 
 	NSSet *Alltouch = [event allTouches];
 	switch ([Alltouch count]) {
@@ -68,16 +67,14 @@
 			UITouch *currentTouch = [[event allTouches] anyObject];
 			CGPoint touchPoint = [currentTouch locationInView:self.view];
 				
-			if (CGRectContainsPoint(clockview.view.frame, touchPoint)) {
-				clockViewTouched = YES;
-				dragOffset = CGPointMake(touchPoint.x - clockview.view.center.x,
-										 touchPoint.y - clockview.view.center.y);
+			if (CGRectContainsPoint(clockview.view.frame, touchPoint)) touchedCon = clockview;
+			else if (CGRectContainsPoint(dateview.view.frame, touchPoint)) touchedCon = dateview;
+
+			if (touchedCon != nil)
+			{
+				dragOffset = CGPointMake(touchPoint.x - touchedCon.view.center.x,
+										 touchPoint.y - touchedCon.view.center.y);
 			}	
-			else if (CGRectContainsPoint(dateview.view.frame, touchPoint)) {
-				dateViewTouched = YES;
-				dragOffset = CGPointMake(touchPoint.x - dateview.view.center.x,
-										 touchPoint.y - dateview.view.center.y);
-			}
 		}
 			break;
 		case 2:
@@ -88,10 +85,10 @@
 			initTouchPoint = [self distanceBetweenTwoPoints:[touch1 locationInView:self.view] toPoint:[touch2 locationInView:self.view]];
 			
 			if (CGRectContainsPoint(clockview.view.frame, [touch1 locationInView:self.view]) || CGRectContainsPoint(clockview.view.frame, [touch2 locationInView:self.view]) ) {
-				clockViewTouched = YES;
+				touchedCon = clockview;
 			}	
 			else if (CGRectContainsPoint(dateview.view.frame, [touch1 locationInView:self.view]) || CGRectContainsPoint(dateview.view.frame, [touch2 locationInView:self.view])) {
-				dateViewTouched = YES;
+				touchedCon = dateview;
 			}
 			
 		}
@@ -111,16 +108,12 @@
 		{	
 			UITouch *currentTouch = [[event allTouches] anyObject];	
 			CGPoint currentPoint = [currentTouch locationInView:self.view];
-				
-			if(clockViewTouched == YES) {
-				clockview.view.center = CGPointMake(currentPoint.x - dragOffset.x,
+			
+			if (touchedCon != nil)
+			{
+				touchedCon.view.center = CGPointMake(currentPoint.x - dragOffset.x,
 													currentPoint.y - dragOffset.y);
 			}
-			else if(dateViewTouched == YES) {
-				dateview.view.center = CGPointMake(currentPoint.x - dragOffset.x,
-												   currentPoint.y - dragOffset.y);
-			}
-
 		}
 			break;
 		case 2:
@@ -146,13 +139,17 @@
 		default:
 			break;
 	}
+	
+	[clockview.view setFrame:[self viewcentersettle:clockview.view.frame]];
+	[dateview.view setFrame:[self viewcentersettle:dateview.view.frame]];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	[ self ConfigSetup];
+	[self ConfigSetup];
 	viewmode = VIEWNORMAL;
 }
+
 -(CGRect)viewcentersettle:(CGRect) rect
 {
 	if( rect.origin.x + rect.size.width > self.view.frame.size.width )
@@ -172,35 +169,14 @@
 /* 각각 v보여지는 크기를 조절 */
 - (void) resizeview:(int)_type value:(int)value
 {
-	CGFloat trans ; 
-	if(_type)
-	{
-		if(clockViewTouched == YES) {
-			trans =  clockview.view.transform.a  -  0.03;
-			if(trans < 0.6 && trans > 0.1)
-				[clockview.view setTransform:CGAffineTransformMake(trans, 0.0, 0.0,trans, 0.0, 0.0)];
-		}
-		else if(dateViewTouched == YES) {
-			trans =  dateview.view.transform.a  -  0.03;
-			if(trans < 0.6 && trans > 0.1)
-				[dateview.view setTransform:CGAffineTransformMake(trans, 0.0, 0.0,trans, 0.0, 0.0)];
-		}
-	}
-	else 
-	{
-		if(clockViewTouched == YES) {
-			trans =  clockview.view.transform.a  + 0.03;
-			if(trans < 0.6 && trans > 0.1)
-				[clockview.view setTransform:CGAffineTransformMake(trans, 0.0, 0.0,trans, 0.0, 0.0)];
-		}
-		else if(dateViewTouched == YES) {
-			trans =  dateview.view.transform.a  +  0.03;
-			if(trans < 0.6 && trans > 0.1)
-				[dateview.view setTransform:CGAffineTransformMake(trans, 0.0, 0.0, trans, 0.0, 0.0)];
-			
-		}
-	}
-	
+	if (touchedCon == nil) return;
+
+	int temp = 1;
+	if(_type) temp = -1;
+
+	CGFloat trans =  touchedCon.view.transform.a + 0.03 * temp;
+	if(trans <= 1.0 && trans >= 0.3)
+		[touchedCon.view setTransform:CGAffineTransformMake(trans, 0.0, 0.0,trans, 0.0, 0.0)];
 }		
 
 #if 0 
@@ -272,9 +248,6 @@
 }
 
 - (void)ConfigSetup{
-	
-	[clockview.view setFrame:[self viewcentersettle:clockview.view.frame]];
-	[dateview.view setFrame:[self viewcentersettle:dateview.view.frame]];
 	ViewCgPoint *config = [ViewCgPoint alloc];
 	
 	[config setClockTrans:clockview.view.transform];
@@ -287,6 +260,7 @@
 	else
 		[[AlarmConfig getInstance] setWidthViewPoint:config];
 	
+	[[AlarmConfig getInstance] SaveConfig];
 	[config release];
 }
 
@@ -328,14 +302,14 @@
 	[self.view addSubview:sceneView.view];
 	
 	clockview = [[ClockView alloc] init];
-	[clockview.view setFrame:CGRectMake(0, 0, 520, 200)];
+	[clockview.view setFrame:CGRectMake(0, 0, 320, 130)];
 	[clockview.view setTransform:alarmviewpoint.ClockTrans]; 
 	[clockview.view setCenter:alarmviewpoint.ClockPoint ];
 	[clockview UpdateTime];
 	[self.view addSubview:clockview.view];
 	
 	dateview = [[DateView alloc] init];
-	[dateview.view setFrame:CGRectMake(0, 0, 520, 200)];
+	[dateview.view setFrame:CGRectMake(0, 0, 320, 180)];
 	[dateview.view setTransform:alarmviewpoint.DateTrans];
 	[dateview.view setCenter:alarmviewpoint.DatePoint ];
 	[dateview UpdateDate];

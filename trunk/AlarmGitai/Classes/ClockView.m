@@ -45,24 +45,24 @@
 	[self.view addSubview:u_MinT];
 	[self.view addSubview:u_MinM];
 	[self.view addSubview:u_Dot];
-	
+
+	[b_Dot setFrame:CGRectMake(110,-10,100,150)];
+	[u_Dot setFrame:CGRectMake(110,-10,100,150)];
+
+	[b_HourT setFrame:CGRectMake(-10,-10,100,150)];
+	[b_HourM setFrame:CGRectMake(60,-10,100,150)];
+	[b_MinT setFrame:CGRectMake(160,-10,100,150)];
+	[b_MinM setFrame:CGRectMake(230,-10,100,150)];
+
+	[u_HourT setFrame:CGRectMake(-10,-10,100,150)];
+	[u_HourM setFrame:CGRectMake(60,-10,100,150)];
+	[u_MinT setFrame:CGRectMake(160,-10,100,150)];
+	[u_MinM setFrame:CGRectMake(230,-10,100,150)];
+
 	[u_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@dot.png", 
 										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getUpImageType]]]];
 	[b_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@dot.png", 
 										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getBgImageType]]]];
-
-	[b_Dot setFrame:CGRectMake(220,0,240, 360)];
-	[u_Dot setFrame:CGRectMake(220,0,240, 360)];
-
-	[b_HourT setFrame:CGRectMake(-50,-80,240, 360)];
-	[b_HourM setFrame:CGRectMake(65,-80,240, 360)];
-	[b_MinT setFrame:CGRectMake(225,-80,240, 360)];
-	[b_MinM setFrame:CGRectMake(340,-80,240, 360)];
-
-	[u_HourT setFrame:CGRectMake(-50,-80,240, 360)];
-	[u_HourM setFrame:CGRectMake(65,-80,240, 360)];
-	[u_MinT setFrame:CGRectMake(225,-80,240, 360)];
-	[u_MinM setFrame:CGRectMake(340,-80,240, 360)];
 }
 
 

@@ -32,9 +32,8 @@ enum VIEWMODE {
 	
 	BOOL	viewrotate;
 	BOOL	editenable;
-	BOOL	clockViewTouched;
-	BOOL	dateViewTouched;
 	BOOL	weekViewTouched;
+	UIViewController* touchedCon;
 	
 	CGPoint dragOffset;
 	
