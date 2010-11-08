@@ -42,10 +42,21 @@
 -(void)loadData:(NSFileHandle*)loadFile;
 @end
 
+@interface FloatData : BaseData
+{
+	float value;
+}
+-(float)getValue;
+-(void)setValue:(float)v;
+-(void)saveData:(NSFileHandle*)writeFile;
+-(void)loadData:(NSFileHandle*)loadFile;
+@end
+
 @interface SaveManager : NSObject
 {	
 	NSMutableArray* stringData;
 	NSMutableArray* intData;
+	NSMutableArray* floatData;
 	NSMutableArray* keys;
 	
 	bool isDirty;
@@ -59,9 +70,11 @@
 - (void)saveFile;
 
 - (int)getIntData:(NSString*)key idx:(int)idx base:(int)base;
+- (float)getFloatData:(NSString*)key idx:(int)idx base:(float)base;
 - (NSString*)getStringData:(NSString*)key idx:(int)idx base:(NSString*)base;
 
 - (void)setIntData:(NSString*)key idx:(int)idx value:(int)value;
+- (void)setFloatData:(NSString*)key idx:(int)idx value:(float)value;
 - (void)setStringData:(NSString*)key idx:(int)idx value:(NSString*)value;
 
 @end
