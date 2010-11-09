@@ -33,6 +33,8 @@
 - (NSString *)getMin;
 - (NSString *)getSec;
 - (NSString *)getAP;
+- (NSString *)getAlarm;
 - (BOOL)getNight ;
+- (NSString *)getAlarmFormat:(NSString *)_informat;
 
 @end

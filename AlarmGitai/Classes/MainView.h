@@ -5,6 +5,7 @@
 @class SceneView;
 @class MenuController;
 @class MenuSelectController;
+@class AlarmShakeController;
 
 @interface DataParam : NSObject {
 	int iData;
@@ -28,7 +29,8 @@ enum VIEWMODE {
 @interface MainView : UIViewController {
 	CGFloat initTouchPoint;
 	
-	MenuSelectController *selectmenu;
+	AlarmShakeController	*alarmshake;
+	MenuSelectController	*selectmenu;
 	
 	BOOL	viewrotate;
 	BOOL	editenable;

@@ -83,9 +83,8 @@
 }
 - (void)DoneButton:(id)sender
 {
-	DataParam *data = [[DataParam alloc] init];
-	[[ActionManager getInstance] setRootAction:ROTAGEUPDATE value:data];
-	[data release];
+	[[AlarmConfig getInstance] SaveConfig];
+	[[ActionManager getInstance] setRootAction:ROTAGEUPDATE value:nil];
 	[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -95,6 +94,7 @@
 }
 - (void)AlarmOptionButton:(id)sender
 {
+	[CT_TimeOption reset];
 	[self.navigationController pushViewController:CT_AlarmOption animated:YES];
 }
 

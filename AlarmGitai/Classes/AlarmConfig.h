@@ -41,8 +41,8 @@
 
 
 @interface AlarmConfig : NSObject {
+	
 	NSString		*CharName;
-	NSArray			*fontArr; 
 	int				FontType;
 	NSString		*FontBgImageType;
 	NSString		*FontUpImageType;
@@ -52,23 +52,17 @@
 	ViewCgPoint		*heigthviewpoint;
 	ViewCgPoint		*widthviewpoint;
 	
-	
-	
-	NSString		*locale;		/* 나라 설정 */
-	NSDateFormatter	AlarmCDate[10]; /* 알람 설정 */
-	
 	/* 배경사진 sec  Default : 5 */
 	int				RotationTime;
 	
+	/* 알람 시간  */
+	NSString		*AlarmTime;
 	
 	/* 환경설정 */
-	
-	BOOL			HourMode;
-	BOOL			DateMode; 
-	
-	BOOL			AlamONOFF;
-	
-	
+	BOOL			HourMode;	
+	BOOL			DateDisplay; 
+	BOOL			WeekDisplay; 
+	BOOL			AlarmONOFF;
 }
 @property (readwrite) int heightnum;
 @property (readwrite) int widthnum;
@@ -79,8 +73,6 @@
 + (AlarmConfig *)getInstance;
 + (void) initmanager;
 - (void) closeManager;
-- (NSArray *)getFontArr;
-- (NSString *)getCurrFontName;
 - (int)getFontType;
 - (NSString *)getUpImageType;
 - (NSString *)getBgImageType;
@@ -92,9 +84,12 @@
 - (void) setWidthViewPoint:(ViewCgPoint *) _inPoint;
 
 - (BOOL) getHourMode;
-- (BOOL) getDateMode;
+- (BOOL) getDateDisplay;
+- (BOOL) getWeekDisplay;
+
 - (void) setHourMode;
-- (void) setDateMode;
+- (void) setDateDisplay;
+- (void) setWeekDisplay;
 
 - (void) setAlarmONOFF;
 - (BOOL) getAlarmONOFF;
@@ -102,4 +97,7 @@
 - (void) SaveConfig;
 - (int) getRotationTime;
 - (void) setRotationTime:(int)value;
+
+- (NSString *)getAlarmTime;
+- (void) setAlarmTime:(NSString *)_inAlarmTime;
 @end
