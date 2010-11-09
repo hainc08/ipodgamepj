@@ -180,6 +180,8 @@
 }
 
 - (void)dealloc {
+	[super dealloc];
+	
 	[AlarmTxt release];
 	[AlarmSetTxt release];
 	[AlarmSet release];
@@ -189,7 +191,8 @@
 	[Edit release];
 	[Done release];
 	[datePicker release];
-    [super dealloc];
+	[Vibration release];
+
 }
 
 

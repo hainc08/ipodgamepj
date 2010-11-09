@@ -13,9 +13,8 @@
 @interface MenuTimeOptionController : UIViewController {
 	
 	ButtonView *HourMode;
-	
 	ButtonView *DisplayDate;
-	
+	ButtonView *WeekDisplay;
 	ButtonView *Done;
 	
 }

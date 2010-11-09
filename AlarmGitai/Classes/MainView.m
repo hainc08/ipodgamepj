@@ -244,7 +244,7 @@
 }
 
 - (BOOL)canBecomeFirstResponder {
-	return YES;
+	return YES;	
 }
 
 - (void)ConfigSetup{
