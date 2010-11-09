@@ -15,11 +15,12 @@
 @class FontLabel;
 
 @interface ButtonView : UIView  {
-	FontLabel *label;
+//	FontLabel *label;
+	UILabel *label;
 	int		TYPE;
 	int		x;
 	int		y;
 }
-- (void)setView:(int)_inTYPE  fontsize:(float)_insize fontName:(NSString *)_inname fontColor:(UIColor *)_inColor;
+- (void)setView:(int)_inTYPE  fontsize:(float)_insize bgColor:(UIColor *)_inBgColor fontColor:(UIColor *)_inColor;
 - (void)setText:(NSString *)_inText;
 @end

@@ -8,7 +8,7 @@
 
 #import "MenuController.h"
 #import "MenuSelectController.h"
-
+#import "AlarmShakeController.h"
 
 @implementation DataParam
 
@@ -319,15 +319,9 @@
 	selectmenu = [[MenuSelectController alloc] init];
 	[selectmenu.view setFrame:CGRectMake(0, 0, 320, 480)];
 
-/*
-	AlarmButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0 , 32, 31)];
-	[AlarmButton setBackgroundImage:[ [UIImage imageNamed:@"alarm.png" ] stretchableImageWithLeftCapWidth:32.0 topCapHeight:31.0] forState:UIControlStateNormal];
-	[AlarmButton setCenter:CGPointMake(300, 20)];
-	[AlarmButton addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-	[AlarmButton setAlpha:1];
-	[self.view addSubview:AlarmButton];
+	alarmshake = [[AlarmShakeController alloc] init];
+	[alarmshake.view setFrame:CGRectMake(0, 0, 320, 480)];
 
- */	
 	frameTick = 0;
 	//너무 자주 업데잇할 필요가 없을 듯~
 	framePerSec = 1.f;
@@ -346,7 +340,8 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
-	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+	//return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+	return YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -361,6 +356,18 @@
 	// e.g. self.myOutlet = nil;
 	
 }
+- (void) AlarmCheck
+{
+	if([[AlarmConfig getInstance] getAlarmONOFF])
+	{
+		if([[[DateFormat getInstance] getAlarm] compare:[[AlarmConfig getInstance] getAlarmTime]] == NSOrderedSame)
+		{
+			[self stopTimer];
+			[self.navigationController pushViewController:alarmshake animated:YES];
+		}
+	
+	}
+}
 
 - (void)update
 {
@@ -373,10 +380,10 @@
 	
 
 	[clockview UpdateTime];
-			[dateview UpdateDate];
+	[dateview UpdateDate];
 
 }
-		
+
 - (void)FrameUpdate
 {
 	if(viewmode == VIEWNORMAL)
@@ -392,6 +399,7 @@
 
 		[dateview.view setTransform:alarmviewpoint.DateTrans];
 		[dateview.view setCenter:alarmviewpoint.DatePoint];
+		
 	}
 
 }

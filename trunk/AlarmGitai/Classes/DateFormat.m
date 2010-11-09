@@ -88,21 +88,21 @@ static DateFormat *DateFormatInst;
 	return Sec;
 }
 
-- (NSString *)getAP
+- (NSString *)getAlarm 
 {
-	
-	[FormatDate setDateFormat:@"a"];
-	NSString *AP	= [FormatDate stringFromDate:[[NSDate date] autorelease]];
-
-	return AP;
+	[FormatDate setDateFormat:@"kk/mm"];
+	NSString *alarm = [FormatDate stringFromDate:[[NSDate date] autorelease]];
+	return alarm;
 }
 
-- (void)dealloc {
-	[super dealloc];
-	[locale release];
-	[FormatDate release];
-
+- (NSString *)getAlarmFormat:(NSString *)_informat
+{
+	[FormatDate setDateFormat:_informat];
+	NSString *alarm = [FormatDate stringFromDate:[[NSDate date] autorelease]];
+	return alarm;
 }
+
+
 
 - (BOOL)getNight 
 {
@@ -117,6 +117,22 @@ static DateFormat *DateFormatInst;
 		ret = TRUE;
 	}
 	return ret;
+}
+
+- (NSString *)getAP
+{
+	
+	[FormatDate setDateFormat:@"a"];
+	NSString *AP	= [FormatDate stringFromDate:[[NSDate date] autorelease]];
+
+	return AP;
+}
+
+- (void)dealloc {
+	[super dealloc];
+	[locale release];
+	[FormatDate release];
+
 }
 
 - (void) closeManager {

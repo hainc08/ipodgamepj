@@ -9,6 +9,7 @@
 #import "MenuAlarmController.h"
 #import "ButtonView.h"
 #import	"AlarmConfig.h"
+#import "DateFormat.h"
 
 @implementation MenuAlarmController
 
@@ -25,8 +26,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	NSString *temp;
 	AlarmTxt = [[ButtonView alloc] initWithFrame:CGRectMake(140, 50,  240, 50)];
-	[AlarmTxt setText: @" 3:2 오전 "];
+	temp = [[AlarmConfig getInstance] getAlarmTime];
+	NSRange Range = [temp rangeOfString:@"/"];
+	if(Range.location == NSNotFound)
+		[AlarmTxt setText: [[DateFormat getInstance] getAlarmFormat: @"h:mm a"]];
+	else
+	{
+		NSString *res = [temp substringWithRange:NSMakeRange(0,Range.length-1)];
+		NSString *res1 = [temp substringFromIndex:Range.length+1];
+
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		[dateFormatter setDateFormat:@"kk:mm"];
+		NSDate *dateFromString = [[NSDate alloc] init];
+		
+		dateFromString = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@:%@", res, res1]];
+		[dateFormatter setDateFormat:@"h:mm a"];
+		
+		[AlarmTxt setText:[dateFormatter stringFromDate:dateFromString]];
+	}
 	[self.view addSubview:AlarmTxt];
 	
 	Save = [[ButtonView alloc] initWithFrame:CGRectMake(40, 50,  70, 50)];
@@ -98,19 +117,27 @@
 	
 }
 
--(void)controlEventValueChanged:(id)sender
+-(NSString *)GetPickerDate:(NSString *)_inFormat
 {
+	NSString *_retvalue;
 	NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateStyle:NSDateFormatterNoStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-	[dateFormatter setDateFormat:(NSString*) @"h:mm a"];
-	NSString *DateTxt = [[NSString alloc]  initWithUTF8String:[dateFormatter stringFromDate:[datePicker date]]];
-	[AlarmTxt setText:DateTxt];	
+	[dateFormatter setDateFormat:(NSString*) _inFormat];
+	_retvalue =  [dateFormatter stringFromDate:[datePicker date]];
 	[dateFormatter dealloc];
+	return _retvalue;
+}
+
+
+-(void)controlEventValueChanged:(id)sender
+{
+	[AlarmTxt setText:[self GetPickerDate: @"h:mm a"] ];
 }
 
 -(void)DoneButton:(id)sender
 {
+	[[AlarmConfig getInstance] SaveConfig];
 	[self.navigationController popViewControllerAnimated:YES];
 }
 -(void)AlarmSetButton:(id)sender
@@ -121,12 +148,13 @@
 -(void)EditButton:(id)sender
 {
 	[Edit setAlpha:0];
-[datePicker setAlpha:1];
+	[datePicker setAlpha:1];
 }
-
 
 -(void)SaveButton:(id)sender
 {
+	[[AlarmConfig getInstance] setAlarmTime:[self GetPickerDate: @"kk/mm"]];
+	[[AlarmConfig getInstance] SaveConfig];
 	[Edit setAlpha:1];
 	[datePicker setAlpha:0];
 }
@@ -137,6 +165,10 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
 	return NO;
+}
+- (void) reset
+{
+	[datePicker setAlpha:0];
 }
 /*
 - (void)viewWillAppear:(BOOL)animated {

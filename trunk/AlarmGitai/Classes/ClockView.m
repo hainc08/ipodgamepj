@@ -92,10 +92,7 @@
 }
 - (void)UpdateTime
 {	
-
-	
 	NSString *tmpMin = [[DateFormat getInstance] getMin];
-	
 	NSString *tmpHour;
 	if([[AlarmConfig getInstance] getHourMode])
 		tmpHour = [[DateFormat getInstance] getHour24];

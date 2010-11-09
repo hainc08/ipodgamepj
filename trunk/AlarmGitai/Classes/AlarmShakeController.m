@@ -7,7 +7,8 @@
 //
 
 #import "AlarmShakeController.h"
-
+#import "ActionManager.h"
+#import	 "MainView.h"
 
 @implementation AlarmShakeController
 
@@ -38,6 +39,7 @@
 }
 -(void)EndButton:(id)sender
 {
+	[[ActionManager getInstance] setRootAction:ROTAGEUPDATE	value:nil];
 	[self.navigationController popToRootViewControllerAnimated:YES];
 }
 

@@ -11,25 +11,26 @@
         // Initialization code
 		TYPE = 0; // box 
 		self.backgroundColor =[UIColor redColor];
-		label = [[FontLabel alloc] initWithFrame:CGRectMake(5, 5, 0, 0) fontName:@"Unisect Extra Bold Oblique" pointSize:12.0f];
+		label = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 0, 0)];
 		[self addSubview:label];
-		
+		//fontName:@"굴림" pointSize:12.0f
 		x	= frame.size.width;
 		y	= frame.size.height;
+		label.font =  [UIFont boldSystemFontOfSize:12];
     }
     return self;
 }
 
-- (void)setView:(int)_inTYPE  fontsize:(float)_insize fontName:(NSString *)_inname fontColor:(UIColor *)_inColor
+- (void)setView:(int)_inTYPE  fontsize:(float)_insize bgColor:(UIColor *)_inBgColor fontColor:(UIColor *)_inColor
 {
 	TYPE = _inTYPE;
 	
-/*	if(_insize > 0.0f)
-		label.pointSize = _insize;
-	if(_inname != nil)
-		label.zFont = [[FontManager sharedManager] fontWithName:_inname];*/
+	if(_insize > 0.0f)
+		label.font =  [UIFont boldSystemFontOfSize:_insize];
 	if(_inColor != nil)
 		label.textColor = _inColor;
+	if(_inBgColor != nil)
+		self.backgroundColor = _inBgColor;
 	
 	[self setNeedsDisplay];
 }

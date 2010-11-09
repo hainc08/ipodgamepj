@@ -89,23 +89,32 @@
 }
 - (void)UpdateDate
 {
-	if( [[AlarmConfig getInstance] getDateMode] )
+	if( [[AlarmConfig getInstance] getDateDisplay] )
 	{
 		[self.view setAlpha:1];
-		
-	if((![Week isEqualToString:[[DateFormat getInstance] getWeek]]) || Week == nil)
-	{
 	
-		if( Week != nil )
-			[Week release];
-		Week = [[NSString alloc] initWithFormat:@"%@", [[DateFormat getInstance] getWeek]];
+		if( [[AlarmConfig getInstance] getWeekDisplay])
+		{
+			[b_Week setAlpha:1];
+			[u_Week setAlpha:1];
+			if((![Week isEqualToString:[[DateFormat getInstance] getWeek]]) || Week == nil)
+			{
 
-		[u_Week setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@%@.png", 
-											  [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getUpImageType], Week]]];
-		[b_Week setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@%@.png", 
-											  [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getBgImageType], Week]]];
-		
-	}
+				if( Week != nil )
+					[Week release];
+				Week = [[NSString alloc] initWithFormat:@"%@", [[DateFormat getInstance] getWeek]];
+
+				[u_Week setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@%@.png", 
+													  [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getUpImageType], Week]]];
+				[b_Week setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@%@.png", 
+													  [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getBgImageType], Week]]];
+			}
+		}
+		else 
+		{
+			[b_Week setAlpha:0];
+			[u_Week setAlpha:0];
+		}
 	
 	
 	NSString *tmpMon = [[DateFormat getInstance] getIMon];
