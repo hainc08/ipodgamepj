@@ -22,7 +22,7 @@
 	if( 1 < col)
 		x = ( BUTTON_X * (col-1) ) + (SPACE * (col-1));
 	if( 1 < row ) 
-		y = ( BUTTON_Y * (row-1) ) + (SPACE * (col-1));
+		y = ( BUTTON_Y * (row-1) ) + (SPACE * (col));
 	
 	x += LRSIZE;
 	y += UDSIZE;
@@ -51,6 +51,7 @@
 	[self.view addSubview:DisplayDate];
 	[DisplayButton release];
 	
+
 	
 	Done = [[ButtonView alloc] initWithFrame:[self ButtonPlace:1	y:3]];
 	[Done setText:@"DONE"];
@@ -59,6 +60,14 @@
 	[Done addSubview:DoneButton];
 	[self.view addSubview:Done];
 	[DoneButton release];
+	
+	WeekDisplay = [[ButtonView alloc] initWithFrame:[self ButtonPlace:2	y:1]];
+	[WeekDisplay setText:@"SHOW WEEK"];
+	UIButton *WeekDisplayButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
+	[WeekDisplayButton addTarget:self action:@selector(HourModeButton:) forControlEvents:UIControlEventTouchUpInside];
+	[WeekDisplay addSubview:WeekDisplayButton];
+	[self.view addSubview:WeekDisplay];
+	[WeekDisplayButton release];
 	
 }
 -(void)HourModeButton:(id)sender
