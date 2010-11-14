@@ -29,17 +29,17 @@
 	[CharImage release];
 	
 	DisplayOption = [[ButtonView alloc] initWithFrame:CGRectMake(340, 40,  BUTTON_X, BUTTON_Y)];
-	[DisplayOption setText:@"DISPLAY OPTION"];
+	[DisplayOption setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"DISPLAY OPTION" bgColor:[UIColor redColor] chekImage:FALSE];
 	UIButton *OptionButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,  BUTTON_X, BUTTON_Y) ];
 	[OptionButton addTarget:self action:@selector(DisplayOptionButton:) forControlEvents:UIControlEventTouchUpInside];
-	[DisplayOption setBackgroundColor:[UIColor redColor]];
 	[DisplayOption addSubview:OptionButton];
 	[self.view addSubview:DisplayOption];
 	[OptionButton release];
 	
 	
 	AlarmOption = [[ButtonView alloc] initWithFrame:CGRectMake(340, 140,  BUTTON_X, BUTTON_Y)];
-	[AlarmOption setText:@"ALARM OPTION"];
+	[AlarmOption setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"ALARM OPTION" bgColor:[UIColor redColor] chekImage:FALSE];
+
 	UIButton *AlarmButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,  BUTTON_X, BUTTON_Y) ];
 	[AlarmButton addTarget:self action:@selector(AlarmOptionButton:) forControlEvents:UIControlEventTouchUpInside];
 	[AlarmOption addSubview:AlarmButton];
@@ -48,7 +48,8 @@
 	
 	
 	Done = [[ButtonView alloc] initWithFrame:CGRectMake(340, 240,  BUTTON_X, BUTTON_Y)];
-	[Done setText:@"DONE"];
+	[Done setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"DONE" bgColor:[UIColor redColor] chekImage:FALSE];
+
 	UIButton *DoneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
 	[DoneButton addTarget:self action:@selector(DoneButton:) forControlEvents:UIControlEventTouchUpInside];
 	[Done addSubview:DoneButton];
@@ -58,11 +59,11 @@
 	
 	CT_TimeOption = [[MenuTimeOptionController alloc] init];
 	[CT_TimeOption.view setFrame:CGRectMake(0, 0, 320, 480)];
-	CT_TimeOption.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
+//	CT_TimeOption.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
 	
 	CT_AlarmOption = [[MenuAlarmController alloc] init];
 	[CT_AlarmOption.view setFrame:CGRectMake(0, 0, 320, 480)];
-	CT_AlarmOption.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
+//	CT_AlarmOption.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
 }
 
 
@@ -89,12 +90,20 @@
 }
 
 - (void)DisplayOptionButton:(id)sender
-{
+{	//
+	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
+		CT_TimeOption.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
+	else
+		CT_TimeOption.view.transform =  CGAffineTransformMakeRotation(0);
 	[self.navigationController pushViewController:CT_TimeOption animated:YES];
 }
 - (void)AlarmOptionButton:(id)sender
 {
-	[CT_TimeOption reset];
+	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
+		CT_AlarmOption.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
+	else
+		CT_AlarmOption.view.transform =  CGAffineTransformMakeRotation(0);
+	[CT_AlarmOption reset];
 	[self.navigationController pushViewController:CT_AlarmOption animated:YES];
 }
 

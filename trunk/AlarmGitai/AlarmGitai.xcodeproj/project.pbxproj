@@ -55,46 +55,21 @@
 		5608966011F0931700C1F800 /* 1_ubThu.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608963A11F0931700C1F800 /* 1_ubThu.png */; };
 		5608966111F0931700C1F800 /* 1_ubTue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608963B11F0931700C1F800 /* 1_ubTue.png */; };
 		5608966211F0931700C1F800 /* 1_ubWed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608963C11F0931700C1F800 /* 1_ubWed.png */; };
-		5608966411F0931700C1F800 /* menu_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608963E11F0931700C1F800 /* menu_b.png */; };
-		5608966511F0931700C1F800 /* menu_w.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608963F11F0931700C1F800 /* menu_w.png */; };
 		5608985A11F0B33C00C1F800 /* 1_dwDiv.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608985411F0B33C00C1F800 /* 1_dwDiv.png */; };
 		5608985B11F0B33C00C1F800 /* 1_dwSat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608985511F0B33C00C1F800 /* 1_dwSat.png */; };
 		5608985C11F0B33C00C1F800 /* 1_ubDiv.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608985611F0B33C00C1F800 /* 1_ubDiv.png */; };
 		5608985D11F0B33C00C1F800 /* 1_ubdot.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608985711F0B33C00C1F800 /* 1_ubdot.png */; };
 		5608985F11F0B33C00C1F800 /* 1_ubSat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5608985911F0B33C00C1F800 /* 1_ubSat.png */; };
 		560898DC11F0B77600C1F800 /* ImgManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 560898DB11F0B77600C1F800 /* ImgManager.m */; };
-		5621D4CD11F77004009236C7 /* layout0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5621D4C911F77004009236C7 /* layout0.png */; };
-		5621D4CE11F77004009236C7 /* layout1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5621D4CA11F77004009236C7 /* layout1.png */; };
-		5621D4CF11F77004009236C7 /* layout2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5621D4CB11F77004009236C7 /* layout2.png */; };
-		5621D4D011F77004009236C7 /* layout3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5621D4CC11F77004009236C7 /* layout3.png */; };
 		5631A9FF1204218700EA05F9 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5631A9FD1204218700EA05F9 /* MenuController.m */; };
 		5641726212044FB70035DD81 /* char_natsuko.png in Resources */ = {isa = PBXBuildFile; fileRef = 5641726112044FB70035DD81 /* char_natsuko.png */; };
-		56431EFD12895D19006D33F8 /* sazanami-gothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56431EFC12895D19006D33F8 /* sazanami-gothic.ttf */; };
+		564321F1128E7636006D33F8 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 564321F0128E7636006D33F8 /* check.png */; };
 		568844C9124089550080F0A0 /* MenuSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568844C8124089550080F0A0 /* MenuSelectController.m */; };
 		569D071F12747BE200F8B09F /* MenuAlarmController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D071E12747BE200F8B09F /* MenuAlarmController.m */; };
 		569DE53711F1BB4F00A4E58F /* AlarmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569DE53611F1BB4F00A4E58F /* AlarmView.xib */; };
-		569DE96311F22DE700A4E58F /* xbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 569DE96211F22DE700A4E58F /* xbox.png */; };
 		569F3E46128198C7009DD593 /* AlarmShakeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569F3E45128198C7009DD593 /* AlarmShakeController.m */; };
 		56B0B1BA120F0C61004F9D97 /* ButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1B9120F0C61004F9D97 /* ButtonView.m */; };
 		56B0B1BD120F0C71004F9D97 /* MenuTimeOptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B0B1BC120F0C71004F9D97 /* MenuTimeOptionController.m */; };
-		56B6883C12705719005E1039 /* FontLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B6883212705719005E1039 /* FontLabel.m */; };
-		56B6883D12705719005E1039 /* FontLabelStringDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B6883412705719005E1039 /* FontLabelStringDrawing.m */; };
-		56B6883E12705719005E1039 /* FontManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B6883612705719005E1039 /* FontManager.m */; };
-		56B6883F12705719005E1039 /* ZAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B6883812705719005E1039 /* ZAttributedString.m */; };
-		56B6884012705719005E1039 /* ZFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B6883B12705719005E1039 /* ZFont.m */; };
-		56B6884F12705744005E1039 /* Unisect Black Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884212705744005E1039 /* Unisect Black Oblique.ttf */; };
-		56B6885012705744005E1039 /* Unisect Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884312705744005E1039 /* Unisect Black.ttf */; };
-		56B6885112705744005E1039 /* Unisect Bold Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884412705744005E1039 /* Unisect Bold Oblique.ttf */; };
-		56B6885212705744005E1039 /* Unisect Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884512705744005E1039 /* Unisect Bold.ttf */; };
-		56B6885312705744005E1039 /* Unisect Extra Bold Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884612705744005E1039 /* Unisect Extra Bold Oblique.ttf */; };
-		56B6885412705744005E1039 /* Unisect Extra Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884712705744005E1039 /* Unisect Extra Bold.ttf */; };
-		56B6885512705744005E1039 /* Unisect Light Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884812705744005E1039 /* Unisect Light Oblique.ttf */; };
-		56B6885612705744005E1039 /* Unisect Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884912705744005E1039 /* Unisect Light.ttf */; };
-		56B6885712705744005E1039 /* Unisect Oblique.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884A12705744005E1039 /* Unisect Oblique.ttf */; };
-		56B6885812705744005E1039 /* Unisect.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884B12705744005E1039 /* Unisect.ttf */; };
-		56B6885912705744005E1039 /* UniversCon.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884C12705744005E1039 /* UniversCon.TTF */; };
-		56B6885A12705744005E1039 /* UniversConBol.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884D12705744005E1039 /* UniversConBol.TTF */; };
-		56B6885B12705744005E1039 /* UniversConBolObl.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 56B6884E12705744005E1039 /* UniversConBolObl.TTF */; };
 		56FA81291217C74000726CAD /* back_0_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA810A1217C74000726CAD /* back_0_d.png */; };
 		56FA812A1217C74000726CAD /* back_0_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA810B1217C74000726CAD /* back_0_n.png */; };
 		56FA812B1217C74000726CAD /* back_10_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA810C1217C74000726CAD /* back_10_d.png */; };
@@ -124,12 +99,6 @@
 		56FA81461217C74000726CAD /* back_9_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA81271217C74000726CAD /* back_9_d.png */; };
 		56FA81471217C74000726CAD /* back_9_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA81281217C74000726CAD /* back_9_n.png */; };
 		56FA82441217D8CA00726CAD /* alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA823F1217D8CA00726CAD /* alarm.png */; };
-		56FA82451217D8CA00726CAD /* DoneDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA82401217D8CA00726CAD /* DoneDown.png */; };
-		56FA82461217D8CA00726CAD /* DoneDown3.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA82411217D8CA00726CAD /* DoneDown3.png */; };
-		56FA82471217D8CA00726CAD /* DoneUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA82421217D8CA00726CAD /* DoneUp.png */; };
-		56FA82481217D8CA00726CAD /* DoneUp3.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FA82431217D8CA00726CAD /* DoneUp3.png */; };
-		56FF142711FB1A7500427935 /* config0.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FF142511FB1A7500427935 /* config0.png */; };
-		56FF142811FB1A7500427935 /* config1.png in Resources */ = {isa = PBXBuildFile; fileRef = 56FF142611FB1A7500427935 /* config1.png */; };
 		840C5976122D552E0092AA0F /* akari_0_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 840C5937122D552E0092AA0F /* akari_0_n_b.png */; };
 		840C5977122D552E0092AA0F /* akari_10_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 840C5938122D552E0092AA0F /* akari_10_n.png */; };
 		840C5978122D552E0092AA0F /* akari_10_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 840C5939122D552E0092AA0F /* akari_10_n_b.png */; };
@@ -601,8 +570,6 @@
 		5608963A11F0931700C1F800 /* 1_ubThu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ubThu.png; sourceTree = "<group>"; };
 		5608963B11F0931700C1F800 /* 1_ubTue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ubTue.png; sourceTree = "<group>"; };
 		5608963C11F0931700C1F800 /* 1_ubWed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ubWed.png; sourceTree = "<group>"; };
-		5608963E11F0931700C1F800 /* menu_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_b.png; sourceTree = "<group>"; };
-		5608963F11F0931700C1F800 /* menu_w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_w.png; sourceTree = "<group>"; };
 		5608985411F0B33C00C1F800 /* 1_dwDiv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_dwDiv.png; sourceTree = "<group>"; };
 		5608985511F0B33C00C1F800 /* 1_dwSat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_dwSat.png; sourceTree = "<group>"; };
 		5608985611F0B33C00C1F800 /* 1_ubDiv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ubDiv.png; sourceTree = "<group>"; };
@@ -610,50 +577,21 @@
 		5608985911F0B33C00C1F800 /* 1_ubSat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ubSat.png; sourceTree = "<group>"; };
 		560898DA11F0B77600C1F800 /* ImgManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImgManager.h; path = BaseClasses/ImgManager.h; sourceTree = "<group>"; };
 		560898DB11F0B77600C1F800 /* ImgManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImgManager.m; path = BaseClasses/ImgManager.m; sourceTree = "<group>"; };
-		5621D4C911F77004009236C7 /* layout0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = layout0.png; path = image/layout0.png; sourceTree = "<group>"; };
-		5621D4CA11F77004009236C7 /* layout1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = layout1.png; path = image/layout1.png; sourceTree = "<group>"; };
-		5621D4CB11F77004009236C7 /* layout2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = layout2.png; path = image/layout2.png; sourceTree = "<group>"; };
-		5621D4CC11F77004009236C7 /* layout3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = layout3.png; path = image/layout3.png; sourceTree = "<group>"; };
 		5631A9FC1204218700EA05F9 /* MenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuController.h; path = Classes/MenuController.h; sourceTree = "<group>"; };
 		5631A9FD1204218700EA05F9 /* MenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuController.m; path = Classes/MenuController.m; sourceTree = "<group>"; };
 		5641726112044FB70035DD81 /* char_natsuko.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = char_natsuko.png; path = "char/なつこ/char_natsuko.png"; sourceTree = "<group>"; };
-		56431EFC12895D19006D33F8 /* sazanami-gothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "sazanami-gothic.ttf"; path = "Font/sazanami-gothic.ttf"; sourceTree = "<group>"; };
+		564321F0128E7636006D33F8 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = image/check.png; sourceTree = "<group>"; };
 		568844C7124089550080F0A0 /* MenuSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuSelectController.h; path = Classes/MenuSelectController.h; sourceTree = "<group>"; };
 		568844C8124089550080F0A0 /* MenuSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuSelectController.m; path = Classes/MenuSelectController.m; sourceTree = "<group>"; };
 		569D071E12747BE200F8B09F /* MenuAlarmController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuAlarmController.m; path = Classes/MenuAlarmController.m; sourceTree = "<group>"; };
 		569D072F12747C6F00F8B09F /* MenuAlarmController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuAlarmController.h; path = Classes/MenuAlarmController.h; sourceTree = "<group>"; };
 		569DE53611F1BB4F00A4E58F /* AlarmView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmView.xib; sourceTree = "<group>"; };
-		569DE96211F22DE700A4E58F /* xbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xbox.png; path = image/xbox.png; sourceTree = "<group>"; };
 		569F3E44128198C7009DD593 /* AlarmShakeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmShakeController.h; path = Classes/AlarmShakeController.h; sourceTree = "<group>"; };
 		569F3E45128198C7009DD593 /* AlarmShakeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmShakeController.m; path = Classes/AlarmShakeController.m; sourceTree = "<group>"; };
 		56B0B1B8120F0C61004F9D97 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonView.h; path = Classes/ButtonView.h; sourceTree = "<group>"; };
 		56B0B1B9120F0C61004F9D97 /* ButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ButtonView.m; path = Classes/ButtonView.m; sourceTree = "<group>"; };
 		56B0B1BB120F0C71004F9D97 /* MenuTimeOptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuTimeOptionController.h; path = Classes/MenuTimeOptionController.h; sourceTree = "<group>"; };
 		56B0B1BC120F0C71004F9D97 /* MenuTimeOptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuTimeOptionController.m; path = Classes/MenuTimeOptionController.m; sourceTree = "<group>"; };
-		56B6883112705718005E1039 /* FontLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontLabel.h; path = FontLabel/FontLabel.h; sourceTree = "<group>"; };
-		56B6883212705719005E1039 /* FontLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontLabel.m; path = FontLabel/FontLabel.m; sourceTree = "<group>"; };
-		56B6883312705719005E1039 /* FontLabelStringDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontLabelStringDrawing.h; path = FontLabel/FontLabelStringDrawing.h; sourceTree = "<group>"; };
-		56B6883412705719005E1039 /* FontLabelStringDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontLabelStringDrawing.m; path = FontLabel/FontLabelStringDrawing.m; sourceTree = "<group>"; };
-		56B6883512705719005E1039 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontManager.h; path = FontLabel/FontManager.h; sourceTree = "<group>"; };
-		56B6883612705719005E1039 /* FontManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FontManager.m; path = FontLabel/FontManager.m; sourceTree = "<group>"; };
-		56B6883712705719005E1039 /* ZAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZAttributedString.h; path = FontLabel/ZAttributedString.h; sourceTree = "<group>"; };
-		56B6883812705719005E1039 /* ZAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZAttributedString.m; path = FontLabel/ZAttributedString.m; sourceTree = "<group>"; };
-		56B6883912705719005E1039 /* ZAttributedStringPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZAttributedStringPrivate.h; path = FontLabel/ZAttributedStringPrivate.h; sourceTree = "<group>"; };
-		56B6883A12705719005E1039 /* ZFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZFont.h; path = FontLabel/ZFont.h; sourceTree = "<group>"; };
-		56B6883B12705719005E1039 /* ZFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZFont.m; path = FontLabel/ZFont.m; sourceTree = "<group>"; };
-		56B6884212705744005E1039 /* Unisect Black Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Black Oblique.ttf"; path = "Font/Unisect Black Oblique.ttf"; sourceTree = "<group>"; };
-		56B6884312705744005E1039 /* Unisect Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Black.ttf"; path = "Font/Unisect Black.ttf"; sourceTree = "<group>"; };
-		56B6884412705744005E1039 /* Unisect Bold Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Bold Oblique.ttf"; path = "Font/Unisect Bold Oblique.ttf"; sourceTree = "<group>"; };
-		56B6884512705744005E1039 /* Unisect Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Bold.ttf"; path = "Font/Unisect Bold.ttf"; sourceTree = "<group>"; };
-		56B6884612705744005E1039 /* Unisect Extra Bold Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Extra Bold Oblique.ttf"; path = "Font/Unisect Extra Bold Oblique.ttf"; sourceTree = "<group>"; };
-		56B6884712705744005E1039 /* Unisect Extra Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Extra Bold.ttf"; path = "Font/Unisect Extra Bold.ttf"; sourceTree = "<group>"; };
-		56B6884812705744005E1039 /* Unisect Light Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Light Oblique.ttf"; path = "Font/Unisect Light Oblique.ttf"; sourceTree = "<group>"; };
-		56B6884912705744005E1039 /* Unisect Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Light.ttf"; path = "Font/Unisect Light.ttf"; sourceTree = "<group>"; };
-		56B6884A12705744005E1039 /* Unisect Oblique.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Unisect Oblique.ttf"; path = "Font/Unisect Oblique.ttf"; sourceTree = "<group>"; };
-		56B6884B12705744005E1039 /* Unisect.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Unisect.ttf; path = Font/Unisect.ttf; sourceTree = "<group>"; };
-		56B6884C12705744005E1039 /* UniversCon.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = UniversCon.TTF; path = Font/UniversCon.TTF; sourceTree = "<group>"; };
-		56B6884D12705744005E1039 /* UniversConBol.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = UniversConBol.TTF; path = Font/UniversConBol.TTF; sourceTree = "<group>"; };
-		56B6884E12705744005E1039 /* UniversConBolObl.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = UniversConBolObl.TTF; path = Font/UniversConBolObl.TTF; sourceTree = "<group>"; };
 		56FA810A1217C74000726CAD /* back_0_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_0_d.png; sourceTree = "<group>"; };
 		56FA810B1217C74000726CAD /* back_0_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_0_n.png; sourceTree = "<group>"; };
 		56FA810C1217C74000726CAD /* back_10_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_10_d.png; sourceTree = "<group>"; };
@@ -683,12 +621,6 @@
 		56FA81271217C74000726CAD /* back_9_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_9_d.png; sourceTree = "<group>"; };
 		56FA81281217C74000726CAD /* back_9_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_9_n.png; sourceTree = "<group>"; };
 		56FA823F1217D8CA00726CAD /* alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm.png; sourceTree = "<group>"; };
-		56FA82401217D8CA00726CAD /* DoneDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneDown.png; sourceTree = "<group>"; };
-		56FA82411217D8CA00726CAD /* DoneDown3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneDown3.png; sourceTree = "<group>"; };
-		56FA82421217D8CA00726CAD /* DoneUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneUp.png; sourceTree = "<group>"; };
-		56FA82431217D8CA00726CAD /* DoneUp3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneUp3.png; sourceTree = "<group>"; };
-		56FF142511FB1A7500427935 /* config0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = config0.png; path = image/config0.png; sourceTree = "<group>"; };
-		56FF142611FB1A7500427935 /* config1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = config1.png; path = image/config1.png; sourceTree = "<group>"; };
 		840C5937122D552E0092AA0F /* akari_0_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = akari_0_n_b.png; sourceTree = "<group>"; };
 		840C5938122D552E0092AA0F /* akari_10_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = akari_10_n.png; sourceTree = "<group>"; };
 		840C5939122D552E0092AA0F /* akari_10_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = akari_10_n_b.png; sourceTree = "<group>"; };
@@ -1158,7 +1090,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				56B68830127056FA005E1039 /* FontLabel */,
 				560890FE11ECA5BA00C1F800 /* BaseClasses */,
 				560890D011ECA52F00C1F800 /* ConfigClasses */,
 				5631AA02120424CF00EA05F9 /* MenuClasses */,
@@ -1235,10 +1166,6 @@
 			children = (
 				8486073D1251A7A100075E87 /* top.png */,
 				56FA823F1217D8CA00726CAD /* alarm.png */,
-				56FA82401217D8CA00726CAD /* DoneDown.png */,
-				56FA82411217D8CA00726CAD /* DoneDown3.png */,
-				56FA82421217D8CA00726CAD /* DoneUp.png */,
-				56FA82431217D8CA00726CAD /* DoneUp3.png */,
 				5608985411F0B33C00C1F800 /* 1_dwDiv.png */,
 				5608985511F0B33C00C1F800 /* 1_dwSat.png */,
 				5608985611F0B33C00C1F800 /* 1_ubDiv.png */,
@@ -1277,8 +1204,6 @@
 				5608963A11F0931700C1F800 /* 1_ubThu.png */,
 				5608963B11F0931700C1F800 /* 1_ubTue.png */,
 				5608963C11F0931700C1F800 /* 1_ubWed.png */,
-				5608963E11F0931700C1F800 /* menu_b.png */,
-				5608963F11F0931700C1F800 /* menu_w.png */,
 			);
 			path = image;
 			sourceTree = "<group>";
@@ -1286,7 +1211,6 @@
 		5621D75111FA0A58009236C7 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				56B6884112705730005E1039 /* Font */,
 				84EE5EC4123D1A5600A655B1 /* Default.png */,
 				5621D75911FA0AAD009236C7 /* Xib */,
 				29B97317FDCFA39411CA2CEA /* Images */,
@@ -1297,14 +1221,8 @@
 		5621D75811FA0A83009236C7 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				564321F0128E7636006D33F8 /* check.png */,
 				84742D30125978D4005859ED /* touch.png */,
-				56FF142511FB1A7500427935 /* config0.png */,
-				56FF142611FB1A7500427935 /* config1.png */,
-				569DE96211F22DE700A4E58F /* xbox.png */,
-				5621D4C911F77004009236C7 /* layout0.png */,
-				5621D4CA11F77004009236C7 /* layout1.png */,
-				5621D4CB11F77004009236C7 /* layout2.png */,
-				5621D4CC11F77004009236C7 /* layout3.png */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -1342,45 +1260,6 @@
 				56B0B1B9120F0C61004F9D97 /* ButtonView.m */,
 			);
 			name = MenuClasses;
-			sourceTree = "<group>";
-		};
-		56B68830127056FA005E1039 /* FontLabel */ = {
-			isa = PBXGroup;
-			children = (
-				56B6883112705718005E1039 /* FontLabel.h */,
-				56B6883212705719005E1039 /* FontLabel.m */,
-				56B6883312705719005E1039 /* FontLabelStringDrawing.h */,
-				56B6883412705719005E1039 /* FontLabelStringDrawing.m */,
-				56B6883512705719005E1039 /* FontManager.h */,
-				56B6883612705719005E1039 /* FontManager.m */,
-				56B6883712705719005E1039 /* ZAttributedString.h */,
-				56B6883812705719005E1039 /* ZAttributedString.m */,
-				56B6883912705719005E1039 /* ZAttributedStringPrivate.h */,
-				56B6883A12705719005E1039 /* ZFont.h */,
-				56B6883B12705719005E1039 /* ZFont.m */,
-			);
-			name = FontLabel;
-			sourceTree = "<group>";
-		};
-		56B6884112705730005E1039 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				56431EFC12895D19006D33F8 /* sazanami-gothic.ttf */,
-				56B6884212705744005E1039 /* Unisect Black Oblique.ttf */,
-				56B6884312705744005E1039 /* Unisect Black.ttf */,
-				56B6884412705744005E1039 /* Unisect Bold Oblique.ttf */,
-				56B6884512705744005E1039 /* Unisect Bold.ttf */,
-				56B6884612705744005E1039 /* Unisect Extra Bold Oblique.ttf */,
-				56B6884712705744005E1039 /* Unisect Extra Bold.ttf */,
-				56B6884812705744005E1039 /* Unisect Light Oblique.ttf */,
-				56B6884912705744005E1039 /* Unisect Light.ttf */,
-				56B6884A12705744005E1039 /* Unisect Oblique.ttf */,
-				56B6884B12705744005E1039 /* Unisect.ttf */,
-				56B6884C12705744005E1039 /* UniversCon.TTF */,
-				56B6884D12705744005E1039 /* UniversConBol.TTF */,
-				56B6884E12705744005E1039 /* UniversConBolObl.TTF */,
-			);
-			name = Font;
 			sourceTree = "<group>";
 		};
 		56FA81091217C74000726CAD /* background */ = {
@@ -2080,22 +1959,13 @@
 				5608966011F0931700C1F800 /* 1_ubThu.png in Resources */,
 				5608966111F0931700C1F800 /* 1_ubTue.png in Resources */,
 				5608966211F0931700C1F800 /* 1_ubWed.png in Resources */,
-				5608966411F0931700C1F800 /* menu_b.png in Resources */,
-				5608966511F0931700C1F800 /* menu_w.png in Resources */,
 				5608985A11F0B33C00C1F800 /* 1_dwDiv.png in Resources */,
 				5608985B11F0B33C00C1F800 /* 1_dwSat.png in Resources */,
 				5608985C11F0B33C00C1F800 /* 1_ubDiv.png in Resources */,
 				5608985D11F0B33C00C1F800 /* 1_ubdot.png in Resources */,
 				5608985F11F0B33C00C1F800 /* 1_ubSat.png in Resources */,
 				569DE53711F1BB4F00A4E58F /* AlarmView.xib in Resources */,
-				569DE96311F22DE700A4E58F /* xbox.png in Resources */,
 				841CF22811F3FBBB00677616 /* CharView.xib in Resources */,
-				5621D4CD11F77004009236C7 /* layout0.png in Resources */,
-				5621D4CE11F77004009236C7 /* layout1.png in Resources */,
-				5621D4CF11F77004009236C7 /* layout2.png in Resources */,
-				5621D4D011F77004009236C7 /* layout3.png in Resources */,
-				56FF142711FB1A7500427935 /* config0.png in Resources */,
-				56FF142811FB1A7500427935 /* config1.png in Resources */,
 				84D6A26F120045000044ECE2 /* mask.png in Resources */,
 				5641726212044FB70035DD81 /* char_natsuko.png in Resources */,
 				84EB682D12088F9F0086B4CB /* char_reina.png in Resources */,
@@ -2128,10 +1998,6 @@
 				56FA81461217C74000726CAD /* back_9_d.png in Resources */,
 				56FA81471217C74000726CAD /* back_9_n.png in Resources */,
 				56FA82441217D8CA00726CAD /* alarm.png in Resources */,
-				56FA82451217D8CA00726CAD /* DoneDown.png in Resources */,
-				56FA82461217D8CA00726CAD /* DoneDown3.png in Resources */,
-				56FA82471217D8CA00726CAD /* DoneUp.png in Resources */,
-				56FA82481217D8CA00726CAD /* DoneUp3.png in Resources */,
 				841CAAFB1221DF3700ED0D60 /* natsuko_17_d.png in Resources */,
 				841CAAFC1221DF3700ED0D60 /* natsuko_16_d.png in Resources */,
 				841CAAFD1221DF3700ED0D60 /* natsuko_15_d.png in Resources */,
@@ -2533,20 +2399,7 @@
 				8486073E1251A7A100075E87 /* top.png in Resources */,
 				84742D31125978D4005859ED /* touch.png in Resources */,
 				84742DDD1259832C005859ED /* MainView.xib in Resources */,
-				56B6884F12705744005E1039 /* Unisect Black Oblique.ttf in Resources */,
-				56B6885012705744005E1039 /* Unisect Black.ttf in Resources */,
-				56B6885112705744005E1039 /* Unisect Bold Oblique.ttf in Resources */,
-				56B6885212705744005E1039 /* Unisect Bold.ttf in Resources */,
-				56B6885312705744005E1039 /* Unisect Extra Bold Oblique.ttf in Resources */,
-				56B6885412705744005E1039 /* Unisect Extra Bold.ttf in Resources */,
-				56B6885512705744005E1039 /* Unisect Light Oblique.ttf in Resources */,
-				56B6885612705744005E1039 /* Unisect Light.ttf in Resources */,
-				56B6885712705744005E1039 /* Unisect Oblique.ttf in Resources */,
-				56B6885812705744005E1039 /* Unisect.ttf in Resources */,
-				56B6885912705744005E1039 /* UniversCon.TTF in Resources */,
-				56B6885A12705744005E1039 /* UniversConBol.TTF in Resources */,
-				56B6885B12705744005E1039 /* UniversConBolObl.TTF in Resources */,
-				56431EFD12895D19006D33F8 /* sazanami-gothic.ttf in Resources */,
+				564321F1128E7636006D33F8 /* check.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2577,11 +2430,6 @@
 				568844C9124089550080F0A0 /* MenuSelectController.m in Sources */,
 				84742D1E12597540005859ED /* ActionManager.m in Sources */,
 				84742D2D125977E3005859ED /* MainView.m in Sources */,
-				56B6883C12705719005E1039 /* FontLabel.m in Sources */,
-				56B6883D12705719005E1039 /* FontLabelStringDrawing.m in Sources */,
-				56B6883E12705719005E1039 /* FontManager.m in Sources */,
-				56B6883F12705719005E1039 /* ZAttributedString.m in Sources */,
-				56B6884012705719005E1039 /* ZFont.m in Sources */,
 				569D071F12747BE200F8B09F /* MenuAlarmController.m in Sources */,
 				569F3E46128198C7009DD593 /* AlarmShakeController.m in Sources */,
 			);
@@ -2611,14 +2459,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (N65PC63996)";
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitai_Prefix.pch;
 				INFOPLIST_FILE = "AlarmGitai-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AlarmGitai;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DAE48A-6F6A-4805-9340-5FC42D867E20";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4727E057-F5C9-4EAE-923A-360F5AE2127C";
 				SDKROOT = iphoneos3.1.3;
 			};
 			name = Release;
@@ -2640,13 +2489,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6E4B661A-74DD-4187-8EB9-227D47315B58";
-				SDKROOT = iphoneos2.2.1;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4727E057-F5C9-4EAE-923A-360F5AE2127C";
+				SDKROOT = iphoneos3.1.3;
 			};
 			name = Release;
 		};

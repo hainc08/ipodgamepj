@@ -42,6 +42,11 @@ static AlarmConfig *AlarmConfigInst;
 	[[SaveManager getInstance] setIntData:@"AlarmDate"		idx:0 value:AlarmONOFF		== TRUE ? 1	: 0];
 	[[SaveManager getInstance] setStringData:@"AlarmDate"	idx:1 value:AlarmTime];
 	
+	
+	[[SaveManager getInstance] setIntData:@"VibrationONOFF"	idx:0 value:VibrationONOFF  == TRUE ? 1 : 0];
+	[[SaveManager getInstance] setIntData:@"SnoozeONOFF"	idx:0 value:SnoozeONOFF		== TRUE ? 1 : 0];
+	[[SaveManager getInstance] setIntData:@"ShakeONOFF"		idx:0 value:ShakeONOFF		== TRUE ? 1 : 0];
+	
 	CGAffineTransform trans;
 	CGPoint pos;
 	
@@ -92,6 +97,11 @@ static AlarmConfig *AlarmConfigInst;
 	
 	[[SaveManager getInstance] setIntData:@"AlarmDate"		idx:0 value:0];
 	[[SaveManager getInstance] setStringData:@"AlarmDate"	idx:1 value:@"-"];
+	
+	
+	[[SaveManager getInstance] setIntData:@"VibrationONOFF"	idx:0 value:1];
+	[[SaveManager getInstance] setIntData:@"SnoozeONOFF"	idx:0 value:1];
+	[[SaveManager getInstance] setIntData:@"ShakeONOFF"		idx:0 value:1];
 
 	[[SaveManager getInstance] setFloatData:@"ClockZoom"	idx:0 value:1.f];
 	[[SaveManager getInstance] setIntData:@"ClockPos"		idx:0 value:160];
@@ -131,8 +141,15 @@ static AlarmConfig *AlarmConfigInst;
 	HourMode		=	[[SaveManager getInstance] getIntData:@"HourMode"		idx:0 base:1]	== 1 ? TRUE : FALSE;
 	DateDisplay		=	[[SaveManager getInstance] getIntData:@"DateDisplay"	idx:0 base:1]	== 1 ? TRUE : FALSE;
 	WeekDisplay		=	[[SaveManager getInstance] getIntData:@"WeekDisplay"	idx:0 base:1]	== 1 ? TRUE : FALSE;
+
+	
 	AlarmONOFF		=	[[SaveManager getInstance] getIntData:@"AlarmDate"		idx:0 base:0]	== 1 ? TRUE : FALSE;
 	AlarmTime		=	[[SaveManager getInstance] getStringData:@"AlarmDate"	idx:1 base:@"-"];
+	
+	
+	VibrationONOFF	=	[[SaveManager getInstance] getIntData:@"VibrationONOFF"	idx:0 base:0]	== 1 ? TRUE : FALSE;
+	SnoozeONOFF		=	[[SaveManager getInstance] getIntData:@"SnoozeONOFF"	idx:0 base:0]	== 1 ? TRUE : FALSE;
+	ShakeONOFF		=	[[SaveManager getInstance] getIntData:@"ShakeONOFF"		idx:0 base:0]	== 1 ? TRUE : FALSE;
 	
 	
 	heigthviewpoint =	[ViewCgPoint alloc];
@@ -163,34 +180,38 @@ static AlarmConfig *AlarmConfigInst;
 {
 	return  AlarmONOFF;
 }
-- (void) setAlarmONOFF
+- (BOOL) setAlarmONOFF
 {
 	AlarmONOFF = !AlarmONOFF;
+	return AlarmONOFF;
 }
 
 - (BOOL) getWeekDisplay
 {
 	return  WeekDisplay;
 }
-- (void) setWeekDisplay
+- (BOOL) setWeekDisplay
 {
 	WeekDisplay = !WeekDisplay;
+	return WeekDisplay;
 }
 - (BOOL) getHourMode
 {
 	return  HourMode;
 }
-- (void) setHourMode
+- (BOOL) setHourMode
 {
 	HourMode = !HourMode;
+	return HourMode;
 }
 - (BOOL) getDateDisplay
 {
 	return  DateDisplay;
 }
-- (void) setDateDisplay
+- (BOOL) setDateDisplay
 {
 	DateDisplay = !DateDisplay;
+	return DateDisplay;
 }
 - (int )getFontType
 {
@@ -254,6 +275,38 @@ static AlarmConfig *AlarmConfigInst;
 - (void) setAlarmTime:(NSString *)_inAlarmTime
 {
 	AlarmTime = _inAlarmTime;
+}
+
+
+- (BOOL) setVibrationONOFF
+{
+	VibrationONOFF = !VibrationONOFF;
+	return VibrationONOFF;
+}
+
+- (BOOL) getVibrationONOFF
+{
+	return VibrationONOFF;
+}
+
+- (BOOL) setSnoozeONOFF
+{
+	SnoozeONOFF = !SnoozeONOFF;
+	return SnoozeONOFF;
+}
+- (BOOL) getSnoozeONOFF
+{
+	return SnoozeONOFF;
+}
+
+- (BOOL) setShakeONOFF
+{
+	ShakeONOFF = !ShakeONOFF;
+	return ShakeONOFF;
+}
+- (BOOL) getShakeONOFF
+{
+	return ShakeONOFF;
 }
 
 - (void)dealloc {

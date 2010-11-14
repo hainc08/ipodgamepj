@@ -28,10 +28,12 @@
 	
 	NSString *temp;
 	AlarmTxt = [[ButtonView alloc] initWithFrame:CGRectMake(140, 50,  240, 50)];
+
 	temp = [[AlarmConfig getInstance] getAlarmTime];
 	NSRange Range = [temp rangeOfString:@"/"];
 	if(Range.location == NSNotFound)
-		[AlarmTxt setText: [[DateFormat getInstance] getAlarmFormat: @"h:mm a"]];
+	[AlarmTxt setView:0  fontsize:25 fontColor:[UIColor whiteColor]  setText:[[DateFormat getInstance] getAlarmFormat: @"h:mm a"] bgColor:[UIColor redColor] chekImage:FALSE];
+
 	else
 	{
 		NSString *res = [temp substringWithRange:NSMakeRange(0,Range.length-1)];
@@ -43,13 +45,14 @@
 		
 		dateFromString = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@:%@", res, res1]];
 		[dateFormatter setDateFormat:@"h:mm a"];
-		
-		[AlarmTxt setText:[dateFormatter stringFromDate:dateFromString]];
+
+		[AlarmTxt setView:0  fontsize:15 fontColor:[UIColor whiteColor]  setText:[dateFormatter stringFromDate:dateFromString] bgColor:[UIColor redColor] chekImage:FALSE];
 	}
 	[self.view addSubview:AlarmTxt];
 	
 	Save = [[ButtonView alloc] initWithFrame:CGRectMake(40, 50,  70, 50)];
-	[Save setText:@"Save"];
+	[Save setView:0  fontsize:16 fontColor:[UIColor whiteColor]  setText:@"Save" bgColor:[UIColor redColor] chekImage:FALSE];
+
 	UIButton *SaveButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,  70, 50) ];
 	[SaveButton addTarget:self action:@selector(SaveButton:) forControlEvents:UIControlEventTouchUpInside];
 	[Save addSubview:SaveButton];
@@ -57,7 +60,8 @@
 	[SaveButton release];
 	
 	Edit = [[ButtonView alloc] initWithFrame:CGRectMake(40, 50,  70, 50)];
-	[Edit setText:@"EDIT"];
+	[Edit setView:0  fontsize:16 fontColor:[UIColor whiteColor]  setText:@"EDIT" bgColor:[UIColor redColor] chekImage:FALSE];
+
 	UIButton *EditButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 70, 50) ];
 	[EditButton addTarget:self action:@selector(EditButton:) forControlEvents:UIControlEventTouchUpInside];
 	[Edit addSubview:EditButton];
@@ -65,11 +69,13 @@
 	[EditButton release];
 	
 	AlarmSetTxt = [[ButtonView alloc] initWithFrame:CGRectMake(40, 100,  240, 50)];
-	[AlarmSetTxt setText:@" ALARM SET ? "];
+	[AlarmSetTxt setView:0  fontsize:25 fontColor:[UIColor whiteColor]  setText:@" ALARM SET ? " bgColor:[UIColor redColor] chekImage:FALSE];
+
 	[self.view addSubview:AlarmSetTxt];
 	
 	AlarmSet = [[ButtonView alloc] initWithFrame:CGRectMake(260, 100,  70, 50)];
-	[AlarmSet setText:@"YES"];
+	[AlarmSet setView:0  fontsize:25 fontColor:[UIColor whiteColor]  setText:[[AlarmConfig getInstance] getAlarmONOFF] ? @"YES" : @"NO" bgColor:[UIColor redColor] chekImage:FALSE];
+
 	UIButton *SetButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 70, 50) ];
 	[SetButton addTarget:self action:@selector(AlarmSetButton:) forControlEvents:UIControlEventTouchUpInside];
 	[AlarmSet addSubview:SetButton];
@@ -78,7 +84,8 @@
 	
 
 	Shake = [[ButtonView alloc] initWithFrame:CGRectMake(40, 180,  BUTTON_X, BUTTON_Y)];
-	[Shake setText:@"SHAKE"];
+	[Shake setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"SHAKE" bgColor:[UIColor redColor] chekImage:[[AlarmConfig getInstance] getShakeONOFF]];
+
 	UIButton *ShakeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
 	[ShakeButton addTarget:self action:@selector(ShakeButton:) forControlEvents:UIControlEventTouchUpInside];
 	[Shake addSubview:ShakeButton];
@@ -86,23 +93,26 @@
 	[ShakeButton release];
 	
 	Snooze = [[ButtonView alloc] initWithFrame:CGRectMake(180, 180,  BUTTON_X, BUTTON_Y)];
-	[Snooze setText:@"SNOOZE"];
+	[Snooze setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"SNOOZE" bgColor:[UIColor redColor] chekImage:[[AlarmConfig getInstance] getSnoozeONOFF]];
+
 	UIButton *SnoozeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
-	[SnoozeButton addTarget:self action:@selector(ShakeButton:) forControlEvents:UIControlEventTouchUpInside];
+	[SnoozeButton addTarget:self action:@selector(SnoozeButton:) forControlEvents:UIControlEventTouchUpInside];
 	[Snooze addSubview:SnoozeButton];
 	[self.view addSubview:Snooze];
 	[SnoozeButton release];
 	
 	Vibration = [[ButtonView alloc] initWithFrame:CGRectMake(320 , 180,  BUTTON_X, BUTTON_Y)];
-	[Vibration setText:@"VIBRATION"];
+	[Vibration setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"VIBRATION" bgColor:[UIColor redColor] chekImage:[[AlarmConfig getInstance] getVibrationONOFF]];
+
 	UIButton *VibrationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
-	[VibrationButton addTarget:self action:@selector(ShakeButton:) forControlEvents:UIControlEventTouchUpInside];
+	[VibrationButton addTarget:self action:@selector(VibrationButton:) forControlEvents:UIControlEventTouchUpInside];
 	[Vibration addSubview:VibrationButton];
 	[self.view addSubview:Vibration];
 	[VibrationButton release];
 	
 	Done = [[ButtonView alloc] initWithFrame:CGRectMake(340, 100,  BUTTON_X, BUTTON_Y)];
-	[Done setText:@"DONE"];
+	[Done setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"DONE" bgColor:[UIColor redColor] chekImage:FALSE];
+
 	UIButton *DoneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
 	[DoneButton addTarget:self action:@selector(DoneButton:) forControlEvents:UIControlEventTouchUpInside];
 	[Done addSubview:DoneButton];
@@ -138,12 +148,13 @@
 -(void)DoneButton:(id)sender
 {
 	[[AlarmConfig getInstance] SaveConfig];
+	[Edit setAlpha:1];
+	[datePicker setAlpha:0];
 	[self.navigationController popViewControllerAnimated:YES];
 }
 -(void)AlarmSetButton:(id)sender
 {
-	[[AlarmConfig getInstance] setAlarmONOFF];
-	[AlarmSet setText:[[AlarmConfig getInstance] getAlarmONOFF] ? @"YES" : @"NO"];
+	[AlarmSet setText:[[AlarmConfig getInstance] setAlarmONOFF] ? @"YES" : @"NO"];
 }
 -(void)EditButton:(id)sender
 {
@@ -160,7 +171,15 @@
 }
 -(void)ShakeButton:(id)sender
 {
-	[self.navigationController popViewControllerAnimated:YES];
+	[Shake setCheck:[[AlarmConfig getInstance] setShakeONOFF]];
+}
+-(void)SnoozeButton:(id)sender
+{
+	[Snooze setCheck:[[AlarmConfig getInstance] setSnoozeONOFF]];
+}
+-(void)VibrationButton:(id)sender
+{
+	[Vibration setCheck:[[AlarmConfig getInstance] setVibrationONOFF]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
@@ -168,6 +187,7 @@
 }
 - (void) reset
 {
+	[Edit setAlpha:1];
 	[datePicker setAlpha:0];
 }
 /*
