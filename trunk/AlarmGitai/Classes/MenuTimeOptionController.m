@@ -53,7 +53,6 @@
 	[DisplayButton release];
 	
 
-	
 	Done = [[ButtonView alloc] initWithFrame:[self ButtonPlace:1	y:3]];
 	[Done setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"DONE" bgColor:[UIColor redColor] chekImage:FALSE];
 

@@ -26,7 +26,10 @@ static DateFormat *DateFormatInst;
 {
 	locale	=	[[NSLocale alloc] init];
 	FormatDate	=	[[NSDateFormatter alloc] init];
-	[self initContry:@"en_KR"];
+	[FormatDate setFormatterBehavior:NSDateFormatterBehavior10_4];
+	[FormatDate setDateStyle:NSDateFormatterLongStyle];
+	[FormatDate setTimeStyle:NSDateFormatterNoStyle];
+	[self initContry:@"en_US"];
 	
 }
 - (void) initContry:(NSString *)Country
@@ -101,8 +104,6 @@ static DateFormat *DateFormatInst;
 	NSString *alarm = [FormatDate stringFromDate:[[NSDate date] autorelease]];
 	return alarm;
 }
-
-
 
 - (BOOL)getNight 
 {

@@ -10,6 +10,8 @@
 #import "ButtonView.h"
 #import	"AlarmConfig.h"
 #import "DateFormat.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AudioToolbox/AudioServices.h>
 
 @implementation MenuAlarmController
 
@@ -27,7 +29,7 @@
     [super viewDidLoad];
 	
 	NSString *temp;
-	AlarmTxt = [[ButtonView alloc] initWithFrame:CGRectMake(140, 50,  240, 50)];
+	AlarmTxt = [[ButtonView alloc] initWithFrame:CGRectMake(105, 50,  200, 40)];
 
 	temp = [[AlarmConfig getInstance] getAlarmTime];
 	NSRange Range = [temp rangeOfString:@"/"];
@@ -50,33 +52,32 @@
 	}
 	[self.view addSubview:AlarmTxt];
 	
-	Save = [[ButtonView alloc] initWithFrame:CGRectMake(40, 50,  70, 50)];
+	Save = [[ButtonView alloc] initWithFrame:CGRectMake(40, 50,  70, 40)];
 	[Save setView:0  fontsize:16 fontColor:[UIColor whiteColor]  setText:@"Save" bgColor:[UIColor redColor] chekImage:FALSE];
 
-	UIButton *SaveButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,  70, 50) ];
+	UIButton *SaveButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0,  70, 40) ];
 	[SaveButton addTarget:self action:@selector(SaveButton:) forControlEvents:UIControlEventTouchUpInside];
 	[Save addSubview:SaveButton];
 	[self.view addSubview:Save];
 	[SaveButton release];
 	
-	Edit = [[ButtonView alloc] initWithFrame:CGRectMake(40, 50,  70, 50)];
+	Edit = [[ButtonView alloc] initWithFrame:CGRectMake(40, 50,  70, 40)];
 	[Edit setView:0  fontsize:16 fontColor:[UIColor whiteColor]  setText:@"EDIT" bgColor:[UIColor redColor] chekImage:FALSE];
 
-	UIButton *EditButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 70, 50) ];
+	UIButton *EditButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 70, 40) ];
 	[EditButton addTarget:self action:@selector(EditButton:) forControlEvents:UIControlEventTouchUpInside];
 	[Edit addSubview:EditButton];
 	[self.view addSubview:Edit];
 	[EditButton release];
 	
-	AlarmSetTxt = [[ButtonView alloc] initWithFrame:CGRectMake(40, 100,  240, 50)];
+	AlarmSetTxt = [[ButtonView alloc] initWithFrame:CGRectMake(40, 90,  215, 40)];
 	[AlarmSetTxt setView:0  fontsize:25 fontColor:[UIColor whiteColor]  setText:@" ALARM SET ? " bgColor:[UIColor redColor] chekImage:FALSE];
-
 	[self.view addSubview:AlarmSetTxt];
 	
-	AlarmSet = [[ButtonView alloc] initWithFrame:CGRectMake(260, 100,  70, 50)];
+	AlarmSet = [[ButtonView alloc] initWithFrame:CGRectMake(235, 90,  70, 40)];
 	[AlarmSet setView:0  fontsize:25 fontColor:[UIColor whiteColor]  setText:[[AlarmConfig getInstance] getAlarmONOFF] ? @"YES" : @"NO" bgColor:[UIColor redColor] chekImage:FALSE];
 
-	UIButton *SetButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 70, 50) ];
+	UIButton *SetButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 70, 40) ];
 	[SetButton addTarget:self action:@selector(AlarmSetButton:) forControlEvents:UIControlEventTouchUpInside];
 	[AlarmSet addSubview:SetButton];
 	[self.view addSubview:AlarmSet];
@@ -110,7 +111,7 @@
 	[self.view addSubview:Vibration];
 	[VibrationButton release];
 	
-	Done = [[ButtonView alloc] initWithFrame:CGRectMake(340, 100,  BUTTON_X, BUTTON_Y)];
+	Done = [[ButtonView alloc] initWithFrame:CGRectMake(320, 50,  BUTTON_X, BUTTON_Y)];
 	[Done setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"DONE" bgColor:[UIColor redColor] chekImage:FALSE];
 
 	UIButton *DoneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
@@ -180,16 +181,24 @@
 -(void)VibrationButton:(id)sender
 {
 	[Vibration setCheck:[[AlarmConfig getInstance] setVibrationONOFF]];
+	
+	if( [[AlarmConfig getInstance] getVibrationONOFF])
+		AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
 	return NO;
 }
+
 - (void) reset
 {
 	[Edit setAlpha:1];
 	[datePicker setAlpha:0];
 }
+
+- (void)drawRect:(CGRect)rect {
+}
+
 /*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
