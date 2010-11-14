@@ -59,11 +59,9 @@
 	
 	CT_TimeOption = [[MenuTimeOptionController alloc] init];
 	[CT_TimeOption.view setFrame:CGRectMake(0, 0, 320, 480)];
-//	CT_TimeOption.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
 	
 	CT_AlarmOption = [[MenuAlarmController alloc] init];
 	[CT_AlarmOption.view setFrame:CGRectMake(0, 0, 320, 480)];
-//	CT_AlarmOption.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
 }
 
 

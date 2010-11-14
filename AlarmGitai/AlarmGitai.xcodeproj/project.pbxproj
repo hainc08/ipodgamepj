@@ -64,6 +64,7 @@
 		5631A9FF1204218700EA05F9 /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5631A9FD1204218700EA05F9 /* MenuController.m */; };
 		5641726212044FB70035DD81 /* char_natsuko.png in Resources */ = {isa = PBXBuildFile; fileRef = 5641726112044FB70035DD81 /* char_natsuko.png */; };
 		564321F1128E7636006D33F8 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 564321F0128E7636006D33F8 /* check.png */; };
+		56432471128FE059006D33F8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56432470128FE059006D33F8 /* AudioToolbox.framework */; };
 		568844C9124089550080F0A0 /* MenuSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568844C8124089550080F0A0 /* MenuSelectController.m */; };
 		569D071F12747BE200F8B09F /* MenuAlarmController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569D071E12747BE200F8B09F /* MenuAlarmController.m */; };
 		569DE53711F1BB4F00A4E58F /* AlarmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569DE53611F1BB4F00A4E58F /* AlarmView.xib */; };
@@ -581,6 +582,7 @@
 		5631A9FD1204218700EA05F9 /* MenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuController.m; path = Classes/MenuController.m; sourceTree = "<group>"; };
 		5641726112044FB70035DD81 /* char_natsuko.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = char_natsuko.png; path = "char/なつこ/char_natsuko.png"; sourceTree = "<group>"; };
 		564321F0128E7636006D33F8 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = check.png; path = image/check.png; sourceTree = "<group>"; };
+		56432470128FE059006D33F8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		568844C7124089550080F0A0 /* MenuSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuSelectController.h; path = Classes/MenuSelectController.h; sourceTree = "<group>"; };
 		568844C8124089550080F0A0 /* MenuSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuSelectController.m; path = Classes/MenuSelectController.m; sourceTree = "<group>"; };
 		569D071E12747BE200F8B09F /* MenuAlarmController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuAlarmController.m; path = Classes/MenuAlarmController.m; sourceTree = "<group>"; };
@@ -1050,6 +1052,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				56432471128FE059006D33F8 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1126,6 +1129,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56432470128FE059006D33F8 /* AudioToolbox.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
@@ -2460,14 +2464,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (N65PC63996)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitai_Prefix.pch;
 				INFOPLIST_FILE = "AlarmGitai-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AlarmGitai;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4727E057-F5C9-4EAE-923A-360F5AE2127C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DAE48A-6F6A-4805-9340-5FC42D867E20";
 				SDKROOT = iphoneos3.1.3;
 			};
 			name = Release;

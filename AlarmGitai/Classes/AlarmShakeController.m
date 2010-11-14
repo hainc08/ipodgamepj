@@ -28,7 +28,17 @@
 }
 */
 
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+	
+	ShakeCount--;
+	
+	if(ShakeCount==0)
+	{
+	}
+	
+	
 
+}
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
