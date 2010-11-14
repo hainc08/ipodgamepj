@@ -17,11 +17,17 @@
 		x	= frame.size.width;
 		y	= frame.size.height;
 		label.font =  [UIFont boldSystemFontOfSize:12];
+		
+		checkimage = [[UIImageView alloc] initWithFrame:CGRectMake(25, 17, 62, 58)];
+		[checkimage setImage:[UIImage imageNamed:@"check.png"]];
+		[checkimage setTransform:CGAffineTransformMake(0.8, 0.0, 0.0, 0.8, 0.0, 0.0)];
+		
+		[self addSubview:checkimage];
     }
     return self;
 }
 
-- (void)setView:(int)_inTYPE  fontsize:(float)_insize bgColor:(UIColor *)_inBgColor fontColor:(UIColor *)_inColor
+- (void)setView:(int)_inTYPE  fontsize:(float)_insize fontColor:(UIColor *)_inColor  setText:(NSString *)_inText bgColor:(UIColor *)_inBgColor chekImage:(bool)_inCheck
 {
 	TYPE = _inTYPE;
 	
@@ -31,6 +37,20 @@
 		label.textColor = _inColor;
 	if(_inBgColor != nil)
 		self.backgroundColor = _inBgColor;
+	
+	if(_inText != nil)
+	{
+		label.textColor = [UIColor whiteColor];
+		label.text = _inText;
+		[label sizeToFit];
+		label.backgroundColor = nil;
+		label.opaque = NO;
+	}
+	
+	if(_inCheck)
+		[checkimage setAlpha:1];
+	else 
+		[checkimage setAlpha:0];
 	
 	[self setNeedsDisplay];
 }
@@ -44,6 +64,16 @@
 	label.opaque = NO;
 
 }
+
+- (void)setCheck:(bool)_inCheck
+{
+	if(_inCheck)
+		[checkimage setAlpha:1];
+	else 
+		[checkimage setAlpha:0];
+	
+}
+
 
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
@@ -82,6 +112,7 @@
 - (void)dealloc {
     [super dealloc];
 	[label release];
+	[checkimage release];
 }
 
 @end

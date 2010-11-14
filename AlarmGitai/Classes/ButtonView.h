@@ -16,11 +16,13 @@
 
 @interface ButtonView : UIView  {
 //	FontLabel *label;
+	UIImageView  *checkimage;
 	UILabel *label;
 	int		TYPE;
 	int		x;
 	int		y;
 }
-- (void)setView:(int)_inTYPE  fontsize:(float)_insize bgColor:(UIColor *)_inBgColor fontColor:(UIColor *)_inColor;
+- (void)setView:(int)_inTYPE  fontsize:(float)_insize fontColor:(UIColor *)_inColor  setText:(NSString *)_inText bgColor:(UIColor *)_inBgColor chekImage:(bool)_inCheck;
 - (void)setText:(NSString *)_inText;
+- (void)setCheck:(bool)_inCheck;
 @end

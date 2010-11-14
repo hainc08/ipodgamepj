@@ -3,7 +3,7 @@
 #import "ActionManager.h"
 #import "SaveManager.h"
 #import "DateFormat.h"
-#import "AlarmConfig.h"
+#import "AlarmConfig.h"	
 #import "ImgManager.h"
 
 @implementation AlarmGitaiAppDelegate

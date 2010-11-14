@@ -61,8 +61,12 @@
 	/* 환경설정 */
 	BOOL			HourMode;	
 	BOOL			DateDisplay; 
-	BOOL			WeekDisplay; 
+	BOOL			WeekDisplay;
+	/* alarm 설정*/
 	BOOL			AlarmONOFF;
+	BOOL			VibrationONOFF;
+	BOOL			SnoozeONOFF;
+	BOOL			ShakeONOFF;
 }
 @property (readwrite) int heightnum;
 @property (readwrite) int widthnum;
@@ -87,12 +91,21 @@
 - (BOOL) getDateDisplay;
 - (BOOL) getWeekDisplay;
 
-- (void) setHourMode;
-- (void) setDateDisplay;
-- (void) setWeekDisplay;
+- (BOOL) setHourMode;
+- (BOOL) setDateDisplay;
+- (BOOL) setWeekDisplay;
 
-- (void) setAlarmONOFF;
+- (BOOL) setAlarmONOFF;
 - (BOOL) getAlarmONOFF;
+
+- (BOOL) setVibrationONOFF;
+- (BOOL) getVibrationONOFF;
+
+- (BOOL) setSnoozeONOFF;
+- (BOOL) getSnoozeONOFF;
+
+- (BOOL) setShakeONOFF;
+- (BOOL) getShakeONOFF;
 
 - (void) SaveConfig;
 - (int) getRotationTime;

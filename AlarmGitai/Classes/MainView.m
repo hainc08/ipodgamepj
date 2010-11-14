@@ -27,13 +27,13 @@
 	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
 	{	
 		selectmenu.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
-		[selectmenu.view setFrame:CGRectMake(0, 0, 320, 480 )];
+//		[selectmenu.view setFrame:CGRectMake(0, 0, 320, 480 )];
 		[self.navigationController pushViewController:selectmenu animated:YES];
 	}
 	else
 	{
-		selectmenu.view.transform =  CGAffineTransformMakeRotation(0);
-		[selectmenu.view setFrame:CGRectMake(0, -320, 480, 320 )];
+	 	selectmenu.view.transform =  CGAffineTransformMakeRotation(0);
+	//	[selectmenu.view setFrame:CGRectMake(0, -320, 480, 320 )];
 		[self.navigationController pushViewController:selectmenu animated:YES];
 	}
 		viewrotate = FALSE;
@@ -203,7 +203,6 @@
 		if(menuEnable)
 		{
 			DataParam  *Trans = (DataParam *)_inValue;
-			/* 메뉴를 화면에 보여주자..  글씨체.. 사이즈 조정 표현방식등 MenuClass 변경 */
 			if(clockViewTouched == YES) {
 				[clockview.view setTransform:CGAffineTransformMake((CGFloat)[Trans iData]/10, 0.0, 0.0, (CGFloat)[Trans iData]/10, 0.0, 0.0)];
 			}
@@ -233,7 +232,7 @@
 		[self resumeTimer];
 
 		viewrotate = TRUE;
-		
+
 	}
 }
 
