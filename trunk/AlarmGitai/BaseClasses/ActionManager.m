@@ -34,20 +34,6 @@ static ActionManager *actionManagerInst;
 	}
 }
 
-- (void)setRootAction:(int)_inType value:(NSObject *)_inValue
-{
-	NSArray *ctlarr = navigationController.viewControllers;
-	
-	for (id oneObject in ctlarr)
-		if ([oneObject isKindOfClass:[MainView class]])
-		{
-			MainView *root = (MainView *)oneObject;
-			[root reset:_inType value:_inValue];
-			break;
-		}
-	
-}
-
 - (void)setNavigationController:(UINavigationController*)nController
 {
 	navigationController = nController;

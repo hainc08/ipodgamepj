@@ -83,7 +83,6 @@
 - (void)DoneButton:(id)sender
 {
 	[[AlarmConfig getInstance] SaveConfig];
-	[[ActionManager getInstance] setRootAction:ROTAGEUPDATE value:nil];
 	[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -101,7 +100,6 @@
 		CT_AlarmOption.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
 	else
 		CT_AlarmOption.view.transform =  CGAffineTransformMakeRotation(0);
-	[CT_AlarmOption reset];
 	[self.navigationController pushViewController:CT_AlarmOption animated:YES];
 }
 

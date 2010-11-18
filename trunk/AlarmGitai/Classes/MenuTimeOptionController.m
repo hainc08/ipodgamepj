@@ -53,7 +53,17 @@
 	[DisplayButton release];
 	
 
-	Done = [[ButtonView alloc] initWithFrame:[self ButtonPlace:3	y:3]];
+	WeekDisplay = [[ButtonView alloc] initWithFrame:[self ButtonPlace:3	y:3]];
+	[WeekDisplay setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"SHOW Weekday" bgColor:[UIColor redColor] chekImage:[[AlarmConfig getInstance] getWeekDisplay]];
+	
+	UIButton *WeekDisplayButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
+	[WeekDisplayButton addTarget:self action:@selector(WeekButton:) forControlEvents:UIControlEventTouchUpInside];
+	[WeekDisplay addSubview:WeekDisplayButton];
+	[self.view addSubview:WeekDisplay];
+	[WeekDisplayButton release];
+	
+	
+	Done = [[ButtonView alloc] initWithFrame:[self ButtonPlace:4 y:3]];
 	[Done setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"DONE" bgColor:[UIColor redColor] chekImage:FALSE];
 
 	UIButton *DoneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
@@ -62,14 +72,7 @@
 	[self.view addSubview:Done];
 	[DoneButton release];
 	
-	WeekDisplay = [[ButtonView alloc] initWithFrame:[self ButtonPlace:4	y:3]];
-	[WeekDisplay setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"SHOW WEEK" bgColor:[UIColor redColor] chekImage:[[AlarmConfig getInstance] getWeekDisplay]];
 
-	UIButton *WeekDisplayButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
-	[WeekDisplayButton addTarget:self action:@selector(WeekButton:) forControlEvents:UIControlEventTouchUpInside];
-	[WeekDisplay addSubview:WeekDisplayButton];
-	[self.view addSubview:WeekDisplay];
-	[WeekDisplayButton release];
 	
 	preview = [[OptionPreview alloc] init];
 	[self.view addSubview:preview.view];

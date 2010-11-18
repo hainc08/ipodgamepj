@@ -10,6 +10,7 @@
 #import "MenuSelectController.h"
 #import "AlarmShakeController.h"
 
+extern void GSEventSetBacklightLevel(float value);
 @implementation DataParam
 
 @synthesize iData;
@@ -37,7 +38,6 @@
 		[self.navigationController pushViewController:selectmenu animated:YES];
 	}
 		viewrotate = FALSE;
-		[self stopTimer];
 	}
 }
 
@@ -179,62 +179,6 @@
 		[touchedCon.view setTransform:CGAffineTransformMake(trans, 0.0, 0.0,trans, 0.0, 0.0)];
 }		
 
-#if 0 
--(void)menuViewFrameUpdate:(CGRect ) rect
-{
-	int		x, y;
-	
-	x = rect.origin.x;
-	if ( self.view.frame.size.height/2	< rect.origin.y ) 
-		y = rect.origin.y  - 100;
-	else
-		y = rect.origin.y +rect.size.height ;
-	
-	[menuconfig.view setFrame:CGRectMake(x , y , 150, 100) ];
-	[menuconfig.view setAlpha:1	];	
-}
-
-
-/* 각각 보여지는 크기를 조절 */
-- (void) reset:(int)_type value:(NSObject *)_inValue
-{
-	if(_type == TRANSUPDATE)
-	{
-		if(menuEnable)
-		{
-			DataParam  *Trans = (DataParam *)_inValue;
-			if(clockViewTouched == YES) {
-				[clockview.view setTransform:CGAffineTransformMake((CGFloat)[Trans iData]/10, 0.0, 0.0, (CGFloat)[Trans iData]/10, 0.0, 0.0)];
-			}
-			else if(dateViewTouched == YES) {
-				[dateview.view setTransform:CGAffineTransformMake((CGFloat)[Trans iData]/10, 0.0, 0.0, (CGFloat)[Trans iData]/10, 0.0, 0.0)];
-			}
-		}
-	}
-	else if (_type	== ROTAGEUPDATE)
-	{
-		[self resumeTimer];
-		if( [[AlarmConfig getInstance] getDateMode] )
-			[dateview.view setAlpha:1];
-		else 
-			[dateview.view setAlpha:0];
-		viewrotate = TRUE;
-		
-	}
-}
-#endif
-
-/* 각각 보여지는 크기를 조절 */
-- (void) reset:(int)_type value:(NSObject *)_inValue
-{
-	if (_type	== ROTAGEUPDATE)
-	{
-		[self resumeTimer];
-
-		viewrotate = TRUE;
-
-	}
-}
 
 /* 흔들기를 사용하기 위해서 추가 */
 - (void)viewDidAppear:(BOOL)animated {
@@ -280,12 +224,14 @@
 */
 
 
+
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
 //	self.view.autoresizesSubviews = NO;
 //	self.view.autoresizingMask =UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
-	
+		
 	viewrotate	= TRUE;
 	editenable	= false;
 	hiddenButton = false;
@@ -326,7 +272,6 @@
 	framePerSec = 1.f;
 	isInit = false;
 
-	[self resumeTimer];
 }
 
 #ifdef __IPHONE_3_0
@@ -355,14 +300,31 @@
 	// e.g. self.myOutlet = nil;
 	
 }
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	[self resumeTimer];
+	viewrotate = TRUE;
+	[self FrameUpdate];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[self stopTimer];
+	viewrotate =FALSE;
+}
+	
 - (void) AlarmCheck
 {
-	if([[AlarmConfig getInstance] getAlarmONOFF])
+//	if([[AlarmConfig getInstance] getAlarmONOFF])
 	{
-		if([[[DateFormat getInstance] getAlarm] compare:[[AlarmConfig getInstance] getAlarmTime]] == NSOrderedSame)
+		//if([[[DateFormat getInstance] getAlarm] compare:[[AlarmConfig getInstance] getAlarmTime]] == NSOrderedSame)
 		{
-			[self stopTimer];
+			if(viewrotate)
+			{
+			
 			[self.navigationController pushViewController:alarmshake animated:YES];
+			}
 		}
 	
 	}
@@ -375,9 +337,9 @@
 	{
 		[sceneView next];
 		[self FrameUpdate];
+		[self AlarmCheck];
 	}
-	
-
+	[self AlarmCheck];
 	[clockview UpdateTime];
 	[dateview UpdateDate];
 
