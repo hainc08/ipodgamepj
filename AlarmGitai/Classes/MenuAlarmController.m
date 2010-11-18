@@ -153,6 +153,7 @@
 	[datePicker setAlpha:0];
 	[self.navigationController popViewControllerAnimated:YES];
 }
+
 -(void)AlarmSetButton:(id)sender
 {
 	[AlarmSet setText:[[AlarmConfig getInstance] setAlarmONOFF] ? @"YES" : @"NO"];
@@ -190,30 +191,26 @@
 	return NO;
 }
 
-- (void) reset
-{
+- (void)drawRect:(CGRect)rect {
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 	[Edit setAlpha:1];
 	[datePicker setAlpha:0];
 }
 
-- (void)drawRect:(CGRect)rect {
-}
+ - (void)viewWillDisappear:(BOOL)animated {
+ [super viewWillDisappear:animated];
+ }
 
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 */
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
+
 /*
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];

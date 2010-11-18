@@ -6,9 +6,16 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "AlarmShakeController.h"
+
 #import "ActionManager.h"
-#import	 "MainView.h"
+#import "ButtonView.h"
+#import "MainView.h"
+
+#import "AlarmShakeController.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AudioToolbox/AudioServices.h>
+#import "AlarmConfig.h"
+
 
 @implementation AlarmShakeController
 
@@ -30,31 +37,79 @@
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
 	
-	//ShakeCount--;
+	ShakeCount--;
+
+	if(ShakeCount==0)
+	{
+	}
 	
-	//if(ShakeCount==0)
-	//{
-	//}
+
 }
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
-	EndButton = [[UIButton buttonWithType:UIButtonTypeCustom] initWithFrame:CGRectMake(100, 100, 100, 100)];
-	
-	[EndButton addTarget:self action:@selector(EndButton:) forControlEvents:UIControlEventTouchUpInside];
+    [super viewDidLoad];	
+
+	EndButton = [[ButtonView alloc] initWithFrame:CGRectMake(200, 100, 100, 100)];
+	[EndButton setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"OFF" bgColor:[UIColor redColor] chekImage:FALSE];
+	UIButton *Button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100) ];
+	[Button addTarget:self action:@selector(OffButton:) forControlEvents:UIControlEventTouchUpInside];
+	[EndButton addSubview:Button];
 	[self.view addSubview:EndButton];
+	[Button release];
+	
+	
+	SnoozeButton = [[ButtonView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+	[SnoozeButton setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"SNOOZ" bgColor:[UIColor redColor] chekImage:FALSE];
+	UIButton *SnoButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100) ];
+	[SnoButton addTarget:self action:@selector(SnoozeButton:) forControlEvents:UIControlEventTouchUpInside];
+	[SnoozeButton addSubview:SnoButton];
+	[self.view addSubview:SnoozeButton];
+	[SnoButton release];
+	
 }
--(void)EndButton:(id)sender
+-(void)OffButton:(id)sender
 {
-	[[ActionManager getInstance] setRootAction:ROTAGEUPDATE	value:nil];
 	[self.navigationController popToRootViewControllerAnimated:YES];
 }
-
+-(void)SnoozeButton:(id)sender
+{
+	[self.navigationController popToRootViewControllerAnimated:YES];
+}
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
 	return NO;
 }
 
+- (void)vibration
+{
+	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+- (void)stopTimer
+{
+	[vibrationTimer invalidate]; 
+	[vibrationTimer release];
+}
 
+- (void)resumeTimer
+{
+	vibrationTimer = [[NSTimer scheduledTimerWithTimeInterval: (0.5)
+													target: self
+												  selector: @selector(vibration)
+												  userInfo: self
+												   repeats: YES] retain];	
+}
+
+ - (void)viewWillAppear:(BOOL)animated {
+ [super viewWillAppear:animated];
+	 if([[AlarmConfig getInstance] getVibrationONOFF])
+		 [self resumeTimer];
+ }
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	ShakeCount = 10;
+	if([[AlarmConfig getInstance] getVibrationONOFF])
+		[self stopTimer];
+}
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];

@@ -22,5 +22,4 @@
 	ButtonView *Vibration;
 	UIDatePicker *datePicker;
 }
-- (void) reset;
 @end

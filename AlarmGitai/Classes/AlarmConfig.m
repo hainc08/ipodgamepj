@@ -154,7 +154,7 @@ static AlarmConfig *AlarmConfigInst;
 	
 	heigthviewpoint =	[ViewCgPoint alloc];
 	widthviewpoint	=	[ViewCgPoint alloc];
-
+	
 	float cz		=	[[SaveManager getInstance] getFloatData:@"ClockZoom" idx:0 base:1.f];
 	[heigthviewpoint setClockTrans:CGAffineTransformMake(cz, 0.0, 0.0, cz, 0.0, 0.0)];
 	[heigthviewpoint setClockPoint:CGPointMake([[SaveManager getInstance] getIntData:@"ClockPos" idx:0 base:160],

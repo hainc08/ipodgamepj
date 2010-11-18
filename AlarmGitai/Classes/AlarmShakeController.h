@@ -10,7 +10,11 @@
 
 
 @interface AlarmShakeController : UIViewController {
-	UIButton *EndButton;
+	ButtonView	 *EndButton;
+	ButtonView	 *SnoozeButton;
+	ButtonView	 *Shake;
+	int		 ShakeCount;
+	
+		NSTimer *vibrationTimer;
 }
-
 @end
