@@ -5,10 +5,10 @@
 //개별 버튼 120 * 80 
 // 버튼 사이 20 
 #define	BUTTON_X	120
-#define BUTTON_Y	80
-#define LRSIZE		40
-#define UDSIZE		70
-#define SPACE		20
+#define BUTTON_Y	60
+#define LRSIZE		80
+#define UDSIZE		25
+#define SPACE		10
 
 #define ARRAY		5
 

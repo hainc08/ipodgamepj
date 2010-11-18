@@ -16,7 +16,7 @@
 		y	= frame.size.height;
 		label.font =  [UIFont boldSystemFontOfSize:12];
 		
-		checkimage = [[UIImageView alloc] initWithFrame:CGRectMake(25, 17, 62, 58)];
+		checkimage = [[UIImageView alloc] initWithFrame:CGRectMake(25, 17, 40, 37)];
 		[checkimage setImage:[UIImage imageNamed:@"check.png"]];
 		[checkimage setTransform:CGAffineTransformMake(0.8, 0.0, 0.0, 0.8, 0.0, 0.0)];
 		

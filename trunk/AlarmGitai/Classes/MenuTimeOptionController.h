@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class ButtonView;
+@class OptionPreview;
 
 @interface MenuTimeOptionController : UIViewController {
-	
+	OptionPreview *preview;
+
 	ButtonView *HourMode;
 	ButtonView *DisplayDate;
 	ButtonView *WeekDisplay;
