@@ -316,9 +316,9 @@ extern void GSEventSetBacklightLevel(float value);
 	
 - (void) AlarmCheck
 {
-//	if([[AlarmConfig getInstance] getAlarmONOFF])
+	if([[AlarmConfig getInstance] getAlarmONOFF])
 	{
-		//if([[[DateFormat getInstance] getAlarm] compare:[[AlarmConfig getInstance] getAlarmTime]] == NSOrderedSame)
+		if([[[DateFormat getInstance] getAlarm] compare:[[AlarmConfig getInstance] getAlarmTime]] == NSOrderedSame)
 		{
 			if(viewrotate)
 			{

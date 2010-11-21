@@ -16,9 +16,8 @@
 		y	= frame.size.height;
 		label.font =  [UIFont boldSystemFontOfSize:12];
 		
-		checkimage = [[UIImageView alloc] initWithFrame:CGRectMake(25, 17, 40, 37)];
-		[checkimage setImage:[UIImage imageNamed:@"check.png"]];
-		[checkimage setTransform:CGAffineTransformMake(0.8, 0.0, 0.0, 0.8, 0.0, 0.0)];
+		checkimage = [[UIImageView alloc] initWithFrame:CGRectMake(40, 20, 60, 30)];
+		[self setCheckImg:@"check.png"];
 		
 		[self addSubview:checkimage];
     }
@@ -28,6 +27,15 @@
 - (void)setView:(int)_inTYPE  fontsize:(float)_insize fontColor:(UIColor *)_inColor  setText:(NSString *)_inText bgColor:(UIColor *)_inBgColor chekImage:(bool)_inCheck
 {
 	TYPE = _inTYPE;
+	
+	if(TYPE == 1)
+	{
+		[label setFrame:CGRectMake(35, 5, 0, 0)];
+	}
+	else if(TYPE == 2)
+	{
+		[label setFrame:CGRectMake(35, 25, 0, 0)];
+	}
 	
 	if(_insize > 0.0f)
 		label.font =  [UIFont boldSystemFontOfSize:_insize];
@@ -49,7 +57,7 @@
 		[checkimage setAlpha:1];
 	else 
 		[checkimage setAlpha:0];
-	
+		
 	[self setNeedsDisplay];
 }
 
@@ -72,18 +80,17 @@
 	
 }
 
-
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
-	
+
 	if(TYPE == 0 )
 	{
 		CGContextRef context = UIGraphicsGetCurrentContext();
 		CGContextSetRGBStrokeColor(context, 1,1,1,1);
 		CGContextSetLineWidth(context, 1);
-	
+		
 		int i = 0;
-	
+		
 		while(i < y){
 			if( i > ARRAY && i < y - ARRAY )
 			{
@@ -93,7 +100,7 @@
 				CGContextMoveToPoint(context, x - ARRAY, i);
 				CGContextAddLineToPoint(context, x, i);
 				CGContextStrokePath(context);
-			
+				
 			}
 			else 
 			{
@@ -104,8 +111,19 @@
 			i++;
 		}
 	}
+	else if((TYPE == 1)||(TYPE == 2))
+	{
+		CGContextRef context = UIGraphicsGetCurrentContext();
+		CGContextBeginPath(context);
+		CGContextDrawImage(context, CGRectMake(0, 0, 150, 60), [[UIImage imageNamed:@"button.png"] CGImage]);
+		CGContextStrokePath(context);
+	}
 }
 
+- (void)setCheckImg:(NSString *)filename
+{
+	[checkimage setImage:[UIImage imageNamed:filename]];
+}
 
 - (void)dealloc {
     [super dealloc];

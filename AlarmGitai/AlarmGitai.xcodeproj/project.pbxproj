@@ -517,7 +517,14 @@
 		84D56356122302250060C2F7 /* haruka_9_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D5631E122302250060C2F7 /* haruka_9_n_b.png */; };
 		84D6A231120042B00044ECE2 /* MaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D6A230120042B00044ECE2 /* MaskView.m */; };
 		84D6A26F120045000044ECE2 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D6A26E120045000044ECE2 /* mask.png */; };
+		84E3252F1298A1140066A4EA /* MenuTimeOptionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3252E1298A1140066A4EA /* MenuTimeOptionController.xib */; };
+		84E325341298A1540066A4EA /* optionBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E325321298A1540066A4EA /* optionBack.png */; };
+		84E325351298A1540066A4EA /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E325331298A1540066A4EA /* button.png */; };
+		84E3259F1298A4CF0066A4EA /* MenuSelectController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3259E1298A4CF0066A4EA /* MenuSelectController.xib */; };
 		84EB682D12088F9F0086B4CB /* char_reina.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EB682C12088F9F0086B4CB /* char_reina.png */; };
+		84EC280D12980A1F00F39CBA /* time2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EC280C12980A1F00F39CBA /* time2.png */; };
+		84EC283012980E8E00F39CBA /* 24hr.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EC282E12980E8E00F39CBA /* 24hr.png */; };
+		84EC283112980E8E00F39CBA /* 12hr.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EC282F12980E8E00F39CBA /* 12hr.png */; };
 		84EE5EC5123D1A5600A655B1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 84EE5EC4123D1A5600A655B1 /* Default.png */; };
 /* End PBXBuildFile section */
 
@@ -1056,7 +1063,14 @@
 		84D6A22F120042B00044ECE2 /* MaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaskView.h; sourceTree = "<group>"; };
 		84D6A230120042B00044ECE2 /* MaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaskView.m; sourceTree = "<group>"; };
 		84D6A26E120045000044ECE2 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
+		84E3252E1298A1140066A4EA /* MenuTimeOptionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTimeOptionController.xib; sourceTree = "<group>"; };
+		84E325321298A1540066A4EA /* optionBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionBack.png; sourceTree = "<group>"; };
+		84E325331298A1540066A4EA /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		84E3259E1298A4CF0066A4EA /* MenuSelectController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuSelectController.xib; sourceTree = "<group>"; };
 		84EB682C12088F9F0086B4CB /* char_reina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = char_reina.png; path = "char/レイナ/char_reina.png"; sourceTree = "<group>"; };
+		84EC280C12980A1F00F39CBA /* time2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time2.png; sourceTree = "<group>"; };
+		84EC282E12980E8E00F39CBA /* 24hr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 24hr.png; path = image/24hr.png; sourceTree = "<group>"; };
+		84EC282F12980E8E00F39CBA /* 12hr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 12hr.png; path = image/12hr.png; sourceTree = "<group>"; };
 		84EE5EC4123D1A5600A655B1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* AlarmGitai-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AlarmGitai-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1246,12 +1260,17 @@
 			children = (
 				84BD8FC11294A10B00833065 /* week.png */,
 				84BD8F3E129484CC00833065 /* time.png */,
+				84EC280C12980A1F00F39CBA /* time2.png */,
 				84BD8F3F129484CC00833065 /* char.png */,
 				84BD8F4E1294869600833065 /* back_h.png */,
 				84BD8F4F1294869600833065 /* back_v.png */,
 				84BD8F41129484CC00833065 /* date.png */,
 				564321F0128E7636006D33F8 /* check.png */,
+				84EC282E12980E8E00F39CBA /* 24hr.png */,
+				84EC282F12980E8E00F39CBA /* 12hr.png */,
 				84742D30125978D4005859ED /* touch.png */,
+				84E325321298A1540066A4EA /* optionBack.png */,
+				84E325331298A1540066A4EA /* button.png */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -1266,6 +1285,8 @@
 				5608932811ECAEE300C1F800 /* DateView.xib */,
 				569DE53611F1BB4F00A4E58F /* AlarmView.xib */,
 				5608932511ECAED500C1F800 /* ClockView.xib */,
+				84E3252E1298A1140066A4EA /* MenuTimeOptionController.xib */,
+				84E3259E1298A4CF0066A4EA /* MenuSelectController.xib */,
 				2899E5210DE3E06400AC0155 /* AlarmGitaiViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* AlarmGitai-Info.plist */,
@@ -2437,6 +2458,13 @@
 				84BD8F501294869600833065 /* back_h.png in Resources */,
 				84BD8F511294869600833065 /* back_v.png in Resources */,
 				84BD8FC21294A10B00833065 /* week.png in Resources */,
+				84EC280D12980A1F00F39CBA /* time2.png in Resources */,
+				84EC283012980E8E00F39CBA /* 24hr.png in Resources */,
+				84EC283112980E8E00F39CBA /* 12hr.png in Resources */,
+				84E3252F1298A1140066A4EA /* MenuTimeOptionController.xib in Resources */,
+				84E325341298A1540066A4EA /* optionBack.png in Resources */,
+				84E325351298A1540066A4EA /* button.png in Resources */,
+				84E3259F1298A4CF0066A4EA /* MenuSelectController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

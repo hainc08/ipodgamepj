@@ -35,15 +35,17 @@
 	[self.view setBackgroundColor:[UIColor blackColor]];
 	
 	HourMode = [[ButtonView alloc] initWithFrame:[self ButtonPlace:1	y:3]];
-	[HourMode setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"HOUR MODE" bgColor:[UIColor redColor] chekImage:[[AlarmConfig getInstance] getHourMode]];
+	[HourMode setView:1  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"HOUR MODE" bgColor:[UIColor clearColor] chekImage:[[AlarmConfig getInstance] getHourMode]];
 	UIButton *HourModeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
 	[HourModeButton addTarget:self action:@selector(HourModeButton:) forControlEvents:UIControlEventTouchUpInside];
 	[HourMode addSubview:HourModeButton];
 	[self.view addSubview:HourMode];
 	[HourModeButton release];
 	
+	[self HourModeButton:nil];
+	
 	DisplayDate = [[ButtonView alloc] initWithFrame:[self ButtonPlace:2	y:3]];
-	[DisplayDate setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"DISPLAY DATE" bgColor:[UIColor redColor] chekImage:[[AlarmConfig getInstance] getDateDisplay]];
+	[DisplayDate setView:1  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"DISPLAY DATE" bgColor:[UIColor clearColor] chekImage:[[AlarmConfig getInstance] getDateDisplay]];
 
 	UIButton *DisplayButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ]; 
 	[DisplayButton addTarget:self action:@selector(DateButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -54,7 +56,7 @@
 	
 
 	WeekDisplay = [[ButtonView alloc] initWithFrame:[self ButtonPlace:3	y:3]];
-	[WeekDisplay setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"SHOW Weekday" bgColor:[UIColor redColor] chekImage:[[AlarmConfig getInstance] getWeekDisplay]];
+	[WeekDisplay setView:1  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"SHOW Weekday" bgColor:[UIColor clearColor] chekImage:[[AlarmConfig getInstance] getWeekDisplay]];
 	
 	UIButton *WeekDisplayButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
 	[WeekDisplayButton addTarget:self action:@selector(WeekButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -64,15 +66,13 @@
 	
 	
 	Done = [[ButtonView alloc] initWithFrame:[self ButtonPlace:4 y:3]];
-	[Done setView:0  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"DONE" bgColor:[UIColor redColor] chekImage:FALSE];
+	[Done setView:2  fontsize:12 fontColor:[UIColor whiteColor]  setText:@"DONE" bgColor:[UIColor clearColor] chekImage:FALSE];
 
 	UIButton *DoneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, BUTTON_X, BUTTON_Y) ];
 	[DoneButton addTarget:self action:@selector(DoneButton:) forControlEvents:UIControlEventTouchUpInside];
 	[Done addSubview:DoneButton];
 	[self.view addSubview:Done];
 	[DoneButton release];
-	
-
 	
 	preview = [[OptionPreview alloc] init];
 	[self.view addSubview:preview.view];
@@ -81,21 +81,30 @@
 	[preview refresh];
 	[preview.view setCenter:CGPointMake(160, 160)];
 }
+
 -(void)HourModeButton:(id)sender
 {
-	[HourMode setCheck: [[AlarmConfig getInstance] setHourMode]];
+	[HourMode setCheck:true];
+	if ([[AlarmConfig getInstance] setHourMode])
+		[HourMode setCheckImg:@"24hr.png"];
+	else
+		[HourMode setCheckImg:@"12hr.png"];
+	
 	[preview refresh];
 }
+
 -(void)WeekButton:(id)sender
 {
 	[WeekDisplay setCheck: [[AlarmConfig getInstance] setWeekDisplay]];
 	[preview refresh];
 }
+
 -(void)DateButton:(id)sender
 {
 	[DisplayDate setCheck:[[AlarmConfig getInstance] setDateDisplay]];
 	[preview refresh];
 }
+
 -(void)DoneButton:(id)sender
 {
 	[[AlarmConfig getInstance] SaveConfig];
