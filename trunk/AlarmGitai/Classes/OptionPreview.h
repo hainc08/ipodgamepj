@@ -6,7 +6,8 @@
 	IBOutlet id back_h;
 	IBOutlet id back_v;
 	IBOutlet id charView;
-	IBOutlet id timeView;
+	IBOutlet id timeView_12;
+	IBOutlet id timeView_24;
 	IBOutlet id dateView;
 	IBOutlet id weekView;
 }
