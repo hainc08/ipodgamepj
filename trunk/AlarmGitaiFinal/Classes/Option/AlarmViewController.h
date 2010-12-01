@@ -7,16 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+
+#import "AlarmViewSetController.h"
 #import "FlipsideViewControllerDelegate.h"
 
-@interface AlarmViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@class AlarmDate;
+@interface AlarmViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PropertyEditing> {
 	id <FlipsideViewControllerDelegate> delegate;
+	NSUndoManager *undoManager;
 
+	AlarmDate		* alarm;
 	IBOutlet UITableView* optionTableView;
+	int			SetFlag;
+	int			index;
+
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
-
+@property (nonatomic, retain) AlarmDate			*alarm;
+@property (nonatomic, retain) NSUndoManager		*undoManager;
+@property (nonatomic,  assign, getter=isSetFlagg) int	SetFlag;
+@property (nonatomic,  assign, getter=isindex) int	index;
 - (IBAction)buttonClicked:(id)sender;
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;

@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 #import "FlipsideViewControllerDelegate.h"
+
+
 
 @interface OptionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, FlipsideViewControllerDelegate> {
 	id <FlipsideViewControllerDelegate> delegate;
 
 	IBOutlet UITableView* optionTableView;
 	int alarmCount;
+	
+	NSMutableArray			*a_alarm;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;

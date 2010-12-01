@@ -427,7 +427,7 @@ FINDKEY:
 		sData = (StringData*)data;
 		if ((keyIdx == [sData keyIdx]) && (idx == [sData idx]))
 		{
-			if ([value compare:[sData getValue]] == NSOrderedSame)
+			if ([value compare:[sData getValue]] != NSOrderedSame)
 			{
 				isDirty = true;
 				[sData setValue:value];

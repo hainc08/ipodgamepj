@@ -1,11 +1,14 @@
 #import "AlarmViewController.h"
 
 #import "UITableViewCellTemplate.h"
+#import "AlarmConfig.h"
 
 @implementation AlarmViewController
 
 @synthesize delegate;
-
+@synthesize alarm, undoManager;
+@synthesize	SetFlag;
+@synthesize index;
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -22,6 +25,7 @@
     [super viewDidLoad];
 
 	self.title = @"Setting";
+	[self setEditing:YES animated:YES ];
 }
 
 
@@ -48,6 +52,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
+	if(alarm == nil) 
+		alarm = [[AlarmDate alloc] init];
+	[optionTableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -72,6 +79,11 @@
 }
 
 - (IBAction)done:(id)sender {
+	if(SetFlag)
+		[[AlarmConfig getInstance] setAlarmAdd:alarm];
+	else 
+		[[AlarmConfig getInstance] setAlarmEdit:alarm index:index];
+	[[AlarmConfig getInstance] SaveConfig];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
@@ -110,11 +122,10 @@
 		}
 
 		NSString* text = @"Enable Alarm";
-		BOOL value = NO;
-		
+	
 		UITableViewSwitchCell* swch_cell = (UITableViewSwitchCell*)cell;
 		
-		[swch_cell setInfo:text :value];
+		[swch_cell setInfo:text :alarm.AlarmONOFF];
 		
 		return cell;
 	}
@@ -127,19 +138,20 @@
 		{
 			case 0:
 				text = @"Time";
-				value = @"05:00";
+				value = alarm.Time;
 				break;
 			case 1:
 				text = @"Repeat";
-				value = @"Never Repeat";
+				value = alarm.WeekDate;
 				break;
 			case 2:
 				text = @"Sound";
-				value = @"Classic";
+				value = alarm.SoundName;
+
 				break;
 			case 3:
 				text = @"Name";
-				value = @"Alarm";
+				value = alarm.Name;
 				break;
 		}
 		
@@ -221,18 +233,93 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.section == 0)
+	if (indexPath.section == 1)
 	{
+		AlarmViewSetController *setting = [[AlarmViewSetController alloc] initWithNibName:@"AlarmSetting" bundle:nil];
+		setting.editedObject = alarm;
+		setting.sourceController = self;
 		switch (indexPath.row)
 		{
 			case 0:
+				setting.title = @"Time";
+				setting.editedPropertyKey = @"Time";
+				setting.editingDate	= YES;
 				break;
 			case 1:
+				setting.title = @"Repeat";
+				setting.editedPropertyKey = @"Repeat";
 				break;
 			case 2:
+				setting.title = @"Sound";
+				setting.editedPropertyKey = @"Sound";
 				break;
+			case 3:
+				setting.title = @"Name";
+				setting.editedPropertyKey = @"Name";
+					setting.editingDate	= NO;
+			break;
+
 		}
+		setting.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+		
+		[self presentModalViewController:setting animated:YES];
+		
+		[setting release];
 	}
 }
+
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+	
+	NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
+
+	
+	NSUndoManager *anUndoManager = [[NSUndoManager alloc] init];
+	self.undoManager = anUndoManager;
+	[anUndoManager release];
+		
+	[undoManager setLevelsOfUndo:3];
+	[dnc addObserver:self selector:@selector(undoManagerDidUndo:) name:NSUndoManagerDidUndoChangeNotification object:undoManager];
+	[dnc addObserver:self selector:@selector(undoManagerDidRedo:) name:NSUndoManagerDidRedoChangeNotification object:undoManager];
+}
+
+
+#pragma mark -
+#pragma mark Editing
+
+- (void)setValue:(id)newValue forEditedProperty:(NSString *)field {
+	
+	id currentValueforEditedProperty = [alarm valueForKey:field];
+	[[undoManager prepareWithInvocationTarget:self] setValue:currentValueforEditedProperty forEditedProperty:field];
+	
+	[alarm setValue:newValue forKey:field];
+	
+	if (![undoManager isUndoing]) {
+		[undoManager setActionName:NSLocalizedString(field, @"string provided dynamically")];
+	}
+}
+
+
+
+#pragma mark -
+#pragma mark Undo support
+
+/*
+ Methods invoked in response to undo notifications -- see setEditing:animated:.  Simply redisplay the table view to reflect the changed value.
+ */
+- (void)undoManagerDidUndo:(NSNotification *)notification {
+	[optionTableView reloadData];
+}
+
+
+- (void)undoManagerDidRedo:(NSNotification *)notification {
+	[optionTableView reloadData];
+}
+
+- (void)flipsideViewControllerDidFinish:(UIViewController *)controller {
+    
+	[self dismissModalViewControllerAnimated:YES];
+}
+
 
 @end
