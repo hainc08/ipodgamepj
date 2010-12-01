@@ -79,6 +79,22 @@
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
+- (IBAction)ShowSeconds:(id)sender {
+	[[AlarmConfig getInstance] setSecondMode];
+}
+- (IBAction)ShowDate:(id)sender {
+	[[AlarmConfig getInstance] setDateDisplay];
+}
+- (IBAction)ShowTime:(id)sender {
+	[[AlarmConfig getInstance] setHourMode];
+}
+- (IBAction)ShowWeek:(id)sender {
+	[[AlarmConfig getInstance] setWeekDisplay];
+}
+- (IBAction)ShowLock:(id)sender {
+//	[[AlarmConfig getInstance] setShowLock];
+}
+
 /////////////////////////////////////////////////////////////////////////////////////
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -109,37 +125,37 @@
 			}
 		}
 
+		
+		UITableViewSwitchCell* swch_cell = (UITableViewSwitchCell*)cell;
+		
 		NSString* text = @"텍스트";
 		BOOL value = NO;
 		
 		switch (indexPath.row)
 		{
 			case 0:
-				text = @"Show Seconds";
-				value = false;
+				[swch_cell setInfo:@"Show Seconds" :[[AlarmConfig getInstance] getSecondMode]];
+				[swch_cell.switcher addTarget:self action:@selector(ShowSeconds:) forControlEvents:UIControlEventValueChanged];
 				break;
 			case 1:
-				text = @"Show Date";
-				value = false;
+				[swch_cell setInfo:@"Show Date" :[[AlarmConfig getInstance] getDateDisplay]];
+				[swch_cell.switcher addTarget:self action:@selector(ShowDate:) forControlEvents:UIControlEventValueChanged];
 				break;
 			case 2:
-				text = @"Show Weekday";
-				value = false;
+				[swch_cell setInfo:@"Show Weekday" :[[AlarmConfig getInstance] getWeekDisplay]];
+				[swch_cell.switcher addTarget:self action:@selector(ShowWeek:) forControlEvents:UIControlEventValueChanged];
 				break;
 			case 3:
-				text = @"24-Hour Time";
-				value = false;
+				[swch_cell setInfo:@"24-Hour Time" :[[AlarmConfig getInstance] getHourMode]];
+				[swch_cell.switcher addTarget:self action:@selector(ShowTime:) forControlEvents:UIControlEventValueChanged];
 				break;
 			case 4:
-				text = @"Auto-Lock";
-				value = false;
+				[swch_cell setInfo:@"Auto-Lock" :FALSE];
+				[swch_cell.switcher addTarget:self action:@selector(ShowLock:) forControlEvents:UIControlEventValueChanged];
 				break;
 		}
-		
-		UITableViewSwitchCell* swch_cell = (UITableViewSwitchCell*)cell;
-		
-		[swch_cell setInfo:text :value];
-		
+
+
 		return cell;
 	}
 	else if(indexPath.section == 0)

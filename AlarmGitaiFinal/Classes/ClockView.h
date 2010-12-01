@@ -28,11 +28,19 @@ enum CLOCKTYPE {
 	UIImageView *u_MinM;
 	UIImageView *u_Dot;
 	
+	UIImageView *su_Dot;
+	UIImageView *u_SecT;
+	UIImageView *u_SecM;
+	
 	UIImageView *b_HourT;
 	UIImageView *b_HourM;
 	UIImageView *b_MinT;
 	UIImageView *b_MinM;
 	UIImageView *b_Dot;
+
+	UIImageView *sb_Dot;
+	UIImageView *b_SecT;
+	UIImageView *b_SecM;
 	
 }
 - (void)CreatedImageView ;

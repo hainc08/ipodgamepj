@@ -2482,11 +2482,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (N65PC63996)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitaiFinal_Prefix.pch;
 				INFOPLIST_FILE = "AlarmGitaiFinal-Info.plist";
 				PRODUCT_NAME = AlarmGitaiFinal;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DAE48A-6F6A-4805-9340-5FC42D867E20";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2510,14 +2512,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (N65PC63996)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A6D68DB-DDF0-49F4-83EC-79638F5F62F8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DAE48A-6F6A-4805-9340-5FC42D867E20";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

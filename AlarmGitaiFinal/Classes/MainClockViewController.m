@@ -140,13 +140,13 @@ extern void GSEventSetBacklightLevel(float value);
 	if((frameTick % 5) == 0)
 	{
 		[sceneView next];
-		[self AlarmCheck];
+		//[self AlarmCheck];
 		
 		frameTick = 0;
 	}
 
 	[self FrameUpdate];
-	[self AlarmCheck];
+	//[self AlarmCheck];
 	[clockview UpdateTime];
 	[dateview UpdateDate];
 }

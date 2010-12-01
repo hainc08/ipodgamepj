@@ -75,18 +75,12 @@
 	/* 배경사진 sec  Default : 5 */
 	int				RotationTime;
 	
-	/* 알람 시간  */
-	NSString		*AlarmTime;
-	
 	/* 환경설정 */
 	BOOL			HourMode;	
+	BOOL			SecondMode;
 	BOOL			DateDisplay; 
 	BOOL			WeekDisplay;
-	/* alarm 설정*/
-	BOOL			AlarmONOFF;
-	BOOL			VibrationONOFF;
-	BOOL			SnoozeONOFF;
-	BOOL			ShakeONOFF;
+
 	
 	NSMutableArray			*AlarmArr; 
 }
@@ -99,11 +93,15 @@
 + (AlarmConfig *)getInstance;
 + (void) initmanager;
 - (void) closeManager;
+- (void)loadConfig;
+
 - (int)getFontType;
+
 - (NSString *)getUpImageType;
 - (NSString *)getBgImageType;
 - (NSString *)getCharName;
-- (void)loadConfig;
+
+
 - (ViewCgPoint *) getHeigthViewPoint;
 - (ViewCgPoint *) getWidthViewPoint;
 - (void) setHeigthViewPoint:(ViewCgPoint *) _inPoint;
@@ -117,24 +115,13 @@
 - (BOOL) setDateDisplay;
 - (BOOL) setWeekDisplay;
 
-- (BOOL) setAlarmONOFF;
-- (BOOL) getAlarmONOFF;
-
-- (BOOL) setVibrationONOFF;
-- (BOOL) getVibrationONOFF;
-
-- (BOOL) setSnoozeONOFF;
-- (BOOL) getSnoozeONOFF;
-
-- (BOOL) setShakeONOFF;
-- (BOOL) getShakeONOFF;
+- (BOOL) setSecondMode;
+- (BOOL) getSecondMode;
 
 - (void) SaveConfig;
+
 - (int) getRotationTime;
 - (void) setRotationTime:(int)value;
-
-- (NSString *)getAlarmTime;
-- (void) setAlarmTime:(NSString *)_inAlarmTime;
 
 /* alarm set */
 - (NSMutableArray *)getAlarmArr;
