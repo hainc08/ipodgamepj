@@ -11,7 +11,8 @@
 #import <CoreData/CoreData.h>
 
 
-@interface  AlarmDate : NSManagedObject
+//@interface  AlarmDate : NSManagedObject
+@interface  AlarmDate : NSObject
 {
 	NSString	*Name;
 	BOOL		AlarmONOFF;
@@ -126,7 +127,6 @@
 /* alarm set */
 - (NSMutableArray *)getAlarmArr;
 - (int) setAlarmAdd:(AlarmDate *)_inData;
-- (void) setAlarmEdit:(AlarmDate *)_inData index:(int)_inIndex;
 -(void) AlarmLoadConfig;
 -(void) AlarmSaveConfig;
 @end

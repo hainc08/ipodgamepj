@@ -64,20 +64,20 @@
 	[self.view addSubview:u_SecT];
 	[self.view addSubview:u_SecM];
 	
-	[b_Dot setFrame:CGRectMake(110,-10,100,150)];
-	[u_Dot setFrame:CGRectMake(110,-10,100,150)];
+	[b_Dot setFrame:CGRectMake(110,-20,100,150)];
+	[u_Dot setFrame:CGRectMake(110,-20,100,150)];
 
-	[b_HourT setFrame:CGRectMake(-10,-10,100,150)];
-	[b_HourM setFrame:CGRectMake(60,-10,100,150)];
-	[b_MinT setFrame:CGRectMake(160,-10,100,150)];
-	[b_MinM setFrame:CGRectMake(230,-10,100,150)];
+	[b_HourT setFrame:CGRectMake(-10,-20,100,150)];
+	[b_HourM setFrame:CGRectMake(60,-20,100,150)];
+	[b_MinT setFrame:CGRectMake(160,-20,100,150)];
+	[b_MinM setFrame:CGRectMake(230,-20,100,150)];
 	
 
 
-	[u_HourT setFrame:CGRectMake(-10,-10,100,150)];
-	[u_HourM setFrame:CGRectMake(60,-10,100,150)];
-	[u_MinT setFrame:CGRectMake(160,-10,100,150)];
-	[u_MinM setFrame:CGRectMake(230,-10,100,150)];
+	[u_HourT setFrame:CGRectMake(-10,-20,100,150)];
+	[u_HourM setFrame:CGRectMake(60,-20,100,150)];
+	[u_MinT setFrame:CGRectMake(160,-20,100,150)];
+	[u_MinM setFrame:CGRectMake(230,-20,100,150)];
 
 	[sb_Dot setFrame:CGRectMake(270,10,100,150)];
 	[su_Dot setFrame:CGRectMake(270,10,100,150)];
@@ -131,13 +131,13 @@
 	}
 	else if(type == SEC_T)
 	{
-		[u_SecT setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
-		[b_SecT setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
+		[u_SecT setImage:[[ImgManager getInstance] getUp:(int)(number - 0x30)]];
+		[b_SecT setImage:[[ImgManager getInstance] getDown:(int)(number - 0x30)]];
 	}
 	else if(type == SEC_M)
 	{
-		[u_SecM setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
-		[b_SecM setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
+		[u_SecM setImage:[[ImgManager getInstance] getUp:(int)(number - 0x30)]];
+		[b_SecM setImage:[[ImgManager getInstance] getDown:(int)(number - 0x30)]];
 	}
 	
 }
@@ -157,7 +157,7 @@
 		{		
 			if([Hour length] > 1)
 			{
-				[self ChageNumberImage:HOUR_T changeImage:0];
+				[self ChageNumberImage:HOUR_T changeImage:'0'];
 			}
 			[self ChageNumberImage:HOUR_M changeImage:[tmpHour characterAtIndex:0]];
 		}
@@ -180,7 +180,7 @@
 		{
 			if([Min	length] > 1)
 			{
-				[self ChageNumberImage:MIN_T changeImage:0];
+				[self ChageNumberImage:MIN_T changeImage:'0'];
 			}
 			
 			[self ChageNumberImage:MIN_M changeImage:[tmpMin characterAtIndex:0]];
@@ -202,7 +202,7 @@
 		{
 			if([Sec	length] > 1)
 			{
-				[self ChageNumberImage:SEC_T changeImage:0];
+				[self ChageNumberImage:SEC_T changeImage:'0'];
 			}
 			
 			[self ChageNumberImage:SEC_M changeImage:[tmpSec characterAtIndex:0]];
@@ -239,6 +239,12 @@
 	[b_MinT release];
 	[b_MinM release];
 	[b_Dot release];
+	
+	[su_Dot release];
+	[u_SecM release];
+	[u_SecT	release];
+	[b_SecM release];
+	[b_SecT	release];
 }
 
 

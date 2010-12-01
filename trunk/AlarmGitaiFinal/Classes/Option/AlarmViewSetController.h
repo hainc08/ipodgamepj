@@ -39,7 +39,7 @@
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
 @property (nonatomic, retain) id <PropertyEditing>  sourceController;
 
-- (IBAction)done:(id)sender;
-- (IBAction)cancel:(id)sender;
+- (IBAction)cancel;
+- (IBAction)done;
 
 @end

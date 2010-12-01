@@ -17,12 +17,6 @@
 #import "DateFormat.h"
 
 extern void GSEventSetBacklightLevel(float value);
-@implementation DataParam
-
-@synthesize iData;
-@synthesize sData;
-
-@end
 
 @implementation MainClockViewController
 
@@ -51,7 +45,7 @@ extern void GSEventSetBacklightLevel(float value);
 	[self.view addSubview:sceneView.view];
 
 	clockview = [[ClockView alloc] init];
-	[clockview.view setFrame:CGRectMake(0, 0, 320, 130)];
+	[clockview.view setFrame:CGRectMake(0, 0,320, 100)];
 	[clockview.view setTransform:alarmviewpoint.ClockTrans]; 
 	[clockview.view setCenter:alarmviewpoint.ClockPoint ];
 	[clockview UpdateTime];
@@ -66,6 +60,7 @@ extern void GSEventSetBacklightLevel(float value);
 	
 	[self.view bringSubviewToFront:infoButton];
 
+	alarm_arr = [[AlarmConfig getInstance] getAlarmArr];
 	frameTick = 0;
 	//너무 자주 업데잇할 필요가 없을 듯~
 	framePerSec = 1.f;
@@ -88,9 +83,11 @@ extern void GSEventSetBacklightLevel(float value);
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
+	[self FrameUpdate];
+	
 	[self resumeTimer];
 	viewrotate = TRUE;
-	[self FrameUpdate];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -120,17 +117,15 @@ extern void GSEventSetBacklightLevel(float value);
 
 - (void) AlarmCheck
 {
-	if([[AlarmConfig getInstance] getAlarmONOFF])
-	{
-		if([[[DateFormat getInstance] getAlarm] compare:[[AlarmConfig getInstance] getAlarmTime]] == NSOrderedSame)
+	for (int loop = 0; loop < [alarm_arr count] ; loop++) {
+		AlarmDate *t_date  = [alarm_arr objectAtIndex:loop];
+		if(t_date.AlarmONOFF)
 		{
-			if(viewrotate)
+			if([t_date.Time compare:[[DateFormat getInstance] getAlarm]] == NSOrderedSame)
 			{
 				
-//				[self.navigationController pushViewController:alarmshake animated:YES];
 			}
 		}
-		
 	}
 }
 

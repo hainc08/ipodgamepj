@@ -13,15 +13,7 @@
 @class DateView;
 @class SceneView;
 
-@interface DataParam : NSObject {
-	int iData;
-	NSString *sData;
-}
 
-@property (readwrite)	int iData;
-@property (retain)	NSString *sData;
-
-@end
 
 enum VIEWMODE {
 	VIEWNORMAL = 0,
@@ -57,6 +49,7 @@ enum VIEWMODE {
 	/* Button */
 	UIButton *AlarmButton;
 	
+	NSMutableArray *alarm_arr;
 	IBOutlet UIButton* infoButton;
 }
 
