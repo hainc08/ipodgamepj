@@ -32,6 +32,15 @@
 	u_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
 	b_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
 
+	/*sec*/
+	su_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	sb_Dot = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	u_SecM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	b_SecM = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	u_SecT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+	b_SecT = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,0, 0)];
+
+	
 	//폰트에따라 글자 down이 up을 덮는 경우가 없도록
 	//down먼저 add하고 up을 add하자.
 	[self.view addSubview:b_HourT];
@@ -40,12 +49,21 @@
 	[self.view addSubview:b_MinM];
 	[self.view addSubview:b_Dot];
 	
+	[self.view addSubview:sb_Dot];
+	[self.view addSubview:b_SecT];
+	[self.view addSubview:b_SecM];
+	
+	
 	[self.view addSubview:u_HourT];
 	[self.view addSubview:u_HourM];
 	[self.view addSubview:u_MinT];
 	[self.view addSubview:u_MinM];
 	[self.view addSubview:u_Dot];
-
+	
+	[self.view addSubview:su_Dot];
+	[self.view addSubview:u_SecT];
+	[self.view addSubview:u_SecM];
+	
 	[b_Dot setFrame:CGRectMake(110,-10,100,150)];
 	[u_Dot setFrame:CGRectMake(110,-10,100,150)];
 
@@ -53,16 +71,39 @@
 	[b_HourM setFrame:CGRectMake(60,-10,100,150)];
 	[b_MinT setFrame:CGRectMake(160,-10,100,150)];
 	[b_MinM setFrame:CGRectMake(230,-10,100,150)];
+	
+
 
 	[u_HourT setFrame:CGRectMake(-10,-10,100,150)];
 	[u_HourM setFrame:CGRectMake(60,-10,100,150)];
 	[u_MinT setFrame:CGRectMake(160,-10,100,150)];
 	[u_MinM setFrame:CGRectMake(230,-10,100,150)];
 
+	[sb_Dot setFrame:CGRectMake(270,10,100,150)];
+	[su_Dot setFrame:CGRectMake(270,10,100,150)];
+	
+	[b_SecT setFrame:CGRectMake(290,10,100,150)];
+	[b_SecM setFrame:CGRectMake(310,10,100,150)];
+	[u_SecT setFrame:CGRectMake(290,10,100,150)];
+	[u_SecM setFrame:CGRectMake(310,10,100,150)];
+	
+	[sb_Dot setTransform:CGAffineTransformMake(0.3, 0.0, 0.0,0.3, 0.0, 0.0)];
+	[su_Dot setTransform:CGAffineTransformMake(0.3, 0.0, 0.0,0.3, 0.0, 0.0)];
+	[b_SecT setTransform:CGAffineTransformMake(0.3, 0.0, 0.0,0.3, 0.0, 0.0)];
+	[b_SecM setTransform:CGAffineTransformMake(0.3, 0.0, 0.0,0.3, 0.0, 0.0)];
+	[u_SecT setTransform:CGAffineTransformMake(0.3, 0.0, 0.0,0.3, 0.0, 0.0)];
+	[u_SecM setTransform:CGAffineTransformMake(0.3, 0.0, 0.0,0.3, 0.0, 0.0)];
+	
 	[u_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@dot.png", 
 										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getUpImageType]]]];
 	[b_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@dot.png", 
 										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getBgImageType]]]];
+
+	[su_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@dot.png", 
+										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getUpImageType]]]];
+	[sb_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@dot.png", 
+										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getBgImageType]]]];
+	
 }
 
 
@@ -88,11 +129,22 @@
 		[u_MinM setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
 		[b_MinM setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
 	}
+	else if(type == SEC_T)
+	{
+		[u_SecT setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
+		[b_SecT setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
+	}
+	else if(type == SEC_M)
+	{
+		[u_SecM setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
+		[b_SecM setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
+	}
 	
 }
 - (void)UpdateTime
 {	
 	NSString *tmpMin = [[DateFormat getInstance] getMin];
+	NSString *tmpSec = [[DateFormat getInstance] getSec];
 	NSString *tmpHour;
 	if([[AlarmConfig getInstance] getHourMode])
 		tmpHour = [[DateFormat getInstance] getHour24];
@@ -142,6 +194,28 @@
 		if( Min != nil )
 			[Min release];
 		Min = [[NSString alloc] initWithFormat:@"%@",tmpMin];
+	}
+	
+	if((![Sec isEqualToString:tmpSec]) || Sec == nil)
+	{
+		if([tmpSec length] < 2)
+		{
+			if([Sec	length] > 1)
+			{
+				[self ChageNumberImage:SEC_T changeImage:0];
+			}
+			
+			[self ChageNumberImage:SEC_M changeImage:[tmpSec characterAtIndex:0]];
+		}
+		else
+		{
+			[self ChageNumberImage:SEC_T changeImage:[tmpSec characterAtIndex:0]];
+			[self ChageNumberImage:SEC_M changeImage:[tmpSec characterAtIndex:1]];
+		}
+		
+		if( Sec != nil )
+			[Sec release];
+		Sec = [[NSString alloc] initWithFormat:@"%@",tmpSec];
 	}
 
 }

@@ -39,14 +39,6 @@ static AlarmConfig *AlarmConfigInst;
 	[[SaveManager getInstance] setIntData:@"DateDisplay"	idx:0 value:DateDisplay		== TRUE ? 1 : 0];
 	[[SaveManager getInstance] setIntData:@"WeekDisplay"	idx:0 value:WeekDisplay		== TRUE ? 1 : 0];
 	
-	[[SaveManager getInstance] setIntData:@"AlarmDate"		idx:0 value:AlarmONOFF		== TRUE ? 1	: 0];
-	[[SaveManager getInstance] setStringData:@"AlarmDate"	idx:1 value:AlarmTime];
-	
-	
-	[[SaveManager getInstance] setIntData:@"VibrationONOFF"	idx:0 value:VibrationONOFF  == TRUE ? 1 : 0];
-	[[SaveManager getInstance] setIntData:@"SnoozeONOFF"	idx:0 value:SnoozeONOFF		== TRUE ? 1 : 0];
-	[[SaveManager getInstance] setIntData:@"ShakeONOFF"		idx:0 value:ShakeONOFF		== TRUE ? 1 : 0];
-	
 	CGAffineTransform trans;
 	CGPoint pos;
 	
@@ -145,15 +137,6 @@ static AlarmConfig *AlarmConfigInst;
 	WeekDisplay		=	[[SaveManager getInstance] getIntData:@"WeekDisplay"	idx:0 base:1]	== 1 ? TRUE : FALSE;
 
 	
-	AlarmONOFF		=	[[SaveManager getInstance] getIntData:@"AlarmDate"		idx:0 base:0]	== 1 ? TRUE : FALSE;
-	AlarmTime		=	[[SaveManager getInstance] getStringData:@"AlarmDate"	idx:1 base:@"-"];
-	
-	
-	VibrationONOFF	=	[[SaveManager getInstance] getIntData:@"VibrationONOFF"	idx:0 base:0]	== 1 ? TRUE : FALSE;
-	SnoozeONOFF		=	[[SaveManager getInstance] getIntData:@"SnoozeONOFF"	idx:0 base:0]	== 1 ? TRUE : FALSE;
-	ShakeONOFF		=	[[SaveManager getInstance] getIntData:@"ShakeONOFF"		idx:0 base:0]	== 1 ? TRUE : FALSE;
-	
-	
 	heigthviewpoint =	[ViewCgPoint alloc];
 	widthviewpoint	=	[ViewCgPoint alloc];
 	
@@ -219,15 +202,6 @@ static AlarmConfig *AlarmConfigInst;
 	}
 }
 
-- (BOOL) getAlarmONOFF
-{
-	return  AlarmONOFF;
-}
-- (BOOL) setAlarmONOFF
-{
-	AlarmONOFF = !AlarmONOFF;
-	return AlarmONOFF;
-}
 
 - (BOOL) getWeekDisplay
 {
@@ -311,47 +285,16 @@ static AlarmConfig *AlarmConfigInst;
 {
 	return RotationTime;
 }
-- (NSString *)getAlarmTime
-{
-	return	AlarmTime;
-}
-- (void) setAlarmTime:(NSString *)_inAlarmTime
-{
-	AlarmTime = _inAlarmTime;
-}
 
-
-- (BOOL) setVibrationONOFF
+- (BOOL) setSecondMode;
 {
-	VibrationONOFF = !VibrationONOFF;
-	return VibrationONOFF;
+	SecondMode = !SecondMode;
+	return	 SecondMode;
 }
-
-- (BOOL) getVibrationONOFF
+- (BOOL) getSecondMode
 {
-	return VibrationONOFF;
+	return SecondMode;
 }
-
-- (BOOL) setSnoozeONOFF
-{
-	SnoozeONOFF = !SnoozeONOFF;
-	return SnoozeONOFF;
-}
-- (BOOL) getSnoozeONOFF
-{
-	return SnoozeONOFF;
-}
-
-- (BOOL) setShakeONOFF
-{
-	ShakeONOFF = !ShakeONOFF;
-	return ShakeONOFF;
-}
-- (BOOL) getShakeONOFF
-{
-	return ShakeONOFF;
-}
-
 
 
 - (NSMutableArray *)getAlarmArr
