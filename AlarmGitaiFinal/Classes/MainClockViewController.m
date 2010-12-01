@@ -151,7 +151,9 @@ extern void GSEventSetBacklightLevel(float value);
 	if(viewmode == VIEWNORMAL)
 	{
 		ViewCgPoint	*alarmviewpoint	;
-		if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) 
+		//if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) 
+		
+		if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
 			alarmviewpoint	= [[AlarmConfig getInstance] getHeigthViewPoint];	
 		else 
 			alarmviewpoint	= [[AlarmConfig getInstance] getWidthViewPoint];
@@ -364,7 +366,7 @@ extern void GSEventSetBacklightLevel(float value);
 	[config setDateTrans:dateview.view.transform];
 	[config setDatePoint:dateview.view.center];
 	
-	if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
+	if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
 		[[AlarmConfig getInstance] setHeigthViewPoint:config];
 	else
 		[[AlarmConfig getInstance] setWidthViewPoint:config];
