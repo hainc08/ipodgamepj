@@ -26,7 +26,14 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-
+	self.navigationController.toolbarHidden = NO;
+	UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(done)];
+	self.navigationItem.rightBarButtonItem = saveButton;
+	[saveButton release];
+	
+	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+	self.navigationItem.leftBarButtonItem = cancelButton;
+	[cancelButton release];
 }
 
 
@@ -74,12 +81,12 @@
         [textField becomeFirstResponder];
 	}
 }
-- (IBAction)done:(id)sender {
+- (IBAction)done  {
 	[sourceController setValue:textField.text forEditedProperty:editedPropertyKey];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
-- (IBAction)cancel:(id)sender {
+- (IBAction)cancel  {
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
@@ -90,7 +97,10 @@
 	NSString *_retvalue =  [dateFormatter stringFromDate:[datePicker date]];
 	[textField setText:_retvalue];
 }
-
+- (void)flipsideViewControllerDidFinish:(UIViewController *)controller {
+    
+	[self dismissModalViewControllerAnimated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

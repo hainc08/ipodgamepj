@@ -25,7 +25,7 @@
     [super viewDidLoad];
 
 	self.title = @"Setting";
-	[self setEditing:YES animated:YES ];
+//	[self setEditing:YES animated:YES ];
 }
 
 
@@ -73,16 +73,17 @@
     [super dealloc];
 }
 
-- (IBAction)buttonClicked:(id)sender
-{
-
+- (IBAction)AlarmONOFF:(id)sender {
+	alarm.AlarmONOFF = !alarm.AlarmONOFF;
 }
 
 - (IBAction)done:(id)sender {
 	if(SetFlag)
+	{
 		[[AlarmConfig getInstance] setAlarmAdd:alarm];
-	else 
-		[[AlarmConfig getInstance] setAlarmEdit:alarm index:index];
+		[alarm release];
+	}
+	
 	[[AlarmConfig getInstance] SaveConfig];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
@@ -124,7 +125,7 @@
 		NSString* text = @"Enable Alarm";
 	
 		UITableViewSwitchCell* swch_cell = (UITableViewSwitchCell*)cell;
-		
+		[swch_cell.switcher addTarget:self action:@selector(AlarmONOFF:) forControlEvents:UIControlEventValueChanged];
 		[swch_cell setInfo:text :alarm.AlarmONOFF];
 		
 		return cell;
@@ -238,6 +239,7 @@
 		AlarmViewSetController *setting = [[AlarmViewSetController alloc] initWithNibName:@"AlarmSetting" bundle:nil];
 		setting.editedObject = alarm;
 		setting.sourceController = self;
+		
 		switch (indexPath.row)
 		{
 			case 0:
@@ -261,6 +263,7 @@
 
 		}
 		setting.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+		setting.delegate = self;
 		
 		[self presentModalViewController:setting animated:YES];
 		
@@ -269,51 +272,20 @@
 }
 
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-	
-	NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
-
-	
-	NSUndoManager *anUndoManager = [[NSUndoManager alloc] init];
-	self.undoManager = anUndoManager;
-	[anUndoManager release];
-		
-	[undoManager setLevelsOfUndo:3];
-	[dnc addObserver:self selector:@selector(undoManagerDidUndo:) name:NSUndoManagerDidUndoChangeNotification object:undoManager];
-	[dnc addObserver:self selector:@selector(undoManagerDidRedo:) name:NSUndoManagerDidRedoChangeNotification object:undoManager];
-}
-
 
 #pragma mark -
 #pragma mark Editing
 
 - (void)setValue:(id)newValue forEditedProperty:(NSString *)field {
 	
-	id currentValueforEditedProperty = [alarm valueForKey:field];
-	[[undoManager prepareWithInvocationTarget:self] setValue:currentValueforEditedProperty forEditedProperty:field];
-	
-	[alarm setValue:newValue forKey:field];
-	
-	if (![undoManager isUndoing]) {
-		[undoManager setActionName:NSLocalizedString(field, @"string provided dynamically")];
-	}
-}
-
-
-
-#pragma mark -
-#pragma mark Undo support
-
-/*
- Methods invoked in response to undo notifications -- see setEditing:animated:.  Simply redisplay the table view to reflect the changed value.
- */
-- (void)undoManagerDidUndo:(NSNotification *)notification {
-	[optionTableView reloadData];
-}
-
-
-- (void)undoManagerDidRedo:(NSNotification *)notification {
-	[optionTableView reloadData];
+	if([field compare:@"Time"] == NSOrderedSame )
+		alarm.Time = newValue;
+	else if([field compare:@"Sound"] == NSOrderedSame ) 
+		alarm.SoundName = newValue;
+	else if([field compare:@"Name"] == NSOrderedSame )
+		alarm.Name	= newValue;
+	else if([field compare:@"Repeat"] == NSOrderedSame )
+		alarm.WeekDate	= newValue;
 }
 
 - (void)flipsideViewControllerDidFinish:(UIViewController *)controller {

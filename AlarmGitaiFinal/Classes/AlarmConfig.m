@@ -24,6 +24,7 @@ static AlarmConfig *AlarmConfigInst;
 + (void) initmanager {
 	AlarmConfigInst = [AlarmConfig alloc];
 	[AlarmConfigInst loadConfig];
+	
 }
 
 - (void)SaveConfig
@@ -119,7 +120,7 @@ static AlarmConfig *AlarmConfigInst;
 - (void)loadConfig
 {
 	CharName = @"natsuko";
-	
+	AlarmArr = [[NSMutableArray alloc] initWithCapacity:0];
 	
 	RotationTime	=	[[SaveManager getInstance] getIntData:@"RotationTime"	idx:0 base:5];
 	
@@ -184,12 +185,12 @@ static AlarmConfig *AlarmConfigInst;
 
 -(void) AlarmLoadConfig
 {
-	AlarmArr = [[NSMutableArray alloc] initWithCapacity:0];
+
 	int	AlarmCount		=	[[SaveManager getInstance] getIntData:@"AlarmCount"		idx:0 base:0];
-	
+
 	for(int loop= 0; loop < AlarmCount; loop++)
 	{
-		AlarmDate *t_alarm = [[AlarmDate alloc] init];
+		AlarmDate *t_alarm  = [[AlarmDate alloc] init];
 		t_alarm.AlarmONOFF	=	[[SaveManager getInstance] getIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:0 base:0] == 1 ? TRUE : FALSE;
 		t_alarm.Name		=	[[SaveManager getInstance] getStringData:[NSString stringWithFormat:@"AlarmDate_%d",	loop] idx:1 base:@"Alarm"];
 		t_alarm.SoundName	=	[[SaveManager getInstance] getStringData:[NSString stringWithFormat:@"AlarmDate_%d",	loop] idx:2 base:@"NONE"];
@@ -301,11 +302,7 @@ static AlarmConfig *AlarmConfigInst;
 {
 	return AlarmArr;
 }
-- (void) setAlarmEdit:(AlarmDate *)_inData index:(int)_inIndex
-{
-	AlarmDate *edit = [AlarmArr objectAtIndex:_inIndex];
-	edit = _inData;
-}
+
 - (int) setAlarmAdd:(AlarmDate *)_inData
 {
 	[AlarmArr addObject:_inData];
@@ -343,6 +340,7 @@ static AlarmConfig *AlarmConfigInst;
 @synthesize WeekDate;
 - (id)init
 {
+	[super init];
 	Time = @"00:00 AM";
 	Name = @"Alarm";
 	SoundName = @"Classic";

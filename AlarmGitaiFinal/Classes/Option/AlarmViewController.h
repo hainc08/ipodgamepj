@@ -15,7 +15,6 @@
 @class AlarmDate;
 @interface AlarmViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PropertyEditing> {
 	id <FlipsideViewControllerDelegate> delegate;
-	NSUndoManager *undoManager;
 
 	AlarmDate		* alarm;
 	IBOutlet UITableView* optionTableView;
@@ -29,7 +28,6 @@
 @property (nonatomic, retain) NSUndoManager		*undoManager;
 @property (nonatomic,  assign, getter=isSetFlagg) int	SetFlag;
 @property (nonatomic,  assign, getter=isindex) int	index;
-- (IBAction)buttonClicked:(id)sender;
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
 

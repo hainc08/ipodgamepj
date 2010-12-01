@@ -22,7 +22,8 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+	
+	a_alarm = [[AlarmConfig getInstance] getAlarmArr];
 	self.title = @"Setting";
 }
 
@@ -50,7 +51,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	a_alarm = [[AlarmConfig getInstance] getAlarmArr];
 	[optionTableView reloadData];	
 }
 
@@ -127,9 +127,7 @@
 
 		
 		UITableViewSwitchCell* swch_cell = (UITableViewSwitchCell*)cell;
-		
-		NSString* text = @"텍스트";
-		BOOL value = NO;
+
 		
 		switch (indexPath.row)
 		{
