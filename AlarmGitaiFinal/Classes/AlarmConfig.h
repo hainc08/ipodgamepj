@@ -8,6 +8,40 @@
 
 #import <UIKit/UIKit.h>
 
+#import <CoreData/CoreData.h>
+
+
+@interface  AlarmDate : NSManagedObject
+{
+	NSString	*Name;
+	BOOL		AlarmONOFF;
+	
+	
+	NSString *SoundName;
+	int		SoundVolume;
+	
+	BOOL	SnoozeONOFF;
+	BOOL	VibrationONOFF;
+	BOOL	ShakeONOFF;
+	
+	NSString *Time;
+	NSString *WeekDate;
+	int type;   
+	int hour;
+	int min;
+}
+@property (nonatomic, retain) NSString *Name;
+@property (nonatomic, retain) NSString *Time;
+@property (nonatomic, retain) NSString *SoundName;
+@property (nonatomic, retain) NSString *WeekDate;
+@property (nonatomic,  assign, getter=isAlarmONOFF)		BOOL	AlarmONOFF;
+@property (nonatomic,  assign, getter=isSnoozeONOFF)	BOOL	SnoozeONOFF;
+@property (nonatomic,  assign, getter=isShakeONOFF)		BOOL	ShakeONOFF;
+@property (nonatomic,  assign, getter=isVibrationONOFF) BOOL	VibrationONOFF;
+@end
+
+
+
 @interface ViewCgPoint : NSObject
 {
 	
@@ -24,20 +58,6 @@
 @property (readwrite) CGPoint			DatePoint;
 
 @end
-
-@interface  AlarmDate : NSObject
-{
-	NSString *Name;
-	NSString *SoundName;
-	
-	
-	int type;  // 매일 / 하루만 / 평일만/ 주말만 / 몇시간후    
-	int hour;
-	int min;
-}
-
-@end
-
 
 
 @interface AlarmConfig : NSObject {
@@ -67,6 +87,8 @@
 	BOOL			VibrationONOFF;
 	BOOL			SnoozeONOFF;
 	BOOL			ShakeONOFF;
+	
+	NSMutableArray			*AlarmArr; 
 }
 @property (readwrite) int heightnum;
 @property (readwrite) int widthnum;
@@ -113,4 +135,11 @@
 
 - (NSString *)getAlarmTime;
 - (void) setAlarmTime:(NSString *)_inAlarmTime;
+
+/* alarm set */
+- (NSMutableArray *)getAlarmArr;
+- (int) setAlarmAdd:(AlarmDate *)_inData;
+- (void) setAlarmEdit:(AlarmDate *)_inData index:(int)_inIndex;
+-(void) AlarmLoadConfig;
+-(void) AlarmSaveConfig;
 @end

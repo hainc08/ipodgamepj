@@ -15,6 +15,9 @@
 		280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
+		5674BD2112A529D800FC97BE /* AlarmViewSetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5674BD1F12A529D800FC97BE /* AlarmViewSetController.m */; };
+		5674BD4412A52F6E00FC97BE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5674BD4312A52F6E00FC97BE /* CoreData.framework */; };
+		5674BE3412A5CFB200FC97BE /* AlarmSetting.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5674BE3312A5CFB200FC97BE /* AlarmSetting.xib */; };
 		84643CB712A4420C00F4ADBC /* AlarmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84643CB612A4420C00F4ADBC /* AlarmView.xib */; };
 		84643CBA12A4424D00F4ADBC /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84643CB912A4424D00F4ADBC /* AlarmViewController.m */; };
 		84643D3612A44B8000F4ADBC /* ButtonArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84643D3512A44B8000F4ADBC /* ButtonArrow.png */; };
@@ -531,6 +534,10 @@
 		289233A90DB2D0DB0083E9F9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* AlarmGitaiFinal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmGitaiFinal_Prefix.pch; sourceTree = "<group>"; };
+		5674BD1E12A529D800FC97BE /* AlarmViewSetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewSetController.h; sourceTree = "<group>"; };
+		5674BD1F12A529D800FC97BE /* AlarmViewSetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewSetController.m; sourceTree = "<group>"; };
+		5674BD4312A52F6E00FC97BE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5674BE3312A5CFB200FC97BE /* AlarmSetting.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmSetting.xib; sourceTree = "<group>"; };
 		84643CB612A4420C00F4ADBC /* AlarmView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmView.xib; sourceTree = "<group>"; };
 		84643CB812A4424D00F4ADBC /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewController.h; sourceTree = "<group>"; };
 		84643CB912A4424D00F4ADBC /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
@@ -1061,6 +1068,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
 				84D435B7129DF1F800356784 /* AudioToolbox.framework in Frameworks */,
+				5674BD4412A52F6E00FC97BE /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1126,6 +1134,7 @@
 			isa = PBXGroup;
 			children = (
 				84D43108129DE62500356784 /* Image */,
+				5674BE3312A5CFB200FC97BE /* AlarmSetting.xib */,
 				84D43504129DEA5700356784 /* MainClockView.xib */,
 				849C856412A337780044EA7D /* OptionView.xib */,
 				84643CB612A4420C00F4ADBC /* AlarmView.xib */,
@@ -1148,6 +1157,7 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
 				84D435B6129DF1F800356784 /* AudioToolbox.framework */,
+				5674BD4312A52F6E00FC97BE /* CoreData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1155,6 +1165,8 @@
 		849C850A12A3354B0044EA7D /* Option */ = {
 			isa = PBXGroup;
 			children = (
+				5674BD1E12A529D800FC97BE /* AlarmViewSetController.h */,
+				5674BD1F12A529D800FC97BE /* AlarmViewSetController.m */,
 				84643CB812A4424D00F4ADBC /* AlarmViewController.h */,
 				84643CB912A4424D00F4ADBC /* AlarmViewController.m */,
 				849C850D12A3354B0044EA7D /* OptionViewController.h */,
@@ -2415,6 +2427,7 @@
 				84BD04FC12A435280064AB28 /* SwitchCell.xib in Resources */,
 				84643CB712A4420C00F4ADBC /* AlarmView.xib in Resources */,
 				84643D3612A44B8000F4ADBC /* ButtonArrow.png in Resources */,
+				5674BE3412A5CFB200FC97BE /* AlarmSetting.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2444,6 +2457,7 @@
 				849C851212A3354B0044EA7D /* OptionViewController.m in Sources */,
 				849C851312A3354B0044EA7D /* UITableViewCellTemplate.m in Sources */,
 				84643CBA12A4424D00F4ADBC /* AlarmViewController.m in Sources */,
+				5674BD2112A529D800FC97BE /* AlarmViewSetController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,6 +2,7 @@
 #import "AlarmViewController.h"
 
 #import "UITableViewCellTemplate.h"
+#import "AlarmConfig.h"
 
 @implementation OptionViewController
 
@@ -49,6 +50,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
+	a_alarm = [[AlarmConfig getInstance] getAlarmArr];
+	[optionTableView reloadData];	
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -141,7 +144,7 @@
 	}
 	else if(indexPath.section == 0)
 	{
-		if (indexPath.row == (alarmCount-1))
+		if (indexPath.row == (alarmCount -1))
 		{
 			static NSString *CellIdentifier = @"ButtonCell";
 			
@@ -185,12 +188,15 @@
 			}
 
 			UITableViewAlarmCell* alarm_cell = (UITableViewAlarmCell*)cell;
-			//세팅...지금은 테스트용
-			if (indexPath.row == 0)
+
+			AlarmDate	*alarm_date = [a_alarm objectAtIndex:indexPath.row];
+			[alarm_cell setInfo:alarm_date.Time :alarm_date.WeekDate :alarm_date.AlarmONOFF];
+			
+			/*if (indexPath.row == 0)
 				[alarm_cell setInfo:@"08:30 AM" :@"Every Day" :true];
 			else
 				[alarm_cell setInfo:@"03:30 PM" :@"Every Monday" :false];
-
+			*/
 			return cell;
 		}
 	}
@@ -210,7 +216,7 @@
 {
 	if(section == 0)
 	{
-		alarmCount = 3;
+		alarmCount = [a_alarm count]+1;
 		return alarmCount;
 	}
 	else if (section == 1)
@@ -250,6 +256,16 @@
 		AlarmViewController *controller = [[AlarmViewController alloc] initWithNibName:@"AlarmView" bundle:nil];
 		controller.delegate = self;
 		
+		if(indexPath.row == alarmCount-1)
+		{
+			controller.alarm = nil;
+			controller.SetFlag	= 1;
+		}
+		else {
+			controller.alarm	= [a_alarm objectAtIndex:indexPath.row];
+			controller.SetFlag	= 0;
+		}
+
 		controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 		[self presentModalViewController:controller animated:YES];
 		
@@ -261,5 +277,6 @@
     
 	[self dismissModalViewControllerAnimated:YES];
 }
+
 
 @end
