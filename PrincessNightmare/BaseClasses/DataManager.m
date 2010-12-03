@@ -97,6 +97,7 @@ NSString* readString(char* data, int* offset)
 }
 
 static DataManager *DataManagerInst;
+static NSString* ResourcePath;
 
 @implementation Scenario
 
@@ -374,6 +375,8 @@ static DataManager *DataManagerInst;
 + (void)initManager;
 {
 	DataManagerInst = [DataManager alloc];
+	ResourcePath = [[[NSBundle mainBundle] resourcePath] retain];
+
 	[DataManagerInst setLoadingDone:false];
 	[DataManagerInst reset];
 	[DataManagerInst resetMusicShow];
@@ -415,6 +418,57 @@ static DataManager *DataManagerInst;
 		preloadScene[i] = [Scene alloc];
 		[preloadScene[i] setFlagStrCount:0];
 	}
+	
+	//어떠한 경우에도 50개가 넘지는 않는다.
+	for (int i=0; i<50; ++i)
+	{
+		ImgGabbageCollector[i] = nil;
+	}
+	ImgGabbageCount = 0;
+}
+
+- (UIImage*)getImage:(NSString*)path
+{
+	NSString* filePath = [NSString stringWithFormat: @"%@/%@", ResourcePath, path];
+	UIImage* tempImg = [[[UIImage alloc] initWithContentsOfFile:filePath] retain];
+
+	for (int i=0; i<50; ++i)
+	{
+		if (ImgGabbageCollector[i] == nil)
+		{
+			ImgGabbageCollector[i] = tempImg;
+			++ImgGabbageCount;
+			break;
+		}
+	}
+
+	if (ImgGabbageCount > 30)
+	{
+		//30개가 넘어가면 클리어링을 한번씩 해준다.
+		for (int i=0; i<50; ++i)
+		{
+			if (ImgGabbageCollector[i] == nil) continue;
+
+			for (int j=0; j<10; ++j)
+			{
+				if ([preloadScene[j] getChar:0] == ImgGabbageCollector[i]) goto GABBAGE_CHECK_OK;
+				if ([preloadScene[j] getChar:1] == ImgGabbageCollector[i]) goto GABBAGE_CHECK_OK;
+				if ([preloadScene[j] getChar:2] == ImgGabbageCollector[i]) goto GABBAGE_CHECK_OK;
+				if ([preloadScene[j] getChar:3] == ImgGabbageCollector[i]) goto GABBAGE_CHECK_OK;
+				if ([preloadScene[j] getBg] == ImgGabbageCollector[i]) goto GABBAGE_CHECK_OK;
+			}
+			
+			[ImgGabbageCollector[i] release];
+			ImgGabbageCollector[i] = nil;
+			--ImgGabbageCount;
+GABBAGE_CHECK_OK:
+			continue;
+		}
+	}
+	
+	[filePath release];
+	
+	return tempImg;
 }
 
 - (bool)parseData
@@ -493,7 +547,7 @@ static DataManager *DataManagerInst;
 
 	char buffer[512];
 
-	NSString* filePath = [NSString stringWithFormat: @"%@/scenario.txt", [[NSBundle mainBundle] resourcePath]];
+	NSString* filePath = [[NSString stringWithFormat: @"%@/scenario.txt", ResourcePath] autorelease];
 	FILE *hFile = fopen([filePath UTF8String] , "r");
 	
 	if ( hFile == nil )
@@ -562,8 +616,9 @@ static DataManager *DataManagerInst;
 //	
 //	fclose(hFile);
 	
-	filePath = [NSString stringWithFormat: @"%@/tagIndex.dat", [[NSBundle mainBundle] resourcePath]];
+	filePath = [NSString stringWithFormat: @"%@/tagIndex.dat", ResourcePath];
 	hFile = fopen([filePath UTF8String] , "r");
+	[filePath release];
 	
 	int tagCount, indexCount;
 
@@ -811,7 +866,6 @@ static DataManager *DataManagerInst;
 			if (willSceneId >= 22050)
 			{
 				continue;
-				sleep(1);
 			}
 
 			if ([preloadScene[j] sceneId] != willSceneId)
@@ -852,10 +906,16 @@ static DataManager *DataManagerInst;
 							if (tempImg != NULL) goto FIND_OK;
 						}
 
+						NSString* imgName;
+						
 						if (chrId < 100)
-							tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Achr_0%d.png", chrId]] autorelease];
+							imgName = [NSString stringWithFormat:@"Achr_0%d.png", chrId];
 						else
-							tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Achr_%d.png", chrId]] autorelease];
+							imgName = [NSString stringWithFormat:@"Achr_%d.png", chrId];
+
+						tempImg = [self getImage:imgName];
+						
+						[imgName release];
 					FIND_OK:
 						[preloadScene[j] setChar:k img:tempImg chrId:chrId];
 					}
@@ -879,11 +939,17 @@ static DataManager *DataManagerInst;
 						tempImg = [preloadScene[ll] findSChar:chrId];
 						if (tempImg != NULL) goto FIND_OK2;
 					}
+
+					NSString* imgName;
 					
 					if (chrId < 100)
-						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Achr_s0%d.png", chrId]] autorelease];
+						imgName = [NSString stringWithFormat:@"Achr_s0%d.png", chrId];
 					else
-						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Achr_s%d.png", chrId]] autorelease];
+						imgName = [NSString stringWithFormat:@"Achr_s%d.png", chrId];
+
+					tempImg = [self getImage:imgName];
+
+					[imgName release];
 				FIND_OK2:
 					[preloadScene[j] setChar:3 img:tempImg chrId:chrId];
 				}
@@ -903,29 +969,41 @@ static DataManager *DataManagerInst;
 				{
 					bgId -= 500;
 
+					NSString* imgName;
+
 					if (bgId < 10)
-						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Aev_00%d.jpg", bgId]] autorelease];
+						imgName = [NSString stringWithFormat:@"Aev_00%d.jpg", bgId];
 					else if (bgId < 100)
-						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Aev_0%d.jpg", bgId]] autorelease];
+						imgName = [NSString stringWithFormat:@"Aev_0%d.jpg", bgId];
 					else
-						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Aev_%d.jpg", bgId]] autorelease];
+						imgName = [NSString stringWithFormat:@"Aev_%d.jpg", bgId];
 					
+					tempImg = [self getImage:imgName];
+
+					[imgName release];
+
 					bgId += 500;
 				}
 				else
 				{
+					NSString* imgName;
+					
 					if (bgId < 10)
-						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_00%d.jpg", bgId]] autorelease];
+						imgName = [NSString stringWithFormat:@"Abg_00%d.jpg", bgId];
 					else if (bgId < 100)
-						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_0%d.jpg", bgId]] autorelease];
+						imgName = [NSString stringWithFormat:@"Abg_0%d.jpg", bgId];
 					else
-						tempImg = [[UIImage imageNamed:[NSString stringWithFormat:@"Abg_%d.jpg", bgId]] autorelease];
+						imgName = [NSString stringWithFormat:@"Abg_%d.jpg", bgId];
+					
+					tempImg = [self getImage:imgName];
+
+					[imgName release];
 				}
 
 			FIND_OK3:
 				[preloadScene[j] setBg:tempImg bgId:bgId];
-				[preloadScene[j] setChara:[msg[willSceneId] getStrVal:0]];
-				[preloadScene[j] setSerihu:[msg[willSceneId] getStrVal:1]];
+				[preloadScene[j] setChara:[[msg[willSceneId] getStrVal:0] autorelease]];
+				[preloadScene[j] setSerihu:[[msg[willSceneId] getStrVal:1] autorelease]];
 
 				int sceneType = [msg[willSceneId] getIntVal:0];
 				[preloadScene[j] setSceneType:sceneType];
@@ -933,8 +1011,8 @@ static DataManager *DataManagerInst;
 				switch (sceneType)
 				{
 					case 3:
-						[preloadScene[j] setSelect:0 str:[msg[willSceneId] getStrVal:2]];
-						[preloadScene[j] setSelect:1 str:[msg[willSceneId] getStrVal:3]];
+						[preloadScene[j] setSelect:0 str:[[msg[willSceneId] getStrVal:2] autorelease]];
+						[preloadScene[j] setSelect:1 str:[[msg[willSceneId] getStrVal:3] autorelease]];
 						
 						[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8]
 						 :[msg[willSceneId] getIntVal:9]
@@ -942,9 +1020,9 @@ static DataManager *DataManagerInst;
 						 :0];
 						break;
 					case 4:
-						[preloadScene[j] setSelect:0 str:[msg[willSceneId] getStrVal:2]];
-						[preloadScene[j] setSelect:1 str:[msg[willSceneId] getStrVal:3]];
-						[preloadScene[j] setSelect:2 str:[msg[willSceneId] getStrVal:4]];
+						[preloadScene[j] setSelect:0 str:[[msg[willSceneId] getStrVal:2] autorelease]];
+						[preloadScene[j] setSelect:1 str:[[msg[willSceneId] getStrVal:3] autorelease]];
+						[preloadScene[j] setSelect:2 str:[[msg[willSceneId] getStrVal:4] autorelease]];
 						
 						[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8]
 						 :[msg[willSceneId] getIntVal:9]
@@ -964,7 +1042,7 @@ static DataManager *DataManagerInst;
 				
 				for (int l=0; l<[msg[willSceneId] valCount]; ++l)
 				{
-					optionStr = [msg[willSceneId] getStrVal:l];
+					optionStr = [[msg[willSceneId] getStrVal:l] autorelease];
 
 					if (optionStr != nil)
 					{
@@ -981,7 +1059,11 @@ static DataManager *DataManagerInst;
 						}
 						
 						NSArray *listItems = [optionStr componentsSeparatedByString:@"_"];
-						if ([listItems count] < 2) continue;
+						if ([listItems count] < 2)
+						{
+							[listItems release];
+							continue;
+						}
 						
 						NSString* item0 = (NSString*)[listItems objectAtIndex:0];
 						NSString* item1 = (NSString*)[listItems objectAtIndex:1];
@@ -1010,6 +1092,7 @@ static DataManager *DataManagerInst;
 						{
 							[preloadScene[j] addFlagStr:optionStr];
 						}
+						[listItems release];
 					}
 				}
 				
