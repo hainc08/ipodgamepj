@@ -531,14 +531,18 @@ void swapView(UIView* v1, UIView* v2)
 	}
 	else if (fxIdx != -1)
 	{
+		NSString* fxName;
 		if ([scene FXrepeat])
 		{
-			[[SoundManager getInstance] playFX:[[NSString alloc] initWithFormat:@"seLoop-%d.mp3",fxIdx] repeat:true];
+			fxName = [[NSString alloc] initWithFormat:@"seLoop-%d.mp3",fxIdx];
+			[[SoundManager getInstance] playFX:fxName repeat:true];
 		}
 		else
 		{
-			[[SoundManager getInstance] playFX:[[NSString alloc] initWithFormat:@"se-%d.mp3",fxIdx] repeat:false];
+			fxName = [[NSString alloc] initWithFormat:@"se-%d.mp3",fxIdx];
+			[[SoundManager getInstance] playFX:fxName repeat:false];
 		}
+		[fxName release];
 	}
 }
 
@@ -764,7 +768,7 @@ void swapView(UIView* v1, UIView* v2)
 
 	[serihuBoard setAlpha:1];
 	[serihuBoard setSerihu:[scene getChara] serihu:[scene getSerihu]];
-	[debugLabel setText:[[DataManager getInstance] getSceneIdxStr]];
+//	[debugLabel setText:[[DataManager getInstance] getSceneIdxStr]];
 }
 
 - (void)hideScene

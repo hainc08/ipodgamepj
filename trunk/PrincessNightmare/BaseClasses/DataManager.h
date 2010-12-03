@@ -173,6 +173,9 @@
 	
 	bool loadingDone;
 	int loadingTime;
+	
+	UIImage* ImgGabbageCollector[50];
+	int ImgGabbageCount;
 }
 
 @property (readwrite) bool loadingDone;
@@ -182,6 +185,8 @@
 + (void)initManager;
 - (void)closeManager;
 - (void)reset;
+
+- (UIImage*)getImage:(NSString*)path;
 
 - (bool)parseData;
 - (void)parseSubTitle:(char*)data;

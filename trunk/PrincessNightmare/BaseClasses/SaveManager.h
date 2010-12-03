@@ -11,6 +11,12 @@
 	
 	char flag[20];
 	char flag2[30];
+	
+	NSString* saveFileName;
+	NSString* extraFileName;
+	NSString* musicFileName;
+	NSString* optionFileName;
+	NSString* sceneExpFileName;
 }
 
 @property (readonly) int opt1;
@@ -20,6 +26,7 @@
 + (void)initManager;
 - (void)closeManager;
 
+- (void)initFilePath;
 - (void)resetFlag;
 - (void)setFlag:(int)idx;
 - (bool)getFlag:(int)idx;

@@ -35,6 +35,8 @@ void writeInt(NSFileHandle* writeFile, int value)
 + (void)initManager;
 {
 	SaveManagerInst = [SaveManager alloc];
+	
+	[SaveManagerInst initFilePath];
 	[SaveManagerInst loadSaveFile];
 	[SaveManagerInst loadOptionFile];
 	[SaveManagerInst loadSceneExpFile];
@@ -44,6 +46,21 @@ void writeInt(NSFileHandle* writeFile, int value)
 - (void)closeManager
 {
 
+}
+
+- (void)initFilePath
+{
+	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
+																 NSDocumentDirectory, 
+																 NSUserDomainMask,
+																 YES
+																 ); 
+	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
+	saveFileName = [[NSString stringWithFormat: @"%@/save.dat", recordingDirectory] retain];
+	extraFileName = [[NSString stringWithFormat: @"%@/extra.dat", recordingDirectory] retain];
+	musicFileName = [[NSString stringWithFormat: @"%@/music.dat", recordingDirectory] retain];
+	optionFileName = [[NSString stringWithFormat: @"%@/option.dat", recordingDirectory] retain];
+	sceneExpFileName = [[NSString stringWithFormat: @"%@/sceneExp.dat", recordingDirectory] retain];
 }
 
 - (void)resetFlag
@@ -119,22 +136,14 @@ void writeInt(NSFileHandle* writeFile, int value)
 }
 
 - (void)saveSaveFile
-{
-	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
-																 NSDocumentDirectory, 
-																 NSUserDomainMask,
-																 YES
-																 ); 
-	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/save.dat", recordingDirectory];
-	
-	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+{	
+	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFileName];
 	if (writeFile == nil)
 	{
-		[[NSFileManager defaultManager] createFileAtPath:saveFile
+		[[NSFileManager defaultManager] createFileAtPath:saveFileName
 												contents:nil attributes:nil];
 		
-		writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+		writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFileName];
 	}
 	
 	if (writeFile == nil)
@@ -165,15 +174,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)loadSaveFile
 {
-	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
-																 NSDocumentDirectory, 
-																 NSUserDomainMask,
-																 YES
-																 ); 
-	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/save.dat", recordingDirectory];
-	
-	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFileName];
 	
 	if(readFile == nil)
 	{
@@ -183,7 +184,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 		}
 		return;
 	}
-	
+
 	//버전정보확인
 	int ver = readInt(readFile);
 	
@@ -196,12 +197,13 @@ void writeInt(NSFileHandle* writeFile, int value)
 			{
 				saveDate[i] = readInt(readFile);
 
+				if (saveFlag[i] == nil) saveFlag[i] = (char*)malloc(20);
+				if (saveFlag2[i] == nil) saveFlag2[i] = (char*)malloc(30);
+
 				NSData *data;
 				data = [readFile readDataOfLength:sizeof(char)*20];
-				saveFlag[i] = (char*)malloc(20);
 				[data getBytes:saveFlag[i]];
 				data = [readFile readDataOfLength:sizeof(char)*30];
-				saveFlag2[i] = (char*)malloc(30);
 				[data getBytes:saveFlag2[i]];
 			}
 		}
@@ -218,21 +220,13 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)saveExtraFile
 {
-	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
-																 NSDocumentDirectory, 
-																 NSUserDomainMask,
-																 YES
-																 ); 
-	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/extra.dat", recordingDirectory];
-	
-	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:extraFileName];
 	if (writeFile == nil)
 	{
-		[[NSFileManager defaultManager] createFileAtPath:saveFile
+		[[NSFileManager defaultManager] createFileAtPath:extraFileName
 												contents:nil attributes:nil];
 		
-		writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+		writeFile = [NSFileHandle fileHandleForWritingAtPath:extraFileName];
 	}
 	
 	if (writeFile == nil)
@@ -255,15 +249,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)loadExtraFile
 {
-	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
-																 NSDocumentDirectory, 
-																 NSUserDomainMask,
-																 YES
-																 ); 
-	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/extra.dat", recordingDirectory];
-	
-	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:extraFileName];
 
 	if(readFile == nil)
 	{
@@ -296,21 +282,13 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)saveMusicFile
 {
-	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
-																 NSDocumentDirectory, 
-																 NSUserDomainMask,
-																 YES
-																 ); 
-	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/music.dat", recordingDirectory];
-	
-	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:musicFileName];
 	if (writeFile == nil)
 	{
-		[[NSFileManager defaultManager] createFileAtPath:saveFile
+		[[NSFileManager defaultManager] createFileAtPath:musicFileName
 												contents:nil attributes:nil];
 		
-		writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+		writeFile = [NSFileHandle fileHandleForWritingAtPath:musicFileName];
 	}
 	
 	if (writeFile == nil)
@@ -336,15 +314,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)loadMusicFile
 {
-	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
-																 NSDocumentDirectory, 
-																 NSUserDomainMask,
-																 YES
-																 ); 
-	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/music.dat", recordingDirectory];
-	
-	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:musicFileName];
 	
 	if(readFile == nil)
 	{
@@ -377,21 +347,13 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)saveOptionFile
 {
-	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
-																 NSDocumentDirectory, 
-																 NSUserDomainMask,
-																 YES
-																 ); 
-	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/option.dat", recordingDirectory];
-	
-	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:optionFileName];
 	if (writeFile == nil)
 	{
-		[[NSFileManager defaultManager] createFileAtPath:saveFile
+		[[NSFileManager defaultManager] createFileAtPath:optionFileName
 												contents:nil attributes:nil];
 		
-		writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+		writeFile = [NSFileHandle fileHandleForWritingAtPath:optionFileName];
 	}
 	
 	if (writeFile == nil)
@@ -412,15 +374,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)loadOptionFile
 {
-	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
-																 NSDocumentDirectory, 
-																 NSUserDomainMask,
-																 YES
-																 ); 
-	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/option.dat", recordingDirectory];
-	
-	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:optionFileName];
 	
 	if(readFile == nil)
 	{
@@ -457,21 +411,13 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)saveSceneExpFile
 {
-	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
-																 NSDocumentDirectory, 
-																 NSUserDomainMask,
-																 YES
-																 ); 
-	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/sceneExp.dat", recordingDirectory];
-	
-	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:sceneExpFileName];
 	if (writeFile == nil)
 	{
-		[[NSFileManager defaultManager] createFileAtPath:saveFile
+		[[NSFileManager defaultManager] createFileAtPath:sceneExpFileName
 												contents:nil attributes:nil];
 		
-		writeFile = [NSFileHandle fileHandleForWritingAtPath:saveFile];
+		writeFile = [NSFileHandle fileHandleForWritingAtPath:sceneExpFileName];
 	}
 	
 	if (writeFile == nil)
@@ -492,15 +438,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)loadSceneExpFile
 {
-	NSArray *filePaths =	NSSearchPathForDirectoriesInDomains (
-																 NSDocumentDirectory, 
-																 NSUserDomainMask,
-																 YES
-																 ); 
-	NSString* recordingDirectory = [filePaths objectAtIndex: 0];
-	NSString* saveFile = [NSString stringWithFormat: @"%@/sceneExp.dat", recordingDirectory];
-	
-	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:saveFile];
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:sceneExpFileName];
 	
 	if(readFile == nil)
 	{
