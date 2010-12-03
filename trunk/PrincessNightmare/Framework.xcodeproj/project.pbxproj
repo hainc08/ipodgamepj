@@ -5316,7 +5316,14 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Framework" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -7044,9 +7051,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Debug;
 		};
@@ -7054,15 +7062,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Youngjin Pack (N65PC63996)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (N65PC63996)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "6E4B661A-74DD-4187-8EB9-227D47315B58";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6E4B661A-74DD-4187-8EB9-227D47315B58";
-				SDKROOT = iphoneos2.2.1;
+				PROVISIONING_PROFILE = "F7DAE48A-6F6A-4805-9340-5FC42D867E20";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DAE48A-6F6A-4805-9340-5FC42D867E20";
+				SDKROOT = iphoneos4.2;
 			};
 			name = Release;
 		};
