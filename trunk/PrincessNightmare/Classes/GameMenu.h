@@ -3,6 +3,10 @@
 #import "LoadView.h"
 #import "ConfigurationView.h"
 
+enum _MenuType {
+	GAMEMENU = 0 ,
+	SCINEMENU ,
+};
 @interface GameMenu : UIView {
 	IBOutlet id backButton;
 	IBOutlet id saveButton;
@@ -13,6 +17,8 @@
 	SaveView* saveView;
 	LoadView* loadView;
 	ConfigurationView* configView;
+	
+	int		MenuType;
 }
 
 - (void)reset:(bool)isReplay;
