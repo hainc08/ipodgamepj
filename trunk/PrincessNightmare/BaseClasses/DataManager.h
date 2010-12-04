@@ -71,6 +71,9 @@
 	int willSceneId;
 
 	bool isLoaded;
+	
+	NSData* preLoadData[5];
+	
 	int preLoadCharIdx[4];
 	UIImage* preLoadChar[4];
 
@@ -118,14 +121,22 @@
 - (bool)isLoadOk;
 
 - (void)reset;
+
+- (NSData*)getBgData;
+- (NSData*)getCharData:(int)idx;
+- (void)setBgData:(NSData*)data;
+- (void)setCharData:(int)idx data:(NSData*)data;
+
 - (void)setChar:(int)idx img:(UIImage*)chr chrId:(int)chrId;
+- (void)setChar:(int)idx img:(UIImage*)chr;
 - (UIImage*)getChar:(int)idx;
-- (UIImage*)findChar:(int)chrId;
-- (UIImage*)findSChar:(int)chrId;
+- (int)findChar:(int)chrId;
+- (int)findSChar:(int)chrId;
 
 - (void)setBg:(UIImage*)bg bgId:(int)bgId;
+- (void)setBg:(UIImage*)bg;
 - (UIImage*)getBg;
-- (UIImage*)findBg:(int)bgId;
+- (bool)findBg:(int)bgId;
 
 - (void)setSerihu:(NSString*)str;
 - (NSString*)getSerihu;
@@ -174,8 +185,9 @@
 	bool loadingDone;
 	int loadingTime;
 	
-	UIImage* ImgGabbageCollector[50];
-	int ImgGabbageCount;
+	NSData* DataCollector[50];
+	UIImage* ImgCollector[50];
+	int DataCount;
 }
 
 @property (readwrite) bool loadingDone;
@@ -186,7 +198,8 @@
 - (void)closeManager;
 - (void)reset;
 
-- (UIImage*)getImage:(NSString*)path;
+- (NSData*)getData:(NSString*)path;
+- (void)setUIImage:(UIImage*)img data:(NSData*)data;
 
 - (bool)parseData;
 - (void)parseSubTitle:(char*)data;

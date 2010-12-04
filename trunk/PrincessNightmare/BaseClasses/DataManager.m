@@ -236,6 +236,7 @@ static NSString* ResourcePath;
 	isLoaded = false;
 	preLoadCharIdx[0] = preLoadCharIdx[1] = preLoadCharIdx[2] = preLoadCharIdx[3] = 0;
 	preLoadChar[0] = preLoadChar[1] = preLoadChar[2] = preLoadChar[3] = NULL;
+	preLoadData[0] = preLoadData[1] = preLoadData[2] = preLoadData[3] = preLoadData[4] = nil;
 	
 	FXIdx = -1;
 	preLoadBgmIdx = 0;
@@ -250,9 +251,35 @@ static NSString* ResourcePath;
 	animeType = 0;
 }
 
+
+- (NSData*)getBgData
+{
+	return preLoadData[4];
+}
+
+- (NSData*)getCharData:(int)idx
+{
+	return preLoadData[idx];
+}
+
+- (void)setBgData:(NSData*)data
+{
+	preLoadData[4] = data;
+}
+
+- (void)setCharData:(int)idx data:(NSData*)data
+{
+	preLoadData[idx] = data;
+}
+
 - (void)setChar:(int)idx img:(UIImage*)chr chrId:(int)chrId
 {
 	preLoadCharIdx[idx] = chrId;
+	preLoadChar[idx] = chr;
+}
+
+- (void)setChar:(int)idx img:(UIImage*)chr
+{
 	preLoadChar[idx] = chr;
 }
 
@@ -261,24 +288,29 @@ static NSString* ResourcePath;
 	return preLoadChar[idx];
 }
 
-- (UIImage*)findChar:(int)chrId
+- (int)findChar:(int)chrId
 {
 	for (int i=0; i<3; ++i)
 	{
-		if (preLoadCharIdx[i] == chrId) return preLoadChar[i];
+		if (preLoadCharIdx[i] == chrId) return i;
 	}
-	return NULL;
+	return -1;
 }
 
-- (UIImage*)findSChar:(int)chrId
+- (int)findSChar:(int)chrId
 {
-	if (preLoadCharIdx[3] == chrId) return preLoadChar[3];
-	return NULL;
+	if (preLoadCharIdx[3] == chrId) return 3;
+	return -1;
 }
 
-- (void)setBg:(UIImage*)bg bgId:(int)bgId;
+- (void)setBg:(UIImage*)bg bgId:(int)bgId
 {
 	preLoadBgIdx = bgId;
+	preLoadBg = bg;
+}
+
+- (void)setBg:(UIImage*)bg
+{
 	preLoadBg = bg;
 }
 
@@ -287,11 +319,9 @@ static NSString* ResourcePath;
 	return preLoadBg;
 }
 
-- (UIImage*)findBg:(int)bgId
+- (bool)findBg:(int)bgId
 {
-	if (bgId == preLoadBgIdx) return preLoadBg;
-
-	return NULL;
+	return (bgId == preLoadBgIdx);
 }
 
 - (void)setSerihu:(NSString*)str
@@ -422,53 +452,86 @@ static NSString* ResourcePath;
 	//어떠한 경우에도 50개가 넘지는 않는다.
 	for (int i=0; i<50; ++i)
 	{
-		ImgGabbageCollector[i] = nil;
+		if (DataCollector[i] != nil) [DataCollector[i] release];
+		if (ImgCollector[i] != nil) [ImgCollector[i] release];
+		DataCollector[i] = nil;
+		ImgCollector[i] = nil;
 	}
-	ImgGabbageCount = 0;
+	DataCount = 0;
 }
 
-- (UIImage*)getImage:(NSString*)path
+- (NSData*)getData:(NSString*)path
 {
 	NSString* filePath = [NSString stringWithFormat: @"%@/%@", ResourcePath, path];
-	UIImage* tempImg = [[[UIImage alloc] initWithContentsOfFile:filePath] retain];
+	NSData* tempData = [[NSData alloc] initWithContentsOfFile:filePath];
 
 	for (int i=0; i<50; ++i)
 	{
-		if (ImgGabbageCollector[i] == nil)
+		if (DataCollector[i] == nil)
 		{
-			ImgGabbageCollector[i] = tempImg;
-			++ImgGabbageCount;
+			DataCollector[i] = tempData;
+			++DataCount;
 			break;
 		}
 	}
 
-	if (ImgGabbageCount > 30)
-	{
-		//30개가 넘어가면 클리어링을 한번씩 해준다.
-		for (int i=0; i<50; ++i)
-		{
-			if (ImgGabbageCollector[i] == nil) continue;
+	[filePath release];
+	
+	return tempData;
+}
 
+- (void)setUIImage:(UIImage*)img data:(NSData*)data
+{
+	for (int i=0; i<50; ++i)
+	{
+		if (DataCollector[i] == data)
+		{
 			for (int j=0; j<10; ++j)
 			{
-				if ([preloadScene[j] getChar:0] == ImgGabbageCollector[i]) goto GABBAGE_CHECK_OK;
-				if ([preloadScene[j] getChar:1] == ImgGabbageCollector[i]) goto GABBAGE_CHECK_OK;
-				if ([preloadScene[j] getChar:2] == ImgGabbageCollector[i]) goto GABBAGE_CHECK_OK;
-				if ([preloadScene[j] getChar:3] == ImgGabbageCollector[i]) goto GABBAGE_CHECK_OK;
-				if ([preloadScene[j] getBg] == ImgGabbageCollector[i]) goto GABBAGE_CHECK_OK;
+				if ([preloadScene[j] getBgData] == data)
+					[preloadScene[j] setBg:img];
+				if ([preloadScene[j] getCharData:0] == data)
+					[preloadScene[j] setChar:0 img:img];
+				if ([preloadScene[j] getCharData:1] == data)
+					[preloadScene[j] setChar:1 img:img];
+				if ([preloadScene[j] getCharData:2] == data)
+					[preloadScene[j] setChar:2 img:img];
+				if ([preloadScene[j] getCharData:3] == data)
+					[preloadScene[j] setChar:3 img:img];
 			}
-			
-			[ImgGabbageCollector[i] release];
-			ImgGabbageCollector[i] = nil;
-			--ImgGabbageCount;
-GABBAGE_CHECK_OK:
-			continue;
+
+			ImgCollector[i] = img;
+				
+			break;
 		}
 	}
 	
-	[filePath release];
-	
-	return tempImg;
+	if (DataCount > 20)
+	{
+		//20개가 넘어가면 클리어링을 한번씩 해준다.
+		for (int i=0; i<50; ++i)
+		{
+			if (DataCollector[i] == nil) continue;
+			
+			for (int j=0; j<10; ++j)
+			{
+				if ([preloadScene[j] getCharData:0] == DataCollector[i]) goto GABBAGE_CHECK_OK;
+				if ([preloadScene[j] getCharData:1] == DataCollector[i]) goto GABBAGE_CHECK_OK;
+				if ([preloadScene[j] getCharData:2] == DataCollector[i]) goto GABBAGE_CHECK_OK;
+				if ([preloadScene[j] getCharData:3] == DataCollector[i]) goto GABBAGE_CHECK_OK;
+				if ([preloadScene[j] getBgData] == DataCollector[i]) goto GABBAGE_CHECK_OK;
+			}
+			
+			[DataCollector[i] release];
+			if (ImgCollector[i] != nil) [ImgCollector[i] release];
+			
+			ImgCollector[i] = nil;
+			DataCollector[i] = nil;
+			--DataCount;
+		GABBAGE_CHECK_OK:
+			continue;
+		}
+	}	
 }
 
 - (bool)parseData
@@ -853,6 +916,7 @@ GABBAGE_CHECK_OK:
 - (void)preload
 {
 	UIImage* tempImg;
+	NSData* tempData;
 
 	while(1)
 	{
@@ -893,6 +957,7 @@ GABBAGE_CHECK_OK:
 					if (chrId == 0)
 					{
 						[preloadScene[j] setChar:k img:NULL chrId:0];
+						[preloadScene[j] setCharData:k data:NULL];
 					}
 					else
 					{
@@ -902,8 +967,13 @@ GABBAGE_CHECK_OK:
 							//같은 캐릭터가 계속 반복적으로 나오는 경우가 많으므로
 							//바로직전의 씬에서부터 찾아본다.
 							int ll = (j + l + 9)%10;
-							tempImg = [preloadScene[ll] findChar:chrId];
-							if (tempImg != NULL) goto FIND_OK;
+							int idx = [preloadScene[ll] findChar:chrId];
+							if (idx != -1)
+							{
+								tempImg = [preloadScene[ll] getChar:idx];
+								tempData = [preloadScene[ll] getCharData:idx];
+								goto FIND_OK;
+							}
 						}
 
 						NSString* imgName;
@@ -913,11 +983,13 @@ GABBAGE_CHECK_OK:
 						else
 							imgName = [NSString stringWithFormat:@"Achr_%d.png", chrId];
 
-						tempImg = [self getImage:imgName];
+						tempData = [self getData:imgName];
+						tempImg = nil;
 						
 						[imgName release];
 					FIND_OK:
 						[preloadScene[j] setChar:k img:tempImg chrId:chrId];
+						[preloadScene[j] setCharData:k data:tempData];
 					}
 
 					if (chrId == 985) [preloadScene[j] setAnimeType:4];
@@ -927,6 +999,7 @@ GABBAGE_CHECK_OK:
 				if (chrId == 0)
 				{
 					[preloadScene[j] setChar:3 img:NULL chrId:0];
+					[preloadScene[j] setCharData:3 data:NULL];
 				}
 				else
 				{
@@ -936,8 +1009,13 @@ GABBAGE_CHECK_OK:
 						//같은 캐릭터가 계속 반복적으로 나오는 경우가 많으므로
 						//바로직전의 씬에서부터 찾아본다.
 						int ll = (j + l + 9)%10;
-						tempImg = [preloadScene[ll] findSChar:chrId];
-						if (tempImg != NULL) goto FIND_OK2;
+						int idx = [preloadScene[ll] findSChar:chrId];
+						if (idx != -1)
+						{
+							tempImg = [preloadScene[ll] getChar:idx];
+							tempData = [preloadScene[ll] getCharData:idx];
+							goto FIND_OK2;
+						}
 					}
 
 					NSString* imgName;
@@ -947,11 +1025,13 @@ GABBAGE_CHECK_OK:
 					else
 						imgName = [NSString stringWithFormat:@"Achr_s%d.png", chrId];
 
-					tempImg = [self getImage:imgName];
+					tempData = [self getData:imgName];
+					tempImg = nil;
 
 					[imgName release];
 				FIND_OK2:
 					[preloadScene[j] setChar:3 img:tempImg chrId:chrId];
+					[preloadScene[j] setCharData:3 data:tempData];
 				}
 
 				int bgId = [msg[willSceneId] getIntVal:5];
@@ -961,8 +1041,12 @@ GABBAGE_CHECK_OK:
 					//같은 캐릭터가 계속 반복적으로 나오는 경우가 많으므로
 					//바로직전의 씬에서부터 찾아본다.
 					int ll = (j + l + 9)%10;
-					tempImg = [preloadScene[ll] findBg:bgId];
-					if (tempImg != NULL) goto FIND_OK3;
+					if ([preloadScene[ll] findBg:bgId])
+					{
+						tempImg = [preloadScene[l] getBg];
+						tempData = [preloadScene[ll] getBgData];
+						goto FIND_OK3;
+					}
 				}
 
 				if (bgId > 500)
@@ -978,7 +1062,8 @@ GABBAGE_CHECK_OK:
 					else
 						imgName = [NSString stringWithFormat:@"Aev_%d.jpg", bgId];
 					
-					tempImg = [self getImage:imgName];
+					tempData = [self getData:imgName];
+					tempImg = nil;
 
 					[imgName release];
 
@@ -995,13 +1080,16 @@ GABBAGE_CHECK_OK:
 					else
 						imgName = [NSString stringWithFormat:@"Abg_%d.jpg", bgId];
 					
-					tempImg = [self getImage:imgName];
+					tempData = [self getData:imgName];
+					tempImg = nil;
 
 					[imgName release];
 				}
 
 			FIND_OK3:
 				[preloadScene[j] setBg:tempImg bgId:bgId];
+				[preloadScene[j] setBgData:tempData];
+				
 				[preloadScene[j] setChara:[[msg[willSceneId] getStrVal:0] autorelease]];
 				[preloadScene[j] setSerihu:[[msg[willSceneId] getStrVal:1] autorelease]];
 

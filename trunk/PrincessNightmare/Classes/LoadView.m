@@ -81,6 +81,7 @@
 				(sender == [bars[i] getButton:1]))
 			{
 				GameParam* param = [GameParam alloc];
+				[[DataManager getInstance] reset];
 				[param setStartScene:[bars[i] saveIdx]];
 				[param setIsReplay:false];
 				
