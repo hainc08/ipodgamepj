@@ -554,6 +554,16 @@ void swapView(UIView* v1, UIView* v2)
 	//985번에 대한 처리가 필요하다.
 	//이미지 보여주고...
 	img = [s getChar:i];
+	if (img == nil)
+	{
+		NSData* data = [s getCharData:i];
+		if (data != nil)	//아직 UIImage가 안만들어진 경우
+		{
+			img = [[UIImage alloc] initWithData:data];
+			[[DataManager getInstance] setUIImage:img data:data];
+		}
+	}
+	
 	if ([chrView[i] image] != img)
 	{
 		swapView(chrView[i], oldChrView[i]);
@@ -587,6 +597,16 @@ void swapView(UIView* v1, UIView* v2)
 - (void)showBg:(Scene*)s
 {
 	UIImage* img = [s getBg];
+	if (img == nil)
+	{
+		NSData* data = [s getBgData];
+		if (data != nil)	//아직 UIImage가 안만들어진 경우
+		{
+			img = [[UIImage alloc] initWithData:data];
+			[[DataManager getInstance] setUIImage:img data:data];
+		}
+	}
+	
 	if ([bgView image] != img)
 	{
 		swapView(bgView, oldBgView);
@@ -736,7 +756,7 @@ void swapView(UIView* v1, UIView* v2)
 			break;
 		case 3:
 			[timer setAlpha:1];
-			[timer startTimer:5];
+			[timer startTimer:10];
 			[selectPanel1 setAlpha:1];
 			[selectPanel2 setAlpha:1];
 			[selectPanel3 setAlpha:0];
@@ -749,7 +769,7 @@ void swapView(UIView* v1, UIView* v2)
 			break;
 		case 4:
 			[timer setAlpha:1];
-			[timer startTimer:5];
+			[timer startTimer:10];
 			[selectPanel1 setAlpha:1];
 			[selectPanel2 setAlpha:1];
 			[selectPanel3 setAlpha:1];
