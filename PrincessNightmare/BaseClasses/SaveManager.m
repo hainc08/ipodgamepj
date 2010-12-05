@@ -70,8 +70,8 @@ void writeInt(NSFileHandle* writeFile, int value)
 	
 	for (int i=0; i<28; ++i)
 	{
-		saveFlag[i] = nil;
-		saveFlag2[i] = nil;
+		memset(saveFlag[i], 0x00, 20);
+		memset(saveFlag2[i], 0x00, 30);
 	}
 }
 
@@ -131,8 +131,16 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)setFlagData:(int)idx
 {
-	memcpy(flag, saveFlag[idx], 20);
-	memcpy(flag2, saveFlag2[idx], 30);
+	if (idx == -1)
+	{
+		memset(flag, 0x00, 20);
+		memset(flag2, 0x00, 30);
+	}
+	else
+	{
+		memcpy(flag, saveFlag[idx], 20);
+		memcpy(flag2, saveFlag2[idx], 30);
+	}
 }
 
 - (void)saveSaveFile
@@ -197,8 +205,8 @@ void writeInt(NSFileHandle* writeFile, int value)
 			{
 				saveDate[i] = readInt(readFile);
 
-				if (saveFlag[i] == nil) saveFlag[i] = (char*)malloc(20);
-				if (saveFlag2[i] == nil) saveFlag2[i] = (char*)malloc(30);
+				memset(saveFlag[i], 0x00, 20);
+				memset(saveFlag2[i], 0x00, 30);
 
 				NSData *data;
 				data = [readFile readDataOfLength:sizeof(char)*20];
@@ -492,8 +500,6 @@ void writeInt(NSFileHandle* writeFile, int value)
 {
 	saveData[idx] = data;
 	saveDate[idx] = [[NSDate date] timeIntervalSince1970];
-	if (saveFlag[idx] == nil) saveFlag[idx] = (char*)malloc(20);
-	if (saveFlag2[idx] == nil) saveFlag2[idx] = (char*)malloc(30);
 	memcpy(saveFlag[idx], flag, 20);
 	memcpy(saveFlag2[idx], flag2, 30);
 	

@@ -4,8 +4,8 @@
 
 	int saveData[28];
 	int saveDate[28];
-	char* saveFlag[28];
-	char* saveFlag2[28];
+	char saveFlag[28][20];
+	char saveFlag2[28][30];
 
 	char sceneExp[127];
 	

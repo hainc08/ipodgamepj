@@ -5,14 +5,6 @@
 #import "ScineView.h"
 #import "EndView.h"
 
-void swapView(UIView* v1, UIView* v2)
-{
-	UIView* swap;
-	swap = v1;
-	v1 = v2;
-	v2 = swap;
-}
-
 @implementation GameParam
 
 @synthesize startScene;
@@ -139,10 +131,12 @@ void swapView(UIView* v1, UIView* v2)
 	[self clearView];
 	[blackBoard setAlpha:1];
 	
-	[[DataManager getInstance] resetPreload];
 	[[DataManager getInstance] setCurIdx:curSceneId];
 
 	isSkipMode = false;
+
+	chrData[0] = chrData[1] = chrData[2] = chrData[3] = nil;
+	bgData = nil;
 }
 
 - (IBAction)SkipButtonClick:(id)sender
@@ -427,9 +421,7 @@ void swapView(UIView* v1, UIView* v2)
 					[blackBoard setAlpha:0];
 					[UIView commitAnimations];
 				}
-				
-				[self hideScene];
-				
+
 				if ([sceneView makeBeforeScene:scene])
 				{
 					[self clearView];
@@ -549,25 +541,21 @@ void swapView(UIView* v1, UIView* v2)
 - (void)showChar:(Scene*)s idx:(int)i
 {
 	CGRect imgRect;
-	UIImage* img;
+	UIImage* img = nil;
 
 	//985번에 대한 처리가 필요하다.
 	//이미지 보여주고...
-	img = [s getChar:i];
-	if (img == nil)
+	NSData* data = [s getCharData:i];
+	if (data != chrData[i])
 	{
-		NSData* data = [s getCharData:i];
-		if (data != nil)	//아직 UIImage가 안만들어진 경우
-		{
-			img = [[UIImage alloc] initWithData:data];
-			[[DataManager getInstance] setUIImage:img data:data];
-		}
-	}
-	
-	if ([chrView[i] image] != img)
-	{
-		swapView(chrView[i], oldChrView[i]);
+		if (data == nil) img = nil;
+		else img = [[[UIImage alloc] initWithData:data] autorelease];
+		chrData[i] = data;
 
+		UIImageView* swap = chrView[i];
+		chrView[i] = oldChrView[i];
+		oldChrView[i] = swap;
+		
 		[chrView[i] setImage:img];
 
 		[oldChrView[i] setAlpha:1];
@@ -596,20 +584,17 @@ void swapView(UIView* v1, UIView* v2)
 
 - (void)showBg:(Scene*)s
 {
-	UIImage* img = [s getBg];
-	if (img == nil)
+	UIImage* img = nil;
+	NSData* data = [s getBgData];
+	if (data != bgData)
 	{
-		NSData* data = [s getBgData];
-		if (data != nil)	//아직 UIImage가 안만들어진 경우
-		{
-			img = [[UIImage alloc] initWithData:data];
-			[[DataManager getInstance] setUIImage:img data:data];
-		}
-	}
-	
-	if ([bgView image] != img)
-	{
-		swapView(bgView, oldBgView);
+		if (data == nil) img = nil;
+		else img = [[[UIImage alloc] initWithData:data] autorelease];
+		bgData = data;
+
+		UIImageView* swap = bgView;
+		bgView = oldBgView;
+		oldBgView = swap;
 		
 		[bgView setImage:img];
 
@@ -714,6 +699,8 @@ void swapView(UIView* v1, UIView* v2)
 		[self showChar:s idx:i];
 	
 	[self showBg:s];
+	
+	[self hideScene];
 
 	if ([s animeType] == 4)
 	{
@@ -793,7 +780,7 @@ void swapView(UIView* v1, UIView* v2)
 
 - (void)hideScene
 {
-	[self hideChr:0.4];
+	[self hideChr:0.f];
 }
 
 - (void)clearView
