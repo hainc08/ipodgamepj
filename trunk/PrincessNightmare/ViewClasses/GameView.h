@@ -43,9 +43,12 @@
 	
 	UIImageView* chrView[4];
 	UIImageView* bgView;
-
+	
 	UIImageView* oldChrView[4];
 	UIImageView* oldBgView;
+
+	NSData* chrData[4];
+	NSData* bgData;
 
 	IBOutlet id blackBoard;
 	

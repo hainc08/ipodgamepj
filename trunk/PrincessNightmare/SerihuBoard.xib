@@ -75,7 +75,7 @@
 					<object class="IBUILabel" id="828136463">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{39, 30}, {340, 100}}</string>
+						<string key="NSFrame">{{39, 30}, {340, 130}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -96,12 +96,12 @@
 						<string key="IBUIShadowOffset">{-2, 2}</string>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
-						<int key="IBUINumberOfLines">4</int>
+						<int key="IBUINumberOfLines">6</int>
 					</object>
 					<object class="IBUILabel" id="1041895476">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{37, 30}, {340, 100}}</string>
+						<string key="NSFrame">{{37, 30}, {340, 130}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -115,12 +115,12 @@
 						<string key="IBUIShadowOffset">{2, 2}</string>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
-						<int key="IBUINumberOfLines">4</int>
+						<int key="IBUINumberOfLines">6</int>
 					</object>
 					<object class="IBUILabel" id="628237814">
 						<reference key="NSNextResponder" ref="773793330"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{38, 31}, {340, 100}}</string>
+						<string key="NSFrame">{{38, 31}, {340, 130}}</string>
 						<reference key="NSSuperview" ref="773793330"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -143,7 +143,7 @@
 						<string key="IBUIShadowOffset">{1, 1}</string>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
-						<int key="IBUINumberOfLines">4</int>
+						<int key="IBUINumberOfLines">6</int>
 					</object>
 					<object class="IBUILabel" id="754587102">
 						<reference key="NSNextResponder" ref="773793330"/>

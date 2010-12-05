@@ -75,10 +75,7 @@
 	NSData* preLoadData[5];
 	
 	int preLoadCharIdx[4];
-	UIImage* preLoadChar[4];
-
 	int preLoadBgIdx;
-	UIImage* preLoadBg;
 
 	int preLoadBgmIdx;
 	
@@ -124,18 +121,12 @@
 
 - (NSData*)getBgData;
 - (NSData*)getCharData:(int)idx;
-- (void)setBgData:(NSData*)data;
-- (void)setCharData:(int)idx data:(NSData*)data;
+- (void)setBgData:(NSData*)data bgId:(int)bgId;
+- (void)setCharData:(int)idx data:(NSData*)data chrId:(int)chrId;
 
-- (void)setChar:(int)idx img:(UIImage*)chr chrId:(int)chrId;
-- (void)setChar:(int)idx img:(UIImage*)chr;
-- (UIImage*)getChar:(int)idx;
 - (int)findChar:(int)chrId;
 - (int)findSChar:(int)chrId;
 
-- (void)setBg:(UIImage*)bg bgId:(int)bgId;
-- (void)setBg:(UIImage*)bg;
-- (UIImage*)getBg;
 - (bool)findBg:(int)bgId;
 
 - (void)setSerihu:(NSString*)str;
@@ -197,9 +188,9 @@
 + (void)initManager;
 - (void)closeManager;
 - (void)reset;
+- (void)resetData;
 
 - (NSData*)getData:(NSString*)path;
-- (void)setUIImage:(UIImage*)img data:(NSData*)data;
 
 - (bool)parseData;
 - (void)parseSubTitle:(char*)data;

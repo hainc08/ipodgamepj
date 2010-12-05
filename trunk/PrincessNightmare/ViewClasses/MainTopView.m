@@ -1,6 +1,7 @@
 #import "MainTopView.h"
 #import "ViewManager.h"
 #import "DataManager.h"
+#import "SaveManager.h"
 #import "GameView.h"
 #import "SoundManager.h"
 
@@ -40,7 +41,9 @@
 	{
 		[[SoundManager getInstance] stopBGM];
 		GameParam* param = [GameParam alloc];
-		[[DataManager getInstance] reset];
+		[[DataManager getInstance] resetData];
+		[[SaveManager getInstance] setFlagData:-1];
+		
 		[param setStartScene:0];//[[DataManager getInstance] getMsgIdx:0 idx2:1]];
 		//[param setStartScene:[[DataManager getInstance] getMsgIdx:90 idx2:130]];
 		[param setIsReplay:false];
