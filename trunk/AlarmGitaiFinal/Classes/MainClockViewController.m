@@ -15,6 +15,7 @@
 #import "SceneView.h"
 #import "AlarmConfig.h"
 #import "DateFormat.h"
+#import "NewWeekView.h"
 
 extern void GSEventSetBacklightLevel(float value);
 
@@ -58,7 +59,15 @@ extern void GSEventSetBacklightLevel(float value);
 	[dateview UpdateDate];
 	[self.view addSubview:dateview.view];
 	
+	//요일표시를 두개를 넣었음...
+	//선택할 수 있게 해야할텐데...UI가 어떻게 돌아가야할지 모르겠군...
+	newWeekView = [[NewWeekView alloc] init];
+	[newWeekView reset];
+	[self.view addSubview:newWeekView.view];
+	[newWeekView.view setCenter:CGPointMake(160, 460)];
+	
 	[self.view bringSubviewToFront:infoButton];
+	[infoButton setCenter:CGPointMake(290, 30)];
 
 	alarm_arr = [[AlarmConfig getInstance] getAlarmArr];
 	frameTick = 0;
@@ -144,6 +153,7 @@ extern void GSEventSetBacklightLevel(float value);
 	//[self AlarmCheck];
 	[clockview UpdateTime];
 	[dateview UpdateDate];
+	[newWeekView refresh];
 }
 
 - (void)FrameUpdate
@@ -163,9 +173,7 @@ extern void GSEventSetBacklightLevel(float value);
 		
 		[dateview.view setTransform:alarmviewpoint.DateTrans];
 		[dateview.view setCenter:alarmviewpoint.DatePoint];
-		
 	}
-	
 }
 
 - (void)stopTimer
@@ -378,15 +386,26 @@ extern void GSEventSetBacklightLevel(float value);
 #ifdef __IPHONE_3_0
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration
 {
-	[self FrameUpdate];
-}
 #else
 - (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation: (UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration
 {
 	UIInterfaceOrientation interfaceOrientation = self.interfaceOrientation;
+#endif
+	if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+	{
+		[newWeekView.view setCenter:CGPointMake(240, 300)];
+		[infoButton setCenter:CGPointMake(450, 30)];
+		[sceneView setOrientation:true];
+	}
+	else
+	{
+		[newWeekView.view setCenter:CGPointMake(160, 460)];
+		[infoButton setCenter:CGPointMake(290, 30)];
+		[sceneView setOrientation:false];
+	}
+	
 	[self FrameUpdate];
 }
-#endif
 	
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
 	//return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);

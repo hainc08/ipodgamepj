@@ -7020,7 +7020,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -7029,7 +7029,7 @@
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = Framework;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9D3DE952-0D0E-42F2-AFE3-0B502AB6CD7D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A6D68DB-DDF0-49F4-83EC-79638F5F62F8";
 			};
 			name = Debug;
 		};
@@ -7037,16 +7037,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Framework_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PRODUCT_NAME = Framework;
-				PROVISIONING_PROFILE = "9D3DE952-0D0E-42F2-AFE3-0B502AB6CD7D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9D3DE952-0D0E-42F2-AFE3-0B502AB6CD7D";
+				PROVISIONING_PROFILE = "5A6D68DB-DDF0-49F4-83EC-79638F5F62F8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A6D68DB-DDF0-49F4-83EC-79638F5F62F8";
 			};
 			name = Release;
 		};
@@ -7055,14 +7055,17 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9D3DE952-0D0E-42F2-AFE3-0B502AB6CD7D";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos4.2;
 			};
 			name = Debug;
@@ -7071,16 +7074,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Youngjin Pack (N65PC63996)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "F7DAE48A-6F6A-4805-9340-5FC42D867E20";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9D3DE952-0D0E-42F2-AFE3-0B502AB6CD7D";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos4.2;
 			};
 			name = Release;

@@ -42,10 +42,10 @@
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIImageView" id="290960051">
+					<object class="IBUIImageView" id="283527373">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrameSize">{180, 270}</string>
+						<string key="NSFrame">{{212, 0}, {55, 29}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -54,13 +54,13 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">back_v.png</string>
+							<string key="NSResourceName">fri_0.png</string>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="735145596">
+					<object class="IBUIImageView" id="207351332">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrameSize">{270, 180}</string>
+						<string key="NSFrame">{{52, 0}, {55, 29}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -69,13 +69,13 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">back_h.png</string>
+							<string key="NSResourceName">mon_0.png</string>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="669844638">
+					<object class="IBUIImageView" id="366102159">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrameSize">{180, 270}</string>
+						<string key="NSFrame">{{252, 0}, {55, 29}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -84,13 +84,13 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">char_Office.png</string>
+							<string key="NSResourceName">sat_0.png</string>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="170811894">
+					<object class="IBUIImageView" id="640132179">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrameSize">{180, 270}</string>
+						<string key="NSFrame">{{12, 0}, {55, 29}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -99,13 +99,13 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">char.png</string>
+							<string key="NSResourceName">sun_0.png</string>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="101337499">
+					<object class="IBUIImageView" id="845932345">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrameSize">{100, 60}</string>
+						<string key="NSFrame">{{175, 0}, {55, 29}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -114,13 +114,13 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">date.png</string>
+							<string key="NSResourceName">the_0.png</string>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="1071950965">
+					<object class="IBUIImageView" id="172570574">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{0, 188}, {180, 100}}</string>
+						<string key="NSFrame">{{92, 0}, {55, 29}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -129,13 +129,13 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">time.png</string>
+							<string key="NSResourceName">tue_0.png</string>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="884735652">
+					<object class="IBUIImageView" id="395133466">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrameSize">{100, 60}</string>
+						<string key="NSFrame">{{132, 0}, {55, 29}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -144,32 +144,19 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">week.png</string>
-						</object>
-					</object>
-					<object class="IBUIImageView" id="691271275">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{0, 188}, {180, 100}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">4</int>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">time2.png</string>
+							<string key="NSResourceName">wed_0.png</string>
 						</object>
 					</object>
 				</object>
-				<string key="NSFrameSize">{180, 270}</string>
+				<string key="NSFrameSize">{320, 29}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MC45MDE5NjA3OSAwLjkwMTk2MDc5IDAuOTAxOTYwNzkAA</bytes>
+					<int key="NSColorSpace">3</int>
+					<bytes key="NSWhite">MSAwAA</bytes>
+					<object class="NSColorSpace" key="NSCustomColorSpace">
+						<int key="NSID">2</int>
+					</object>
 				</object>
-				<bool key="IBUIClipsSubviews">YES</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</object>
@@ -186,67 +173,59 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">back_h</string>
+						<string key="label">imgFri</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="735145596"/>
-					</object>
-					<int key="connectionID">14</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">back_v</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="290960051"/>
-					</object>
-					<int key="connectionID">15</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">charView</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="170811894"/>
+						<reference key="destination" ref="283527373"/>
 					</object>
 					<int key="connectionID">16</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">dateView</string>
+						<string key="label">imgMon</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="101337499"/>
+						<reference key="destination" ref="207351332"/>
 					</object>
 					<int key="connectionID">17</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">weekView</string>
+						<string key="label">imgSat</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="884735652"/>
+						<reference key="destination" ref="366102159"/>
+					</object>
+					<int key="connectionID">18</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">imgSun</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="640132179"/>
+					</object>
+					<int key="connectionID">19</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">imgThe</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="845932345"/>
 					</object>
 					<int key="connectionID">20</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">timeView_12</string>
+						<string key="label">imgTue</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="1071950965"/>
+						<reference key="destination" ref="172570574"/>
 					</object>
 					<int key="connectionID">21</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">timeView_24</string>
+						<string key="label">imgWed</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="691271275"/>
+						<reference key="destination" ref="395133466"/>
 					</object>
-					<int key="connectionID">23</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">char_OfficeView</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="669844638"/>
-					</object>
-					<int key="connectionID">25</int>
+					<int key="connectionID">22</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -263,14 +242,13 @@
 						<reference key="object" ref="191373211"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="735145596"/>
-							<reference ref="101337499"/>
-							<reference ref="1071950965"/>
-							<reference ref="170811894"/>
-							<reference ref="884735652"/>
-							<reference ref="691271275"/>
-							<reference ref="290960051"/>
-							<reference ref="669844638"/>
+							<reference ref="283527373"/>
+							<reference ref="366102159"/>
+							<reference ref="845932345"/>
+							<reference ref="395133466"/>
+							<reference ref="640132179"/>
+							<reference ref="207351332"/>
+							<reference ref="172570574"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -286,43 +264,38 @@
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
+						<int key="objectID">8</int>
+						<reference key="object" ref="283527373"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
 						<int key="objectID">9</int>
-						<reference key="object" ref="290960051"/>
+						<reference key="object" ref="207351332"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">10</int>
-						<reference key="object" ref="735145596"/>
+						<reference key="object" ref="366102159"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">11</int>
-						<reference key="object" ref="170811894"/>
+						<reference key="object" ref="640132179"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">12</int>
-						<reference key="object" ref="101337499"/>
+						<reference key="object" ref="845932345"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">13</int>
-						<reference key="object" ref="1071950965"/>
+						<reference key="object" ref="172570574"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">19</int>
-						<reference key="object" ref="884735652"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">22</int>
-						<reference key="object" ref="691271275"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">24</int>
-						<reference key="object" ref="669844638"/>
+						<int key="objectID">14</int>
+						<reference key="object" ref="395133466"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>
@@ -336,19 +309,27 @@
 					<string>1.IBEditorWindowLastContentRect</string>
 					<string>1.IBPluginDependency</string>
 					<string>11.IBViewBoundsToFrameTransform</string>
-					<string>24.IBViewBoundsToFrameTransform</string>
+					<string>13.IBViewBoundsToFrameTransform</string>
+					<string>8.IBViewBoundsToFrameTransform</string>
+					<string>9.IBViewBoundsToFrameTransform</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>OptionPreview</string>
+					<string>NewWeekView</string>
 					<string>UIResponder</string>
-					<string>{{484, 419}, {180, 270}}</string>
+					<string>{{402, 620}, {320, 29}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw4YAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABBEAAAweAAAA</bytes>
 					</object>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAADCCAAAw4oAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCWAAAwbgAAA</bytes>
+					</object>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABDKAAAwcAAAA</bytes>
+					</object>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABCtgAAwcAAAA</bytes>
 					</object>
 				</object>
 			</object>
@@ -368,91 +349,84 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">25</int>
+			<int key="maxID">22</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">OptionPreview</string>
+					<string key="className">NewWeekView</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>back_h</string>
-							<string>back_v</string>
-							<string>charView</string>
-							<string>char_OfficeView</string>
-							<string>dateView</string>
-							<string>timeView_12</string>
-							<string>timeView_24</string>
-							<string>weekView</string>
+							<string>imgFri</string>
+							<string>imgMon</string>
+							<string>imgSat</string>
+							<string>imgSun</string>
+							<string>imgThe</string>
+							<string>imgTue</string>
+							<string>imgWed</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
+							<string>UIImageView</string>
+							<string>UIImageView</string>
+							<string>UIImageView</string>
+							<string>UIImageView</string>
+							<string>UIImageView</string>
+							<string>UIImageView</string>
+							<string>UIImageView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>back_h</string>
-							<string>back_v</string>
-							<string>charView</string>
-							<string>char_OfficeView</string>
-							<string>dateView</string>
-							<string>timeView_12</string>
-							<string>timeView_24</string>
-							<string>weekView</string>
+							<string>imgFri</string>
+							<string>imgMon</string>
+							<string>imgSat</string>
+							<string>imgSun</string>
+							<string>imgThe</string>
+							<string>imgTue</string>
+							<string>imgWed</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">back_h</string>
-								<string key="candidateClassName">id</string>
+								<string key="name">imgFri</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">back_v</string>
-								<string key="candidateClassName">id</string>
+								<string key="name">imgMon</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">charView</string>
-								<string key="candidateClassName">id</string>
+								<string key="name">imgSat</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">char_OfficeView</string>
-								<string key="candidateClassName">id</string>
+								<string key="name">imgSun</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">dateView</string>
-								<string key="candidateClassName">id</string>
+								<string key="name">imgThe</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">timeView_12</string>
-								<string key="candidateClassName">id</string>
+								<string key="name">imgTue</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">timeView_24</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">weekView</string>
-								<string key="candidateClassName">id</string>
+								<string key="name">imgWed</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Classes/OptionPreview.h</string>
+						<string key="minorKey">Classes/NewWeekView.h</string>
 					</object>
 				</object>
 			</object>
@@ -544,7 +518,7 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="259781043">
+					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="574967798">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">UIKit.framework/Headers/UIResponder.h</string>
 					</object>
@@ -560,7 +534,7 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">UIResponder</string>
 					<string key="superclassName">NSObject</string>
-					<reference key="sourceIdentifier" ref="259781043"/>
+					<reference key="sourceIdentifier" ref="574967798"/>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">UISearchBar</string>
@@ -653,31 +627,29 @@
 			<integer value="3000" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<string key="IBDocument.LastKnownRelativeProjectPath">../AlarmGitaiFinal.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">AlarmGitaiFinal.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>back_h.png</string>
-				<string>back_v.png</string>
-				<string>char.png</string>
-				<string>char_Office.png</string>
-				<string>date.png</string>
-				<string>time.png</string>
-				<string>time2.png</string>
-				<string>week.png</string>
+				<string>fri_0.png</string>
+				<string>mon_0.png</string>
+				<string>sat_0.png</string>
+				<string>sun_0.png</string>
+				<string>the_0.png</string>
+				<string>tue_0.png</string>
+				<string>wed_0.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{270, 180}</string>
-				<string>{180, 270}</string>
-				<string>{180, 270}</string>
-				<string>{180, 270}</string>
-				<string>{100, 60}</string>
-				<string>{180, 100}</string>
-				<string>{180, 100}</string>
-				<string>{100, 60}</string>
+				<string>{49, 29}</string>
+				<string>{49, 29}</string>
+				<string>{49, 29}</string>
+				<string>{49, 29}</string>
+				<string>{49, 29}</string>
+				<string>{49, 29}</string>
+				<string>{49, 29}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>

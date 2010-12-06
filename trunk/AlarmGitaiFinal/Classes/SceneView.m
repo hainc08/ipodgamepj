@@ -76,4 +76,21 @@
 	[super dealloc];	
 }
 
+- (void)setOrientation:(bool)isHorizon
+{
+	for (int i=0; i<2; ++i)
+	{
+		if (isHorizon)
+		{
+			[charView[i].view setTransform:CGAffineTransformMake(0.8, 0, 0, -0.8, 0, 0)];
+			[charView[i].view setCenter:CGPointMake(300,180)];
+		}
+		else
+		{
+			[charView[i].view setTransform:CGAffineTransformMake(1, 0, 0, -1, 0, 0)];
+			[charView[i].view setCenter:CGPointMake(160,240)];
+		}
+	}
+}
+
 @end

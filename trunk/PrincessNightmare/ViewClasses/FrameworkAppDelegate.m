@@ -53,6 +53,10 @@
 #ifdef __DEBUGGING__
 	[[ErrorManager getInstance] closeManager];
 #endif
+	
+	[bgLoaderThread cancel];
+	[bgLoaderThread release];
+	bgLoaderThread = nil;
 
     [window release];
 	[super dealloc];

@@ -17,8 +17,10 @@
 		[back_v setAlpha:0];
 		[timeView_12 setCenter:CGPointMake(180, 130)];
 		[timeView_24 setCenter:CGPointMake(180, 130)];
-		[charView setTransform:CGAffineTransformMake(0.7, 0, 0, 0.7, 0, 0)];
-		[charView setCenter:CGPointMake(135, 90)];
+		[charView setTransform:CGAffineTransformMake(0.8, 0, 0, 0.8, 0, 0)];
+		[charView setCenter:CGPointMake(135, 100)];
+		[char_OfficeView setTransform:CGAffineTransformMake(0.8, 0, 0, 0.8, 0, 0)];
+		[char_OfficeView setCenter:CGPointMake(135, 100)];
 	}
 	else
 	{
@@ -29,6 +31,8 @@
 		[timeView_24 setCenter:CGPointMake(90, 230)];
 		[charView setTransform:CGAffineTransformMake(1, 0, 0, 1, 0, 0)];
 		[charView setCenter:CGPointMake(90, 135)];
+		[char_OfficeView setTransform:CGAffineTransformMake(1, 0, 0, 1, 0, 0)];
+		[char_OfficeView setCenter:CGPointMake(90, 135)];
 	}
 }
 
@@ -62,6 +66,18 @@
 		[dateView setAlpha:0];
 		[weekView setAlpha:0];
 	}
+	
+	if ([[AlarmConfig getInstance] getOfficeMode])
+	{
+		[char_OfficeView setAlpha:1];
+		[charView setAlpha:0];
+	}
+	else
+	{
+		[char_OfficeView setAlpha:0];
+		[charView setAlpha:1];
+	}
+
 }
 
 - (void)dealloc {

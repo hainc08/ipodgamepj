@@ -71,28 +71,26 @@
 	[b_HourM setFrame:CGRectMake(60,-20,100,150)];
 	[b_MinT setFrame:CGRectMake(160,-20,100,150)];
 	[b_MinM setFrame:CGRectMake(230,-20,100,150)];
-	
-
 
 	[u_HourT setFrame:CGRectMake(-10,-20,100,150)];
 	[u_HourM setFrame:CGRectMake(60,-20,100,150)];
 	[u_MinT setFrame:CGRectMake(160,-20,100,150)];
 	[u_MinM setFrame:CGRectMake(230,-20,100,150)];
 
-	[sb_Dot setFrame:CGRectMake(270,10,100,150)];
-	[su_Dot setFrame:CGRectMake(270,10,100,150)];
+	[sb_Dot setFrame:CGRectMake(270,-7,100,150)];
+	[su_Dot setFrame:CGRectMake(270,-7,100,150)];
 	
-	[b_SecT setFrame:CGRectMake(290,10,100,150)];
-	[b_SecM setFrame:CGRectMake(310,10,100,150)];
-	[u_SecT setFrame:CGRectMake(290,10,100,150)];
-	[u_SecM setFrame:CGRectMake(310,10,100,150)];
+	[b_SecT setFrame:CGRectMake(300,-7,100,150)];
+	[b_SecM setFrame:CGRectMake(345,-7,100,150)];
+	[u_SecT setFrame:CGRectMake(300,-7,100,150)];
+	[u_SecM setFrame:CGRectMake(345,-7,100,150)];
 	
-	[sb_Dot setTransform:CGAffineTransformMake(0.3, 0.0, 0.0,0.3, 0.0, 0.0)];
-	[su_Dot setTransform:CGAffineTransformMake(0.3, 0.0, 0.0,0.3, 0.0, 0.0)];
-	[b_SecT setTransform:CGAffineTransformMake(0.3, 0.0, 0.0,0.3, 0.0, 0.0)];
-	[b_SecM setTransform:CGAffineTransformMake(0.3, 0.0, 0.0,0.3, 0.0, 0.0)];
-	[u_SecT setTransform:CGAffineTransformMake(0.3, 0.0, 0.0,0.3, 0.0, 0.0)];
-	[u_SecM setTransform:CGAffineTransformMake(0.3, 0.0, 0.0,0.3, 0.0, 0.0)];
+	[sb_Dot setTransform:CGAffineTransformMake(0.6, 0.0, 0.0,0.6, 0.0, 0.0)];
+	[su_Dot setTransform:CGAffineTransformMake(0.6, 0.0, 0.0,0.6, 0.0, 0.0)];
+	[b_SecT setTransform:CGAffineTransformMake(0.6, 0.0, 0.0,0.6, 0.0, 0.0)];
+	[b_SecM setTransform:CGAffineTransformMake(0.6, 0.0, 0.0,0.6, 0.0, 0.0)];
+	[u_SecT setTransform:CGAffineTransformMake(0.6, 0.0, 0.0,0.6, 0.0, 0.0)];
+	[u_SecM setTransform:CGAffineTransformMake(0.6, 0.0, 0.0,0.6, 0.0, 0.0)];
 	
 	[u_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@dot.png", 
 										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getUpImageType]]]];

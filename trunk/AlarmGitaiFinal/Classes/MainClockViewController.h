@@ -12,8 +12,7 @@
 @class ClockView;
 @class DateView;
 @class SceneView;
-
-
+@class NewWeekView;
 
 enum VIEWMODE {
 	VIEWNORMAL = 0,
@@ -40,6 +39,7 @@ enum VIEWMODE {
 	ClockView *clockview;
 	DateView *dateview;
 	SceneView *sceneView;
+	NewWeekView *newWeekView;
 	
 	UInt32 frameTick;
 	NSTimer *updateTimer;
