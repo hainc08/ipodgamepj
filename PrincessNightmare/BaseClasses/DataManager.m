@@ -1121,9 +1121,9 @@ static NSString* ResourcePath;
 GABBAGE_CHECK_OK:
 				continue;
 			}
-		}	
+		}
 		
-		sleep(1);
+		[NSThread sleepForTimeInterval:0.1];
 	}
 }
 

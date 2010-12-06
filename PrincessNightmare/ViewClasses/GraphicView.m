@@ -121,7 +121,7 @@
 		{
 			if (sender == imageButton[i])
 			{
-				if ([eList getIsShow:i] == false) return;
+//				if ([eList getIsShow:i] == false) return;
 
 				UIImage* tempImg;
 				
@@ -131,12 +131,22 @@
 				{
 					[self playAnime:[NSString stringWithFormat:@"%d", imgId]];
 					
+					endView = (MovieEndView*)[[ViewManager getInstance] getInstView:@"MovieEndView"];
+					
 					NSArray *windows = [[UIApplication sharedApplication] windows];
 					if ([windows count] > 1)
 					{
+						// Locate the movie player window
 						UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
-						endView = (MovieEndView*)[[ViewManager getInstance] getInstView:@"MovieEndView"];
+						// Add our overlay view to the movie player's subviews so it is 
+						// displayed above it.
+						
 						[moviePlayerWindow addSubview:endView];
+						[endView setCenter:CGPointMake(240,160)];
+					}
+					else
+					{
+						[self addSubview:endView];
 						[endView setCenter:CGPointMake(240,160)];
 					}
 				}
@@ -200,6 +210,13 @@
         player = [[MPMoviePlayerController alloc] initWithContentURL:url];
 		
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishPlaying:) name:MPMoviePlayerPlaybackDidFinishNotification object:player];
+
+		if ([player respondsToSelector:@selector(view)])
+		{
+			player.controlStyle = MPMovieControlStyleFullscreen;
+			[player.view setFrame:self.bounds];
+			[self addSubview:player.view];
+		}
 		
         if (!showControls) {
             player.scalingMode = MPMovieScalingModeAspectFill;

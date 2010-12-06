@@ -292,11 +292,22 @@ static AlarmConfig *AlarmConfigInst;
 	SecondMode = !SecondMode;
 	return	 SecondMode;
 }
+
 - (BOOL) getSecondMode
 {
 	return SecondMode;
 }
 
+- (BOOL) setOfficeMode
+{
+	OfficeMode = !OfficeMode;
+	return	 OfficeMode;
+}
+
+- (BOOL) getOfficeMode
+{
+	return OfficeMode;
+}
 
 - (NSMutableArray *)getAlarmArr
 {

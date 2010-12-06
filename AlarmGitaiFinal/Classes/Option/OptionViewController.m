@@ -84,6 +84,12 @@
 	[[AlarmConfig getInstance] setSecondMode];
 	[preview refresh];
 }
+
+- (IBAction)OfficeMode:(id)sender {
+	[[AlarmConfig getInstance] setOfficeMode];
+	[preview refresh];
+}
+
 - (IBAction)ShowDate:(id)sender {
 	[[AlarmConfig getInstance] setDateDisplay];
 	[preview refresh];
@@ -151,7 +157,7 @@
 					}
 				}
 			}
-			
+
 			UITableViewSwitchCell* swch_cell = (UITableViewSwitchCell*)cell;
 			
 			switch (indexPath.row)
@@ -161,18 +167,22 @@
 					[swch_cell.switcher addTarget:self action:@selector(ShowSeconds:) forControlEvents:UIControlEventValueChanged];
 					break;
 				case 2:
+					[swch_cell setInfo:@"Office Mode" :[[AlarmConfig getInstance] getOfficeMode]];
+					[swch_cell.switcher addTarget:self action:@selector(OfficeMode:) forControlEvents:UIControlEventValueChanged];
+					break;
+				case 3:
 					[swch_cell setInfo:@"Show Date" :[[AlarmConfig getInstance] getDateDisplay]];
 					[swch_cell.switcher addTarget:self action:@selector(ShowDate:) forControlEvents:UIControlEventValueChanged];
 					break;
-				case 3:
+				case 4:
 					[swch_cell setInfo:@"Show Weekday" :[[AlarmConfig getInstance] getWeekDisplay]];
 					[swch_cell.switcher addTarget:self action:@selector(ShowWeek:) forControlEvents:UIControlEventValueChanged];
 					break;
-				case 4:
+				case 5:
 					[swch_cell setInfo:@"24-Hour Time" :[[AlarmConfig getInstance] getHourMode]];
 					[swch_cell.switcher addTarget:self action:@selector(ShowTime:) forControlEvents:UIControlEventValueChanged];
 					break;
-				case 5:
+				case 6:
 					[swch_cell setInfo:@"Auto-Lock" :FALSE];
 					[swch_cell.switcher addTarget:self action:@selector(ShowLock:) forControlEvents:UIControlEventValueChanged];
 					break;

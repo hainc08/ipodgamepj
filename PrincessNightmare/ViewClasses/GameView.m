@@ -35,6 +35,13 @@
         player = [[MPMoviePlayerController alloc] initWithContentURL:url];
 		
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishPlaying:) name:MPMoviePlayerPlaybackDidFinishNotification object:player];
+
+		if ([player respondsToSelector:@selector(view)])
+		{
+			player.controlStyle = MPMovieControlStyleFullscreen;
+			[player.view setFrame:self.bounds];
+			[self addSubview:player.view];
+		}
 		
         if (!showControls) {
             player.scalingMode = MPMovieScalingModeAspectFill;
@@ -670,6 +677,10 @@
 				// Add our overlay view to the movie player's subviews so it is 
 				// displayed above it.
 				[moviePlayerWindow addSubview:sBoard];
+			}
+			else
+			{
+				[self addSubview:sBoard];
 			}
 
 			[[DataManager getInstance] setEventShow:[s animeType]];

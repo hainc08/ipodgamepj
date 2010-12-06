@@ -122,6 +122,8 @@
 
 			[self playAnime:@"opening"];
 
+			endView = (MovieEndView*)[[ViewManager getInstance] getInstView:@"MovieEndView"];
+
 			NSArray *windows = [[UIApplication sharedApplication] windows];
 			if ([windows count] > 1)
 			{
@@ -130,10 +132,15 @@
 				// Add our overlay view to the movie player's subviews so it is 
 				// displayed above it.
 				
-				endView = (MovieEndView*)[[ViewManager getInstance] getInstView:@"MovieEndView"];
 				[moviePlayerWindow addSubview:endView];
 				[endView setCenter:CGPointMake(240,160)];
 			}
+			else
+			{
+				[self addSubview:endView];
+				[endView setCenter:CGPointMake(240,160)];
+			}
+
 			step = 3;
 			break;
 		case 3:
@@ -168,7 +175,13 @@
         player = [[MPMoviePlayerController alloc] initWithContentURL:url];
 		
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishPlaying:) name:MPMoviePlayerPlaybackDidFinishNotification object:player];
-		
+
+		if ([player respondsToSelector:@selector(view)])
+		{
+			player.controlStyle = MPMovieControlStyleFullscreen;
+			[player.view setFrame:self.bounds];
+			[self addSubview:player.view];
+		}
         if (!showControls) {
             player.scalingMode = MPMovieScalingModeAspectFill;
             player.movieControlMode = MPMovieControlModeHidden;

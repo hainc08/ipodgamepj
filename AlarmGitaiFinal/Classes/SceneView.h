@@ -16,5 +16,6 @@
 - (void)setChar:(NSString*)name;
 - (void)next;
 - (void)reset;
+- (void)setOrientation:(bool)isHorizon;
 
 @end

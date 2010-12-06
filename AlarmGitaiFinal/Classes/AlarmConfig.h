@@ -81,6 +81,7 @@
 	BOOL			SecondMode;
 	BOOL			DateDisplay; 
 	BOOL			WeekDisplay;
+	BOOL			OfficeMode;
 
 	
 	NSMutableArray			*AlarmArr; 
@@ -118,6 +119,9 @@
 
 - (BOOL) setSecondMode;
 - (BOOL) getSecondMode;
+
+- (BOOL) setOfficeMode;
+- (BOOL) getOfficeMode;
 
 - (void) SaveConfig;
 
