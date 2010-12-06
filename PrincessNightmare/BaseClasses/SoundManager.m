@@ -91,7 +91,7 @@ static SoundManager *SoundManagerInst;
 	else
 		[fxPlayer setNumberOfLoops:0];
 	[fxPlayer play];
-	
+
 	[filePath release];
 	[fileURL release];
 }
