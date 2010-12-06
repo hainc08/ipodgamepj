@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "FlipsideViewControllerDelegate.h"
-
-
+#import "OptionPreview.h"
 
 @interface OptionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, FlipsideViewControllerDelegate> {
 	id <FlipsideViewControllerDelegate> delegate;
@@ -19,6 +18,8 @@
 	int alarmCount;
 	
 	NSMutableArray			*a_alarm;
+
+	OptionPreview*			preview;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
