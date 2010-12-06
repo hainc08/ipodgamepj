@@ -27,6 +27,15 @@
 		849C851312A3354B0044EA7D /* UITableViewCellTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 849C851012A3354B0044EA7D /* UITableViewCellTemplate.m */; };
 		849C856512A337780044EA7D /* OptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849C856412A337780044EA7D /* OptionView.xib */; };
 		84A18750129E536C0077D250 /* SceneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A1874F129E536C0077D250 /* SceneView.xib */; };
+		84B00B7012ACAB620093647C /* OptionPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B00B6F12ACAB620093647C /* OptionPreview.m */; };
+		84B00B7B12ACAB770093647C /* back_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B00B7212ACAB770093647C /* back_h.png */; };
+		84B00B7C12ACAB770093647C /* back_v.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B00B7312ACAB770093647C /* back_v.png */; };
+		84B00B7D12ACAB770093647C /* char.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B00B7412ACAB770093647C /* char.png */; };
+		84B00B7F12ACAB770093647C /* OptionPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B00B7712ACAB770093647C /* OptionPreview.xib */; };
+		84B00B8012ACAB770093647C /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B00B7812ACAB770093647C /* time.png */; };
+		84B00B8112ACAB770093647C /* time2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B00B7912ACAB770093647C /* time2.png */; };
+		84B00B8212ACAB770093647C /* week.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B00B7A12ACAB770093647C /* week.png */; };
+		84B00B8512ACADEE0093647C /* date.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B00B8412ACADEE0093647C /* date.png */; };
 		84BD04FB12A435280064AB28 /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BD04F912A435280064AB28 /* ButtonCell.xib */; };
 		84BD04FC12A435280064AB28 /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BD04FA12A435280064AB28 /* SwitchCell.xib */; };
 		84D432FB129DE63600356784 /* back_0_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D4310A129DE63500356784 /* back_0_d.png */; };
@@ -552,6 +561,16 @@
 		849C851012A3354B0044EA7D /* UITableViewCellTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITableViewCellTemplate.m; sourceTree = "<group>"; };
 		849C856412A337780044EA7D /* OptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionView.xib; sourceTree = "<group>"; };
 		84A1874F129E536C0077D250 /* SceneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneView.xib; sourceTree = "<group>"; };
+		84B00B6E12ACAB620093647C /* OptionPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionPreview.h; path = Classes/OptionPreview.h; sourceTree = "<group>"; };
+		84B00B6F12ACAB620093647C /* OptionPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionPreview.m; path = Classes/OptionPreview.m; sourceTree = "<group>"; };
+		84B00B7212ACAB770093647C /* back_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_h.png; sourceTree = "<group>"; };
+		84B00B7312ACAB770093647C /* back_v.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_v.png; sourceTree = "<group>"; };
+		84B00B7412ACAB770093647C /* char.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = char.png; sourceTree = "<group>"; };
+		84B00B7712ACAB770093647C /* OptionPreview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionPreview.xib; sourceTree = "<group>"; };
+		84B00B7812ACAB770093647C /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		84B00B7912ACAB770093647C /* time2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time2.png; sourceTree = "<group>"; };
+		84B00B7A12ACAB770093647C /* week.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = week.png; sourceTree = "<group>"; };
+		84B00B8412ACADEE0093647C /* date.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = date.png; sourceTree = "<group>"; };
 		84BD04F912A435280064AB28 /* ButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
 		84BD04FA12A435280064AB28 /* SwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		84D4310A129DE63500356784 /* back_0_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_0_d.png; sourceTree = "<group>"; };
@@ -1133,6 +1152,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84B00B7112ACAB770093647C /* OptionPreview */,
 				84D43108129DE62500356784 /* Image */,
 				5674BE3312A5CFB200FC97BE /* AlarmSetting.xib */,
 				84D43504129DEA5700356784 /* MainClockView.xib */,
@@ -1176,6 +1196,21 @@
 			);
 			name = Option;
 			path = Classes/Option;
+			sourceTree = "<group>";
+		};
+		84B00B7112ACAB770093647C /* OptionPreview */ = {
+			isa = PBXGroup;
+			children = (
+				84B00B7212ACAB770093647C /* back_h.png */,
+				84B00B7312ACAB770093647C /* back_v.png */,
+				84B00B7412ACAB770093647C /* char.png */,
+				84B00B7712ACAB770093647C /* OptionPreview.xib */,
+				84B00B8412ACADEE0093647C /* date.png */,
+				84B00B7812ACAB770093647C /* time.png */,
+				84B00B7912ACAB770093647C /* time2.png */,
+				84B00B7A12ACAB770093647C /* week.png */,
+			);
+			path = OptionPreview;
 			sourceTree = "<group>";
 		};
 		84D43108129DE62500356784 /* Image */ = {
@@ -1872,6 +1907,8 @@
 				84D43520129DEAC300356784 /* MaskView.m */,
 				84D4352B129DEAC300356784 /* SceneView.h */,
 				84D4352C129DEAC300356784 /* SceneView.m */,
+				84B00B6E12ACAB620093647C /* OptionPreview.h */,
+				84B00B6F12ACAB620093647C /* OptionPreview.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2428,6 +2465,14 @@
 				84643CB712A4420C00F4ADBC /* AlarmView.xib in Resources */,
 				84643D3612A44B8000F4ADBC /* ButtonArrow.png in Resources */,
 				5674BE3412A5CFB200FC97BE /* AlarmSetting.xib in Resources */,
+				84B00B7B12ACAB770093647C /* back_h.png in Resources */,
+				84B00B7C12ACAB770093647C /* back_v.png in Resources */,
+				84B00B7D12ACAB770093647C /* char.png in Resources */,
+				84B00B7F12ACAB770093647C /* OptionPreview.xib in Resources */,
+				84B00B8012ACAB770093647C /* time.png in Resources */,
+				84B00B8112ACAB770093647C /* time2.png in Resources */,
+				84B00B8212ACAB770093647C /* week.png in Resources */,
+				84B00B8512ACADEE0093647C /* date.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2458,6 +2503,7 @@
 				849C851312A3354B0044EA7D /* UITableViewCellTemplate.m in Sources */,
 				84643CBA12A4424D00F4ADBC /* AlarmViewController.m in Sources */,
 				5674BD2112A529D800FC97BE /* AlarmViewSetController.m in Sources */,
+				84B00B7012ACAB620093647C /* OptionPreview.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

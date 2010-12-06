@@ -24,6 +24,7 @@
     [super viewDidLoad];
 	
 	a_alarm = [[AlarmConfig getInstance] getAlarmArr];
+	preview = [[OptionPreview alloc] init];
 	self.title = @"Setting";
 }
 
@@ -81,15 +82,19 @@
 
 - (IBAction)ShowSeconds:(id)sender {
 	[[AlarmConfig getInstance] setSecondMode];
+	[preview refresh];
 }
 - (IBAction)ShowDate:(id)sender {
 	[[AlarmConfig getInstance] setDateDisplay];
+	[preview refresh];
 }
 - (IBAction)ShowTime:(id)sender {
 	[[AlarmConfig getInstance] setHourMode];
+	[preview refresh];
 }
 - (IBAction)ShowWeek:(id)sender {
 	[[AlarmConfig getInstance] setWeekDisplay];
+	[preview refresh];
 }
 - (IBAction)ShowLock:(id)sender {
 //	[[AlarmConfig getInstance] setShowLock];
@@ -108,51 +113,71 @@
 	// Set up the cell...
 	if(indexPath.section == 1)
 	{
-		static NSString *CellIdentifier = @"SwitchCell";
-		
-		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-		if (cell == nil)
+		UITableViewCell *cell;
+
+		if (indexPath.row == 0)
 		{
-			NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier 
-														 owner:self options:nil];
-			for (id oneObject in nib)
+			static NSString *CellIdentifier = @"Cell";
+			
+			cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil)
 			{
-				if ([oneObject isKindOfClass:[UITableViewSwitchCell class]])
+				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+			}
+			
+			[cell addSubview:[preview view]];
+			[preview SetHV:true];
+			[preview.view setCenter:CGPointMake([cell center].x, 100)];
+			
+			[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+			
+			[preview refresh];
+		}
+		else
+		{
+			static NSString *CellIdentifier = @"SwitchCell";
+			
+			cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil)
+			{
+				NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier 
+															 owner:self options:nil];
+				for (id oneObject in nib)
 				{
-					cell = oneObject;
-					break;
+					if ([oneObject isKindOfClass:[UITableViewSwitchCell class]])
+					{
+						cell = oneObject;
+						break;
+					}
 				}
 			}
+			
+			UITableViewSwitchCell* swch_cell = (UITableViewSwitchCell*)cell;
+			
+			switch (indexPath.row)
+			{
+				case 1:
+					[swch_cell setInfo:@"Show Seconds" :[[AlarmConfig getInstance] getSecondMode]];
+					[swch_cell.switcher addTarget:self action:@selector(ShowSeconds:) forControlEvents:UIControlEventValueChanged];
+					break;
+				case 2:
+					[swch_cell setInfo:@"Show Date" :[[AlarmConfig getInstance] getDateDisplay]];
+					[swch_cell.switcher addTarget:self action:@selector(ShowDate:) forControlEvents:UIControlEventValueChanged];
+					break;
+				case 3:
+					[swch_cell setInfo:@"Show Weekday" :[[AlarmConfig getInstance] getWeekDisplay]];
+					[swch_cell.switcher addTarget:self action:@selector(ShowWeek:) forControlEvents:UIControlEventValueChanged];
+					break;
+				case 4:
+					[swch_cell setInfo:@"24-Hour Time" :[[AlarmConfig getInstance] getHourMode]];
+					[swch_cell.switcher addTarget:self action:@selector(ShowTime:) forControlEvents:UIControlEventValueChanged];
+					break;
+				case 5:
+					[swch_cell setInfo:@"Auto-Lock" :FALSE];
+					[swch_cell.switcher addTarget:self action:@selector(ShowLock:) forControlEvents:UIControlEventValueChanged];
+					break;
+			}
 		}
-
-		
-		UITableViewSwitchCell* swch_cell = (UITableViewSwitchCell*)cell;
-
-		
-		switch (indexPath.row)
-		{
-			case 0:
-				[swch_cell setInfo:@"Show Seconds" :[[AlarmConfig getInstance] getSecondMode]];
-				[swch_cell.switcher addTarget:self action:@selector(ShowSeconds:) forControlEvents:UIControlEventValueChanged];
-				break;
-			case 1:
-				[swch_cell setInfo:@"Show Date" :[[AlarmConfig getInstance] getDateDisplay]];
-				[swch_cell.switcher addTarget:self action:@selector(ShowDate:) forControlEvents:UIControlEventValueChanged];
-				break;
-			case 2:
-				[swch_cell setInfo:@"Show Weekday" :[[AlarmConfig getInstance] getWeekDisplay]];
-				[swch_cell.switcher addTarget:self action:@selector(ShowWeek:) forControlEvents:UIControlEventValueChanged];
-				break;
-			case 3:
-				[swch_cell setInfo:@"24-Hour Time" :[[AlarmConfig getInstance] getHourMode]];
-				[swch_cell.switcher addTarget:self action:@selector(ShowTime:) forControlEvents:UIControlEventValueChanged];
-				break;
-			case 4:
-				[swch_cell setInfo:@"Auto-Lock" :FALSE];
-				[swch_cell.switcher addTarget:self action:@selector(ShowLock:) forControlEvents:UIControlEventValueChanged];
-				break;
-		}
-
 
 		return cell;
 	}
@@ -235,7 +260,7 @@
 	}
 	else if (section == 1)
 	{
-		return 5;
+		return 6;
 	}
 	
 	return 0;
@@ -251,7 +276,11 @@
 		if (indexPath.row == alarmCount - 1) return 45;
 		return 60;
 	}
-	return 50;
+	else
+	{
+		if (indexPath.row == 0) return 200;
+		return 50;
+	}
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
