@@ -150,7 +150,7 @@
 			if ([scenario startIdx] > curSceneId) return;
 			if ([scenario endIdx] < curSceneId) continue;
 			
-			if ([[SaveManager getInstance] getSceneExp:i])
+			//if ([[SaveManager getInstance] getSceneExp:i])
 			{
 				isSkipMode = true;
 				skipEnd = [scenario endIdx];

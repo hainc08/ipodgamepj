@@ -66,13 +66,14 @@
 		//엔딩처리...
 		[bad_end_View setAlpha:1];
 		Scene* scene = [[DataManager getInstance] getCurScene];
-		[bad_base setImage:[scene getBg]];
+		UIImage* img = [[[UIImage alloc] initWithData:[scene getBgData]] autorelease];
+		[bad_base setImage:img];
 		
 		[bad_end_img1 setAlpha:0];
 		[bad_end_img2 setCenter:CGPointMake(240,-50)];
 		[bad_end_img3 setCenter:CGPointMake(240,370)];
 		[bad_end_img4 setAlpha:0];
-		[bad_end_img4 setTransform:CGAffineTransformMake(2, 0, 0, 0.1, 0, 0)];
+		[bad_end_img4 setTransform:CGAffineTransformMake(2.f, 0.f, 0.f, 0.1f, 0.f, 0.f)];
 		
 		[UIView beginAnimations:@"bad_end" context:NULL];
 		[UIView setAnimationDuration:3];
@@ -83,7 +84,7 @@
 		[bad_end_img2 setCenter:CGPointMake(240,200)];
 		[bad_end_img3 setCenter:CGPointMake(240,100)];
 		[bad_end_img4 setAlpha:1];
-		[bad_end_img4 setTransform:CGAffineTransformMake(1, 0, 0, 1, 0, 0)];
+		[bad_end_img4 setTransform:CGAffineTransformMake(1.f, 0.f, 0.f, 1.f, 0.f, 0.f)];
 
 		[UIView commitAnimations];
 
