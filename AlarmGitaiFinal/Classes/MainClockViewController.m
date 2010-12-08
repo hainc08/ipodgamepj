@@ -28,14 +28,19 @@ extern void GSEventSetBacklightLevel(float value);
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
 
-	//	self.view.autoresizesSubviews = NO;
-	//	self.view.autoresizingMask =UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+	self.view.autoresizesSubviews = NO;
+	self.view.autoresizingMask =UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	
 	viewrotate	= TRUE;
 	editenable	= false;
 	hiddenButton = false;
 	menuEnable   = false;
 
+	infoButton  = [UIButton buttonWithType:UIButtonTypeInfoLight];
+	[infoButton addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+	
+	[self.view addSubview:infoButton];
+	
 	ViewCgPoint	*alarmviewpoint	= [[AlarmConfig getInstance] getHeigthViewPoint];
 	
 	sceneView = [[SceneView alloc] init];
@@ -44,7 +49,7 @@ extern void GSEventSetBacklightLevel(float value);
 	[sceneView setChar:[AlarmConfig getInstance].CharName];
 	[sceneView next];
 	[self.view addSubview:sceneView.view];
-
+	
 	clockview = [[ClockView alloc] init];
 	[clockview.view setFrame:CGRectMake(0, 0,320, 100)];
 	[clockview.view setTransform:alarmviewpoint.ClockTrans]; 
@@ -91,7 +96,7 @@ extern void GSEventSetBacklightLevel(float value);
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	
+
 	[self FrameUpdate];
 	
 	[self resumeTimer];
@@ -243,8 +248,10 @@ extern void GSEventSetBacklightLevel(float value);
 			UITouch *currentTouch = [[event allTouches] anyObject];
 			CGPoint touchPoint = [currentTouch locationInView:self.view];
 			
-			if (CGRectContainsPoint(clockview.view.frame, touchPoint)) touchedCon = clockview;
-			else if (CGRectContainsPoint(dateview.view.frame, touchPoint)) touchedCon = dateview;
+			if (CGRectContainsPoint(clockview.view.frame, touchPoint)) 
+				touchedCon = clockview;
+			else if (CGRectContainsPoint(dateview.view.frame, touchPoint)) 
+				touchedCon = dateview;
 			
 			if (touchedCon != nil)
 			{
@@ -385,11 +392,10 @@ extern void GSEventSetBacklightLevel(float value);
 
 #ifdef __IPHONE_3_0
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration
-{
+{	
 #else
 - (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation: (UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration
-{
-	UIInterfaceOrientation interfaceOrientation = self.interfaceOrientation;
+{	
 #endif
 	if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
 	{
@@ -408,8 +414,7 @@ extern void GSEventSetBacklightLevel(float value);
 }
 	
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
-	//return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-	return YES;
+	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 - (void)dealloc {

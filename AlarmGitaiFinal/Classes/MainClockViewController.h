@@ -50,7 +50,7 @@ enum VIEWMODE {
 	UIButton *AlarmButton;
 	
 	NSMutableArray *alarm_arr;
-	IBOutlet UIButton* infoButton;
+	UIButton* infoButton;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;

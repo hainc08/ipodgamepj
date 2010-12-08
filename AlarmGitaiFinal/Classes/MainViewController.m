@@ -22,12 +22,17 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	MainClockViewController *controller = [[MainClockViewController alloc] initWithNibName:@"MainClockView" bundle:nil];
+	MainClockViewController *controller = [[MainClockViewController alloc] init];
+
 	controller.delegate = self;
+	UINavigationController *navController = [[UINavigationController alloc] init];
 	
+	navController.navigationBarHidden = YES;
+	[navController initWithRootViewController:controller];
+
 	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	[self presentModalViewController:controller animated:YES];
-	
+	[self presentModalViewController:navController animated:YES];
+	[navController release];
 	[controller release];
 }
 
@@ -50,20 +55,12 @@
 	
 	[UIView beginAnimations:@"anime2" context:NULL];
 	[UIView setAnimationDuration:2];
-	[UIView setAnimationDelay:1];
+	[UIView setAnimationDelay:0.5];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 	[touch setAlpha:1];
 	[UIView commitAnimations];
 	
 }
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 
 - (void)dealloc {

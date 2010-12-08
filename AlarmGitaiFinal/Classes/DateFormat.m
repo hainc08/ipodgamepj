@@ -25,13 +25,12 @@ static DateFormat *DateFormatInst;
 
 - (void) initalize
 {
-	locale	=	[[NSLocale alloc] init];
+	locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
 	FormatDate	=	[[NSDateFormatter alloc] init];
 	[FormatDate setFormatterBehavior:NSDateFormatterBehavior10_4];
 	[FormatDate setDateStyle:NSDateFormatterLongStyle];
 	[FormatDate setTimeStyle:NSDateFormatterNoStyle];
 	[FormatDate setLocale:locale];
-	[self initContry:@"en_US"];
 }
 
 - (void) initContry:(NSString *)Country
