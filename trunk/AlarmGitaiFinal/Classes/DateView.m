@@ -168,7 +168,10 @@
 	else 
 		[self.view setAlpha:0];
 }
-
+- (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {
+	//return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+	return NO;
+}
 - (void)dealloc {
 	[super dealloc];	
 	[Week release];

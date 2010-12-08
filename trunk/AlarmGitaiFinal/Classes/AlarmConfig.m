@@ -119,7 +119,8 @@ static AlarmConfig *AlarmConfigInst;
 
 - (void)loadConfig
 {
-	CharName = @"natsuko";
+//	CharName = @"natsuko";
+	CharName = @"haruka";
 	AlarmArr = [[NSMutableArray alloc] initWithCapacity:0];
 	
 	RotationTime	=	[[SaveManager getInstance] getIntData:@"RotationTime"	idx:0 base:5];

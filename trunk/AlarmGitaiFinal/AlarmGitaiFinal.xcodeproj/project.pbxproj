@@ -530,7 +530,6 @@
 		84D434D3129DE63600356784 /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D432F9129DE63600356784 /* top.png */; };
 		84D434D4129DE63600356784 /* Untitled-1.psd in Resources */ = {isa = PBXBuildFile; fileRef = 84D432FA129DE63600356784 /* Untitled-1.psd */; };
 		84D434F4129DE76800356784 /* touch.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D434F3129DE76800356784 /* touch.png */; };
-		84D43505129DEA5700356784 /* MainClockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D43504129DEA5700356784 /* MainClockView.xib */; };
 		84D4352D129DEAC300356784 /* AlarmConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D43510129DEAC300356784 /* AlarmConfig.m */; };
 		84D4352F129DEAC300356784 /* ButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D43514129DEAC300356784 /* ButtonView.m */; };
 		84D43530129DEAC300356784 /* CharView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D43516129DEAC300356784 /* CharView.m */; };
@@ -1083,7 +1082,6 @@
 		84D432F9129DE63600356784 /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
 		84D432FA129DE63600356784 /* Untitled-1.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Untitled-1.psd"; sourceTree = "<group>"; };
 		84D434F3129DE76800356784 /* touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touch.png; sourceTree = "<group>"; };
-		84D43504129DEA5700356784 /* MainClockView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainClockView.xib; sourceTree = "<group>"; };
 		84D4350F129DEAC300356784 /* AlarmConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmConfig.h; path = Classes/AlarmConfig.h; sourceTree = "<group>"; };
 		84D43510129DEAC300356784 /* AlarmConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmConfig.m; path = Classes/AlarmConfig.m; sourceTree = "<group>"; };
 		84D43513129DEAC300356784 /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonView.h; path = Classes/ButtonView.h; sourceTree = "<group>"; };
@@ -1190,7 +1188,6 @@
 				84B00B7112ACAB770093647C /* OptionPreview */,
 				84D43108129DE62500356784 /* Image */,
 				5674BE3312A5CFB200FC97BE /* AlarmSetting.xib */,
-				84D43504129DEA5700356784 /* MainClockView.xib */,
 				849C856412A337780044EA7D /* OptionView.xib */,
 				84643CB612A4420C00F4ADBC /* AlarmView.xib */,
 				846F328B12A41B000073171A /* AlarmCell.xib */,
@@ -2516,7 +2513,6 @@
 				84D434D3129DE63600356784 /* top.png in Resources */,
 				84D434D4129DE63600356784 /* Untitled-1.psd in Resources */,
 				84D434F4129DE76800356784 /* touch.png in Resources */,
-				84D43505129DEA5700356784 /* MainClockView.xib in Resources */,
 				84D43611129DF52B00356784 /* CharView.xib in Resources */,
 				84A18750129E536C0077D250 /* SceneView.xib in Resources */,
 				849C856512A337780044EA7D /* OptionView.xib in Resources */,
@@ -2606,13 +2602,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (N65PC63996)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitaiFinal_Prefix.pch;
 				INFOPLIST_FILE = "AlarmGitaiFinal-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = AlarmGitaiFinal;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DAE48A-6F6A-4805-9340-5FC42D867E20";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08856A7B-9188-46A6-948F-8FBBA0AB5D00";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2621,13 +2618,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (N65PC63996)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A6D68DB-DDF0-49F4-83EC-79638F5F62F8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DAE48A-6F6A-4805-9340-5FC42D867E20";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2636,15 +2634,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (N65PC63996)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DAE48A-6F6A-4805-9340-5FC42D867E20";
-				SDKROOT = iphoneos;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08856A7B-9188-46A6-948F-8FBBA0AB5D00";
+				SDKROOT = iphoneos4.2;
 			};
 			name = Release;
 		};
