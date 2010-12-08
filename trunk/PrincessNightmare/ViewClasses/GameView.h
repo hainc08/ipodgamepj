@@ -1,10 +1,10 @@
 #import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h>
 #import "BaseView.h"
 #import "SerihuBoard.h"
 #import "SceneView.h"
 #import "DataManager.h"
 #import "Timer.h"
+#import "MovieBoard.h"
 
 @interface GameParam : NSObject {
 	int startScene;
@@ -37,7 +37,7 @@
 	GameParam* gParam;
 
 	SerihuBoard* serihuBoard;
-    MPMoviePlayerController *player;
+	SerihuBoard* serihuBoard2;
 
 	SceneView* sceneView;
 	
@@ -55,6 +55,10 @@
 	IBOutlet id board;
 
 	IBOutlet id next;
+
+	IBOutlet id movieUI;
+	IBOutlet id next2;
+
 	Scene* scene;
 	int curSceneId;
 	bool showOK;
@@ -82,16 +86,12 @@
 	
 	int nowBgmIdx;
 	
-	Scene* lastScene;
-	
 	int phase;
 	bool isSkipMode;
 	int skipEnd;
+	
+	MovieBoard* movieBoard;
 }
-
-@property (nonatomic, retain) MPMoviePlayerController *player;
-
-- (IBAction)playAnime:(NSString*)name;
 
 - (IBAction)SkipButtonClick:(id)sender;
 - (IBAction)ButtonClick:(id)sender;

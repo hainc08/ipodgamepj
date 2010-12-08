@@ -1,6 +1,8 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface SoundManager : NSObject <AVAudioPlayerDelegate> {
+	NSString* bgmName;
+	
 	AVAudioPlayer* bgmPlayer;
 	AVAudioPlayer* fxPlayer;
 	

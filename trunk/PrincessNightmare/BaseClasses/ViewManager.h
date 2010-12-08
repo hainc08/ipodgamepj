@@ -16,7 +16,11 @@ typedef struct
 	BaseView *curView;
     UIWindow *mainWindow;
 	UIViewController* mainController;
+	
+	int movieMode;
 }
+
+@property (readwrite) int movieMode;
 
 + (ViewManager*)getInstance;
 + (void)initManager:(UIWindow*)window:(UIViewController*)controller;

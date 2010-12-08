@@ -3,6 +3,8 @@ static ViewManager *viewManagerInst;
 
 @implementation ViewManager
 
+@synthesize movieMode;
+
 + (ViewManager*)getInstance
 {
 	return viewManagerInst;
