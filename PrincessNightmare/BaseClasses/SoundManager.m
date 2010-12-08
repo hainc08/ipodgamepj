@@ -37,6 +37,8 @@ static SoundManager *SoundManagerInst;
 #ifdef __SIMUL
 	return;
 #endif
+	if ([name compare:bgmName] == NSOrderedSame) return;
+
 	// make file URL
 	NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
 	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
@@ -61,6 +63,9 @@ static SoundManager *SoundManagerInst;
 
 	[filePath release];
 	[fileURL release];
+	
+	if (bgmName != nil) [bgmName release];
+	bgmName = [[NSString stringWithFormat:@"%@", name] retain];
 }
 	
 -(void)playFX:(NSString*)name repeat:(bool)repeat
@@ -111,6 +116,8 @@ static SoundManager *SoundManagerInst;
 {
 	if (bgmPlayer != nil)
 	{
+		if (bgmName != nil) [bgmName release];
+		bgmName = nil;
 		[bgmPlayer stop];
 		[bgmPlayer setCurrentTime:0];
 	}

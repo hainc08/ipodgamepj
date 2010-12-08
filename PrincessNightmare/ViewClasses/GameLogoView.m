@@ -134,11 +134,13 @@
 				
 				[moviePlayerWindow addSubview:endView];
 				[endView setCenter:CGPointMake(240,160)];
+				[[ViewManager getInstance] setMovieMode:1];
 			}
 			else
 			{
 				[self addSubview:endView];
 				[endView setCenter:CGPointMake(240,160)];
+				[[ViewManager getInstance] setMovieMode:2];
 			}
 
 			step = 3;

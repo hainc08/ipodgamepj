@@ -21,4 +21,9 @@
 	showEnd = true;
 }
 
+//		sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
+//		[sBoard setCenter:CGPointMake(290, 320 - 60)];
+//		[movieView addSubview:sBoard];
+//		[movieView setAlpha:0];
+
 @end

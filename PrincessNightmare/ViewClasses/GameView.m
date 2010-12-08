@@ -16,8 +16,6 @@
 
 @implementation GameView
 
-@synthesize player;
-
 - (id)initWithCoder:(NSCoder *)coder {
 	self = [super initWithCoder:coder];
 	
@@ -28,45 +26,6 @@
 	self = [super initWithFrame:frame];
 
 	return self;
-}
-
-- (void)playVideoWithURL:(NSURL *)url showControls:(BOOL)showControls {
-    if (!player) {
-        player = [[MPMoviePlayerController alloc] initWithContentURL:url];
-		
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishPlaying:) name:MPMoviePlayerPlaybackDidFinishNotification object:player];
-
-		if ([player respondsToSelector:@selector(view)])
-		{
-			player.controlStyle = MPMovieControlStyleFullscreen;
-			[player.view setFrame:self.bounds];
-			[self addSubview:player.view];
-		}
-		
-        if (!showControls) {
-            player.scalingMode = MPMovieScalingModeAspectFill;
-            player.movieControlMode = MPMovieControlModeHidden;
-        }
-		
-        [player play];
-    }
-}
-
-- (IBAction)playAnime:(NSString*)name {
-    NSString *moviePath = [[NSBundle mainBundle] pathForResource:name ofType:@"mp4"];
-    NSURL *url = [NSURL fileURLWithPath:moviePath];
-	
-    [self playVideoWithURL:url showControls:NO];
-}
-
-- (void)didFinishPlaying:(NSNotification *)notification {
-    if (player == [notification object]) {   
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
-        [player release];
-        player = nil;
-		
-		[self playBGM:scene];
-    }
 }
 
 - (void)reset:(NSObject*)param
@@ -92,10 +51,30 @@
 			[oldChrView[i] setAlpha:0.f];
 		}
 
+		movieBoard = (MovieBoard*)[[ViewManager getInstance] getInstView:@"MovieBoard"];
+		[movieBoard setCenter:CGPointMake(240, 160)];
+		[movieUI addSubview:movieBoard];
+
+		if ([[ViewManager getInstance] movieMode] == 1)
+		{
+			//4.0이하의 버전
+			serihuBoard2 = nil;
+		}
+		else
+		{
+			serihuBoard2 = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
+			[serihuBoard2 setCenter:CGPointMake(290, 260)];
+			[movieUI addSubview:serihuBoard2];
+			[movieUI bringSubviewToFront:next2];
+		}
+
+		[self sendSubviewToBack:movieUI];
+		[movieUI setAlpha:0];
+		
 		serihuBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
 		[serihuBoard setCenter:CGPointMake(290, 260)];
 		[self addSubview:serihuBoard];
-		
+
 		[self bringSubviewToFront:oldChrView[3]];
 		[self bringSubviewToFront:chrView[3]];
 
@@ -129,7 +108,6 @@
 	}
 	
 	nowBgmIdx = 0;
-	lastScene = NULL;
 	scene = NULL;
 	curSceneId = [gParam startScene];
 	updateWait = 0;
@@ -260,7 +238,6 @@
 	
 	if (isMoved)
 	{
-		lastScene = scene;
 		phase = LOAD;
 		return;
 	}
@@ -268,8 +245,15 @@
 	switch ([scene sceneType])
 	{
 		case 1:
-			if (sender == next)
+			if ((sender == next)||(sender == next2))
 			{
+				if ([movieBoard isPLaying])
+				{
+					[movieBoard stopMovie];
+					[self sendSubviewToBack:movieUI];
+					[movieUI setAlpha:0];
+				}
+				
 				if ( [scene endNum] != -1 )
 				{
 					[[DataManager getInstance] gotoEnding:0 idx:[scene endNum]];
@@ -284,7 +268,6 @@
 					curSceneId = [[DataManager getInstance] gotoChapter:[scene nextChapter]];
 				}
 				
-				lastScene = scene;
 				phase = LOAD;
 			}
 			break;
@@ -309,7 +292,6 @@
 					[[DataManager getInstance] setCurIdx:curSceneId];
 				}
 				
-				lastScene = scene;
 				phase = LOAD;
 			}
 			break;
@@ -328,7 +310,6 @@
 				
 				curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:tagIdx]];
 				[[DataManager getInstance] setCurIdx:curSceneId];
-				lastScene = scene;
 				phase = LOAD;
 				
 				[selectPanel1 setAlpha:0];
@@ -351,6 +332,14 @@
 
 - (void)update
 {
+	if ([[ViewManager getInstance] movieMode] == 1)
+	{
+		if ([movieBoard isPLaying] && [movieBoard update])
+		{
+			[self ButtonClick:next2];
+		}
+	}
+
 	if (updateWait > 0)
 	{
 		--updateWait;
@@ -371,7 +360,6 @@
 		curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:tagIdx]];
 		[[DataManager getInstance] setCurIdx:curSceneId];
 
-		lastScene = scene;
 		phase = LOAD;
 		
 		[selectPanel1 setAlpha:0];
@@ -384,8 +372,6 @@
 		case AFTER:
 			if ([sceneView showEnd])
 			{
-				lastScene = NULL;
-				
 				if (phase == BEFORE) phase = PLAY;
 				else if (phase == AFTER)
 				{
@@ -660,31 +646,15 @@
 		case 402:
 		case 403:
 		{
-			//동영상플레이
-			SerihuBoard* sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
-			[sBoard setTransform:CGAffineTransformMake(0, 1, -1, 0, 0, 0)];
-			[sBoard setCenter:CGPointMake(60, 290)];
-			[sBoard setSerihu:[s getChara] serihu:[s getSerihu]];
-			
 			//여기는 적당한 파일이름을 정해주자.
-			[self playAnime:[[NSString alloc] initWithFormat:@"%d",[s animeType]]];
-			
-			NSArray *windows = [[UIApplication sharedApplication] windows];
-			if ([windows count] > 1)
+			[self bringSubviewToFront:movieUI];
+			[movieUI setAlpha:1];
+			[[SoundManager getInstance] stopBGM];
+			[movieBoard playScene:s];
+			if (serihuBoard2 != nil)
 			{
-				// Locate the movie player window
-				UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
-				// Add our overlay view to the movie player's subviews so it is 
-				// displayed above it.
-				[moviePlayerWindow addSubview:sBoard];
+				[serihuBoard2 setSerihu:[s getChara] serihu:[s getSerihu]];
 			}
-			else
-			{
-				[self addSubview:sBoard];
-			}
-
-			[[DataManager getInstance] setEventShow:[s animeType]];
-			[[SaveManager getInstance] saveExtraFile];
 		}
 	}
 }
@@ -781,7 +751,7 @@
 			break;
 	}
 	
-	if ((lastScene == NULL) || ([lastScene preLoadBgmIdx] != [s preLoadBgmIdx])) [self playBGM:s];
+	[self playBGM:s];
 	[self playFx:s];
 
 	[serihuBoard setAlpha:1];
