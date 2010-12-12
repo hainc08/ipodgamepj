@@ -129,20 +129,25 @@
 	if (isSkipMode) isSkipMode = false;
 	else
 	{
-		for (int i=1; i<=127; ++i)
+		if ([[SaveManager getInstance] getSceneExp2:curSceneId])
 		{
-			Scenario* scenario = [[DataManager getInstance] getScenario:i];
-			if ([scenario startIdx] > curSceneId) return;
-			if ([scenario endIdx] < curSceneId) continue;
+			isSkipMode = true;
+			[self ButtonClick:next];
+		}
+//		for (int i=1; i<=127; ++i)
+//		{
+//			Scenario* scenario = [[DataManager getInstance] getScenario:i];
+//			if ([scenario startIdx] > curSceneId) return;
+//			if ([scenario endIdx] < curSceneId) continue;
 			
 			//if ([[SaveManager getInstance] getSceneExp:i])
-			{
-				isSkipMode = true;
-				skipEnd = [scenario endIdx];
-				[self ButtonClick:next];
-			}
-			return;
-		}
+//			{
+//				isSkipMode = true;
+//				skipEnd = [scenario endIdx];
+//				[self ButtonClick:next];
+//			}
+//			return;
+//		}
 	}
 	return;
 }
@@ -150,6 +155,7 @@
 - (IBAction)ButtonClick:(id)sender
 {
 	if (phase != WAITINPUT) return;
+	if (sender == next2) return [self ButtonClick:next];
 	
 	if ( sender == msgClose )
 	{
@@ -162,6 +168,7 @@
 	}
 	if ( sender == menuButton )
 	{
+		[[SaveManager getInstance] saveSceneExp2File:true];
 		[self showMenu];
 		return;
 	}
@@ -245,7 +252,7 @@
 	switch ([scene sceneType])
 	{
 		case 1:
-			if ((sender == next)||(sender == next2))
+			if (sender == next)
 			{
 				if ([movieBoard isPLaying])
 				{
@@ -435,8 +442,7 @@
 			if (showOkTick <= frameTick) phase = WAITINPUT;
 			if (isSkipMode)
 			{
-				if (curSceneId == skipEnd) isSkipMode = false;
-				else [self ButtonClick:next];
+				[self ButtonClick:next];
 			}
 	}
 	
@@ -676,6 +682,13 @@
 
 - (void)playScene:(Scene*)s
 {
+	if (isSkipMode)
+	{
+		if ([[SaveManager getInstance] getSceneExp2:[s sceneId]] == false) isSkipMode = false;
+	}
+
+	[[SaveManager getInstance] setSceneExp2:[s sceneId]];
+
 	for (int i=0; i<4; ++i)
 		[self showChar:s idx:i];
 	
@@ -734,6 +747,8 @@
 			[selectPanel1 setCenter:CGPointMake(110+65,110)];
 			[selectPanel2 setCenter:CGPointMake(240+65,110)];
 			[next setAlpha:0];
+
+			isSkipMode = false;
 			break;
 		case 4:
 			[timer setAlpha:1];
@@ -748,6 +763,8 @@
 			[selectPanel2 setCenter:CGPointMake(240,110)];
 			[selectPanel3 setCenter:CGPointMake(370,110)];
 			[next setAlpha:0];
+
+			isSkipMode = false;
 			break;
 	}
 	
