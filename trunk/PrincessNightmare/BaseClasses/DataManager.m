@@ -251,7 +251,6 @@ static NSString* ResourcePath;
 	animeType = 0;
 }
 
-
 - (NSData*)getBgData
 {
 	return preLoadData[4];
@@ -1048,6 +1047,9 @@ static NSString* ResourcePath;
 					case 6:
 						[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8] :0 :0: 0];
 						break;
+					default:
+						[preloadScene[j] setSelectTag:0 :0 :0 :0];
+						break;
 				}
 				
 				NSString* optionStr = nil;
@@ -1055,6 +1057,7 @@ static NSString* ResourcePath;
 				if (fxIdx == 0) fxIdx = -1;
 				[preloadScene[j] setFXrepeat:false];
 				[preloadScene[j] setNextChapter:-1];
+				[preloadScene[j] setFlagStrCount:0];
 				
 				for (int l=0; l<[msg[willSceneId] valCount]; ++l)
 				{
