@@ -70,6 +70,12 @@ static AlarmConfig *AlarmConfigInst;
 	[[SaveManager getInstance] setIntData:@"DatePos"		idx:2 value:pos.x];
 	[[SaveManager getInstance] setIntData:@"DatePos"		idx:3 value:pos.y];
 	//-------------------------------------
+	
+	int value;
+	if (OfficeMode) value = 0;
+	else value = 1;
+
+	[[SaveManager getInstance] setIntData:@"OfficeMode"		idx:0 value:value];
 
 	[self AlarmSaveConfig];
 	[[SaveManager getInstance] saveFile];
@@ -112,6 +118,8 @@ static AlarmConfig *AlarmConfigInst;
 	[[SaveManager getInstance] setFloatData:@"DateZoom"		idx:1 value:0.5f];
 	[[SaveManager getInstance] setIntData:@"DatePos"		idx:2 value:50];
 	[[SaveManager getInstance] setIntData:@"DatePos"		idx:3 value:50];
+
+	OfficeMode = false;
 	
 	[self AlarmSaveConfig];
 	[[SaveManager getInstance] saveFile];
@@ -162,6 +170,10 @@ static AlarmConfig *AlarmConfigInst;
 	[widthviewpoint setDatePoint:CGPointMake([[SaveManager getInstance] getIntData:@"DatePos" idx:2 base:200],
 											  [[SaveManager getInstance] getIntData:@"DatePos" idx:3 base:50])];
 	
+	int value = [[SaveManager getInstance] getIntData:@"OfficeMode"		idx:0 base:1];
+	if (value == 0) OfficeMode = true;
+	else OfficeMode = false;
+
 	[self AlarmLoadConfig];
 }
 

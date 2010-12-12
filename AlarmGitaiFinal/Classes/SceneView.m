@@ -1,5 +1,6 @@
 #import "SceneView.h"
 #import "DateFormat.h"
+#import "AlarmConfig.h"
 
 @implementation SceneView
 
@@ -59,8 +60,48 @@
 	int oldCharIdx = curCharIdx;
 	if (curCharIdx == 0) curCharIdx = 1;
 	else curCharIdx = 0;
+
+	int idx;
+	int all, officeOffset;
+
+	//fumiko, akari, natsuko 는 해줄게 없음...
+	if ([charName compare:@"haruka"] == NSOrderedSame)
+	{
+		all = 10 * 10;
+		officeOffset = 4 * 10;
+	}
+	else if ([charName compare:@"irika"] == NSOrderedSame)
+	{
+		all = 8 * 6;
+		officeOffset = 4 * 6;
+	}
+	else if ([charName compare:@"reina"] == NSOrderedSame)
+	{
+		all = 14 * 7;
+		officeOffset = 4 * 7;
+	}
+	else if ([charName compare:@"hitomi"] == NSOrderedSame)
+	{
+		all = 12 * 20;
+		officeOffset = 6 * 20;
+	}
+	else
+	{
+		all = 8 * 6;
+		officeOffset = 4 * 6;
+	}
 	
-	[charView[curCharIdx] setChar:charName idx:rand()%48 isNight:isNight];
+	if ([[AlarmConfig getInstance] getOfficeMode])
+	{
+		idx = officeOffset + rand()%(all - officeOffset);
+	}
+	else
+	{
+		idx = rand()%all;
+	}
+
+	
+	[charView[curCharIdx] setChar:charName idx:idx isNight:isNight];
 
 	[UIView beginAnimations:@"anime2" context:NULL];
 	[UIView setAnimationDuration:1];
