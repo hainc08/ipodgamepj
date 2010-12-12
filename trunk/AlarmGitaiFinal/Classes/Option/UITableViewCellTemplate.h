@@ -36,8 +36,10 @@
 {
 	IBOutlet UILabel* nameLabel;
 	IBOutlet UILabel* valueLabel;
+	IBOutlet id arrow;
 }
 
 - (void)setInfo:(NSString*)name :(NSString*)value;
+- (void)showArrow:(bool)show;
 
 @end

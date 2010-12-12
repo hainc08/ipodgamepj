@@ -82,6 +82,8 @@
 	BOOL			DateDisplay; 
 	BOOL			WeekDisplay;
 	BOOL			OfficeMode;
+	
+	int				weekdayType;
 
 	
 	NSMutableArray			*AlarmArr; 
@@ -122,6 +124,9 @@
 
 - (BOOL) setOfficeMode;
 - (BOOL) getOfficeMode;
+
+- (int) toggleWeekdayType;
+- (int) getWeekdayType;
 
 - (void) SaveConfig;
 
