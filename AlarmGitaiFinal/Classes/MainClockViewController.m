@@ -421,6 +421,7 @@ extern void GSEventSetBacklightLevel(float value);
 	
 	[super dealloc];
 	[weekview release];
+	[newWeekView release];
 	[clockview release];
 	[dateview release];
 	[sceneView release];

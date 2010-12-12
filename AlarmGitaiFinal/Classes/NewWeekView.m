@@ -31,7 +31,7 @@
 
 - (void)refresh
 {
-	if( [[AlarmConfig getInstance] getWeekDisplay] ) 
+	if( [[AlarmConfig getInstance] getWeekDisplay] && ([[AlarmConfig getInstance] getWeekdayType] == 1))
 	{
 		[self.view setAlpha:1];
 		
@@ -55,8 +55,8 @@
 			}
 			else if ([Week compare:@"Mon"] == NSOrderedSame)
 			{
-				[imgSun setImage:weekImg[1][1]];
-				[self.view bringSubviewToFront:imgSun];
+				[imgMon setImage:weekImg[1][1]];
+				[self.view bringSubviewToFront:imgMon];
 			}
 			else if ([Week compare:@"Tue"] == NSOrderedSame)
 			{

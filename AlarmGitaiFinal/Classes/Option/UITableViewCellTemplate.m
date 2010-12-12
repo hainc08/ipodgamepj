@@ -54,4 +54,10 @@
 	[valueLabel setText:value];
 }
 
+- (void)showArrow:(bool)show
+{
+	if (show) [arrow setAlpha:1];
+	else [arrow setAlpha:0];
+}
+
 @end

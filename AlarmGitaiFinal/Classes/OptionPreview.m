@@ -21,6 +21,7 @@
 		[charView setCenter:CGPointMake(135, 100)];
 		[char_OfficeView setTransform:CGAffineTransformMake(0.8, 0, 0, 0.8, 0, 0)];
 		[char_OfficeView setCenter:CGPointMake(135, 100)];
+		[week2View setCenter:CGPointMake(135, 170)];
 	}
 	else
 	{
@@ -33,6 +34,7 @@
 		[charView setCenter:CGPointMake(90, 135)];
 		[char_OfficeView setTransform:CGAffineTransformMake(1, 0, 0, 1, 0, 0)];
 		[char_OfficeView setCenter:CGPointMake(90, 135)];
+		[week2View setCenter:CGPointMake(90, 260)];
 	}
 }
 
@@ -54,17 +56,29 @@
 		[dateView setAlpha:1];
 		if([[AlarmConfig getInstance] getWeekDisplay])
 		{
-			[weekView setAlpha:1];
+			switch ([[AlarmConfig getInstance] getWeekdayType])
+			{
+				case 0:
+					[weekView setAlpha:1];
+					[week2View setAlpha:0];
+					break;
+				case 1:
+					[weekView setAlpha:0];
+					[week2View setAlpha:1];
+					break;
+			}
 		}
 		else
 		{
 			[weekView setAlpha:0];
+			[week2View setAlpha:0];
 		}
 	}
 	else
 	{
 		[dateView setAlpha:0];
 		[weekView setAlpha:0];
+		[week2View setAlpha:0];
 	}
 	
 	if ([[AlarmConfig getInstance] getOfficeMode])

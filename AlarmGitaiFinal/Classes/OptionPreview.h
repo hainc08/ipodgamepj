@@ -11,6 +11,7 @@
 	IBOutlet id timeView_24;
 	IBOutlet id dateView;
 	IBOutlet id weekView;
+	IBOutlet id week2View;
 }
 
 - (void)SetHV:(bool)horizon;

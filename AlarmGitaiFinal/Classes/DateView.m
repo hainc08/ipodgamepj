@@ -93,7 +93,7 @@
 	{
 		[self.view setAlpha:1];
 	
-		if( [[AlarmConfig getInstance] getWeekDisplay])
+		if( [[AlarmConfig getInstance] getWeekDisplay] && ([[AlarmConfig getInstance] getWeekdayType] == 0))
 		{
 			[b_Week setAlpha:1];
 			[u_Week setAlpha:1];

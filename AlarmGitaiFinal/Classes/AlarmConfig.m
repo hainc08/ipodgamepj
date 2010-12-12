@@ -76,6 +76,7 @@ static AlarmConfig *AlarmConfigInst;
 	else value = 1;
 
 	[[SaveManager getInstance] setIntData:@"OfficeMode"		idx:0 value:value];
+	[[SaveManager getInstance] setIntData:@"WeekdayType"	idx:0 value:weekdayType];
 
 	[self AlarmSaveConfig];
 	[[SaveManager getInstance] saveFile];
@@ -120,6 +121,7 @@ static AlarmConfig *AlarmConfigInst;
 	[[SaveManager getInstance] setIntData:@"DatePos"		idx:3 value:50];
 
 	OfficeMode = false;
+	weekdayType = 0;
 	
 	[self AlarmSaveConfig];
 	[[SaveManager getInstance] saveFile];
@@ -173,6 +175,7 @@ static AlarmConfig *AlarmConfigInst;
 	int value = [[SaveManager getInstance] getIntData:@"OfficeMode"		idx:0 base:1];
 	if (value == 0) OfficeMode = true;
 	else OfficeMode = false;
+	weekdayType = [[SaveManager getInstance] getIntData:@"WeekdayType"		idx:0 base:0];
 
 	[self AlarmLoadConfig];
 }
@@ -320,6 +323,18 @@ static AlarmConfig *AlarmConfigInst;
 - (BOOL) getOfficeMode
 {
 	return OfficeMode;
+}
+
+- (int) toggleWeekdayType
+{
+	++weekdayType;
+	if (weekdayType == 2) weekdayType = 0;
+	return weekdayType;
+}
+
+- (int) getWeekdayType
+{
+	return weekdayType;
 }
 
 - (NSMutableArray *)getAlarmArr

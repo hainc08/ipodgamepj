@@ -140,6 +140,31 @@
 			
 			[preview refresh];
 		}
+		else if (indexPath.row == 5)
+		{
+			static NSString *CellIdentifier = @"ButtonCell";
+			
+			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil)
+			{
+				NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier 
+															 owner:self options:nil];
+				for (id oneObject in nib)
+				{
+					if ([oneObject isKindOfClass:[UITableViewButtonCell class]])
+					{
+						cell = oneObject;
+						break;
+					}
+				}
+			}
+			
+			UITableViewButtonCell* buttonCell = (UITableViewButtonCell*)cell;
+			[buttonCell setInfo:@"Weekday Type Change" :@""];
+			[buttonCell showArrow:false];
+			
+			return cell;
+		}
 		else
 		{
 			static NSString *CellIdentifier = @"SwitchCell";
@@ -179,11 +204,11 @@
 					[swch_cell setInfo:@"Show Weekday" :[[AlarmConfig getInstance] getWeekDisplay]];
 					[swch_cell.switcher addTarget:self action:@selector(ShowWeek:) forControlEvents:UIControlEventValueChanged];
 					break;
-				case 5:
+				case 6:
 					[swch_cell setInfo:@"24-Hour Time" :[[AlarmConfig getInstance] getHourMode]];
 					[swch_cell.switcher addTarget:self action:@selector(ShowTime:) forControlEvents:UIControlEventValueChanged];
 					break;
-				case 6:
+				case 7:
 					[swch_cell setInfo:@"Auto-Lock" :FALSE];
 					[swch_cell.switcher addTarget:self action:@selector(ShowLock:) forControlEvents:UIControlEventValueChanged];
 					break;
@@ -215,6 +240,7 @@
 			
 			UITableViewButtonCell* buttonCell = (UITableViewButtonCell*)cell;
 			[buttonCell setInfo:@"New Alarm..." :@""];
+			[buttonCell showArrow:true];
 
 			return cell;
 		}
@@ -271,7 +297,7 @@
 	}
 	else if (section == 1)
 	{
-		return 6;
+		return 7;
 	}
 	
 	return 0;
@@ -324,6 +350,14 @@
 		[self presentModalViewController:controller animated:YES];
 		
 		[controller release];
+	}
+	else if (indexPath.section == 1)
+	{
+		if (indexPath.row == 5)
+		{
+			[[AlarmConfig getInstance] toggleWeekdayType];
+			[preview refresh];
+		}
 	}
 }
 
