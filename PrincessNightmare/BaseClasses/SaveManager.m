@@ -40,6 +40,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 	[SaveManagerInst loadSaveFile];
 	[SaveManagerInst loadOptionFile];
 	[SaveManagerInst loadSceneExpFile];
+	[SaveManagerInst loadSceneExp2File];
 	[SaveManagerInst resetFlag];
 }
 
@@ -61,6 +62,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 	musicFileName = [[NSString stringWithFormat: @"%@/music.dat", recordingDirectory] retain];
 	optionFileName = [[NSString stringWithFormat: @"%@/option.dat", recordingDirectory] retain];
 	sceneExpFileName = [[NSString stringWithFormat: @"%@/sceneExp.dat", recordingDirectory] retain];
+	sceneExp2FileName = [[NSString stringWithFormat: @"%@/sceneExp2.dat", recordingDirectory] retain];
 }
 
 - (void)resetFlag
@@ -73,6 +75,8 @@ void writeInt(NSFileHandle* writeFile, int value)
 		memset(saveFlag[i], 0x00, 20);
 		memset(saveFlag2[i], 0x00, 30);
 	}
+
+	sceneExpDirty = 0;
 }
 
 - (void)setFlag:(int)idx
@@ -494,6 +498,87 @@ void writeInt(NSFileHandle* writeFile, int value)
 - (bool)getSceneExp:(int)idx
 {
 	return sceneExp[idx];
+}
+
+- (void)saveSceneExp2File:(bool)force
+{
+	if (sceneExpDirty == 0) return;
+
+	if (!force && (sceneExpDirty < 30)) return;
+	
+	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:sceneExp2FileName];
+	if (writeFile == nil)
+	{
+		[[NSFileManager defaultManager] createFileAtPath:sceneExp2FileName
+												contents:nil attributes:nil];
+		
+		writeFile = [NSFileHandle fileHandleForWritingAtPath:sceneExp2FileName];
+	}
+	
+	if (writeFile == nil)
+	{
+		NSLog(@"fail to open file");
+		return;
+	}
+	
+	//버전정보심기
+	int ver = 1;
+	writeInt(writeFile, ver);
+	
+	[writeFile writeData: [NSData dataWithBytes:sceneExp2
+										 length:2757]];
+    
+	[writeFile closeFile];
+
+	sceneExpDirty = false;
+}
+
+- (void)loadSceneExp2File
+{
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:sceneExp2FileName];
+	
+	if(readFile == nil)
+	{
+		memset(sceneExp2, 0x00, 2757);
+		return;
+	}
+	
+	//버전정보확인
+	int ver = readInt(readFile);
+	
+	if (ver == 1)
+	{
+		NSData *data;
+		data = [readFile readDataOfLength:2757];
+		[data getBytes:sceneExp2];
+	}
+#ifdef __DEBUGGING__	
+	else
+	{
+		[[ErrorManager getInstance] ERROR:"loadSceneExpFile : 버전정보이상" value:0];
+	}
+#endif
+	
+	[readFile closeFile];
+
+	sceneExpDirty = 0;
+}
+
+- (void)setSceneExp2:(int)idx
+{
+	int i = (int)(idx / 8);
+	if ([self getSceneExp2:idx]) return;
+	sceneExp2[i] |= 0x01 << (idx % 8);
+	++sceneExpDirty;
+	
+	[self saveSceneExp2File:false];
+}
+
+- (bool)getSceneExp2:(int)idx
+{
+	int i = (int)(idx / 8);
+	int check = sceneExp2[i] & (0x01 << (idx % 8));
+	return (check != 0);
 }
 
 - (void)save:(int)idx data:(int)data

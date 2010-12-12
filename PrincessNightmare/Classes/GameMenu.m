@@ -83,7 +83,9 @@
 		if (MenuType == SCINEMENU)
 			[[ViewManager getInstance] changeView:@"ScineView"];
 		else
+		{
 			[[ViewManager getInstance] changeView:@"MainTopView"];
+		}
 	}
 	else if (sender == configButton)
 	{

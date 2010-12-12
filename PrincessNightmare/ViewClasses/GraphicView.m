@@ -121,7 +121,7 @@
 		{
 			if (sender == imageButton[i])
 			{
-//				if ([eList getIsShow:i] == false) return;
+				if ([eList getIsShow:i] == false) return;
 
 				UIImage* tempImg;
 				
