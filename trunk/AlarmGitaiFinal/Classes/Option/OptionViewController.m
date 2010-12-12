@@ -77,6 +77,7 @@
 }
 
 - (IBAction)done:(id)sender {
+	[[AlarmConfig getInstance] SaveConfig];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
