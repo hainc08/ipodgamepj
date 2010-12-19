@@ -298,6 +298,11 @@ static NSString* ResourcePath;
 	return -1;
 }
 
+- (int)getCharIdx:(int)idx
+{
+	return preLoadCharIdx[idx];
+}
+
 - (bool)findBg:(int)bgId
 {
 	return (bgId == preLoadBgIdx);

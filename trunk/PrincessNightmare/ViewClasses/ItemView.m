@@ -72,7 +72,7 @@
 				--idx;
 				if (idx == 0)
 				{
-					if ([[SaveManager getInstance] getFlag:500+idx])
+					if ([[SaveManager getInstance] getItemFlag:j])
 					{
 						UIImage* baseImg = [UIImage imageNamed:[NSString stringWithFormat:@"item%d.jpg", j]];
 						[imageButton[i] setImage:baseImg forState:UIControlStateNormal];

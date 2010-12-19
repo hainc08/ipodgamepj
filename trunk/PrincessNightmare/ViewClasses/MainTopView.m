@@ -45,7 +45,7 @@
 		[[SaveManager getInstance] setFlagData:-1];
 		
 		[param setStartScene:0];//[[DataManager getInstance] getMsgIdx:0 idx2:1]];
-		//[param setStartScene:[[DataManager getInstance] getMsgIdx:90 idx2:130]];
+//		[param setStartScene:[[DataManager getInstance] getMsgIdx:4 idx2:293]];
 		[param setIsReplay:false];
 		[[SoundManager getInstance] stopBGM];
 		[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];

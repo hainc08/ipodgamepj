@@ -18,13 +18,13 @@
 
 - (id)initWithCoder:(NSCoder *)coder {
 	self = [super initWithCoder:coder];
-	
+	framePerSec = 20.f;
 	return self;
 }
 
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
-
+	framePerSec = 20.f;
 	return self;
 }
 
@@ -542,6 +542,13 @@
 	//985번에 대한 처리가 필요하다.
 	//이미지 보여주고...
 	NSData* data = [s getCharData:i];
+	
+	int idx = [s getCharIdx:i];
+	if ((idx >= 501)&&(idx <= 522))
+	{
+		[[SaveManager getInstance] setItemFlag:idx-500];
+	}
+	
 	if (data != chrData[i])
 	{
 		if (data == nil) img = nil;
@@ -737,7 +744,7 @@
 			break;
 		case 3:
 			[timer setAlpha:1];
-			[timer startTimer:10];
+			[timer startTimer:10 * framePerSec];
 			[selectPanel1 setAlpha:1];
 			[selectPanel2 setAlpha:1];
 			[selectPanel3 setAlpha:0];
@@ -753,7 +760,7 @@
 			break;
 		case 4:
 			[timer setAlpha:1];
-			[timer startTimer:10];
+			[timer startTimer:10 * framePerSec];
 			[selectPanel1 setAlpha:1];
 			[selectPanel2 setAlpha:1];
 			[selectPanel3 setAlpha:1];

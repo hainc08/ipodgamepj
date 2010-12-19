@@ -88,10 +88,14 @@
 {
 	if (sender == saveButton)
 	{
-		if (saveView == nil) saveView = (SaveView*)[[ViewManager getInstance] getInstView:@"SaveView"];
+		if (saveView == nil)
+		{
+			saveView = (SaveView*)[[ViewManager getInstance] getInstView:@"SaveView"];
+			[saveView setCenter:CGPointMake(240,160)];
+			[self addSubview:saveView];
+		}
 		[saveView reset:nil];
-		[self addSubview:saveView];
-		[saveView setCenter:CGPointMake(240,160)];
+		[saveView setAlpha:1];
 	}
 	else if (sender == yesButton)
 	{

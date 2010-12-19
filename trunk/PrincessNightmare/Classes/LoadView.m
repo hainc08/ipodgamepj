@@ -82,6 +82,7 @@
 			if ((sender == [bars[i] getButton:0])||
 				(sender == [bars[i] getButton:1]))
 			{
+				[[SoundManager getInstance] playFX:@"001_se.mp3" repeat:false];
 				[[DataManager getInstance] resetData];
 
 				GameParam* param = [GameParam alloc];
