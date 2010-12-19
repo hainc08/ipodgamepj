@@ -84,8 +84,6 @@
 	UIView* gameMenu;
 	Timer* timer;
 	
-	int nowBgmIdx;
-	
 	int phase;
 	bool isSkipMode;
 	int skipEnd;

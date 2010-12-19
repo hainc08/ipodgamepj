@@ -5,7 +5,7 @@
 - (id)initWithCoder:(NSCoder *)coder {
 	self = [super initWithCoder:coder];
 	frameTick = 0;
-	framePerSec = 10.f;
+	framePerSec = 20.f;
 	isInit = false;
 	return self;
 }

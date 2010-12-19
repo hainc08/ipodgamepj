@@ -1,6 +1,7 @@
 #import "GameMenu.h"
 #import "ViewManager.h"
 #import "SoundManager.h"
+#import "SaveManager.h"
 
 @implementation GameMenu
 
@@ -70,12 +71,12 @@
 	}
 	else if (sender == saveButton)
 	{
-		[saveView loadPage:0];
+		[saveView loadPage:[[SaveManager getInstance] lastPage]];
 		[saveView setAlpha:1];
 	}
 	else if (sender == loadButton)
 	{
-		[loadView loadPage:0];
+		[loadView loadPage:[[SaveManager getInstance] lastPage]];
 		[loadView setAlpha:1];
 	}
 	else if (sender == exitButton)
