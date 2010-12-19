@@ -13,6 +13,8 @@
 	
 	char flag[20];
 	char flag2[30];
+
+	bool itemFlag[23];
 	
 	NSString* saveFileName;
 	NSString* extraFileName;
@@ -20,6 +22,7 @@
 	NSString* optionFileName;
 	NSString* sceneExpFileName;
 	NSString* sceneExp2FileName;
+	NSString* itemFlagFileName;
 	
 	int lastPage;
 }
@@ -56,6 +59,9 @@
 - (void)loadSceneExpFile;
 - (void)saveSceneExpFile;
 
+- (void)loadItemFlagFile;
+- (void)saveItemFlagFile;
+
 - (void)loadSceneExp2File;
 - (void)saveSceneExp2File:(bool)force;
 
@@ -67,6 +73,9 @@
 
 - (void)setSceneExp2:(int)idx;
 - (bool)getSceneExp2:(int)idx;
+
+- (void)setItemFlag:(int)idx;
+- (bool)getItemFlag:(int)idx;
 
 - (void)save:(int)idx data:(int)data;
 

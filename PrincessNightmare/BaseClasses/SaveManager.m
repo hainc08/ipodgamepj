@@ -45,6 +45,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 	[SaveManagerInst loadSceneExpFile];
 	[SaveManagerInst loadMusicFile];
 	[SaveManagerInst loadSceneExp2File];
+	[SaveManagerInst loadItemFlagFile];
 	[SaveManagerInst resetFlag];
 }
 
@@ -67,6 +68,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 	optionFileName = [[NSString stringWithFormat: @"%@/option.dat", recordingDirectory] retain];
 	sceneExpFileName = [[NSString stringWithFormat: @"%@/sceneExp.dat", recordingDirectory] retain];
 	sceneExp2FileName = [[NSString stringWithFormat: @"%@/sceneExp2.dat", recordingDirectory] retain];
+	itemFlagFileName = [[NSString stringWithFormat: @"%@/itemFlag.dat", recordingDirectory] retain];
 }
 
 - (void)resetFlag
@@ -184,7 +186,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 												 length:sizeof(char) * 30]];
 		}
 	}
-    
+	
 	[writeFile closeFile];
 }
 
@@ -583,6 +585,84 @@ void writeInt(NSFileHandle* writeFile, int value)
 	int i = (int)(idx / 8);
 	int check = sceneExp2[i] & (0x01 << (idx % 8));
 	return (check != 0);
+}
+
+- (void)setItemFlag:(int)idx
+{
+	itemFlag[idx] = true;
+	[self saveItemFlagFile];
+}
+
+- (bool)getItemFlag:(int)idx
+{
+	return itemFlag[idx];
+}
+
+- (void)saveItemFlagFile
+{
+	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:itemFlagFileName];
+	if (writeFile == nil)
+	{
+		[[NSFileManager defaultManager] createFileAtPath:itemFlagFileName
+												contents:nil attributes:nil];
+		
+		writeFile = [NSFileHandle fileHandleForWritingAtPath:itemFlagFileName];
+	}
+	
+	if (writeFile == nil)
+	{
+		NSLog(@"fail to open file");
+		return;
+	}
+	
+	//버전정보심기
+	int ver = 1;
+	writeInt(writeFile, ver);
+	
+	for (int i=0; i<23; ++i)
+	{
+		if (itemFlag[i])
+			writeInt(writeFile, 1);
+		else
+			writeInt(writeFile, 0);
+	}
+    
+	[writeFile closeFile];
+}
+
+- (void)loadItemFlagFile
+{
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:itemFlagFileName];
+	
+	if(readFile == nil)
+	{
+		for (int i=0; i<23; ++i)
+		{
+			itemFlag[i] = false;
+		}
+		return;
+	}
+	
+	//버전정보확인
+	int ver = readInt(readFile);
+	
+	if (ver == 1)
+	{
+		int value;
+		for (int i=0; i<23; ++i)
+		{
+			value = readInt(readFile);
+			itemFlag[i] = (value == 1);
+		}
+	}
+#ifdef __DEBUGGING__	
+	else
+	{
+		[[ErrorManager getInstance] ERROR:"loadSaveFile : 버전정보이상" value:0];
+	}
+#endif
+	
+	[readFile closeFile];
 }
 
 - (void)save:(int)idx data:(int)data

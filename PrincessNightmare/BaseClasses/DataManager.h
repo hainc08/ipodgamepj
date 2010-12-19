@@ -126,6 +126,7 @@
 
 - (int)findChar:(int)chrId;
 - (int)findSChar:(int)chrId;
+- (int)getCharIdx:(int)idx;
 
 - (bool)findBg:(int)bgId;
 

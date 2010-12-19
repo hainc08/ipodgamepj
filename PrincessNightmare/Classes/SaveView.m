@@ -79,6 +79,7 @@
 			if ((sender == [bars[i] getButton:0])||
 				(sender == [bars[i] getButton:1]))
 			{
+				[[SoundManager getInstance] playFX:@"001_se.mp3" repeat:false];
 				[[SaveManager getInstance] save:(curPage * 4) + i
 										   data:[[[DataManager getInstance] getCurScene] sceneId]];
 				[self loadPage:curPage];

@@ -16,7 +16,7 @@
 
 - (void)startTimer:(float)t
 {
-	leftTime = maxTime = t * 10;
+	leftTime = maxTime = t;
 	
 	[sandUpMask setFrame:CGRectMake(15, 26, 50, 35)];
 	[sandUp setCenter:CGPointMake(16, 17)];

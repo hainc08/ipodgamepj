@@ -129,6 +129,7 @@
 				
 				if (imgId >= 400)
 				{
+					[[SoundManager getInstance] stopBGM];
 					[self playAnime:[NSString stringWithFormat:@"%d", imgId]];
 					
 					endView = (MovieEndView*)[[ViewManager getInstance] getInstView:@"MovieEndView"];
@@ -184,17 +185,24 @@
 
 	if ([endView showEnd])
 	{
-		[endView setShowEnd:false];
-		[endView setUserInteractionEnabled:false];
 		[player stop];
 	}
 }
 
 - (void)didFinishPlaying:(NSNotification *)notification {
     if (player == [notification object]) {   
+		if ([[ViewManager getInstance] movieMode] == 2)
+		{
+			[player.view removeFromSuperview];
+		}
+
         [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
         [player release];
         player = nil;
+
+		[endView removeFromSuperview];
+		endView = nil;
+		[[SoundManager getInstance] playBGM:@"Abgm_10-1.mp3"];
     }
 }
 
