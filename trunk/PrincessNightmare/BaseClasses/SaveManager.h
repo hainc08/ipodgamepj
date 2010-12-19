@@ -20,10 +20,14 @@
 	NSString* optionFileName;
 	NSString* sceneExpFileName;
 	NSString* sceneExp2FileName;
+	
+	int lastPage;
 }
 
 @property (readonly) int opt1;
 @property (readonly) int opt2;
+
+@property (readwrite) int lastPage;
 
 + (SaveManager*)getInstance;
 + (void)initManager;

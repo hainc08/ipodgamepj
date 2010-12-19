@@ -96,7 +96,7 @@
 		[UIView commitAnimations];
 	}
 
-	[[SoundManager getInstance] playBGM:@"logo.mp3"];
+	[[SoundManager getInstance] playFX:@"logo.mp3" repeat:false];
 }
 
 - (void)update
@@ -118,7 +118,7 @@
 		}
 		case 2:
 			//다음뷰로 이동 한다.
-			[[SoundManager getInstance] stopBGM];
+			[[SoundManager getInstance] stopFX];
 
 			[self playAnime:@"opening"];
 

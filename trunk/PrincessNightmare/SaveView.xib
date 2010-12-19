@@ -106,7 +106,7 @@
 					<object class="IBUIButton" id="230307259">
 						<reference key="NSNextResponder" ref="349670980"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{435, 10}, {25, 35}}</string>
+						<string key="NSFrame">{{428, 3}, {40, 50}}</string>
 						<reference key="NSSuperview" ref="349670980"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -128,7 +128,7 @@
 					<object class="IBUIButton" id="162643936">
 						<reference key="NSNextResponder" ref="349670980"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{317, 10}, {25, 35}}</string>
+						<string key="NSFrame">{{309.5, 2.5}, {40, 50}}</string>
 						<reference key="NSSuperview" ref="349670980"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -347,7 +347,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>SaveView</string>
-					<string>{{415, 351}, {480, 320}}</string>
+					<string>{{414, 351}, {480, 320}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -699,8 +699,8 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{80, 45}</string>
 				<string>{480, 320}</string>
-				<string>{18, 28}</string>
-				<string>{18, 28}</string>
+				<string>{27, 42}</string>
+				<string>{27, 42}</string>
 				<string>{367, 49}</string>
 			</object>
 		</object>

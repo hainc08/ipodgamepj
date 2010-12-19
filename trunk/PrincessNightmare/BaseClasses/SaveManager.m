@@ -26,6 +26,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 @synthesize opt1;
 @synthesize opt2;
+@synthesize lastPage;
 
 + (SaveManager*)getInstance
 {
@@ -36,10 +37,13 @@ void writeInt(NSFileHandle* writeFile, int value)
 {
 	SaveManagerInst = [SaveManager alloc];
 	
+	[SaveManagerInst setLastPage:0];
+	
 	[SaveManagerInst initFilePath];
 	[SaveManagerInst loadSaveFile];
 	[SaveManagerInst loadOptionFile];
 	[SaveManagerInst loadSceneExpFile];
+	[SaveManagerInst loadMusicFile];
 	[SaveManagerInst loadSceneExp2File];
 	[SaveManagerInst resetFlag];
 }

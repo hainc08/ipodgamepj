@@ -29,13 +29,7 @@
 	[ViewManager initManager:window:viewController];
 	[application setStatusBarOrientation: UIInterfaceOrientationLandscapeRight animated:NO];
 	
-#ifdef __SIMUL
-	[[ViewManager getInstance] changeView:@"MainTopView"];
-#endif
-
-#ifdef __DEVICE
 	[[ViewManager getInstance] changeView:@"GameLogoView"];
-#endif
 }
 
 - (void)loadProc:(id)args

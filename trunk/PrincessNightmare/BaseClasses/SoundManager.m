@@ -34,9 +34,6 @@ static SoundManager *SoundManagerInst;
 
 -(void)playBGM:(NSString*)name
 {
-#ifdef __SIMUL
-	return;
-#endif
 	if ([name compare:bgmName] == NSOrderedSame) return;
 
 	// make file URL
@@ -70,10 +67,6 @@ static SoundManager *SoundManagerInst;
 	
 -(void)playFX:(NSString*)name repeat:(bool)repeat
 {
-#ifdef __SIMUL
-	return;
-#endif
-	
 	NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
 	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
 

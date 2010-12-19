@@ -31,13 +31,15 @@
 	
 	[[SaveManager getInstance] loadSaveFile];
 	
-	[self loadPage:0];
+	[self loadPage:[[SaveManager getInstance] lastPage]];
 }
 
 - (void)loadPage:(int)page
 {
 	curPage = page;
-
+	
+	[[SaveManager getInstance] setLastPage:curPage];
+	
 	[pageLabel setText:[NSString stringWithFormat:@"%d / 7", curPage + 1]];
 	
 	if (page == 0) [prevButton setAlpha:0];

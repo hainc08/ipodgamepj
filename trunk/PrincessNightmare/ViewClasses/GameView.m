@@ -107,7 +107,6 @@
 		isInit = true;
 	}
 	
-	nowBgmIdx = 0;
 	scene = NULL;
 	curSceneId = [gParam startScene];
 	updateWait = 0;
@@ -198,7 +197,6 @@
 		[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 		[sceneView setAlpha:1];
 		[UIView commitAnimations];
-		nowBgmIdx = 0;
 		return;
 	}
 	
@@ -431,7 +429,6 @@
 					[[SoundManager getInstance] playFX:@"002_jg.mp3" repeat:false];
 					[sceneView setAlpha:1];
 					
-					nowBgmIdx = 0;
 					return;
 				}
 				
@@ -454,7 +451,7 @@
 	[UIView beginAnimations:@"show" context:NULL];
 	
 	[UIView setAnimationDelay:delay];
-	[UIView setAnimationDuration:0.4];
+	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 	[chrView[0] setAlpha:1];
 	[chrView[1] setAlpha:1];
@@ -469,7 +466,7 @@
 	[UIView beginAnimations:@"hide" context:NULL];
 	
 	[UIView setAnimationDelay:delay];
-	[UIView setAnimationDuration:0.4];
+	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 	[oldChrView[0] setAlpha:0];
 	[oldChrView[1] setAlpha:0];
@@ -497,7 +494,7 @@
 {
 	NSString* bgmName;
 	int bgmIdx = [s preLoadBgmIdx];
-	
+
 	if (bgmIdx == 0)
 	{
 		[[SoundManager getInstance] stopBGM];
@@ -689,6 +686,9 @@
 
 	[[SaveManager getInstance] setSceneExp2:[s sceneId]];
 
+	[self playBGM:s];
+	[self playFx:s];
+
 	for (int i=0; i<4; ++i)
 		[self showChar:s idx:i];
 	
@@ -748,6 +748,7 @@
 			[selectPanel2 setCenter:CGPointMake(240+65,110)];
 			[next setAlpha:0];
 
+			[[SoundManager getInstance] playFX:@"009_jg.mp3" repeat:false];
 			isSkipMode = false;
 			break;
 		case 4:
@@ -764,12 +765,10 @@
 			[selectPanel3 setCenter:CGPointMake(370,110)];
 			[next setAlpha:0];
 
+			[[SoundManager getInstance] playFX:@"009_jg.mp3" repeat:false];
 			isSkipMode = false;
 			break;
 	}
-	
-	[self playBGM:s];
-	[self playFx:s];
 
 	[serihuBoard setAlpha:1];
 	[serihuBoard setSerihu:[scene getChara] serihu:[scene getSerihu]];
@@ -789,8 +788,6 @@
 	[chrView[3] setAlpha:0];
 	[bgView setAlpha:0];
 	[serihuBoard setAlpha:0];
-
-	nowBgmIdx = 0;
 	
 	[selectPanel1 setAlpha:0];
 	[selectPanel2 setAlpha:0];

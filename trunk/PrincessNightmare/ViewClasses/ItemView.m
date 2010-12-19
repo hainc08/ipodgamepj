@@ -62,18 +62,28 @@
 	
 	for (int i=0; i<15; ++i)
 	{
+		[imageButton[i] setAlpha:0];
+
 		int idx = (curPage-1) * 15 + i + 1;
-		//		if ((idx > 19) || ([[SaveManager getInstance] getFlag:500+idx] == false))
-		if (idx > 19)
+		for (int j=1; j<22; ++j)
 		{
-			[imageButton[i] setAlpha:0];
+			if ([[[DataManager getInstance] getItemName:j idx2:0] length] > 0)
+			{
+				--idx;
+				if (idx == 0)
+				{
+					if ([[SaveManager getInstance] getFlag:500+idx])
+					{
+						UIImage* baseImg = [UIImage imageNamed:[NSString stringWithFormat:@"item%d.jpg", j]];
+						[imageButton[i] setImage:baseImg forState:UIControlStateNormal];
+						[imageButton[i] setAlpha:1];
+					}
+					goto FINDITEM;
+				}
+			}
 		}
-		else
-		{
-			UIImage* baseImg = [UIImage imageNamed:[NSString stringWithFormat:@"image%d.jpg", idx]];
-			[imageButton[i] setImage:baseImg forState:UIControlStateNormal];
-			[imageButton[i] setAlpha:1];
-		}
+	FINDITEM:
+		continue;
 	}
 }
 
@@ -108,16 +118,24 @@
 		{
 			if (sender == imageButton[i])
 			{
-				int idx = (curPage - 1) * 15 + i + 1;
-				[descView setCenter:CGPointMake(240,160)];
-				[descView setAlpha:1];
-				[itemImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"image%d.jpg", idx]]];
-				
-				//이건 왜 건너띄게 스크립트를 만들어서...짱나...
-				if (idx == 19) idx = 22;
-				[itemName setText:[[DataManager getInstance] getItemName:idx idx2:0]];
-				[itemDesc setText:[[DataManager getInstance] getItemName:idx idx2:1]];
-				return;
+				int idx = (curPage-1) * 15 + i + 1;
+				for (int j=1; j<22; ++j)
+				{
+					if ([[[DataManager getInstance] getItemName:j idx2:0] length] > 0)
+					{
+						--idx;
+						if (idx == 0)
+						{
+							[descView setCenter:CGPointMake(240,160)];
+							[descView setAlpha:1];
+							[itemImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"item%d.jpg", j]]];
+							
+							[itemName setText:[[DataManager getInstance] getItemName:j idx2:0]];
+							[itemDesc setText:[[DataManager getInstance] getItemName:j idx2:1]];
+							return;
+						}
+					}
+				}
 			}
 		}
 	}
