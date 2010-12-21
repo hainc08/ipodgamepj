@@ -115,7 +115,7 @@
 				
 				if (idx < 10) fileName = [NSString stringWithFormat: @"Abgm_0%d-1.mp3", idx];
 				else fileName = [NSString stringWithFormat: @"Abgm_%d-1.mp3", idx];
-				[[SoundManager getInstance] playBGM:fileName];
+				[[SoundManager getInstance] playBGM:fileName idx:idx];
 			}
 		}
 	}

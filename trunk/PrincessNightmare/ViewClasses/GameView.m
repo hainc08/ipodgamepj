@@ -19,12 +19,14 @@
 - (id)initWithCoder:(NSCoder *)coder {
 	self = [super initWithCoder:coder];
 	framePerSec = 20.f;
+
 	return self;
 }
 
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	framePerSec = 20.f;
+
 	return self;
 }
 
@@ -32,6 +34,7 @@
 {
 	[super reset:param];
 	
+	if (gParam != nil) [gParam release];
 	gParam = (GameParam*)param;
 	
 	if (isInit == false)
@@ -105,6 +108,30 @@
 		[self bringSubviewToFront:blackBoard];
 
 		isInit = true;
+	}
+	else
+	{
+		[gameMenu setAlpha:0.f];
+		
+		for (int i=0; i<4; ++i)
+		{
+			[chrView[i] setImage:nil];
+			[chrView[i] setAlpha:0.f];
+			[oldChrView[i] setImage:nil];
+			[oldChrView[i] setAlpha:0.f];
+		}
+		
+		[movieUI setAlpha:0.f];
+
+		[bgView setImage:nil];
+		[bgView setAlpha:0.f];
+		[oldBgView setImage:nil];
+		[oldBgView setAlpha:0.f];
+		
+		[sceneView setAlpha:0];
+
+		[timer setAlpha:0];
+		[timer stop];
 	}
 	
 	scene = NULL;
@@ -505,7 +532,7 @@
 		if (bgmIdx < 10) bgmName = [[NSString alloc] initWithFormat:@"Abgm_0%d-1.mp3",bgmIdx];
 		else bgmName = [[NSString alloc] initWithFormat:@"Abgm_%d-1.mp3",bgmIdx];
 		
-		[[SoundManager getInstance] playBGM:bgmName];
+		[[SoundManager getInstance] playBGM:bgmName idx:bgmIdx];
 		[bgmName dealloc];
 	}
 }	
@@ -523,12 +550,12 @@
 		if ([scene FXrepeat])
 		{
 			fxName = [[NSString alloc] initWithFormat:@"seLoop-%d.mp3",fxIdx];
-			[[SoundManager getInstance] playFX:fxName repeat:true];
+			[[SoundManager getInstance] playFX2:fxName idx:fxIdx-1 repeat:true];
 		}
 		else
 		{
 			fxName = [[NSString alloc] initWithFormat:@"se-%d.mp3",fxIdx];
-			[[SoundManager getInstance] playFX:fxName repeat:false];
+			[[SoundManager getInstance] playFX2:fxName idx:fxIdx+16-1 repeat:false];
 		}
 		[fxName release];
 	}
@@ -688,7 +715,7 @@
 {
 	if (isSkipMode)
 	{
-		if ([[SaveManager getInstance] getSceneExp2:[s sceneId]] == false) isSkipMode = false;
+		//if ([[SaveManager getInstance] getSceneExp2:[s sceneId]] == false) isSkipMode = false;
 	}
 
 	[[SaveManager getInstance] setSceneExp2:[s sceneId]];

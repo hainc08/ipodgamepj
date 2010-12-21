@@ -160,7 +160,7 @@
 	EventList* eventList[15];	
 	NSString* itemName[23][2];
 	
-	bool musicShowData[34];
+	bool musicShowData[35];
 
 	int msgCount;
 	Msg* msg[22050];
@@ -229,7 +229,7 @@
 - (int)getEventData:(int)idx;
 - (void)setEventShow:(int)eventIdx;
 
-- (void)resetMusicShow;
+- (void)setMusicShowWithoutSave:(int)idx;
 - (void)setMusicShow:(int)idx;
 - (bool)getMusicShow:(int)idx;
 

@@ -202,7 +202,8 @@
 
 		[endView removeFromSuperview];
 		endView = nil;
-		[[SoundManager getInstance] playBGM:@"Abgm_10-1.mp3"];
+
+		[[SoundManager getInstance] playBGM:@"Abgm_10-1.mp3" idx:10];
     }
 }
 

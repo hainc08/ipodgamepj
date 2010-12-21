@@ -9,12 +9,14 @@
 
 - (id)initWithCoder:(NSCoder *)coder {
 	self = [super initWithCoder:coder];
+	loadView = nil;
 	
 	return self;
 }
 
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
+	loadView = nil;
 
 	return self;
 }
@@ -22,13 +24,17 @@
 - (void)reset:(NSObject*)param
 {
 	[super reset:param];
-	
+
 	loadingDone = false;
 	[start setAlpha:0];
 
-	loadView = (LoadView*)[[ViewManager getInstance] getInstView:@"LoadView"];
-	[loadView reset:nil];
-	[self addSubview:loadView];
+	if (loadView == nil)
+	{
+		loadView = (LoadView*)[[ViewManager getInstance] getInstView:@"LoadView"];
+		[loadView reset:nil];
+		[self addSubview:loadView];
+	}
+	
 	[loadView setCenter:CGPointMake(240,160)];
 	[loadView setAlpha:0];
 }
@@ -47,8 +53,8 @@
 		[param setStartScene:0];//[[DataManager getInstance] getMsgIdx:0 idx2:1]];
 //		[param setStartScene:[[DataManager getInstance] getMsgIdx:4 idx2:293]];
 		[param setIsReplay:false];
-		[[SoundManager getInstance] stopBGM];
-		[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];
+//		[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];
+		[[ViewManager getInstance] changeView:@"GameView" param:param];
 	}
 	else if (sender == load)
 	{
@@ -79,7 +85,7 @@
 	
 	if (loadingDone == false)
 	{
-		[[SoundManager getInstance] playBGM:@"Abgm_10-1.mp3"];
+		[[SoundManager getInstance] playBGM:@"Abgm_10-1.mp3" idx:10];
 
 		if ([[DataManager getInstance] loadingDone])
 		{

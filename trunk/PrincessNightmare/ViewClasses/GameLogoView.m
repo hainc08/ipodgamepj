@@ -158,6 +158,12 @@
 
 - (void)didFinishPlaying:(NSNotification *)notification {
     if (player == [notification object]) {   
+		if ([[ViewManager getInstance] movieMode] == 1)
+		{
+			[endView removeFromSuperview];
+			[endView release];
+		}
+
         [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
         [player release];
         player = nil;
@@ -191,6 +197,11 @@
 		
         [player play];
     }
+}
+
+- (void)dealloc
+{
+	[super dealloc];
 }
 
 @end
