@@ -26,9 +26,12 @@
 		[saveButton setAlpha:0];
 		[loadButton setAlpha:0];
 		
-		configView = (ConfigurationView*)[[ViewManager getInstance] getInstView:@"ConfigurationView"];
+		if (configView == nil)
+		{
+			configView = (ConfigurationView*)[[ViewManager getInstance] getInstView:@"ConfigurationView"];
+			[self addSubview:configView];
+		}
 		[configView reset:nil];
-		[self addSubview:configView];
 		[configView setCenter:CGPointMake(240,160)];
 		[configView setAlpha:0];
 		[configView setViewtype:1];
@@ -40,21 +43,30 @@
 		[saveButton setAlpha:1];
 		[loadButton setAlpha:1];
 		
-		saveView = (SaveView*)[[ViewManager getInstance] getInstView:@"SaveView"];
+		if (saveView == nil)
+		{
+			saveView = (SaveView*)[[ViewManager getInstance] getInstView:@"SaveView"];
+			[self addSubview:saveView];
+		}
 		[saveView reset:nil];
-		[self addSubview:saveView];
 		[saveView setCenter:CGPointMake(240,160)];
 		[saveView setAlpha:0];
 		
-		loadView = (LoadView*)[[ViewManager getInstance] getInstView:@"LoadView"];
+		if (loadView == nil)
+		{
+			loadView = (LoadView*)[[ViewManager getInstance] getInstView:@"LoadView"];
+			[self addSubview:loadView];
+		}
 		[loadView reset:nil];
-		[self addSubview:loadView];
 		[loadView setCenter:CGPointMake(240,160)];
 		[loadView setAlpha:0];
 
-		configView = (ConfigurationView*)[[ViewManager getInstance] getInstView:@"ConfigurationView"];
+		if (configView == nil)
+		{
+			configView = (ConfigurationView*)[[ViewManager getInstance] getInstView:@"ConfigurationView"];
+			[self addSubview:configView];
+		}
 		[configView reset:nil];
-		[self addSubview:configView];
 		[configView setCenter:CGPointMake(240,160)];
 		[configView setAlpha:0];
 		[configView setViewtype:1];
