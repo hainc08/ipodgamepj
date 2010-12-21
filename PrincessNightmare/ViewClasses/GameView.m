@@ -508,11 +508,11 @@
 	if (gameMenu == nil)
 	{
 		gameMenu = [[ViewManager getInstance] getInstView:@"GameMenu"];
-		[gameMenu reset:[gParam isReplay]];
 		[self addSubview:gameMenu];
 		[gameMenu setCenter:CGPointMake(240,160)];
 	}
 	
+	[gameMenu reset:[gParam isReplay]];
 	[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 	[gameMenu setAlpha:1];
 }

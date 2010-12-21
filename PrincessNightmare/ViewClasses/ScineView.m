@@ -152,7 +152,7 @@
 					[param setIsReplay:true];
 					[param setReplayIdx:idx];
 					
-					[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];
+					[[ViewManager getInstance] changeView:@"GameView" param:param];
 				}
 			}
 		}

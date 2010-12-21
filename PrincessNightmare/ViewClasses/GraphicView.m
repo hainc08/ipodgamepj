@@ -160,8 +160,23 @@
 					else
 						tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_%d.jpg", imgId]];
 					
+					[imageBigButton setFrame:CGRectMake(0, 0, [tempImg size].width, [tempImg size].height)];
 					[imageBigButton setImage:tempImg forState:UIControlStateNormal];
 					[imageBigButton setAlpha:1];
+
+					if ([tempImg size].height > 500)
+					{
+						[UIView beginAnimations:@"scene" context:NULL];
+						[UIView setAnimationDuration:5];
+						[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+						[imageBigButton setCenter:CGPointMake(240, 340 - (int)([tempImg size].height / 2))];
+						[UIView commitAnimations];
+					}
+					else
+					{
+						[imageBigButton setCenter:CGPointMake(240, 160)];
+					}
+
 				}
 
 				return;
