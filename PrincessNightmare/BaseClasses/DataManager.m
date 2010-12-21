@@ -393,7 +393,6 @@ static NSString* ResourcePath;
 
 	[DataManagerInst setLoadingDone:false];
 	[DataManagerInst reset];
-	[DataManagerInst resetMusicShow];
 	
 // Tag, Index 프리로딩
 //	for (int i=0; i<1000000; ++i)
@@ -1282,17 +1281,6 @@ GABBAGE_CHECK_OK:
 	}
 }
 
-- (void)resetMusicShow
-{
-	for (int i=0; i>34; ++i)
-	{
-		musicShowData[i] = false;
-	}
-
-	//메인로고 배경음
-	musicShowData[10] = true;
-}
-
 - (void)setMusicShow:(int)idx
 {
 	if (musicShowData[idx] == false)
@@ -1300,6 +1288,11 @@ GABBAGE_CHECK_OK:
 		musicShowData[idx] = true;
 		[[SaveManager getInstance] saveMusicFile];
 	}
+}
+
+- (void)setMusicShowWithoutSave:(int)idx
+{
+	musicShowData[idx] = true;
 }
 
 - (bool)getMusicShow:(int)idx

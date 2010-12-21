@@ -1,6 +1,5 @@
 #import "MovieBoard.h"
 #import "ViewManager.h"
-#import "SerihuBoard.h"
 
 @implementation MovieBoard
 
@@ -9,12 +8,14 @@
 - (id)initWithCoder:(NSCoder *)coder {
 	self = [super initWithCoder:coder];
 	isPLaying = false;
+	sBoard = nil;
 	return self;
 }
 
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	isPLaying = false;
+	sBoard = nil;
 	return self;
 }
 
@@ -32,7 +33,7 @@
 			// Add our overlay view to the movie player's subviews so it is 
 			// displayed above it.
 
-			SerihuBoard* sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
+			sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
 			[sBoard setTransform:CGAffineTransformMake(0, 1, -1, 0, 0, 0)];		
 			[sBoard setCenter:CGPointMake(60, 290)];		
 			[sBoard setSerihu:[s getChara] serihu:[s getSerihu]];
@@ -50,6 +51,13 @@
 
 - (void)stopMovie
 {
+	if (sBoard != nil)
+	{
+		[sBoard removeFromSuperview];
+		[sBoard release];
+		sBoard = nil;
+	}
+
 	[player stop];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
 	[player release];
@@ -60,6 +68,13 @@
 
 - (void)didFinishPlaying:(NSNotification *)notification {
     if (player == [notification object]) {   
+		if (sBoard != nil)
+		{
+			[sBoard removeFromSuperview];
+			[sBoard release];
+			sBoard = nil;
+		}
+
         [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
         [player release];
         player = nil;

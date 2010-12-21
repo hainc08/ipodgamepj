@@ -93,6 +93,12 @@
 }
 
 - (void)dealloc {
+	for (int i=0; i<4; ++i)
+	{
+		[bars[i] removeFromSuperview];
+		[bars[i] release];
+	}
+		
 	[super dealloc];	
 }
 

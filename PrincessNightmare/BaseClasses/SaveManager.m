@@ -319,7 +319,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 	int ver = 1;
 	writeInt(writeFile, ver);
 	
-	for (int i=0; i<34; ++i)
+	for (int i=0; i<35; ++i)
 	{
 		if ([[DataManager getInstance] getMusicShow:i])
 			writeInt(writeFile, 1);
@@ -344,12 +344,12 @@ void writeInt(NSFileHandle* writeFile, int value)
 	
 	if (ver == 1)
 	{
-		for (int i=0; i<34; ++i)
+		for (int i=0; i<35; ++i)
 		{
 			int temp = readInt(readFile);
 			if (temp != 0)
 			{
-				[[DataManager getInstance] setMusicShow:i];
+				[[DataManager getInstance] setMusicShowWithoutSave:i];
 			}
 		}
 	}
@@ -589,6 +589,8 @@ void writeInt(NSFileHandle* writeFile, int value)
 
 - (void)setItemFlag:(int)idx
 {
+	if (itemFlag[idx]) return;
+
 	itemFlag[idx] = true;
 	[self saveItemFlagFile];
 }
