@@ -158,8 +158,10 @@
 		if ([[SaveManager getInstance] getSceneExp2:curSceneId])
 		{
 			isSkipMode = true;
-			[self ButtonClick:next];
 		}
+
+		[self ButtonClick:next];
+
 //		for (int i=1; i<=127; ++i)
 //		{
 //			Scenario* scenario = [[DataManager getInstance] getScenario:i];
@@ -715,7 +717,7 @@
 {
 	if (isSkipMode)
 	{
-		//if ([[SaveManager getInstance] getSceneExp2:[s sceneId]] == false) isSkipMode = false;
+		if ([[SaveManager getInstance] getSceneExp2:[s sceneId]] == false) isSkipMode = false;
 	}
 
 	[[SaveManager getInstance] setSceneExp2:[s sceneId]];
