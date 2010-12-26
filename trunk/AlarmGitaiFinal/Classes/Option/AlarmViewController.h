@@ -30,5 +30,6 @@
 @property (nonatomic,  assign, getter=isindex) int	index;
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
+- (IBAction)deleteAlarm:(id)sender;
 
 @end
