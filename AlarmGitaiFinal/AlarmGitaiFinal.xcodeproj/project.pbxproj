@@ -41,6 +41,12 @@
 		84643CBA12A4424D00F4ADBC /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84643CB912A4424D00F4ADBC /* AlarmViewController.m */; };
 		84643D3612A44B8000F4ADBC /* ButtonArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84643D3512A44B8000F4ADBC /* ButtonArrow.png */; };
 		846F328C12A41B000073171A /* AlarmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846F328B12A41B000073171A /* AlarmCell.xib */; };
+		849A980212C7A1350017FDCA /* RepeatSetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849A980112C7A1350017FDCA /* RepeatSetView.xib */; };
+		849A980512C7A1430017FDCA /* RepeatSetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 849A980412C7A1430017FDCA /* RepeatSetView.m */; };
+		849A982212C7A5F10017FDCA /* Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 849A982012C7A5F10017FDCA /* Selected.png */; };
+		849A982312C7A5F10017FDCA /* UnSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 849A982112C7A5F10017FDCA /* UnSelected.png */; };
+		849A982D12C7AF7B0017FDCA /* WeekSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 849A982B12C7AF7B0017FDCA /* WeekSelected.png */; };
+		849A982E12C7AF7B0017FDCA /* WeekUnSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 849A982C12C7AF7B0017FDCA /* WeekUnSelected.png */; };
 		849C850312A334490044EA7D /* MainClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849C84FE12A334490044EA7D /* MainClockViewController.m */; };
 		849C851212A3354B0044EA7D /* OptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849C850E12A3354B0044EA7D /* OptionViewController.m */; };
 		849C851312A3354B0044EA7D /* UITableViewCellTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 849C851012A3354B0044EA7D /* UITableViewCellTemplate.m */; };
@@ -591,6 +597,13 @@
 		84643D3512A44B8000F4ADBC /* ButtonArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ButtonArrow.png; path = image/ButtonArrow.png; sourceTree = "<group>"; };
 		846F328B12A41B000073171A /* AlarmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmCell.xib; sourceTree = "<group>"; };
 		8483607712A3300600B5AE14 /* FlipsideViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipsideViewControllerDelegate.h; path = Classes/FlipsideViewControllerDelegate.h; sourceTree = "<group>"; };
+		849A980112C7A1350017FDCA /* RepeatSetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepeatSetView.xib; sourceTree = "<group>"; };
+		849A980312C7A1430017FDCA /* RepeatSetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RepeatSetView.h; path = Classes/RepeatSetView.h; sourceTree = SOURCE_ROOT; };
+		849A980412C7A1430017FDCA /* RepeatSetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RepeatSetView.m; path = Classes/RepeatSetView.m; sourceTree = SOURCE_ROOT; };
+		849A982012C7A5F10017FDCA /* Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Selected.png; sourceTree = "<group>"; };
+		849A982112C7A5F10017FDCA /* UnSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnSelected.png; sourceTree = "<group>"; };
+		849A982B12C7AF7B0017FDCA /* WeekSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeekSelected.png; sourceTree = "<group>"; };
+		849A982C12C7AF7B0017FDCA /* WeekUnSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeekUnSelected.png; sourceTree = "<group>"; };
 		849C84FD12A334490044EA7D /* MainClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainClockViewController.h; path = Classes/MainClockViewController.h; sourceTree = "<group>"; };
 		849C84FE12A334490044EA7D /* MainClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainClockViewController.m; path = Classes/MainClockViewController.m; sourceTree = "<group>"; };
 		849C850D12A3354B0044EA7D /* OptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionViewController.h; sourceTree = "<group>"; };
@@ -1195,6 +1208,7 @@
 				849C856412A337780044EA7D /* OptionView.xib */,
 				84643CB612A4420C00F4ADBC /* AlarmView.xib */,
 				846F328B12A41B000073171A /* AlarmCell.xib */,
+				849A980112C7A1350017FDCA /* RepeatSetView.xib */,
 				84BD04F912A435280064AB28 /* ButtonCell.xib */,
 				84BD04FA12A435280064AB28 /* SwitchCell.xib */,
 				280E754B0DD40C5E005A515E /* MainView.xib */,
@@ -1251,6 +1265,8 @@
 				849C850E12A3354B0044EA7D /* OptionViewController.m */,
 				849C850F12A3354B0044EA7D /* UITableViewCellTemplate.h */,
 				849C851012A3354B0044EA7D /* UITableViewCellTemplate.m */,
+				849A980312C7A1430017FDCA /* RepeatSetView.h */,
+				849A980412C7A1430017FDCA /* RepeatSetView.m */,
 			);
 			name = Option;
 			path = Classes/Option;
@@ -1282,7 +1298,11 @@
 				84D432CC129DE63600356784 /* Default.png */,
 				8412205C12C78E71004D41DA /* delete.png */,
 				84643D3512A44B8000F4ADBC /* ButtonArrow.png */,
+				849A982012C7A5F10017FDCA /* Selected.png */,
+				849A982112C7A5F10017FDCA /* UnSelected.png */,
 				84D434F3129DE76800356784 /* touch.png */,
+				849A982B12C7AF7B0017FDCA /* WeekSelected.png */,
+				849A982C12C7AF7B0017FDCA /* WeekUnSelected.png */,
 			);
 			name = Image;
 			sourceTree = "<group>";
@@ -2554,6 +2574,11 @@
 				844D5A2A12AD5015003107CD /* char_Office.png in Resources */,
 				8424078312B52E6C00EFF60C /* week2.png in Resources */,
 				8412205D12C78E71004D41DA /* delete.png in Resources */,
+				849A980212C7A1350017FDCA /* RepeatSetView.xib in Resources */,
+				849A982212C7A5F10017FDCA /* Selected.png in Resources */,
+				849A982312C7A5F10017FDCA /* UnSelected.png in Resources */,
+				849A982D12C7AF7B0017FDCA /* WeekSelected.png in Resources */,
+				849A982E12C7AF7B0017FDCA /* WeekUnSelected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2586,6 +2611,7 @@
 				5674BD2112A529D800FC97BE /* AlarmViewSetController.m in Sources */,
 				84B00B7012ACAB620093647C /* OptionPreview.m in Sources */,
 				844D595512AD35B1003107CD /* NewWeekView.m in Sources */,
+				849A980512C7A1430017FDCA /* RepeatSetView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

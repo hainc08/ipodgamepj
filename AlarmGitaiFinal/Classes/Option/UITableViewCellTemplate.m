@@ -23,7 +23,7 @@
 
 @implementation UITableViewAlarmCell
 
--(void)setInfo:(NSString*)tStr :(NSString*)rStr :(bool)isOn
+-(void)setInfo:(NSString*)tStr :(int)repeatIdx :(bool)isOn
 {
 	if (isOn)
 	{
@@ -40,8 +40,59 @@
 		[onOff setText:@"Off"];
 	}
 
+	//아오 프로그래밍을 이따위로 하면 안되는데...
+	//귀찮아...[ㅡ_ㅡ ]
+	NSString* value;
+	char temp[256];
+
+	if (repeatIdx == 0) value = @"Never Repeat";
+	else if (repeatIdx == 1) value = @"Everyday";
+	else
+	{
+		int idx = repeatIdx - 2;
+
+		temp[0] = 0x00;
+
+		if (idx & 0x01)
+		{
+			strcat(temp, "Son");
+		}
+		if (idx & 0x02)
+		{
+			if (temp[0] != 0x00) strcat(temp, ",");
+			strcat(temp, "Mon");
+		}
+		if (idx & 0x04)
+		{
+			if (temp[0] != 0x00) strcat(temp, ",");
+			strcat(temp, "Tue");
+		}
+		if (idx & 0x08)
+		{
+			if (temp[0] != 0x00) strcat(temp, ",");
+			strcat(temp, "Wed");
+		}
+		if (idx & 0x10)
+		{
+			if (temp[0] != 0x00) strcat(temp, ",");
+			strcat(temp, "The");
+		}
+		if (idx & 0x20)
+		{
+			if (temp[0] != 0x00) strcat(temp, ",");
+			strcat(temp, "Fri");
+		}
+		if (idx & 0x40)
+		{
+			if (temp[0] != 0x00) strcat(temp, ",");
+			strcat(temp, "Sat");
+		}
+		
+		value = [NSString stringWithFormat:@"%s", temp];
+	}
+	
 	[alarmTime setText:tStr];
-	[alarmRepeat setText:rStr];
+	[alarmRepeat setText:value];
 }
 
 @end
