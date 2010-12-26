@@ -5,23 +5,8 @@
 @interface RepeatSetView : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 	id <FlipsideViewControllerDelegate> delegate;
 
-	IBOutlet id neverRepeat;
-	IBOutlet id everyDay;
-	IBOutlet id everyWeek;
-
-	IBOutlet id weekView;
-
-	IBOutlet id sonDay;
-	IBOutlet id monDay;
-	IBOutlet id tueDay;
-	IBOutlet id wedDay;
-	IBOutlet id theDay;
-	IBOutlet id friDay;
-	IBOutlet id satDay;
-	
-	id lastSelect;
-	
-	UIImage* img[4];
+	int repeatIdx;
+	int repeatIdx2;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
@@ -29,7 +14,5 @@
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;
-- (IBAction)selectOption:(id)sender;
-- (IBAction)selectWeekday:(id)sender;
 
 @end

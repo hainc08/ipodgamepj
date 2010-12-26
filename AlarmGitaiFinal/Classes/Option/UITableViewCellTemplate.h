@@ -43,3 +43,15 @@
 - (void)showArrow:(bool)show;
 
 @end
+
+@interface UITableViewSelectCell : UITableViewCell
+{
+	IBOutlet UILabel* nameLabel;
+	IBOutlet id select;
+}
+
+- (void)setInfo:(NSString*)name;
+- (void)showSelect:(bool)show;
+
+@end
+

@@ -1,4 +1,5 @@
 #import "RepeatSetView.h"
+#import "UITableViewCellTemplate.h"
 
 @implementation RepeatSetView
 
@@ -9,132 +10,23 @@
     [super viewDidLoad];
 	
 	self.title = @"Alarm Repeat";
+	repeatIdx = [alarm RepeatIdx];
 
-	img[0] = [[UIImage imageNamed:@"Unselected.png"] retain];
-	img[1] = [[UIImage imageNamed:@"Selected.png"] retain];
-	
-	img[2] = [[UIImage imageNamed:@"WeekUnselected.png"] retain];
-	img[3] = [[UIImage imageNamed:@"WeekSelected.png"] retain];
-
-	[neverRepeat setBackgroundImage:img[0] forState:UIControlStateNormal];
-	[everyDay setBackgroundImage:img[0] forState:UIControlStateNormal];
-	[everyWeek setBackgroundImage:img[0] forState:UIControlStateNormal];
-	[weekView setAlpha:0];
-
-	if (alarm.RepeatIdx == 0)
+	if (repeatIdx > 1)
 	{
-		lastSelect = neverRepeat;
-		[neverRepeat setBackgroundImage:img[1] forState:UIControlStateNormal];
+		repeatIdx2 = repeatIdx - 2;
+		repeatIdx = 2;
 	}
-	else if (alarm.RepeatIdx == 1)
+	else 
 	{
-		lastSelect = everyDay;
-		[everyDay setBackgroundImage:img[1] forState:UIControlStateNormal];
+		repeatIdx2 = 0;
 	}
-	else
-	{
-		lastSelect = everyWeek;
-		[everyWeek setBackgroundImage:img[1] forState:UIControlStateNormal];
-		[weekView setAlpha:1];
-		
-		int rIdx = alarm.RepeatIdx - 2;
 
-		int idx;
-
-		if (rIdx & 0x01) idx = 3; else idx = 2;
-		[sonDay setBackgroundImage:img[idx] forState:UIControlStateNormal];
-
-		if (rIdx & 0x02) idx = 3; else idx = 2;
-		[monDay setBackgroundImage:img[idx] forState:UIControlStateNormal];
-
-		if (rIdx & 0x04) idx = 3; else idx = 2;
-		[tueDay setBackgroundImage:img[idx] forState:UIControlStateNormal];
-
-		if (rIdx & 0x08) idx = 3; else idx = 2;
-		[wedDay setBackgroundImage:img[idx] forState:UIControlStateNormal];
-
-		if (rIdx & 0x10) idx = 3; else idx = 2;
-		[theDay setBackgroundImage:img[idx] forState:UIControlStateNormal];
-
-		if (rIdx & 0x20) idx = 3; else idx = 2;
-		[friDay setBackgroundImage:img[idx] forState:UIControlStateNormal];
-
-		if (rIdx & 0x40) idx = 3; else idx = 2;
-		[satDay setBackgroundImage:img[idx] forState:UIControlStateNormal];
-	}
 }
 
-- (IBAction)selectOption:(id)sender
+- (IBAction)done:(id)sender
 {
-	if (lastSelect == sender) return;
-	
-	lastSelect = sender;
-
-	[neverRepeat setBackgroundImage:img[0] forState:UIControlStateNormal];
-	[everyDay setBackgroundImage:img[0] forState:UIControlStateNormal];
-	[everyWeek setBackgroundImage:img[0] forState:UIControlStateNormal];
-
-	[sender setBackgroundImage:img[1] forState:UIControlStateNormal];
-
-	if (sender == neverRepeat)
-	{
-		[weekView setAlpha:0];
-	}
-	else if (sender == everyDay)
-	{
-		[weekView setAlpha:0];
-	}
-	else if (sender == everyWeek)
-	{
-		[weekView setAlpha:1];
-
-		//평일만 선택해놓자.
-		[sonDay setBackgroundImage:img[2] forState:UIControlStateNormal];
-		[monDay setBackgroundImage:img[3] forState:UIControlStateNormal];
-		[tueDay setBackgroundImage:img[3] forState:UIControlStateNormal];
-		[wedDay setBackgroundImage:img[3] forState:UIControlStateNormal];
-		[theDay setBackgroundImage:img[3] forState:UIControlStateNormal];
-		[friDay setBackgroundImage:img[3] forState:UIControlStateNormal];
-		[satDay setBackgroundImage:img[2] forState:UIControlStateNormal];
-	}
-}
-
-- (IBAction)selectWeekday:(id)sender
-{
-	if ([sender backgroundImageForState:UIControlStateNormal] == img[2])
-		[sender setBackgroundImage:img[3] forState:UIControlStateNormal];
-	else
-		[sender setBackgroundImage:img[2] forState:UIControlStateNormal];
-}
-
-- (IBAction)done:(id)sender {
-
-	int result = 0;
-
-	if (lastSelect == neverRepeat)
-	{
-		result = 0;
-	}
-	else if (lastSelect == everyDay)
-	{
-		result = 1;
-	}
-	else
-	{
-		if ([sonDay backgroundImageForState:UIControlStateNormal] == img[3]) result |= 0x01;
-		if ([monDay backgroundImageForState:UIControlStateNormal] == img[3]) result |= 0x02;
-		if ([tueDay backgroundImageForState:UIControlStateNormal] == img[3]) result |= 0x04;
-		if ([wedDay backgroundImageForState:UIControlStateNormal] == img[3]) result |= 0x08;
-		if ([theDay backgroundImageForState:UIControlStateNormal] == img[3]) result |= 0x10;
-		if ([friDay backgroundImageForState:UIControlStateNormal] == img[3]) result |= 0x20;
-		if ([satDay backgroundImageForState:UIControlStateNormal] == img[3]) result |= 0x40;
-
-		result += 2;
-	}
-	
-	[alarm setRepeatIdx:result];
-	[[AlarmConfig getInstance] SaveConfig];
-	
+	[alarm setRepeatIdx:repeatIdx + repeatIdx2];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
@@ -143,11 +35,160 @@
 }
 
 - (void)dealloc {
-	[img[0] release];
-	[img[1] release];
-	[img[2] release];
-	[img[3] release];
 	[super dealloc];	
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	if (repeatIdx < 2) return 1;
+	return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	UITableViewCell* cell;
+
+	static NSString *CellIdentifier = @"SelectCell";
+	cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil)
+	{
+		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier 
+													 owner:self options:nil];
+		for (id oneObject in nib)
+		{
+			if ([oneObject isKindOfClass:[UITableViewSelectCell class]])
+			{
+				cell = oneObject;
+				break;
+			}
+		}
+	}
+
+	UITableViewSelectCell* buttonCell = (UITableViewSelectCell*)cell;
+	
+	// Set up the cell...
+	if(indexPath.section == 0)
+	{
+		switch(indexPath.row)
+		{
+			case 0:
+				[buttonCell setInfo:@"Never Repeat"];
+				[buttonCell showSelect:(repeatIdx == 0)];
+				break;
+			case 1:
+				[buttonCell setInfo:@"Everyday"];
+				[buttonCell showSelect:(repeatIdx == 1)];
+				break;
+			case 2:
+				[buttonCell setInfo:@"Weekday"];
+				[buttonCell showSelect:(repeatIdx >= 2)];
+				break;
+		}
+	}
+	else if(indexPath.section == 1)
+	{
+		switch(indexPath.row)
+		{
+			case 0:
+				[buttonCell setInfo:@"Sunday"];
+				break;
+			case 1:
+				[buttonCell setInfo:@"Monday"];
+				break;
+			case 2:
+				[buttonCell setInfo:@"TuesDay"];
+				break;
+			case 3:
+				[buttonCell setInfo:@"WednesDay"];
+				break;
+			case 4:
+				[buttonCell setInfo:@"Thursday"];
+				break;
+			case 5:
+				[buttonCell setInfo:@"FriDay"];
+				break;
+			case 6:
+				[buttonCell setInfo:@"SaturDay"];
+				break;
+		}
+		BOOL isSelect;
+		if (repeatIdx < 2) isSelect = false;
+		else isSelect = repeatIdx2 & (0x01<<indexPath.row);
+		[buttonCell showSelect:isSelect];
+	}
+
+	return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	if (section == 0)
+		return @"Repeat";
+	else
+		return @"Weekday";
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	if(section == 0)
+	{
+		return 3;
+	}
+	else if (section == 1)
+	{
+		return 7;
+	}
+	
+	return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return 45;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.section == 0)
+	{
+		switch (indexPath.row)
+		{
+			case 0:
+				repeatIdx = 0;
+				break;
+			case 1:
+				repeatIdx = 1;
+				break;
+			case 2:
+				repeatIdx = 2;
+				break;
+		}
+	}
+	else if (indexPath.section == 1)
+	{
+		int bit = (0x01 << indexPath.row);
+
+		if (repeatIdx2 | bit)
+			repeatIdx2 ^= bit;
+		else
+			repeatIdx2 |= bit;
+
+	}
+
+	[tableView reloadData];
+}
+
+- (BOOL)canBecomeFirstResponder {
+	return YES;
+}
+
+- (void)flipsideViewControllerDidFinish:(UIViewController *)controller {
+    
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 @end

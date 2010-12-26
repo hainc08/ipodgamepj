@@ -75,7 +75,7 @@
 		if (idx & 0x10)
 		{
 			if (temp[0] != 0x00) strcat(temp, ",");
-			strcat(temp, "The");
+			strcat(temp, "Thu");
 		}
 		if (idx & 0x20)
 		{
@@ -109,6 +109,21 @@
 {
 	if (show) [arrow setAlpha:1];
 	else [arrow setAlpha:0];
+}
+
+@end
+
+@implementation UITableViewSelectCell
+
+- (void)setInfo:(NSString*)name
+{
+	[nameLabel setText:name];
+}
+
+- (void)showSelect:(bool)show
+{
+	if (show) [select setAlpha:1];
+	else [select setAlpha:0];
 }
 
 @end
