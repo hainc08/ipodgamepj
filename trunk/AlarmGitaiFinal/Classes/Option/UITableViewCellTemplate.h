@@ -27,7 +27,7 @@
 	IBOutlet UILabel* alarmRepeat;
 }
 
--(void)setInfo:(NSString*)tStr :(NSString*)rStr :(bool)isOn;
+-(void)setInfo:(NSString*)tStr :(int)repeatIdx :(bool)isOn;
 
 @end
 

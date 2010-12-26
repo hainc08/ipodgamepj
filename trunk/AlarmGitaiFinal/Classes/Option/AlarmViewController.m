@@ -1,4 +1,5 @@
 #import "AlarmViewController.h"
+#import "RepeatSetView.h"
 
 #import "UITableViewCellTemplate.h"
 #import "AlarmConfig.h"
@@ -148,7 +149,53 @@
 				break;
 			case 1:
 				text = @"Repeat";
-				value = alarm.WeekDate;
+				if (alarm.RepeatIdx == 0) value = @"Never Repeat";
+				else if (alarm.RepeatIdx == 1) value = @"Everyday";
+				else
+				{
+					int idx = alarm.RepeatIdx - 2;
+					
+					char temp[256];
+					
+					temp[0] = 0x00;
+					
+					if (idx & 0x01)
+					{
+						strcat(temp, "Son");
+					}
+					if (idx & 0x02)
+					{
+						if (temp[0] != 0x00) strcat(temp, ",");
+						strcat(temp, "Mon");
+					}
+					if (idx & 0x04)
+					{
+						if (temp[0] != 0x00) strcat(temp, ",");
+						strcat(temp, "Tue");
+					}
+					if (idx & 0x08)
+					{
+						if (temp[0] != 0x00) strcat(temp, ",");
+						strcat(temp, "Wed");
+					}
+					if (idx & 0x10)
+					{
+						if (temp[0] != 0x00) strcat(temp, ",");
+						strcat(temp, "The");
+					}
+					if (idx & 0x20)
+					{
+						if (temp[0] != 0x00) strcat(temp, ",");
+						strcat(temp, "Fri");
+					}
+					if (idx & 0x40)
+					{
+						if (temp[0] != 0x00) strcat(temp, ",");
+						strcat(temp, "Sat");
+					}
+					
+					value = [NSString stringWithFormat:@"%s", temp];
+				}
 				break;
 			case 2:
 				text = @"Sound";
@@ -245,42 +292,50 @@
 {
 	if (indexPath.section == 1)
 	{
-		AlarmViewSetController *setting = [[AlarmViewSetController alloc] initWithNibName:@"AlarmSetting" bundle:nil];
-		setting.editedObject = alarm;
-		setting.sourceController = self;
-		
-		switch (indexPath.row)
+		if (indexPath.row == 1)
 		{
-			case 0:
-				setting.title = @"Time";
-				setting.editedPropertyKey = @"Time";
-				setting.editingDate	= YES;
-				break;
-			case 1:
-				setting.title = @"Repeat";
-				setting.editedPropertyKey = @"Repeat";
-				break;
-			case 2:
-				setting.title = @"Sound";
-				setting.editedPropertyKey = @"Sound";
-				break;
-			case 3:
-				setting.title = @"Name";
-				setting.editedPropertyKey = @"Name";
-					setting.editingDate	= NO;
-			break;
+			RepeatSetView *setting = [[RepeatSetView alloc] initWithNibName:@"RepeatSetView" bundle:nil];
 
+			setting.delegate = self;
+			setting.alarm = alarm;
+			
+			[self presentModalViewController:setting animated:YES];
+			
+			[setting release];
 		}
-		setting.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-		setting.delegate = self;
-		
-		[self presentModalViewController:setting animated:YES];
-		
-		[setting release];
+		else
+		{
+			AlarmViewSetController *setting = [[AlarmViewSetController alloc] initWithNibName:@"AlarmSetting" bundle:nil];
+			setting.editedObject = alarm;
+			setting.sourceController = self;
+			
+			switch (indexPath.row)
+			{
+				case 0:
+					setting.title = @"Time";
+					setting.editedPropertyKey = @"Time";
+					setting.editingDate	= YES;
+					break;
+				case 2:
+					setting.title = @"Sound";
+					setting.editedPropertyKey = @"Sound";
+					break;
+				case 3:
+					setting.title = @"Name";
+					setting.editedPropertyKey = @"Name";
+					setting.editingDate	= NO;
+					break;
+					
+			}
+			setting.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+			setting.delegate = self;
+			
+			[self presentModalViewController:setting animated:YES];
+			
+			[setting release];
+		}
 	}
 }
-
-
 
 #pragma mark -
 #pragma mark Editing
@@ -293,8 +348,6 @@
 		alarm.SoundName = newValue;
 	else if([field compare:@"Name"] == NSOrderedSame )
 		alarm.Name	= newValue;
-	else if([field compare:@"Repeat"] == NSOrderedSame )
-		alarm.WeekDate	= newValue;
 }
 
 - (void)flipsideViewControllerDidFinish:(UIViewController *)controller {

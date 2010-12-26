@@ -266,7 +266,7 @@
 			UITableViewAlarmCell* alarm_cell = (UITableViewAlarmCell*)cell;
 
 			AlarmDate	*alarm_date = [a_alarm objectAtIndex:indexPath.row];
-			[alarm_cell setInfo:alarm_date.Time :alarm_date.WeekDate :alarm_date.AlarmONOFF];
+			[alarm_cell setInfo:alarm_date.Time :alarm_date.RepeatIdx :alarm_date.AlarmONOFF];
 			
 			/*if (indexPath.row == 0)
 				[alarm_cell setInfo:@"08:30 AM" :@"Every Day" :true];

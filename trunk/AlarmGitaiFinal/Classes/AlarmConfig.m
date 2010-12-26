@@ -101,6 +101,7 @@ static AlarmConfig *AlarmConfigInst;
 	
 	
 	[[SaveManager getInstance] setIntData:@"VibrationONOFF"	idx:0 value:1];
+	[[SaveManager getInstance] setIntData:@"RepeatIdx"	idx:0 value:0];
 	[[SaveManager getInstance] setIntData:@"SnoozeONOFF"	idx:0 value:1];
 	[[SaveManager getInstance] setIntData:@"ShakeONOFF"		idx:0 value:1];
 
@@ -196,6 +197,7 @@ static AlarmConfig *AlarmConfigInst;
 		[[SaveManager getInstance] setIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:4 value:t_alarm.SnoozeONOFF ? 1:0];
 		[[SaveManager getInstance] setIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:5 value:t_alarm.VibrationONOFF?1:0];
 		[[SaveManager getInstance] setIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:6 value:t_alarm.ShakeONOFF?1:0];
+		[[SaveManager getInstance] setIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:7 value:t_alarm.RepeatIdx];
 	}
 }
 
@@ -214,6 +216,10 @@ static AlarmConfig *AlarmConfigInst;
 		t_alarm.SnoozeONOFF	=	[[SaveManager getInstance] getIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:4 base:0] == 1 ? TRUE : FALSE;
 		t_alarm.VibrationONOFF	=	[[SaveManager getInstance] getIntData:[NSString stringWithFormat:@"AlarmDate_%d",	loop] idx:5 base:0] == 1 ? TRUE : FALSE;
 		t_alarm.ShakeONOFF	=	[[SaveManager getInstance] getIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:6 base:0] == 1 ? TRUE : FALSE;
+		t_alarm.RepeatIdx	=	[[SaveManager getInstance] getIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:7 base:0];
+
+		[[SaveManager getInstance] setIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:7 value:t_alarm.RepeatIdx];
+
 		[AlarmArr addObject:t_alarm];
 		[t_alarm release];
 	}
@@ -374,14 +380,17 @@ static AlarmConfig *AlarmConfigInst;
 
 
 @implementation ViewCgPoint
+
 @synthesize ClockTrans;	
 @synthesize DateTrans;
 @synthesize ClockPoint;
 @synthesize DatePoint;
+
 @end
 
 
 @implementation AlarmDate
+
 @synthesize Time;
 @synthesize Name;
 @synthesize	SoundName;
@@ -389,18 +398,19 @@ static AlarmConfig *AlarmConfigInst;
 @synthesize SnoozeONOFF;
 @synthesize ShakeONOFF;
 @synthesize VibrationONOFF;
-@synthesize WeekDate;
+@synthesize RepeatIdx;
+
 - (id)init
 {
 	[super init];
 	Time = @"00:00 AM";
 	Name = @"Alarm";
 	SoundName = @"Classic";
-	WeekDate	= @"Never Repeat";
 	AlarmONOFF = NO;
 	SnoozeONOFF	= NO;
 	ShakeONOFF = NO;
 	VibrationONOFF = NO;
+	RepeatIdx = 0;
 	return self;
 }
 @end
