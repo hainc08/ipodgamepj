@@ -92,6 +92,11 @@
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
+- (IBAction)deleteAlarm:(id)sender {
+	[[AlarmConfig getInstance] deleteAlarm:alarm];
+	[self.delegate flipsideViewControllerDidFinish:self];	
+}
+
 /////////////////////////////////////////////////////////////////////////////////////
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -209,10 +214,14 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-	if (section == 0)
-		return @"Alarms";
-	else
-		return @"Display";
+	switch (section) {
+		case 0:
+			return @"On/Off";
+		case 1:
+			return @"Option";
+		default:
+			return @"Advanced";
+	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

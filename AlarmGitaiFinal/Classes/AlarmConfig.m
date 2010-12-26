@@ -348,6 +348,19 @@ static AlarmConfig *AlarmConfigInst;
 	return [AlarmArr count];
 }
 
+- (void) deleteAlarm:(AlarmDate *)_inData
+{
+	int i = 0;
+	for (AlarmDate* data in AlarmArr)
+	{
+		if (_inData == data)
+		{
+			[AlarmArr removeObjectAtIndex:i];
+			return;
+		}
+		++i;
+	}
+}
 
 - (void)dealloc {
 	[super dealloc];	
