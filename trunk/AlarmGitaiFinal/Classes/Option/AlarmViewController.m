@@ -84,7 +84,11 @@
 		[[AlarmConfig getInstance] setAlarmAdd:alarm];
 		[alarm release];
 	}
-	
+	else
+	{
+		[alarm ResetNSDate];
+	}
+
 	[[AlarmConfig getInstance] SaveConfig];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
@@ -161,7 +165,7 @@
 					
 					if (idx & 0x01)
 					{
-						strcat(temp, "Son");
+						strcat(temp, "Sun");
 					}
 					if (idx & 0x02)
 					{
@@ -181,7 +185,7 @@
 					if (idx & 0x10)
 					{
 						if (temp[0] != 0x00) strcat(temp, ",");
-						strcat(temp, "The");
+						strcat(temp, "Thu");
 					}
 					if (idx & 0x20)
 					{

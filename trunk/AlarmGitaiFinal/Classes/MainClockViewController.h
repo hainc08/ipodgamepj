@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "FlipsideViewControllerDelegate.h"
 
 @class ClockView;
@@ -19,7 +20,7 @@ enum VIEWMODE {
 	VIEWUPDATE,
 };
 
-@interface MainClockViewController : UIViewController <FlipsideViewControllerDelegate>{
+@interface MainClockViewController : UIViewController <FlipsideViewControllerDelegate, AVAudioPlayerDelegate>{
 	id <FlipsideViewControllerDelegate> delegate;
 
 	CGFloat initTouchPoint;
@@ -51,6 +52,9 @@ enum VIEWMODE {
 	
 	NSMutableArray *alarm_arr;
 	UIButton* infoButton;
+
+	AVAudioPlayer* soundPlayer;
+	bool isAlarmPlay;
 }
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;

@@ -411,6 +411,79 @@ static AlarmConfig *AlarmConfigInst;
 	ShakeONOFF = NO;
 	VibrationONOFF = NO;
 	RepeatIdx = 0;
+	alarmDate = nil;
 	return self;
 }
+
+- (NSDate*)GetNSDate
+{
+	if (alarmDate == nil)
+	{
+		NSDate* now = [NSDate date];
+
+		NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+		[formatter setDateFormat:@"dd-MM-yyyy"];
+
+		NSString *dateStr1 = [NSString stringWithFormat:@"%@ %@", Time, [formatter stringFromDate:now]];
+		
+		NSDateFormatter *formatter2 = [[NSDateFormatter alloc]init];
+		[formatter2 setDateFormat:@"hh:mm a dd-MM-yyyy"];
+		
+		NSDate* tempDate = [formatter2 dateFromString:dateStr1];
+		
+		if (RepeatIdx > 1)
+		{
+			int idx = RepeatIdx - 2;
+			int check;
+
+			while (1)
+			{
+				NSDateFormatter *df = [[NSDateFormatter alloc]init];
+				[df setDateFormat:@"EEEE"];
+				[df setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease]];
+				NSString *dayofweek = [[df stringFromDate:tempDate] substringToIndex:3];
+				
+				if([dayofweek compare:@"Sun"] == NSOrderedSame ) check = 0x01;
+				else if([dayofweek compare:@"Mon"] == NSOrderedSame ) check = 0x02;
+				else if([dayofweek compare:@"Tue"] == NSOrderedSame ) check = 0x04;
+				else if([dayofweek compare:@"Wed"] == NSOrderedSame ) check = 0x08;
+				else if([dayofweek compare:@"Thu"] == NSOrderedSame ) check = 0x10;
+				else if([dayofweek compare:@"Fri"] == NSOrderedSame ) check = 0x20;
+				else if([dayofweek compare:@"Sat"] == NSOrderedSame ) check = 0x40;
+				
+				if (check&idx)
+				{
+					if ([now timeIntervalSince1970] < [tempDate timeIntervalSince1970])
+					{
+						alarmDate = [tempDate retain];
+						return alarmDate;
+					}
+				}
+
+				tempDate = [tempDate addTimeInterval:60*60*24];
+			}
+		}
+		else if ([now timeIntervalSince1970] > [tempDate timeIntervalSince1970])
+		{
+			//다음날로...
+			alarmDate = [[tempDate addTimeInterval:60*60*24] retain];
+		}
+		else
+		{
+			alarmDate = [tempDate retain];
+		}
+	}
+	
+	return alarmDate;
+}
+
+- (void)ResetNSDate
+{
+	if (alarmDate != nil)
+	{
+		[alarmDate release];
+		alarmDate = nil;
+	}
+}
+
 @end
