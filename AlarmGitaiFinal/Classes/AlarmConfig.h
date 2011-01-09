@@ -31,6 +31,8 @@
 	int min;
 	
 	int RepeatIdx;
+	
+	NSDate* alarmDate;
 }
 @property (nonatomic, retain) NSString *Name;
 @property (nonatomic, retain) NSString *Time;
@@ -40,6 +42,10 @@
 @property (nonatomic,  assign, getter=isShakeONOFF)		BOOL	ShakeONOFF;
 @property (nonatomic,  assign, getter=isVibrationONOFF) BOOL	VibrationONOFF;
 @property (readwrite) int RepeatIdx;
+
+- (NSDate*)GetNSDate;
+- (void)ResetNSDate;
+
 @end
 
 

@@ -79,6 +79,7 @@ extern void GSEventSetBacklightLevel(float value);
 	//너무 자주 업데잇할 필요가 없을 듯~
 	framePerSec = 1.f;
 	isInit = false;
+	isAlarmPlay = false;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -131,13 +132,56 @@ extern void GSEventSetBacklightLevel(float value);
 
 - (void) AlarmCheck
 {
+	int now = [[NSDate date] timeIntervalSince1970];
+
 	for (int loop = 0; loop < [alarm_arr count] ; loop++) {
 		AlarmDate *t_date  = [alarm_arr objectAtIndex:loop];
-		if(t_date.AlarmONOFF)
+		if([t_date isAlarmONOFF])
 		{
-			if([t_date.Time compare:[[DateFormat getInstance] getAlarm]] == NSOrderedSame)
+			int alarm = [[t_date GetNSDate] timeIntervalSince1970];
+			if(now >= alarm)
 			{
+				//다른 짓 하다가 1분이상 지나버렸다면 그냥 스킵...
+				if ((now - alarm) < 60)
+				{
+					//알람시간이 되었다!
+					//여기서 뭘해줄꺼냐!
+					if (isAlarmPlay == false)
+					{
+						NSString* name = @"bgm01.mp3";
+						NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
+						NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
+						
+						// checkfile exist
+						NSFileManager *fileManager = [NSFileManager defaultManager];
+						BOOL success = [fileManager fileExistsAtPath:filePath];
+						if(!success) {
+							NSLog(@"sound file does not exist");
+							return;
+						}
+						
+						soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+						[soundPlayer prepareToPlay];
+						[soundPlayer setDelegate:self];
+						
+						[soundPlayer setVolume:1.0];
+						[soundPlayer setNumberOfLoops:-1];
+						
+						[soundPlayer play];
+						
+						[filePath release];
+						[fileURL release];
+						
+						isAlarmPlay = true;
+					}
+				}
+
+				if ([t_date RepeatIdx] == 0)
+				{
+					t_date.AlarmONOFF = false;
+				}
 				
+				[t_date ResetNSDate];
 			}
 		}
 	}
@@ -149,13 +193,12 @@ extern void GSEventSetBacklightLevel(float value);
 	if((frameTick % 5) == 0)
 	{
 		[sceneView next];
-		//[self AlarmCheck];
 		
 		frameTick = 0;
 	}
 
 	[self FrameUpdate];
-	//[self AlarmCheck];
+	[self AlarmCheck];
 	[clockview UpdateTime];
 	[dateview UpdateDate];
 	[newWeekView refresh];
