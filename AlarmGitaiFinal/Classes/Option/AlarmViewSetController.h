@@ -14,8 +14,14 @@
 - (void)setValue:(id)newValue forEditedProperty:(NSString *)field;
 @end
 
+enum _EDITTYPE {
+	TIMETYPE,
+	REPEAT,
+	SOUND,
+	NAME,
+};
 
-@interface AlarmViewSetController : UIViewController  <UITextFieldDelegate > {
+@interface AlarmViewSetController : UIViewController  <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate > {
 	id <FlipsideViewControllerDelegate> delegate;
 	
 	int EditType;
@@ -23,21 +29,23 @@
 	id editedObject;
 	NSString *editedPropertyKey;
 	NSDateFormatter *dateFormatter;
-	NSString *DTime;
 	
 	IBOutlet UITextField	*textField;
 	IBOutlet UIDatePicker	*datePicker;
 	IBOutlet UITableView	*optionTableView;
-
+	
+	int		select_index;
 	id <PropertyEditing> sourceController;
 
 }
-@property (nonatomic, assign, getter=isEditingDate) BOOL editingDate;
+@property (nonatomic, assign, getter=isEditingDate) int EditType;
 @property (nonatomic, retain) id editedObject;
 @property (nonatomic, retain) NSString *editedPropertyKey;
+@property (nonatomic, retain) IBOutlet UITableView *optionTableView;
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
 @property (nonatomic, retain) id <PropertyEditing>  sourceController;
+
 
 - (IBAction)cancel;
 - (IBAction)done;

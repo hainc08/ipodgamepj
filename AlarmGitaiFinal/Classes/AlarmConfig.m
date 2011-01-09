@@ -192,7 +192,7 @@ static AlarmConfig *AlarmConfigInst;
 		AlarmDate *t_alarm = [AlarmArr objectAtIndex:loop];
 		[[SaveManager getInstance] setIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:0 value:t_alarm.AlarmONOFF ? 1:0];
 		[[SaveManager getInstance] setStringData:[NSString stringWithFormat:@"AlarmDate_%d",	loop] idx:1 value:t_alarm.Name];
-		[[SaveManager getInstance] setStringData:[NSString stringWithFormat:@"AlarmDate_%d",	loop] idx:2 value:t_alarm.SoundName];
+		[[SaveManager getInstance] setStringData:[NSString stringWithFormat:@"AlarmDate_%d",	loop] idx:2 value:t_alarm.Sound];
 		[[SaveManager getInstance] setStringData:[NSString stringWithFormat:@"AlarmDate_%d",	loop] idx:3 value:t_alarm.Time ];
 		[[SaveManager getInstance] setIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:4 value:t_alarm.SnoozeONOFF ? 1:0];
 		[[SaveManager getInstance] setIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:5 value:t_alarm.VibrationONOFF?1:0];
@@ -211,7 +211,7 @@ static AlarmConfig *AlarmConfigInst;
 		AlarmDate *t_alarm  = [[AlarmDate alloc] init];
 		t_alarm.AlarmONOFF	=	[[SaveManager getInstance] getIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:0 base:0] == 1 ? TRUE : FALSE;
 		t_alarm.Name		=	[[SaveManager getInstance] getStringData:[NSString stringWithFormat:@"AlarmDate_%d",	loop] idx:1 base:@"Alarm"];
-		t_alarm.SoundName	=	[[SaveManager getInstance] getStringData:[NSString stringWithFormat:@"AlarmDate_%d",	loop] idx:2 base:@"NONE"];
+		t_alarm.Sound =	[[SaveManager getInstance] getStringData:[NSString stringWithFormat:@"AlarmDate_%d",	loop] idx:2 base:@"NONE"];
 		t_alarm.Time		=	[[SaveManager getInstance] getStringData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:3 base:@"-"];
 		t_alarm.SnoozeONOFF	=	[[SaveManager getInstance] getIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:4 base:0] == 1 ? TRUE : FALSE;
 		t_alarm.VibrationONOFF	=	[[SaveManager getInstance] getIntData:[NSString stringWithFormat:@"AlarmDate_%d",	loop] idx:5 base:0] == 1 ? TRUE : FALSE;
@@ -393,19 +393,20 @@ static AlarmConfig *AlarmConfigInst;
 
 @synthesize Time;
 @synthesize Name;
-@synthesize	SoundName;
+@synthesize	Sound;
 @synthesize AlarmONOFF;
 @synthesize SnoozeONOFF;
 @synthesize ShakeONOFF;
 @synthesize VibrationONOFF;
 @synthesize RepeatIdx;
+@synthesize SoundVolume;
 
 - (id)init
 {
 	[super init];
 	Time = @"00:00 AM";
 	Name = @"Alarm";
-	SoundName = @"Classic";
+	Sound = @"Classic";
 	AlarmONOFF = NO;
 	SnoozeONOFF	= NO;
 	ShakeONOFF = NO;
@@ -461,6 +462,7 @@ static AlarmConfig *AlarmConfigInst;
 				}
 
 				tempDate = [tempDate addTimeInterval:60*60*24];
+				[df release];
 			}
 		}
 		else if ([now timeIntervalSince1970] > [tempDate timeIntervalSince1970])

@@ -81,7 +81,7 @@ static DateFormat *DateFormatInst;
 
 - (NSString *)getAlarm 
 {
-	return [self getTimeString:@"kk/mm"];
+	return [self getTimeString:@"h:mm a"];
 }
 
 - (NSString *)getAlarmFormat:(NSString *)_informat
@@ -103,6 +103,26 @@ static DateFormat *DateFormatInst;
 	
 	return ret;
 }
+- (int)getWeekType
+{
+	int ret;
+	if( [[self getTimeString:@"EEE"] compare:@"Sun"])
+		ret = 0x01;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Mon"])
+		ret = 0x02;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Tue"])
+		ret = 0x03;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Wed"])
+		ret = 0x04;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Thu"])
+		ret = 0x08;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Fri"])
+		ret = 0x16;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Sat"])
+		ret = 0x32;
+
+	return ret;
+}
 
 - (NSString *)getAP
 {
@@ -114,6 +134,15 @@ static DateFormat *DateFormatInst;
 	[FormatDate setDateFormat:format];
 	NSString *str = [FormatDate stringFromDate:[NSDate date]];
 	return str;
+}
+
+- (NSData *) getStringToDate:(NSString *)_indate
+{
+	return [FormatDate dateFromString:_indate];
+}
+- (NSData *) getAlarmDate
+{
+	return  [NSDate date];
 }
 
 - (void)dealloc {

@@ -17,8 +17,6 @@
 #import "DateFormat.h"
 #import "NewWeekView.h"
 
-extern void GSEventSetBacklightLevel(float value);
-
 @implementation MainClockViewController
 
 @synthesize delegate;
@@ -26,8 +24,28 @@ extern void GSEventSetBacklightLevel(float value);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	stopalarm = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+	stopalarm.frame = CGRectMake(0, 0, self.navigationController.toolbar.frame.size.width, self.navigationController.toolbar.frame.size.height);
+	stopalarm.backgroundColor = [UIColor clearColor];
+	[stopalarm setTitle:@"StopAlarm" forState:UIControlStateNormal];
+	[stopalarm addTarget:self action:@selector(StopAlarm:)forControlEvents:UIControlEventTouchUpInside];
+	[self.navigationController.toolbar addSubview:stopalarm];
+	[stopalarm release];
+	
+	snoozealarm = [[UIButton buttonWithType:UIButtonTypeCustom ] retain];
+	snoozealarm.frame = CGRectMake(0, 0, self.navigationController.toolbar.frame.size.width, self.navigationController.toolbar.frame.size.height);
+	snoozealarm.backgroundColor = [UIColor clearColor];
+	[snoozealarm setTitle:@"SnoozeAlarm" forState:UIControlStateNormal];
+	[snoozealarm addTarget:self action:@selector(SnoozeButton:)forControlEvents:UIControlEventTouchUpInside];
+	[self.navigationController.navigationBar addSubview:snoozealarm];
+	[snoozealarm release];
+	
+	self.navigationController.toolbar.barStyle =UIBarStyleBlackTranslucent;
+	self.navigationController.navigationBar.barStyle =UIBarStyleBlackTranslucent;
+	
+	[self AlarmBarHidden:YES];
     self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];      
-
 	self.view.autoresizesSubviews = NO;
 	self.view.autoresizingMask =UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
 	
@@ -99,9 +117,12 @@ extern void GSEventSetBacklightLevel(float value);
 	[super viewWillAppear:animated];
 
 	[self FrameUpdate];
-	
+
 	[self resumeTimer];
+	alarm_arr = [[AlarmConfig getInstance] getAlarmArr];
 	viewrotate = TRUE;
+	
+	[infoButton setAlpha:0];
 
 }
 
@@ -110,11 +131,19 @@ extern void GSEventSetBacklightLevel(float value);
 	[self stopTimer];
 	viewrotate =FALSE;
 }
-
+- (IBAction)StopAlarm  {
+	[soundPlayer stop];
+	[self AlarmBarHidden:NO];
+}
+- (IBAction)SnoozeButton  {
+	[soundPlayer stop];
+	[self AlarmBarHidden:NO];
+}
 - (IBAction)ButtonClick:(id)sender
 {
 	if (sender == infoButton)
 	{
+	
 		OptionViewController *controller = [[OptionViewController alloc] initWithNibName:@"OptionView" bundle:nil];
 		controller.delegate = self;
 		
@@ -129,9 +158,14 @@ extern void GSEventSetBacklightLevel(float value);
     
 	[self dismissModalViewControllerAnimated:YES];
 }
-
+- (void) AlarmBarHidden:(BOOL)_hidden
+{
+	self.navigationController.toolbarHidden = _hidden;
+	self.navigationController.navigationBarHidden = _hidden;
+}
 - (void) AlarmCheck
 {
+
 	int now = [[NSDate date] timeIntervalSince1970];
 
 	for (int loop = 0; loop < [alarm_arr count] ; loop++) {
@@ -140,6 +174,7 @@ extern void GSEventSetBacklightLevel(float value);
 		{
 			int alarm = [[t_date GetNSDate] timeIntervalSince1970];
 			if(now >= alarm)
+
 			{
 				//다른 짓 하다가 1분이상 지나버렸다면 그냥 스킵...
 				if ((now - alarm) < 60)
@@ -148,8 +183,9 @@ extern void GSEventSetBacklightLevel(float value);
 					//여기서 뭘해줄꺼냐!
 					if (isAlarmPlay == false)
 					{
-						NSString* name = @"bgm01.mp3";
-						NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
+						NSString* name = t_date.Sound;
+						
+						NSString* filePath = [NSString stringWithFormat: @"%@/%@.mp3", [[NSBundle mainBundle] resourcePath], name];
 						NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
 						
 						// checkfile exist
@@ -172,6 +208,7 @@ extern void GSEventSetBacklightLevel(float value);
 						[filePath release];
 						[fileURL release];
 						
+						[self AlarmBarHidden:NO];
 						isAlarmPlay = true;
 					}
 				}
@@ -188,15 +225,21 @@ extern void GSEventSetBacklightLevel(float value);
 }
 
 - (void)update
+
 {
 	++frameTick;
+	--infoButtonFrame;
 	if((frameTick % 5) == 0)
 	{
 		[sceneView next];
-		
 		frameTick = 0;
 	}
-
+	
+	if( infoButtonFrame == 0)
+	{
+		[infoButton setAlpha:0];
+	}
+	
 	[self FrameUpdate];
 	[self AlarmCheck];
 	[clockview UpdateTime];
@@ -209,8 +252,7 @@ extern void GSEventSetBacklightLevel(float value);
 	if(viewmode == VIEWNORMAL)
 	{
 		ViewCgPoint	*alarmviewpoint	;
-		//if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) 
-		
+	
 		if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
 			alarmviewpoint	= [[AlarmConfig getInstance] getHeigthViewPoint];	
 		else 
@@ -295,6 +337,19 @@ extern void GSEventSetBacklightLevel(float value);
 				touchedCon = clockview;
 			else if (CGRectContainsPoint(dateview.view.frame, touchPoint)) 
 				touchedCon = dateview;
+			else {
+				touchedCon = nil ;
+				if(infoButton.alpha)
+				{
+					infoButtonFrame  = 0;
+					[infoButton setAlpha:0];
+				}
+				else {
+					[infoButton setAlpha:1];
+					infoButtonFrame  = 5;
+				}
+			}
+
 			
 			if (touchedCon != nil)
 			{
@@ -442,6 +497,7 @@ extern void GSEventSetBacklightLevel(float value);
 #endif
 	if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
 	{
+
 		[newWeekView.view setCenter:CGPointMake(240, 300)];
 		[infoButton setCenter:CGPointMake(450, 30)];
 		[sceneView setOrientation:true];
@@ -453,6 +509,8 @@ extern void GSEventSetBacklightLevel(float value);
 		[sceneView setOrientation:false];
 	}
 	
+	snoozealarm.frame	= CGRectMake(0, 0, self.navigationController.toolbar.frame.size.width, self.navigationController.toolbar.frame.size.height);
+	stopalarm.frame		= CGRectMake(0, 0, self.navigationController.toolbar.frame.size.width, self.navigationController.toolbar.frame.size.height);
 	[self FrameUpdate];
 }
 	

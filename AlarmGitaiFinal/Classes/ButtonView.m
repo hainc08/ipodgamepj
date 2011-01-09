@@ -11,6 +11,7 @@
 		self.backgroundColor =[UIColor redColor];
 		label = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 0, 0)];
 		[self addSubview:label];
+		
 		//fontName:@"굴림" pointSize:12.0f
 		x	= frame.size.width;
 		y	= frame.size.height;

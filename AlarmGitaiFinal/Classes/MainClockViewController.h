@@ -45,14 +45,17 @@ enum VIEWMODE {
 	UInt32 frameTick;
 	NSTimer *updateTimer;
 	bool isInit;
+
+	UIButton *stopalarm;
+	UIButton *snoozealarm;
 	
 	float framePerSec;
 	/* Button */
 	UIButton *AlarmButton;
 	
-	NSMutableArray *alarm_arr;
+	NSArray *alarm_arr;
 	UIButton* infoButton;
-
+	int	infoButtonFrame;
 	AVAudioPlayer* soundPlayer;
 	bool isAlarmPlay;
 }
@@ -67,5 +70,5 @@ enum VIEWMODE {
 - (void)resumeTimer;
 - (void)FrameUpdate;
 - (void)ConfigSetup;
-
+- (void)AlarmBarHidden:(BOOL)_hidden;
 @end

@@ -34,8 +34,11 @@
 - (NSString *)getAP;
 - (NSString *)getAlarm;
 - (BOOL)getNight ;
+- (int)getWeekType;
+- (NSData *)getStringToDate:(NSString *)_indate;
 - (NSString *)getAlarmFormat:(NSString *)_informat;
 
 - (NSString *)getTimeString:(NSString *)format;
+- (NSData *) getAlarmDate;
 
 @end
