@@ -153,7 +153,7 @@
 	{
 		if([tmpHour length] < 2)
 		{		
-			if([Hour length] > 1)
+			if([Hour length] > 1 || Hour == nil)
 			{
 				[self ChageNumberImage:HOUR_T changeImage:'0'];
 			}
@@ -176,7 +176,7 @@
 	{
 		if([tmpMin length] < 2)
 		{
-			if([Min	length] > 1)
+			if([Min	length] > 1  || Min == nil)
 			{
 				[self ChageNumberImage:MIN_T changeImage:'0'];
 			}
@@ -193,28 +193,50 @@
 			[Min release];
 		Min = [[NSString alloc] initWithFormat:@"%@",tmpMin];
 	}
-	
-	if((![Sec isEqualToString:tmpSec]) || Sec == nil)
+
+	if( [[AlarmConfig getInstance] getSecondMode] )
 	{
-		if([tmpSec length] < 2)
-		{
-			if([Sec	length] > 1)
-			{
-				[self ChageNumberImage:SEC_T changeImage:'0'];
-			}
-			
-			[self ChageNumberImage:SEC_M changeImage:[tmpSec characterAtIndex:0]];
-		}
-		else
-		{
-			[self ChageNumberImage:SEC_T changeImage:[tmpSec characterAtIndex:0]];
-			[self ChageNumberImage:SEC_M changeImage:[tmpSec characterAtIndex:1]];
-		}
+		[su_Dot setAlpha:1];
+		[sb_Dot setAlpha:1];
+		[b_SecT setAlpha:1];
+		[u_SecT	setAlpha:1];
 		
-		if( Sec != nil )
-			[Sec release];
-		Sec = [[NSString alloc] initWithFormat:@"%@",tmpSec];
+		[b_SecM	setAlpha:1];
+		[u_SecM	setAlpha:1];
+		
+		if((![Sec isEqualToString:tmpSec]) || Sec == nil)
+		{
+			if([tmpSec length] < 2)
+			{
+				if([Sec	length] > 1 || Sec == nil)
+				{
+					[self ChageNumberImage:SEC_T changeImage:'0'];
+				}
+			
+				[self ChageNumberImage:SEC_M changeImage:[tmpSec characterAtIndex:0]];
+			}
+			else
+			{
+				[self ChageNumberImage:SEC_T changeImage:[tmpSec characterAtIndex:0]];
+				[self ChageNumberImage:SEC_M changeImage:[tmpSec characterAtIndex:1]];
+			}
+		
+			if( Sec != nil )
+				[Sec release];
+			Sec = [[NSString alloc] initWithFormat:@"%@",tmpSec];
+		}
 	}
+	else {
+		[su_Dot setAlpha:0];
+		[sb_Dot setAlpha:0];
+		[b_SecT setAlpha:0];
+		[u_SecT	setAlpha:0];
+		
+		[b_SecM	setAlpha:0];
+		[u_SecM	setAlpha:0];
+		
+	}
+
 
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation {

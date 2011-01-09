@@ -3,6 +3,7 @@
 
 #import "UITableViewCellTemplate.h"
 #import "AlarmConfig.h"
+#import "DateFormat.h"
 
 @implementation AlarmViewController
 
@@ -203,7 +204,7 @@
 				break;
 			case 2:
 				text = @"Sound";
-				value = alarm.SoundName;
+				value = alarm.Sound;
 
 				break;
 			case 3:
@@ -299,7 +300,6 @@
 		if (indexPath.row == 1)
 		{
 			RepeatSetView *setting = [[RepeatSetView alloc] initWithNibName:@"RepeatSetView" bundle:nil];
-
 			setting.delegate = self;
 			setting.alarm = alarm;
 			
@@ -318,18 +318,19 @@
 				case 0:
 					setting.title = @"Time";
 					setting.editedPropertyKey = @"Time";
-					setting.editingDate	= YES;
+					setting.EditType	=	TIMETYPE;
+				
 					break;
 				case 2:
 					setting.title = @"Sound";
 					setting.editedPropertyKey = @"Sound";
+					setting.EditType	=	SOUND;
 					break;
 				case 3:
 					setting.title = @"Name";
 					setting.editedPropertyKey = @"Name";
-					setting.editingDate	= NO;
+					setting.EditType	=	NAME;
 					break;
-					
 			}
 			setting.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 			setting.delegate = self;
@@ -347,9 +348,12 @@
 - (void)setValue:(id)newValue forEditedProperty:(NSString *)field {
 	
 	if([field compare:@"Time"] == NSOrderedSame )
-		alarm.Time = newValue;
+	{
+		alarm.Time		=	newValue;
+		//alarm.alarmDate	=	[[DateFormat getInstance]  getStringToDate:newValue];
+	}
 	else if([field compare:@"Sound"] == NSOrderedSame ) 
-		alarm.SoundName = newValue;
+		alarm.Sound = newValue;
 	else if([field compare:@"Name"] == NSOrderedSame )
 		alarm.Name	= newValue;
 }

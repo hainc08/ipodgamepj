@@ -10,15 +10,13 @@
 
 #import <CoreData/CoreData.h>
 
-
-//@interface  AlarmDate : NSManagedObject
 @interface  AlarmDate : NSObject
 {
 	NSString	*Name;
 	BOOL		AlarmONOFF;
 	
 	
-	NSString *SoundName;
+	NSString *Sound;
 	int		SoundVolume;
 	
 	BOOL	SnoozeONOFF;
@@ -26,23 +24,19 @@
 	BOOL	ShakeONOFF;
 	
 	NSString *Time;
-	int type;   
-	int hour;
-	int min;
-	
-	int RepeatIdx;
-	
 	NSDate* alarmDate;
+	int RepeatIdx;
+
 }
 @property (nonatomic, retain) NSString *Name;
 @property (nonatomic, retain) NSString *Time;
-@property (nonatomic, retain) NSString *SoundName;
+@property (nonatomic, retain) NSString *Sound;
 @property (nonatomic,  assign, getter=isAlarmONOFF)		BOOL	AlarmONOFF;
 @property (nonatomic,  assign, getter=isSnoozeONOFF)	BOOL	SnoozeONOFF;
 @property (nonatomic,  assign, getter=isShakeONOFF)		BOOL	ShakeONOFF;
 @property (nonatomic,  assign, getter=isVibrationONOFF) BOOL	VibrationONOFF;
+@property (readwrite) int SoundVolume;
 @property (readwrite) int RepeatIdx;
-
 - (NSDate*)GetNSDate;
 - (void)ResetNSDate;
 
