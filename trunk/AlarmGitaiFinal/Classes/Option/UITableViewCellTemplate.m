@@ -55,7 +55,7 @@
 
 		if (idx & 0x01)
 		{
-			strcat(temp, "Son");
+			strcat(temp, "Sun");
 		}
 		if (idx & 0x02)
 		{

@@ -35,10 +35,10 @@
 - (NSString *)getAlarm;
 - (BOOL)getNight ;
 - (int)getWeekType;
-- (NSData *)getStringToDate:(NSString *)_indate;
+- (NSData *)getStringToDate:(NSString *)_indate format:(NSString *)_informat;
 - (NSString *)getAlarmFormat:(NSString *)_informat;
 
 - (NSString *)getTimeString:(NSString *)format;
-- (NSData *) getAlarmDate;
+- (NSData *) getCurrentDate;
 
 @end
