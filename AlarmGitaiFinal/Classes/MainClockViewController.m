@@ -131,13 +131,15 @@
 	[self stopTimer];
 	viewrotate =FALSE;
 }
-- (IBAction)StopAlarm  {
+- (IBAction)StopAlarm:(id)sender  {
 	[soundPlayer stop];
-	[self AlarmBarHidden:NO];
+	[self AlarmBarHidden:YES];
+	isAlarmPlay = FALSE;
 }
-- (IBAction)SnoozeButton  {
+- (IBAction)SnoozeButton:(id)sender  {
 	[soundPlayer stop];
-	[self AlarmBarHidden:NO];
+	[self AlarmBarHidden:YES];
+	isAlarmPlay = FALSE;
 }
 - (IBAction)ButtonClick:(id)sender
 {
@@ -165,7 +167,8 @@
 }
 - (void) AlarmCheck
 {
-
+	if (isAlarmPlay == false) // 절대 스톱하기전에는 들어오지 않음...
+	{
 	int now = [[NSDate date] timeIntervalSince1970];
 
 	for (int loop = 0; loop < [alarm_arr count] ; loop++) {
@@ -174,18 +177,14 @@
 		{
 			int alarm = [[t_date GetNSDate] timeIntervalSince1970];
 			if(now >= alarm)
-
 			{
 				//다른 짓 하다가 1분이상 지나버렸다면 그냥 스킵...
 				if ((now - alarm) < 60)
 				{
 					//알람시간이 되었다!
 					//여기서 뭘해줄꺼냐!
-					if (isAlarmPlay == false)
-					{
-						NSString* name = t_date.Sound;
-						
-						NSString* filePath = [NSString stringWithFormat: @"%@/%@.mp3", [[NSBundle mainBundle] resourcePath], name];
+					
+					NSString* filePath = [NSString stringWithFormat: @"%@/%@.mp3", [[NSBundle mainBundle] resourcePath], t_date.Sound];
 						NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
 						
 						// checkfile exist
@@ -200,7 +199,7 @@
 						[soundPlayer prepareToPlay];
 						[soundPlayer setDelegate:self];
 						
-						[soundPlayer setVolume:1.0];
+						[soundPlayer setVolume:t_date.SoundVolume];
 						[soundPlayer setNumberOfLoops:-1];
 						
 						[soundPlayer play];
@@ -208,17 +207,31 @@
 						[filePath release];
 						[fileURL release];
 						
-						[self AlarmBarHidden:NO];
+						[self AlarmBarHidden:NO]; // Alarm 화면을 보인다.. 
 						isAlarmPlay = true;
+						
+						if ([t_date RepeatIdx] == 0){
+							t_date.AlarmONOFF = false;
+						}
+						else
+						{
+							if([t_date isSnoozeONOFF] && (t_date.SnoozeCount > 0 )){
+								t_date.SnoozeCount--;
+								[t_date ResetNSDateSnooze]; // 기본 5분후에 
+							}
+							else // Snooze 전부 발생 했고 , 알람으로서 오늘 일은 끝~!! 내일 하자.
+							{
+								t_date.SnoozeCount = 5;
+								[t_date ResetNSDate];
+							}	
+						}
 					}
-				}
+					else {
+						t_date.SnoozeCount = 5;
+						[t_date ResetNSDate];
+					}
 
-				if ([t_date RepeatIdx] == 0)
-				{
-					t_date.AlarmONOFF = false;
 				}
-				
-				[t_date ResetNSDate];
 			}
 		}
 	}

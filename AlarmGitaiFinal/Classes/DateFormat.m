@@ -30,6 +30,7 @@ static DateFormat *DateFormatInst;
 	[FormatDate setFormatterBehavior:NSDateFormatterBehavior10_4];
 	[FormatDate setDateStyle:NSDateFormatterLongStyle];
 	[FormatDate setTimeStyle:NSDateFormatterNoStyle];
+	[FormatDate setDefaultDate:[NSDate date]];
 	[FormatDate setLocale:locale];
 }
 
@@ -105,21 +106,14 @@ static DateFormat *DateFormatInst;
 }
 - (int)getWeekType
 {
-	int ret;
-	if( [[self getTimeString:@"EEE"] compare:@"Sun"])
-		ret = 0x01;
-	else if ( [[self getTimeString:@"EEE"] compare:@"Mon"])
-		ret = 0x02;
-	else if ( [[self getTimeString:@"EEE"] compare:@"Tue"])
-		ret = 0x03;
-	else if ( [[self getTimeString:@"EEE"] compare:@"Wed"])
-		ret = 0x04;
-	else if ( [[self getTimeString:@"EEE"] compare:@"Thu"])
-		ret = 0x08;
-	else if ( [[self getTimeString:@"EEE"] compare:@"Fri"])
-		ret = 0x16;
-	else if ( [[self getTimeString:@"EEE"] compare:@"Sat"])
-		ret = 0x32;
+	int ret = 0;
+	if( [[self getTimeString:@"EEE"] compare:@"Sun"]) ret = 0x01;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Mon"]) ret = 0x02;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Tue"]) ret = 0x04;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Wed"])	ret = 0x08;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Thu"])	ret = 0x10;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Fri"])	ret = 0x20;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Sat"])	ret = 0x40;
 
 	return ret;
 }
@@ -136,11 +130,12 @@ static DateFormat *DateFormatInst;
 	return str;
 }
 
-- (NSData *) getStringToDate:(NSString *)_indate
+- (NSData *) getStringToDate:(NSString *)_indate format:(NSString *)_informat
 {
+	[FormatDate setDateFormat:_informat];
 	return [FormatDate dateFromString:_indate];
 }
-- (NSData *) getAlarmDate
+- (NSData *) getCurrentDate
 {
 	return  [NSDate date];
 }

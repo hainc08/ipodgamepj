@@ -20,12 +20,14 @@
 	int		SoundVolume;
 	
 	BOOL	SnoozeONOFF;
+	int		SnoozeCount;
 	BOOL	VibrationONOFF;
 	BOOL	ShakeONOFF;
 	
 	NSString *Time;
 	NSDate* alarmDate;
 	int RepeatIdx;
+	
 
 }
 @property (nonatomic, retain) NSString *Name;
@@ -37,7 +39,9 @@
 @property (nonatomic,  assign, getter=isVibrationONOFF) BOOL	VibrationONOFF;
 @property (readwrite) int SoundVolume;
 @property (readwrite) int RepeatIdx;
+@property (readwrite) int SnoozeCount;
 - (NSDate*)GetNSDate;
+- (void)ResetNSDateSnooze;
 - (void)ResetNSDate;
 
 @end

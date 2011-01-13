@@ -8,6 +8,7 @@
 
 #import "AlarmConfig.h"
 #import "SaveManager.h"
+#import "DateFormat.h"
 
 static AlarmConfig *AlarmConfigInst;
 
@@ -130,8 +131,8 @@ static AlarmConfig *AlarmConfigInst;
 
 - (void)loadConfig
 {
-//	CharName = @"natsuko";
-	CharName = @"haruka";
+	CharName = @"natsuko";
+//	CharName = @"haruka";
 	AlarmArr = [[NSMutableArray alloc] initWithCapacity:0];
 	
 	RotationTime	=	[[SaveManager getInstance] getIntData:@"RotationTime"	idx:0 base:5];
@@ -217,8 +218,6 @@ static AlarmConfig *AlarmConfigInst;
 		t_alarm.VibrationONOFF	=	[[SaveManager getInstance] getIntData:[NSString stringWithFormat:@"AlarmDate_%d",	loop] idx:5 base:0] == 1 ? TRUE : FALSE;
 		t_alarm.ShakeONOFF	=	[[SaveManager getInstance] getIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:6 base:0] == 1 ? TRUE : FALSE;
 		t_alarm.RepeatIdx	=	[[SaveManager getInstance] getIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:7 base:0];
-
-		[[SaveManager getInstance] setIntData:[NSString stringWithFormat:@"AlarmDate_%d",		loop] idx:7 value:t_alarm.RepeatIdx];
 
 		[AlarmArr addObject:t_alarm];
 		[t_alarm release];
@@ -396,6 +395,7 @@ static AlarmConfig *AlarmConfigInst;
 @synthesize	Sound;
 @synthesize AlarmONOFF;
 @synthesize SnoozeONOFF;
+@synthesize SnoozeCount;
 @synthesize ShakeONOFF;
 @synthesize VibrationONOFF;
 @synthesize RepeatIdx;
@@ -406,9 +406,10 @@ static AlarmConfig *AlarmConfigInst;
 	[super init];
 	Time = @"00:00 AM";
 	Name = @"Alarm";
-	Sound = @"Classic";
+	Sound = @"Bgm00";
 	AlarmONOFF = NO;
 	SnoozeONOFF	= NO;
+	SnoozeCount = 5;
 	ShakeONOFF = NO;
 	VibrationONOFF = NO;
 	RepeatIdx = 0;
@@ -420,39 +421,16 @@ static AlarmConfig *AlarmConfigInst;
 {
 	if (alarmDate == nil)
 	{
-		NSDate* now = [NSDate date];
-
-		NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-		[formatter setDateFormat:@"dd-MM-yyyy"];
-
-		NSString *dateStr1 = [NSString stringWithFormat:@"%@ %@", Time, [formatter stringFromDate:now]];
-		
-		NSDateFormatter *formatter2 = [[NSDateFormatter alloc]init];
-		[formatter2 setDateFormat:@"hh:mm a dd-MM-yyyy"];
-		
-		NSDate* tempDate = [formatter2 dateFromString:dateStr1];
+		NSDate* now = [[DateFormat getInstance] getCurrentDate];
+		NSDate* tempDate = [[DateFormat getInstance] getStringToDate:Time format:@"h:mm a"];
 		
 		if (RepeatIdx > 1)
 		{
 			int idx = RepeatIdx - 2;
-			int check;
 
 			while (1)
-			{
-				NSDateFormatter *df = [[NSDateFormatter alloc]init];
-				[df setDateFormat:@"EEEE"];
-				[df setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease]];
-				NSString *dayofweek = [[df stringFromDate:tempDate] substringToIndex:3];
-				
-				if([dayofweek compare:@"Sun"] == NSOrderedSame ) check = 0x01;
-				else if([dayofweek compare:@"Mon"] == NSOrderedSame ) check = 0x02;
-				else if([dayofweek compare:@"Tue"] == NSOrderedSame ) check = 0x04;
-				else if([dayofweek compare:@"Wed"] == NSOrderedSame ) check = 0x08;
-				else if([dayofweek compare:@"Thu"] == NSOrderedSame ) check = 0x10;
-				else if([dayofweek compare:@"Fri"] == NSOrderedSame ) check = 0x20;
-				else if([dayofweek compare:@"Sat"] == NSOrderedSame ) check = 0x40;
-				
-				if (check&idx)
+			{				
+				if ([[DateFormat getInstance] getWeekType] & idx)
 				{
 					if ([now timeIntervalSince1970] < [tempDate timeIntervalSince1970])
 					{
@@ -462,7 +440,6 @@ static AlarmConfig *AlarmConfigInst;
 				}
 
 				tempDate = [tempDate addTimeInterval:60*60*24];
-				[df release];
 			}
 		}
 		else if ([now timeIntervalSince1970] > [tempDate timeIntervalSince1970])
@@ -479,6 +456,10 @@ static AlarmConfig *AlarmConfigInst;
 	return alarmDate;
 }
 
+- (void)ResetNSDateSnooze
+{
+		alarmDate = [alarmDate addTimeInterval:60*5];
+}
 - (void)ResetNSDate
 {
 	if (alarmDate != nil)
