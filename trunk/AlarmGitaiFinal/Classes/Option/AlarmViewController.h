@@ -25,7 +25,6 @@
 
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
 @property (nonatomic, retain) AlarmDate			*alarm;
-@property (nonatomic, retain) NSUndoManager		*undoManager;
 @property (nonatomic,  assign, getter=isSetFlagg) int	SetFlag;
 @property (nonatomic,  assign, getter=isindex) int	index;
 - (IBAction)done:(id)sender;

@@ -132,8 +132,9 @@ static DateFormat *DateFormatInst;
 
 - (NSData *) getStringToDate:(NSString *)_indate format:(NSString *)_informat
 {
+	[FormatDate setDefaultDate:[NSDate date]];
 	[FormatDate setDateFormat:_informat];
-	return [FormatDate dateFromString:_indate];
+	return [ [FormatDate dateFromString:_indate] retain];
 }
 - (NSData *) getCurrentDate
 {

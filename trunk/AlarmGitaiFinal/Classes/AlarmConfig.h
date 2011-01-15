@@ -23,16 +23,20 @@
 	int		SnoozeCount;
 	BOOL	VibrationONOFF;
 	BOOL	ShakeONOFF;
-	
-	NSString *Time;
-	NSDate* alarmDate;
 	int RepeatIdx;
 	
-
+	/* 실제저장된 값 */
+	NSString *Time;
+	
+	NSString *tmpTime;
+	NSDate* alarmDate;
 }
 @property (nonatomic, retain) NSString *Name;
 @property (nonatomic, retain) NSString *Time;
 @property (nonatomic, retain) NSString *Sound;
+
+@property (nonatomic, retain) NSString *tmpTime;
+
 @property (nonatomic,  assign, getter=isAlarmONOFF)		BOOL	AlarmONOFF;
 @property (nonatomic,  assign, getter=isSnoozeONOFF)	BOOL	SnoozeONOFF;
 @property (nonatomic,  assign, getter=isShakeONOFF)		BOOL	ShakeONOFF;
@@ -43,6 +47,7 @@
 - (NSDate*)GetNSDate;
 - (void)ResetNSDateSnooze;
 - (void)ResetNSDate;
+- (void)NextDayNSDate;
 
 @end
 

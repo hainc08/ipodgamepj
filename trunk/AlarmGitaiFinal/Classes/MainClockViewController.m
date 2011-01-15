@@ -16,6 +16,7 @@
 #import "AlarmConfig.h"
 #import "DateFormat.h"
 #import "NewWeekView.h"
+#import	"SoundManager.h"
 
 @implementation MainClockViewController
 
@@ -132,12 +133,14 @@
 	viewrotate =FALSE;
 }
 - (IBAction)StopAlarm:(id)sender  {
-	[soundPlayer stop];
+	//[soundPlayer stop];
+	[[SoundManager getInstance] stopAlarm];
 	[self AlarmBarHidden:YES];
 	isAlarmPlay = FALSE;
 }
 - (IBAction)SnoozeButton:(id)sender  {
-	[soundPlayer stop];
+	/* [soundPlayer stop]; */
+
 	[self AlarmBarHidden:YES];
 	isAlarmPlay = FALSE;
 }
@@ -175,62 +178,46 @@
 		AlarmDate *t_date  = [alarm_arr objectAtIndex:loop];
 		if([t_date isAlarmONOFF])
 		{
+			//int alarm = [[t_date GetNSDate] timeIntervalSince1970];
 			int alarm = [[t_date GetNSDate] timeIntervalSince1970];
+
 			if(now >= alarm)
 			{
 				//다른 짓 하다가 1분이상 지나버렸다면 그냥 스킵...
-				if ((now - alarm) < 60)
+			
+				if ((now - alarm) < 60) 
 				{
 					//알람시간이 되었다!
 					//여기서 뭘해줄꺼냐!
+					[[SoundManager getInstance] playAlarm:t_date];
 					
-					NSString* filePath = [NSString stringWithFormat: @"%@/%@.mp3", [[NSBundle mainBundle] resourcePath], t_date.Sound];
-						NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
+					[self AlarmBarHidden:NO]; // Alarm 화면을 보인다.. 
+					isAlarmPlay = true;
 						
-						// checkfile exist
-						NSFileManager *fileManager = [NSFileManager defaultManager];
-						BOOL success = [fileManager fileExistsAtPath:filePath];
-						if(!success) {
-							NSLog(@"sound file does not exist");
-							return;
+					if ([t_date RepeatIdx] == 0){ 
+						t_date.AlarmONOFF = false;
+					}
+					else
+					{
+						if([t_date isSnoozeONOFF] && (t_date.SnoozeCount > 0 )){
+							t_date.SnoozeCount--;
+							[t_date ResetNSDateSnooze]; // 기본 5분후에 
 						}
-						
-						soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
-						[soundPlayer prepareToPlay];
-						[soundPlayer setDelegate:self];
-						
-						[soundPlayer setVolume:t_date.SoundVolume];
-						[soundPlayer setNumberOfLoops:-1];
-						
-						[soundPlayer play];
-						
-						[filePath release];
-						[fileURL release];
-						
-						[self AlarmBarHidden:NO]; // Alarm 화면을 보인다.. 
-						isAlarmPlay = true;
-						
-						if ([t_date RepeatIdx] == 0){
-							t_date.AlarmONOFF = false;
-						}
-						else
+						else // Snooze 전부 발생 했고 , 알람으로서 오늘 일은 끝~!! 내일 하자.
 						{
-							if([t_date isSnoozeONOFF] && (t_date.SnoozeCount > 0 )){
-								t_date.SnoozeCount--;
-								[t_date ResetNSDateSnooze]; // 기본 5분후에 
-							}
-							else // Snooze 전부 발생 했고 , 알람으로서 오늘 일은 끝~!! 내일 하자.
-							{
-								t_date.SnoozeCount = 5;
-								[t_date ResetNSDate];
-							}	
-						}
+							t_date.SnoozeCount = 5;
+							[t_date NextDayNSDate];
+						}	
 					}
-					else {
-						t_date.SnoozeCount = 5;
-						[t_date ResetNSDate];
+				}
+				else {
+				// 지났으니깐.. 다음날로 변경..
+					t_date.SnoozeCount = 5;
+					[t_date NextDayNSDate];
+					if ([t_date RepeatIdx] == 0){ 
+						t_date.AlarmONOFF = false;
 					}
-
+				}
 				}
 			}
 		}

@@ -97,15 +97,6 @@ static AlarmConfig *AlarmConfigInst;
 	[[SaveManager getInstance] setIntData:@"DateDisplay"	idx:0 value:1];
 	[[SaveManager getInstance] setIntData:@"WeekDisplay"	idx:0 value:1];
 	
-	[[SaveManager getInstance] setIntData:@"AlarmDate"		idx:0 value:0];
-	[[SaveManager getInstance] setStringData:@"AlarmDate"	idx:1 value:@"-"];
-	
-	
-	[[SaveManager getInstance] setIntData:@"VibrationONOFF"	idx:0 value:1];
-	[[SaveManager getInstance] setIntData:@"RepeatIdx"	idx:0 value:0];
-	[[SaveManager getInstance] setIntData:@"SnoozeONOFF"	idx:0 value:1];
-	[[SaveManager getInstance] setIntData:@"ShakeONOFF"		idx:0 value:1];
-
 	[[SaveManager getInstance] setFloatData:@"ClockZoom"	idx:0 value:1.f];
 	[[SaveManager getInstance] setIntData:@"ClockPos"		idx:0 value:160];
 	[[SaveManager getInstance] setIntData:@"ClockPos"		idx:1 value:300];
@@ -144,8 +135,6 @@ static AlarmConfig *AlarmConfigInst;
 	FontUpImageType =	[[SaveManager getInstance] getStringData:@"FontType"	idx:1 base:@"ub"];
 	FontBgImageType =	[[SaveManager getInstance] getStringData:@"FontType"	idx:2 base:@"dw"];
 	
-	
-	
 	HourMode		=	[[SaveManager getInstance] getIntData:@"HourMode"		idx:0 base:1]	== 1 ? TRUE : FALSE;
 	DateDisplay		=	[[SaveManager getInstance] getIntData:@"DateDisplay"	idx:0 base:1]	== 1 ? TRUE : FALSE;
 	WeekDisplay		=	[[SaveManager getInstance] getIntData:@"WeekDisplay"	idx:0 base:1]	== 1 ? TRUE : FALSE;
@@ -156,18 +145,18 @@ static AlarmConfig *AlarmConfigInst;
 	
 	float cz		=	[[SaveManager getInstance] getFloatData:@"ClockZoom" idx:0 base:1.f];
 	[heigthviewpoint setClockTrans:CGAffineTransformMake(cz, 0.0, 0.0, cz, 0.0, 0.0)];
-	[heigthviewpoint setClockPoint:CGPointMake([[SaveManager getInstance] getIntData:@"ClockPos" idx:0 base:160],
-											   [[SaveManager getInstance] getIntData:@"ClockPos" idx:1 base:300])];
+	[heigthviewpoint setClockPoint:CGPointMake([[SaveManager getInstance] getIntData:@"ClockPos" idx:0 base:280],
+											   [[SaveManager getInstance] getIntData:@"ClockPos" idx:1 base:250])];
 
 	float dz		=	[[SaveManager getInstance] getFloatData:@"DateZoom" idx:0 base:0.5f];
 	[heigthviewpoint setDateTrans:CGAffineTransformMake(dz, 0.0, 0.0, dz, 0.0, 0.0)];
-	[heigthviewpoint setDatePoint:CGPointMake([[SaveManager getInstance] getIntData:@"DatePos" idx:0 base:200],
+	[heigthviewpoint setDatePoint:CGPointMake([[SaveManager getInstance] getIntData:@"DatePos" idx:0 base:100],
 											  [[SaveManager getInstance] getIntData:@"DatePos" idx:1 base:50])];
 
 	cz				=	[[SaveManager getInstance] getFloatData:@"ClockZoom" idx:1 base:1.f];
 	[widthviewpoint setClockTrans:CGAffineTransformMake(cz, 0.0, 0.0, cz, 0.0, 0.0)];
 	[widthviewpoint setClockPoint:CGPointMake([[SaveManager getInstance] getIntData:@"ClockPos" idx:2 base:160],
-											   [[SaveManager getInstance] getIntData:@"ClockPos" idx:3 base:300])];
+											   [[SaveManager getInstance] getIntData:@"ClockPos" idx:3 base:380])];
 	
 	dz				=	[[SaveManager getInstance] getFloatData:@"DateZoom" idx:1 base:0.5f];
 	[widthviewpoint setDateTrans:CGAffineTransformMake(dz, 0.0, 0.0, dz, 0.0, 0.0)];
@@ -391,6 +380,7 @@ static AlarmConfig *AlarmConfigInst;
 @implementation AlarmDate
 
 @synthesize Time;
+@synthesize tmpTime;
 @synthesize Name;
 @synthesize	Sound;
 @synthesize AlarmONOFF;
@@ -421,9 +411,11 @@ static AlarmConfig *AlarmConfigInst;
 {
 	if (alarmDate == nil)
 	{
-		NSDate* now = [[DateFormat getInstance] getCurrentDate];
+		alarmDate = [[[DateFormat getInstance] getStringToDate:Time format:@"h:mm a"] retain];
+		/*
+		NSDate* now = [[[DateFormat getInstance] getCurrentDate] retain];
 		NSDate* tempDate = [[DateFormat getInstance] getStringToDate:Time format:@"h:mm a"];
-		
+		 
 		if (RepeatIdx > 1)
 		{
 			int idx = RepeatIdx - 2;
@@ -450,7 +442,7 @@ static AlarmConfig *AlarmConfigInst;
 		else
 		{
 			alarmDate = [tempDate retain];
-		}
+		}*/
 	}
 	
 	return alarmDate;
@@ -467,6 +459,12 @@ static AlarmConfig *AlarmConfigInst;
 		[alarmDate release];
 		alarmDate = nil;
 	}
+}
+- (void)NextDayNSDate
+{
+	//다음날로 보내보려 
+	alarmDate = [[alarmDate addTimeInterval:60*60*24] retain];
+
 }
 
 @end

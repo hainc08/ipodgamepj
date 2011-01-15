@@ -15,6 +15,7 @@
 		280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
+		56615DC212E17BF400939D3B /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56615DC112E17BF400939D3B /* SoundManager.m */; };
 		5674BD2112A529D800FC97BE /* AlarmViewSetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5674BD1F12A529D800FC97BE /* AlarmViewSetController.m */; };
 		5674BD4412A52F6E00FC97BE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5674BD4312A52F6E00FC97BE /* CoreData.framework */; };
 		5674BE3412A5CFB200FC97BE /* AlarmSetting.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5674BE3312A5CFB200FC97BE /* AlarmSetting.xib */; };
@@ -586,6 +587,8 @@
 		289233A90DB2D0DB0083E9F9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* AlarmGitaiFinal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmGitaiFinal_Prefix.pch; sourceTree = "<group>"; };
+		56615DC012E17BF400939D3B /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		56615DC112E17BF400939D3B /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
 		5674BD1E12A529D800FC97BE /* AlarmViewSetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewSetController.h; sourceTree = "<group>"; };
 		5674BD1F12A529D800FC97BE /* AlarmViewSetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewSetController.m; sourceTree = "<group>"; };
 		5674BD4312A52F6E00FC97BE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -2066,6 +2069,8 @@
 		84D43579129DF15D00356784 /* BaseClasses */ = {
 			isa = PBXGroup;
 			children = (
+				56615DC012E17BF400939D3B /* SoundManager.h */,
+				56615DC112E17BF400939D3B /* SoundManager.m */,
 				84D4357C129DF15D00356784 /* BaseView.h */,
 				84D4357D129DF15D00356784 /* BaseView.m */,
 				84D4357E129DF15D00356784 /* FileIO.h */,
@@ -2696,6 +2701,7 @@
 				84B00B7012ACAB620093647C /* OptionPreview.m in Sources */,
 				844D595512AD35B1003107CD /* NewWeekView.m in Sources */,
 				849A980512C7A1430017FDCA /* RepeatSetView.m in Sources */,
+				56615DC212E17BF400939D3B /* SoundManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

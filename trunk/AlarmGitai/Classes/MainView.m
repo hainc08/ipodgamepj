@@ -274,12 +274,12 @@ extern void GSEventSetBacklightLevel(float value);
 
 }
 
-#ifdef __IPHONE_3_0
+//#ifdef __IPHONE_3_0
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation duration:(NSTimeInterval)duration {
-#else
-- (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation: (UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration {    
-		UIInterfaceOrientation interfaceOrientation = self.interfaceOrientation;
-#endif
+//#else
+//- (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation: (UIInterfaceOrientation)fromInterfaceOrientation duration:(NSTimeInterval)duration {    
+//		UIInterfaceOrientation interfaceOrientation = self.interfaceOrientation;
+//#endif
 	[self FrameUpdate];
 }
 

@@ -7,11 +7,11 @@
 //
 
 #import "AlarmViewSetController.h"
-
+#import "SoundManager.h"
 
 
 @implementation AlarmViewSetController
-@synthesize editedObject,EditType,editedPropertyKey,sourceController, delegate ,optionTableView;
+@synthesize editedObject,EditType,editedPropertyKey,sourceController, delegate ,optionTableView, viewbar, u_Label;
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -26,16 +26,6 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-
-	self.navigationController.navigationBarHidden = NO;
-	UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(done)];
-	self.navigationItem.rightBarButtonItem = saveButton;
-	[saveButton release];
-	
-	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
-	self.navigationItem.leftBarButtonItem = cancelButton;
-	[cancelButton release];
-	
 	select_index=0;
 	[super viewDidLoad];
 }
@@ -50,6 +40,9 @@
 */
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	
+	// Title 지정 
+	self.viewbar.topItem.title = editedPropertyKey;
 	
 	textField.hidden = NO;
 	optionTableView.hidden = YES;
@@ -97,14 +90,23 @@
 
 - (IBAction)done  {
 	if(EditType == SOUND )
-		[sourceController setValue:[NSString stringWithFormat:@"bgm%02d",select_index]  forEditedProperty:editedPropertyKey];
+	{
+		if(select_index == 0)
+			[sourceController setValue:[NSString stringWithFormat:@"bgm_title"]  forEditedProperty:editedPropertyKey];
+		else 
+			[sourceController setValue:[NSString stringWithFormat:@"bgm%02d",select_index]  forEditedProperty:editedPropertyKey];
+
+	}
 	else
 		[sourceController setValue:textField.text forEditedProperty:editedPropertyKey];
+	[[SoundManager getInstance] stopSound];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
 - (IBAction)cancel  {
+	[[SoundManager getInstance] stopSound];
 	[self.delegate flipsideViewControllerDidFinish:self];	
+
 }
 
 
@@ -154,8 +156,10 @@
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 		
 	}
-	
-	cell.textLabel.text = [NSString stringWithFormat:@"bgm%02d", indexPath.row];
+	if(indexPath.row == 0)
+		cell.textLabel.text = [NSString stringWithFormat:@"bgm_title"];
+	else
+		cell.textLabel.text = [NSString stringWithFormat:@"bgm%02d", indexPath.row];
 	if(![cell.textLabel.text compare:[editedObject valueForKey:editedPropertyKey]])
 	{
 		select_index = indexPath.row;
@@ -165,10 +169,6 @@
 		if(	cell.accessoryType == UITableViewCellAccessoryCheckmark)
 			cell.accessoryType = UITableViewCellAccessoryNone;
 	}
-
-	
-
-
 	return cell;
 }
 
@@ -186,9 +186,12 @@
 	UITableViewCell *oldcell = [tableView cellForRowAtIndexPath:oldindex];
 	oldcell.accessoryType = UITableViewCellAccessoryNone;
  
+		
 	
 	thisCell.accessoryType = UITableViewCellAccessoryCheckmark; 
 	select_index = indexPath.row;
+	
+	[[SoundManager getInstance] playSound:thisCell.textLabel.text];
 
  } 
 

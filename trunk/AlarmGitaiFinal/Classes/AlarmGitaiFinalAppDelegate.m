@@ -13,6 +13,7 @@
 #import "DateFormat.h"
 #import "AlarmConfig.h"	
 #import "ImgManager.h"
+#import "SoundManager.h"
 
 @implementation AlarmGitaiFinalAppDelegate
 
@@ -27,7 +28,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[SaveManager initManager];
 	[AlarmConfig initmanager];
-	
+	[SoundManager initManager];
 	/* 시간설정 */
 	[DateFormat initmanager];
 	
