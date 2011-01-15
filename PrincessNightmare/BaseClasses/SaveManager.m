@@ -46,6 +46,7 @@ void writeInt(NSFileHandle* writeFile, int value)
 	[SaveManagerInst loadMusicFile];
 	[SaveManagerInst loadSceneExp2File];
 	[SaveManagerInst loadItemFlagFile];
+	[SaveManagerInst loadExtraFile];
 	[SaveManagerInst resetFlag];
 }
 

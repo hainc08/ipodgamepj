@@ -9,6 +9,9 @@
 	MovieEndView* endView;
 	SerihuBoard* sBoard;
 	bool isPLaying;
+	bool isStart;
+	
+	Scene* curScene;
 }
 
 @property (readonly) bool isPLaying;
@@ -19,5 +22,5 @@
 - (void)playVideoWithURL:(NSURL *)url showControls:(BOOL)showControls;
 - (void)didFinishPlaying:(NSNotification *)notification;
 - (bool)update;
-			
+
 @end
