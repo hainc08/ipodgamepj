@@ -33,6 +33,8 @@ enum _EDITTYPE {
 	IBOutlet UITextField	*textField;
 	IBOutlet UIDatePicker	*datePicker;
 	IBOutlet UITableView	*optionTableView;
+	IBOutlet UINavigationBar *viewbar;
+	IBOutlet UILabel		*u_Label;
 	
 	int		select_index;
 	id <PropertyEditing> sourceController;
@@ -42,7 +44,8 @@ enum _EDITTYPE {
 @property (nonatomic, retain) id editedObject;
 @property (nonatomic, retain) NSString *editedPropertyKey;
 @property (nonatomic, retain) IBOutlet UITableView *optionTableView;
-
+@property (nonatomic, retain) IBOutlet UINavigationBar *viewbar;
+@property (nonatomic, retain) IBOutlet UILabel		*u_Label;
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
 @property (nonatomic, retain) id <PropertyEditing>  sourceController;
 

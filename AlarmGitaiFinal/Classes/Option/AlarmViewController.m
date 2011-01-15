@@ -8,7 +8,7 @@
 @implementation AlarmViewController
 
 @synthesize delegate;
-@synthesize alarm, undoManager;
+@synthesize alarm;
 @synthesize	SetFlag;
 @synthesize index;
 /*
@@ -85,11 +85,8 @@
 		[[AlarmConfig getInstance] setAlarmAdd:alarm];
 		[alarm release];
 	}
-	else
-	{
-		[alarm ResetNSDate];
-	}
 
+	[alarm ResetNSDate];
 	[[AlarmConfig getInstance] SaveConfig];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
@@ -301,7 +298,9 @@
 		{
 			RepeatSetView *setting = [[RepeatSetView alloc] initWithNibName:@"RepeatSetView" bundle:nil];
 			setting.delegate = self;
-			setting.alarm = alarm;
+			setting.editedPropertyKey = @"RepeatIdx";
+			setting.repeatIdx = alarm.RepeatIdx;
+			setting.sourceController = self;
 			
 			[self presentModalViewController:setting animated:YES];
 			
@@ -316,18 +315,15 @@
 			switch (indexPath.row)
 			{
 				case 0:
-					setting.title = @"Time";
 					setting.editedPropertyKey = @"Time";
 					setting.EditType	=	TIMETYPE;
 				
 					break;
 				case 2:
-					setting.title = @"Sound";
 					setting.editedPropertyKey = @"Sound";
 					setting.EditType	=	SOUND;
 					break;
 				case 3:
-					setting.title = @"Name";
 					setting.editedPropertyKey = @"Name";
 					setting.EditType	=	NAME;
 					break;
@@ -356,6 +352,8 @@
 		alarm.Sound = newValue;
 	else if([field compare:@"Name"] == NSOrderedSame )
 		alarm.Name	= newValue;
+	else if([field compare:@"RepeatIdx"] == NSOrderedSame )
+		alarm.RepeatIdx	= newValue;
 }
 
 - (void)flipsideViewControllerDidFinish:(UIViewController *)controller {

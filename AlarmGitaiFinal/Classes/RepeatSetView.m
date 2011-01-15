@@ -4,14 +4,17 @@
 @implementation RepeatSetView
 
 @synthesize delegate;
-@synthesize alarm;
-
+@synthesize editedPropertyKey;
+@synthesize repeatIdx;
+@synthesize sourceController;
+@synthesize ListTableview;
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
 	self.title = @"Alarm Repeat";
-	repeatIdx = [alarm RepeatIdx];
-
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+	
 	if (repeatIdx > 1)
 	{
 		repeatIdx2 = repeatIdx - 2;
@@ -21,12 +24,17 @@
 	{
 		repeatIdx2 = 0;
 	}
-
+	[ListTableview reloadData];
 }
 
 - (IBAction)done:(id)sender
 {
-	[alarm setRepeatIdx:repeatIdx + repeatIdx2];
+	int setdata = 0;
+	if(repeatIdx == 2 && repeatIdx2 == 0)
+		setdata = 0;
+	else
+		setdata = (repeatIdx + repeatIdx2);
+	[sourceController setValue:setdata forEditedProperty:editedPropertyKey];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
@@ -114,7 +122,7 @@
 				break;
 		}
 		BOOL isSelect;
-		if (repeatIdx < 2) isSelect = false;
+		if (repeatIdx < 2) { isSelect = false; repeatIdx2 = 0;}
 		else isSelect = repeatIdx2 & (0x01<<indexPath.row);
 		[buttonCell showSelect:isSelect];
 	}
@@ -159,9 +167,11 @@
 		{
 			case 0:
 				repeatIdx = 0;
+				repeatIdx2 = 0;
 				break;
 			case 1:
 				repeatIdx = 1;
+				repeatIdx2 = 0;
 				break;
 			case 2:
 				repeatIdx = 2;
