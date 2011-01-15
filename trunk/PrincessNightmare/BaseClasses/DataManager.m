@@ -178,12 +178,18 @@ static NSString* ResourcePath;
 	isShow[idx] = h;
 }
 
-- (void)setIsShowByIdx:(int)eventIdx
+- (bool)setIsShowByIdx:(int)eventIdx
 {
 	for (int i=0; i<valCount; ++i)
 	{
-		if (intVal[i] == eventIdx) isShow[i] = true;
+		if (intVal[i] == eventIdx)
+		{
+			if (isShow[i]) return false;
+			isShow[i] = true;
+			return true;
+		}
 	}
+	return false;
 }
 
 @end
@@ -1273,12 +1279,15 @@ GABBAGE_CHECK_OK:
 	return data;
 }
 
-- (void)setEventShow:(int)eventIdx
+- (bool)setEventShow:(int)eventIdx
 {
+	bool result = false;
 	for (int i=0; i<15; ++i)
 	{
-		[eventList[i] setIsShowByIdx:eventIdx];
+		result = result || [eventList[i] setIsShowByIdx:eventIdx];
 	}
+	
+	return result;
 }
 
 - (void)setMusicShow:(int)idx

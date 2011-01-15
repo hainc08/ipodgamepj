@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface SerihuBoard : UIView {
+@interface SerihuBoard : UIViewController {
 	IBOutlet id nameBoard;
 	
 	IBOutlet id serihuLabel;

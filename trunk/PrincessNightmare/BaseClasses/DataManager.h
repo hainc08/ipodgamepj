@@ -44,7 +44,7 @@
 
 - (bool)getIsShow:(int)idx;
 - (void)setIsShow:(int)idx :(bool)h;
-- (void)setIsShowByIdx:(int)eventIdx;
+- (bool)setIsShowByIdx:(int)eventIdx;
 
 @end
 
@@ -227,7 +227,7 @@
 
 - (void)setEventData:(int)idx :(int)data;
 - (int)getEventData:(int)idx;
-- (void)setEventShow:(int)eventIdx;
+- (bool)setEventShow:(int)eventIdx;
 
 - (void)setMusicShowWithoutSave:(int)idx;
 - (void)setMusicShow:(int)idx;

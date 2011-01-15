@@ -9,6 +9,7 @@
 	self = [super initWithCoder:coder];
 	isPLaying = false;
 	sBoard = nil;
+	endView = nil;
 	return self;
 }
 
@@ -16,35 +17,23 @@
 	self = [super initWithFrame:frame];
 	isPLaying = false;
 	sBoard = nil;
+	endView = nil;
 	return self;
 }
 
 - (void)playScene:(Scene*)s
 {
-	[self playAnime:[[NSString alloc] initWithFormat:@"%d",[s animeType]]];
+	curScene = s;
 
 	if ([[ViewManager getInstance] movieMode] == 1)
 	{
-		NSArray *windows = [[UIApplication sharedApplication] windows];
-		if ([windows count] > 1)
-		{
-			// Locate the movie player window
-			UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
-			// Add our overlay view to the movie player's subviews so it is 
-			// displayed above it.
-
-			sBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
-			[sBoard setTransform:CGAffineTransformMake(0, 1, -1, 0, 0, 0)];		
-			[sBoard setCenter:CGPointMake(60, 290)];		
-			[sBoard setSerihu:[s getChara] serihu:[s getSerihu]];
-			 
-			[moviePlayerWindow addSubview:sBoard];
-			
-			endView = (MovieEndView*)[[ViewManager getInstance] getInstView:@"MovieEndView"];
-			[moviePlayerWindow addSubview:endView];
-			[endView setCenter:CGPointMake(240,160)];
-		}
+		isStart = false;
 	}
+	else
+	{
+		[self playAnime:[[NSString alloc] initWithFormat:@"%d",[s animeType]]];
+	}
+
 	
 	isPLaying = true;
 }
@@ -53,31 +42,37 @@
 {
 	if (sBoard != nil)
 	{
-		[sBoard removeFromSuperview];
-		[sBoard release];
-		sBoard = nil;
+		[sBoard.view removeFromSuperview];
 	}
 
-	[player stop];
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
-	[player release];
-	player = nil;
+	if (player != nil)
+	{
+		[player stop];
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
+		[player release];
+		player = nil;
+	}
+	
+	if (endView != nil)
+	{
+		[endView removeFromSuperview];
+		[endView release];
+		endView = nil;
+	}
 
 	isPLaying = false;
 }
 
 - (void)didFinishPlaying:(NSNotification *)notification {
-    if (player == [notification object]) {   
-		if (sBoard != nil)
+    if (player == [notification object]) {
+		if ([[ViewManager getInstance] movieMode] == 1)
 		{
-			[sBoard removeFromSuperview];
-			[sBoard release];
-			sBoard = nil;
+			[endView setShowEnd:true];
 		}
-
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
-        [player release];
-        player = nil;
+		else
+		{
+			[self stopMovie];
+		}
     }
 }
 
@@ -105,13 +100,50 @@
             player.scalingMode = MPMovieScalingModeAspectFill;
             player.movieControlMode = MPMovieControlModeHidden;
         }
-		
+
         [player play];
     }
 }
 
 - (bool)update
 {
+	if (([[ViewManager getInstance] movieMode] == 1) && (isStart == false))
+	{
+		NSArray *windows = [[UIApplication sharedApplication] windows];
+		if ([windows count] == 1)
+		{
+			NSString* aniName = [[NSString alloc] initWithFormat:@"%d",[curScene animeType]];
+			[self playAnime:aniName];
+
+			// Locate the movie player window
+			UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
+			// Add our overlay view to the movie player's subviews so it is 
+			// displayed above it.
+			
+			if (sBoard == nil)
+			{
+				sBoard = [[[SerihuBoard alloc] init] retain];
+			}
+
+			[sBoard.view setTransform:CGAffineTransformMake(0, 1, -1, 0, 0, 0)];		
+			[sBoard.view setCenter:CGPointMake(60, 290)];		
+			[sBoard setSerihu:[curScene getChara] serihu:[curScene getSerihu]];
+			
+			[moviePlayerWindow addSubview:sBoard.view];
+			
+			endView = (MovieEndView*)[[ViewManager getInstance] getInstView:@"MovieEndView"];
+			[moviePlayerWindow addSubview:endView];
+			[endView setCenter:CGPointMake(240,160)];
+			
+			[aniName release];
+
+			isStart = true;
+		}
+		
+		return false;
+	}
+	
+	if (endView == nil) return true;
 	return [endView showEnd];
 }
 

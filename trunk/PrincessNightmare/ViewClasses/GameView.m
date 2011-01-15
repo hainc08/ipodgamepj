@@ -65,18 +65,18 @@
 		}
 		else
 		{
-			serihuBoard2 = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
-			[serihuBoard2 setCenter:CGPointMake(290, 260)];
-			[movieUI addSubview:serihuBoard2];
+			serihuBoard2 = [[SerihuBoard alloc] init];
+			[serihuBoard2.view setCenter:CGPointMake(290, 260)];
+			[movieUI addSubview:serihuBoard2.view];
 			[movieUI bringSubviewToFront:next2];
 		}
 
 		[self sendSubviewToBack:movieUI];
 		[movieUI setAlpha:0];
 		
-		serihuBoard = (SerihuBoard*)[[ViewManager getInstance] getInstView:@"SerihuBoard"];
-		[serihuBoard setCenter:CGPointMake(290, 260)];
-		[self addSubview:serihuBoard];
+		serihuBoard = [[SerihuBoard alloc] init];
+		[serihuBoard.view setCenter:CGPointMake(290, 260)];
+		[self addSubview:serihuBoard.view];
 
 		[self bringSubviewToFront:oldChrView[3]];
 		[self bringSubviewToFront:chrView[3]];
@@ -190,7 +190,7 @@
 		[msgClose setAlpha:0];
 		[chrView[3] setAlpha:0];
 		[menuButton setAlpha:0];
-		[serihuBoard setAlpha:0];
+		[serihuBoard.view setAlpha:0];
 		[skip setAlpha:0];
 		return;
 	}
@@ -207,7 +207,7 @@
 		[msgClose setAlpha:1];
 		[chrView[3] setAlpha:1];
 		[menuButton setAlpha:1];
-		[serihuBoard setAlpha:1];
+		[serihuBoard.view setAlpha:1];
 		return;
 	}
 
@@ -633,14 +633,17 @@
 		[oldBgView setAlpha:1];
 		[bgView setAlpha:0];
 		
-		if ([s preLoadBgIdx] > 500)
-		{
-			[[DataManager getInstance] setEventShow:[s preLoadBgIdx] - 500];
-			[[SaveManager getInstance] saveExtraFile];
-		}
-		
 		[bgView setFrame:CGRectMake(0, 0, [img size].width, [img size].height)];
 	}
+
+	if ([s preLoadBgIdx] > 500)
+	{
+		if ([[DataManager getInstance] setEventShow:[s preLoadBgIdx] - 500])
+			[[SaveManager getInstance] saveExtraFile];
+	}
+
+	//스킵모드에서는 에니를 보여주지 않는다.
+	if (isSkipMode) return;
 	
 	switch ([s animeType])
 	{
@@ -694,6 +697,8 @@
 			{
 				[serihuBoard2 setSerihu:[s getChara] serihu:[s getSerihu]];
 			}
+			
+			[serihuBoard.view setAlpha:0];
 		}
 	}
 }
@@ -806,7 +811,7 @@
 			break;
 	}
 
-	[serihuBoard setAlpha:1];
+	[serihuBoard.view setAlpha:1];
 	[serihuBoard setSerihu:[scene getChara] serihu:[scene getSerihu]];
 //	[debugLabel setText:[[DataManager getInstance] getSceneIdxStr]];
 }
@@ -823,7 +828,7 @@
 	[chrView[2] setAlpha:0];
 	[chrView[3] setAlpha:0];
 	[bgView setAlpha:0];
-	[serihuBoard setAlpha:0];
+	[serihuBoard.view setAlpha:0];
 	
 	[selectPanel1 setAlpha:0];
 	[selectPanel2 setAlpha:0];
