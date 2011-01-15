@@ -147,6 +147,7 @@
 - (NSMutableArray *)getAlarmArr;
 - (int) setAlarmAdd:(AlarmDate *)_inData;
 - (void) deleteAlarm:(AlarmDate *)_inData;
--(void) AlarmLoadConfig;
--(void) AlarmSaveConfig;
+- (void) AlarmLoadConfig;
+- (void) AlarmSaveConfig;
+
 @end
