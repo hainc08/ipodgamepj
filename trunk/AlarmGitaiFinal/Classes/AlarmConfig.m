@@ -411,7 +411,9 @@ static AlarmConfig *AlarmConfigInst;
 {
 	if (alarmDate == nil)
 	{
-		alarmDate = [[[DateFormat getInstance] getStringToDate:Time format:@"h:mm a"] retain];
+
+		NSString *Temp = [Time stringByReplacingOccurrencesOfString:@" " withString:@":00 " ];
+  alarmDate = [[[DateFormat getInstance] getStringToDate:Temp format:@"h:mm:ss a"] retain];
 		/*
 		NSDate* now = [[[DateFormat getInstance] getCurrentDate] retain];
 		NSDate* tempDate = [[DateFormat getInstance] getStringToDate:Time format:@"h:mm a"];

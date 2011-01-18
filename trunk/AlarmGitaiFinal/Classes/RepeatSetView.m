@@ -10,7 +10,6 @@
 @synthesize ListTableview;
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.title = @"Alarm Repeat";
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

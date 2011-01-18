@@ -38,7 +38,8 @@ enum _EDITTYPE {
 	
 	int		select_index;
 	id <PropertyEditing> sourceController;
-
+	
+	NSArray					*SoundList;
 }
 @property (nonatomic, assign, getter=isEditingDate) int EditType;
 @property (nonatomic, retain) id editedObject;

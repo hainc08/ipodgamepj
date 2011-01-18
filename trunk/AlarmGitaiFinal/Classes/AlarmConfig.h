@@ -96,7 +96,8 @@
 	int				weekdayType;
 
 	
-	NSMutableArray			*AlarmArr; 
+	NSMutableArray			*AlarmArr;
+
 }
 @property (readwrite) int heightnum;
 @property (readwrite) int widthnum;

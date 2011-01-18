@@ -178,7 +178,6 @@
 		AlarmDate *t_date  = [alarm_arr objectAtIndex:loop];
 		if([t_date isAlarmONOFF])
 		{
-			//int alarm = [[t_date GetNSDate] timeIntervalSince1970];
 			int alarm = [[t_date GetNSDate] timeIntervalSince1970];
 
 			if(now >= alarm)
