@@ -85,7 +85,15 @@ static SoundManager *SoundManagerInst;
 	}
 	Alarm = _inData;
 	// make file URL
-	NSString* filePath = [NSString stringWithFormat: @"%@/%@.mp3", [[NSBundle mainBundle] resourcePath], _inData.Sound];
+	NSString* SoundName;
+	
+	int index = [[AlarmConfig getInstance] getSoundRow:_inData.Sound];
+	if(index == 0)
+		SoundName = @"alarm01";
+	else 
+		SoundName  = [NSString stringWithFormat:@"bgm%02d", index];
+
+	NSString* filePath = [NSString stringWithFormat: @"%@/%@.mp3", [[NSBundle mainBundle] resourcePath], SoundName];
 	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
 	
 	// checkfile ex

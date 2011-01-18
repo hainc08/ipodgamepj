@@ -124,6 +124,28 @@ static AlarmConfig *AlarmConfigInst;
 {
 	CharName = @"natsuko";
 //	CharName = @"haruka";
+	
+	SoundList = [[NSArray alloc] initWithObjects: @"Simple Alarm", 
+				 @"現実との境界線",
+				 @"平和な時",
+				 @"世にも怪奇な物語"
+				 @"神社",	
+				 @"ゆらめく斜陽",
+				 @"プラン６９ From M",
+				 @"仮面夫婦クオリア",
+				 @"純愛幻ヒプノツス",
+				 @"東京エイリアン",
+				 @"マインドシーカー村越",
+				 @"混濁していく意識",
+				 @"表から裏へ",
+				 @"それはあまりに絶望的な",
+				 @"ほとんど無害",
+				 @"宇宙で一番愛しい人",
+				 @"インドアゲーム",
+				 @"神様はオレ様？",
+				 @"同棲",
+				 @"そして誰もいなくなった",
+				 @"村越の野望", nil];
 	AlarmArr = [[NSMutableArray alloc] initWithCapacity:0];
 	
 	RotationTime	=	[[SaveManager getInstance] getIntData:@"RotationTime"	idx:0 base:5];
@@ -355,7 +377,14 @@ static AlarmConfig *AlarmConfigInst;
 		++i;
 	}
 }
-
+- (NSString *) getSoundList:(int)_row
+{
+	return [SoundList objectAtIndex:_row];
+}
+- (int) getSoundRow:(NSString *)_bgm
+{
+	return [SoundList indexOfObject:_bgm];
+}
 - (void)dealloc {
 	[super dealloc];	
 	[FontUpImageType  release];
@@ -403,6 +432,7 @@ static AlarmConfig *AlarmConfigInst;
 	ShakeONOFF = NO;
 	VibrationONOFF = NO;
 	RepeatIdx = 0;
+	SoundVolume = 3;
 	alarmDate = nil;
 	return self;
 }
@@ -412,8 +442,8 @@ static AlarmConfig *AlarmConfigInst;
 	if (alarmDate == nil)
 	{
 
-		NSString *Temp = [Time stringByReplacingOccurrencesOfString:@" " withString:@":00 " ];
-  alarmDate = [[[DateFormat getInstance] getStringToDate:Temp format:@"h:mm:ss a"] retain];
+		NSString *Temp = [Time stringByReplacingOccurrencesOfString:@" " withString:@":00 " ]; // 그냥 하면 00초에 알람이 안울려서 
+		alarmDate = [[[DateFormat getInstance] getStringToDate:Temp format:@"h:mm:ss a"] retain];
 		/*
 		NSDate* now = [[[DateFormat getInstance] getCurrentDate] retain];
 		NSDate* tempDate = [[DateFormat getInstance] getStringToDate:Time format:@"h:mm a"];

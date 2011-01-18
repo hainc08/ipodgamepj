@@ -8,7 +8,7 @@
 
 #import "AlarmViewSetController.h"
 #import "SoundManager.h"
-
+#import "AlarmConfig.h"
 
 @implementation AlarmViewSetController
 @synthesize editedObject,EditType,editedPropertyKey,sourceController, delegate ,optionTableView, viewbar, u_Label;
@@ -27,27 +27,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	select_index=0;
-	SoundList = [[NSArray alloc] initWithObjects: @"Simple Alarm", 
-												  @"現実との境界線",
-													@"平和な時",
-													@"世にも怪奇な物語"
-													@"神社",	
-													@"ゆらめく斜陽",
-													@"プラン６９ From M",
-													@"仮面夫婦クオリア",
-													@"純愛幻ヒプノツス",
-													@"東京エイリアン",
-													@"マインドシーカー村越",
-													@"混濁していく意識",
-													@"表から裏へ",
-													@"それはあまりに絶望的な",
-													@"ほとんど無害",
-													@"宇宙で一番愛しい人",
-													@"インドアゲーム",
-													@"神様はオレ様？",
-													@"同棲",
-													@"そして誰もいなくなった",
-													@"村越の野望", nil];
+
 	[super viewDidLoad];
 }
 
@@ -113,7 +93,7 @@
 	if(EditType == SOUND )
 	{
 			
-		[sourceController setValue:[SoundList objectAtIndex:select_index]  forEditedProperty:editedPropertyKey];
+		[sourceController setValue:[[AlarmConfig getInstance] getSoundList:select_index]  forEditedProperty:editedPropertyKey];
 		[[SoundManager getInstance] stopSound];
 	}
 	else
@@ -176,7 +156,7 @@
 		
 	}
 	
-	if(![[SoundList objectAtIndex:indexPath.row] compare:[editedObject valueForKey:editedPropertyKey]])
+	if(![[[AlarmConfig getInstance] getSoundList:indexPath.row] compare:[editedObject valueForKey:editedPropertyKey]])
 	{
 		select_index = indexPath.row;
 		cell.accessoryType = UITableViewCellAccessoryCheckmark; 
@@ -185,7 +165,7 @@
 		if(	cell.accessoryType == UITableViewCellAccessoryCheckmark)
 			cell.accessoryType = UITableViewCellAccessoryNone;
 	}
-	cell.textLabel.text = [NSString stringWithFormat:@"%02d。%@" , indexPath.row,  [SoundList objectAtIndex:indexPath.row]];
+	cell.textLabel.text = [NSString stringWithFormat:@"%02d。%@" , indexPath.row,  [[AlarmConfig getInstance] getSoundList:indexPath.row]];
 	return cell;
 }
 
@@ -216,7 +196,6 @@
 
 
 - (void)dealloc {
-	[SoundList release];
     [super dealloc];
 }
 
