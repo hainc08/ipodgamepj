@@ -129,6 +129,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
+	[[SoundManager getInstance] stopAlarm];
 	[self stopTimer];
 	viewrotate =FALSE;
 }

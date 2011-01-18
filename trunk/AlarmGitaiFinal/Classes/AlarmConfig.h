@@ -97,7 +97,7 @@
 
 	
 	NSMutableArray			*AlarmArr;
-
+	NSArray					*SoundList;
 }
 @property (readwrite) int heightnum;
 @property (readwrite) int widthnum;
@@ -143,7 +143,8 @@
 
 - (int) getRotationTime;
 - (void) setRotationTime:(int)value;
-
+- (NSString *) getSoundList:(int)_row;
+- (int) getSoundRow:(NSString *)_bgm;
 /* alarm set */
 - (NSMutableArray *)getAlarmArr;
 - (int) setAlarmAdd:(AlarmDate *)_inData;
