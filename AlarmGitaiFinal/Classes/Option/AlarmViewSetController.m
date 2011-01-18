@@ -27,6 +27,27 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	select_index=0;
+	SoundList = [[NSArray alloc] initWithObjects: @"Simple Alarm", 
+												  @"現実との境界線",
+													@"平和な時",
+													@"世にも怪奇な物語"
+													@"神社",	
+													@"ゆらめく斜陽",
+													@"プラン６９ From M",
+													@"仮面夫婦クオリア",
+													@"純愛幻ヒプノツス",
+													@"東京エイリアン",
+													@"マインドシーカー村越",
+													@"混濁していく意識",
+													@"表から裏へ",
+													@"それはあまりに絶望的な",
+													@"ほとんど無害",
+													@"宇宙で一番愛しい人",
+													@"インドアゲーム",
+													@"神様はオレ様？",
+													@"同棲",
+													@"そして誰もいなくなった",
+													@"村越の野望", nil];
 	[super viewDidLoad];
 }
 
@@ -91,14 +112,9 @@
 - (IBAction)done  {
 	if(EditType == SOUND )
 	{
-		if (select_index == 0)
-		{
-			[sourceController setValue:@"alarm01" forEditedProperty:editedPropertyKey];
-		}
-		else
-		{
-			[sourceController setValue:[NSString stringWithFormat:@"bgm%02d",select_index]  forEditedProperty:editedPropertyKey];
-		}
+			
+		[sourceController setValue:[SoundList objectAtIndex:select_index]  forEditedProperty:editedPropertyKey];
+		[[SoundManager getInstance] stopSound];
 	}
 	else
 		[sourceController setValue:textField.text forEditedProperty:editedPropertyKey];
@@ -159,43 +175,8 @@
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 		
 	}
-
-	switch (indexPath.row)
-	{
-		case 0:		cell.textLabel.text = @"００。Simple Alarm";		break;
-		case 1:		cell.textLabel.text = @"０１。現実との境界線";	break;
-		case 2:		cell.textLabel.text = @"０２。平和な時";	break;
-		case 3:		cell.textLabel.text = @"０３。世にも怪奇な物語";	break;
-		case 4:		cell.textLabel.text = @"０４。神社";	break;
-		case 5:		cell.textLabel.text = @"０５。ゆらめく斜陽";	break;
-		case 6:		cell.textLabel.text = @"０６。プラン６９ From M";	break;
-		case 7:		cell.textLabel.text = @"０７。仮面夫婦クオリア";	break;
-		case 8:		cell.textLabel.text = @"０８。純愛幻ヒプノツス";	break;
-		case 9:		cell.textLabel.text = @"０９。東京エイリアン";	break;
-		case 10:	cell.textLabel.text = @"１０。マインドシーカー村越";	break;
-		case 11:	cell.textLabel.text = @"１１。混濁していく意識";	break;
-		case 12:	cell.textLabel.text = @"１２。表から裏へ";	break;
-		case 13:	cell.textLabel.text = @"１３。それはあまりに絶望的な";	break;
-		case 14:	cell.textLabel.text = @"１４。ほとんど無害";	break;
-		case 15:	cell.textLabel.text = @"１５。宇宙で一番愛しい人";	break;
-		case 16:	cell.textLabel.text = @"１６。インドアゲーム";	break;
-		case 17:	cell.textLabel.text = @"１７。神様はオレ様？";	break;
-		case 18:	cell.textLabel.text = @"１８。同棲";	break;
-		case 19:	cell.textLabel.text = @"１９。そして誰もいなくなった";	break;
-		case 20:	cell.textLabel.text = @"２０。村越の野望";	break;
-	}
-
-	NSString* compareName;
-	if (indexPath.row == 0)
-	{
-		compareName = @"alarm01";
-	}
-	else
-	{
-		compareName = [NSString stringWithFormat:@"bgm%02d",indexPath.row];
-	}
 	
-	if(![compareName compare:[editedObject valueForKey:editedPropertyKey]])
+	if(![[SoundList objectAtIndex:indexPath.row] compare:[editedObject valueForKey:editedPropertyKey]])
 	{
 		select_index = indexPath.row;
 		cell.accessoryType = UITableViewCellAccessoryCheckmark; 
@@ -204,6 +185,7 @@
 		if(	cell.accessoryType == UITableViewCellAccessoryCheckmark)
 			cell.accessoryType = UITableViewCellAccessoryNone;
 	}
+	cell.textLabel.text = [NSString stringWithFormat:@"%02d。%@" , indexPath.row,  [SoundList objectAtIndex:indexPath.row]];
 	return cell;
 }
 
@@ -225,13 +207,16 @@
 	
 	thisCell.accessoryType = UITableViewCellAccessoryCheckmark; 
 	select_index = indexPath.row;
+	NSString* Sound;
+	 if (indexPath.row == 0)	Sound = @"alarm01";
+	 else	Sound = [NSString stringWithFormat:@"bgm%02d",indexPath.row];
 	
-	[[SoundManager getInstance] playSound:thisCell.textLabel.text];
-
+	[[SoundManager getInstance] playSound:Sound];
  } 
 
 
 - (void)dealloc {
+	[SoundList release];
     [super dealloc];
 }
 

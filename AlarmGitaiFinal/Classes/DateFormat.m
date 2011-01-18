@@ -30,7 +30,6 @@ static DateFormat *DateFormatInst;
 	[FormatDate setFormatterBehavior:NSDateFormatterBehavior10_4];
 	[FormatDate setDateStyle:NSDateFormatterLongStyle];
 	[FormatDate setTimeStyle:NSDateFormatterNoStyle];
-	[FormatDate setDefaultDate:[NSDate date]];
 	[FormatDate setLocale:locale];
 }
 
@@ -134,8 +133,9 @@ static DateFormat *DateFormatInst;
 {
 	[FormatDate setDefaultDate:[NSDate date]];
 	[FormatDate setDateFormat:_informat];
-	return [ [FormatDate dateFromString:_indate] retain];
+	return [[FormatDate dateFromString:_indate] retain];
 }
+
 - (NSData *) getCurrentDate
 {
 	return  [NSDate date];
