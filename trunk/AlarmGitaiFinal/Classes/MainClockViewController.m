@@ -93,7 +93,7 @@
 	[self.view bringSubviewToFront:infoButton];
 	[infoButton setCenter:CGPointMake(290, 30)];
 
-	alarm_arr = [[AlarmConfig getInstance] getAlarmArr];
+	
 	frameTick = 0;
 	//너무 자주 업데잇할 필요가 없을 듯~
 	framePerSec = 1.f;
@@ -120,7 +120,7 @@
 	[self FrameUpdate];
 
 	[self resumeTimer];
-	alarm_arr = [[AlarmConfig getInstance] getAlarmArr];
+
 	viewrotate = TRUE;
 	
 	[infoButton setAlpha:0];
@@ -172,9 +172,9 @@
 	if (isAlarmPlay == false) // 절대 스톱하기전에는 들어오지 않음...
 	{
 	int now = [[NSDate date] timeIntervalSince1970];
-
-	for (int loop = 0; loop < [alarm_arr count] ; loop++) {
-		AlarmDate *t_date  = [alarm_arr objectAtIndex:loop];
+		
+	for (int loop = 0; loop < [[AlarmConfig getInstance] getAlarmCount] ; loop++) {
+		AlarmDate *t_date  =  [[AlarmConfig getInstance] getAlarmIndex:loop];
 		if([t_date isAlarmONOFF])
 		{
 			int alarm = [[t_date GetNSDate] timeIntervalSince1970];

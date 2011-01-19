@@ -147,6 +147,8 @@
 - (int) getSoundRow:(NSString *)_bgm;
 /* alarm set */
 - (NSMutableArray *)getAlarmArr;
+- (AlarmDate *)getAlarmIndex:(int)_inRow;
+- (int)getAlarmCount;
 - (int) setAlarmAdd:(AlarmDate *)_inData;
 - (void) deleteAlarm:(AlarmDate *)_inData;
 - (void) AlarmLoadConfig;

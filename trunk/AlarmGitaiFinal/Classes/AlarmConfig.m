@@ -357,7 +357,14 @@ static AlarmConfig *AlarmConfigInst;
 {
 	return AlarmArr;
 }
-
+- (AlarmDate *)getAlarmIndex:(int)_inRow
+{
+	return [AlarmArr objectAtIndex:_inRow];
+}
+- (int)getAlarmCount
+{
+	return [AlarmArr count];
+}
 - (int) setAlarmAdd:(AlarmDate *)_inData
 {
 	[AlarmArr addObject:_inData];
