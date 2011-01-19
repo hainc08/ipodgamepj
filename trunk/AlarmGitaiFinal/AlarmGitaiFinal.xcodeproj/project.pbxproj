@@ -44,6 +44,12 @@
 		84643CBA12A4424D00F4ADBC /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84643CB912A4424D00F4ADBC /* AlarmViewController.m */; };
 		84643D3612A44B8000F4ADBC /* ButtonArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84643D3512A44B8000F4ADBC /* ButtonArrow.png */; };
 		846F328C12A41B000073171A /* AlarmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846F328B12A41B000073171A /* AlarmCell.xib */; };
+		8474634512E6BEAB0066FB5D /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474633F12E6BEAB0066FB5D /* icon1.png */; };
+		8474634612E6BEAB0066FB5D /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634012E6BEAB0066FB5D /* icon2.png */; };
+		8474634712E6BEAB0066FB5D /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634112E6BEAB0066FB5D /* icon3.png */; };
+		8474634812E6BEAB0066FB5D /* icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634212E6BEAB0066FB5D /* icon4.png */; };
+		8474634912E6BEAB0066FB5D /* icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634312E6BEAB0066FB5D /* icon5.png */; };
+		8474634A12E6BEAB0066FB5D /* icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634412E6BEAB0066FB5D /* icon6.png */; };
 		8477905012C7D0AB0057089D /* SelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8477904F12C7D0AB0057089D /* SelectCell.xib */; };
 		8477905312C7D1500057089D /* Select.png in Resources */ = {isa = PBXBuildFile; fileRef = 8477905212C7D1500057089D /* Select.png */; };
 		8477907712C7D6F70057089D /* the_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8477907512C7D6F70057089D /* the_0.png */; };
@@ -624,6 +630,12 @@
 		84643CB912A4424D00F4ADBC /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
 		84643D3512A44B8000F4ADBC /* ButtonArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ButtonArrow.png; path = image/ButtonArrow.png; sourceTree = "<group>"; };
 		846F328B12A41B000073171A /* AlarmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmCell.xib; sourceTree = "<group>"; };
+		8474633F12E6BEAB0066FB5D /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
+		8474634012E6BEAB0066FB5D /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
+		8474634112E6BEAB0066FB5D /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.png; sourceTree = "<group>"; };
+		8474634212E6BEAB0066FB5D /* icon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon4.png; sourceTree = "<group>"; };
+		8474634312E6BEAB0066FB5D /* icon5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon5.png; sourceTree = "<group>"; };
+		8474634412E6BEAB0066FB5D /* icon6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon6.png; sourceTree = "<group>"; };
 		8477904F12C7D0AB0057089D /* SelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCell.xib; sourceTree = "<group>"; };
 		8477905212C7D1500057089D /* Select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Select.png; sourceTree = "<group>"; };
 		8477907512C7D6F70057089D /* the_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = the_0.png; sourceTree = "<group>"; };
@@ -1251,6 +1263,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8474633E12E6BEAB0066FB5D /* icon */,
 				84B52C2C12D9F96100254A01 /* sound */,
 				84B00B7112ACAB770093647C /* OptionPreview */,
 				84D43108129DE62500356784 /* Image */,
@@ -1305,6 +1318,19 @@
 				844D593D12AD30EB003107CD /* wed_1.png */,
 			);
 			path = NewWeekday;
+			sourceTree = "<group>";
+		};
+		8474633E12E6BEAB0066FB5D /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				8474633F12E6BEAB0066FB5D /* icon1.png */,
+				8474634012E6BEAB0066FB5D /* icon2.png */,
+				8474634112E6BEAB0066FB5D /* icon3.png */,
+				8474634212E6BEAB0066FB5D /* icon4.png */,
+				8474634312E6BEAB0066FB5D /* icon5.png */,
+				8474634412E6BEAB0066FB5D /* icon6.png */,
+			);
+			path = icon;
 			sourceTree = "<group>";
 		};
 		849C850A12A3354B0044EA7D /* Option */ = {
@@ -2681,6 +2707,12 @@
 				8409A34D12E20EDC0079044F /* alarm01.mp3 in Resources */,
 				8409A39412E222660079044F /* bgm20.mp3 in Resources */,
 				56A9A49C12E5D82E009C8435 /* Advanced.xib in Resources */,
+				8474634512E6BEAB0066FB5D /* icon1.png in Resources */,
+				8474634612E6BEAB0066FB5D /* icon2.png in Resources */,
+				8474634712E6BEAB0066FB5D /* icon3.png in Resources */,
+				8474634812E6BEAB0066FB5D /* icon4.png in Resources */,
+				8474634912E6BEAB0066FB5D /* icon5.png in Resources */,
+				8474634A12E6BEAB0066FB5D /* icon6.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
