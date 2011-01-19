@@ -122,8 +122,11 @@ static AlarmConfig *AlarmConfigInst;
 
 - (void)loadConfig
 {
+#ifdef NATSUKO
 	CharName = @"natsuko";
-//	CharName = @"haruka";
+#else
+	CharName = @"haruka";
+#endif
 	
 	SoundList = [[NSArray alloc] initWithObjects: @"Simple Alarm", 
 				 @"現実との境界線",
