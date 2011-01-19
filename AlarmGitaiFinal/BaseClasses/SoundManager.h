@@ -5,7 +5,7 @@
 @interface SoundManager : NSObject <AVAudioPlayerDelegate> {
 	AVAudioPlayer* curAlarmPlayer;
 	NSTimer *vibrationTimer;
-	AlarmDate *		Alarm; 
+	BOOL VibrationONOFF;
 }
 
 + (SoundManager*)getInstance;

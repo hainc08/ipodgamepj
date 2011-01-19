@@ -53,7 +53,6 @@ enum VIEWMODE {
 	/* Button */
 	UIButton *AlarmButton;
 	
-	NSArray *alarm_arr;
 	UIButton* infoButton;
 	int	infoButtonFrame;
 	AVAudioPlayer* soundPlayer;

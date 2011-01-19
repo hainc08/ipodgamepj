@@ -78,12 +78,6 @@ static SoundManager *SoundManagerInst;
 
 -(void)playAlarm:(AlarmDate *)_inData 
 {
-
-	if (curAlarmPlayer != nil)
-	{
-		[ self stopAlarm];
-	}
-	Alarm = _inData;
 	// make file URL
 	NSString* SoundName;
 	
@@ -93,6 +87,7 @@ static SoundManager *SoundManagerInst;
 	else 
 		SoundName  = [NSString stringWithFormat:@"bgm%02d", index];
 
+	
 	NSString* filePath = [NSString stringWithFormat: @"%@/%@.mp3", [[NSBundle mainBundle] resourcePath], SoundName];
 	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
 	
@@ -103,6 +98,7 @@ static SoundManager *SoundManagerInst;
 		NSLog(@"sound file does not exist");
 		return;
 	}
+	[ self stopAlarm];
 	
 	curAlarmPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
 	[curAlarmPlayer prepareToPlay];
@@ -134,8 +130,9 @@ static SoundManager *SoundManagerInst;
 		[curAlarmPlayer stop];
 		[curAlarmPlayer setCurrentTime:0];
 	}
-	if(Alarm.VibrationONOFF)
+	if( VibrationONOFF)
 	{
+		VibrationONOFF =FALSE;
 		[vibrationTimer invalidate]; 
 		[vibrationTimer release];
 	}
@@ -144,10 +141,12 @@ static SoundManager *SoundManagerInst;
 
 - (void)vibration
 {
+	
 	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 - (void)resumeTimer
 {
+	VibrationONOFF =TRUE;
 	vibrationTimer = [[NSTimer scheduledTimerWithTimeInterval: (0.5f)
 													target: self
 												  selector: @selector(vibration)
