@@ -19,6 +19,8 @@
 		5674BD2112A529D800FC97BE /* AlarmViewSetController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5674BD1F12A529D800FC97BE /* AlarmViewSetController.m */; };
 		5674BD4412A52F6E00FC97BE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5674BD4312A52F6E00FC97BE /* CoreData.framework */; };
 		5674BE3412A5CFB200FC97BE /* AlarmSetting.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5674BE3312A5CFB200FC97BE /* AlarmSetting.xib */; };
+		56A9A49C12E5D82E009C8435 /* Advanced.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9A49B12E5D82E009C8435 /* Advanced.xib */; };
+		56A9A5CA12E616C3009C8435 /* AdvancedSetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A9A5C912E616C3009C8435 /* AdvancedSetView.m */; };
 		8409A34D12E20EDC0079044F /* alarm01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A34C12E20EDC0079044F /* alarm01.mp3 */; };
 		8409A39412E222660079044F /* bgm20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A39312E222660079044F /* bgm20.mp3 */; };
 		8412205D12C78E71004D41DA /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 8412205C12C78E71004D41DA /* delete.png */; };
@@ -594,6 +596,9 @@
 		5674BD1F12A529D800FC97BE /* AlarmViewSetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewSetController.m; sourceTree = "<group>"; };
 		5674BD4312A52F6E00FC97BE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5674BE3312A5CFB200FC97BE /* AlarmSetting.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmSetting.xib; sourceTree = "<group>"; };
+		56A9A49B12E5D82E009C8435 /* Advanced.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Advanced.xib; sourceTree = "<group>"; };
+		56A9A5C812E616C3009C8435 /* AdvancedSetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdvancedSetView.h; path = Classes/AdvancedSetView.h; sourceTree = SOURCE_ROOT; };
+		56A9A5C912E616C3009C8435 /* AdvancedSetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdvancedSetView.m; path = Classes/AdvancedSetView.m; sourceTree = SOURCE_ROOT; };
 		8409A34C12E20EDC0079044F /* alarm01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm01.mp3; sourceTree = "<group>"; };
 		8409A39312E222660079044F /* bgm20.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm20.mp3; sourceTree = "<group>"; };
 		8412205C12C78E71004D41DA /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
@@ -1263,6 +1268,7 @@
 				84A1874F129E536C0077D250 /* SceneView.xib */,
 				280E754C0DD40C5E005A515E /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* AlarmGitaiFinal-Info.plist */,
+				56A9A49B12E5D82E009C8435 /* Advanced.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1304,6 +1310,8 @@
 		849C850A12A3354B0044EA7D /* Option */ = {
 			isa = PBXGroup;
 			children = (
+				56A9A5C812E616C3009C8435 /* AdvancedSetView.h */,
+				56A9A5C912E616C3009C8435 /* AdvancedSetView.m */,
 				5674BD1E12A529D800FC97BE /* AlarmViewSetController.h */,
 				5674BD1F12A529D800FC97BE /* AlarmViewSetController.m */,
 				84643CB812A4424D00F4ADBC /* AlarmViewController.h */,
@@ -2672,6 +2680,7 @@
 				84B52C5312D9F96100254A01 /* bgm19.mp3 in Resources */,
 				8409A34D12E20EDC0079044F /* alarm01.mp3 in Resources */,
 				8409A39412E222660079044F /* bgm20.mp3 in Resources */,
+				56A9A49C12E5D82E009C8435 /* Advanced.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2706,6 +2715,7 @@
 				844D595512AD35B1003107CD /* NewWeekView.m in Sources */,
 				849A980512C7A1430017FDCA /* RepeatSetView.m in Sources */,
 				56615DC212E17BF400939D3B /* SoundManager.m in Sources */,
+				56A9A5CA12E616C3009C8435 /* AdvancedSetView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -134,14 +134,12 @@
 	viewrotate =FALSE;
 }
 - (IBAction)StopAlarm:(id)sender  {
-	//[soundPlayer stop];
 	[[SoundManager getInstance] stopAlarm];
 	[self AlarmBarHidden:YES];
 	isAlarmPlay = FALSE;
 }
 - (IBAction)SnoozeButton:(id)sender  {
-	/* [soundPlayer stop]; */
-
+	[[SoundManager getInstance] stopAlarm];
 	[self AlarmBarHidden:YES];
 	isAlarmPlay = FALSE;
 }
