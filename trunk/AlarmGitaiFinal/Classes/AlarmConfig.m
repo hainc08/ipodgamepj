@@ -125,7 +125,7 @@ static AlarmConfig *AlarmConfigInst;
 #ifdef NATSUKO
 	CharName = @"natsuko";
 #else
-	CharName = @"haruka";
+	CharName = @"akari";
 #endif
 	
 	SoundList = [[NSArray alloc] initWithObjects: @"Simple Alarm", 
@@ -435,7 +435,7 @@ static AlarmConfig *AlarmConfigInst;
 	[super init];
 	Time = @"00:00 AM";
 	Name = @"Alarm";
-	Sound = @"Bgm00";
+	Sound = @"Simple Alarm";
 	AlarmONOFF = NO;
 	SnoozeONOFF	= NO;
 	SnoozeCount = 5;
