@@ -489,7 +489,7 @@ static AlarmConfig *AlarmConfigInst;
 
 - (void)ResetNSDateSnooze
 {
-		alarmDate = [alarmDate addTimeInterval:60*5];
+		alarmDate = [[alarmDate addTimeInterval:60*5] retain];
 }
 - (void)ResetNSDate
 {
