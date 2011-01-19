@@ -1,9 +1,11 @@
 #import "AlarmViewController.h"
 #import "RepeatSetView.h"
 
+#import "AdvancedSetView.h"
 #import "UITableViewCellTemplate.h"
 #import "AlarmConfig.h"
 #import "DateFormat.h"
+
 
 @implementation AlarmViewController
 
@@ -336,6 +338,24 @@
 			[setting release];
 		}
 	}
+	else if (indexPath.section == 2)
+	{
+		if (indexPath.row == 0)
+		{
+			
+			AdvancedSetView *setting = [[AdvancedSetView alloc] initWithNibName:@"Advanced" bundle:nil];
+			setting.Vibrate = alarm.VibrationONOFF;
+			setting.Snooze = alarm.SnoozeONOFF;
+			setting.Volume = alarm.SoundVolume;
+			setting.sourceController = self;
+			setting.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+			setting.delegate = self;
+			
+			[self presentModalViewController:setting animated:YES];
+			
+			[setting release];
+		}
+	}
 }
 
 #pragma mark -
@@ -354,6 +374,12 @@
 		alarm.Name	= newValue;
 	else if([field compare:@"RepeatIdx"] == NSOrderedSame )
 		alarm.RepeatIdx	= newValue;
+	else if([field compare:@"SoundVolume"] == NSOrderedSame )
+		alarm.SoundVolume	= newValue;
+	else if([field compare:@"VibrationONOFF"] == NSOrderedSame )
+		alarm.VibrationONOFF	= newValue;
+	else if([field compare:@"SnoozeONOFF"] == NSOrderedSame )
+		alarm.SnoozeONOFF	= newValue;
 }
 
 - (void)flipsideViewControllerDidFinish:(UIViewController *)controller {

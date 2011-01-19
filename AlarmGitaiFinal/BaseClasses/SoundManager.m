@@ -148,7 +148,7 @@ static SoundManager *SoundManagerInst;
 }
 - (void)resumeTimer
 {
-	vibrationTimer = [[NSTimer scheduledTimerWithTimeInterval: (4.0f)
+	vibrationTimer = [[NSTimer scheduledTimerWithTimeInterval: (0.5f)
 													target: self
 												  selector: @selector(vibration)
 												  userInfo: self
