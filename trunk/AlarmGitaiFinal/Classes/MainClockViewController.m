@@ -167,6 +167,7 @@
 	self.navigationController.toolbarHidden = _hidden;
 	self.navigationController.navigationBarHidden = _hidden;
 }
+
 - (void) AlarmCheck
 {
 	if (isAlarmPlay == false) // 절대 스톱하기전에는 들어오지 않음...
