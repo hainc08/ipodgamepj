@@ -3964,14 +3964,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitaiFinal_Prefix.pch;
 				INFOPLIST_FILE = "AlarmGitaiFinal-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PRODUCT_NAME = AlarmGitaiFinal;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1DBC6E50-11D1-48F6-B07B-1F032C4EA289";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B3C8D78-7BAC-4E8E-B934-3E9F1CCA25D1";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -3997,7 +3997,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = NatsukoAlarm;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E5EBD473-333E-4D21-8F6D-7E728115B25B";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -4031,7 +4030,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -4039,7 +4038,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = NATSUKO;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1DBC6E50-11D1-48F6-B07B-1F032C4EA289";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B3C8D78-7BAC-4E8E-B934-3E9F1CCA25D1";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -4048,7 +4047,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -4056,7 +4055,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1DBC6E50-11D1-48F6-B07B-1F032C4EA289";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B3C8D78-7BAC-4E8E-B934-3E9F1CCA25D1";
 				SDKROOT = iphoneos4.2;
 			};
 			name = Release;

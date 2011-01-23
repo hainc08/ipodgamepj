@@ -218,7 +218,6 @@ static AlarmConfig *AlarmConfigInst;
 
 -(void) AlarmLoadConfig
 {
-
 	int	AlarmCount		=	[[SaveManager getInstance] getIntData:@"AlarmCount"		idx:0 base:0];
 
 	for(int loop= 0; loop < AlarmCount; loop++)

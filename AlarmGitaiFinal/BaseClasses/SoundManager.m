@@ -106,7 +106,8 @@ static SoundManager *SoundManagerInst;
 	[filePath release];
 	[fileURL release];
 	
-	[curAlarmPlayer setVolume: _inData.SoundVolume];
+	//[curAlarmPlayer setVolume: _inData.SoundVolume];
+	[curAlarmPlayer setVolume: 1];
 	[curAlarmPlayer setNumberOfLoops:-1];
 
 	[curAlarmPlayer play];

@@ -37,7 +37,11 @@ static SaveManager *SaveManagerInst;
 
 @implementation StringData
 -(NSString*)getValue { return value; }
--(void)setValue:(NSString*)v { value = v; }
+-(void)setValue:(NSString*)v
+{
+	if (value != nil) [value release];
+	value = [[NSString stringWithString:v] retain];
+}
 -(void)saveData:(NSFileHandle*)writeFile
 {
 	[super saveData:writeFile];
