@@ -17,6 +17,7 @@ static AlarmConfig *AlarmConfigInst;
 @synthesize widthnum;
 @synthesize FontType;
 @synthesize CharName;
+@synthesize CharNameJP;
 
 + (AlarmConfig *)getInstance
 {
@@ -124,8 +125,10 @@ static AlarmConfig *AlarmConfigInst;
 {
 #ifdef NATSUKO
 	CharName = @"natsuko";
+	CharNameJP = @"なつこ";
 #else
 	CharName = @"akari";
+	CharNameJP = @"あかり";
 #endif
 	
 	SoundList = [[NSArray alloc] initWithObjects: @"Simple Alarm", 

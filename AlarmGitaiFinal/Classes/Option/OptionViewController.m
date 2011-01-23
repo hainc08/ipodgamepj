@@ -111,14 +111,48 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#ifdef ALLCHAR
+	return 3;
+#else
 	return 2;
+#endif
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	int section = indexPath.section;
+#ifdef ALLCHAR
+	if (section == 0)
+	{
+		static NSString *CellIdentifier = @"ButtonCell";
+		
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (cell == nil)
+		{
+			NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier 
+														 owner:self options:nil];
+			for (id oneObject in nib)
+			{
+				if ([oneObject isKindOfClass:[UITableViewButtonCell class]])
+				{
+					cell = oneObject;
+					break;
+				}
+			}
+		}
+		
+		UITableViewButtonCell* buttonCell = (UITableViewButtonCell*)cell;
+		[buttonCell setInfo:[[AlarmConfig getInstance] CharNameJP] :@"Change"];
+		[buttonCell showArrow:false];
+		
+		return cell;
+	}
+#else
+	++section;
+#endif
 	
 	// Set up the cell...
-	if(indexPath.section == 1)
+	if(section == 2)
 	{
 		UITableViewCell *cell;
 
@@ -217,7 +251,7 @@
 
 		return cell;
 	}
-	else if(indexPath.section == 0)
+	else if(section == 1)
 	{
 		if (indexPath.row == (alarmCount -1))
 		{
@@ -282,7 +316,14 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+#ifdef ALLCHAR
 	if (section == 0)
+		return @"Character";
+#else
+	++section;
+#endif
+	
+	if (section == 1)
 		return @"Alarms";
 	else
 		return @"Display";
@@ -290,12 +331,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if(section == 0)
+#ifdef ALLCHAR
+	if (section == 0)
+		return 1;
+#else
+	++section;
+#endif
+
+	if(section == 1)
 	{
 		alarmCount = [a_alarm count]+1;
 		return alarmCount;
 	}
-	else if (section == 1)
+	else if (section == 2)
 	{
 		return 7;
 	}
@@ -308,21 +356,37 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.section == 0)
+	int section = indexPath.section;
+#ifdef ALLCHAR
+	if (section == 0) return 45;
+#else
+	++section;
+#endif
+
+	if (section == 1)
 	{
 		if (indexPath.row == alarmCount - 1) return 45;
 		return 60;
 	}
-	else
+	else if (section == 2)
 	{
 		if (indexPath.row == 0) return 200;
 		return 50;
 	}
+	
+	return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.section == 0)
+	int section = indexPath.section;
+#ifdef ALLCHAR
+	
+#else
+	++section;
+#endif
+
+	if (section == 1)
 	{
 		switch (indexPath.row)
 		{
@@ -351,7 +415,7 @@
 		
 		[controller release];
 	}
-	else if (indexPath.section == 1)
+	else if (section == 2)
 	{
 		if (indexPath.row == 5)
 		{

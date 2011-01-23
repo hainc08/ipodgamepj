@@ -74,6 +74,7 @@
 @interface AlarmConfig : NSObject {
 	
 	NSString		*CharName;
+	NSString		*CharNameJP;
 	int				FontType;
 	NSString		*FontBgImageType;
 	NSString		*FontUpImageType;
@@ -103,6 +104,7 @@
 @property (readwrite) int widthnum;
 @property (readwrite) int FontType;
 @property (retain) NSString *CharName;
+@property (retain) NSString *CharNameJP;
 //NSObject를 상속받은 객체의 경우 retain을 사용해야한다.
 
 + (AlarmConfig *)getInstance;
