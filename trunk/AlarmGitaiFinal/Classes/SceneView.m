@@ -12,7 +12,16 @@
 - (void)setBackGround:(int)idx isNight:(bool)isNight
 {
 	NSString *timeStr;
-	if (isNight) timeStr = @"n";
+	if (isNight)
+	{
+		//back_2_n.png, back_5_n.png, back_7_n.png가 없다.
+		if ((idx == 2)||(idx == 5)||(idx == 7))
+		{
+			++idx;
+		}
+	
+		timeStr = @"n";
+	}
 	else timeStr = @"d";
 
 	[backView[curBackIdx] setImage:[UIImage imageNamed:[NSString stringWithFormat:@"back_%d_%@.png", idx, timeStr]]];
