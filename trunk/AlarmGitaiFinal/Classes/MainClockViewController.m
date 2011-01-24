@@ -176,7 +176,7 @@
 		
 	for (int loop = 0; loop < [[AlarmConfig getInstance] getAlarmCount] ; loop++) {
 		AlarmDate *t_date  =  [[AlarmConfig getInstance] getAlarmIndex:loop];
-		if([t_date isAlarmONOFF])
+		if([t_date isAlarmONOFF] && ([t_date RepeatIdx] & [[DateFormat getInstance] getWeekType] ))
 		{
 			int alarm = [[t_date GetNSDate] timeIntervalSince1970];
 
