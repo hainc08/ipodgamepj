@@ -486,7 +486,7 @@ static AlarmConfig *AlarmConfigInst;
 	return self;
 }
 
-- (BOOL) GetAlarmWeek
+- (BOOL)GetAlarmDay
 {
 	if (RepeatIdx > 1)
 	{

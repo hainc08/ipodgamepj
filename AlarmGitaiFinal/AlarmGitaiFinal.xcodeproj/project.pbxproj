@@ -1895,7 +1895,6 @@
 		84D434C5129DE63600356784 /* 1_ub9.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D432EB129DE63600356784 /* 1_ub9.png */; };
 		84D434C6129DE63600356784 /* 1_ubDiv.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D432EC129DE63600356784 /* 1_ubDiv.png */; };
 		84D434C7129DE63600356784 /* 1_ubdot.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D432ED129DE63600356784 /* 1_ubdot.png */; };
-		84D434C8129DE63600356784 /* 1_ubdot.psd in Resources */ = {isa = PBXBuildFile; fileRef = 84D432EE129DE63600356784 /* 1_ubdot.psd */; };
 		84D434C9129DE63600356784 /* 1_ubFri.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D432EF129DE63600356784 /* 1_ubFri.png */; };
 		84D434CA129DE63600356784 /* 1_ubMon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D432F0129DE63600356784 /* 1_ubMon.png */; };
 		84D434CB129DE63600356784 /* 1_ubSat.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D432F1129DE63600356784 /* 1_ubSat.png */; };
@@ -1907,7 +1906,6 @@
 		84D434D1129DE63600356784 /* alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D432F7129DE63600356784 /* alarm.png */; };
 		84D434D2129DE63600356784 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D432F8129DE63600356784 /* check.png */; };
 		84D434D3129DE63600356784 /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D432F9129DE63600356784 /* top.png */; };
-		84D434D4129DE63600356784 /* Untitled-1.psd in Resources */ = {isa = PBXBuildFile; fileRef = 84D432FA129DE63600356784 /* Untitled-1.psd */; };
 		84D434F4129DE76800356784 /* touch.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D434F3129DE76800356784 /* touch.png */; };
 		84D4352D129DEAC300356784 /* AlarmConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D43510129DEAC300356784 /* AlarmConfig.m */; };
 		84D43530129DEAC300356784 /* CharView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D43516129DEAC300356784 /* CharView.m */; };
@@ -4181,7 +4179,6 @@
 				84D434C5129DE63600356784 /* 1_ub9.png in Resources */,
 				84D434C6129DE63600356784 /* 1_ubDiv.png in Resources */,
 				84D434C7129DE63600356784 /* 1_ubdot.png in Resources */,
-				84D434C8129DE63600356784 /* 1_ubdot.psd in Resources */,
 				84D434C9129DE63600356784 /* 1_ubFri.png in Resources */,
 				84D434CA129DE63600356784 /* 1_ubMon.png in Resources */,
 				84D434CB129DE63600356784 /* 1_ubSat.png in Resources */,
@@ -4193,7 +4190,6 @@
 				84D434D1129DE63600356784 /* alarm.png in Resources */,
 				84D434D2129DE63600356784 /* check.png in Resources */,
 				84D434D3129DE63600356784 /* top.png in Resources */,
-				84D434D4129DE63600356784 /* Untitled-1.psd in Resources */,
 				84D434F4129DE76800356784 /* touch.png in Resources */,
 				84D43611129DF52B00356784 /* CharView.xib in Resources */,
 				84A18750129E536C0077D250 /* SceneView.xib in Resources */,
@@ -5719,6 +5715,10 @@
 				GCC_PREFIX_HEADER = AlarmGitaiFinal_Prefix.pch;
 				INFOPLIST_FILE = "AlarmGitaiFinal-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
+				OTHER_CFLAGS = (
+					"-DALLCHAR",
+					"-DNS_BLOCK_ASSERTIONS=1",
+				);
 				PRODUCT_NAME = AlarmGitaiFinal;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B3C8D78-7BAC-4E8E-B934-3E9F1CCA25D1";
 				VALIDATE_PRODUCT = YES;
