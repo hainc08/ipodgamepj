@@ -106,6 +106,7 @@ static DateFormat *DateFormatInst;
 - (int)getWeekType
 {
 	int ret = 0;
+	[FormatDate setDefaultDate:[NSDate date]];
 	if( [[self getTimeString:@"EEE"] compare:@"Sun"]) ret = 0x01;
 	else if ( [[self getTimeString:@"EEE"] compare:@"Mon"]) ret = 0x02;
 	else if ( [[self getTimeString:@"EEE"] compare:@"Tue"]) ret = 0x04;

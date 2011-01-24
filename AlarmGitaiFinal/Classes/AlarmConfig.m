@@ -126,11 +126,48 @@ static AlarmConfig *AlarmConfigInst;
 #ifdef NATSUKO
 	CharName = @"natsuko";
 	CharNameJP = @"なつこ";
-#else
+#elif AKARI
 	CharName = @"akari";
 	CharNameJP = @"あかり";
+#elif HARUKA
+	CharName = @"haruka";
+	CharNameJP = @"はるか";
+#elif HITOMI
+	CharName = @"hitomi";
+	CharNameJP = @"ひとみ";
+#elif IRIKA
+	CharName = @"irika";
+	CharNameJP = @"エリカ";
+#elif REINA
+	CharName = @"reina";
+	CharNameJP = @"レイナ";
+#elif FUMIKO
+	CharName = @"fumiko";
+	CharNameJP = @"文子";
 #endif
+
+#if 0 
+	akari
+	あかり 
 	
+	natsuko
+	なつこ
+	
+	haruka
+	はるか
+	
+	hitomi
+	ひとみ
+	
+	irika
+	エリカ
+	
+	reina
+	レイナ
+	
+	fumiko
+	文子 
+#endif
 	SoundList = [[NSArray alloc] initWithObjects: @"Simple Alarm", 
 				 @"現実との境界線",
 				 @"平和な時",
@@ -449,6 +486,20 @@ static AlarmConfig *AlarmConfigInst;
 	return self;
 }
 
+- (BOOL) GetAlarmWeek
+{
+	if (RepeatIdx > 1)
+	{
+		int idx = RepeatIdx - 2;
+		if ([[DateFormat getInstance] getWeekType] & idx)
+		{
+			return TRUE;
+		}
+		return  FALSE;
+	}
+	
+	return TRUE;
+}
 - (NSDate*)GetNSDate
 {
 	if (alarmDate == nil)
