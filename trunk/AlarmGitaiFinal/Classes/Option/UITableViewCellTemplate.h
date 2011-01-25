@@ -55,3 +55,15 @@
 
 @end
 
+@interface UITableViewSelectCharCell : UITableViewCell
+{
+	IBOutlet UILabel* nameLabel;
+	IBOutlet id select;
+	IBOutlet id charImg;
+}
+
+- (void)setInfo:(NSString*)name :(NSString*)nameJP;
+- (void)showSelect:(bool)show;
+
+@end
+

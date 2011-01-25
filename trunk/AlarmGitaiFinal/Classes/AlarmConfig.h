@@ -100,10 +100,14 @@
 	
 	NSMutableArray			*AlarmArr;
 	NSArray					*SoundList;
+	
+	bool			ForceUpdate;
 }
+
 @property (readwrite) int heightnum;
 @property (readwrite) int widthnum;
 @property (readwrite) int FontType;
+@property (readwrite) bool ForceUpdate;
 @property (retain) NSString *CharName;
 @property (retain) NSString *CharNameJP;
 //NSObject를 상속받은 객체의 경우 retain을 사용해야한다.
@@ -156,5 +160,7 @@
 - (void) deleteAlarm:(AlarmDate *)_inData;
 - (void) AlarmLoadConfig;
 - (void) AlarmSaveConfig;
+
+- (void) SetNameInfo:(NSString*)name :(NSString*)nameJP;
 
 @end

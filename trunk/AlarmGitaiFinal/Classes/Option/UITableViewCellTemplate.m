@@ -127,3 +127,19 @@
 }
 
 @end
+
+@implementation UITableViewSelectCharCell
+
+- (void)setInfo:(NSString*)name :(NSString*)nameJP
+{
+	[nameLabel setText:nameJP];
+	[charImg setImage:[UIImage imageNamed:[NSString stringWithFormat:@"char_%@.png", name]]];
+}
+
+- (void)showSelect:(bool)show
+{
+	if (show) [select setAlpha:1];
+	else [select setAlpha:0];
+}
+
+@end
