@@ -13,9 +13,11 @@
 static AlarmConfig *AlarmConfigInst;
 
 @implementation AlarmConfig
+
 @synthesize heightnum;
 @synthesize widthnum;
 @synthesize FontType;
+@synthesize ForceUpdate;
 @synthesize CharName;
 @synthesize CharNameJP;
 
@@ -144,6 +146,10 @@ static AlarmConfig *AlarmConfigInst;
 #elif FUMIKO
 	CharName = @"fumiko";
 	CharNameJP = @"文子";
+#else
+	//여기는 모든 캐릭터가 들어가는 패키지
+	CharName = [[SaveManager getInstance] getStringData:@"CharName"	idx:0 base:@"natsuko"];
+	CharNameJP = [[SaveManager getInstance] getStringData:@"CharName"	idx:1 base:@"なつこ"];
 #endif
 
 #if 0 
@@ -440,6 +446,14 @@ static AlarmConfig *AlarmConfigInst;
 	[FontBgImageType  release];
 }
 - (void) closeManager {
+}
+
+- (void) SetNameInfo:(NSString*)name :(NSString*)nameJP
+{
+	CharName = name;
+	CharNameJP = nameJP;
+	[[SaveManager getInstance] setStringData:@"CharName"	idx:0	value:name];
+	[[SaveManager getInstance] setStringData:@"CharName"	idx:1	value:nameJP];
 }
 
 @end

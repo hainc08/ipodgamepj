@@ -1,25 +1,12 @@
 #import "CharSelectViewController.h"
 
-#import "UITableViewCellTemplate.h"
 #import "AlarmConfig.h"
-#import "DateFormat.h"
+#import "SaveManager.h"
+#import "UITableViewCellTemplate.h"
 
 @implementation CharSelectViewController
 
 @synthesize delegate;
-@synthesize alarm;
-@synthesize	SetFlag;
-@synthesize index;
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -53,9 +40,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	if(alarm == nil) 
-		alarm = [[AlarmDate alloc] init];
-	[optionTableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -74,28 +58,12 @@
     [super dealloc];
 }
 
-- (IBAction)AlarmONOFF:(id)sender {
-	alarm.AlarmONOFF = !alarm.AlarmONOFF;
-}
-
 - (IBAction)done:(id)sender {
-	if(SetFlag)
-	{
-		[[AlarmConfig getInstance] setAlarmAdd:alarm];
-		[alarm release];
-	}
-
-	[alarm ResetNSDate];
-	[[AlarmConfig getInstance] SaveConfig];
+	[[SaveManager getInstance] saveFile];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
 - (IBAction)cancel:(id)sender {
-	[self.delegate flipsideViewControllerDidFinish:self];	
-}
-
-- (IBAction)deleteAlarm:(id)sender {
-	[[AlarmConfig getInstance] deleteAlarm:alarm];
 	[self.delegate flipsideViewControllerDidFinish:self];	
 }
 
@@ -112,30 +80,51 @@
 	if(indexPath.section == 0)
 	{
 		NSString* text;
-		NSString* value;
+		NSString* text2;
 		
-		text = @"Time";
-		value = @"TEST";
-//		switch (indexPath.row)
-//		{
-//			case 0:
-//				text = @"Time";
-//				value = alarm.Time;
-//				break;
-//			default:
-//				break;
-//		}
+		switch (indexPath.row)
+		{
+			case 0:
+				text = @"natsuko";
+				text2 = @"なつこ";
+				break;
+			case 1:
+				text = @"akari";
+				text2 = @"あかり";
+				break;
+			case 2:
+				text = @"haruka";
+				text2 = @"はるか";
+				break;
+			case 3:
+				text = @"hitomi";
+				text2 = @"ひとみ";
+				break;
+			case 4:
+				text = @"irika";
+				text2 = @"エリカ";
+				break;
+			case 5:
+				text = @"reina";
+				text2 = @"レイナ";
+				break;
+			case 6:
+				text = @"fumiko";
+				text2 = @"文子";
+				break;
+		}
 		
-		static NSString *CellIdentifier = @"ButtonCell";
-		
+		static NSString *CellIdentifier = @"SelectCharCell";
+
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		
 		if (cell == nil)
 		{
 			NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier 
 														 owner:self options:nil];
 			for (id oneObject in nib)
 			{
-				if ([oneObject isKindOfClass:[UITableViewButtonCell class]])
+				if ([oneObject isKindOfClass:[UITableViewSelectCharCell class]])
 				{
 					cell = oneObject;
 					break;
@@ -143,17 +132,14 @@
 			}
 		}
 		
-		UITableViewButtonCell* buttonCell = (UITableViewButtonCell*)cell;
-		[buttonCell setInfo:text :value];
+		UITableViewSelectCharCell* charCell = (UITableViewSelectCharCell*)cell;
+		[charCell setInfo:text :text2];
+		[charCell showSelect:([[[AlarmConfig getInstance] CharNameJP] compare:text2] == NSOrderedSame)];
+
 		return cell;
 	}
 
 	return nil;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-	return @"Select";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -166,17 +152,52 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 50;
+	return 60;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.section == 1)
+	if (indexPath.section == 0)
 	{
-		if (indexPath.row == 1)
-		{
+		NSString* text;
+		NSString* text2;
 
+		switch (indexPath.row)
+		{
+			case 0:
+				text = @"natsuko";
+				text2 = @"なつこ";
+				break;
+			case 1:
+				text = @"akari";
+				text2 = @"あかり";
+				break;
+			case 2:
+				text = @"haruka";
+				text2 = @"はるか";
+				break;
+			case 3:
+				text = @"hitomi";
+				text2 = @"ひとみ";
+				break;
+			case 4:
+				text = @"irika";
+				text2 = @"エリカ";
+				break;
+			case 5:
+				text = @"reina";
+				text2 = @"レイナ";
+				break;
+			case 6:
+				text = @"fumiko";
+				text2 = @"文子";
+				break;
 		}
+		
+		[[AlarmConfig getInstance] SetNameInfo:text :text2];
+		[[AlarmConfig getInstance] setForceUpdate:true];
+
+		[CharTable reloadData];
 	}
 }
 
