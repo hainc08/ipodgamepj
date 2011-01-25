@@ -1,5 +1,6 @@
 #import "OptionViewController.h"
 #import "AlarmViewController.h"
+#import "CharSelectViewController.h"
 
 #import "UITableViewCellTemplate.h"
 #import "AlarmConfig.h"
@@ -143,7 +144,7 @@
 		
 		UITableViewButtonCell* buttonCell = (UITableViewButtonCell*)cell;
 		[buttonCell setInfo:[[AlarmConfig getInstance] CharNameJP] :@"Change"];
-		[buttonCell showArrow:false];
+		[buttonCell showArrow:true];
 		
 		return cell;
 	}
@@ -381,7 +382,15 @@
 {
 	int section = indexPath.section;
 #ifdef ALLCHAR
-	
+	if (section == 0)
+	{
+		CharSelectViewController *controller = [[CharSelectViewController alloc] initWithNibName:@"CharSelectView" bundle:nil];
+		controller.delegate = self;
+		controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+		[self presentModalViewController:controller animated:YES];
+		
+		[controller release];
+	}	
 #else
 	++section;
 #endif
