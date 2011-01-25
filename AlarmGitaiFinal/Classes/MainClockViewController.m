@@ -70,7 +70,9 @@
 	
 	clockview = [[ClockView alloc] init];
 	[clockview.view setFrame:CGRectMake(0, 0,320, 100)];
+	//[clockview.view setFrame:CGRectMake(0, 0,360, 100)];
 	[clockview.view setTransform:alarmviewpoint.ClockTrans]; 
+	//[clockview.view setTransform:CGAffineTransformMake(0.4f, 0.0, 0.0, 0.4f, 0.0, 0.0)];
 	[clockview.view setCenter:alarmviewpoint.ClockPoint ];
 	[clockview UpdateTime];
 	[self.view addSubview:clockview.view];
@@ -128,7 +130,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
-	[[SoundManager getInstance] stopAlarm];
+	//[[SoundManager getInstance] stopAlarm];
 	[self stopTimer];
 	viewrotate =FALSE;
 }
@@ -192,33 +194,28 @@
 					[self AlarmBarHidden:NO]; // Alarm 화면을 보인다.. 
 					isAlarmPlay = true;
 						
-					if ([t_date RepeatIdx] == 0){ 
-						t_date.AlarmONOFF = false;
+					if([t_date isSnoozeONOFF] && (t_date.SnoozeCount > 0 )){
+						t_date.SnoozeCount--;
+						[t_date ResetNSDateSnooze]; // 기본 5분후에 
 					}
-					else
+					else // Snooze 전부 발생 했고 , 알람으로서 오늘 일은 끝~!! 내일 하자.
 					{
-						if([t_date isSnoozeONOFF] && (t_date.SnoozeCount > 0 )){
-							t_date.SnoozeCount--;
-							[t_date ResetNSDateSnooze]; // 기본 5분후에 
+						t_date.SnoozeCount = 5;
+						[t_date NextDayNSDate];
+						
+						if ([t_date RepeatIdx] == 0){ 
+							t_date.AlarmONOFF = false;
 						}
-						else // Snooze 전부 발생 했고 , 알람으로서 오늘 일은 끝~!! 내일 하자.
-						{
-							t_date.SnoozeCount = 5;
-							[t_date NextDayNSDate];
-						}	
-					}
+					}	
 				}
 				else {
 				// 지났으니깐.. 다음날로 변경..
 					t_date.SnoozeCount = 5;
 					[t_date NextDayNSDate];
-					if ([t_date RepeatIdx] == 0){ 
-						t_date.AlarmONOFF = false;
-					}
-				}
 				}
 			}
 		}
+	}
 	}
 }
 

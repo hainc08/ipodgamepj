@@ -500,7 +500,7 @@ static AlarmConfig *AlarmConfigInst;
 	return self;
 }
 
-- (BOOL)GetAlarmDay
+- (BOOL) GetAlarmDay
 {
 	if (RepeatIdx > 1)
 	{
