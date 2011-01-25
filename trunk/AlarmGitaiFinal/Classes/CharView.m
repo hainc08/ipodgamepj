@@ -21,17 +21,18 @@
 
 - (void)setChar:(NSString*)name idx:(int)idx isNight:(bool)isNight
 {
-	int baseIdx;
-	int faceIdx;
-
-	NSString *timeStr;
-	if (isNight) timeStr = @"n";
-	else timeStr = @"d";
-
+	int baseIdx = 0;
+	int faceIdx = 0;
+	
 	//나중에 이부분을 데이터화 시켜서 로딩해서 쓴다.
 	int step = 9;
 	int faceOffset = 0;
 	int baseOffset = 0;
+
+	NSString *timeStr;
+	
+	if (isNight) timeStr = @"n";
+	else timeStr = @"d";
 	
 	//fumiko, akari, natsuko 는 해줄게 없음...
 	if ([name compare:@"haruka"] == NSOrderedSame) step = 10;

@@ -154,16 +154,14 @@
 		if([tmpHour length] < 2)
 		{		
 			if([Hour length] > 1 || Hour == nil)
-			{
 				[self ChageNumberImage:HOUR_T changeImage:'0'];
-			}
+			
 			[self ChageNumberImage:HOUR_M changeImage:[tmpHour characterAtIndex:0]];
 		}
 		else
 		{
 			[self ChageNumberImage:HOUR_T changeImage:[tmpHour characterAtIndex:0]];
 			[self ChageNumberImage:HOUR_M changeImage:[tmpHour characterAtIndex:1]];
-		
 		}
 
 		if( Hour != nil )
@@ -177,9 +175,7 @@
 		if([tmpMin length] < 2)
 		{
 			if([Min	length] > 1  || Min == nil)
-			{
 				[self ChageNumberImage:MIN_T changeImage:'0'];
-			}
 			
 			[self ChageNumberImage:MIN_M changeImage:[tmpMin characterAtIndex:0]];
 		}
@@ -189,8 +185,8 @@
 			[self ChageNumberImage:MIN_M changeImage:[tmpMin characterAtIndex:1]];
 		}
 
-		if( Min != nil )
-			[Min release];
+		if( Min != nil ) [Min release];
+		
 		Min = [[NSString alloc] initWithFormat:@"%@",tmpMin];
 	}
 
