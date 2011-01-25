@@ -1988,6 +1988,7 @@
 		84643CB712A4420C00F4ADBC /* AlarmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84643CB612A4420C00F4ADBC /* AlarmView.xib */; };
 		84643CBA12A4424D00F4ADBC /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84643CB912A4424D00F4ADBC /* AlarmViewController.m */; };
 		84643D3612A44B8000F4ADBC /* ButtonArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84643D3512A44B8000F4ADBC /* ButtonArrow.png */; };
+		846CC07412EF3388007C082A /* icon7.png in Resources */ = {isa = PBXBuildFile; fileRef = 846CC07312EF3388007C082A /* icon7.png */; };
 		846F328C12A41B000073171A /* AlarmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846F328B12A41B000073171A /* AlarmCell.xib */; };
 		8474634512E6BEAB0066FB5D /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474633F12E6BEAB0066FB5D /* icon1.png */; };
 		8474634612E6BEAB0066FB5D /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634012E6BEAB0066FB5D /* icon2.png */; };
@@ -2176,7 +2177,7 @@
 		289233A90DB2D0DB0083E9F9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* AlarmGitaiFinal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmGitaiFinal_Prefix.pch; sourceTree = "<group>"; };
-		56020EDB12EAE02200BB6235 /* HarukaAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarukaAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56020EDB12EAE02200BB6235 /* NatsukoAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NatsukoAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56020EDD12EAE02200BB6235 /* HarukaAlarm-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HarukaAlarm-info.plist"; sourceTree = "<group>"; };
 		564100CA12EF2FC400CDA3EA /* AkariAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AkariAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		564100CD12EF2FED00CDA3EA /* AkariAlarm-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AkariAlarm-Info.plist"; sourceTree = "<group>"; };
@@ -2587,6 +2588,7 @@
 		84643CB812A4424D00F4ADBC /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewController.h; sourceTree = "<group>"; };
 		84643CB912A4424D00F4ADBC /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
 		84643D3512A44B8000F4ADBC /* ButtonArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ButtonArrow.png; path = image/ButtonArrow.png; sourceTree = "<group>"; };
+		846CC07312EF3388007C082A /* icon7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon7.png; sourceTree = "<group>"; };
 		846F328B12A41B000073171A /* AlarmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmCell.xib; sourceTree = "<group>"; };
 		8474633F12E6BEAB0066FB5D /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
 		8474634012E6BEAB0066FB5D /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
@@ -2905,7 +2907,7 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* AlarmGitaiFinal.app */,
 				56A9A63C12E6C5EB009C8435 /* NatsukoAlarm.app */,
-				56020EDB12EAE02200BB6235 /* HarukaAlarm.app */,
+				56020EDB12EAE02200BB6235 /* NatsukoAlarm.app */,
 				5641F03612ED995000CDA3EA /* HitomiAlarm.app */,
 				5641F27F12ED9BCF00CDA3EA /* IrikaAlarm.app */,
 				5641F50012ED9F7400CDA3EA /* ReinaAlarm.app */,
@@ -3536,6 +3538,7 @@
 				8474634212E6BEAB0066FB5D /* icon4.png */,
 				8474634312E6BEAB0066FB5D /* icon5.png */,
 				8474634412E6BEAB0066FB5D /* icon6.png */,
+				846CC07312EF3388007C082A /* icon7.png */,
 			);
 			path = icon;
 			sourceTree = "<group>";
@@ -3861,7 +3864,7 @@
 			);
 			name = HarukaAlarm;
 			productName = NatsukoAlarm;
-			productReference = 56020EDB12EAE02200BB6235 /* HarukaAlarm.app */;
+			productReference = 56020EDB12EAE02200BB6235 /* NatsukoAlarm.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5641EDF412ED995000CDA3EA /* HitomiAlarm */ = {
@@ -4544,6 +4547,7 @@
 				84B010CF12EEFBEC0002616F /* irika_7_n_b.png in Resources */,
 				84B010D012EEFBEC0002616F /* irika_8_n.png in Resources */,
 				84B010D112EEFBEC0002616F /* irika_9_n.png in Resources */,
+				846CC07412EF3388007C082A /* icon7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

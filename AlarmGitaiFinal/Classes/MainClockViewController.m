@@ -226,7 +226,6 @@
 	--infoButtonFrame;
 	if(((frameTick % 5) == 0) || [[AlarmConfig getInstance] ForceUpdate])
 	{
-		[sceneView setChar:[AlarmConfig getInstance].CharName];
 		[sceneView next];
 		[[AlarmConfig getInstance] setForceUpdate:false];
 		frameTick = 0;

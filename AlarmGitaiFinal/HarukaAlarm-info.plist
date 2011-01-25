@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>icon2.png</string>
+	<string>icon7.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>haruka.alarm</string>
 	<key>CFBundleInfoDictionaryVersion</key>
