@@ -4,11 +4,6 @@
 
 @implementation SceneView
 
-- (void)setChar:(NSString*)name
-{
-	charName = name;
-}
-
 - (void)setBackGround:(int)idx isNight:(bool)isNight
 {
 	NSString *timeStr;
@@ -47,6 +42,8 @@
 - (void)next
 {
 	bool isNight = [[DateFormat getInstance] getNight];
+	
+	NSString* charName = [AlarmConfig getInstance].CharName;
 
 	if ((nextCount % 12) == 0)
 	{

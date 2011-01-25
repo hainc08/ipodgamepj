@@ -65,7 +65,6 @@
 	sceneView = [[SceneView alloc] init];
 	[sceneView reset];
 	[sceneView.view setCenter:CGPointMake(160,240)];
-	[sceneView setChar:[AlarmConfig getInstance].CharName];
 	[sceneView next];
 	[self.view addSubview:sceneView.view];
 	
