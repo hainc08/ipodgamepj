@@ -67,34 +67,52 @@
 	if (curCharIdx == 0) curCharIdx = 1;
 	else curCharIdx = 0;
 
+	static int lastIdx = 0;
 	int idx;
-	int all, officeOffset;
+	int all, officeOffset, offset;
 
 	//fumiko, akari, natsuko 는 해줄게 없음...
 	if ([charName compare:@"haruka"] == NSOrderedSame)
 	{
 		all = 10 * 10;
-		officeOffset = 4 * 10;
+		officeOffset = 6 * 10;
+		offset = 2 * 10;
 	}
 	else if ([charName compare:@"irika"] == NSOrderedSame)
 	{
 		all = 8 * 6;
 		officeOffset = 4 * 6;
+		offset = 2 * 6;
 	}
 	else if ([charName compare:@"reina"] == NSOrderedSame)
 	{
-		all = 14 * 7;
-		officeOffset = 4 * 7;
+		all = 12 * 8;
+		officeOffset = 8 * 8;
+		offset = 4 * 8;
 	}
 	else if ([charName compare:@"hitomi"] == NSOrderedSame)
 	{
-		all = 12 * 20;
-		officeOffset = 6 * 20;
+		all = 12 * 14;
+		officeOffset = 6 * 14;
+		offset = 4 * 14;
 	}
-	else
+	else if ([charName compare:@"akari"] == NSOrderedSame)
 	{
-		all = 8 * 6;
-		officeOffset = 4 * 6;
+		all = 15 * 9;
+		officeOffset = 8 * 9;
+		offset = 4 * 9;
+	}
+	else if ([charName compare:@"fumiko"] == NSOrderedSame)
+	{
+		all = 13 * 9;
+		officeOffset = 8 * 9;
+		offset = 4 * 9;
+	}
+	else if ([charName compare:@"natsuko"] == NSOrderedSame)
+	{
+		all = 8 * 9;
+		officeOffset = 4 * 9;
+		offset = 2 * 9;
 	}
 	
 	if ([[AlarmConfig getInstance] getOfficeMode])
@@ -103,11 +121,10 @@
 	}
 	else
 	{
-		idx = rand()%all;
+		idx = offset + rand()%(all - offset);
 	}
-
 	
-	[charView[curCharIdx] setChar:charName idx:idx isNight:isNight];
+	[charView[curCharIdx] setChar:charName idx:idx isNight:false];
 
 	[UIView beginAnimations:@"anime2" context:NULL];
 	[UIView setAnimationDuration:1];

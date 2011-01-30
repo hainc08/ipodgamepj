@@ -224,7 +224,7 @@
 {
 	++frameTick;
 	--infoButtonFrame;
-	if(((frameTick % 5) == 0) || [[AlarmConfig getInstance] ForceUpdate])
+//	if(((frameTick % 5) == 0) || [[AlarmConfig getInstance] ForceUpdate])
 	{
 		[sceneView next];
 		[[AlarmConfig getInstance] setForceUpdate:false];

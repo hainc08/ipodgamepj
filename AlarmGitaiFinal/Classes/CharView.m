@@ -26,8 +26,6 @@
 	
 	//나중에 이부분을 데이터화 시켜서 로딩해서 쓴다.
 	int step = 9;
-	int faceOffset = 0;
-	int baseOffset = 0;
 
 	NSString *timeStr;
 	
@@ -38,18 +36,10 @@
 	if ([name compare:@"haruka"] == NSOrderedSame) step = 10;
 	else if ([name compare:@"irika"] == NSOrderedSame) step = 6;
 	else if ([name compare:@"reina"] == NSOrderedSame) step = 8;
-	else if ([name compare:@"hitomi"] == NSOrderedSame)
-	{
-		if (idx >= 84)
-		{
-			faceOffset = 14;
-			baseOffset = -12;
-		}
-		step = 7;
-	}
+	else if ([name compare:@"hitomi"] == NSOrderedSame) step = 14;
 
-	baseIdx = idx / step + baseOffset;
-	faceIdx = idx % (step * 2) + faceOffset;
+	baseIdx = idx / step;
+	faceIdx = idx % (step * 2);
 
 	UIImage* imgBase = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@_b.png", name, baseIdx, timeStr]];
 
@@ -76,11 +66,10 @@
 								  [imgBase size].height),
 					   [imgBase CGImage]);
 
-
-	if ((faceIdx != 0)&&(faceIdx != step))
-
+	if ((faceIdx != 0)&&(faceIdx % step != 0))
 	{
 		UIImage* imgFace = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@.png", name, faceIdx, timeStr]];
+
 		CGContextDrawImage(charContext,
 						   CGRectMake((320 - [imgFace size].width)/2,
 									  480 - [imgFace size].height,
