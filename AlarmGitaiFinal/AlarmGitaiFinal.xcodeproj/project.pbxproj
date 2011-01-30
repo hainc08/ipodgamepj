@@ -2162,6 +2162,7 @@
 		84D43588129DF15D00356784 /* SaveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D43583129DF15D00356784 /* SaveManager.m */; };
 		84D435B7129DF1F800356784 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D435B6129DF1F800356784 /* AudioToolbox.framework */; };
 		84D43611129DF52B00356784 /* CharView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D43610129DF52B00356784 /* CharView.xib */; };
+		84F6DABF12F54F5900CF67F9 /* allIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F6DABE12F54F5900CF67F9 /* allIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2781,6 +2782,7 @@
 		84D43583129DF15D00356784 /* SaveManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveManager.m; sourceTree = "<group>"; };
 		84D435B6129DF1F800356784 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		84D43610129DF52B00356784 /* CharView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharView.xib; sourceTree = "<group>"; };
+		84F6DABE12F54F5900CF67F9 /* allIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = allIcon.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* AlarmGitaiFinal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AlarmGitaiFinal-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3532,6 +3534,7 @@
 		8474633E12E6BEAB0066FB5D /* icon */ = {
 			isa = PBXGroup;
 			children = (
+				84F6DABE12F54F5900CF67F9 /* allIcon.png */,
 				8474633F12E6BEAB0066FB5D /* icon1.png */,
 				8474634012E6BEAB0066FB5D /* icon2.png */,
 				8474634112E6BEAB0066FB5D /* icon3.png */,
@@ -4548,6 +4551,7 @@
 				84B010D012EEFBEC0002616F /* irika_8_n.png in Resources */,
 				84B010D112EEFBEC0002616F /* irika_9_n.png in Resources */,
 				846CC07412EF3388007C082A /* icon7.png in Resources */,
+				84F6DABF12F54F5900CF67F9 /* allIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6257,7 +6261,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = AlarmGitaiFinal;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B3C8D78-7BAC-4E8E-B934-3E9F1CCA25D1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6266,7 +6270,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -6283,7 +6287,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = HarukaAlarm;
-				PROVISIONING_PROFILE = "3915BFC8-5416-466E-8BBE-895F7ED273D0";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -6292,7 +6295,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -6351,7 +6354,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = AkariAlarm;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B3C8D78-7BAC-4E8E-B934-3E9F1CCA25D1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6386,7 +6389,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = HitomiAlarm;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B3C8D78-7BAC-4E8E-B934-3E9F1CCA25D1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6421,7 +6424,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = IrikaAlarm;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B3C8D78-7BAC-4E8E-B934-3E9F1CCA25D1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6456,7 +6459,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = ReinaAlarm;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B3C8D78-7BAC-4E8E-B934-3E9F1CCA25D1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6491,7 +6494,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = FumikoAlarm;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B3C8D78-7BAC-4E8E-B934-3E9F1CCA25D1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6563,7 +6566,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = NATSUKO;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B3C8D78-7BAC-4E8E-B934-3E9F1CCA25D1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -6580,7 +6583,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3B3C8D78-7BAC-4E8E-B934-3E9F1CCA25D1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
 				SDKROOT = iphoneos4.2;
 			};
 			name = Release;
