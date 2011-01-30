@@ -1049,7 +1049,6 @@
 		5641FDA712EF2D6800CDA3EA /* hitomi_11_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1212EE878F00A044B6 /* hitomi_11_d_b.png */; };
 		5641FDA812EF2D6800CDA3EA /* hitomi_12_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1312EE878F00A044B6 /* hitomi_12_d.png */; };
 		5641FDA912EF2D6800CDA3EA /* hitomi_13_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1412EE878F00A044B6 /* hitomi_13_d.png */; };
-		5641FDAA12EF2D6800CDA3EA /* hitomi_14_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1512EE878F00A044B6 /* hitomi_14_d.png */; };
 		5641FDAB12EF2D6800CDA3EA /* hitomi_15_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1612EE878F00A044B6 /* hitomi_15_d.png */; };
 		5641FDAC12EF2D6800CDA3EA /* hitomi_16_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1712EE878F00A044B6 /* hitomi_16_d.png */; };
 		5641FDAD12EF2D6800CDA3EA /* hitomi_17_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1812EE878F00A044B6 /* hitomi_17_d.png */; };
@@ -1080,44 +1079,6 @@
 		5641FDC612EF2D6800CDA3EA /* hitomi_8_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3112EE878F00A044B6 /* hitomi_8_d_b.png */; };
 		5641FDC712EF2D6800CDA3EA /* hitomi_9_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3212EE878F00A044B6 /* hitomi_9_d.png */; };
 		5641FDC812EF2D6800CDA3EA /* hitomi_9_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3312EE878F00A044B6 /* hitomi_9_d_b.png */; };
-		5641FDC912EF2D6800CDA3EA /* hitomi_0_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3512EE878F00A044B6 /* hitomi_0_n_b.png */; };
-		5641FDCA12EF2D6800CDA3EA /* hitomi_10_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3612EE878F00A044B6 /* hitomi_10_n.png */; };
-		5641FDCB12EF2D6800CDA3EA /* hitomi_10_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3712EE878F00A044B6 /* hitomi_10_n_b.png */; };
-		5641FDCC12EF2D6800CDA3EA /* hitomi_11_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3812EE878F00A044B6 /* hitomi_11_n.png */; };
-		5641FDCD12EF2D6800CDA3EA /* hitomi_11_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3912EE878F00A044B6 /* hitomi_11_n_b.png */; };
-		5641FDCE12EF2D6800CDA3EA /* hitomi_12_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3A12EE878F00A044B6 /* hitomi_12_n.png */; };
-		5641FDCF12EF2D6800CDA3EA /* hitomi_13_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3B12EE878F00A044B6 /* hitomi_13_n.png */; };
-		5641FDD012EF2D6800CDA3EA /* hitomi_14_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3C12EE878F00A044B6 /* hitomi_14_n.png */; };
-		5641FDD112EF2D6800CDA3EA /* hitomi_15_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3D12EE878F00A044B6 /* hitomi_15_n.png */; };
-		5641FDD212EF2D6800CDA3EA /* hitomi_16_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3E12EE878F00A044B6 /* hitomi_16_n.png */; };
-		5641FDD312EF2D6800CDA3EA /* hitomi_17_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3F12EE878F00A044B6 /* hitomi_17_n.png */; };
-		5641FDD412EF2D6800CDA3EA /* hitomi_18_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4012EE878F00A044B6 /* hitomi_18_n.png */; };
-		5641FDD512EF2D6800CDA3EA /* hitomi_19_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4112EE878F00A044B6 /* hitomi_19_n.png */; };
-		5641FDD612EF2D6800CDA3EA /* hitomi_1_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4212EE878F00A044B6 /* hitomi_1_n.png */; };
-		5641FDD712EF2D6800CDA3EA /* hitomi_1_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4312EE878F00A044B6 /* hitomi_1_n_b.png */; };
-		5641FDD812EF2D6800CDA3EA /* hitomi_20_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4412EE878F00A044B6 /* hitomi_20_n.png */; };
-		5641FDD912EF2D6800CDA3EA /* hitomi_21_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4512EE878F00A044B6 /* hitomi_21_n.png */; };
-		5641FDDA12EF2D6800CDA3EA /* hitomi_22_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4612EE878F00A044B6 /* hitomi_22_n.png */; };
-		5641FDDB12EF2D6800CDA3EA /* hitomi_23_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4712EE878F00A044B6 /* hitomi_23_n.png */; };
-		5641FDDC12EF2D6800CDA3EA /* hitomi_24_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4812EE878F00A044B6 /* hitomi_24_n.png */; };
-		5641FDDD12EF2D6800CDA3EA /* hitomi_25_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4912EE878F00A044B6 /* hitomi_25_n.png */; };
-		5641FDDE12EF2D6800CDA3EA /* hitomi_26_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4A12EE878F00A044B6 /* hitomi_26_n.png */; };
-		5641FDDF12EF2D6800CDA3EA /* hitomi_27_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4B12EE878F00A044B6 /* hitomi_27_n.png */; };
-		5641FDE012EF2D6800CDA3EA /* hitomi_2_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4C12EE878F00A044B6 /* hitomi_2_n.png */; };
-		5641FDE112EF2D6800CDA3EA /* hitomi_2_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4D12EE878F00A044B6 /* hitomi_2_n_b.png */; };
-		5641FDE212EF2D6800CDA3EA /* hitomi_3_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4E12EE878F00A044B6 /* hitomi_3_n.png */; };
-		5641FDE312EF2D6800CDA3EA /* hitomi_3_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4F12EE878F00A044B6 /* hitomi_3_n_b.png */; };
-		5641FDE412EF2D6800CDA3EA /* hitomi_4_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5012EE878F00A044B6 /* hitomi_4_n.png */; };
-		5641FDE512EF2D6800CDA3EA /* hitomi_4_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5112EE878F00A044B6 /* hitomi_4_n_b.png */; };
-		5641FDE612EF2D6800CDA3EA /* hitomi_5_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5212EE878F00A044B6 /* hitomi_5_n.png */; };
-		5641FDE712EF2D6800CDA3EA /* hitomi_5_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5312EE878F00A044B6 /* hitomi_5_n_b.png */; };
-		5641FDE812EF2D6800CDA3EA /* hitomi_6_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5412EE878F00A044B6 /* hitomi_6_n.png */; };
-		5641FDE912EF2D6800CDA3EA /* hitomi_6_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5512EE878F00A044B6 /* hitomi_6_n_b.png */; };
-		5641FDEA12EF2D6800CDA3EA /* hitomi_7_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5612EE878F00A044B6 /* hitomi_7_n_b.png */; };
-		5641FDEB12EF2D6800CDA3EA /* hitomi_8_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5712EE878F00A044B6 /* hitomi_8_n.png */; };
-		5641FDEC12EF2D6800CDA3EA /* hitomi_8_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5812EE878F00A044B6 /* hitomi_8_n_b.png */; };
-		5641FDED12EF2D6800CDA3EA /* hitomi_9_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5912EE878F00A044B6 /* hitomi_9_n.png */; };
-		5641FDEE12EF2D6800CDA3EA /* hitomi_9_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5A12EE878F00A044B6 /* hitomi_9_n_b.png */; };
 		5641FDEF12EF2D7300CDA3EA /* char_natsuko.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB8412EE878F00A044B6 /* char_natsuko.png */; };
 		5641FDF012EF2D7300CDA3EA /* natsuko_0_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB8612EE878F00A044B6 /* natsuko_0_d_b.png */; };
 		5641FDF112EF2D7300CDA3EA /* natsuko_10_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB8712EE878F00A044B6 /* natsuko_10_d.png */; };
@@ -1610,6 +1571,45 @@
 		842BD84B12EE7EF400F136CD /* CharSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842BD84A12EE7EF400F136CD /* CharSelectView.xib */; };
 		842BD86212EE809100F136CD /* CharSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BD86112EE809100F136CD /* CharSelectViewController.m */; };
 		8439851012EED246009873EA /* SelectCharCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8439850F12EED246009873EA /* SelectCharCell.xib */; };
+		84465BEC12F5C4A30069A615 /* hitomi_7_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BEB12F5C4A30069A615 /* hitomi_7_d.png */; };
+		84465C1512F5CBA40069A615 /* hitomi_0_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BEF12F5CBA30069A615 /* hitomi_0_n_b.png */; };
+		84465C1612F5CBA40069A615 /* hitomi_1_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BF012F5CBA30069A615 /* hitomi_1_n_b.png */; };
+		84465C1712F5CBA40069A615 /* hitomi_1_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BF112F5CBA30069A615 /* hitomi_1_n.png */; };
+		84465C1812F5CBA40069A615 /* hitomi_2_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BF212F5CBA30069A615 /* hitomi_2_n_b.png */; };
+		84465C1912F5CBA40069A615 /* hitomi_2_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BF312F5CBA30069A615 /* hitomi_2_n.png */; };
+		84465C1A12F5CBA40069A615 /* hitomi_3_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BF412F5CBA30069A615 /* hitomi_3_n_b.png */; };
+		84465C1B12F5CBA40069A615 /* hitomi_3_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BF512F5CBA30069A615 /* hitomi_3_n.png */; };
+		84465C1C12F5CBA40069A615 /* hitomi_4_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BF612F5CBA30069A615 /* hitomi_4_n_b.png */; };
+		84465C1D12F5CBA40069A615 /* hitomi_4_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BF712F5CBA30069A615 /* hitomi_4_n.png */; };
+		84465C1E12F5CBA40069A615 /* hitomi_5_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BF812F5CBA30069A615 /* hitomi_5_n_b.png */; };
+		84465C1F12F5CBA40069A615 /* hitomi_5_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BF912F5CBA30069A615 /* hitomi_5_n.png */; };
+		84465C2012F5CBA40069A615 /* hitomi_6_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BFA12F5CBA30069A615 /* hitomi_6_n_b.png */; };
+		84465C2112F5CBA40069A615 /* hitomi_6_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BFB12F5CBA30069A615 /* hitomi_6_n.png */; };
+		84465C2212F5CBA40069A615 /* hitomi_7_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BFC12F5CBA30069A615 /* hitomi_7_n_b.png */; };
+		84465C2312F5CBA40069A615 /* hitomi_7_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BFD12F5CBA30069A615 /* hitomi_7_n.png */; };
+		84465C2412F5CBA40069A615 /* hitomi_8_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BFE12F5CBA30069A615 /* hitomi_8_n_b.png */; };
+		84465C2512F5CBA40069A615 /* hitomi_8_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BFF12F5CBA30069A615 /* hitomi_8_n.png */; };
+		84465C2612F5CBA40069A615 /* hitomi_9_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0012F5CBA30069A615 /* hitomi_9_n_b.png */; };
+		84465C2712F5CBA40069A615 /* hitomi_9_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0112F5CBA30069A615 /* hitomi_9_n.png */; };
+		84465C2812F5CBA40069A615 /* hitomi_10_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0212F5CBA30069A615 /* hitomi_10_n_b.png */; };
+		84465C2912F5CBA40069A615 /* hitomi_10_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0312F5CBA30069A615 /* hitomi_10_n.png */; };
+		84465C2A12F5CBA40069A615 /* hitomi_11_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0412F5CBA30069A615 /* hitomi_11_n_b.png */; };
+		84465C2B12F5CBA40069A615 /* hitomi_11_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0512F5CBA30069A615 /* hitomi_11_n.png */; };
+		84465C2C12F5CBA40069A615 /* hitomi_12_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0612F5CBA30069A615 /* hitomi_12_n.png */; };
+		84465C2D12F5CBA40069A615 /* hitomi_13_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0712F5CBA30069A615 /* hitomi_13_n.png */; };
+		84465C2E12F5CBA40069A615 /* hitomi_15_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0812F5CBA30069A615 /* hitomi_15_n.png */; };
+		84465C2F12F5CBA40069A615 /* hitomi_16_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0912F5CBA30069A615 /* hitomi_16_n.png */; };
+		84465C3012F5CBA40069A615 /* hitomi_17_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0A12F5CBA30069A615 /* hitomi_17_n.png */; };
+		84465C3112F5CBA40069A615 /* hitomi_18_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0B12F5CBA30069A615 /* hitomi_18_n.png */; };
+		84465C3212F5CBA40069A615 /* hitomi_19_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0C12F5CBA30069A615 /* hitomi_19_n.png */; };
+		84465C3312F5CBA40069A615 /* hitomi_20_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0D12F5CBA30069A615 /* hitomi_20_n.png */; };
+		84465C3412F5CBA40069A615 /* hitomi_21_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0E12F5CBA30069A615 /* hitomi_21_n.png */; };
+		84465C3512F5CBA40069A615 /* hitomi_22_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C0F12F5CBA30069A615 /* hitomi_22_n.png */; };
+		84465C3612F5CBA40069A615 /* hitomi_23_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C1012F5CBA30069A615 /* hitomi_23_n.png */; };
+		84465C3712F5CBA40069A615 /* hitomi_24_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C1112F5CBA30069A615 /* hitomi_24_n.png */; };
+		84465C3812F5CBA40069A615 /* hitomi_25_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C1212F5CBA30069A615 /* hitomi_25_n.png */; };
+		84465C3912F5CBA40069A615 /* hitomi_26_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C1312F5CBA30069A615 /* hitomi_26_n.png */; };
+		84465C3A12F5CBA40069A615 /* hitomi_27_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465C1412F5CBA30069A615 /* hitomi_27_n.png */; };
 		8448EBEF12EE879000A044B6 /* char_akari.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EA4E12EE878F00A044B6 /* char_akari.png */; };
 		8448EBF012EE879000A044B6 /* akari_0_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EA5012EE878F00A044B6 /* akari_0_d_b.png */; };
 		8448EBF112EE879000A044B6 /* akari_10_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EA5112EE878F00A044B6 /* akari_10_d.png */; };
@@ -1799,7 +1799,6 @@
 		8448ECA912EE879000A044B6 /* hitomi_11_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1212EE878F00A044B6 /* hitomi_11_d_b.png */; };
 		8448ECAA12EE879000A044B6 /* hitomi_12_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1312EE878F00A044B6 /* hitomi_12_d.png */; };
 		8448ECAB12EE879000A044B6 /* hitomi_13_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1412EE878F00A044B6 /* hitomi_13_d.png */; };
-		8448ECAC12EE879000A044B6 /* hitomi_14_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1512EE878F00A044B6 /* hitomi_14_d.png */; };
 		8448ECAD12EE879000A044B6 /* hitomi_15_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1612EE878F00A044B6 /* hitomi_15_d.png */; };
 		8448ECAE12EE879000A044B6 /* hitomi_16_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1712EE878F00A044B6 /* hitomi_16_d.png */; };
 		8448ECAF12EE879000A044B6 /* hitomi_17_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB1812EE878F00A044B6 /* hitomi_17_d.png */; };
@@ -1830,44 +1829,6 @@
 		8448ECC812EE879000A044B6 /* hitomi_8_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3112EE878F00A044B6 /* hitomi_8_d_b.png */; };
 		8448ECC912EE879000A044B6 /* hitomi_9_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3212EE878F00A044B6 /* hitomi_9_d.png */; };
 		8448ECCA12EE879000A044B6 /* hitomi_9_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3312EE878F00A044B6 /* hitomi_9_d_b.png */; };
-		8448ECCB12EE879000A044B6 /* hitomi_0_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3512EE878F00A044B6 /* hitomi_0_n_b.png */; };
-		8448ECCC12EE879000A044B6 /* hitomi_10_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3612EE878F00A044B6 /* hitomi_10_n.png */; };
-		8448ECCD12EE879000A044B6 /* hitomi_10_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3712EE878F00A044B6 /* hitomi_10_n_b.png */; };
-		8448ECCE12EE879000A044B6 /* hitomi_11_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3812EE878F00A044B6 /* hitomi_11_n.png */; };
-		8448ECCF12EE879000A044B6 /* hitomi_11_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3912EE878F00A044B6 /* hitomi_11_n_b.png */; };
-		8448ECD012EE879000A044B6 /* hitomi_12_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3A12EE878F00A044B6 /* hitomi_12_n.png */; };
-		8448ECD112EE879000A044B6 /* hitomi_13_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3B12EE878F00A044B6 /* hitomi_13_n.png */; };
-		8448ECD212EE879000A044B6 /* hitomi_14_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3C12EE878F00A044B6 /* hitomi_14_n.png */; };
-		8448ECD312EE879000A044B6 /* hitomi_15_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3D12EE878F00A044B6 /* hitomi_15_n.png */; };
-		8448ECD412EE879000A044B6 /* hitomi_16_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3E12EE878F00A044B6 /* hitomi_16_n.png */; };
-		8448ECD512EE879000A044B6 /* hitomi_17_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB3F12EE878F00A044B6 /* hitomi_17_n.png */; };
-		8448ECD612EE879000A044B6 /* hitomi_18_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4012EE878F00A044B6 /* hitomi_18_n.png */; };
-		8448ECD712EE879000A044B6 /* hitomi_19_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4112EE878F00A044B6 /* hitomi_19_n.png */; };
-		8448ECD812EE879000A044B6 /* hitomi_1_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4212EE878F00A044B6 /* hitomi_1_n.png */; };
-		8448ECD912EE879000A044B6 /* hitomi_1_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4312EE878F00A044B6 /* hitomi_1_n_b.png */; };
-		8448ECDA12EE879000A044B6 /* hitomi_20_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4412EE878F00A044B6 /* hitomi_20_n.png */; };
-		8448ECDB12EE879000A044B6 /* hitomi_21_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4512EE878F00A044B6 /* hitomi_21_n.png */; };
-		8448ECDC12EE879000A044B6 /* hitomi_22_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4612EE878F00A044B6 /* hitomi_22_n.png */; };
-		8448ECDD12EE879000A044B6 /* hitomi_23_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4712EE878F00A044B6 /* hitomi_23_n.png */; };
-		8448ECDE12EE879000A044B6 /* hitomi_24_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4812EE878F00A044B6 /* hitomi_24_n.png */; };
-		8448ECDF12EE879000A044B6 /* hitomi_25_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4912EE878F00A044B6 /* hitomi_25_n.png */; };
-		8448ECE012EE879000A044B6 /* hitomi_26_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4A12EE878F00A044B6 /* hitomi_26_n.png */; };
-		8448ECE112EE879000A044B6 /* hitomi_27_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4B12EE878F00A044B6 /* hitomi_27_n.png */; };
-		8448ECE212EE879000A044B6 /* hitomi_2_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4C12EE878F00A044B6 /* hitomi_2_n.png */; };
-		8448ECE312EE879000A044B6 /* hitomi_2_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4D12EE878F00A044B6 /* hitomi_2_n_b.png */; };
-		8448ECE412EE879000A044B6 /* hitomi_3_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4E12EE878F00A044B6 /* hitomi_3_n.png */; };
-		8448ECE512EE879000A044B6 /* hitomi_3_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB4F12EE878F00A044B6 /* hitomi_3_n_b.png */; };
-		8448ECE612EE879000A044B6 /* hitomi_4_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5012EE878F00A044B6 /* hitomi_4_n.png */; };
-		8448ECE712EE879000A044B6 /* hitomi_4_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5112EE878F00A044B6 /* hitomi_4_n_b.png */; };
-		8448ECE812EE879000A044B6 /* hitomi_5_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5212EE878F00A044B6 /* hitomi_5_n.png */; };
-		8448ECE912EE879000A044B6 /* hitomi_5_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5312EE878F00A044B6 /* hitomi_5_n_b.png */; };
-		8448ECEA12EE879000A044B6 /* hitomi_6_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5412EE878F00A044B6 /* hitomi_6_n.png */; };
-		8448ECEB12EE879000A044B6 /* hitomi_6_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5512EE878F00A044B6 /* hitomi_6_n_b.png */; };
-		8448ECEC12EE879000A044B6 /* hitomi_7_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5612EE878F00A044B6 /* hitomi_7_n_b.png */; };
-		8448ECED12EE879000A044B6 /* hitomi_8_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5712EE878F00A044B6 /* hitomi_8_n.png */; };
-		8448ECEE12EE879000A044B6 /* hitomi_8_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5812EE878F00A044B6 /* hitomi_8_n_b.png */; };
-		8448ECEF12EE879000A044B6 /* hitomi_9_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5912EE878F00A044B6 /* hitomi_9_n.png */; };
-		8448ECF012EE879000A044B6 /* hitomi_9_n_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB5A12EE878F00A044B6 /* hitomi_9_n_b.png */; };
 		8448ED1612EE879000A044B6 /* char_natsuko.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB8412EE878F00A044B6 /* char_natsuko.png */; };
 		8448ED1712EE879000A044B6 /* natsuko_0_d_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB8612EE878F00A044B6 /* natsuko_0_d_b.png */; };
 		8448ED1812EE879000A044B6 /* natsuko_10_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EB8712EE878F00A044B6 /* natsuko_10_d.png */; };
@@ -2178,7 +2139,7 @@
 		289233A90DB2D0DB0083E9F9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* AlarmGitaiFinal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmGitaiFinal_Prefix.pch; sourceTree = "<group>"; };
-		56020EDB12EAE02200BB6235 /* NatsukoAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NatsukoAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56020EDB12EAE02200BB6235 /* HarukaAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarukaAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56020EDD12EAE02200BB6235 /* HarukaAlarm-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HarukaAlarm-info.plist"; sourceTree = "<group>"; };
 		564100CA12EF2FC400CDA3EA /* AkariAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AkariAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		564100CD12EF2FED00CDA3EA /* AkariAlarm-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AkariAlarm-Info.plist"; sourceTree = "<group>"; };
@@ -2209,6 +2170,45 @@
 		842BD86012EE809100F136CD /* CharSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharSelectViewController.h; sourceTree = "<group>"; };
 		842BD86112EE809100F136CD /* CharSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharSelectViewController.m; sourceTree = "<group>"; };
 		8439850F12EED246009873EA /* SelectCharCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCharCell.xib; sourceTree = "<group>"; };
+		84465BEB12F5C4A30069A615 /* hitomi_7_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_7_d.png; sourceTree = "<group>"; };
+		84465BEF12F5CBA30069A615 /* hitomi_0_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_0_n_b.png; sourceTree = "<group>"; };
+		84465BF012F5CBA30069A615 /* hitomi_1_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_1_n_b.png; sourceTree = "<group>"; };
+		84465BF112F5CBA30069A615 /* hitomi_1_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_1_n.png; sourceTree = "<group>"; };
+		84465BF212F5CBA30069A615 /* hitomi_2_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_2_n_b.png; sourceTree = "<group>"; };
+		84465BF312F5CBA30069A615 /* hitomi_2_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_2_n.png; sourceTree = "<group>"; };
+		84465BF412F5CBA30069A615 /* hitomi_3_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_3_n_b.png; sourceTree = "<group>"; };
+		84465BF512F5CBA30069A615 /* hitomi_3_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_3_n.png; sourceTree = "<group>"; };
+		84465BF612F5CBA30069A615 /* hitomi_4_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_4_n_b.png; sourceTree = "<group>"; };
+		84465BF712F5CBA30069A615 /* hitomi_4_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_4_n.png; sourceTree = "<group>"; };
+		84465BF812F5CBA30069A615 /* hitomi_5_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_5_n_b.png; sourceTree = "<group>"; };
+		84465BF912F5CBA30069A615 /* hitomi_5_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_5_n.png; sourceTree = "<group>"; };
+		84465BFA12F5CBA30069A615 /* hitomi_6_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_6_n_b.png; sourceTree = "<group>"; };
+		84465BFB12F5CBA30069A615 /* hitomi_6_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_6_n.png; sourceTree = "<group>"; };
+		84465BFC12F5CBA30069A615 /* hitomi_7_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_7_n_b.png; sourceTree = "<group>"; };
+		84465BFD12F5CBA30069A615 /* hitomi_7_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_7_n.png; sourceTree = "<group>"; };
+		84465BFE12F5CBA30069A615 /* hitomi_8_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_8_n_b.png; sourceTree = "<group>"; };
+		84465BFF12F5CBA30069A615 /* hitomi_8_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_8_n.png; sourceTree = "<group>"; };
+		84465C0012F5CBA30069A615 /* hitomi_9_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_9_n_b.png; sourceTree = "<group>"; };
+		84465C0112F5CBA30069A615 /* hitomi_9_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_9_n.png; sourceTree = "<group>"; };
+		84465C0212F5CBA30069A615 /* hitomi_10_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_10_n_b.png; sourceTree = "<group>"; };
+		84465C0312F5CBA30069A615 /* hitomi_10_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_10_n.png; sourceTree = "<group>"; };
+		84465C0412F5CBA30069A615 /* hitomi_11_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_11_n_b.png; sourceTree = "<group>"; };
+		84465C0512F5CBA30069A615 /* hitomi_11_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_11_n.png; sourceTree = "<group>"; };
+		84465C0612F5CBA30069A615 /* hitomi_12_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_12_n.png; sourceTree = "<group>"; };
+		84465C0712F5CBA30069A615 /* hitomi_13_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_13_n.png; sourceTree = "<group>"; };
+		84465C0812F5CBA30069A615 /* hitomi_15_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_15_n.png; sourceTree = "<group>"; };
+		84465C0912F5CBA30069A615 /* hitomi_16_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_16_n.png; sourceTree = "<group>"; };
+		84465C0A12F5CBA30069A615 /* hitomi_17_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_17_n.png; sourceTree = "<group>"; };
+		84465C0B12F5CBA30069A615 /* hitomi_18_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_18_n.png; sourceTree = "<group>"; };
+		84465C0C12F5CBA30069A615 /* hitomi_19_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_19_n.png; sourceTree = "<group>"; };
+		84465C0D12F5CBA30069A615 /* hitomi_20_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_20_n.png; sourceTree = "<group>"; };
+		84465C0E12F5CBA30069A615 /* hitomi_21_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_21_n.png; sourceTree = "<group>"; };
+		84465C0F12F5CBA30069A615 /* hitomi_22_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_22_n.png; sourceTree = "<group>"; };
+		84465C1012F5CBA30069A615 /* hitomi_23_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_23_n.png; sourceTree = "<group>"; };
+		84465C1112F5CBA30069A615 /* hitomi_24_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_24_n.png; sourceTree = "<group>"; };
+		84465C1212F5CBA30069A615 /* hitomi_25_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_25_n.png; sourceTree = "<group>"; };
+		84465C1312F5CBA30069A615 /* hitomi_26_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_26_n.png; sourceTree = "<group>"; };
+		84465C1412F5CBA30069A615 /* hitomi_27_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_27_n.png; sourceTree = "<group>"; };
 		8448EA4E12EE878F00A044B6 /* char_akari.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = char_akari.png; sourceTree = "<group>"; };
 		8448EA5012EE878F00A044B6 /* akari_0_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = akari_0_d_b.png; sourceTree = "<group>"; };
 		8448EA5112EE878F00A044B6 /* akari_10_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = akari_10_d.png; sourceTree = "<group>"; };
@@ -2398,7 +2398,6 @@
 		8448EB1212EE878F00A044B6 /* hitomi_11_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_11_d_b.png; sourceTree = "<group>"; };
 		8448EB1312EE878F00A044B6 /* hitomi_12_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_12_d.png; sourceTree = "<group>"; };
 		8448EB1412EE878F00A044B6 /* hitomi_13_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_13_d.png; sourceTree = "<group>"; };
-		8448EB1512EE878F00A044B6 /* hitomi_14_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_14_d.png; sourceTree = "<group>"; };
 		8448EB1612EE878F00A044B6 /* hitomi_15_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_15_d.png; sourceTree = "<group>"; };
 		8448EB1712EE878F00A044B6 /* hitomi_16_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_16_d.png; sourceTree = "<group>"; };
 		8448EB1812EE878F00A044B6 /* hitomi_17_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_17_d.png; sourceTree = "<group>"; };
@@ -2429,44 +2428,6 @@
 		8448EB3112EE878F00A044B6 /* hitomi_8_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_8_d_b.png; sourceTree = "<group>"; };
 		8448EB3212EE878F00A044B6 /* hitomi_9_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_9_d.png; sourceTree = "<group>"; };
 		8448EB3312EE878F00A044B6 /* hitomi_9_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_9_d_b.png; sourceTree = "<group>"; };
-		8448EB3512EE878F00A044B6 /* hitomi_0_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_0_n_b.png; sourceTree = "<group>"; };
-		8448EB3612EE878F00A044B6 /* hitomi_10_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_10_n.png; sourceTree = "<group>"; };
-		8448EB3712EE878F00A044B6 /* hitomi_10_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_10_n_b.png; sourceTree = "<group>"; };
-		8448EB3812EE878F00A044B6 /* hitomi_11_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_11_n.png; sourceTree = "<group>"; };
-		8448EB3912EE878F00A044B6 /* hitomi_11_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_11_n_b.png; sourceTree = "<group>"; };
-		8448EB3A12EE878F00A044B6 /* hitomi_12_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_12_n.png; sourceTree = "<group>"; };
-		8448EB3B12EE878F00A044B6 /* hitomi_13_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_13_n.png; sourceTree = "<group>"; };
-		8448EB3C12EE878F00A044B6 /* hitomi_14_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_14_n.png; sourceTree = "<group>"; };
-		8448EB3D12EE878F00A044B6 /* hitomi_15_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_15_n.png; sourceTree = "<group>"; };
-		8448EB3E12EE878F00A044B6 /* hitomi_16_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_16_n.png; sourceTree = "<group>"; };
-		8448EB3F12EE878F00A044B6 /* hitomi_17_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_17_n.png; sourceTree = "<group>"; };
-		8448EB4012EE878F00A044B6 /* hitomi_18_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_18_n.png; sourceTree = "<group>"; };
-		8448EB4112EE878F00A044B6 /* hitomi_19_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_19_n.png; sourceTree = "<group>"; };
-		8448EB4212EE878F00A044B6 /* hitomi_1_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_1_n.png; sourceTree = "<group>"; };
-		8448EB4312EE878F00A044B6 /* hitomi_1_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_1_n_b.png; sourceTree = "<group>"; };
-		8448EB4412EE878F00A044B6 /* hitomi_20_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_20_n.png; sourceTree = "<group>"; };
-		8448EB4512EE878F00A044B6 /* hitomi_21_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_21_n.png; sourceTree = "<group>"; };
-		8448EB4612EE878F00A044B6 /* hitomi_22_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_22_n.png; sourceTree = "<group>"; };
-		8448EB4712EE878F00A044B6 /* hitomi_23_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_23_n.png; sourceTree = "<group>"; };
-		8448EB4812EE878F00A044B6 /* hitomi_24_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_24_n.png; sourceTree = "<group>"; };
-		8448EB4912EE878F00A044B6 /* hitomi_25_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_25_n.png; sourceTree = "<group>"; };
-		8448EB4A12EE878F00A044B6 /* hitomi_26_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_26_n.png; sourceTree = "<group>"; };
-		8448EB4B12EE878F00A044B6 /* hitomi_27_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_27_n.png; sourceTree = "<group>"; };
-		8448EB4C12EE878F00A044B6 /* hitomi_2_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_2_n.png; sourceTree = "<group>"; };
-		8448EB4D12EE878F00A044B6 /* hitomi_2_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_2_n_b.png; sourceTree = "<group>"; };
-		8448EB4E12EE878F00A044B6 /* hitomi_3_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_3_n.png; sourceTree = "<group>"; };
-		8448EB4F12EE878F00A044B6 /* hitomi_3_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_3_n_b.png; sourceTree = "<group>"; };
-		8448EB5012EE878F00A044B6 /* hitomi_4_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_4_n.png; sourceTree = "<group>"; };
-		8448EB5112EE878F00A044B6 /* hitomi_4_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_4_n_b.png; sourceTree = "<group>"; };
-		8448EB5212EE878F00A044B6 /* hitomi_5_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_5_n.png; sourceTree = "<group>"; };
-		8448EB5312EE878F00A044B6 /* hitomi_5_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_5_n_b.png; sourceTree = "<group>"; };
-		8448EB5412EE878F00A044B6 /* hitomi_6_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_6_n.png; sourceTree = "<group>"; };
-		8448EB5512EE878F00A044B6 /* hitomi_6_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_6_n_b.png; sourceTree = "<group>"; };
-		8448EB5612EE878F00A044B6 /* hitomi_7_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_7_n_b.png; sourceTree = "<group>"; };
-		8448EB5712EE878F00A044B6 /* hitomi_8_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_8_n.png; sourceTree = "<group>"; };
-		8448EB5812EE878F00A044B6 /* hitomi_8_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_8_n_b.png; sourceTree = "<group>"; };
-		8448EB5912EE878F00A044B6 /* hitomi_9_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_9_n.png; sourceTree = "<group>"; };
-		8448EB5A12EE878F00A044B6 /* hitomi_9_n_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_9_n_b.png; sourceTree = "<group>"; };
 		8448EB8412EE878F00A044B6 /* char_natsuko.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = char_natsuko.png; sourceTree = "<group>"; };
 		8448EB8612EE878F00A044B6 /* natsuko_0_d_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = natsuko_0_d_b.png; sourceTree = "<group>"; };
 		8448EB8712EE878F00A044B6 /* natsuko_10_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = natsuko_10_d.png; sourceTree = "<group>"; };
@@ -2909,7 +2870,7 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* AlarmGitaiFinal.app */,
 				56A9A63C12E6C5EB009C8435 /* NatsukoAlarm.app */,
-				56020EDB12EAE02200BB6235 /* NatsukoAlarm.app */,
+				56020EDB12EAE02200BB6235 /* HarukaAlarm.app */,
 				5641F03612ED995000CDA3EA /* HitomiAlarm.app */,
 				5641F27F12ED9BCF00CDA3EA /* IrikaAlarm.app */,
 				5641F50012ED9F7400CDA3EA /* ReinaAlarm.app */,
@@ -3282,7 +3243,6 @@
 				8448EB1212EE878F00A044B6 /* hitomi_11_d_b.png */,
 				8448EB1312EE878F00A044B6 /* hitomi_12_d.png */,
 				8448EB1412EE878F00A044B6 /* hitomi_13_d.png */,
-				8448EB1512EE878F00A044B6 /* hitomi_14_d.png */,
 				8448EB1612EE878F00A044B6 /* hitomi_15_d.png */,
 				8448EB1712EE878F00A044B6 /* hitomi_16_d.png */,
 				8448EB1812EE878F00A044B6 /* hitomi_17_d.png */,
@@ -3308,6 +3268,7 @@
 				8448EB2C12EE878F00A044B6 /* hitomi_5_d_b.png */,
 				8448EB2D12EE878F00A044B6 /* hitomi_6_d.png */,
 				8448EB2E12EE878F00A044B6 /* hitomi_6_d_b.png */,
+				84465BEB12F5C4A30069A615 /* hitomi_7_d.png */,
 				8448EB2F12EE878F00A044B6 /* hitomi_7_d_b.png */,
 				8448EB3012EE878F00A044B6 /* hitomi_8_d.png */,
 				8448EB3112EE878F00A044B6 /* hitomi_8_d_b.png */,
@@ -3320,44 +3281,44 @@
 		8448EB3412EE878F00A044B6 /* Night */ = {
 			isa = PBXGroup;
 			children = (
-				8448EB3512EE878F00A044B6 /* hitomi_0_n_b.png */,
-				8448EB3612EE878F00A044B6 /* hitomi_10_n.png */,
-				8448EB3712EE878F00A044B6 /* hitomi_10_n_b.png */,
-				8448EB3812EE878F00A044B6 /* hitomi_11_n.png */,
-				8448EB3912EE878F00A044B6 /* hitomi_11_n_b.png */,
-				8448EB3A12EE878F00A044B6 /* hitomi_12_n.png */,
-				8448EB3B12EE878F00A044B6 /* hitomi_13_n.png */,
-				8448EB3C12EE878F00A044B6 /* hitomi_14_n.png */,
-				8448EB3D12EE878F00A044B6 /* hitomi_15_n.png */,
-				8448EB3E12EE878F00A044B6 /* hitomi_16_n.png */,
-				8448EB3F12EE878F00A044B6 /* hitomi_17_n.png */,
-				8448EB4012EE878F00A044B6 /* hitomi_18_n.png */,
-				8448EB4112EE878F00A044B6 /* hitomi_19_n.png */,
-				8448EB4212EE878F00A044B6 /* hitomi_1_n.png */,
-				8448EB4312EE878F00A044B6 /* hitomi_1_n_b.png */,
-				8448EB4412EE878F00A044B6 /* hitomi_20_n.png */,
-				8448EB4512EE878F00A044B6 /* hitomi_21_n.png */,
-				8448EB4612EE878F00A044B6 /* hitomi_22_n.png */,
-				8448EB4712EE878F00A044B6 /* hitomi_23_n.png */,
-				8448EB4812EE878F00A044B6 /* hitomi_24_n.png */,
-				8448EB4912EE878F00A044B6 /* hitomi_25_n.png */,
-				8448EB4A12EE878F00A044B6 /* hitomi_26_n.png */,
-				8448EB4B12EE878F00A044B6 /* hitomi_27_n.png */,
-				8448EB4C12EE878F00A044B6 /* hitomi_2_n.png */,
-				8448EB4D12EE878F00A044B6 /* hitomi_2_n_b.png */,
-				8448EB4E12EE878F00A044B6 /* hitomi_3_n.png */,
-				8448EB4F12EE878F00A044B6 /* hitomi_3_n_b.png */,
-				8448EB5012EE878F00A044B6 /* hitomi_4_n.png */,
-				8448EB5112EE878F00A044B6 /* hitomi_4_n_b.png */,
-				8448EB5212EE878F00A044B6 /* hitomi_5_n.png */,
-				8448EB5312EE878F00A044B6 /* hitomi_5_n_b.png */,
-				8448EB5412EE878F00A044B6 /* hitomi_6_n.png */,
-				8448EB5512EE878F00A044B6 /* hitomi_6_n_b.png */,
-				8448EB5612EE878F00A044B6 /* hitomi_7_n_b.png */,
-				8448EB5712EE878F00A044B6 /* hitomi_8_n.png */,
-				8448EB5812EE878F00A044B6 /* hitomi_8_n_b.png */,
-				8448EB5912EE878F00A044B6 /* hitomi_9_n.png */,
-				8448EB5A12EE878F00A044B6 /* hitomi_9_n_b.png */,
+				84465BEF12F5CBA30069A615 /* hitomi_0_n_b.png */,
+				84465BF012F5CBA30069A615 /* hitomi_1_n_b.png */,
+				84465BF112F5CBA30069A615 /* hitomi_1_n.png */,
+				84465BF212F5CBA30069A615 /* hitomi_2_n_b.png */,
+				84465BF312F5CBA30069A615 /* hitomi_2_n.png */,
+				84465BF412F5CBA30069A615 /* hitomi_3_n_b.png */,
+				84465BF512F5CBA30069A615 /* hitomi_3_n.png */,
+				84465BF612F5CBA30069A615 /* hitomi_4_n_b.png */,
+				84465BF712F5CBA30069A615 /* hitomi_4_n.png */,
+				84465BF812F5CBA30069A615 /* hitomi_5_n_b.png */,
+				84465BF912F5CBA30069A615 /* hitomi_5_n.png */,
+				84465BFA12F5CBA30069A615 /* hitomi_6_n_b.png */,
+				84465BFB12F5CBA30069A615 /* hitomi_6_n.png */,
+				84465BFC12F5CBA30069A615 /* hitomi_7_n_b.png */,
+				84465BFD12F5CBA30069A615 /* hitomi_7_n.png */,
+				84465BFE12F5CBA30069A615 /* hitomi_8_n_b.png */,
+				84465BFF12F5CBA30069A615 /* hitomi_8_n.png */,
+				84465C0012F5CBA30069A615 /* hitomi_9_n_b.png */,
+				84465C0112F5CBA30069A615 /* hitomi_9_n.png */,
+				84465C0212F5CBA30069A615 /* hitomi_10_n_b.png */,
+				84465C0312F5CBA30069A615 /* hitomi_10_n.png */,
+				84465C0412F5CBA30069A615 /* hitomi_11_n_b.png */,
+				84465C0512F5CBA30069A615 /* hitomi_11_n.png */,
+				84465C0612F5CBA30069A615 /* hitomi_12_n.png */,
+				84465C0712F5CBA30069A615 /* hitomi_13_n.png */,
+				84465C0812F5CBA30069A615 /* hitomi_15_n.png */,
+				84465C0912F5CBA30069A615 /* hitomi_16_n.png */,
+				84465C0A12F5CBA30069A615 /* hitomi_17_n.png */,
+				84465C0B12F5CBA30069A615 /* hitomi_18_n.png */,
+				84465C0C12F5CBA30069A615 /* hitomi_19_n.png */,
+				84465C0D12F5CBA30069A615 /* hitomi_20_n.png */,
+				84465C0E12F5CBA30069A615 /* hitomi_21_n.png */,
+				84465C0F12F5CBA30069A615 /* hitomi_22_n.png */,
+				84465C1012F5CBA30069A615 /* hitomi_23_n.png */,
+				84465C1112F5CBA30069A615 /* hitomi_24_n.png */,
+				84465C1212F5CBA30069A615 /* hitomi_25_n.png */,
+				84465C1312F5CBA30069A615 /* hitomi_26_n.png */,
+				84465C1412F5CBA30069A615 /* hitomi_27_n.png */,
 			);
 			path = Night;
 			sourceTree = "<group>";
@@ -3867,7 +3828,7 @@
 			);
 			name = HarukaAlarm;
 			productName = NatsukoAlarm;
-			productReference = 56020EDB12EAE02200BB6235 /* NatsukoAlarm.app */;
+			productReference = 56020EDB12EAE02200BB6235 /* HarukaAlarm.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5641EDF412ED995000CDA3EA /* HitomiAlarm */ = {
@@ -4341,7 +4302,6 @@
 				8448ECA912EE879000A044B6 /* hitomi_11_d_b.png in Resources */,
 				8448ECAA12EE879000A044B6 /* hitomi_12_d.png in Resources */,
 				8448ECAB12EE879000A044B6 /* hitomi_13_d.png in Resources */,
-				8448ECAC12EE879000A044B6 /* hitomi_14_d.png in Resources */,
 				8448ECAD12EE879000A044B6 /* hitomi_15_d.png in Resources */,
 				8448ECAE12EE879000A044B6 /* hitomi_16_d.png in Resources */,
 				8448ECAF12EE879000A044B6 /* hitomi_17_d.png in Resources */,
@@ -4372,44 +4332,6 @@
 				8448ECC812EE879000A044B6 /* hitomi_8_d_b.png in Resources */,
 				8448ECC912EE879000A044B6 /* hitomi_9_d.png in Resources */,
 				8448ECCA12EE879000A044B6 /* hitomi_9_d_b.png in Resources */,
-				8448ECCB12EE879000A044B6 /* hitomi_0_n_b.png in Resources */,
-				8448ECCC12EE879000A044B6 /* hitomi_10_n.png in Resources */,
-				8448ECCD12EE879000A044B6 /* hitomi_10_n_b.png in Resources */,
-				8448ECCE12EE879000A044B6 /* hitomi_11_n.png in Resources */,
-				8448ECCF12EE879000A044B6 /* hitomi_11_n_b.png in Resources */,
-				8448ECD012EE879000A044B6 /* hitomi_12_n.png in Resources */,
-				8448ECD112EE879000A044B6 /* hitomi_13_n.png in Resources */,
-				8448ECD212EE879000A044B6 /* hitomi_14_n.png in Resources */,
-				8448ECD312EE879000A044B6 /* hitomi_15_n.png in Resources */,
-				8448ECD412EE879000A044B6 /* hitomi_16_n.png in Resources */,
-				8448ECD512EE879000A044B6 /* hitomi_17_n.png in Resources */,
-				8448ECD612EE879000A044B6 /* hitomi_18_n.png in Resources */,
-				8448ECD712EE879000A044B6 /* hitomi_19_n.png in Resources */,
-				8448ECD812EE879000A044B6 /* hitomi_1_n.png in Resources */,
-				8448ECD912EE879000A044B6 /* hitomi_1_n_b.png in Resources */,
-				8448ECDA12EE879000A044B6 /* hitomi_20_n.png in Resources */,
-				8448ECDB12EE879000A044B6 /* hitomi_21_n.png in Resources */,
-				8448ECDC12EE879000A044B6 /* hitomi_22_n.png in Resources */,
-				8448ECDD12EE879000A044B6 /* hitomi_23_n.png in Resources */,
-				8448ECDE12EE879000A044B6 /* hitomi_24_n.png in Resources */,
-				8448ECDF12EE879000A044B6 /* hitomi_25_n.png in Resources */,
-				8448ECE012EE879000A044B6 /* hitomi_26_n.png in Resources */,
-				8448ECE112EE879000A044B6 /* hitomi_27_n.png in Resources */,
-				8448ECE212EE879000A044B6 /* hitomi_2_n.png in Resources */,
-				8448ECE312EE879000A044B6 /* hitomi_2_n_b.png in Resources */,
-				8448ECE412EE879000A044B6 /* hitomi_3_n.png in Resources */,
-				8448ECE512EE879000A044B6 /* hitomi_3_n_b.png in Resources */,
-				8448ECE612EE879000A044B6 /* hitomi_4_n.png in Resources */,
-				8448ECE712EE879000A044B6 /* hitomi_4_n_b.png in Resources */,
-				8448ECE812EE879000A044B6 /* hitomi_5_n.png in Resources */,
-				8448ECE912EE879000A044B6 /* hitomi_5_n_b.png in Resources */,
-				8448ECEA12EE879000A044B6 /* hitomi_6_n.png in Resources */,
-				8448ECEB12EE879000A044B6 /* hitomi_6_n_b.png in Resources */,
-				8448ECEC12EE879000A044B6 /* hitomi_7_n_b.png in Resources */,
-				8448ECED12EE879000A044B6 /* hitomi_8_n.png in Resources */,
-				8448ECEE12EE879000A044B6 /* hitomi_8_n_b.png in Resources */,
-				8448ECEF12EE879000A044B6 /* hitomi_9_n.png in Resources */,
-				8448ECF012EE879000A044B6 /* hitomi_9_n_b.png in Resources */,
 				8448ED1612EE879000A044B6 /* char_natsuko.png in Resources */,
 				8448ED1712EE879000A044B6 /* natsuko_0_d_b.png in Resources */,
 				8448ED1812EE879000A044B6 /* natsuko_10_d.png in Resources */,
@@ -4552,6 +4474,45 @@
 				84B010D112EEFBEC0002616F /* irika_9_n.png in Resources */,
 				846CC07412EF3388007C082A /* icon7.png in Resources */,
 				84F6DABF12F54F5900CF67F9 /* allIcon.png in Resources */,
+				84465BEC12F5C4A30069A615 /* hitomi_7_d.png in Resources */,
+				84465C1512F5CBA40069A615 /* hitomi_0_n_b.png in Resources */,
+				84465C1612F5CBA40069A615 /* hitomi_1_n_b.png in Resources */,
+				84465C1712F5CBA40069A615 /* hitomi_1_n.png in Resources */,
+				84465C1812F5CBA40069A615 /* hitomi_2_n_b.png in Resources */,
+				84465C1912F5CBA40069A615 /* hitomi_2_n.png in Resources */,
+				84465C1A12F5CBA40069A615 /* hitomi_3_n_b.png in Resources */,
+				84465C1B12F5CBA40069A615 /* hitomi_3_n.png in Resources */,
+				84465C1C12F5CBA40069A615 /* hitomi_4_n_b.png in Resources */,
+				84465C1D12F5CBA40069A615 /* hitomi_4_n.png in Resources */,
+				84465C1E12F5CBA40069A615 /* hitomi_5_n_b.png in Resources */,
+				84465C1F12F5CBA40069A615 /* hitomi_5_n.png in Resources */,
+				84465C2012F5CBA40069A615 /* hitomi_6_n_b.png in Resources */,
+				84465C2112F5CBA40069A615 /* hitomi_6_n.png in Resources */,
+				84465C2212F5CBA40069A615 /* hitomi_7_n_b.png in Resources */,
+				84465C2312F5CBA40069A615 /* hitomi_7_n.png in Resources */,
+				84465C2412F5CBA40069A615 /* hitomi_8_n_b.png in Resources */,
+				84465C2512F5CBA40069A615 /* hitomi_8_n.png in Resources */,
+				84465C2612F5CBA40069A615 /* hitomi_9_n_b.png in Resources */,
+				84465C2712F5CBA40069A615 /* hitomi_9_n.png in Resources */,
+				84465C2812F5CBA40069A615 /* hitomi_10_n_b.png in Resources */,
+				84465C2912F5CBA40069A615 /* hitomi_10_n.png in Resources */,
+				84465C2A12F5CBA40069A615 /* hitomi_11_n_b.png in Resources */,
+				84465C2B12F5CBA40069A615 /* hitomi_11_n.png in Resources */,
+				84465C2C12F5CBA40069A615 /* hitomi_12_n.png in Resources */,
+				84465C2D12F5CBA40069A615 /* hitomi_13_n.png in Resources */,
+				84465C2E12F5CBA40069A615 /* hitomi_15_n.png in Resources */,
+				84465C2F12F5CBA40069A615 /* hitomi_16_n.png in Resources */,
+				84465C3012F5CBA40069A615 /* hitomi_17_n.png in Resources */,
+				84465C3112F5CBA40069A615 /* hitomi_18_n.png in Resources */,
+				84465C3212F5CBA40069A615 /* hitomi_19_n.png in Resources */,
+				84465C3312F5CBA40069A615 /* hitomi_20_n.png in Resources */,
+				84465C3412F5CBA40069A615 /* hitomi_21_n.png in Resources */,
+				84465C3512F5CBA40069A615 /* hitomi_22_n.png in Resources */,
+				84465C3612F5CBA40069A615 /* hitomi_23_n.png in Resources */,
+				84465C3712F5CBA40069A615 /* hitomi_24_n.png in Resources */,
+				84465C3812F5CBA40069A615 /* hitomi_25_n.png in Resources */,
+				84465C3912F5CBA40069A615 /* hitomi_26_n.png in Resources */,
+				84465C3A12F5CBA40069A615 /* hitomi_27_n.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4909,7 +4870,6 @@
 				5641FDA712EF2D6800CDA3EA /* hitomi_11_d_b.png in Resources */,
 				5641FDA812EF2D6800CDA3EA /* hitomi_12_d.png in Resources */,
 				5641FDA912EF2D6800CDA3EA /* hitomi_13_d.png in Resources */,
-				5641FDAA12EF2D6800CDA3EA /* hitomi_14_d.png in Resources */,
 				5641FDAB12EF2D6800CDA3EA /* hitomi_15_d.png in Resources */,
 				5641FDAC12EF2D6800CDA3EA /* hitomi_16_d.png in Resources */,
 				5641FDAD12EF2D6800CDA3EA /* hitomi_17_d.png in Resources */,
@@ -4940,44 +4900,6 @@
 				5641FDC612EF2D6800CDA3EA /* hitomi_8_d_b.png in Resources */,
 				5641FDC712EF2D6800CDA3EA /* hitomi_9_d.png in Resources */,
 				5641FDC812EF2D6800CDA3EA /* hitomi_9_d_b.png in Resources */,
-				5641FDC912EF2D6800CDA3EA /* hitomi_0_n_b.png in Resources */,
-				5641FDCA12EF2D6800CDA3EA /* hitomi_10_n.png in Resources */,
-				5641FDCB12EF2D6800CDA3EA /* hitomi_10_n_b.png in Resources */,
-				5641FDCC12EF2D6800CDA3EA /* hitomi_11_n.png in Resources */,
-				5641FDCD12EF2D6800CDA3EA /* hitomi_11_n_b.png in Resources */,
-				5641FDCE12EF2D6800CDA3EA /* hitomi_12_n.png in Resources */,
-				5641FDCF12EF2D6800CDA3EA /* hitomi_13_n.png in Resources */,
-				5641FDD012EF2D6800CDA3EA /* hitomi_14_n.png in Resources */,
-				5641FDD112EF2D6800CDA3EA /* hitomi_15_n.png in Resources */,
-				5641FDD212EF2D6800CDA3EA /* hitomi_16_n.png in Resources */,
-				5641FDD312EF2D6800CDA3EA /* hitomi_17_n.png in Resources */,
-				5641FDD412EF2D6800CDA3EA /* hitomi_18_n.png in Resources */,
-				5641FDD512EF2D6800CDA3EA /* hitomi_19_n.png in Resources */,
-				5641FDD612EF2D6800CDA3EA /* hitomi_1_n.png in Resources */,
-				5641FDD712EF2D6800CDA3EA /* hitomi_1_n_b.png in Resources */,
-				5641FDD812EF2D6800CDA3EA /* hitomi_20_n.png in Resources */,
-				5641FDD912EF2D6800CDA3EA /* hitomi_21_n.png in Resources */,
-				5641FDDA12EF2D6800CDA3EA /* hitomi_22_n.png in Resources */,
-				5641FDDB12EF2D6800CDA3EA /* hitomi_23_n.png in Resources */,
-				5641FDDC12EF2D6800CDA3EA /* hitomi_24_n.png in Resources */,
-				5641FDDD12EF2D6800CDA3EA /* hitomi_25_n.png in Resources */,
-				5641FDDE12EF2D6800CDA3EA /* hitomi_26_n.png in Resources */,
-				5641FDDF12EF2D6800CDA3EA /* hitomi_27_n.png in Resources */,
-				5641FDE012EF2D6800CDA3EA /* hitomi_2_n.png in Resources */,
-				5641FDE112EF2D6800CDA3EA /* hitomi_2_n_b.png in Resources */,
-				5641FDE212EF2D6800CDA3EA /* hitomi_3_n.png in Resources */,
-				5641FDE312EF2D6800CDA3EA /* hitomi_3_n_b.png in Resources */,
-				5641FDE412EF2D6800CDA3EA /* hitomi_4_n.png in Resources */,
-				5641FDE512EF2D6800CDA3EA /* hitomi_4_n_b.png in Resources */,
-				5641FDE612EF2D6800CDA3EA /* hitomi_5_n.png in Resources */,
-				5641FDE712EF2D6800CDA3EA /* hitomi_5_n_b.png in Resources */,
-				5641FDE812EF2D6800CDA3EA /* hitomi_6_n.png in Resources */,
-				5641FDE912EF2D6800CDA3EA /* hitomi_6_n_b.png in Resources */,
-				5641FDEA12EF2D6800CDA3EA /* hitomi_7_n_b.png in Resources */,
-				5641FDEB12EF2D6800CDA3EA /* hitomi_8_n.png in Resources */,
-				5641FDEC12EF2D6800CDA3EA /* hitomi_8_n_b.png in Resources */,
-				5641FDED12EF2D6800CDA3EA /* hitomi_9_n.png in Resources */,
-				5641FDEE12EF2D6800CDA3EA /* hitomi_9_n_b.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
