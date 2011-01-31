@@ -69,16 +69,19 @@
 	[self.view addSubview:sceneView.view];
 	
 	clockview = [[ClockView alloc] init];
-	[clockview.view setFrame:CGRectMake(0, 0,320, 100)];
-	//[clockview.view setFrame:CGRectMake(0, 0,360, 100)];
+	
+	if( [[AlarmConfig getInstance] getSecondMode] )
+		[clockview.view setFrame:CGRectMake(0, 0,255, 80)];
+	else 
+		[clockview.view setFrame:CGRectMake(0, 0,320, 80)];
+	
 	[clockview.view setTransform:alarmviewpoint.ClockTrans]; 
-	//[clockview.view setTransform:CGAffineTransformMake(0.4f, 0.0, 0.0, 0.4f, 0.0, 0.0)];
 	[clockview.view setCenter:alarmviewpoint.ClockPoint ];
 	[clockview UpdateTime];
 	[self.view addSubview:clockview.view];
 	
 	dateview = [[DateView alloc] init];
-	[dateview.view setFrame:CGRectMake(0, 0, 320, 180)];
+	[dateview.view setFrame:CGRectMake(0, 0, 270, 160)];
 	[dateview.view setTransform:alarmviewpoint.DateTrans];
 	[dateview.view setCenter:alarmviewpoint.DatePoint ];
 	[dateview UpdateDate];
@@ -117,9 +120,20 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+	if( [[AlarmConfig getInstance] getSecondMode] )
+	{
+		[clockview.view setTransform:CGAffineTransformMake(1.0f, 0, 0, 1.0f, 0, 0)]; 
+		[clockview.view setFrame:CGRectMake(0, 0,320, 80)];
+	}
+	else 
+	{
+		[clockview.view setTransform:CGAffineTransformMake(1.0f, 0, 0, 1.0f, 0, 0)]; 
+		[clockview.view setFrame:CGRectMake(0, 0,255, 80)];
+	}
+
 
 	[self FrameUpdate];
-
+//	[clockview.view setFrame:[self viewcentersettle:clockview.view.frame]];
 	[self resumeTimer];
 
 	viewrotate = TRUE;
@@ -144,6 +158,7 @@
 	[self AlarmBarHidden:YES];
 	isAlarmPlay = FALSE;
 }
+
 - (IBAction)ButtonClick:(id)sender
 {
 	if (sender == infoButton)
@@ -224,7 +239,7 @@
 {
 	++frameTick;
 	--infoButtonFrame;
-//	if(((frameTick % 5) == 0) || [[AlarmConfig getInstance] ForceUpdate])
+	if(((frameTick % 5) == 0) || [[AlarmConfig getInstance] ForceUpdate])
 	{
 		[sceneView next];
 		[[AlarmConfig getInstance] setForceUpdate:false];
@@ -277,23 +292,6 @@
 												   repeats: YES] retain];	
 }
 
-- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	
-	if(viewrotate)
-	{
-		if( self.interfaceOrientation == UIInterfaceOrientationPortrait || self.interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
-		{	
-//			selectmenu.view.transform =  CGAffineTransformMakeRotation(3.14159/2);
-//			[self.navigationController pushViewController:selectmenu animated:YES];
-		}
-		else
-		{
-//			selectmenu.view.transform =  CGAffineTransformMakeRotation(0);
-//			[self.navigationController pushViewController:selectmenu animated:YES];
-		}
-		viewrotate = FALSE;
-	}
-}
 
 -(CGFloat ) distanceBetweenTwoPoints:(CGPoint) fromPoint toPoint:(CGPoint)toPoint
 {
