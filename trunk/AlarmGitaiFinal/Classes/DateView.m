@@ -41,21 +41,21 @@
 	[self.view addSubview:u_DayT];
 	[self.view addSubview:u_DayM];
 
-	[u_Dot setFrame:CGRectMake(110,-10,100,150)];
-	[b_Dot setFrame:CGRectMake(110,-10,100,150)];
+	[u_Dot setFrame:CGRectMake(85,-5,82,89)];
+	[b_Dot setFrame:CGRectMake(85,-5,82,89)];
 	
-	[u_Week setFrame:CGRectMake(160,100,130,100)];
-	[b_Week setFrame:CGRectMake(160,100,130,100)];
+	[u_Week setFrame:CGRectMake(100,70,164,89)];
+	[b_Week setFrame:CGRectMake(100,70,164,89)];
 
-	[u_MonT setFrame:CGRectMake(-10,-10,100,150)];
-	[u_MonM setFrame:CGRectMake(60,-10,100,150)];
-	[u_DayT setFrame:CGRectMake(160,-10,100,150)];
-	[u_DayM setFrame:CGRectMake(230,-10,100,150)];
+	[u_MonT setFrame:CGRectMake(-10,-5,82,89)];
+	[u_MonM setFrame:CGRectMake(50,-5,82,89)];
+	[u_DayT setFrame:CGRectMake(140,-5,82,89)];
+	[u_DayM setFrame:CGRectMake(195,-5,82,89)];
 	
-	[b_MonT setFrame:CGRectMake(-10,-10,100,150)];
-	[b_MonM setFrame:CGRectMake(60,-10,100,150)];
-	[b_DayT setFrame:CGRectMake(160,-10,100,150)];
-	[b_DayM setFrame:CGRectMake(230,-10,100,150)];
+	[b_MonT setFrame:CGRectMake(-10,-5,82,89)];
+	[b_MonM setFrame:CGRectMake(50,-5,82,89)];
+	[b_DayT setFrame:CGRectMake(140,-5,82,89)];
+	[b_DayM setFrame:CGRectMake(195,-5,82,89)];
 	
 	[u_Dot setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d_%@Div.png", 
 										 [[AlarmConfig getInstance] getFontType], [[AlarmConfig getInstance] getUpImageType]]]];

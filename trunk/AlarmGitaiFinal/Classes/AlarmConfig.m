@@ -214,7 +214,7 @@ static AlarmConfig *AlarmConfigInst;
 	heigthviewpoint =	[ViewCgPoint alloc];
 	widthviewpoint	=	[ViewCgPoint alloc];
 	
-	float cz		=	[[SaveManager getInstance] getFloatData:@"ClockZoom" idx:0 base:1.f];
+	float cz		=	[[SaveManager getInstance] getFloatData:@"ClockZoom" idx:0 base:1.0f];
 	[heigthviewpoint setClockTrans:CGAffineTransformMake(cz, 0.0, 0.0, cz, 0.0, 0.0)];
 	[heigthviewpoint setClockPoint:CGPointMake([[SaveManager getInstance] getIntData:@"ClockPos" idx:0 base:280],
 											   [[SaveManager getInstance] getIntData:@"ClockPos" idx:1 base:250])];
@@ -224,7 +224,7 @@ static AlarmConfig *AlarmConfigInst;
 	[heigthviewpoint setDatePoint:CGPointMake([[SaveManager getInstance] getIntData:@"DatePos" idx:0 base:100],
 											  [[SaveManager getInstance] getIntData:@"DatePos" idx:1 base:50])];
 
-	cz				=	[[SaveManager getInstance] getFloatData:@"ClockZoom" idx:1 base:1.f];
+	cz				=	[[SaveManager getInstance] getFloatData:@"ClockZoom" idx:1 base:1.0f];
 	[widthviewpoint setClockTrans:CGAffineTransformMake(cz, 0.0, 0.0, cz, 0.0, 0.0)];
 	[widthviewpoint setClockPoint:CGPointMake([[SaveManager getInstance] getIntData:@"ClockPos" idx:2 base:160],
 											   [[SaveManager getInstance] getIntData:@"ClockPos" idx:3 base:380])];

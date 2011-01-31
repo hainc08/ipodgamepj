@@ -93,7 +93,7 @@ static DateFormat *DateFormatInst;
 {
 	BOOL ret = FALSE;
 
-	NSString *Hour = [self getTimeString:@"hh"];
+	NSString *Hour = [self getTimeString:@"kk"];
 	
 	int value = [Hour intValue];
 	if(value > 18 || value < 6 )
