@@ -42,22 +42,11 @@
 			if (bgImgIdx > 500)
 			{
 				bgImgIdx -= 500;
-
-				if (bgImgIdx < 10)
-					bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_00%ds.jpg", bgImgIdx]];
-				else if (bgImgIdx < 100)
-					bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_0%ds.jpg", bgImgIdx]];
-				else
-					bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_%ds.jpg", bgImgIdx]];
+				bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_%03ds.jpg", bgImgIdx]];
 			}
 			else
 			{
-				if (bgImgIdx < 10)
-					bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"bg_00%ds-1.jpg", bgImgIdx]];
-				else if (bgImgIdx < 100)
-					bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"bg_0%ds-1.jpg", bgImgIdx]];
-				else
-					bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"bg_%ds-1.jpg", bgImgIdx]];
+				bgImg = [UIImage imageNamed:[NSString stringWithFormat:@"bg_%03ds-1.jpg", bgImgIdx]];
 			}
 			
 			[sceneImg setImage:bgImg forState:UIControlStateNormal];

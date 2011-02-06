@@ -933,12 +933,7 @@ static NSString* ResourcePath;
 							}
 						}
 
-						NSString* imgName;
-						
-						if (chrId < 100)
-							imgName = [NSString stringWithFormat:@"Achr_0%d.png", chrId];
-						else
-							imgName = [NSString stringWithFormat:@"Achr_%d.png", chrId];
+						NSString* imgName = [NSString stringWithFormat:@"Achr_%03d.png", chrId];
 
 						tempData = [self getData:imgName];
 						
@@ -971,12 +966,7 @@ static NSString* ResourcePath;
 						}
 					}
 
-					NSString* imgName;
-					
-					if (chrId < 100)
-						imgName = [NSString stringWithFormat:@"Achr_s0%d.png", chrId];
-					else
-						imgName = [NSString stringWithFormat:@"Achr_s%d.png", chrId];
+					NSString* imgName = [NSString stringWithFormat:@"Achr_s%03d.png", chrId];
 
 					tempData = [self getData:imgName];
 
@@ -1003,14 +993,7 @@ static NSString* ResourcePath;
 				{
 					bgId -= 500;
 
-					NSString* imgName;
-
-					if (bgId < 10)
-						imgName = [NSString stringWithFormat:@"Aev_00%d.jpg", bgId];
-					else if (bgId < 100)
-						imgName = [NSString stringWithFormat:@"Aev_0%d.jpg", bgId];
-					else
-						imgName = [NSString stringWithFormat:@"Aev_%d.jpg", bgId];
+					NSString* imgName = [NSString stringWithFormat:@"Aev_%03d.jpg", bgId];
 					
 					tempData = [self getData:imgName];
 
@@ -1020,14 +1003,7 @@ static NSString* ResourcePath;
 				}
 				else
 				{
-					NSString* imgName;
-					
-					if (bgId < 10)
-						imgName = [NSString stringWithFormat:@"Abg_00%d.jpg", bgId];
-					else if (bgId < 100)
-						imgName = [NSString stringWithFormat:@"Abg_0%d.jpg", bgId];
-					else
-						imgName = [NSString stringWithFormat:@"Abg_%d.jpg", bgId];
+					NSString* imgName = [NSString stringWithFormat:@"Abg_%03d.jpg", bgId];
 					
 					tempData = [self getData:imgName];
 

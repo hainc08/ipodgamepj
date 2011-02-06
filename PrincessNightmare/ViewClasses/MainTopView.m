@@ -34,6 +34,10 @@
 		[loadView reset:nil];
 		[self addSubview:loadView];
 	}
+	else
+	{
+		[loadView loadPage:[[SaveManager getInstance] lastPage]];
+	}
 	
 	[loadView setCenter:CGPointMake(240,160)];
 	[loadView setAlpha:0];

@@ -72,25 +72,27 @@
 
 - (void)update
 {
+	if (secs <= 0) return;
+
+	secs-=5;
+
 	NSInteger hour = 0;
 	NSInteger minute = 0;
-	NSInteger sec = 0;
+	NSInteger sec = secs;
 	
-	secs--;
+	hour = sec / 3600;
+	sec = sec % 3600;
 	
+	minute = sec / 60;
+	sec = sec % 60;
+	
+	[TimeLabel setText:[NSString stringWithFormat:@"%02d:%02d:%02d" , hour , minute , sec ]];	
+
+	if (secs == 0)
 	{
-	if(secs >= 3600) 
-		hour = secs / 3600;
-	
-	if ( (secs - (hour * 60 * 60) ) >= 60)
-		minute =   (secs - (hour * 60 * 60) ) / 60;
-	
-	sec =  secs - (hour * 60 * 60) - (minute  * 60);
-	
-	
-	[TimeLabel setText:[NSString stringWithFormat:@"%02d:%02d:%02d" , hour , minute , sec ]];
+		//타이머가 끝났으니 뭐라도 하자...
+		return;
 	}
-	
 }
 
 - (void)stopTimer

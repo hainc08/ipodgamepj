@@ -71,13 +71,7 @@
 			if ([eList getIsShow:i])
 			{
 				int imgId = [eList getIntVal:i];
-				
-				if (imgId < 10)
-					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_00%ds.jpg", imgId]];
-				else if (imgId < 100)
-					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_0%ds.jpg", imgId]];
-				else
-					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_%ds.jpg", imgId]];
+				tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_%03ds.jpg", imgId]];
 			}
 			else
 			{
@@ -153,12 +147,7 @@
 				}
 				else
 				{
-					if (imgId < 10)
-						tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_00%d.jpg", imgId]];
-					else if (imgId < 100)
-						tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_0%d.jpg", imgId]];
-					else
-						tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_%d.jpg", imgId]];
+					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_%03d.jpg", imgId]];
 					
 					[imageBigButton setFrame:CGRectMake(0, 0, [tempImg size].width, [tempImg size].height)];
 					[imageBigButton setImage:tempImg forState:UIControlStateNormal];

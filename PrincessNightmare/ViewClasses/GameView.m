@@ -531,8 +531,7 @@
 	else
 	{
 		[[DataManager getInstance] setMusicShow:bgmIdx];
-		if (bgmIdx < 10) bgmName = [[NSString alloc] initWithFormat:@"Abgm_0%d-1.mp3",bgmIdx];
-		else bgmName = [[NSString alloc] initWithFormat:@"Abgm_%d-1.mp3",bgmIdx];
+		bgmName = [[NSString alloc] initWithFormat:@"Abgm_%02d-1.mp3",bgmIdx];
 		
 		[[SoundManager getInstance] playBGM:bgmName idx:bgmIdx];
 		[bgmName dealloc];
