@@ -486,7 +486,7 @@ static AlarmConfig *AlarmConfigInst;
 - (id)init
 {
 	[super init];
-	Time = @"00:00 AM";
+	Time = @"24:00 AM";
 	Name = @"Alarm";
 	Sound = @"Simple Alarm";
 	AlarmONOFF = NO;

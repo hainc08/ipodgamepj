@@ -17,6 +17,7 @@
 #import "DateFormat.h"
 #import "NewWeekView.h"
 #import	"SoundManager.h"
+#import "TimerView.h"
 
 @implementation MainClockViewController
 
@@ -163,6 +164,12 @@
 {
 	if (sender == infoButton)
 	{
+		TimerView * timer = [[TimerView alloc] initWithNibName:@"Timer" bundle:nil];
+		timer.delegate = self;
+		timer.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+		[self presentModalViewController:timer animated:YES];
+		[timer release];
+		/*
 	
 		OptionViewController *controller = [[OptionViewController alloc] initWithNibName:@"OptionView" bundle:nil];
 		controller.delegate = self;
@@ -170,7 +177,7 @@
 		controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 		[self presentModalViewController:controller animated:YES];
 		
-		[controller release];
+		[controller release];*/
 	}
 }
 
