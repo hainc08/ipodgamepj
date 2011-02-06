@@ -10,12 +10,12 @@
 
 #import "FlipsideViewControllerDelegate.h"
 
-@interface TimerView : UIViewController {
+@interface TimerView : UIViewController <UITableViewDataSource, UITableViewDelegate>  {
 	
 	id <FlipsideViewControllerDelegate> delegate;
 	
 	IBOutlet UIDatePicker	*TimePicker;
-	IBOutlet UITableViewCell *TimeCell;
+	IBOutlet UITableView *TimerView;
 	IBOutlet UILabel	* TimeLabel;
 	IBOutlet UIButton			*StartButton;
 	IBOutlet UIButton			*StopButton;
@@ -24,7 +24,7 @@
 	NSTimer *timer;
 }
 @property (nonatomic, assign) id <FlipsideViewControllerDelegate> delegate;
-
+- (IBAction)cancel:(id)sender;
 - (void) TimeChange;
 - (void)resumeTimer;
 - (IBAction)TimerStart;

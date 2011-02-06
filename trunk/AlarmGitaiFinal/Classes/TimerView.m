@@ -15,6 +15,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	//[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"top.png"]]];
 	
 }
 
@@ -34,21 +35,24 @@
 {
 	[super viewWillAppear:animated];
 	[StopButton setHidden:YES];
+	[TimeLabel	setHidden:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
+	[self TimerStop];
 }
 
+- (IBAction)cancel:(id)sender {
+	[self.delegate flipsideViewControllerDidFinish:self];	
+}
 - (void)TimeChange
 {
 	[dateFormatter setDateFormat:@"HH:MM:SS"];
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 	NSDateComponents * comps = [gregorian components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[TimePicker date]];
 	secs = [comps hour] * 60 * 60 + [comps minute] * 60;
-	
-
 
 	[TimeLabel setText:[NSString stringWithFormat:@"%02d:%02d:%02d" , [comps hour] , [comps minute], 0 ]];
 	
@@ -61,6 +65,7 @@
 	[StartButton setHidden:YES];
 	[StopButton setHidden:NO];
 	[TimePicker setHidden:YES];
+	[TimeLabel	setHidden:NO];
 	
 }
 - (IBAction)TimerStop
@@ -70,6 +75,7 @@
 	[StopButton setHidden:YES];
 	[StartButton setHidden:NO];
 	[TimePicker setHidden:NO];
+	[TimeLabel	setHidden:YES];
 }
 
 
@@ -77,7 +83,7 @@
 {
 	if (secs <= 0) return;
 
-	secs-=5;
+	secs-=1;
 
 	NSInteger hour = 0;
 	NSInteger minute = 0;
@@ -127,10 +133,10 @@
 		[aDate setSoundVolume:6];
 		[[SoundManager getInstance] playAlarm:aDate];
 		[aDate release];
-	}
-	else
-	{
-		[[SoundManager getInstance] stopAlarm];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Timer Aler"
+													   delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+		[alert show];
+		[alert release];
 	}
 }
 
@@ -141,5 +147,55 @@
     
 	[self dismissModalViewControllerAnimated:YES];
 }
+
+#pragma mark -
+#pragma mark  AlertView 
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	[[SoundManager getInstance] stopAlarm];
+	[self TimerStop];
+}
+
+#pragma mark -
+#pragma mark TableView
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	// Set up the cell...
+	if(indexPath.section == 0)
+	{
+	
+	}
+	
+	return nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return 7;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return 60;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.section == 0)
+	{
+	}
+}
+
 
 @end
