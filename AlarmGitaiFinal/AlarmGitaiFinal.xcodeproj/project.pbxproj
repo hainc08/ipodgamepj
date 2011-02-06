@@ -186,6 +186,22 @@
 		56020ED512EAE02200BB6235 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D435B6129DF1F800356784 /* AudioToolbox.framework */; };
 		56020ED612EAE02200BB6235 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5674BD4312A52F6E00FC97BE /* CoreData.framework */; };
 		56020ED712EAE02200BB6235 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B52C8512D9FDC600254A01 /* AVFoundation.framework */; };
+		563D99F812F70F83002BECF0 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563D99F712F70F83002BECF0 /* TimerView.m */; };
+		563D99F912F70F84002BECF0 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563D99F712F70F83002BECF0 /* TimerView.m */; };
+		563D99FA12F70F84002BECF0 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563D99F712F70F83002BECF0 /* TimerView.m */; };
+		563D99FB12F70F84002BECF0 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563D99F712F70F83002BECF0 /* TimerView.m */; };
+		563D99FC12F70F84002BECF0 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563D99F712F70F83002BECF0 /* TimerView.m */; };
+		563D99FD12F70F84002BECF0 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563D99F712F70F83002BECF0 /* TimerView.m */; };
+		563D99FE12F70F84002BECF0 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563D99F712F70F83002BECF0 /* TimerView.m */; };
+		563D99FF12F70F84002BECF0 /* TimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563D99F712F70F83002BECF0 /* TimerView.m */; };
+		563D9A0212F70FB5002BECF0 /* Timer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563D9A0112F70FB5002BECF0 /* Timer.xib */; };
+		563D9A0312F70FB5002BECF0 /* Timer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563D9A0112F70FB5002BECF0 /* Timer.xib */; };
+		563D9A0412F70FB5002BECF0 /* Timer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563D9A0112F70FB5002BECF0 /* Timer.xib */; };
+		563D9A0512F70FB5002BECF0 /* Timer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563D9A0112F70FB5002BECF0 /* Timer.xib */; };
+		563D9A0612F70FB5002BECF0 /* Timer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563D9A0112F70FB5002BECF0 /* Timer.xib */; };
+		563D9A0712F70FB5002BECF0 /* Timer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563D9A0112F70FB5002BECF0 /* Timer.xib */; };
+		563D9A0812F70FB5002BECF0 /* Timer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563D9A0112F70FB5002BECF0 /* Timer.xib */; };
+		563D9A0912F70FB5002BECF0 /* Timer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 563D9A0112F70FB5002BECF0 /* Timer.xib */; };
 		564100A712EF2FC400CDA3EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		564100A812EF2FC400CDA3EA /* AlarmGitaiFinalAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AlarmGitaiFinalAppDelegate.m */; };
 		564100A912EF2FC400CDA3EA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
@@ -2141,6 +2157,9 @@
 		32CA4F630368D1EE00C91783 /* AlarmGitaiFinal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmGitaiFinal_Prefix.pch; sourceTree = "<group>"; };
 		56020EDB12EAE02200BB6235 /* HarukaAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarukaAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56020EDD12EAE02200BB6235 /* HarukaAlarm-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HarukaAlarm-info.plist"; sourceTree = "<group>"; };
+		563D99F612F70F83002BECF0 /* TimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimerView.h; path = Classes/TimerView.h; sourceTree = "<group>"; };
+		563D99F712F70F83002BECF0 /* TimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimerView.m; path = Classes/TimerView.m; sourceTree = "<group>"; };
+		563D9A0112F70FB5002BECF0 /* Timer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Timer.xib; sourceTree = "<group>"; };
 		564100CA12EF2FC400CDA3EA /* AkariAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AkariAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		564100CD12EF2FED00CDA3EA /* AkariAlarm-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AkariAlarm-Info.plist"; sourceTree = "<group>"; };
 		5641F03612ED995000CDA3EA /* HitomiAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HitomiAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2921,6 +2940,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				563D9A0112F70FB5002BECF0 /* Timer.xib */,
 				8474633E12E6BEAB0066FB5D /* icon */,
 				84B52C2C12D9F96100254A01 /* sound */,
 				84B00B7112ACAB770093647C /* OptionPreview */,
@@ -3773,6 +3793,8 @@
 				844D595412AD35B1003107CD /* NewWeekView.m */,
 				84B00B6E12ACAB620093647C /* OptionPreview.h */,
 				84B00B6F12ACAB620093647C /* OptionPreview.m */,
+				563D99F612F70F83002BECF0 /* TimerView.h */,
+				563D99F712F70F83002BECF0 /* TimerView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -4513,6 +4535,7 @@
 				84465C3812F5CBA40069A615 /* hitomi_25_n.png in Resources */,
 				84465C3912F5CBA40069A615 /* hitomi_26_n.png in Resources */,
 				84465C3A12F5CBA40069A615 /* hitomi_27_n.png in Resources */,
+				563D9A0212F70FB5002BECF0 /* Timer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4718,6 +4741,7 @@
 				5641FD9F12EF2D6200CDA3EA /* haruka_8_n_b.png in Resources */,
 				5641FDA012EF2D6200CDA3EA /* haruka_9_n.png in Resources */,
 				5641FDA112EF2D6200CDA3EA /* haruka_9_n_b.png in Resources */,
+				563D9A0412F70FB5002BECF0 /* Timer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4900,6 +4924,7 @@
 				5641FDC612EF2D6800CDA3EA /* hitomi_8_d_b.png in Resources */,
 				5641FDC712EF2D6800CDA3EA /* hitomi_9_d.png in Resources */,
 				5641FDC812EF2D6800CDA3EA /* hitomi_9_d_b.png in Resources */,
+				563D9A0512F70FB5002BECF0 /* Timer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5081,6 +5106,7 @@
 				5641FD2912EF2D3E00CDA3EA /* irika_7_n_b.png in Resources */,
 				5641FD2A12EF2D3E00CDA3EA /* irika_8_n.png in Resources */,
 				5641FD2B12EF2D3E00CDA3EA /* irika_9_n.png in Resources */,
+				563D9A0612F70FB5002BECF0 /* Timer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5278,6 +5304,7 @@
 				5641FE5212EF2D7C00CDA3EA /* reina_8_n_b.png in Resources */,
 				5641FE5312EF2D7C00CDA3EA /* reina_9_n.png in Resources */,
 				5641FE5412EF2D7C00CDA3EA /* reina_9_n_b.png in Resources */,
+				563D9A0712F70FB5002BECF0 /* Timer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5483,6 +5510,7 @@
 				5641FD6612EF2D5800CDA3EA /* fumiko_8_n.png in Resources */,
 				5641FD6712EF2D5800CDA3EA /* fumiko_8_n_b.png in Resources */,
 				5641FD6812EF2D5800CDA3EA /* fumiko_9_n_b.png in Resources */,
+				563D9A0812F70FB5002BECF0 /* Timer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5697,6 +5725,7 @@
 				5641FF5512EF2FC400CDA3EA /* akari_8_n_b.png in Resources */,
 				5641FF5612EF2FC400CDA3EA /* akari_9_n_b.png in Resources */,
 				564100CE12EF2FED00CDA3EA /* AkariAlarm-Info.plist in Resources */,
+				563D9A0912F70FB5002BECF0 /* Timer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5894,6 +5923,7 @@
 				5641FE1D12EF2D7300CDA3EA /* natsuko_7_n.png in Resources */,
 				5641FE1E12EF2D7300CDA3EA /* natsuko_7_n_b.png in Resources */,
 				5641FE1F12EF2D7300CDA3EA /* natsuko_8_n.png in Resources */,
+				563D9A0312F70FB5002BECF0 /* Timer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5929,6 +5959,7 @@
 				56615DC212E17BF400939D3B /* SoundManager.m in Sources */,
 				56A9A5CA12E616C3009C8435 /* AdvancedSetView.m in Sources */,
 				842BD86212EE809100F136CD /* CharSelectViewController.m in Sources */,
+				563D99F812F70F83002BECF0 /* TimerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5960,6 +5991,7 @@
 				56020ECE12EAE02200BB6235 /* RepeatSetView.m in Sources */,
 				56020ECF12EAE02200BB6235 /* SoundManager.m in Sources */,
 				56020ED012EAE02200BB6235 /* AdvancedSetView.m in Sources */,
+				563D99FC12F70F84002BECF0 /* TimerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5992,6 +6024,7 @@
 				564100BD12EF2FC400CDA3EA /* SoundManager.m in Sources */,
 				564100BE12EF2FC400CDA3EA /* AdvancedSetView.m in Sources */,
 				564100BF12EF2FC400CDA3EA /* CharSelectViewController.m in Sources */,
+				563D99FD12F70F84002BECF0 /* TimerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6023,6 +6056,7 @@
 				5641F02912ED995000CDA3EA /* RepeatSetView.m in Sources */,
 				5641F02A12ED995000CDA3EA /* SoundManager.m in Sources */,
 				5641F02B12ED995000CDA3EA /* AdvancedSetView.m in Sources */,
+				563D99FF12F70F84002BECF0 /* TimerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6054,6 +6088,7 @@
 				5641F27212ED9BCF00CDA3EA /* RepeatSetView.m in Sources */,
 				5641F27312ED9BCF00CDA3EA /* SoundManager.m in Sources */,
 				5641F27412ED9BCF00CDA3EA /* AdvancedSetView.m in Sources */,
+				563D99FA12F70F84002BECF0 /* TimerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6085,6 +6120,7 @@
 				5641F4F312ED9F7400CDA3EA /* RepeatSetView.m in Sources */,
 				5641F4F412ED9F7400CDA3EA /* SoundManager.m in Sources */,
 				5641F4F512ED9F7400CDA3EA /* AdvancedSetView.m in Sources */,
+				563D99FE12F70F84002BECF0 /* TimerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6116,6 +6152,7 @@
 				5641F75B12EDA0E000CDA3EA /* RepeatSetView.m in Sources */,
 				5641F75C12EDA0E000CDA3EA /* SoundManager.m in Sources */,
 				5641F75D12EDA0E000CDA3EA /* AdvancedSetView.m in Sources */,
+				563D99FB12F70F84002BECF0 /* TimerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6147,6 +6184,7 @@
 				56A9A87B12E6D76B009C8435 /* RepeatSetView.m in Sources */,
 				56A9A87C12E6D76B009C8435 /* SoundManager.m in Sources */,
 				56A9A87D12E6D76B009C8435 /* AdvancedSetView.m in Sources */,
+				563D99F912F70F84002BECF0 /* TimerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
