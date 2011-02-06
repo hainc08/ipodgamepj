@@ -2940,12 +2940,12 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				563D9A0112F70FB5002BECF0 /* Timer.xib */,
 				8474633E12E6BEAB0066FB5D /* icon */,
 				84B52C2C12D9F96100254A01 /* sound */,
 				84B00B7112ACAB770093647C /* OptionPreview */,
 				84D43108129DE62500356784 /* Image */,
 				5674BE3312A5CFB200FC97BE /* AlarmSetting.xib */,
+				563D9A0112F70FB5002BECF0 /* Timer.xib */,
 				842BD84A12EE7EF400F136CD /* CharSelectView.xib */,
 				849C856412A337780044EA7D /* OptionView.xib */,
 				84643CB612A4420C00F4ADBC /* AlarmView.xib */,

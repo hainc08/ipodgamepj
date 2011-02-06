@@ -6,6 +6,8 @@
 //
 
 #import "TimerView.h"
+#import "SoundManager.h"
+#import	"AlarmConfig.h"
 
 @implementation TimerView
 
@@ -63,6 +65,7 @@
 }
 - (IBAction)TimerStop
 {
+	[self timeOver:false];
 	[self stopTimer];
 	[StopButton setHidden:YES];
 	[StartButton setHidden:NO];
@@ -91,6 +94,7 @@
 	if (secs == 0)
 	{
 		//타이머가 끝났으니 뭐라도 하자...
+		[self timeOver:true];
 		return;
 	}
 }
@@ -112,6 +116,22 @@
 
 - (void)dealloc {
     [super dealloc];
+}
+
+- (void)timeOver:(bool)valid
+{
+	if (valid)
+	{
+		AlarmDate* aDate = [[AlarmDate alloc] init];
+		[aDate setSound:@"Simple Alarm"];
+		[aDate setSoundVolume:6];
+		[[SoundManager getInstance] playAlarm:aDate];
+		[aDate release];
+	}
+	else
+	{
+		[[SoundManager getInstance] stopAlarm];
+	}
 }
 
 #pragma mark -

@@ -31,5 +31,6 @@
 - (IBAction)TimerStop;
 - (void)stopTimer;
 - (void)update;
+- (void)timeOver:(bool)valid;
 
 @end
