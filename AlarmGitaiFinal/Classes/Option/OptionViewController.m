@@ -3,7 +3,9 @@
 #import "CharSelectViewController.h"
 
 #import "UITableViewCellTemplate.h"
+#import "TimerView.h"
 #import "AlarmConfig.h"
+
 
 @implementation OptionViewController
 
@@ -113,9 +115,9 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 #ifdef ALLCHAR
-	return 3;
+	return 4;
 #else
-	return 2;
+	return 3;
 #endif
 }
 
@@ -302,16 +304,37 @@
 
 			AlarmDate	*alarm_date = [a_alarm objectAtIndex:indexPath.row];
 			[alarm_cell setInfo:alarm_date.Time :alarm_date.RepeatIdx :alarm_date.AlarmONOFF];
-			
-			/*if (indexPath.row == 0)
-				[alarm_cell setInfo:@"08:30 AM" :@"Every Day" :true];
-			else
-				[alarm_cell setInfo:@"03:30 PM" :@"Every Monday" :false];
-			*/
 			return cell;
 		}
 	}
-	
+	else if(section == 3)
+	{
+		if (indexPath.row == 0)
+		{
+			static NSString *CellIdentifier = @"ButtonCell";
+			
+			UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (cell == nil)
+			{
+				NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier 
+															 owner:self options:nil];
+				for (id oneObject in nib)
+				{
+					if ([oneObject isKindOfClass:[UITableViewButtonCell class]])
+					{
+						cell = oneObject;
+						break;
+					}
+				}
+			}
+			
+			UITableViewButtonCell* buttonCell = (UITableViewButtonCell*)cell;
+			[buttonCell setInfo:@"Timer " :@""];
+			[buttonCell showArrow:true];
+			
+			return cell;
+		}
+	}
 	return nil;
 }
 
@@ -326,8 +349,10 @@
 	
 	if (section == 1)
 		return @"Alarms";
-	else
+	else if(section == 2)
 		return @"Display";
+	else if(section == 3)
+		return @"Timer";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -348,7 +373,10 @@
 	{
 		return 7;
 	}
-	
+	else if (section == 3)
+	{
+		return 1;
+	}
 	return 0;
 }
 
@@ -374,6 +402,11 @@
 		if (indexPath.row == 0) return 200;
 		return 50;
 	}
+	else if (section == 3)
+	{
+		return 50;
+	}
+	
 	
 	return 0;
 }
@@ -430,6 +463,17 @@
 		{
 			[[AlarmConfig getInstance] toggleWeekdayType];
 			[preview refresh];
+		}
+	}
+	else if (section == 3)
+	{
+		if (indexPath.row == 0)
+		{
+			TimerView * timer = [[TimerView alloc] initWithNibName:@"Timer" bundle:nil];
+			timer.delegate = self;
+			timer.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+			[self presentModalViewController:timer animated:YES];
+			[timer release];
 		}
 	}
 }

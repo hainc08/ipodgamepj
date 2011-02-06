@@ -2724,7 +2724,6 @@
 		84D432EB129DE63600356784 /* 1_ub9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ub9.png; sourceTree = "<group>"; };
 		84D432EC129DE63600356784 /* 1_ubDiv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ubDiv.png; sourceTree = "<group>"; };
 		84D432ED129DE63600356784 /* 1_ubdot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ubdot.png; sourceTree = "<group>"; };
-		84D432EE129DE63600356784 /* 1_ubdot.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1_ubdot.psd; sourceTree = "<group>"; };
 		84D432EF129DE63600356784 /* 1_ubFri.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ubFri.png; sourceTree = "<group>"; };
 		84D432F0129DE63600356784 /* 1_ubMon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ubMon.png; sourceTree = "<group>"; };
 		84D432F1129DE63600356784 /* 1_ubSat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_ubSat.png; sourceTree = "<group>"; };
@@ -2736,7 +2735,6 @@
 		84D432F7129DE63600356784 /* alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm.png; sourceTree = "<group>"; };
 		84D432F8129DE63600356784 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		84D432F9129DE63600356784 /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
-		84D432FA129DE63600356784 /* Untitled-1.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Untitled-1.psd"; sourceTree = "<group>"; };
 		84D434F3129DE76800356784 /* touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touch.png; sourceTree = "<group>"; };
 		84D4350F129DEAC300356784 /* AlarmConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmConfig.h; path = Classes/AlarmConfig.h; sourceTree = "<group>"; };
 		84D43510129DEAC300356784 /* AlarmConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmConfig.m; path = Classes/AlarmConfig.m; sourceTree = "<group>"; };
@@ -3755,7 +3753,6 @@
 				84D432EB129DE63600356784 /* 1_ub9.png */,
 				84D432EC129DE63600356784 /* 1_ubDiv.png */,
 				84D432ED129DE63600356784 /* 1_ubdot.png */,
-				84D432EE129DE63600356784 /* 1_ubdot.psd */,
 				84D432EF129DE63600356784 /* 1_ubFri.png */,
 				84D432F0129DE63600356784 /* 1_ubMon.png */,
 				84D432F1129DE63600356784 /* 1_ubSat.png */,
@@ -3767,7 +3764,6 @@
 				84D432F7129DE63600356784 /* alarm.png */,
 				84D432F8129DE63600356784 /* check.png */,
 				84D432F9129DE63600356784 /* top.png */,
-				84D432FA129DE63600356784 /* Untitled-1.psd */,
 			);
 			path = image;
 			sourceTree = "<group>";

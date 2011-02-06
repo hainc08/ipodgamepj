@@ -38,8 +38,8 @@
 	snoozealarm = [[UIButton buttonWithType:UIButtonTypeCustom ] retain];
 	snoozealarm.frame = CGRectMake(0, 0, self.navigationController.toolbar.frame.size.width, self.navigationController.toolbar.frame.size.height);
 	snoozealarm.backgroundColor = [UIColor clearColor];
-	[snoozealarm setTitle:@"SnoozeAlarm" forState:UIControlStateNormal];
-	[snoozealarm addTarget:self action:@selector(SnoozeButton:)forControlEvents:UIControlEventTouchUpInside];
+	[snoozealarm setTitle:@"Alarm" forState:UIControlStateNormal];
+//	[snoozealarm addTarget:self action:@selector(SnoozeButton:)forControlEvents:UIControlEventTouchUpInside];
 	[self.navigationController.navigationBar addSubview:snoozealarm];
 	[snoozealarm release];
 	
@@ -164,20 +164,22 @@
 {
 	if (sender == infoButton)
 	{
+		/*		
 		TimerView * timer = [[TimerView alloc] initWithNibName:@"Timer" bundle:nil];
 		timer.delegate = self;
 		timer.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 		[self presentModalViewController:timer animated:YES];
 		[timer release];
-		/*
-	
+		*/
+		
 		OptionViewController *controller = [[OptionViewController alloc] initWithNibName:@"OptionView" bundle:nil];
 		controller.delegate = self;
 		
 		controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 		[self presentModalViewController:controller animated:YES];
 		
-		[controller release];*/
+		[controller release];
+
 	}
 }
 
@@ -213,6 +215,7 @@
 					//여기서 뭘해줄꺼냐!
 					[[SoundManager getInstance] playAlarm:t_date];
 					
+					[snoozealarm setTitle:[t_date Name] forState:UIControlStateNormal];
 					[self AlarmBarHidden:NO]; // Alarm 화면을 보인다.. 
 					isAlarmPlay = true;
 						
