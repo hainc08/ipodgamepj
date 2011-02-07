@@ -11,7 +11,7 @@
 {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextBeginPath(context);
-	CGContextDrawImage(context, CGRectMake(0, 0, 320, 480), temp);
+	CGContextDrawImage(context, CGRectMake(0, 0, 480, 480), temp);
 	CGContextStrokePath(context);
 }
 
@@ -48,7 +48,7 @@
     int                 bitmapByteCount;
     int                 bitmapBytesPerRow;
 	
-	size_t pixelsWide = 320;
+	size_t pixelsWide = 480;
 	size_t pixelsHigh = 480;
 	bitmapBytesPerRow = (pixelsWide * 4);
 	bitmapByteCount = (bitmapBytesPerRow * pixelsHigh);
@@ -60,7 +60,7 @@
 	CGContextBeginPath(charContext);
 
 	CGContextDrawImage(charContext,
-					   CGRectMake((320 - [imgBase size].width)/2,
+					   CGRectMake((480 - [imgBase size].width)/2,
 								  480 - [imgBase size].height,
 								  [imgBase size].width,
 								  [imgBase size].height),
@@ -71,7 +71,7 @@
 		UIImage* imgFace = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@.png", name, faceIdx, timeStr]];
 
 		CGContextDrawImage(charContext,
-						   CGRectMake((320 - [imgFace size].width)/2,
+						   CGRectMake((480 - [imgFace size].width)/2,
 									  480 - [imgFace size].height,
 									  [imgFace size].width,
 									  [imgFace size].height),
