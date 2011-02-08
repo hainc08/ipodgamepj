@@ -107,8 +107,11 @@
 
 - (void)stopTimer
 {
-	[timer invalidate]; 
-	[timer release]; 
+	if(timer)
+	{
+		[timer invalidate]; 
+		[timer release]; 
+	}
 }
 
 - (void)resumeTimer
