@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>AlarmGitai</string>
+	<string>擬態催眠アラーム</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
 	<string>allIcon.png</string>
 	<key>CFBundleIdentifier</key>
-	<string>jinalarm</string>
+	<string>inazuma.alarmAll</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
