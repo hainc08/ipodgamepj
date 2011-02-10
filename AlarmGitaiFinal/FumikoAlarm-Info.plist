@@ -8,8 +8,13 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
 	<string>icon1.png</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>icon1.png</string>
+		<string>icon1@2x.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
-	<string>defense.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>inazuma.alarmFumiko</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -28,9 +33,7 @@
 	<string>MainWindow-iPad</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
-	<key>UISupportedExternalAccessoryProtocols</key>
-	<array>
-		<string></string>
-	</array>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 </dict>
 </plist>

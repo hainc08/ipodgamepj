@@ -8,8 +8,13 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
 	<string>icon7.png</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>icon7.png</string>
+		<string>icon7@2x.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
-	<string>haruka.alarm</string>
+	<string>inazuma.alarmHaruka</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -26,9 +31,7 @@
 	<string>MainWindow</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
-	<key>UISupportedExternalAccessoryProtocols</key>
-	<array>
-		<string></string>
-	</array>
+	<key>UIPrerenderedIcon</key>
+	<true/>
 </dict>
 </plist>
