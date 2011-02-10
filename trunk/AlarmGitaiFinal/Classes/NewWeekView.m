@@ -68,7 +68,7 @@
 				[imgWed setImage:weekImg[3][1]];
 				[self.view bringSubviewToFront:imgWed];
 			}
-			else if ([Week compare:@"The"] == NSOrderedSame)
+			else if ([Week compare:@"Thu"] == NSOrderedSame)
 			{
 				[imgThe setImage:weekImg[4][1]];
 				[self.view bringSubviewToFront:imgThe];

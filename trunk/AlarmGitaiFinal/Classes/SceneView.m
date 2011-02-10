@@ -124,7 +124,7 @@
 		idx = offset + rand()%(all - offset);
 	}
 	
-	[charView[curCharIdx] setChar:charName idx:idx isNight:false];
+	[charView[curCharIdx] setChar:charName idx:idx isNight:isNight];
 
 	[UIView beginAnimations:@"anime2" context:NULL];
 	[UIView setAnimationDuration:1];
