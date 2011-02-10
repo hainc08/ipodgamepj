@@ -45,7 +45,6 @@
 @property (readwrite) int RepeatIdx;
 @property (readwrite) int SnoozeCount;
 - (NSDate*)GetNSDate;
-- (BOOL)GetAlarmDay;
 - (void)ResetNSDateSnooze;
 - (void)ResetNSDate;
 - (void)NextDayNSDate;

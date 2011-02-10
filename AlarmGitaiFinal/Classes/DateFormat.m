@@ -103,17 +103,17 @@ static DateFormat *DateFormatInst;
 	
 	return ret;
 }
-- (int)getWeekType
+- (int)getWeekType:(NSDate*)date
 {
 	int ret = 0;
-	[FormatDate setDefaultDate:[NSDate date]];
-	if( [[self getTimeString:@"EEE"] compare:@"Sun"]) ret = 0x01;
-	else if ( [[self getTimeString:@"EEE"] compare:@"Mon"]) ret = 0x02;
-	else if ( [[self getTimeString:@"EEE"] compare:@"Tue"]) ret = 0x04;
-	else if ( [[self getTimeString:@"EEE"] compare:@"Wed"])	ret = 0x08;
-	else if ( [[self getTimeString:@"EEE"] compare:@"Thu"])	ret = 0x10;
-	else if ( [[self getTimeString:@"EEE"] compare:@"Fri"])	ret = 0x20;
-	else if ( [[self getTimeString:@"EEE"] compare:@"Sat"])	ret = 0x40;
+	[FormatDate setDefaultDate:date];
+	if( [[self getTimeString:@"EEE"] compare:@"Sun"] == NSOrderedSame)			ret = 0x01;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Mon"] == NSOrderedSame)	ret = 0x02;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Tue"] == NSOrderedSame)	ret = 0x04;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Wed"] == NSOrderedSame)	ret = 0x08;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Thu"] == NSOrderedSame)	ret = 0x10;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Fri"] == NSOrderedSame)	ret = 0x20;
+	else if ( [[self getTimeString:@"EEE"] compare:@"Sat"] == NSOrderedSame)	ret = 0x40;
 
 	return ret;
 }

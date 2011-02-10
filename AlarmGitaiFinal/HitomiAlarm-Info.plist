@@ -14,7 +14,7 @@
 		<string>icon5@2x.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>hitomi.alarm</string>
+	<string>inazuma.alarmHitomi</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

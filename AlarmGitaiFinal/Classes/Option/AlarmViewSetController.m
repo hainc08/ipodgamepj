@@ -47,30 +47,35 @@
 	
 	textField.hidden = NO;
 	optionTableView.hidden = YES;
-		if (EditType == TIMETYPE) {
-		NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-		dateFormatter	=	[[NSDateFormatter alloc] init];
-		[dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-		[dateFormatter setDateStyle:NSDateFormatterLongStyle];
-		[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-		[dateFormatter setLocale:locale];
-		[dateFormatter setDateFormat:@"h:mm a"];
-		[locale release];
-		
+
+	if (EditType == TIMETYPE)
+	{
 		[datePicker addTarget:self action:@selector(controlEventValueChanged:) forControlEvents:UIControlEventValueChanged];
         datePicker.hidden = NO;
 
-		NSDate *date = [[NSDate alloc] init];
-		if ( [editedObject valueForKey:editedPropertyKey] == nil) 
-			date =  [NSDate date];
-		else {
-			date = [dateFormatter dateFromString:[editedObject valueForKey:editedPropertyKey]];
+		if ( [editedObject valueForKey:editedPropertyKey] != nil) 
+		{
+			if (dateFormatter == nil)
+			{
+				NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+				dateFormatter	=	[[NSDateFormatter alloc] init];
+				[dateFormatter setLocale:locale];
+				[locale release];
+			}
+
+			[dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+			[dateFormatter setDateStyle:NSDateFormatterLongStyle];
+			[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+			[dateFormatter setDateFormat:@"h:mm a"];
+			
+			datePicker.date = [dateFormatter dateFromString:[editedObject valueForKey:editedPropertyKey]];
+		}
+		else
+		{
+			datePicker.date = [NSDate date];
 		}
 
-		NSString *_retvalue =  [dateFormatter stringFromDate:date];
-		
-		datePicker.date = date;
-		[textField setText:_retvalue];
+		[textField setText:[dateFormatter stringFromDate:datePicker.date]];
 		textField.enablesReturnKeyAutomatically = NO;
 	 	
     }
@@ -92,7 +97,6 @@
 - (IBAction)done  {
 	if(EditType == SOUND )
 	{
-			
 		[sourceController setValue:[[AlarmConfig getInstance] getSoundList:select_index]  forEditedProperty:editedPropertyKey];
 		[[SoundManager getInstance] stopSound];
 	}
