@@ -119,12 +119,6 @@
 		56020E8F12EAE02200BB6235 /* ButtonArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84643D3512A44B8000F4ADBC /* ButtonArrow.png */; };
 		56020E9012EAE02200BB6235 /* Select.png in Resources */ = {isa = PBXBuildFile; fileRef = 8477905212C7D1500057089D /* Select.png */; };
 		56020E9112EAE02200BB6235 /* touch.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D434F3129DE76800356784 /* touch.png */; };
-		56020E9212EAE02200BB6235 /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474633F12E6BEAB0066FB5D /* icon1.png */; };
-		56020E9312EAE02200BB6235 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634012E6BEAB0066FB5D /* icon2.png */; };
-		56020E9412EAE02200BB6235 /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634112E6BEAB0066FB5D /* icon3.png */; };
-		56020E9512EAE02200BB6235 /* icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634212E6BEAB0066FB5D /* icon4.png */; };
-		56020E9612EAE02200BB6235 /* icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634312E6BEAB0066FB5D /* icon5.png */; };
-		56020E9712EAE02200BB6235 /* icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634412E6BEAB0066FB5D /* icon6.png */; };
 		56020E9812EAE02200BB6235 /* alarm01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A34C12E20EDC0079044F /* alarm01.mp3 */; };
 		56020E9912EAE02200BB6235 /* bgm01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84B52C2D12D9F96100254A01 /* bgm01.mp3 */; };
 		56020E9A12EAE02200BB6235 /* bgm02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84B52C2E12D9F96100254A01 /* bgm02.mp3 */; };
@@ -233,7 +227,6 @@
 		564100C412EF2FC400CDA3EA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D435B6129DF1F800356784 /* AudioToolbox.framework */; };
 		564100C512EF2FC400CDA3EA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5674BD4312A52F6E00FC97BE /* CoreData.framework */; };
 		564100C612EF2FC400CDA3EA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B52C8512D9FDC600254A01 /* AVFoundation.framework */; };
-		564100CE12EF2FED00CDA3EA /* AkariAlarm-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 564100CD12EF2FED00CDA3EA /* AkariAlarm-Info.plist */; };
 		5641EDF612ED995000CDA3EA /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754B0DD40C5E005A515E /* MainView.xib */; };
 		5641EDF712ED995000CDA3EA /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
 		5641EDF812ED995000CDA3EA /* back_0_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D4310A129DE63500356784 /* back_0_d.png */; };
@@ -369,7 +362,6 @@
 		5641F00912ED995000CDA3EA /* alarm01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A34C12E20EDC0079044F /* alarm01.mp3 */; };
 		5641F00A12ED995000CDA3EA /* bgm20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A39312E222660079044F /* bgm20.mp3 */; };
 		5641F00B12ED995000CDA3EA /* Advanced.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9A49B12E5D82E009C8435 /* Advanced.xib */; };
-		5641F01012ED995000CDA3EA /* icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634312E6BEAB0066FB5D /* icon5.png */; };
 		5641F01212ED995000CDA3EA /* back_6_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B8279F12EC92BA00EAAE40 /* back_6_n.png */; };
 		5641F01412ED995000CDA3EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		5641F01512ED995000CDA3EA /* AlarmGitaiFinalAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AlarmGitaiFinalAppDelegate.m */; };
@@ -536,7 +528,6 @@
 		5641F25212ED9BCF00CDA3EA /* alarm01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A34C12E20EDC0079044F /* alarm01.mp3 */; };
 		5641F25312ED9BCF00CDA3EA /* bgm20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A39312E222660079044F /* bgm20.mp3 */; };
 		5641F25412ED9BCF00CDA3EA /* Advanced.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9A49B12E5D82E009C8435 /* Advanced.xib */; };
-		5641F25712ED9BCF00CDA3EA /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634112E6BEAB0066FB5D /* icon3.png */; };
 		5641F25B12ED9BCF00CDA3EA /* back_6_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B8279F12EC92BA00EAAE40 /* back_6_n.png */; };
 		5641F25D12ED9BCF00CDA3EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		5641F25E12ED9BCF00CDA3EA /* AlarmGitaiFinalAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AlarmGitaiFinalAppDelegate.m */; };
@@ -703,7 +694,6 @@
 		5641F4D312ED9F7400CDA3EA /* alarm01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A34C12E20EDC0079044F /* alarm01.mp3 */; };
 		5641F4D412ED9F7400CDA3EA /* bgm20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A39312E222660079044F /* bgm20.mp3 */; };
 		5641F4D512ED9F7400CDA3EA /* Advanced.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9A49B12E5D82E009C8435 /* Advanced.xib */; };
-		5641F4DB12ED9F7400CDA3EA /* icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634412E6BEAB0066FB5D /* icon6.png */; };
 		5641F4DC12ED9F7400CDA3EA /* back_6_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B8279F12EC92BA00EAAE40 /* back_6_n.png */; };
 		5641F4DE12ED9F7400CDA3EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		5641F4DF12ED9F7400CDA3EA /* AlarmGitaiFinalAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AlarmGitaiFinalAppDelegate.m */; };
@@ -870,7 +860,6 @@
 		5641F73B12EDA0E000CDA3EA /* alarm01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A34C12E20EDC0079044F /* alarm01.mp3 */; };
 		5641F73C12EDA0E000CDA3EA /* bgm20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A39312E222660079044F /* bgm20.mp3 */; };
 		5641F73D12EDA0E000CDA3EA /* Advanced.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9A49B12E5D82E009C8435 /* Advanced.xib */; };
-		5641F73E12EDA0E000CDA3EA /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474633F12E6BEAB0066FB5D /* icon1.png */; };
 		5641F74412EDA0E000CDA3EA /* back_6_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B8279F12EC92BA00EAAE40 /* back_6_n.png */; };
 		5641F74612EDA0E000CDA3EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		5641F74712EDA0E000CDA3EA /* AlarmGitaiFinalAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AlarmGitaiFinalAppDelegate.m */; };
@@ -1296,12 +1285,6 @@
 		5641FF0D12EF2FC400CDA3EA /* alarm01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A34C12E20EDC0079044F /* alarm01.mp3 */; };
 		5641FF0E12EF2FC400CDA3EA /* bgm20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A39312E222660079044F /* bgm20.mp3 */; };
 		5641FF0F12EF2FC400CDA3EA /* Advanced.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9A49B12E5D82E009C8435 /* Advanced.xib */; };
-		5641FF1012EF2FC400CDA3EA /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474633F12E6BEAB0066FB5D /* icon1.png */; };
-		5641FF1112EF2FC400CDA3EA /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634012E6BEAB0066FB5D /* icon2.png */; };
-		5641FF1212EF2FC400CDA3EA /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634112E6BEAB0066FB5D /* icon3.png */; };
-		5641FF1312EF2FC400CDA3EA /* icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634212E6BEAB0066FB5D /* icon4.png */; };
-		5641FF1412EF2FC400CDA3EA /* icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634312E6BEAB0066FB5D /* icon5.png */; };
-		5641FF1512EF2FC400CDA3EA /* icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634412E6BEAB0066FB5D /* icon6.png */; };
 		5641FF1612EF2FC400CDA3EA /* back_6_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B8279F12EC92BA00EAAE40 /* back_6_n.png */; };
 		5641FF1712EF2FC400CDA3EA /* CharSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842BD84A12EE7EF400F136CD /* CharSelectView.xib */; };
 		5641FF1812EF2FC400CDA3EA /* char_akari.png in Resources */ = {isa = PBXBuildFile; fileRef = 8448EA4E12EE878F00A044B6 /* char_akari.png */; };
@@ -1469,12 +1452,6 @@
 		56A9A83D12E6D6DB009C8435 /* ButtonArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84643D3512A44B8000F4ADBC /* ButtonArrow.png */; };
 		56A9A83E12E6D6DB009C8435 /* Select.png in Resources */ = {isa = PBXBuildFile; fileRef = 8477905212C7D1500057089D /* Select.png */; };
 		56A9A83F12E6D6DB009C8435 /* touch.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D434F3129DE76800356784 /* touch.png */; };
-		56A9A84012E6D6EA009C8435 /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474633F12E6BEAB0066FB5D /* icon1.png */; };
-		56A9A84112E6D6EA009C8435 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634012E6BEAB0066FB5D /* icon2.png */; };
-		56A9A84212E6D6EA009C8435 /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634112E6BEAB0066FB5D /* icon3.png */; };
-		56A9A84312E6D6EA009C8435 /* icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634212E6BEAB0066FB5D /* icon4.png */; };
-		56A9A84412E6D6EA009C8435 /* icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634312E6BEAB0066FB5D /* icon5.png */; };
-		56A9A84512E6D6EA009C8435 /* icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634412E6BEAB0066FB5D /* icon6.png */; };
 		56A9A84612E6D6EA009C8435 /* alarm01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8409A34C12E20EDC0079044F /* alarm01.mp3 */; };
 		56A9A84712E6D6EA009C8435 /* bgm01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84B52C2D12D9F96100254A01 /* bgm01.mp3 */; };
 		56A9A84812E6D6EA009C8435 /* bgm02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84B52C2E12D9F96100254A01 /* bgm02.mp3 */; };
@@ -1543,6 +1520,22 @@
 		842BD84B12EE7EF400F136CD /* CharSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842BD84A12EE7EF400F136CD /* CharSelectView.xib */; };
 		842BD86212EE809100F136CD /* CharSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BD86112EE809100F136CD /* CharSelectViewController.m */; };
 		8439851012EED246009873EA /* SelectCharCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8439850F12EED246009873EA /* SelectCharCell.xib */; };
+		844598631303D3BB00979110 /* allIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 844598611303D3BB00979110 /* allIcon.png */; };
+		844598641303D3BB00979110 /* allIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 844598621303D3BB00979110 /* allIcon@2x.png */; };
+		844598671303D3FF00979110 /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 844598651303D3FF00979110 /* icon1.png */; };
+		844598681303D3FF00979110 /* icon1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 844598661303D3FF00979110 /* icon1@2x.png */; };
+		8445986B1303D41900979110 /* icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 844598691303D41900979110 /* icon4.png */; };
+		8445986C1303D41900979110 /* icon4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8445986A1303D41900979110 /* icon4@2x.png */; };
+		8445986F1303D42E00979110 /* icon7.png in Resources */ = {isa = PBXBuildFile; fileRef = 8445986D1303D42E00979110 /* icon7.png */; };
+		844598701303D42E00979110 /* icon7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8445986E1303D42E00979110 /* icon7@2x.png */; };
+		844598731303D43F00979110 /* icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 844598711303D43F00979110 /* icon5.png */; };
+		844598741303D43F00979110 /* icon5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 844598721303D43F00979110 /* icon5@2x.png */; };
+		844598771303D44F00979110 /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 844598751303D44F00979110 /* icon3.png */; };
+		844598781303D44F00979110 /* icon3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 844598761303D44F00979110 /* icon3@2x.png */; };
+		8445987B1303D46000979110 /* icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 844598791303D46000979110 /* icon6.png */; };
+		8445987C1303D46000979110 /* icon6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8445987A1303D46000979110 /* icon6@2x.png */; };
+		8445987F1303D47C00979110 /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8445987D1303D47C00979110 /* icon2.png */; };
+		844598801303D47C00979110 /* icon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8445987E1303D47C00979110 /* icon2@2x.png */; };
 		84465BEC12F5C4A30069A615 /* hitomi_7_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BEB12F5C4A30069A615 /* hitomi_7_d.png */; };
 		84465C1712F5CBA40069A615 /* hitomi_1_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BF112F5CBA30069A615 /* hitomi_1_n.png */; };
 		84465C1912F5CBA40069A615 /* hitomi_2_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84465BF312F5CBA30069A615 /* hitomi_2_n.png */; };
@@ -1877,14 +1870,7 @@
 		84643CB712A4420C00F4ADBC /* AlarmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84643CB612A4420C00F4ADBC /* AlarmView.xib */; };
 		84643CBA12A4424D00F4ADBC /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84643CB912A4424D00F4ADBC /* AlarmViewController.m */; };
 		84643D3612A44B8000F4ADBC /* ButtonArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84643D3512A44B8000F4ADBC /* ButtonArrow.png */; };
-		846CC07412EF3388007C082A /* icon7.png in Resources */ = {isa = PBXBuildFile; fileRef = 846CC07312EF3388007C082A /* icon7.png */; };
 		846F328C12A41B000073171A /* AlarmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846F328B12A41B000073171A /* AlarmCell.xib */; };
-		8474634512E6BEAB0066FB5D /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474633F12E6BEAB0066FB5D /* icon1.png */; };
-		8474634612E6BEAB0066FB5D /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634012E6BEAB0066FB5D /* icon2.png */; };
-		8474634712E6BEAB0066FB5D /* icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634112E6BEAB0066FB5D /* icon3.png */; };
-		8474634812E6BEAB0066FB5D /* icon4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634212E6BEAB0066FB5D /* icon4.png */; };
-		8474634912E6BEAB0066FB5D /* icon5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634312E6BEAB0066FB5D /* icon5.png */; };
-		8474634A12E6BEAB0066FB5D /* icon6.png in Resources */ = {isa = PBXBuildFile; fileRef = 8474634412E6BEAB0066FB5D /* icon6.png */; };
 		8477905012C7D0AB0057089D /* SelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8477904F12C7D0AB0057089D /* SelectCell.xib */; };
 		8477905312C7D1500057089D /* Select.png in Resources */ = {isa = PBXBuildFile; fileRef = 8477905212C7D1500057089D /* Select.png */; };
 		8477907712C7D6F70057089D /* the_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8477907512C7D6F70057089D /* the_0.png */; };
@@ -2055,14 +2041,14 @@
 		84D43588129DF15D00356784 /* SaveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D43583129DF15D00356784 /* SaveManager.m */; };
 		84D435B7129DF1F800356784 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D435B6129DF1F800356784 /* AudioToolbox.framework */; };
 		84D43611129DF52B00356784 /* CharView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84D43610129DF52B00356784 /* CharView.xib */; };
-		84F6DABF12F54F5900CF67F9 /* allIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F6DABE12F54F5900CF67F9 /* allIcon.png */; };
+		84D643191303D71500BDABD8 /* AkariAlarm-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84D643181303D71500BDABD8 /* AkariAlarm-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AlarmGitaiFinalAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmGitaiFinalAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AlarmGitaiFinalAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmGitaiFinalAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* GitaiAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitaiAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* AlarmGitaiFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarmGitaiFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		280E754B0DD40C5E005A515E /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		280E754C0DD40C5E005A515E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -2071,13 +2057,12 @@
 		289233A90DB2D0DB0083E9F9 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* AlarmGitaiFinal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmGitaiFinal_Prefix.pch; sourceTree = "<group>"; };
-		56020EDB12EAE02200BB6235 /* HarukaAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarukaAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56020EDB12EAE02200BB6235 /* NatsukoAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NatsukoAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56020EDD12EAE02200BB6235 /* HarukaAlarm-info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HarukaAlarm-info.plist"; sourceTree = "<group>"; };
 		563D99F612F70F83002BECF0 /* TimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimerView.h; path = Classes/TimerView.h; sourceTree = "<group>"; };
 		563D99F712F70F83002BECF0 /* TimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimerView.m; path = Classes/TimerView.m; sourceTree = "<group>"; };
 		563D9A0112F70FB5002BECF0 /* Timer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Timer.xib; sourceTree = "<group>"; };
 		564100CA12EF2FC400CDA3EA /* AkariAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AkariAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		564100CD12EF2FED00CDA3EA /* AkariAlarm-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AkariAlarm-Info.plist"; sourceTree = "<group>"; };
 		5641F03612ED995000CDA3EA /* HitomiAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HitomiAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5641F03812ED995000CDA3EA /* HitomiAlarm-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HitomiAlarm-Info.plist"; sourceTree = "<group>"; };
 		5641F27F12ED9BCF00CDA3EA /* IrikaAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IrikaAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2105,6 +2090,22 @@
 		842BD86012EE809100F136CD /* CharSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharSelectViewController.h; sourceTree = "<group>"; };
 		842BD86112EE809100F136CD /* CharSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharSelectViewController.m; sourceTree = "<group>"; };
 		8439850F12EED246009873EA /* SelectCharCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCharCell.xib; sourceTree = "<group>"; };
+		844598611303D3BB00979110 /* allIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = allIcon.png; sourceTree = "<group>"; };
+		844598621303D3BB00979110 /* allIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "allIcon@2x.png"; sourceTree = "<group>"; };
+		844598651303D3FF00979110 /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
+		844598661303D3FF00979110 /* icon1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon1@2x.png"; sourceTree = "<group>"; };
+		844598691303D41900979110 /* icon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon4.png; sourceTree = "<group>"; };
+		8445986A1303D41900979110 /* icon4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon4@2x.png"; sourceTree = "<group>"; };
+		8445986D1303D42E00979110 /* icon7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon7.png; sourceTree = "<group>"; };
+		8445986E1303D42E00979110 /* icon7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon7@2x.png"; sourceTree = "<group>"; };
+		844598711303D43F00979110 /* icon5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon5.png; sourceTree = "<group>"; };
+		844598721303D43F00979110 /* icon5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon5@2x.png"; sourceTree = "<group>"; };
+		844598751303D44F00979110 /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.png; sourceTree = "<group>"; };
+		844598761303D44F00979110 /* icon3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon3@2x.png"; sourceTree = "<group>"; };
+		844598791303D46000979110 /* icon6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon6.png; sourceTree = "<group>"; };
+		8445987A1303D46000979110 /* icon6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon6@2x.png"; sourceTree = "<group>"; };
+		8445987D1303D47C00979110 /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
+		8445987E1303D47C00979110 /* icon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon2@2x.png"; sourceTree = "<group>"; };
 		84465BEB12F5C4A30069A615 /* hitomi_7_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_7_d.png; sourceTree = "<group>"; };
 		84465BF112F5CBA30069A615 /* hitomi_1_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_1_n.png; sourceTree = "<group>"; };
 		84465BF312F5CBA30069A615 /* hitomi_2_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hitomi_2_n.png; sourceTree = "<group>"; };
@@ -2441,14 +2442,7 @@
 		84643CB812A4424D00F4ADBC /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmViewController.h; sourceTree = "<group>"; };
 		84643CB912A4424D00F4ADBC /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmViewController.m; sourceTree = "<group>"; };
 		84643D3512A44B8000F4ADBC /* ButtonArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ButtonArrow.png; path = image/ButtonArrow.png; sourceTree = "<group>"; };
-		846CC07312EF3388007C082A /* icon7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon7.png; sourceTree = "<group>"; };
 		846F328B12A41B000073171A /* AlarmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmCell.xib; sourceTree = "<group>"; };
-		8474633F12E6BEAB0066FB5D /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
-		8474634012E6BEAB0066FB5D /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
-		8474634112E6BEAB0066FB5D /* icon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon3.png; sourceTree = "<group>"; };
-		8474634212E6BEAB0066FB5D /* icon4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon4.png; sourceTree = "<group>"; };
-		8474634312E6BEAB0066FB5D /* icon5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon5.png; sourceTree = "<group>"; };
-		8474634412E6BEAB0066FB5D /* icon6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon6.png; sourceTree = "<group>"; };
 		8477904F12C7D0AB0057089D /* SelectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCell.xib; sourceTree = "<group>"; };
 		8477905212C7D1500057089D /* Select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Select.png; sourceTree = "<group>"; };
 		8477907512C7D6F70057089D /* the_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = the_0.png; sourceTree = "<group>"; };
@@ -2629,7 +2623,7 @@
 		84D43583129DF15D00356784 /* SaveManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveManager.m; sourceTree = "<group>"; };
 		84D435B6129DF1F800356784 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		84D43610129DF52B00356784 /* CharView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharView.xib; sourceTree = "<group>"; };
-		84F6DABE12F54F5900CF67F9 /* allIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = allIcon.png; sourceTree = "<group>"; };
+		84D643181303D71500BDABD8 /* AkariAlarm-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AkariAlarm-Info.plist"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* AlarmGitaiFinal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AlarmGitaiFinal-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2754,9 +2748,9 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* GitaiAlarm.app */,
+				1D6058910D05DD3D006BFB54 /* AlarmGitaiFinal.app */,
 				56A9A63C12E6C5EB009C8435 /* NatsukoAlarm.app */,
-				56020EDB12EAE02200BB6235 /* HarukaAlarm.app */,
+				56020EDB12EAE02200BB6235 /* NatsukoAlarm.app */,
 				5641F03612ED995000CDA3EA /* HitomiAlarm.app */,
 				5641F27F12ED9BCF00CDA3EA /* IrikaAlarm.app */,
 				5641F50012ED9F7400CDA3EA /* ReinaAlarm.app */,
@@ -2849,8 +2843,8 @@
 		5641EDF312ED98B300CDA3EA /* PlistFile */ = {
 			isa = PBXGroup;
 			children = (
-				564100CD12EF2FED00CDA3EA /* AkariAlarm-Info.plist */,
 				8D1107310486CEB800E47090 /* AlarmGitaiFinal-Info.plist */,
+				84D643181303D71500BDABD8 /* AkariAlarm-Info.plist */,
 				56A9A63E12E6C5EB009C8435 /* NatsukoAlarm-Info.plist */,
 				56020EDD12EAE02200BB6235 /* HarukaAlarm-info.plist */,
 				5641F03812ED995000CDA3EA /* HitomiAlarm-Info.plist */,
@@ -3339,14 +3333,22 @@
 		8474633E12E6BEAB0066FB5D /* icon */ = {
 			isa = PBXGroup;
 			children = (
-				84F6DABE12F54F5900CF67F9 /* allIcon.png */,
-				8474633F12E6BEAB0066FB5D /* icon1.png */,
-				8474634012E6BEAB0066FB5D /* icon2.png */,
-				8474634112E6BEAB0066FB5D /* icon3.png */,
-				8474634212E6BEAB0066FB5D /* icon4.png */,
-				8474634312E6BEAB0066FB5D /* icon5.png */,
-				8474634412E6BEAB0066FB5D /* icon6.png */,
-				846CC07312EF3388007C082A /* icon7.png */,
+				844598611303D3BB00979110 /* allIcon.png */,
+				844598621303D3BB00979110 /* allIcon@2x.png */,
+				844598651303D3FF00979110 /* icon1.png */,
+				844598661303D3FF00979110 /* icon1@2x.png */,
+				844598691303D41900979110 /* icon4.png */,
+				8445986A1303D41900979110 /* icon4@2x.png */,
+				8445986D1303D42E00979110 /* icon7.png */,
+				8445986E1303D42E00979110 /* icon7@2x.png */,
+				844598711303D43F00979110 /* icon5.png */,
+				844598721303D43F00979110 /* icon5@2x.png */,
+				844598751303D44F00979110 /* icon3.png */,
+				844598761303D44F00979110 /* icon3@2x.png */,
+				844598791303D46000979110 /* icon6.png */,
+				8445987A1303D46000979110 /* icon6@2x.png */,
+				8445987D1303D47C00979110 /* icon2.png */,
+				8445987E1303D47C00979110 /* icon2@2x.png */,
 			);
 			path = icon;
 			sourceTree = "<group>";
@@ -3651,7 +3653,7 @@
 			);
 			name = GitaiAlarm;
 			productName = AlarmGitaiFinal;
-			productReference = 1D6058910D05DD3D006BFB54 /* GitaiAlarm.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* AlarmGitaiFinal.app */;
 			productType = "com.apple.product-type.application";
 		};
 		56020C9612EAE02200BB6235 /* HarukaAlarm */ = {
@@ -3668,7 +3670,7 @@
 			);
 			name = HarukaAlarm;
 			productName = NatsukoAlarm;
-			productReference = 56020EDB12EAE02200BB6235 /* HarukaAlarm.app */;
+			productReference = 56020EDB12EAE02200BB6235 /* NatsukoAlarm.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5641EDF412ED995000CDA3EA /* HitomiAlarm */ = {
@@ -3945,12 +3947,6 @@
 				8409A34D12E20EDC0079044F /* alarm01.mp3 in Resources */,
 				8409A39412E222660079044F /* bgm20.mp3 in Resources */,
 				56A9A49C12E5D82E009C8435 /* Advanced.xib in Resources */,
-				8474634512E6BEAB0066FB5D /* icon1.png in Resources */,
-				8474634612E6BEAB0066FB5D /* icon2.png in Resources */,
-				8474634712E6BEAB0066FB5D /* icon3.png in Resources */,
-				8474634812E6BEAB0066FB5D /* icon4.png in Resources */,
-				8474634912E6BEAB0066FB5D /* icon5.png in Resources */,
-				8474634A12E6BEAB0066FB5D /* icon6.png in Resources */,
 				84B827A012EC92BA00EAAE40 /* back_6_n.png in Resources */,
 				842BD84B12EE7EF400F136CD /* CharSelectView.xib in Resources */,
 				8448EBEF12EE879000A044B6 /* char_akari.png in Resources */,
@@ -4268,8 +4264,6 @@
 				84B010CF12EEFBEC0002616F /* irika_7_n_b.png in Resources */,
 				84B010D012EEFBEC0002616F /* irika_8_n.png in Resources */,
 				84B010D112EEFBEC0002616F /* irika_9_n.png in Resources */,
-				846CC07412EF3388007C082A /* icon7.png in Resources */,
-				84F6DABF12F54F5900CF67F9 /* allIcon.png in Resources */,
 				84465BEC12F5C4A30069A615 /* hitomi_7_d.png in Resources */,
 				84465C1712F5CBA40069A615 /* hitomi_1_n.png in Resources */,
 				84465C1912F5CBA40069A615 /* hitomi_2_n.png in Resources */,
@@ -4307,6 +4301,8 @@
 				84465C3A12F5CBA40069A615 /* hitomi_27_n.png in Resources */,
 				563D9A0212F70FB5002BECF0 /* Timer.xib in Resources */,
 				84C3951F12FFD58B004903DE /* MainClockView.xib in Resources */,
+				844598631303D3BB00979110 /* allIcon.png in Resources */,
+				844598641303D3BB00979110 /* allIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4418,12 +4414,6 @@
 				56020E8F12EAE02200BB6235 /* ButtonArrow.png in Resources */,
 				56020E9012EAE02200BB6235 /* Select.png in Resources */,
 				56020E9112EAE02200BB6235 /* touch.png in Resources */,
-				56020E9212EAE02200BB6235 /* icon1.png in Resources */,
-				56020E9312EAE02200BB6235 /* icon2.png in Resources */,
-				56020E9412EAE02200BB6235 /* icon3.png in Resources */,
-				56020E9512EAE02200BB6235 /* icon4.png in Resources */,
-				56020E9612EAE02200BB6235 /* icon5.png in Resources */,
-				56020E9712EAE02200BB6235 /* icon6.png in Resources */,
 				56020E9812EAE02200BB6235 /* alarm01.mp3 in Resources */,
 				56020E9912EAE02200BB6235 /* bgm01.mp3 in Resources */,
 				56020E9A12EAE02200BB6235 /* bgm02.mp3 in Resources */,
@@ -4510,6 +4500,8 @@
 				5641FDA112EF2D6200CDA3EA /* haruka_9_n_b.png in Resources */,
 				563D9A0412F70FB5002BECF0 /* Timer.xib in Resources */,
 				84C3952112FFD58B004903DE /* MainClockView.xib in Resources */,
+				8445986F1303D42E00979110 /* icon7.png in Resources */,
+				844598701303D42E00979110 /* icon7@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4652,7 +4644,6 @@
 				5641F00912ED995000CDA3EA /* alarm01.mp3 in Resources */,
 				5641F00A12ED995000CDA3EA /* bgm20.mp3 in Resources */,
 				5641F00B12ED995000CDA3EA /* Advanced.xib in Resources */,
-				5641F01012ED995000CDA3EA /* icon5.png in Resources */,
 				5641F01212ED995000CDA3EA /* back_6_n.png in Resources */,
 				5641FDA212EF2D6800CDA3EA /* char_hitomi.png in Resources */,
 				5641FDA412EF2D6800CDA3EA /* hitomi_10_d.png in Resources */,
@@ -4690,6 +4681,8 @@
 				5641FDC812EF2D6800CDA3EA /* hitomi_9_d_b.png in Resources */,
 				563D9A0512F70FB5002BECF0 /* Timer.xib in Resources */,
 				84C3952212FFD58B004903DE /* MainClockView.xib in Resources */,
+				844598731303D43F00979110 /* icon5.png in Resources */,
+				844598741303D43F00979110 /* icon5@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4832,7 +4825,6 @@
 				5641F25212ED9BCF00CDA3EA /* alarm01.mp3 in Resources */,
 				5641F25312ED9BCF00CDA3EA /* bgm20.mp3 in Resources */,
 				5641F25412ED9BCF00CDA3EA /* Advanced.xib in Resources */,
-				5641F25712ED9BCF00CDA3EA /* icon3.png in Resources */,
 				5641F25B12ED9BCF00CDA3EA /* back_6_n.png in Resources */,
 				5641FD0712EF2D3E00CDA3EA /* char_irika.png in Resources */,
 				5641FD0912EF2D3E00CDA3EA /* irika_10_d.png in Resources */,
@@ -4869,6 +4861,8 @@
 				5641FD2B12EF2D3E00CDA3EA /* irika_9_n.png in Resources */,
 				563D9A0612F70FB5002BECF0 /* Timer.xib in Resources */,
 				84C3952312FFD58B004903DE /* MainClockView.xib in Resources */,
+				844598771303D44F00979110 /* icon3.png in Resources */,
+				844598781303D44F00979110 /* icon3@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5011,7 +5005,6 @@
 				5641F4D312ED9F7400CDA3EA /* alarm01.mp3 in Resources */,
 				5641F4D412ED9F7400CDA3EA /* bgm20.mp3 in Resources */,
 				5641F4D512ED9F7400CDA3EA /* Advanced.xib in Resources */,
-				5641F4DB12ED9F7400CDA3EA /* icon6.png in Resources */,
 				5641F4DC12ED9F7400CDA3EA /* back_6_n.png in Resources */,
 				5641FE2012EF2D7C00CDA3EA /* char_reina.png in Resources */,
 				5641FE2212EF2D7C00CDA3EA /* reina_10_d.png in Resources */,
@@ -5056,6 +5049,8 @@
 				5641FE5412EF2D7C00CDA3EA /* reina_9_n_b.png in Resources */,
 				563D9A0712F70FB5002BECF0 /* Timer.xib in Resources */,
 				84C3952412FFD58B004903DE /* MainClockView.xib in Resources */,
+				8445987B1303D46000979110 /* icon6.png in Resources */,
+				8445987C1303D46000979110 /* icon6@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5198,7 +5193,6 @@
 				5641F73B12EDA0E000CDA3EA /* alarm01.mp3 in Resources */,
 				5641F73C12EDA0E000CDA3EA /* bgm20.mp3 in Resources */,
 				5641F73D12EDA0E000CDA3EA /* Advanced.xib in Resources */,
-				5641F73E12EDA0E000CDA3EA /* icon1.png in Resources */,
 				5641F74412EDA0E000CDA3EA /* back_6_n.png in Resources */,
 				5641FD2C12EF2D5800CDA3EA /* char_fumiko.png in Resources */,
 				5641FD2E12EF2D5800CDA3EA /* fumiko_10_d.png in Resources */,
@@ -5255,6 +5249,8 @@
 				5641FD6812EF2D5800CDA3EA /* fumiko_9_n_b.png in Resources */,
 				563D9A0812F70FB5002BECF0 /* Timer.xib in Resources */,
 				84C3952512FFD58B004903DE /* MainClockView.xib in Resources */,
+				844598671303D3FF00979110 /* icon1.png in Resources */,
+				844598681303D3FF00979110 /* icon1@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5397,12 +5393,6 @@
 				5641FF0D12EF2FC400CDA3EA /* alarm01.mp3 in Resources */,
 				5641FF0E12EF2FC400CDA3EA /* bgm20.mp3 in Resources */,
 				5641FF0F12EF2FC400CDA3EA /* Advanced.xib in Resources */,
-				5641FF1012EF2FC400CDA3EA /* icon1.png in Resources */,
-				5641FF1112EF2FC400CDA3EA /* icon2.png in Resources */,
-				5641FF1212EF2FC400CDA3EA /* icon3.png in Resources */,
-				5641FF1312EF2FC400CDA3EA /* icon4.png in Resources */,
-				5641FF1412EF2FC400CDA3EA /* icon5.png in Resources */,
-				5641FF1512EF2FC400CDA3EA /* icon6.png in Resources */,
 				5641FF1612EF2FC400CDA3EA /* back_6_n.png in Resources */,
 				5641FF1712EF2FC400CDA3EA /* CharSelectView.xib in Resources */,
 				5641FF1812EF2FC400CDA3EA /* char_akari.png in Resources */,
@@ -5460,9 +5450,11 @@
 				5641FF5412EF2FC400CDA3EA /* akari_8_n.png in Resources */,
 				5641FF5512EF2FC400CDA3EA /* akari_8_n_b.png in Resources */,
 				5641FF5612EF2FC400CDA3EA /* akari_9_n_b.png in Resources */,
-				564100CE12EF2FED00CDA3EA /* AkariAlarm-Info.plist in Resources */,
 				563D9A0912F70FB5002BECF0 /* Timer.xib in Resources */,
 				84C3952612FFD58B004903DE /* MainClockView.xib in Resources */,
+				8445987F1303D47C00979110 /* icon2.png in Resources */,
+				844598801303D47C00979110 /* icon2@2x.png in Resources */,
+				84D643191303D71500BDABD8 /* AkariAlarm-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5574,12 +5566,6 @@
 				56A9A83D12E6D6DB009C8435 /* ButtonArrow.png in Resources */,
 				56A9A83E12E6D6DB009C8435 /* Select.png in Resources */,
 				56A9A83F12E6D6DB009C8435 /* touch.png in Resources */,
-				56A9A84012E6D6EA009C8435 /* icon1.png in Resources */,
-				56A9A84112E6D6EA009C8435 /* icon2.png in Resources */,
-				56A9A84212E6D6EA009C8435 /* icon3.png in Resources */,
-				56A9A84312E6D6EA009C8435 /* icon4.png in Resources */,
-				56A9A84412E6D6EA009C8435 /* icon5.png in Resources */,
-				56A9A84512E6D6EA009C8435 /* icon6.png in Resources */,
 				56A9A84612E6D6EA009C8435 /* alarm01.mp3 in Resources */,
 				56A9A84712E6D6EA009C8435 /* bgm01.mp3 in Resources */,
 				56A9A84812E6D6EA009C8435 /* bgm02.mp3 in Resources */,
@@ -5658,6 +5644,8 @@
 				5641FE1F12EF2D7300CDA3EA /* natsuko_8_n.png in Resources */,
 				563D9A0312F70FB5002BECF0 /* Timer.xib in Resources */,
 				84C3952012FFD58B004903DE /* MainClockView.xib in Resources */,
+				8445986B1303D41900979110 /* icon4.png in Resources */,
+				8445986C1303D41900979110 /* icon4@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5944,7 +5932,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitaiFinal_Prefix.pch;
@@ -5955,7 +5944,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = AlarmGitaiFinal;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -5964,7 +5953,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -5989,7 +5979,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -6037,7 +6028,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitaiFinal_Prefix.pch;
@@ -6048,7 +6040,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = AkariAlarm;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6072,7 +6064,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitaiFinal_Prefix.pch;
@@ -6083,7 +6076,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = HitomiAlarm;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6107,7 +6100,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitaiFinal_Prefix.pch;
@@ -6118,7 +6112,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = IrikaAlarm;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6142,7 +6136,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitaiFinal_Prefix.pch;
@@ -6153,7 +6148,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = ReinaAlarm;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6177,7 +6172,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitaiFinal_Prefix.pch;
@@ -6188,7 +6184,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = FumikoAlarm;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -6252,7 +6248,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -6260,7 +6257,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = NATSUKO;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
+				PROVISIONING_PROFILE = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -6269,7 +6267,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -6277,7 +6276,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
+				PROVISIONING_PROFILE = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
 				SDKROOT = iphoneos4.2;
 			};
 			name = Release;

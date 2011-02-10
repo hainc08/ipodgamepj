@@ -3,18 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>エリカアラーム</string>
+	<string>あかりアラーム</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>icon3.png</string>
+	<string>icon2.png</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>icon3.png</string>
-		<string>icon3@2x.png</string>
+		<string>icon2.png</string>
+		<string>icon2@2x.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>defense.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>inazuma.alarmAkari</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
