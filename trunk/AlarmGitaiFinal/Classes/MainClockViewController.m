@@ -201,9 +201,11 @@
 		
 	for (int loop = 0; loop < [[AlarmConfig getInstance] getAlarmCount] ; loop++) {
 		AlarmDate *t_date  =  [[AlarmConfig getInstance] getAlarmIndex:loop];
-		if([t_date isAlarmONOFF] && [t_date GetAlarmDay] )
+		if([t_date isAlarmONOFF])
 		{
-			int alarm = [[t_date GetNSDate] timeIntervalSince1970];
+			NSDate* date = [t_date GetNSDate];
+			if (date == nil) continue;
+			int alarm = [date timeIntervalSince1970];
 
 			if(now >= alarm)
 			{

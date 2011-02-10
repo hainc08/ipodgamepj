@@ -15,6 +15,8 @@
 
 - (id)init
 {
+	Hour = Min = Sec = -1;
+	
 	[self CreatedImageView];
 	return self;
 }
@@ -64,19 +66,19 @@
 	[self.view addSubview:u_SecT];
 	[self.view addSubview:u_SecM];
 	
-	[b_Dot setFrame:CGRectMake(87,-5,80,89)];
-	[u_Dot setFrame:CGRectMake(87,-5,80,89)];
+	[b_Dot setFrame:CGRectMake(85,-5,80,89)];
+	[u_Dot setFrame:CGRectMake(85,-5,80,89)];
 	
 
 	[b_HourT setFrame:CGRectMake(-10,-5,80,89)];
 	[b_HourM setFrame:CGRectMake(45,-5,80,89)];
-	[b_MinT setFrame:CGRectMake(130,-5,80,89)];
+	[b_MinT setFrame:CGRectMake(125,-5,80,89)];
 	[b_MinM setFrame:CGRectMake(180,-5,80,89)];
 	
 
 	[u_HourT setFrame:CGRectMake(-10,-5,80,89)];
 	[u_HourM setFrame:CGRectMake(45,-5,80,89)];
-	[u_MinT setFrame:CGRectMake(130,-5,80,89)];
+	[u_MinT setFrame:CGRectMake(125,-5,80,89)];
 	[u_MinM setFrame:CGRectMake(180,-5,80,89)];
 
 	[sb_Dot setFrame:CGRectMake(237,35,41,44)];
@@ -101,89 +103,62 @@
 }
 
 
-- (void)ChageNumberImage:(int)type  changeImage:(char)number
+- (void)ChageNumberImage:(int)type  changeImage:(int)number
 {
 	if(type == HOUR_T)
 	{
-		[u_HourT setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
-		[b_HourT setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
+		[u_HourT setImage:[[ImgManager getInstance] getUp:number]];
+		[b_HourT setImage:[[ImgManager getInstance] getDown:number]];
 	}
 	else if(type == HOUR_M)
 	{
-		[u_HourM setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
-		[b_HourM setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
+		[u_HourM setImage:[[ImgManager getInstance] getUp:number]];
+		[b_HourM setImage:[[ImgManager getInstance] getDown:number]];
 	}
 	else if(type == MIN_T)
 	{
-		[u_MinT setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
-		[b_MinT setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
+		[u_MinT setImage:[[ImgManager getInstance] getUp:number]];
+		[b_MinT setImage:[[ImgManager getInstance] getDown:number]];
 	}
 	else if(type == MIN_M)
 	{
-		[u_MinM setImage:[[ImgManager getInstance] getUp:(int)number - 0x30]];
-		[b_MinM setImage:[[ImgManager getInstance] getDown:(int)number - 0x30]];
+		[u_MinM setImage:[[ImgManager getInstance] getUp:number]];
+		[b_MinM setImage:[[ImgManager getInstance] getDown:number]];
 	}
 	else if(type == SEC_T)
 	{
-		[u_SecT setImage:[[ImgManager getInstance] getUp:(int)(number - 0x30)]];
-		[b_SecT setImage:[[ImgManager getInstance] getDown:(int)(number - 0x30)]];
+		[u_SecT setImage:[[ImgManager getInstance] getUp:number]];
+		[b_SecT setImage:[[ImgManager getInstance] getDown:number]];
 	}
 	else if(type == SEC_M)
 	{
-		[u_SecM setImage:[[ImgManager getInstance] getUp:(int)(number - 0x30)]];
-		[b_SecM setImage:[[ImgManager getInstance] getDown:(int)(number - 0x30)]];
+		[u_SecM setImage:[[ImgManager getInstance] getUp:number]];
+		[b_SecM setImage:[[ImgManager getInstance] getDown:number]];
 	}
 	
 }
 - (void)UpdateTime
 {	
-	NSString *tmpMin = [[DateFormat getInstance] getMin];
-	NSString *tmpSec = [[DateFormat getInstance] getSec];
-	NSString *tmpHour;
+	int tmpMin = [[[DateFormat getInstance] getMin] intValue];
+	int tmpSec = [[[DateFormat getInstance] getSec] intValue];
+	int tmpHour;
 	if([[AlarmConfig getInstance] getHourMode])
-		tmpHour = [[DateFormat getInstance] getHour24];
+		tmpHour = [[[DateFormat getInstance] getHour24] intValue];
 	else
-		tmpHour = [[DateFormat getInstance] getHour];
+		tmpHour = [[[DateFormat getInstance] getHour] intValue];
 	
-	if( ![Hour isEqualToString:tmpHour] || Hour == nil)
+	if( Hour != tmpHour )
 	{
-		if([tmpHour length] < 2)
-		{		
-			if([Hour length] > 1 || Hour == nil)
-				[self ChageNumberImage:HOUR_T changeImage:'0'];
-			
-			[self ChageNumberImage:HOUR_M changeImage:[tmpHour characterAtIndex:0]];
-		}
-		else
-		{
-			[self ChageNumberImage:HOUR_T changeImage:[tmpHour characterAtIndex:0]];
-			[self ChageNumberImage:HOUR_M changeImage:[tmpHour characterAtIndex:1]];
-		}
-
-		if( Hour != nil )
-			[Hour release];
-		
-		Hour = [[NSString alloc] initWithFormat:@"%@", tmpHour];
+		Hour = tmpHour;
+		[self ChageNumberImage:HOUR_T changeImage:Hour/10];
+		[self ChageNumberImage:HOUR_M changeImage:Hour%10];
 	}
 
-	if((![Min isEqualToString:tmpMin]) || Min == nil)
+	if( Min != tmpMin )
 	{
-		if([tmpMin length] < 2)
-		{
-			if([Min	length] > 1  || Min == nil)
-				[self ChageNumberImage:MIN_T changeImage:'0'];
-			
-			[self ChageNumberImage:MIN_M changeImage:[tmpMin characterAtIndex:0]];
-		}
-		else
-		{
-			[self ChageNumberImage:MIN_T changeImage:[tmpMin characterAtIndex:0]];
-			[self ChageNumberImage:MIN_M changeImage:[tmpMin characterAtIndex:1]];
-		}
-
-		if( Min != nil ) [Min release];
-		
-		Min = [[NSString alloc] initWithFormat:@"%@",tmpMin];
+		Min = tmpMin;
+		[self ChageNumberImage:MIN_T changeImage:Min/10];
+		[self ChageNumberImage:MIN_M changeImage:Min%10];
 	}
 
 	if( [[AlarmConfig getInstance] getSecondMode] )
@@ -196,26 +171,11 @@
 		[b_SecM	setAlpha:1];
 		[u_SecM	setAlpha:1];
 		
-		if((![Sec isEqualToString:tmpSec]) || Sec == nil)
+		if( Sec != tmpSec )
 		{
-			if([tmpSec length] < 2)
-			{
-				if([Sec	length] > 1 || Sec == nil)
-				{
-					[self ChageNumberImage:SEC_T changeImage:'0'];
-				}
-			
-				[self ChageNumberImage:SEC_M changeImage:[tmpSec characterAtIndex:0]];
-			}
-			else
-			{
-				[self ChageNumberImage:SEC_T changeImage:[tmpSec characterAtIndex:0]];
-				[self ChageNumberImage:SEC_M changeImage:[tmpSec characterAtIndex:1]];
-			}
-		
-			if( Sec != nil )
-				[Sec release];
-			Sec = [[NSString alloc] initWithFormat:@"%@",tmpSec];
+			Sec = tmpSec;
+			[self ChageNumberImage:SEC_T changeImage:Sec/10];
+			[self ChageNumberImage:SEC_M changeImage:Sec%10];
 		}
 	}
 	else {
@@ -226,7 +186,6 @@
 		
 		[b_SecM	setAlpha:0];
 		[u_SecM	setAlpha:0];
-		
 	}
 
 
@@ -238,11 +197,7 @@
 
 - (void)dealloc {
 	[super dealloc];	
-	
-	[Hour release];
-	[Min release];
-	[Sec release];;
-	
+
 	[u_HourT release];
 	[u_HourM release];
 	[u_MinT release];

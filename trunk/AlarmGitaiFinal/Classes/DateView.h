@@ -18,8 +18,8 @@ enum DATETYPE {
 };
 @interface DateView : UIViewController {
 	NSString *Week;
-	NSString *Mon;
-	NSString *Day;
+	int Mon;
+	int Day;
 	
 	UIImageView *u_DayT;
 	UIImageView *u_DayM;
@@ -39,5 +39,5 @@ enum DATETYPE {
 - (void)UpdateDate;
 - (void)CreatedImageView ;
 - (void)UpdateDate;
-- (void)ChageNumberImage:(int)type changeImage:(char)number;
+- (void)ChageNumberImage:(int)type changeImage:(int)number;
 @end

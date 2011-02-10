@@ -18,9 +18,9 @@ enum CLOCKTYPE {
 };
 
 @interface ClockView : UIViewController{
-	NSString *Hour;
-	NSString *Min;
-	NSString *Sec;
+	int Hour;
+	int Min;
+	int Sec;
 	
 	UIImageView *u_HourT;
 	UIImageView *u_HourM;
@@ -44,6 +44,6 @@ enum CLOCKTYPE {
 	
 }
 - (void)CreatedImageView ;
-- (void)ChageNumberImage:(int)type  changeImage:(char)number;
+- (void)ChageNumberImage:(int)type  changeImage:(int)number;
 - (void)UpdateTime;
 @end

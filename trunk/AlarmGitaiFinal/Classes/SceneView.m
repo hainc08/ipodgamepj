@@ -67,7 +67,6 @@
 	if (curCharIdx == 0) curCharIdx = 1;
 	else curCharIdx = 0;
 
-	static int lastIdx = 0;
 	int idx;
 	int all, officeOffset, offset;
 

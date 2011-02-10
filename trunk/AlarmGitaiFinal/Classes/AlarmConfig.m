@@ -486,7 +486,7 @@ static AlarmConfig *AlarmConfigInst;
 - (id)init
 {
 	[super init];
-	Time = @"24:00 AM";
+	Time = @"00:00 AM";
 	Name = @"Alarm";
 	Sound = @"Simple Alarm";
 	AlarmONOFF = NO;
@@ -500,47 +500,33 @@ static AlarmConfig *AlarmConfigInst;
 	return self;
 }
 
-- (BOOL) GetAlarmDay
-{
-	if (RepeatIdx > 1)
-	{
-		int idx = RepeatIdx - 2;
-		if ([[DateFormat getInstance] getWeekType] & idx)
-		{
-			return TRUE;
-		}
-		return  FALSE;
-	}
-	
-	return TRUE;
-}
 - (NSDate*)GetNSDate
 {
 	if (alarmDate == nil)
 	{
-
 		NSString *Temp = [Time stringByReplacingOccurrencesOfString:@" " withString:@":00 " ]; // 그냥 하면 00초에 알람이 안울려서 
-		alarmDate = [[[DateFormat getInstance] getStringToDate:Temp format:@"h:mm:ss a"] retain];
-		/*
+
 		NSDate* now = [[[DateFormat getInstance] getCurrentDate] retain];
-		NSDate* tempDate = [[DateFormat getInstance] getStringToDate:Time format:@"h:mm a"];
+		NSDate* tempDate = [[[DateFormat getInstance] getStringToDate:Temp format:@"h:mm:ss a"] retain];
 		 
 		if (RepeatIdx > 1)
 		{
 			int idx = RepeatIdx - 2;
 
-			while (1)
+			if (idx == 0) return nil;
+
+			for (int i=0; i<7; ++i)
 			{				
-				if ([[DateFormat getInstance] getWeekType] & idx)
+				NSDate* weekDay = [tempDate addTimeInterval:60*60*24*i];
+
+				if ([[DateFormat getInstance] getWeekType:weekDay] & idx)
 				{
-					if ([now timeIntervalSince1970] < [tempDate timeIntervalSince1970])
+					if ([now timeIntervalSince1970] < [weekDay timeIntervalSince1970])
 					{
-						alarmDate = [tempDate retain];
+						alarmDate = [weekDay retain];
 						return alarmDate;
 					}
 				}
-
-				tempDate = [tempDate addTimeInterval:60*60*24];
 			}
 		}
 		else if ([now timeIntervalSince1970] > [tempDate timeIntervalSince1970])
@@ -551,7 +537,7 @@ static AlarmConfig *AlarmConfigInst;
 		else
 		{
 			alarmDate = [tempDate retain];
-		}*/
+		}
 	}
 	
 	return alarmDate;
@@ -572,8 +558,12 @@ static AlarmConfig *AlarmConfigInst;
 - (void)NextDayNSDate
 {
 	//다음날로 보내보려 
-	alarmDate = [[alarmDate addTimeInterval:60*60*24] retain];
-
+	//alarmDate = [[alarmDate addTimeInterval:60*60*24] retain];
+	if (alarmDate != nil)
+	{
+		[alarmDate release];
+		alarmDate = nil;
+	}
 }
 
 @end

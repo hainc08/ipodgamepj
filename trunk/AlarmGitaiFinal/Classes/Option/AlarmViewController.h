@@ -13,7 +13,7 @@
 #import "FlipsideViewControllerDelegate.h"
 
 @class AlarmDate;
-@interface AlarmViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PropertyEditing> {
+@interface AlarmViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, FlipsideViewControllerDelegate, PropertyEditing> {
 	id <FlipsideViewControllerDelegate> delegate;
 
 	AlarmDate		* alarm;
