@@ -3669,7 +3669,7 @@
 			dependencies = (
 			);
 			name = HarukaAlarm;
-			productName = NatsukoAlarm;
+			productName = HarukaAlarm;
 			productReference = 56020EDB12EAE02200BB6235 /* NatsukoAlarm.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -5932,8 +5932,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AlarmGitaiFinal_Prefix.pch;
@@ -5944,7 +5944,7 @@
 					"-DNS_BLOCK_ASSERTIONS=1",
 				);
 				PRODUCT_NAME = AlarmGitaiFinal;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -5953,8 +5953,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -6004,6 +6004,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = NatsukoAlarm;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
 			};
@@ -6248,8 +6249,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -6257,8 +6258,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = NATSUKO;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
+				PROVISIONING_PROFILE = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -6267,8 +6268,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dukwon Kang (8UN79N8T3G)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: INAZUMA,CO.,LTD.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: INAZUMA,CO.,LTD.";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -6276,8 +6277,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6786BAE5-69EA-4048-B1B6-B45FFD85DC43";
+				PROVISIONING_PROFILE = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8032FC15-0FED-45BD-84DD-443212D8DFA6";
 				SDKROOT = iphoneos4.2;
 			};
 			name = Release;
