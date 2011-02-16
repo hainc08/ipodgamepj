@@ -177,7 +177,7 @@
 			
 			[preview refresh];
 		}
-		else if (indexPath.row == 5)
+		else if (indexPath.row == 4)
 		{
 			static NSString *CellIdentifier = @"ButtonCell";
 			
@@ -229,23 +229,23 @@
 					[swch_cell setInfo:@"Show Seconds" :[[AlarmConfig getInstance] getSecondMode]];
 					[swch_cell.switcher addTarget:self action:@selector(ShowSeconds:) forControlEvents:UIControlEventValueChanged];
 					break;
+//				case 2:
+//					[swch_cell setInfo:@"Office Mode" :[[AlarmConfig getInstance] getOfficeMode]];
+//					[swch_cell.switcher addTarget:self action:@selector(OfficeMode:) forControlEvents:UIControlEventValueChanged];
+//					break;
 				case 2:
-					[swch_cell setInfo:@"Office Mode" :[[AlarmConfig getInstance] getOfficeMode]];
-					[swch_cell.switcher addTarget:self action:@selector(OfficeMode:) forControlEvents:UIControlEventValueChanged];
-					break;
-				case 3:
 					[swch_cell setInfo:@"Show Date" :[[AlarmConfig getInstance] getDateDisplay]];
 					[swch_cell.switcher addTarget:self action:@selector(ShowDate:) forControlEvents:UIControlEventValueChanged];
 					break;
-				case 4:
+				case 3:
 					[swch_cell setInfo:@"Show Weekday" :[[AlarmConfig getInstance] getWeekDisplay]];
 					[swch_cell.switcher addTarget:self action:@selector(ShowWeek:) forControlEvents:UIControlEventValueChanged];
 					break;
-				case 6:
+				case 5:
 					[swch_cell setInfo:@"24-Hour Time" :[[AlarmConfig getInstance] getHourMode]];
 					[swch_cell.switcher addTarget:self action:@selector(ShowTime:) forControlEvents:UIControlEventValueChanged];
 					break;
-				case 7:
+				case 6:
 					[swch_cell setInfo:@"Auto-Lock" :FALSE];
 					[swch_cell.switcher addTarget:self action:@selector(ShowLock:) forControlEvents:UIControlEventValueChanged];
 					break;
@@ -459,7 +459,7 @@
 	}
 	else if (section == 2)
 	{
-		if (indexPath.row == 5)
+		if (indexPath.row == 4)
 		{
 			[[AlarmConfig getInstance] toggleWeekdayType];
 			[preview refresh];
