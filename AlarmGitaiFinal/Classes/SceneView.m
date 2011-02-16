@@ -70,7 +70,6 @@
 	int idx;
 	int all, officeOffset, offset;
 
-	//fumiko, akari, natsuko 는 해줄게 없음...
 	if ([charName compare:@"haruka"] == NSOrderedSame)
 	{
 		all = 10 * 10;

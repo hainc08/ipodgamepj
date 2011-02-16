@@ -386,7 +386,9 @@ static AlarmConfig *AlarmConfigInst;
 
 - (BOOL) getOfficeMode
 {
-	return OfficeMode;
+	//망할 애플 때문에 무조건 오피스모드...
+	return true;
+	//return OfficeMode;
 }
 
 - (int) toggleWeekdayType
