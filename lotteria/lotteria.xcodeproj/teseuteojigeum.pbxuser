@@ -1,0 +1,104 @@
+// !$*UTF8*$!
+{
+	1D6058900D05DD3D006BFB54 /* lotteria */ = {
+		activeExec = 0;
+		executables = (
+			84F70EAF130EB0FD00A9322A /* lotteria */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 84F70EAF130EB0FD00A9322A /* lotteria */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* lotteria */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* lotteria */,
+		);
+		codeSenseManager = 84F70EBF130EB10000A9322A /* Code sense */;
+		executables = (
+			84F70EAF130EB0FD00A9322A /* lotteria */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					740,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 319731763;
+			PBXWorkspaceStateSaveDate = 319731763;
+		};
+		perUserProjectItems = {
+			842C294E130EB1750003BAD4 /* PBXBookmark */ = 842C294E130EB1750003BAD4 /* PBXBookmark */;
+			84E644BD130EB84E00BE8557 /* PBXBookmark */ = 84E644BD130EB84E00BE8557 /* PBXBookmark */;
+		};
+		sourceControlManager = 84F70EBE130EB10000A9322A /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	842C294E130EB1750003BAD4 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 842C2656130EB1590003BAD4 /* bg_bottom.png */;
+	};
+	84E644BD130EB84E00BE8557 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 842C2656130EB1590003BAD4 /* bg_bottom.png */;
+	};
+	84F70EAF130EB0FD00A9322A /* lotteria */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = lotteria;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	84F70EBE130EB10000A9322A /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	84F70EBF130EB10000A9322A /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}
