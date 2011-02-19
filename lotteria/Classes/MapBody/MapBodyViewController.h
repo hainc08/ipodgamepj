@@ -1,0 +1,6 @@
+
+@interface MapBodyViewController : UIViewController {
+	
+}
+
+@end
