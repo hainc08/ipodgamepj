@@ -8,13 +8,12 @@
 
 #import "lotteriaAppDelegate.h"
 #import "MainViewController.h"
+#import "DataManager.h"
 
 @implementation lotteriaAppDelegate
 
-
 @synthesize window;
 @synthesize mainViewController;
-
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -22,6 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.  
+	[DataManager initManager];
 
     // Add the main view controller's view to the window and display.
     [self.window addSubview:mainViewController.view];
@@ -82,7 +82,9 @@
 - (void)dealloc {
     [mainViewController release];
     [window release];
-    [super dealloc];
+
+	[[DataManager getInstance] closeManager];
+	[super dealloc];
 }
 
 @end
