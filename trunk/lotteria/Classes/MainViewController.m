@@ -25,7 +25,6 @@
 	[self.view addSubview:curView];
 	[self.view sendSubviewToBack:curView];
 	
-	[mainBody release];
 	lastTag = 0;
 }
 
@@ -51,8 +50,6 @@
 
 	UIView* oldView = curView;
 	curView = body.view;
-	
-	[body release];
 
 	[self.view addSubview:curView];
 	[self.view sendSubviewToBack:curView];
