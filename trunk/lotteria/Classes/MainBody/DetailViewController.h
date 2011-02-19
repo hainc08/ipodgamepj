@@ -1,0 +1,6 @@
+
+@interface DetailViewController : UIViewController {
+	
+}
+
+@end

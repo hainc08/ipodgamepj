@@ -8,35 +8,60 @@
 
 #import "MainViewController.h"
 
+#import "MainBodyViewController.h"
+#import "KartBodyViewController.h"
+#import "MypageBodyViewController.h"
+#import "MapBodyViewController.h"
 
 @implementation MainViewController
 
-
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-}
-*/
+//	[self.view addSubview:
+	MainBodyViewController* mainBody = [[MainBodyViewController alloc] init];
+	curView = mainBody.view;
 
-
-- (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {
-    
-	[self dismissModalViewControllerAnimated:YES];
-}
-
-
-- (IBAction)showInfo:(id)sender {    
+	[self.view addSubview:curView];
+	[self.view sendSubviewToBack:curView];
 	
-	FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
-	controller.delegate = self;
-	
-	controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	[self presentModalViewController:controller animated:YES];
-	
-	[controller release];
+	[mainBody release];
+	lastTag = 0;
 }
 
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+	if (lastTag == [item tag]) return;
+
+	UIViewController* body;
+
+	switch ([item tag]) {
+		case 0:
+			body = [[MainBodyViewController alloc] init];
+			break;
+		case 1:
+			body = [[KartBodyViewController alloc] init];
+			break;
+		case 2:
+			body = [[MypageBodyViewController alloc] init];
+			break;
+		case 3:
+			body = [[MapBodyViewController alloc] init];
+			break;
+	}
+
+	UIView* oldView = curView;
+	curView = body.view;
+	
+	[body release];
+
+	[self.view addSubview:curView];
+	[self.view sendSubviewToBack:curView];
+
+	[self.view sendSubviewToBack:oldView];
+	[oldView removeFromSuperview];
+	
+	lastTag = [item tag];
+}
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.

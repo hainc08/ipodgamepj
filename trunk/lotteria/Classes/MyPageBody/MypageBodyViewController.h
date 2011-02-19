@@ -1,0 +1,6 @@
+
+@interface MypageBodyViewController : UIViewController {
+	
+}
+
+@end

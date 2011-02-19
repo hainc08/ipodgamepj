@@ -1,0 +1,6 @@
+
+@interface KartBodyViewController : UIViewController {
+
+}
+
+@end
