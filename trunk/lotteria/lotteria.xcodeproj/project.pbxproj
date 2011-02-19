@@ -396,6 +396,8 @@
 		842C294A130EB1590003BAD4 /* tit_cart_prd_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C27CF130EB1590003BAD4 /* tit_cart_prd_03.png */; };
 		842C294B130EB1590003BAD4 /* tit_cart_prd_04.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C27D0130EB1590003BAD4 /* tit_cart_prd_04.png */; };
 		842C294C130EB1590003BAD4 /* tit_cart_prd_05.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C27D1130EB1590003BAD4 /* tit_cart_prd_05.png */; };
+		84384256130F862200EE2887 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84384255130F862200EE2887 /* DataManager.m */; };
+		84774392130F8F2100FB2532 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 84774391130F8F2100FB2532 /* FileIO.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -793,6 +795,10 @@
 		842C27CF130EB1590003BAD4 /* tit_cart_prd_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tit_cart_prd_03.png; sourceTree = "<group>"; };
 		842C27D0130EB1590003BAD4 /* tit_cart_prd_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tit_cart_prd_04.png; sourceTree = "<group>"; };
 		842C27D1130EB1590003BAD4 /* tit_cart_prd_05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tit_cart_prd_05.png; sourceTree = "<group>"; };
+		84384254130F862200EE2887 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		84384255130F862200EE2887 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		84774390130F8F2100FB2532 /* FileIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileIO.h; sourceTree = "<group>"; };
+		84774391130F8F2100FB2532 /* FileIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileIO.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* lotteria-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "lotteria-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -849,6 +855,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				84384253130F862200EE2887 /* baseClass */,
 				289233A00DB2D0730083E9F9 /* Main View */,
 				281C6CD70DB2D82200F60ACC /* Flipside View */,
 				080E96DDFE201D6D7F000001 /* Application Delegate */,
@@ -1283,6 +1290,17 @@
 				842C27CC130EB1590003BAD4 /* rc_bb_s.png */,
 			);
 			path = products;
+			sourceTree = "<group>";
+		};
+		84384253130F862200EE2887 /* baseClass */ = {
+			isa = PBXGroup;
+			children = (
+				84774390130F8F2100FB2532 /* FileIO.h */,
+				84774391130F8F2100FB2532 /* FileIO.m */,
+				84384254130F862200EE2887 /* DataManager.h */,
+				84384255130F862200EE2887 /* DataManager.m */,
+			);
+			path = baseClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1731,6 +1749,8 @@
 				1D3623260D0F684500981E51 /* lotteriaAppDelegate.m in Sources */,
 				289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */,
 				289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */,
+				84384256130F862200EE2887 /* DataManager.m in Sources */,
+				84774392130F8F2100FB2532 /* FileIO.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
