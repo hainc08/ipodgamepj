@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "AnsimPayController.h"
+#import "ISPPayController.h"
 
 @interface ISPPayViewController : UIViewController <AnsimPayDelegate,UIPickerViewDelegate,UIPickerViewDataSource> {
 
+	ISPPayController	*ispController;
 	AnsimPayController *ansimController;
 	UIPickerView *cardPicker;
 	NSArray		 *cardData;
@@ -19,7 +21,7 @@
 }
 
 @property (nonatomic,retain) AnsimPayController *ansimController;
-
+@property (nonatomic,retain) ISPPayController *ispController;
 //카드사 선택 selected
 @property (nonatomic,retain) IBOutlet UIPickerView *cardPicker;
 //카드사 명 

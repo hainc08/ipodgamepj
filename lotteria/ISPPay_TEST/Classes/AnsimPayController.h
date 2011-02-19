@@ -45,7 +45,6 @@
 @property (nonatomic,retain)IBOutlet NSString *s_hosturl;
 @property (nonatomic,assign) id<AnsimPayDelegate> delegate;
 
-- (NSString *)base64Decode_UTF8:(NSString *)string ;
 -(void)setAnsimValue:(NSString *) x_mname 
 			  amount:(NSString *) x_amount
 			cardtype:(NSString *) x_cardtype ;
