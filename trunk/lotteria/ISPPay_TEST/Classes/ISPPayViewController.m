@@ -10,7 +10,7 @@
 
 @implementation ISPPayViewController
 
-
+@synthesize ispController;
 @synthesize ansimController;
 @synthesize cardData;
 @synthesize cardCode;
@@ -88,7 +88,12 @@
 	
 	if(row == 0 )	// ISP 사용   : BC 카드 일 경우  
 	{
+		ISPPayController *ispController =[[ISPPayController alloc] initWithNibName:@"ISPPayController" bundle:nil];
 		
+		self.ispController=ispController;
+		self.ispController.delegate=self;
+		[self.view insertSubview:ispController.view atIndex:9];
+		[ispController release];
 	}
 	else 
 	{

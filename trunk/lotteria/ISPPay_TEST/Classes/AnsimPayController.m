@@ -38,15 +38,6 @@
  - (void)loadView {
  }
  */
-- (NSString *)base64Decode_UTF8:(NSString *)string 
-{
-	NSMutableData *decode = [NSMutableData dataWithData:[NSData base64DataFromString:string]];
-	// 문자열이므로 널 터미네이터를 넣어준다.
-	const unsigned char tempcstring = 0;
-	[decode appendBytes:&tempcstring length:1];
-	return [NSString stringWithUTF8String:(const char*)[decode bytes]];
-}
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
