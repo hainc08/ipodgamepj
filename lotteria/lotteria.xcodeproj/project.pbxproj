@@ -406,6 +406,10 @@
 		84B4A431131008C100A7A99B /* MapBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A42F131008C100A7A99B /* MapBodyViewController.m */; };
 		84B4A45C13100BA700A7A99B /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B4A45913100BA700A7A99B /* DetailView.xib */; };
 		84B4A45D13100BA700A7A99B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A45B13100BA700A7A99B /* DetailViewController.m */; };
+		84EB00F31310CC8000AED472 /* LoginBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EB00F01310CC8000AED472 /* LoginBodyView.xib */; };
+		84EB00F41310CC8000AED472 /* LoginBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB00F21310CC8000AED472 /* LoginBodyViewController.m */; };
+		84EB01351310DDD700AED472 /* IconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB01331310DDD700AED472 /* IconButton.m */; };
+		84EB01361310DDD700AED472 /* IconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EB01341310DDD700AED472 /* IconButton.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -819,6 +823,12 @@
 		84B4A45913100BA700A7A99B /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
 		84B4A45A13100BA700A7A99B /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		84B4A45B13100BA700A7A99B /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		84EB00F01310CC8000AED472 /* LoginBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginBodyView.xib; sourceTree = "<group>"; };
+		84EB00F11310CC8000AED472 /* LoginBodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginBodyViewController.h; sourceTree = "<group>"; };
+		84EB00F21310CC8000AED472 /* LoginBodyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginBodyViewController.m; sourceTree = "<group>"; };
+		84EB01321310DDD700AED472 /* IconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconButton.h; sourceTree = "<group>"; };
+		84EB01331310DDD700AED472 /* IconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconButton.m; sourceTree = "<group>"; };
+		84EB01341310DDD700AED472 /* IconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButton.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* lotteria-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "lotteria-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1336,6 +1346,9 @@
 				84B4A45913100BA700A7A99B /* DetailView.xib */,
 				84B4A45A13100BA700A7A99B /* DetailViewController.h */,
 				84B4A45B13100BA700A7A99B /* DetailViewController.m */,
+				84EB01341310DDD700AED472 /* IconButton.xib */,
+				84EB01321310DDD700AED472 /* IconButton.h */,
+				84EB01331310DDD700AED472 /* IconButton.m */,
 			);
 			name = MainBody;
 			path = Classes/MainBody;
@@ -1358,6 +1371,9 @@
 				84B4A4271310089000A7A99B /* MypageBodyView.xib */,
 				84B4A4281310089000A7A99B /* MypageBodyViewController.h */,
 				84B4A4291310089000A7A99B /* MypageBodyViewController.m */,
+				84EB00F01310CC8000AED472 /* LoginBodyView.xib */,
+				84EB00F11310CC8000AED472 /* LoginBodyViewController.h */,
+				84EB00F21310CC8000AED472 /* LoginBodyViewController.m */,
 			);
 			name = MyPageBody;
 			path = Classes/MyPageBody;
@@ -1799,6 +1815,8 @@
 				84B4A42A1310089000A7A99B /* MypageBodyView.xib in Resources */,
 				84B4A430131008C100A7A99B /* MapBodyView.xib in Resources */,
 				84B4A45C13100BA700A7A99B /* DetailView.xib in Resources */,
+				84EB00F31310CC8000AED472 /* LoginBodyView.xib in Resources */,
+				84EB01361310DDD700AED472 /* IconButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1819,6 +1837,8 @@
 				84B4A42B1310089000A7A99B /* MypageBodyViewController.m in Sources */,
 				84B4A431131008C100A7A99B /* MapBodyViewController.m in Sources */,
 				84B4A45D13100BA700A7A99B /* DetailViewController.m in Sources */,
+				84EB00F41310CC8000AED472 /* LoginBodyViewController.m in Sources */,
+				84EB01351310DDD700AED472 /* IconButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
