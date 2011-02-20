@@ -7,13 +7,17 @@ typedef enum _ImgType
 	SMALL = 4
 } ImgType;
 
-@interface ShopItem : NSObject
+@interface CartItem : NSObject
 {
 	int productIdx;
+	int drinkIdx;
+	int dessertIdx;
 	int count;
 }
 
 @property (readwrite) int productIdx;
+@property (readwrite) int drinkIdx;
+@property (readwrite) int dessertIdx;
 @property (readwrite) int count;
 
 @end
@@ -60,8 +64,8 @@ typedef enum _ImgType
 - (void)reset;
 
 //-------------------장바구니 처리---------------------
-- (void)addShopItem:(ShopItem*)item;
-- (void)removeShopItem:(ShopItem*)item;
+- (void)addCartItem:(CartItem*)item;
+- (void)removeCartItem:(CartItem*)item;
 - (NSMutableArray*)getShopKart;
 
 //-------------------상품 정보 처리---------------------

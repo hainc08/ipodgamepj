@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 
 #import "MainBodyViewController.h"
-#import "KartBodyViewController.h"
+#import "CartBodyViewController.h"
 #import "MypageBodyViewController.h"
 #import "LoginBodyViewController.h"
 #import "MapBodyViewController.h"
@@ -25,6 +25,7 @@
 
 	[self.view addSubview:curView];
 	[self.view sendSubviewToBack:curView];
+	[self.view sendSubviewToBack:backImg];
 	
 	lastTag = 0;
 }
@@ -39,7 +40,7 @@
 			body = [[MainBodyViewController alloc] init];
 			break;
 		case 1:
-			body = [[KartBodyViewController alloc] init];
+			body = [[CartBodyViewController alloc] init];
 			break;
 		case 2:
 			if ([[DataManager getInstance] isLoginNow])
@@ -61,8 +62,8 @@
 
 	[self.view addSubview:curView];
 	[self.view sendSubviewToBack:curView];
+	[self.view sendSubviewToBack:backImg];
 
-	[self.view sendSubviewToBack:oldView];
 	[oldView removeFromSuperview];
 	
 	lastTag = [item tag];

@@ -4,9 +4,11 @@
 
 static DataManager *DataManagerInst;
 
-@implementation ShopItem
+@implementation CartItem
 
 @synthesize productIdx;
+@synthesize drinkIdx;
+@synthesize dessertIdx;
 @synthesize count;
 
 @end
@@ -89,12 +91,12 @@ static DataManager *DataManagerInst;
 }
 
 //-------------------장바구니 처리---------------------
-- (void)addShopItem:(ShopItem*)item
+- (void)addCartItem:(CartItem*)item
 {
 	[ShopKart addObject:item];
 }
 
-- (void)removeShopItem:(ShopItem*)item
+- (void)removeCartItem:(CartItem*)item
 {
 	[ShopKart removeObject:item];
 }

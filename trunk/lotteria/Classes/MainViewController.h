@@ -9,6 +9,7 @@
 @interface MainViewController : UIViewController {
 	int lastTag;
 	UIView* curView;
+	IBOutlet UIImageView* backImg;
 }
 
 @end
