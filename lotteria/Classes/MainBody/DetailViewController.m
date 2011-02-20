@@ -19,6 +19,8 @@
 
 - (void)showProduct:(int)idx
 {
+	pIdx[0] = idx;
+
 	[pImage setImage:[[DataManager getInstance] getProductImg:idx type:DETAIL]];
 	[nameImage setImage:[[DataManager getInstance] getProductImg:idx type:NAME]];
 	[descImage setImage:[[DataManager getInstance] getProductImg:idx type:DESC]];
@@ -39,10 +41,14 @@
 		[setBack setAlpha:1];
 
 		[optionView2 setAlpha:1];
-		[optionView1 setCenter:CGPointMake(160, 103)];
-		[addCartButton setCenter:CGPointMake(160, 230)];
+		[optionView1 setCenter:CGPointMake(160, 87)];
+		[addCartButton setCenter:CGPointMake(160, 214)];
 
-		[closeButton setCenter:CGPointMake(300, 80)];
+		[closeButton setCenter:CGPointMake(300, 63)];
+		
+		//기본 사이드를 설정하자.
+		pIdx[1] = 1;
+		pIdx[2] = 1;
 	}
 	else if (sender == singleButton)
 	{
@@ -56,15 +62,25 @@
 		[setBack setAlpha:0];
 
 		[optionView2 setAlpha:0];
-		[optionView1 setCenter:CGPointMake(160, 143)];
-		[addCartButton setCenter:CGPointMake(160, 200)];
+		[optionView1 setCenter:CGPointMake(160, 127)];
+		[addCartButton setCenter:CGPointMake(160, 184)];
 
-		[closeButton setCenter:CGPointMake(300, 107)];
+		[closeButton setCenter:CGPointMake(300, 90)];
+
+		//사이드가 없다.
+		pIdx[1] = -1;
+		pIdx[2] = -1;
 	}
 	else if (sender == addCartButton)
 	{
 		[selectView setAlpha:0];
-		//뭐 어찌어찌 처리하자...
+		
+		CartItem* item = [[CartItem alloc] init];
+		[item setCount:count];
+		[item setProductIdx:pIdx[0]];
+		[item setDrinkIdx:pIdx[1]];
+		[item setDessertIdx:pIdx[2]];
+		[[DataManager getInstance] addCartItem:item];
 	}
 	else if ((sender == incCount)||(sender == decCount))
 	{
@@ -76,7 +92,7 @@
 	else if (sender == closeButton)
 	{
 		[UIView beginAnimations:@"menuAni" context:NULL];
-		[UIView setAnimationDuration:0.1];
+		[UIView setAnimationDuration:0.2];
 		[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 		[selectView setAlpha:0];
 		[UIView commitAnimations];

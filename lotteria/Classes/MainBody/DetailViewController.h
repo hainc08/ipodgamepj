@@ -19,6 +19,8 @@
 	IBOutlet UIScrollView* contentScrollView;
 	
 	int count;
+	int pIdx[3];
+	
 	IBOutlet UILabel* countLabel;
 	IBOutlet UIButton* decCount;
 	IBOutlet UIButton* incCount;
