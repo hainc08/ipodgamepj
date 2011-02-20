@@ -8,7 +8,6 @@
 
 #import "lotteriaAppDelegate.h"
 #import "MainViewController.h"
-#import "DataManager.h"
 
 @implementation lotteriaAppDelegate
 

@@ -11,6 +11,7 @@
 #import "MainBodyViewController.h"
 #import "KartBodyViewController.h"
 #import "MypageBodyViewController.h"
+#import "LoginBodyViewController.h"
 #import "MapBodyViewController.h"
 
 @implementation MainViewController
@@ -41,7 +42,14 @@
 			body = [[KartBodyViewController alloc] init];
 			break;
 		case 2:
-			body = [[MypageBodyViewController alloc] init];
+			if ([[DataManager getInstance] isLoginNow])
+			{
+				body = [[MypageBodyViewController alloc] init];
+			}
+			else
+			{
+				body = [[LoginBodyViewController alloc] init];
+			}
 			break;
 		case 3:
 			body = [[MapBodyViewController alloc] init];
