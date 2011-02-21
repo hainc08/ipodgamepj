@@ -38,6 +38,45 @@
 
 - (IBAction)LoginButton 
 {
+	NSString *string = @" <NewDataSet> \
+	<item>\
+	<SI>서울특별시</SI>\
+	<GU>영등포구</GU>\
+	<ADONG>신길5동</ADONG>\
+	<LDONG>신길동</LDONG>\
+	<POI_NM>411-11</POI_NM>\
+	<POINT_X>303230.84375</POINT_X>\
+	<POINT_Y>544574.0625</POINT_Y>\
+	</item>\
+	<item>\
+	<SI>서울특별시</SI>\
+	<GU>영등포구</GU>\
+	<ADONG>신길1동</ADONG>\
+	<LDONG>신길동</LDONG>\
+	<POI_NM>산111-11</POI_NM>\
+	<POINT_X>304303.4375</POINT_X>\
+	<POINT_Y>545587.25</POINT_Y>\
+	</item>\
+	<item>\
+	<SI>서울특별시</SI>\
+	<GU>영등포구</GU>\
+	<ADONG>신길1동</ADONG>\
+	<LDONG>신길동</LDONG>\
+	<POI_NM>111-11</POI_NM>\
+	<POINT_X>304584.75</POINT_X>\
+	<POINT_Y>546160.5</POINT_Y>\
+	</item>\
+	</NewDataSet>";
+	NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+	
+	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+    parser.delegate = self;
+	    NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+    [parser parse];
+	    NSTimeInterval duration = [NSDate timeIntervalSinceReferenceDate] - start;
+    [parser release];
+	
+	
 	// Login 하자..
 /*	if([ID.text length] >  10 || [ID.text length] < 4 )
 	{
@@ -109,6 +148,41 @@
  {
 	 // 필요한 엑션이 있으면 넣자 ..
  }
+
+
+
+/*
+ <NewDataSet>
+ <item>
+ <SI>서울특별시</SI>
+ <GU>영등포구</GU>
+ <ADONG>신길5동</ADONG>
+ <LDONG>신길동</LDONG>
+ <POI_NM>411-11</POI_NM>
+ <POINT_X>303230.84375</POINT_X>
+ <POINT_Y>544574.0625</POINT_Y>
+ </item>
+ <item>
+ <SI>서울특별시</SI>
+ <GU>영등포구</GU>
+ <ADONG>신길1동</ADONG>
+ <LDONG>신길동</LDONG>
+ <POI_NM>산111-11</POI_NM>
+ <POINT_X>304303.4375</POINT_X>
+ <POINT_Y>545587.25</POINT_Y>
+ </item>
+ <item>
+ <SI>서울특별시</SI>
+ <GU>영등포구</GU>
+ <ADONG>신길1동</ADONG>
+ <LDONG>신길동</LDONG>
+ <POI_NM>111-11</POI_NM>
+ <POINT_X>304584.75</POINT_X>
+ <POINT_Y>546160.5</POINT_Y>
+ </item>
+ </NewDataSet>
+ */
+
 
 
 @end

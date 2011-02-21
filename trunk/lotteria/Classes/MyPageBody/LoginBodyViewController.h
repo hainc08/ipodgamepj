@@ -1,6 +1,0 @@
-
-@interface LoginBodyViewController : UIViewController {
-	
-}
-
-@end
