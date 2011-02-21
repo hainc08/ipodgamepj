@@ -10,7 +10,6 @@
 #import "HttpRequest.h"
 
 
-@protocol LoginViewDelegate;
 
 @interface LoginViewController : UIViewController {
 
@@ -21,18 +20,10 @@
 	IBOutlet UIButton		*Login;
 	
 	HTTPRequest				*Request;
-	id<LoginViewDelegate> delegate;
 }
 
 - (IBAction)LoginButton;
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 
 @property (nonatomic,retain) HTTPRequest *Request;
-@property (nonatomic,assign) id<LoginViewDelegate> delegate;
-@end
-
-
-@protocol LoginViewDelegate <NSObject>;
-@required 
--(void)returnLoginValue:(NSString *)LoginInfo;
 @end

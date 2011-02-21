@@ -1,17 +1,12 @@
-#import "LoginViewController.h"
 
-@class LoginViewController;
 
-@interface MypageBodyViewController : UIViewController <LoginViewDelegate> {
-	
-	LoginViewController	*Login;
+@interface MypageBodyViewController : UIViewController  {
+
 	
 	IBOutlet UIButton *OrderList;
 }
 
 - (IBAction)OrderListButton;
-
-@property (nonatomic,retain) LoginViewController	*Login;
 
 
 @end
