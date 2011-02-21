@@ -17,6 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	ID.returnKeyType = UIReturnKeyDone;
+	Password.returnKeyType = UIReturnKeyDone;
+	ID.delegate = self;
+	Password.delegate = self;
 	
 	ID.text =  [[DataManager getInstance] accountId];
 	Password.text =  [[DataManager getInstance] accountPass];
@@ -43,7 +47,7 @@
 	
 	
 	// Login 하자..
-/*	if([ID.text length] >  10 || [ID.text length] < 4 )
+	if([ID.text length] >  10 || [ID.text length] < 4 )
 	{
 		[self ShowOKAlert:@"Login Error" msg:@"Login ID 가 10자 이상입니다."];
 		return;
@@ -52,7 +56,7 @@
 	{
 		[self ShowOKAlert:@"Login Error" msg:@"Password 가 12자 이상입니다."];
 		return;
-	}*/
+	}
 	
 	[[DataManager getInstance] setAccountId:ID.text];
 	[[DataManager getInstance] setAccountPass:Password.text];
@@ -75,6 +79,15 @@
 	[httpRequest requestUrl:url bodyObject:bodyObject];
 
 }
+#pragma mark  -
+#pragma mark TextField
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	return YES;
+}
+
 
 #pragma mark -
 #pragma mark HttpRequestDelegate
