@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface CustomerDelivery : NSObject {
 	NSString *s_cust_id;
 	NSString *s_seq;
@@ -42,7 +43,8 @@
 
 @end
 
-@interface MyGetCustDelivery : UIViewController {
+
+@interface MyCustomerDelivery : UIViewController {
 	CustomerDelivery *Customer;
     NSMutableArray *ArrCustomer;
     BOOL Characters;

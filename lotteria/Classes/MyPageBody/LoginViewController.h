@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HttpRequest.h"
 
 
 
@@ -19,11 +18,9 @@
 	IBOutlet UIButton		*ID_Save;
 	IBOutlet UIButton		*Login;
 	
-	HTTPRequest				*Request;
 }
 
 - (IBAction)LoginButton;
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 
-@property (nonatomic,retain) HTTPRequest *Request;
 @end
