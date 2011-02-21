@@ -9,9 +9,11 @@
 #import "LoginViewController.h"
 #import "DataManager.h"
 #import "MypageBodyViewController.h"
+#import "HttpRequest.h"
+
+
 @implementation LoginViewController
 
-@synthesize Request;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,49 +34,12 @@
 
 
 - (void)dealloc {
-	[Request release];
     [super dealloc];
 }
 
 - (IBAction)LoginButton 
 {
-	NSString *string = @" <NewDataSet> \
-	<item>\
-	<SI>서울특별시</SI>\
-	<GU>영등포구</GU>\
-	<ADONG>신길5동</ADONG>\
-	<LDONG>신길동</LDONG>\
-	<POI_NM>411-11</POI_NM>\
-	<POINT_X>303230.84375</POINT_X>\
-	<POINT_Y>544574.0625</POINT_Y>\
-	</item>\
-	<item>\
-	<SI>서울특별시</SI>\
-	<GU>영등포구</GU>\
-	<ADONG>신길1동</ADONG>\
-	<LDONG>신길동</LDONG>\
-	<POI_NM>산111-11</POI_NM>\
-	<POINT_X>304303.4375</POINT_X>\
-	<POINT_Y>545587.25</POINT_Y>\
-	</item>\
-	<item>\
-	<SI>서울특별시</SI>\
-	<GU>영등포구</GU>\
-	<ADONG>신길1동</ADONG>\
-	<LDONG>신길동</LDONG>\
-	<POI_NM>111-11</POI_NM>\
-	<POINT_X>304584.75</POINT_X>\
-	<POINT_Y>546160.5</POINT_Y>\
-	</item>\
-	</NewDataSet>";
-	NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-	
-	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
-    parser.delegate = self;
-	    NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
-    [parser parse];
-	    NSTimeInterval duration = [NSDate timeIntervalSinceReferenceDate] - start;
-    [parser release];
+
 	
 	
 	// Login 하자..
@@ -88,6 +53,7 @@
 		[self ShowOKAlert:@"Login Error" msg:@"Password 가 12자 이상입니다."];
 		return;
 	}*/
+	
 	[[DataManager getInstance] setAccountId:ID.text];
 	[[DataManager getInstance] setAccountPass:Password.text];
 	// 접속할 주소 설정
@@ -119,14 +85,14 @@
 	// 로그인 성공하면 이뷰는 사라진다. 
 	// xml에서 로그인처리 
 	
-	if(![result compare:@"error"])
+	/*if(![result compare:@"error"])
 	{
 		[self ShowOKAlert:@"Login Error" msg:@"로그인에 실패 했습니다."];	
 	}
-	else {
+	else */{
 		
 		MypageBodyViewController *mypage = [[MypageBodyViewController alloc] initWithNibName:@"MypageBodyView" bundle:nil];
-		[self.view addSubview:mypage.view];
+		[self presentModalViewController:mypage animated:YES];
 		[mypage release];
 	}
 
@@ -149,39 +115,6 @@
 	 // 필요한 엑션이 있으면 넣자 ..
  }
 
-
-
-/*
- <NewDataSet>
- <item>
- <SI>서울특별시</SI>
- <GU>영등포구</GU>
- <ADONG>신길5동</ADONG>
- <LDONG>신길동</LDONG>
- <POI_NM>411-11</POI_NM>
- <POINT_X>303230.84375</POINT_X>
- <POINT_Y>544574.0625</POINT_Y>
- </item>
- <item>
- <SI>서울특별시</SI>
- <GU>영등포구</GU>
- <ADONG>신길1동</ADONG>
- <LDONG>신길동</LDONG>
- <POI_NM>산111-11</POI_NM>
- <POINT_X>304303.4375</POINT_X>
- <POINT_Y>545587.25</POINT_Y>
- </item>
- <item>
- <SI>서울특별시</SI>
- <GU>영등포구</GU>
- <ADONG>신길1동</ADONG>
- <LDONG>신길동</LDONG>
- <POI_NM>111-11</POI_NM>
- <POINT_X>304584.75</POINT_X>
- <POINT_Y>546160.5</POINT_Y>
- </item>
- </NewDataSet>
- */
 
 
 

@@ -1,4 +1,6 @@
 #import "MypageBodyViewController.h"
+#import "MyCustomerDelivery.h"
+
 
 @implementation MypageBodyViewController
 
@@ -21,7 +23,9 @@
 
 - (IBAction)OrderListButton
 {
-
+	MyCustomerDelivery *Coustomer = [[MyCustomerDelivery alloc] initWithNibName:@"MyCustomerDelivery" bundle:nil];
+	[self presentModalViewController:Coustomer animated:YES];
+	[Coustomer release];
 }
 
 @end

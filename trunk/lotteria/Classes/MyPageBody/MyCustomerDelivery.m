@@ -6,9 +6,8 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "MyGetCustDelivery.h"
-
-
+#import "MyCustomerDelivery.h"
+#import "HttpRequest.h"
 @implementation CustomerDelivery
 
 @synthesize s_cust_id,s_seq ,s_phone ,s_si , s_gu;
@@ -37,7 +36,7 @@
 
 
 
-@implementation MyGetCustDelivery
+@implementation MyCustomerDelivery
 
 @synthesize	Customer;
 @synthesize ArrCustomer;
@@ -54,12 +53,70 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+
+	NSString *string = @" <NewDataSet> \
+	<item>\
+	<SI>서울특별시</SI>\
+	<GU>영등포구</GU>\
+	<ADONG>신길5동</ADONG>\
+	<LDONG>신길동</LDONG>\
+	<POI_NM>411-11</POI_NM>\
+	<POINT_X>303230.84375</POINT_X>\
+	<POINT_Y>544574.0625</POINT_Y>\
+	</item>\
+	<item>\
+	<SI>서울특별시</SI>\
+	<GU>영등포구</GU>\
+	<ADONG>신길1동</ADONG>\
+	<LDONG>신길동</LDONG>\
+	<POI_NM>산111-11</POI_NM>\
+	<POINT_X>304303.4375</POINT_X>\
+	<POINT_Y>545587.25</POINT_Y>\
+	</item>\
+	<item>\
+	<SI>서울특별시</SI>\
+	<GU>영등포구</GU>\
+	<ADONG>신길1동</ADONG>\
+	<LDONG>신길동</LDONG>\
+	<POI_NM>111-11</POI_NM>\
+	<POINT_X>304584.75</POINT_X>\
+	<POINT_Y>546160.5</POINT_Y>\
+	</item>\
+	</NewDataSet>";
+	NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+	
+	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+	self.currentString = [NSMutableString string];
+	parser.delegate = self;
+	NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+	[parser parse];
+	NSTimeInterval duration = [NSDate timeIntervalSinceReferenceDate] - start;
+	[parser release];
+	
+/*
+
+	NSString *url = @"http://your.webpage.url";
+	
+	// HTTP Request 인스턴스 생성
+	HTTPRequest *httpRequest = [[HTTPRequest alloc] init];
+	
+	// POST로 전송할 데이터 설정
+	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
+								@"1234",@"cust_id",
+								@"12345", @"cust_passwd",
+								nil];
+	
+	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
+	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
+	
+	// 페이지 호출
+	[httpRequest requestUrl:url bodyObject:bodyObject];
+	*/
     [super viewDidLoad];
 }
-*/
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -86,6 +143,56 @@
 - (void)dealloc {
     [super dealloc];
 }
+
+
+#pragma mark -
+#pragma mark HttpRequestDelegate
+
+- (void)didReceiveFinished:(NSString *)result
+{
+	
+	// 로그인 성공하면 이뷰는 사라진다. 
+	// xml에서 로그인처리 
+	
+	if(![result compare:@"error"])
+	{
+		[self ShowOKAlert:@"Login Error" msg:@"로그인에 실패 했습니다."];	
+	}
+	else {
+		NSString *string = @"<NewDataSet>\
+		<item>\
+		<cust_id>seyogo</cust_id>\
+		<seq>1</seq>\
+		<phone>01029281740</phone>\
+		<si>서울특별시</si>\
+		<gu>영등포구</gu>\
+		<dong>여의도동</dong>\
+		<bunji/>\
+		<building>한양아파트</building>\
+		<addr_desc>1층 101호</addr_desc>\
+		<branch_id>99999999</branch_id>\
+		<cust_flag>2</cust_flag>\
+		<reg_date>20101227</reg_date>\
+		<reg_time>135000</reg_time>\
+		<upd_date/>\
+		<upd_time/>\
+		</item>\
+		</NewDataSet>";
+		NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+		
+		NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+		self.currentString = [NSMutableString string];
+		parser.delegate = self;
+	    NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+		[parser parse];
+	    NSTimeInterval duration = [NSDate timeIntervalSinceReferenceDate] - start;
+		[parser release];
+	}
+	
+	
+}
+
+
 
 /*
  
@@ -202,7 +309,8 @@ static NSString *s_updtime	= @"upd_time";
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-	if (Characters) [currentString appendString:string];
+	if (Characters) 
+		[currentString appendString:string];
 }
 
 /*
@@ -212,5 +320,24 @@ static NSString *s_updtime	= @"upd_time";
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     // Handle errors as appropriate for your application.
 }
+
+
+#pragma mark -
+#pragma mark AlertView
+- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message
+												   delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+	[alert show];
+	[alert release];
+}
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	// 필요한 엑션이 있으면 넣자 ..
+}
+
+
+
 
 @end
