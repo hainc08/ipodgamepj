@@ -7,16 +7,17 @@
 //
 
 #import "LoginViewController.h"
-
-
+#import "DataManager.h"
+#import "MypageBodyViewController.h"
 @implementation LoginViewController
 
-@synthesize delegate;
 @synthesize Request;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	ID.text =  [[DataManager getInstance] accountId];
+	Password.text =  [[DataManager getInstance] accountPass];
 
 }
 
@@ -38,7 +39,7 @@
 - (IBAction)LoginButton 
 {
 	// Login 하자..
-	if([ID.text length] >  10 || [ID.text length] < 4 )
+/*	if([ID.text length] >  10 || [ID.text length] < 4 )
 	{
 		[self ShowOKAlert:@"Login Error" msg:@"Login ID 가 10자 이상입니다."];
 		return;
@@ -47,8 +48,9 @@
 	{
 		[self ShowOKAlert:@"Login Error" msg:@"Password 가 12자 이상입니다."];
 		return;
-	}
-	
+	}*/
+	[[DataManager getInstance] setAccountId:ID.text];
+	[[DataManager getInstance] setAccountPass:Password.text];
 	// 접속할 주소 설정
 	NSString *url = @"http://your.webpage.url";
 	
@@ -76,8 +78,20 @@
 {
 	
 	// 로그인 성공하면 이뷰는 사라진다. 
-	[self.delegate returnLoginValue:@"LoginSuccess"];
-	[self.view removeFromSuperview];
+	// xml에서 로그인처리 
+	
+	if(![result compare:@"error"])
+	{
+		[self ShowOKAlert:@"Login Error" msg:@"로그인에 실패 했습니다."];	
+	}
+	else {
+		
+		MypageBodyViewController *mypage = [[MypageBodyViewController alloc] initWithNibName:@"MypageBodyView" bundle:nil];
+		[self.view addSubview:mypage.view];
+		[mypage release];
+	}
+
+	
 }
 
 

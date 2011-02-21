@@ -11,7 +11,7 @@
 #import "MainBodyViewController.h"
 #import "CartBodyViewController.h"
 #import "MypageBodyViewController.h"
-#import "LoginBodyViewController.h"
+#import "LoginViewController.h"
 #import "MapBodyViewController.h"
 
 @implementation MainViewController
@@ -49,7 +49,7 @@
 			}
 			else
 			{
-				body = [[LoginBodyViewController alloc] init];
+				body = [[LoginViewController alloc] init];
 			}
 			break;
 		case 3:
