@@ -72,7 +72,7 @@
 	 추가로 롯데리아가 ISP에 추가되면 해당 param 을 입력 해야서 앱을 실행시키자 .
 	 
 	 서버와의 통신도 추후에 협의에 따라 추가 하자.
-	 */
+	 */	
 	NSURL *appUrl = [NSURL URLWithString:@"ispmobile://param"];
 	BOOL installedApp = [[UIApplication sharedApplication] openURL:appUrl];
 	
