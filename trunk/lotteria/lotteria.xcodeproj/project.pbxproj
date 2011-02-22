@@ -17,6 +17,8 @@
 		56928BE61312BECB000700A9 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56928BE51312BECB000700A9 /* HttpRequest.m */; };
 		56928BEB1312BEEC000700A9 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56928BE91312BEEC000700A9 /* LoginView.xib */; };
 		56928BEC1312BEEC000700A9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56928BEA1312BEEC000700A9 /* LoginViewController.m */; };
+		56928C871312D787000700A9 /* MyCustomerDelivery.m in Sources */ = {isa = PBXBuildFile; fileRef = 56928C851312D787000700A9 /* MyCustomerDelivery.m */; };
+		56928C881312D787000700A9 /* MyCustomerDelivery.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56928C861312D787000700A9 /* MyCustomerDelivery.xib */; };
 		842C27D2130EB1590003BAD4 /* bg_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C2656130EB1590003BAD4 /* bg_bottom.png */; };
 		842C27D3130EB1590003BAD4 /* bg_btn_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C2657130EB1590003BAD4 /* bg_btn_box.png */; };
 		842C27D4130EB1590003BAD4 /* bg_burger_select_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C2658130EB1590003BAD4 /* bg_burger_select_box.png */; };
@@ -411,8 +413,6 @@
 		84B4A431131008C100A7A99B /* MapBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A42F131008C100A7A99B /* MapBodyViewController.m */; };
 		84B4A45C13100BA700A7A99B /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B4A45913100BA700A7A99B /* DetailView.xib */; };
 		84B4A45D13100BA700A7A99B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A45B13100BA700A7A99B /* DetailViewController.m */; };
-		84EB00F31310CC8000AED472 /* LoginBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EB00F01310CC8000AED472 /* LoginBodyView.xib */; };
-		84EB00F41310CC8000AED472 /* LoginBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB00F21310CC8000AED472 /* LoginBodyViewController.m */; };
 		84EB01351310DDD700AED472 /* IconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB01331310DDD700AED472 /* IconButton.m */; };
 		84EB01361310DDD700AED472 /* IconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EB01341310DDD700AED472 /* IconButton.xib */; };
 /* End PBXBuildFile section */
@@ -433,6 +433,9 @@
 		56928BE91312BEEC000700A9 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		56928BEA1312BEEC000700A9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		56928BED1312BF03000700A9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		56928C841312D787000700A9 /* MyCustomerDelivery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomerDelivery.h; sourceTree = "<group>"; };
+		56928C851312D787000700A9 /* MyCustomerDelivery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomerDelivery.m; sourceTree = "<group>"; };
+		56928C861312D787000700A9 /* MyCustomerDelivery.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCustomerDelivery.xib; sourceTree = "<group>"; };
 		842C2656130EB1590003BAD4 /* bg_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_bottom.png; sourceTree = "<group>"; };
 		842C2657130EB1590003BAD4 /* bg_btn_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_btn_box.png; sourceTree = "<group>"; };
 		842C2658130EB1590003BAD4 /* bg_burger_select_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_burger_select_box.png; sourceTree = "<group>"; };
@@ -836,9 +839,6 @@
 		84B4A45913100BA700A7A99B /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
 		84B4A45A13100BA700A7A99B /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		84B4A45B13100BA700A7A99B /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		84EB00F01310CC8000AED472 /* LoginBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginBodyView.xib; sourceTree = "<group>"; };
-		84EB00F11310CC8000AED472 /* LoginBodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginBodyViewController.h; sourceTree = "<group>"; };
-		84EB00F21310CC8000AED472 /* LoginBodyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginBodyViewController.m; sourceTree = "<group>"; };
 		84EB01321310DDD700AED472 /* IconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconButton.h; sourceTree = "<group>"; };
 		84EB01331310DDD700AED472 /* IconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconButton.m; sourceTree = "<group>"; };
 		84EB01341310DDD700AED472 /* IconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButton.xib; sourceTree = "<group>"; };
@@ -1392,9 +1392,9 @@
 				84B4A4271310089000A7A99B /* MypageBodyView.xib */,
 				84B4A4281310089000A7A99B /* MypageBodyViewController.h */,
 				84B4A4291310089000A7A99B /* MypageBodyViewController.m */,
-				84EB00F01310CC8000AED472 /* LoginBodyView.xib */,
-				84EB00F11310CC8000AED472 /* LoginBodyViewController.h */,
-				84EB00F21310CC8000AED472 /* LoginBodyViewController.m */,
+				56928C841312D787000700A9 /* MyCustomerDelivery.h */,
+				56928C851312D787000700A9 /* MyCustomerDelivery.m */,
+				56928C861312D787000700A9 /* MyCustomerDelivery.xib */,
 			);
 			name = MyPageBody;
 			path = Classes/MyPageBody;
@@ -1834,12 +1834,12 @@
 				84B4A42A1310089000A7A99B /* MypageBodyView.xib in Resources */,
 				84B4A430131008C100A7A99B /* MapBodyView.xib in Resources */,
 				84B4A45C13100BA700A7A99B /* DetailView.xib in Resources */,
-				84EB00F31310CC8000AED472 /* LoginBodyView.xib in Resources */,
 				84EB01361310DDD700AED472 /* IconButton.xib in Resources */,
 				84AA542513115FD5007CE392 /* CartBodyView.xib in Resources */,
 				84AA543B1311734E007CE392 /* CartListView.xib in Resources */,
 				84AA544D13118208007CE392 /* CartCellView.xib in Resources */,
 				56928BEB1312BEEC000700A9 /* LoginView.xib in Resources */,
+				56928C881312D787000700A9 /* MyCustomerDelivery.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1859,12 +1859,12 @@
 				84B4A42B1310089000A7A99B /* MypageBodyViewController.m in Sources */,
 				84B4A431131008C100A7A99B /* MapBodyViewController.m in Sources */,
 				84B4A45D13100BA700A7A99B /* DetailViewController.m in Sources */,
-				84EB00F41310CC8000AED472 /* LoginBodyViewController.m in Sources */,
 				84EB01351310DDD700AED472 /* IconButton.m in Sources */,
 				84AA542613115FD5007CE392 /* CartBodyViewController.m in Sources */,
 				84AA543C1311734E007CE392 /* CartListViewController.m in Sources */,
 				56928BE61312BECB000700A9 /* HttpRequest.m in Sources */,
 				56928BEC1312BEEC000700A9 /* LoginViewController.m in Sources */,
+				56928C871312D787000700A9 /* MyCustomerDelivery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
