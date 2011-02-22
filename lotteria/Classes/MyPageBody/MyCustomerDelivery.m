@@ -7,28 +7,30 @@
 //
 
 #import "MyCustomerDelivery.h"
+#import "UITableViewCellTemplate.h"
 #import "HttpRequest.h"
+#import "XmlParser.h"
 @implementation CustomerDelivery
 
-@synthesize s_cust_id,s_seq ,s_phone ,s_si , s_gu;
-@synthesize s_dong,s_bunji ,s_building ,s_addrdesc ,s_branchid;
-@synthesize s_regdate, s_regtime, s_upddate, s_updtime;
+@synthesize custid,seq ,phone ,si , gu;
+@synthesize dong,bunji , building ,addrdesc ,branchid;
+@synthesize regdate, regtime, upddate, updtime;
 
 - (void)dealloc {
-    [s_cust_id release];
-    [s_seq release];
-    [s_phone release];
-    [s_si release];
-    [s_gu release];
-	[s_dong release];
-    [s_bunji release];
-    [s_building release];
-    [s_addrdesc release];
-    [s_branchid release];
-	[s_regdate release];
-    [s_regtime release];
-    [s_upddate release];
-    [s_updtime release];
+    [custid release];
+    [seq release];
+    [phone release];
+    [si release];
+    [gu release];
+	[dong release];
+    [bunji release];
+    [building release];
+    [addrdesc release];
+    [branchid release];
+	[regdate release];
+    [regtime release];
+    [upddate release];
+    [updtime release];
 	[super dealloc];
 }
 
@@ -38,10 +40,8 @@
 
 @implementation MyCustomerDelivery
 
-@synthesize	Customer;
-@synthesize ArrCustomer;
-@synthesize currentString;
-
+@synthesize CustomerArr;
+@synthesize CustomerTable;
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -55,45 +55,73 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	
+	CustomerArr = [[NSMutableArray alloc] init ];
 
-	NSString *string = @" <NewDataSet> \
+	
+	NSString *string = @"<NewDataSet>\
 	<item>\
-	<SI>서울특별시</SI>\
-	<GU>영등포구</GU>\
-	<ADONG>신길5동</ADONG>\
-	<LDONG>신길동</LDONG>\
-	<POI_NM>411-11</POI_NM>\
-	<POINT_X>303230.84375</POINT_X>\
-	<POINT_Y>544574.0625</POINT_Y>\
+	<cust_id>seyogo</cust_id>\
+	<seq>1</seq>\
+	<phone>01029281740</phone>\
+	<si>서울특별시</si>\
+	<gu>영등포구</gu>\
+	<dong>여의도동</dong>\
+	<bunji/>\
+	<building>한양아파트</building>\
+	<addr_desc>1층 101호</addr_desc>\
+	<branch_id>99999999</branch_id>\
+	<cust_flag>2</cust_flag>\
+	<reg_date>20101227</reg_date>\
+	<reg_time>135000</reg_time>\
+	<upd_date/>\
+	<upd_time/>\
 	</item>\
 	<item>\
-	<SI>서울특별시</SI>\
-	<GU>영등포구</GU>\
-	<ADONG>신길1동</ADONG>\
-	<LDONG>신길동</LDONG>\
-	<POI_NM>산111-11</POI_NM>\
-	<POINT_X>304303.4375</POINT_X>\
-	<POINT_Y>545587.25</POINT_Y>\
-	</item>\
-	<item>\
-	<SI>서울특별시</SI>\
-	<GU>영등포구</GU>\
-	<ADONG>신길1동</ADONG>\
-	<LDONG>신길동</LDONG>\
-	<POI_NM>111-11</POI_NM>\
-	<POINT_X>304584.75</POINT_X>\
-	<POINT_Y>546160.5</POINT_Y>\
+	<cust_id>seyogo</cust_id>\
+	<seq>1</seq>\
+	<phone>01029281740</phone>\
+	<si>서울특별시</si>\
+	<gu>영등포구</gu>\
+	<dong>여의도동</dong>\
+	<bunji/>\
+	<building>한양아파트</building>\
+	<addr_desc>1층 101호</addr_desc>\
+	<branch_id>99999999</branch_id>\
+	<cust_flag>2</cust_flag>\
+	<reg_date>20101227</reg_date>\
+	<reg_time>135000</reg_time>\
+	<upd_date/>\
+	<upd_time/>\
 	</item>\
 	</NewDataSet>";
-	NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
 	
-	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
-	self.currentString = [NSMutableString string];
-	parser.delegate = self;
-	NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
-	[parser parse];
-	NSTimeInterval duration = [NSDate timeIntervalSinceReferenceDate] - start;
-	[parser release];
+	
+	XmlParser* xmlParser = [XmlParser alloc];
+	[xmlParser parserString:string];
+	Element* root = [xmlParser getRoot:@"NewDataSet"];
+	
+	for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
+	{
+		
+		CustomerDelivery *Customer  = [[[CustomerDelivery alloc] init] retain];
+		[Customer setCustid:[[t_item getChild:@"cust_id"] getValue]];
+		[Customer setSeq:[[t_item getChild:@"seq"] getValue]];
+		[Customer setPhone:[[t_item getChild:@"phone"] getValue]];
+		[Customer setSi:[[t_item getChild:@"si"] getValue]];
+		[Customer setGu:[[t_item getChild:@"gu"] getValue]];
+		[Customer setDong:[[t_item getChild:@"dong"] getValue]];
+		[Customer setBunji:[[t_item getChild:@"bunji"] getValue]];
+		[Customer setBuilding:[[t_item getChild:@"building"] getValue]];
+		[Customer setAddrdesc:[[t_item getChild:@"addr_desc"] getValue]];
+		[Customer setBranchid:[[t_item getChild:@"branch_id"] getValue]];
+		[Customer setRegdate:[[t_item getChild:@"reg_date"] getValue]];
+		[Customer setRegtime:[[t_item getChild:@"reg_time"] getValue]];
+		[Customer setUpddate:[[t_item getChild:@"upd_date"] getValue]];
+		[Customer setUpdtime:[[t_item getChild:@"upd_time"] getValue]];
+		
+		[CustomerArr  addObject:Customer];
+	}
 	
 /*
 
@@ -143,183 +171,87 @@
 - (void)dealloc {
     [super dealloc];
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[CustomerTable reloadData];	
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+}
 
 
 #pragma mark -
 #pragma mark HttpRequestDelegate
 
+/*
+ 
+ <NewDataSet>
+ <item>
+ <cust_id>seyogo</cust_id>
+ <seq>1</seq>
+ <phone>01029281740</phone>
+ <si>서울특별시</si>
+ <gu>영등포구</gu>
+ <dong>여의도동</dong>
+ <bunji/>
+ <building>한양아파트</building>
+ <addr_desc>1층 101호</addr_desc>
+ <branch_id>99999999</branch_id>
+ <cust_flag>2</cust_flag>
+ <reg_date>20101227</reg_date>
+ <reg_time>135000</reg_time>
+ <upd_date/>
+ <upd_time/>
+ </item>
+ </NewDataSet>
+ */
 - (void)didReceiveFinished:(NSString *)result
 {
-	
-	// 로그인 성공하면 이뷰는 사라진다. 
-	// xml에서 로그인처리 
+
 	
 	if(![result compare:@"error"])
 	{
-		[self ShowOKAlert:@"Login Error" msg:@"로그인에 실패 했습니다."];	
+		[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
 	}
 	else {
-		NSString *string = @"<NewDataSet>\
-		<item>\
-		<cust_id>seyogo</cust_id>\
-		<seq>1</seq>\
-		<phone>01029281740</phone>\
-		<si>서울특별시</si>\
-		<gu>영등포구</gu>\
-		<dong>여의도동</dong>\
-		<bunji/>\
-		<building>한양아파트</building>\
-		<addr_desc>1층 101호</addr_desc>\
-		<branch_id>99999999</branch_id>\
-		<cust_flag>2</cust_flag>\
-		<reg_date>20101227</reg_date>\
-		<reg_time>135000</reg_time>\
-		<upd_date/>\
-		<upd_time/>\
-		</item>\
-		</NewDataSet>";
-		NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+		XmlParser* xmlParser = [XmlParser alloc];
+		[xmlParser parserString:result];
+	
+
 		
-		NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
-		self.currentString = [NSMutableString string];
-		parser.delegate = self;
-	    NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
-		[parser parse];
-	    NSTimeInterval duration = [NSDate timeIntervalSinceReferenceDate] - start;
-		[parser release];
-	}
-	
-	
-}
+		Element* root = [xmlParser getRoot:@"NewDataSet"];
 
-
-
-/*
- 
-<NewDataSet>
- <item>
-	<cust_id>seyogo</cust_id>
-	<seq>1</seq>
-	<phone>01029281740</phone>
-	<si>서울특별시</si>
-	<gu>영등포구</gu>
-	<dong>여의도동</dong>
-	<bunji/>
-	<building>한양아파트</building>
-	<addr_desc>1층 101호</addr_desc>
-	<branch_id>99999999</branch_id>
-	<cust_flag>2</cust_flag>
-	<reg_date>20101227</reg_date>
-	<reg_time>135000</reg_time>
-	<upd_date/>
-	<upd_time/>
- </item>
-</NewDataSet>
- */
-
-- (void)LastGetCust {
-	[ArrCustomer addObject:Customer];
-	Customer=nil;
-}
-
-#pragma mark NSXMLParser Parsing Callbacks
-
-// Constants for the XML element names that will be considered during the parse. 
-// Declaring these as static constants reduces the number of objects created during the run
-// and is less prone to programmer error.
-static NSString *s_item = @"item";
-static NSString *s_cust_id	= @"cust_id";
-static NSString *s_seq		= @"seq";
-static NSString *s_phone	= @"phone";
-static NSString *s_si		= @"si";
-static NSString *s_gu		= @"gu";
-static NSString *s_dong		= @"dong";
-static NSString *s_bunji	= @"bunji";
-static NSString *s_building	= @"building";
-static NSString *s_addrdesc	= @"addr_desc";
-static NSString *s_branchid	= @"branch_id";
-static NSString *s_regdate	= @"reg_date";
-static NSString *s_regtime	= @"reg_time";
-static NSString *s_upddate	= @"upd_date";
-static NSString *s_updtime	= @"upd_time";
-
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *) qualifiedName attributes:(NSDictionary *)attributeDict {
-	
-	if ([elementName isEqualToString:s_item] )
-	{
-		Customer = nil;
-		self.Customer = [[[CustomerDelivery alloc] init] autorelease];
-	}
-	else {
+		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
+		{
+			
+			CustomerDelivery *Customer  = [[[CustomerDelivery alloc] init] retain];
+			[Customer setCustid:[[t_item getChild:@"cust_id"] getValue]];
+			[Customer setSeq:[[t_item getChild:@"seq"] getValue]];
+			[Customer setPhone:[[t_item getChild:@"phone"] getValue]];
+			[Customer setSi:[[t_item getChild:@"si"] getValue]];
+			[Customer setGu:[[t_item getChild:@"gu"] getValue]];
+			[Customer setDong:[[t_item getChild:@"dong"] getValue]];
+			[Customer setBunji:[[t_item getChild:@"bunji"] getValue]];
+			[Customer setBuilding:[[t_item getChild:@"building"] getValue]];
+			[Customer setAddrdesc:[[t_item getChild:@"addr_desc"] getValue]];
+			[Customer setBranchid:[[t_item getChild:@"branch_id"] getValue]];
+			[Customer setRegdate:[[t_item getChild:@"reg_date"] getValue]];
+			[Customer setRegtime:[[t_item getChild:@"reg_time"] getValue]];
+			[Customer setUpddate:[[t_item getChild:@"upd_date"] getValue]];
+			[Customer setUpdtime:[[t_item getChild:@"upd_time"] getValue]];
+			
+			[CustomerArr  addObject:Customer];
+		}
 		
-		Characters = YES;
-		[currentString  setString:@""];
+		[xmlParser release];
+		[CustomerTable reloadData];	
 	}
-
 }
 
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-	if ([elementName isEqualToString:s_item]) {
-        [self LastGetCust];
-	}
-	else if ([elementName isEqualToString:s_cust_id]) {
-		self.Customer.s_cust_id =  currentString;
-	}
-	else if ([elementName isEqualToString:s_seq]) {
-		self.Customer.s_seq =  currentString;
-	}
-	else if ([elementName isEqualToString:s_phone]) {
-		self.Customer.s_phone =  currentString;
-	}
-	else if ([elementName isEqualToString:s_si]) {
-		self.Customer.s_si =  currentString;
-	}
-	else if ([elementName isEqualToString:s_gu]) {
-		self.Customer.s_gu =  currentString;
-	}	
-	else if ([elementName isEqualToString:s_dong]) {
-		self.Customer.s_dong =  currentString;
-	}
-	else if ([elementName isEqualToString:s_bunji]) {
-		self.Customer.s_bunji =  currentString;
-	}
-	else if ([elementName isEqualToString:s_building]) {
-		self.Customer.s_building =  currentString;
-	}
-	else if ([elementName isEqualToString:s_addrdesc]) {
-		self.Customer.s_addrdesc =  currentString;
-	}
-	else if ([elementName isEqualToString:s_branchid]) {
-		self.Customer.s_branchid =  currentString;
-	}	
-	else if ([elementName isEqualToString:s_regdate]) {
-		self.Customer.s_regdate =  currentString;
-	}
-	else if ([elementName isEqualToString:s_regtime]) {
-		self.Customer.s_regtime =  currentString;
-	}
-	else if ([elementName isEqualToString:s_upddate]) {
-		self.Customer.s_upddate =  currentString;
-	}
-	else if ([elementName isEqualToString:s_updtime]) {
-		self.Customer.s_updtime =  currentString;
-	}
-	
-	Characters = NO;
-}
 
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-	if (Characters) 
-		[currentString appendString:string];
-}
-
-/*
- A production application should include robust error handling as part of its parsing implementation.
- The specifics of how errors are handled depends on the application.
- */
-- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    // Handle errors as appropriate for your application.
-}
 
 
 #pragma mark -
@@ -337,7 +269,53 @@ static NSString *s_updtime	= @"upd_time";
 	// 필요한 엑션이 있으면 넣자 ..
 }
 
+#pragma mark -
+#pragma mark TableView
 
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+	static NSString *CellIdentifier = @"OldOrderCell";
+	
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	
+	if (cell == nil)
+	{
+		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier 
+													 owner:self options:nil];
+		for (id oneObject in nib)
+		{
+			if ([oneObject isKindOfClass:[OldOrderCell class]])
+			{
+				cell = oneObject;
+				break;
+			}
+		}
+		
+	}
+	OldOrderCell *tmp_cell = (OldOrderCell *)cell;
+	CustomerDelivery  *tmp = [CustomerArr objectAtIndex:indexPath.row];
+	[tmp_cell setInfo:[tmp seq] :[tmp regdate ] :[tmp branchid]];
+	return cell;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return 70;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return [CustomerArr count];
+}
 
 
 @end

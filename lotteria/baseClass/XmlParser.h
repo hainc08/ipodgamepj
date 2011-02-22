@@ -6,6 +6,8 @@
 {
 	NSString* name;
 	Element* parent;
+	
+	NSString *value;
 	NSDictionary* attribute;
 	NSMutableArray* childs;
 	
@@ -15,6 +17,7 @@
 @property (retain) NSString* name;
 @property (retain) Element* parent;
 @property (retain) NSDictionary* attribute;
+@property (retain) NSString *value;
 
 - (void)addChild:(Element*)ele;
 - (Element*)getChild:(NSString*)str;
@@ -23,6 +26,7 @@
 - (int)childCount;
 
 - (NSString*)getAttribute:(NSString*)str;
+- (NSString*)getValue;
 
 @end
 
@@ -36,6 +40,7 @@
 
 - (void)parserBundleFile:(NSString*)fname;
 - (void)parserUrl:(NSString*)url;
+- (void)parserString:(NSString*)string;
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser;
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict;

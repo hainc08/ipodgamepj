@@ -7,6 +7,7 @@
 @synthesize name;
 @synthesize parent;
 @synthesize attribute;
+@synthesize value;
 
 - (id)init
 {
@@ -36,6 +37,7 @@
 	return nil;
 }
 
+
 - (Element*)getFirstChild
 {
 	curIdx = 0;
@@ -53,6 +55,10 @@
 {
 	curIdx = 0;
 	return [attribute objectForKey:str];
+}
+- (NSString*)getValue
+{
+	return value;
 }
 
 - (int)childCount
@@ -107,6 +113,16 @@
 	[parser release];
 }
 
+- (void)parserString:(NSString*)string
+{
+	NSData* tempData = [string dataUsingEncoding:NSUTF8StringEncoding];
+	NSXMLParser* parser = [[NSXMLParser alloc] initWithData:tempData];
+    [parser setDelegate:self];
+	
+    [parser parse];
+	[parser release];
+}
+
 - (Element*)getRoot:(NSString*)name
 {
 	return [root getChild:name];
@@ -136,6 +152,11 @@
 	[curElement addChild:ele];
 	curElement = ele;
 }
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+		[curElement setValue:string];
+}
+
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
