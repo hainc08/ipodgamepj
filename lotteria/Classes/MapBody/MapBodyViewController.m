@@ -2,6 +2,8 @@
 
 @implementation MapBodyViewController
 
+@synthesize mapView;
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 }
@@ -15,5 +17,8 @@
     [super dealloc];
 }
 
+-(void)setupMap
+{
+}
 
 @end
