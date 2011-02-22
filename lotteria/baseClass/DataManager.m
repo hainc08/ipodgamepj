@@ -1,5 +1,6 @@
 #import "DataManager.h"
 #import "FileIO.h"
+#import "XmlParser.h"
 #import <sys/time.h>
 
 static DataManager *DataManagerInst;
@@ -109,40 +110,28 @@ static DataManager *DataManagerInst;
 //-------------------상품 정보 처리---------------------
 - (void)loadProduct
 {
-	//product.txt에 상품 정보를 읽자!!!
+	XmlParser* xmlParser = [XmlParser alloc];
+	[xmlParser parserBundleFile:@"product.xml"];
+
+	//product.xml에 상품 정보를 읽자!!!
 	//여기서는 로딩시간 단축을 위해서 ansi C 함수를 이용해서 읽는다.
 	productMap = [[NSMutableDictionary alloc] init];
 	
-	//일단 테스트를 위해서 몇개만 수작업 추가
-	ProductData* data[7];
+	Element* root = [xmlParser getRoot:@"Products"];
+	Element* product = [root getFirstChild];
 
-	for (int i=0; i<7; ++i)
+	while (product)
 	{
-		data[i] = [[[ProductData alloc] init] retain];
-		[data[i] setProductIdx:i];
-		[productMap setObject:data[i] forKey:[NSString stringWithFormat:@"%d", data[i].productIdx]];
+		ProductData* data = [[[ProductData alloc] init] retain];
+
+		[data setProductIdx:[[product getAttribute:@"id"] intValue]];
+		[data setName:[product getAttribute:@"name"]];
+		[data setProductKey:[product getAttribute:@"key"]];
+
+		[productMap setObject:data forKey:[product getAttribute:@"id"]];
+		
+		product = [root getNextChild];
 	}
-
-	[data[0] setName:@"불갈비버거"];
-	[data[0] setProductKey:@"bgb"];
-
-	[data[1] setName:@"불새버거"];
-	[data[1] setProductKey:@"bsb"];
-
-	[data[2] setName:@"치킨버거"];
-	[data[2] setProductKey:@"cb"];
-
-	[data[3] setName:@"치즈버거"];
-	[data[3] setProductKey:@"ch"];
-
-	[data[4] setName:@"유러피안프리코치즈버거"];
-	[data[4] setProductKey:@"ecb"];
-	
-	[data[5] setName:@"자이안트더블버거"];
-	[data[5] setProductKey:@"gdb"];
-	
-	[data[6] setName:@"한우불고기버거"];
-	[data[6] setProductKey:@"hbb"];
 }
 
 - (ProductData*)getProduct:(int)idx

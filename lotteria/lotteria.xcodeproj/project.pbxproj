@@ -399,6 +399,8 @@
 		842C294C130EB1590003BAD4 /* tit_cart_prd_05.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C27D1130EB1590003BAD4 /* tit_cart_prd_05.png */; };
 		84384256130F862200EE2887 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84384255130F862200EE2887 /* DataManager.m */; };
 		84774392130F8F2100FB2532 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 84774391130F8F2100FB2532 /* FileIO.m */; };
+		848B04AD1313864E00A1C50E /* XmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 848B04AC1313864E00A1C50E /* XmlParser.m */; };
+		848B6F67131382DF000E3272 /* product.xml in Resources */ = {isa = PBXBuildFile; fileRef = 848B6F66131382DF000E3272 /* product.xml */; };
 		84AA542513115FD5007CE392 /* CartBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AA542213115FD5007CE392 /* CartBodyView.xib */; };
 		84AA542613115FD5007CE392 /* CartBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA542413115FD5007CE392 /* CartBodyViewController.m */; };
 		84AA543B1311734E007CE392 /* CartListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AA54381311734E007CE392 /* CartListView.xib */; };
@@ -819,6 +821,9 @@
 		84384255130F862200EE2887 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		84774390130F8F2100FB2532 /* FileIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileIO.h; sourceTree = "<group>"; };
 		84774391130F8F2100FB2532 /* FileIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileIO.m; sourceTree = "<group>"; };
+		848B04AB1313864E00A1C50E /* XmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlParser.h; sourceTree = "<group>"; };
+		848B04AC1313864E00A1C50E /* XmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XmlParser.m; sourceTree = "<group>"; };
+		848B6F66131382DF000E3272 /* product.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = product.xml; path = DownloadData/product.xml; sourceTree = "<group>"; };
 		84AA542213115FD5007CE392 /* CartBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartBodyView.xib; sourceTree = "<group>"; };
 		84AA542313115FD5007CE392 /* CartBodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartBodyViewController.h; sourceTree = "<group>"; };
 		84AA542413115FD5007CE392 /* CartBodyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartBodyViewController.m; sourceTree = "<group>"; };
@@ -883,6 +888,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				848B6F61131382BA000E3272 /* DownloadData */,
 				84384253130F862200EE2887 /* baseClass */,
 				84B4A35D130FFF1500A7A99B /* Main View */,
 				080E96DDFE201D6D7F000001 /* Application Delegate */,
@@ -1327,8 +1333,18 @@
 				84774391130F8F2100FB2532 /* FileIO.m */,
 				84384254130F862200EE2887 /* DataManager.h */,
 				84384255130F862200EE2887 /* DataManager.m */,
+				848B04AB1313864E00A1C50E /* XmlParser.h */,
+				848B04AC1313864E00A1C50E /* XmlParser.m */,
 			);
 			path = baseClass;
+			sourceTree = "<group>";
+		};
+		848B6F61131382BA000E3272 /* DownloadData */ = {
+			isa = PBXGroup;
+			children = (
+				848B6F66131382DF000E3272 /* product.xml */,
+			);
+			name = DownloadData;
 			sourceTree = "<group>";
 		};
 		84AA542113115FD5007CE392 /* CartBody */ = {
@@ -1844,6 +1860,7 @@
 				84AA544D13118208007CE392 /* CartCellView.xib in Resources */,
 				56928BEB1312BEEC000700A9 /* LoginView.xib in Resources */,
 				56928C881312D787000700A9 /* MyCustomerDelivery.xib in Resources */,
+				848B6F67131382DF000E3272 /* product.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1869,6 +1886,7 @@
 				56928BE61312BECB000700A9 /* HttpRequest.m in Sources */,
 				56928BEC1312BEEC000700A9 /* LoginViewController.m in Sources */,
 				56928C871312D787000700A9 /* MyCustomerDelivery.m in Sources */,
+				848B04AD1313864E00A1C50E /* XmlParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
