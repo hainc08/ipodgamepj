@@ -10,7 +10,7 @@
 
 
 
-@interface LoginViewController : UIViewController {
+@interface LoginViewController : UIViewController<UITextFieldDelegate> {
 
 	IBOutlet UITextField	*ID;
 	IBOutlet UITextField	*Password;

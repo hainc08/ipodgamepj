@@ -1,9 +1,110 @@
 <Products>
-    <burger id="0" name="불갈비버거" key="bgb"/>
-    <burger id="1" name="불새버거" key="bsb"/>
-    <burger id="2" name="치킨버거" key="cb"/>
-    <burger id="3" name="치즈버거" key="ch"/>
-    <burger id="4" name="유러피안프리코치즈버거" key="ecb"/>
-    <burger id="5" name="자이안트더블버거" key="gdb"/>
-    <burger id="6" name="한우불고기버거" key="hbb"/>
+
+    <product menu_id="200199" CATE_ID="S10"	menu_nm="불새버거세트" price="5200" ori_menu_id="LB0004" use_flag="Y"/>
+    <product menu_id="200235" CATE_ID="S10"	menu_nm="한우스테이크세트" price="5900" ori_menu_id="LB0002" use_flag="Y"/>
+    <product menu_id="200237" CATE_ID="S10"	menu_nm="데리세트" price="4000" ori_menu_id="LB0016" use_flag="Y"/>
+    <product menu_id="200241" CATE_ID="S10"	menu_nm="치킨버거세트" price="4600" ori_menu_id="LB0014" use_flag="Y"/>
+    <product menu_id="200248" CATE_ID="S10"	menu_nm="새우버거세트" price="4800" ori_menu_id="LB0012" use_flag="Y"/>
+    <product menu_id="200253" CATE_ID="S10"	menu_nm="불고기세트" price="4800" ori_menu_id="LB0010" use_flag="Y"/>
+    <product menu_id="200260" CATE_ID="S10"	menu_nm="불갈비버거세트" price="5100" ori_menu_id="LB0009" use_flag="Y"/>
+    <product menu_id="200264" CATE_ID="S10"	menu_nm="치즈버거세트" price="4000" ori_menu_id="LB0017" use_flag="Y"/>
+    <product menu_id="200280" CATE_ID="S10"	menu_nm="유러피안프리코치즈버거셋5800" price="5800" ori_menu_id="LB0005" use_flag="Y"/>
+    <product menu_id="200305" CATE_ID="S10"	menu_nm="신리브세트" price="4600" ori_menu_id="LB0011" use_flag="Y"/>
+    <product menu_id="200326" CATE_ID="S10"	menu_nm="텐더그릴치킨버거세트" price="5500" ori_menu_id="LB0006" use_flag="Y"/>
+    <product menu_id="200369" CATE_ID="S10"	menu_nm="불고기장난감세트" price="5000" ori_menu_id="LB0010" use_flag="Y"/>
+    <product menu_id="200370" CATE_ID="S10"	menu_nm="데리장난감세트" price="4200" ori_menu_id="LB0016" use_flag="Y"/>
+    <product menu_id="200372" CATE_ID="S10"	menu_nm="오징어버거세트" price="4000" ori_menu_id="LB0013" use_flag="Y"/>
+    <product menu_id="200383" CATE_ID="S10"	menu_nm="한우불고기세트" price="7000" ori_menu_id="LB0001" use_flag="Y"/>
+    <product menu_id="201101" CATE_ID="S10"	menu_nm="야채라이스불고기세트" price="5500" ori_menu_id="LB0008" use_flag="Y"/>
+    <product menu_id="201103" CATE_ID="S10"	menu_nm="RED n WHITE 버거세트" price="5500" ori_menu_id="LB0003" use_flag="Y"/>
+    <product menu_id="210652" CATE_ID="S10"	menu_nm="한우레이디세트" price="6000" ori_menu_id="LB0021" use_flag="Y"/>
+
+    <product menu_id="200266" CATE_ID="S11"	menu_nm="한우불고기콤보(신)" price="6200" ori_menu_id="LB0001" use_flag="Y"/>
+
+    <product menu_id="200504" CATE_ID="S30"	menu_nm="세트포테이토" price="0" use_flag="Y"/>
+    <product menu_id="200505" CATE_ID="S30"	menu_nm="선택콘샐러드" price="200" use_flag="Y"/>
+    <product menu_id="200509" CATE_ID="S30"	menu_nm="선택 치킨1조각" price="700" use_flag="Y"/>
+    <product menu_id="200513" CATE_ID="S30"	menu_nm="선택 내츄럴 치즈스틱" price="300" use_flag="Y"/>
+    <product menu_id="200807" CATE_ID="S40"	menu_nm="세트콜라(R)" price="0" use_flag="Y"/>
+    <product menu_id="200808" CATE_ID="S40"	menu_nm="선택사이다(R)" price="0" use_flag="Y"/>
+    <product menu_id="200810" CATE_ID="S40"	menu_nm="선택오렌지(R)" price="100" use_flag="Y"/>
+    <product menu_id="200813" CATE_ID="S40"	menu_nm="선택 아이스티" price="100" use_flag="Y"/>
+    <product menu_id="200846" CATE_ID="S40"	menu_nm="선택아메리카노(신)" price="400" use_flag="Y"/>
+    <product menu_id="200847" CATE_ID="S40"	menu_nm="선택아이스아메리카노(신)" price="400" use_flag="Y"/>
+    <product menu_id="200848" CATE_ID="S40"	menu_nm="선택카페라테(신)" price="900" use_flag="Y"/>
+    <product menu_id="200849" CATE_ID="S40"	menu_nm="선택아이스카페라떼(신)" price="900" use_flag="Y"/>
+    <product menu_id="200872" CATE_ID="S40"	menu_nm="선택포도주스" price="100" use_flag="Y"/>
+    <product menu_id="200937" CATE_ID="S40"	menu_nm="선택 레모네이드" price="400" use_flag="Y"/>
+    <product menu_id="201014" CATE_ID="S30"	menu_nm="선택오징어링" price="200" use_flag="Y"/>
+    <product menu_id="201015" CATE_ID="S30"	menu_nm="선택양념감자" price="300" use_flag="Y"/>
+    <product menu_id="201017" CATE_ID="S30"	menu_nm="선택 크런치새우" price="300" use_flag="Y"/>
+    <product menu_id="201081" CATE_ID="S30"	menu_nm="선택고구마치즈볼" price="300" use_flag="Y"/>
+    <product menu_id="202872" CATE_ID="S40"	menu_nm="선택 자몽에이드" price="900" use_flag="Y"/>
+    <product menu_id="202873" CATE_ID="S40"	menu_nm="선택 파인애플에이드" price="900" use_flag="Y"/>
+    <product menu_id="202874" CATE_ID="S40"	menu_nm="선택 사과주스" price="400" use_flag="Y"/>
+
+    <product menu_id="200419" CATE_ID="D50"	menu_nm="한우연인팩" price="11000" use_flag="Y"/>
+    <product menu_id="200420" CATE_ID="D50"	menu_nm="한우더블팩" price="13500" use_flag="Y"/>
+    <product menu_id="200470" CATE_ID="D50"	menu_nm="치킨패밀리팩" price="12000" use_flag="Y"/>
+    <product menu_id="200471" CATE_ID="D50"	menu_nm="치킨풀팩" price="17000" use_flag="Y"/>
+    <product menu_id="200473" CATE_ID="D50"	menu_nm="치킨하프팩" price="8500" use_flag="Y"/>
+    <product menu_id="200786" CATE_ID="D50"	menu_nm="순살치킨하프팩" price="8000" use_flag="Y"/>
+    <product menu_id="200787" CATE_ID="D50"	menu_nm="순살치킨풀팩" price="15000" use_flag="Y"/>
+    <product menu_id="210470" CATE_ID="D50"	menu_nm="HOME 연인팩" price="11700" use_flag="Y"/>
+    <product menu_id="210471" CATE_ID="D50"	menu_nm="HOME 실속팩" price="15800" use_flag="Y"/>
+    <product menu_id="210472" CATE_ID="D50"	menu_nm="HOME 가족팩" price="22900" use_flag="Y"/>
+
+    <product menu_id="LB0001" CATE_ID="D10"	menu_nm="한우불고기버거" price="5300" use_flag="Y"/>
+    <product menu_id="LB0002" CATE_ID="D10"	menu_nm="한우스테이크" price="4500" use_flag="Y"/>
+    <product menu_id="LB0003" CATE_ID="D10"	menu_nm="RED n WHITE 버거" price="3700" use_flag="Y"/>
+    <product menu_id="LB0004" CATE_ID="D10"	menu_nm="불새버거" price="3500" use_flag="Y"/>
+    <product menu_id="LB0005" CATE_ID="D10"	menu_nm="유러피안프리코치즈버거4200" price="4200" use_flag="Y"/>
+    <product menu_id="LB0006" CATE_ID="D10"	menu_nm="텐더그릴치킨버거" price="3700" use_flag="Y"/>
+    <product menu_id="LB0007" CATE_ID="D10"	menu_nm="자이언트더블버거" price="3500" use_flag="Y"/>
+    <product menu_id="LB0008" CATE_ID="D10"	menu_nm="야채라이스불고기" price="3700" use_flag="Y"/>
+    <product menu_id="LB0009" CATE_ID="D10"	menu_nm="불갈비버거" price="3300" use_flag="Y"/>
+    <product menu_id="LB0010" CATE_ID="D10"	menu_nm="불고기버거" price="3000" use_flag="Y"/>
+    <product menu_id="LB0011" CATE_ID="D10"	menu_nm="신리브샌드" price="2800" use_flag="Y"/>
+    <product menu_id="LB0012" CATE_ID="D10"	menu_nm="새우햄버거" price="3000" use_flag="Y"/>
+    <product menu_id="LB0013" CATE_ID="D10"	menu_nm="오징어버거" price="2000" use_flag="Y"/>
+    <product menu_id="LB0014" CATE_ID="D10"	menu_nm="치킨버거" price="2800" use_flag="Y"/>
+    <product menu_id="LB0016" CATE_ID="D10"	menu_nm="데리버거" price="2000" use_flag="Y"/>
+    <product menu_id="LB0017" CATE_ID="D10"	menu_nm="치즈버거" price="2000" use_flag="Y"/>
+    <product menu_id="LB0021" CATE_ID="D10"	menu_nm="한우레이디버거" price="4500" use_flag="Y"/>
+    <product menu_id="LC0001" CATE_ID="D20"	menu_nm="화이어윙2조각" price="1800" use_flag="Y"/>
+    <product menu_id="LC0002" CATE_ID="D20"	menu_nm="화이어윙(4)" price="3300" use_flag="Y"/>
+    <product menu_id="LC0003" CATE_ID="D20"	menu_nm="치킨휠레2조각" price="1800" use_flag="Y"/>
+    <product menu_id="LC0004" CATE_ID="D20"	menu_nm="치킨휠레" price="3300" use_flag="Y"/>
+    <product menu_id="LC0006" CATE_ID="D20"	menu_nm="치킨 1조각(9각)" price="2000" use_flag="Y"/>
+    <product menu_id="LD0004" CATE_ID="D40"	menu_nm="레몬에이드" price="2000" use_flag="Y"/>
+    <product menu_id="LD0007" CATE_ID="D40"	menu_nm="오렌지(R)" price="1700" use_flag="Y"/>
+    <product menu_id="LD0008" CATE_ID="D40"	menu_nm="아이스티" price="1700" use_flag="Y"/>
+    <product menu_id="LD0009" CATE_ID="D40"	menu_nm="콜라(R)" price="1600" use_flag="Y"/>
+    <product menu_id="LD0010" CATE_ID="D40"	menu_nm="사이다(R)" price="1600" use_flag="Y"/>
+    <product menu_id="LD0019" CATE_ID="D40"	menu_nm="아메리카노(신)(T)" price="2000" use_flag="Y"/>
+    <product menu_id="LD0020" CATE_ID="D40"	menu_nm="아이스아메리카노 2000" price="2000" use_flag="Y"/>
+    <product menu_id="LD0021" CATE_ID="D40"	menu_nm="카페라떼" price="2500" use_flag="Y"/>
+    <product menu_id="LD0022" CATE_ID="D40"	menu_nm="아이스카페라테(신)" price="2500" use_flag="Y"/>
+    <product menu_id="LS0004" CATE_ID="D30"	menu_nm="포테이토" price="1300" use_flag="Y"/>
+    <product menu_id="LS0006" CATE_ID="D30"	menu_nm="양념감자" price="1600" use_flag="Y"/>
+    <product menu_id="LS0008" CATE_ID="D30"	menu_nm="내츄럴 치즈스틱" price="1600" use_flag="Y"/>
+    <product menu_id="LS0009" CATE_ID="D30"	menu_nm="크런치새우" price="1600" use_flag="Y"/>
+    <product menu_id="LS0010" CATE_ID="D30"	menu_nm="오징어링" price="1500" use_flag="Y"/>
+    <product menu_id="LS0011" CATE_ID="D30"	menu_nm="콘샐러드" price="1500" use_flag="Y"/>
+    <product menu_id="LS0021" CATE_ID="D30"	menu_nm="고구마치즈볼" price="1600" use_flag="Y"/>
+
+
+    <product menu_id="LE0001" CATE_ID="Z10"	menu_nm="1월 장난감" price="1500" use_flag="Y"/>
+    <product menu_id="LE0002" CATE_ID="Z10"	menu_nm="2월 장난감" price="1500" use_flag="Y"/>
+    <product menu_id="LE0003" CATE_ID="Z10"	menu_nm="3월 장난감" price="1500" use_flag="Y"/>
+    <product menu_id="LE0004" CATE_ID="Z10"	menu_nm="4월 장난감" price="1500" use_flag="Y"/>
+    <product menu_id="LE0005" CATE_ID="Z10"	menu_nm="5월 장난감" price="1500" use_flag="Y"/>
+    <product menu_id="LE0006" CATE_ID="Z10"	menu_nm="6월 장난감" price="1500" use_flag="Y"/>
+    <product menu_id="LE0007" CATE_ID="Z10"	menu_nm="7월 장난감" price="1500" use_flag="Y"/>
+    <product menu_id="LE0008" CATE_ID="Z10"	menu_nm="8월 장난감" price="1500" use_flag="Y"/>
+    <product menu_id="LE0009" CATE_ID="Z10"	menu_nm="9월 장난감" price="1500" use_flag="Y"/>
+    <product menu_id="LE0010" CATE_ID="Z10"	menu_nm="10월 장난감" price="1500" use_flag="Y"/>
+    <product menu_id="LE0011" CATE_ID="Z10"	menu_nm="11월 장난감" price="1500" use_flag="Y"/>
+    <product menu_id="LE0012" CATE_ID="Z10"	menu_nm="12월 장난감" price="1500" use_flag="Y"/>
+
 </Products>

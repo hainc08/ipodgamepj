@@ -19,7 +19,7 @@
 	IBOutlet UIScrollView* contentScrollView;
 	
 	int count;
-	int pIdx[3];
+	NSString* pId[3];
 	
 	IBOutlet UILabel* countLabel;
 	IBOutlet UIButton* decCount;
@@ -28,7 +28,7 @@
 	IBOutlet UIButton* closeButton;
 }
 
-- (void)showProduct:(int)idx;
+- (void)showProduct:(NSString*)menu_id;
 - (IBAction)ButtonClick:(id)sender;
 
 @end

@@ -17,13 +17,13 @@
     [super dealloc];
 }
 
-- (void)showProduct:(int)idx
+- (void)showProduct:(NSString*)menu_id
 {
-	pIdx[0] = idx;
+	pId[0] = menu_id;
 
-	[pImage setImage:[[DataManager getInstance] getProductImg:idx type:DETAIL]];
-	[nameImage setImage:[[DataManager getInstance] getProductImg:idx type:NAME]];
-	[descImage setImage:[[DataManager getInstance] getProductImg:idx type:DESC]];
+	[pImage setImage:[[DataManager getInstance] getProductImg:menu_id type:DETAIL]];
+	[nameImage setImage:[[DataManager getInstance] getProductImg:menu_id type:NAME]];
+	[descImage setImage:[[DataManager getInstance] getProductImg:menu_id type:DESC]];
 	[selectView setAlpha:0];
 }
 
@@ -47,8 +47,8 @@
 		[closeButton setCenter:CGPointMake(300, 63)];
 		
 		//기본 사이드를 설정하자.
-		pIdx[1] = 1;
-		pIdx[2] = 1;
+		pId[1] = @"";
+		pId[2] = @"";
 	}
 	else if (sender == singleButton)
 	{
@@ -68,8 +68,8 @@
 		[closeButton setCenter:CGPointMake(300, 90)];
 
 		//사이드가 없다.
-		pIdx[1] = -1;
-		pIdx[2] = -1;
+		pId[1] = @"200504";	//세트포테이토
+		pId[2] = @"200807";	//세트콜라
 	}
 	else if (sender == addCartButton)
 	{
@@ -77,9 +77,9 @@
 		
 		CartItem* item = [[CartItem alloc] init];
 		[item setCount:count];
-		[item setProductIdx:pIdx[0]];
-		[item setDrinkIdx:pIdx[1]];
-		[item setDessertIdx:pIdx[2]];
+		[item setMenuid:pId[0]];
+		[item setDrinkId:pId[1]];
+		[item setDessertId:pId[2]];
 		[[DataManager getInstance] addCartItem:item];
 	}
 	else if ((sender == incCount)||(sender == decCount))

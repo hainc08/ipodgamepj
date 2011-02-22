@@ -37,31 +37,38 @@
 	[drinkBG setAlpha:0];
 	[dessertBG setAlpha:0];
 	[packBG setAlpha:0];
-	
+
+	NSString* category;
+
 	if (sender == burgerButton)
 	{
 		[burgerBG setAlpha:1];
 		isTopList = true;
+		category = @"D10";
 	}
 	else if (sender == chickenButton)
 	{
 		[chickenBG setAlpha:1];
 		isTopList = true;
+		category = @"D20";
 	}
 	else if (sender == dessertButton)
 	{
 		[dessertBG setAlpha:1];
 		isTopList = false;
+		category = @"D30";
 	}
 	else if (sender == drinkButton)
 	{
 		[drinkBG setAlpha:1];
 		isTopList = false;
+		category = @"D40";
 	}
 	else if (sender == packButton)
 	{
 		[packBG setAlpha:1];
 		isTopList = false;
+		category = @"D50";
 	}
 	
 	[UIView beginAnimations:@"menuAni" context:NULL];
@@ -124,13 +131,12 @@
 
 	[UIView commitAnimations];
 
-	[self addIcon:0 isTop:isTopList];
-	[self addIcon:1 isTop:isTopList];
-	[self addIcon:2 isTop:isTopList];
-	[self addIcon:3 isTop:isTopList];
-	[self addIcon:4 isTop:isTopList];
-	[self addIcon:5 isTop:isTopList];
-	[self addIcon:6 isTop:isTopList];
+	NSMutableArray* products = [[DataManager getInstance] getProductArray:category];
+	for (ProductData* data in products)
+	{
+		[self addIcon:[data menuId] isTop:isTopList];
+	}
+	[products release];
 
 	UIScrollView* scrollView;
 	if (isTopList) scrollView = topScrollView;
@@ -157,7 +163,7 @@
 	}
 }
 
-- (void)addIcon:(int)idx isTop:(bool)isTop
+- (void)addIcon:(NSString*)menuId isTop:(bool)isTop
 {
 	IconButton* icon = [[IconButton alloc] init];
 	UIScrollView* scrollView;
@@ -167,18 +173,18 @@
 	
 	[scrollView addSubview:[icon view]];
 	[[icon view] setCenter:CGPointMake([[scrollView subviews] count] * 70 - 35, 35)];
-	[icon setData:idx];
+	[icon setData:menuId];
 	[icon setListener:self];
 }
 
-- (void)iconClicked:(int)idx
+- (void)iconClicked:(NSString*)mid
 {
 	[UIView beginAnimations:@"menuAni" context:NULL];
 	[UIView setAnimationDuration:0.1];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 
 	[buttonView setAlpha:0];
-	[detailView showProduct:idx];
+	[detailView showProduct:mid];
 	[detailView.view setAlpha:1];
 
 	[UIView commitAnimations];

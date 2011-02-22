@@ -31,7 +31,7 @@
 }
 
 - (IBAction)ButtonClick:(id)sender;
-- (void)addIcon:(int)idx isTop:(bool)isTop;
-- (void)iconClicked:(int)idx;
+- (void)addIcon:(NSString*)menuId isTop:(bool)isTop;
+- (void)iconClicked:(NSString*)mid;
 
 @end

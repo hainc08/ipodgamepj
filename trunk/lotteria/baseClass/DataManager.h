@@ -9,31 +9,38 @@ typedef enum _ImgType
 
 @interface CartItem : NSObject
 {
-	int productIdx;
-	int drinkIdx;
-	int dessertIdx;
+	NSString* menuId;
+	NSString* drinkId;
+	NSString* dessertId;
+
 	int count;
 }
 
-@property (readwrite) int productIdx;
-@property (readwrite) int drinkIdx;
-@property (readwrite) int dessertIdx;
+@property (retain) NSString* menuid;
+@property (retain) NSString* drinkId;
+@property (retain) NSString* dessertId;
+
 @property (readwrite) int count;
 
 @end
 
 @interface ProductData : NSObject
 {
-	int productIdx;
-	NSString* productKey;
+	NSString* menuId;
+	NSString* category;
+
+	NSString* key;
 	NSString* name;
+
 	int price;
 	
 	UIImage* img[5];
 }
 
-@property (readwrite) int productIdx;
-@property (retain) NSString* productKey;
+@property (retain) NSString* menuId;
+@property (retain) NSString* category;
+
+@property (retain) NSString* key;
 @property (retain) NSString* name;
 @property (readwrite) int price;
 
@@ -50,8 +57,9 @@ typedef enum _ImgType
 	NSMutableArray* ShopKart;
 	
 	NSMutableDictionary *productMap;
-	
-	ProductData* readCache;
+	NSMutableDictionary *setProductMap;
+
+	NSMutableArray* allProductList;
 }
 
 @property (readonly) bool isLoginNow;
@@ -70,7 +78,8 @@ typedef enum _ImgType
 
 //-------------------상품 정보 처리---------------------
 - (void)loadProduct;
-- (ProductData*)getProduct:(int)idx;
-- (UIImage*)getProductImg:(int)idx type:(ImgType)imgType;
+- (ProductData*)getProduct:(NSString*)menuId;
+- (UIImage*)getProductImg:(NSString*)menuId type:(ImgType)imgType;
+- (NSMutableArray*)getProductArray:(NSString*)category;
 
 @end
