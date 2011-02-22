@@ -8,8 +8,9 @@
 
 @interface MainViewController : UIViewController {
 	int lastTag;
-	UIView* curView;
+	id curView;
 	IBOutlet UIImageView* backImg;
+	IBOutlet UIImageView* logoImg;
 }
 
 @end

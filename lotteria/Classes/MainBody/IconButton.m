@@ -2,7 +2,7 @@
 
 @implementation IconButton
 
-@synthesize productIdx;
+@synthesize menu_id;
 
 - (void)dealloc {
     [super dealloc];
@@ -11,15 +11,15 @@
 - (IBAction)ButtonClick:(id)sender
 {
 	//경고 무시해도 상관없음...
-	[actionListener iconClicked:productIdx];
+	[actionListener iconClicked:menu_id];
 }
 
-- (void)setData:(int)idx
+- (void)setData:(NSString*)mid
 {
-	productIdx = idx;
-	[nameLabel setText:[[[DataManager getInstance] getProduct:idx] name]];
+	menu_id = mid;
+	[nameLabel setText:[[[DataManager getInstance] getProduct:menu_id] name]];
 
-	[button setImage:[[DataManager getInstance] getProductImg:idx type:SMALL] forState:UIControlStateNormal];
+	[button setImage:[[DataManager getInstance] getProductImg:menu_id type:SMALL] forState:UIControlStateNormal];
 }
 
 - (void)setListener:(UIViewController*)listener

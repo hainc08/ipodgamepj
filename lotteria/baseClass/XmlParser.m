@@ -37,7 +37,6 @@
 	return nil;
 }
 
-
 - (Element*)getFirstChild
 {
 	curIdx = 0;
@@ -53,7 +52,6 @@
 
 - (NSString*)getAttribute:(NSString*)str
 {
-	curIdx = 0;
 	return [attribute objectForKey:str];
 }
 - (NSString*)getValue
@@ -66,23 +64,16 @@
 	return [childs count];
 }
 
-- (void)dealloc
+- (void)clear
 {
 	for(Element* i in childs)
 	{
-		[i dealloc];
+		[i clear];
+		[i release];
 	}
-	
-	for(id i in attribute)
-	{
-		[i dealloc];
-	}
-	
-	[attribute release];
+
 	[childs release];
-	
-	[name release];
-	[super dealloc];
+	[attribute release];
 }
 
 @end
@@ -100,6 +91,7 @@
 	
     [parser parse];
 	[parser release];
+	[tempData release];
 }
 
 - (void)parserUrl:(NSString*)url
@@ -111,6 +103,7 @@
 	
     [parser parse];
 	[parser release];
+	[tempData release];
 }
 
 - (void)parserString:(NSString*)string
@@ -136,7 +129,8 @@
 
 - (void)dealloc
 {
-	[root dealloc];
+	[root clear];
+	[root release];
 	[super dealloc];
 }
 
@@ -154,7 +148,7 @@
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-		[curElement setValue:string];
+	[curElement setValue:string];
 }
 
 

@@ -425,10 +425,12 @@
 		84B4A431131008C100A7A99B /* MapBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A42F131008C100A7A99B /* MapBodyViewController.m */; };
 		84B4A45C13100BA700A7A99B /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B4A45913100BA700A7A99B /* DetailView.xib */; };
 		84B4A45D13100BA700A7A99B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A45B13100BA700A7A99B /* DetailViewController.m */; };
+		84C0AA5713146C9100DCD418 /* PlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C0AA5613146C9100DCD418 /* PlaceMark.m */; };
 		84D1BF0C1313E30F002C8A52 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D1BF0B1313E30F002C8A52 /* MapKit.framework */; };
 		84D85E281313F76300361C3B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D85E271313F76300361C3B /* CoreLocation.framework */; };
 		84EB01351310DDD700AED472 /* IconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB01331310DDD700AED472 /* IconButton.m */; };
 		84EB01361310DDD700AED472 /* IconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EB01341310DDD700AED472 /* IconButton.xib */; };
+		84F1B8D1131450F3006FC7C7 /* productKey.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84F1B8D0131450F3006FC7C7 /* productKey.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -869,13 +871,14 @@
 		84B4A45913100BA700A7A99B /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
 		84B4A45A13100BA700A7A99B /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		84B4A45B13100BA700A7A99B /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		84C0AA5513146C9100DCD418 /* PlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceMark.h; sourceTree = "<group>"; };
+		84C0AA5613146C9100DCD418 /* PlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceMark.m; sourceTree = "<group>"; };
 		84D1BF0B1313E30F002C8A52 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		84D85E271313F76300361C3B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		84D85E951313FCD100361C3B /* PlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceMark.h; sourceTree = "<group>"; };
-		84D85E961313FCD100361C3B /* PlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceMark.m; sourceTree = "<group>"; };
 		84EB01321310DDD700AED472 /* IconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconButton.h; sourceTree = "<group>"; };
 		84EB01331310DDD700AED472 /* IconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconButton.m; sourceTree = "<group>"; };
 		84EB01341310DDD700AED472 /* IconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButton.xib; sourceTree = "<group>"; };
+		84F1B8D0131450F3006FC7C7 /* productKey.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = productKey.xml; path = DownloadData/productKey.xml; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* lotteria-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "lotteria-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1410,6 +1413,7 @@
 			isa = PBXGroup;
 			children = (
 				848B6F66131382DF000E3272 /* product.xml */,
+				84F1B8D0131450F3006FC7C7 /* productKey.xml */,
 			);
 			name = DownloadData;
 			sourceTree = "<group>";
@@ -1466,8 +1470,8 @@
 				84B4A42D131008C100A7A99B /* MapBodyView.xib */,
 				84B4A42E131008C100A7A99B /* MapBodyViewController.h */,
 				84B4A42F131008C100A7A99B /* MapBodyViewController.m */,
-				84D85E951313FCD100361C3B /* PlaceMark.h */,
-				84D85E961313FCD100361C3B /* PlaceMark.m */,
+				84C0AA5513146C9100DCD418 /* PlaceMark.h */,
+				84C0AA5613146C9100DCD418 /* PlaceMark.m */,
 			);
 			name = MapBody;
 			path = Classes/MapBody;
@@ -1929,6 +1933,7 @@
 				56928BEB1312BEEC000700A9 /* LoginView.xib in Resources */,
 				56928C881312D787000700A9 /* MyCustomerDelivery.xib in Resources */,
 				848B6F67131382DF000E3272 /* product.xml in Resources */,
+				84F1B8D1131450F3006FC7C7 /* productKey.xml in Resources */,
 				56A9C7AA1313FC3D0071D8A0 /* OldOrderCell.xib in Resources */,
 				56A9C7AC1313FC660071D8A0 /* ShippingOrderCell.xib in Resources */,
 				56A9C7AE1313FC930071D8A0 /* OrderListCell.xib in Resources */,
@@ -1965,6 +1970,7 @@
 				56A9C7B51313FD1B0071D8A0 /* UITableViewCellTemplate.m in Sources */,
 				56A9C82C1314213A0071D8A0 /* CartOrderViewController.m in Sources */,
 				56A9C833131426D50071D8A0 /* CartOrderUserViewController.m in Sources */,
+				84C0AA5713146C9100DCD418 /* PlaceMark.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

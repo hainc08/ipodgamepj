@@ -19,14 +19,18 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-//	[self.view addSubview:
+
 	MainBodyViewController* mainBody = [[MainBodyViewController alloc] init];
 	curView = mainBody.view;
-
+	
 	[self.view addSubview:curView];
 	[self.view sendSubviewToBack:curView];
 	[self.view sendSubviewToBack:backImg];
-	
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	[logoImg setAlpha:0];
 	lastTag = 0;
 }
 

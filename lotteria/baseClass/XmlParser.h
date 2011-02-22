@@ -26,6 +26,7 @@
 - (int)childCount;
 
 - (NSString*)getAttribute:(NSString*)str;
+- (void)clear;
 - (NSString*)getValue;
 
 @end
