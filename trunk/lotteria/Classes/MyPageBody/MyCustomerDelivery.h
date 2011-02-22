@@ -10,49 +10,51 @@
 
 
 @interface CustomerDelivery : NSObject {
-	NSString *s_cust_id;
-	NSString *s_seq;
-	NSString *s_phone;
-	NSString *s_si;
-	NSString *s_gu;
-	NSString *s_dong;
-	NSString *s_bunji;
-	NSString *s_building;
-	NSString *s_addrdesc;
-	NSString *s_branchid;
-	NSString *s_regdate;
-	NSString *s_regtime;
-	NSString *s_upddate;
-	NSString *s_updtime;
+	NSString *custid;
+	NSString *seq;
+	NSString *phone;
+	NSString *si;
+	NSString *gu;
+	NSString *dong;
+	NSString *bunji;
+	NSString *building;
+	NSString *addrdesc;
+	NSString *branchid;
+	NSString *regdate;
+	NSString *regtime;
+	NSString *upddate;
+	NSString *updtime;
 }
 
-@property (nonatomic, copy) NSString *s_cust_id;
-@property (nonatomic, copy) NSString *s_seq;
-@property (nonatomic, copy) NSString *s_phone;
-@property (nonatomic, copy) NSString *s_si;
-@property (nonatomic, copy) NSString *s_gu;
-@property (nonatomic, copy) NSString *s_dong;
-@property (nonatomic, copy) NSString *s_bunji;
-@property (nonatomic, copy) NSString *s_building;
-@property (nonatomic, copy) NSString *s_addrdesc;
-@property (nonatomic, copy) NSString *s_branchid;
-@property (nonatomic, copy) NSString *s_regdate;
-@property (nonatomic, copy) NSString *s_regtime;
-@property (nonatomic, copy) NSString *s_upddate;
-@property (nonatomic, copy) NSString *s_updtime;
+@property (retain) NSString *custid;
+@property (retain) NSString *seq;
+@property (retain) NSString *phone;
+@property (retain) NSString *si;
+@property (retain) NSString *gu;
+@property (retain) NSString *dong;
+@property (retain) NSString *bunji;
+@property (retain) NSString *building;
+@property (retain) NSString *addrdesc;
+@property (retain) NSString *branchid;
+@property (retain) NSString *regdate;
+@property (retain) NSString *regtime;
+@property (retain) NSString *upddate;
+@property (retain) NSString *updtime;
 
 @end
 
 
-@interface MyCustomerDelivery : UIViewController {
-	CustomerDelivery *Customer;
-    NSMutableArray *ArrCustomer;
-    BOOL Characters;
-	NSMutableString *currentString;
+@interface MyCustomerDelivery : UIViewController <UITableViewDataSource, UITableViewDelegate > {
+
+	IBOutlet UITableView *CustomerTable;
+    NSMutableArray *CustomerArr;
 	
 }
-@property (nonatomic, retain) CustomerDelivery	*Customer;
-@property (nonatomic, retain) NSMutableArray	*ArrCustomer;
-@property (nonatomic, retain) NSMutableString	*currentString;
+
+@property (nonatomic, retain) NSMutableArray	*CustomerArr;
+@property (nonatomic, retain) IBOutlet UITableView *CustomerTable;
+
+
+- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 
 @end

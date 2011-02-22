@@ -1,5 +1,5 @@
 #import "CartBodyViewController.h"
-
+#import "CartOrderUserViewController.h"
 @implementation CartBodyViewController
 
 - (void)viewDidLoad {
@@ -25,5 +25,16 @@
     [super dealloc];
 }
 
+-(IBAction)OrderButton
+{
+	CartOrderUserViewController *UserInput = [[CartOrderUserViewController alloc] initWithNibName:@"CartOrderUserView" bundle:nil];
+	//UserInput.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	//[self presentModalViewController:UserInput animated:YES];
+	[self.view addSubview:UserInput.view ];
+
+	[UserInput release];
+
+	
+}
 
 @end
