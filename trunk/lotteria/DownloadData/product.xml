@@ -1,0 +1,9 @@
+<Products>
+    <burger id="0" name="불갈비버거" key="bgb"/>
+    <burger id="1" name="불새버거" key="bsb"/>
+    <burger id="2" name="치킨버거" key="cb"/>
+    <burger id="3" name="치즈버거" key="ch"/>
+    <burger id="4" name="유러피안프리코치즈버거" key="ecb"/>
+    <burger id="5" name="자이안트더블버거" key="gdb"/>
+    <burger id="6" name="한우불고기버거" key="hbb"/>
+</Products>
