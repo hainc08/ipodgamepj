@@ -416,6 +416,8 @@
 		84B4A45C13100BA700A7A99B /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B4A45913100BA700A7A99B /* DetailView.xib */; };
 		84B4A45D13100BA700A7A99B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A45B13100BA700A7A99B /* DetailViewController.m */; };
 		84D1BF0C1313E30F002C8A52 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D1BF0B1313E30F002C8A52 /* MapKit.framework */; };
+		84D85E281313F76300361C3B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D85E271313F76300361C3B /* CoreLocation.framework */; };
+		84D85E971313FCD100361C3B /* PlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D85E961313FCD100361C3B /* PlaceMark.m */; };
 		84EB01351310DDD700AED472 /* IconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB01331310DDD700AED472 /* IconButton.m */; };
 		84EB01361310DDD700AED472 /* IconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EB01341310DDD700AED472 /* IconButton.xib */; };
 /* End PBXBuildFile section */
@@ -846,6 +848,9 @@
 		84B4A45A13100BA700A7A99B /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		84B4A45B13100BA700A7A99B /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		84D1BF0B1313E30F002C8A52 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		84D85E271313F76300361C3B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		84D85E951313FCD100361C3B /* PlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceMark.h; sourceTree = "<group>"; };
+		84D85E961313FCD100361C3B /* PlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceMark.m; sourceTree = "<group>"; };
 		84EB01321310DDD700AED472 /* IconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconButton.h; sourceTree = "<group>"; };
 		84EB01331310DDD700AED472 /* IconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconButton.m; sourceTree = "<group>"; };
 		84EB01341310DDD700AED472 /* IconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButton.xib; sourceTree = "<group>"; };
@@ -861,6 +866,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
 				84D1BF0C1313E30F002C8A52 /* MapKit.framework in Frameworks */,
+				84D85E281313F76300361C3B /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,6 +933,7 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
 				84D1BF0B1313E30F002C8A52 /* MapKit.framework */,
+				84D85E271313F76300361C3B /* CoreLocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1398,6 +1405,8 @@
 				84B4A42D131008C100A7A99B /* MapBodyView.xib */,
 				84B4A42E131008C100A7A99B /* MapBodyViewController.h */,
 				84B4A42F131008C100A7A99B /* MapBodyViewController.m */,
+				84D85E951313FCD100361C3B /* PlaceMark.h */,
+				84D85E961313FCD100361C3B /* PlaceMark.m */,
 			);
 			name = MapBody;
 			path = Classes/MapBody;
@@ -1887,6 +1896,7 @@
 				56928BEC1312BEEC000700A9 /* LoginViewController.m in Sources */,
 				56928C871312D787000700A9 /* MyCustomerDelivery.m in Sources */,
 				848B04AD1313864E00A1C50E /* XmlParser.m in Sources */,
+				84D85E971313FCD100361C3B /* PlaceMark.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

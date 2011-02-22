@@ -1,8 +1,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface MapBodyViewController : UIViewController {
+@interface MapBodyViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate> {
 	IBOutlet MKMapView *mapView;
+	CLLocationManager *locationManager;
 
 	IBOutlet UIButton* storeAll;
 	IBOutlet UIButton* storeDelivery;
@@ -17,5 +18,6 @@
 -(void)setupMap;
 -(void)selectCategory:(int)idx;
 -(IBAction)buttonClick:(id)sender;
+-(void)addShopMark:(int)shopIdx location:(CLLocationCoordinate2D)location;
 
 @end

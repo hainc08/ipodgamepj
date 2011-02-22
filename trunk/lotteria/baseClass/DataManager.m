@@ -114,7 +114,6 @@ static DataManager *DataManagerInst;
 	[xmlParser parserBundleFile:@"product.xml"];
 
 	//product.xml에 상품 정보를 읽자!!!
-	//여기서는 로딩시간 단축을 위해서 ansi C 함수를 이용해서 읽는다.
 	productMap = [[NSMutableDictionary alloc] init];
 	
 	Element* root = [xmlParser getRoot:@"Products"];
