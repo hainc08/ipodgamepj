@@ -40,11 +40,19 @@ static DataManager *DataManagerInst;
 {
 	if (img[0] == nil)
 	{
-		img[0] = [UIImage imageNamed:[NSString stringWithFormat:@"bg_%@_a.png", key]];
-		img[1] = [UIImage imageNamed:[NSString stringWithFormat:@"bg_%@_c.png", key]];
-		img[2] = [UIImage imageNamed:[NSString stringWithFormat:@"bg_%@_l.png", key]];
-		img[3] = [UIImage imageNamed:[NSString stringWithFormat:@"bg_%@_n.png", key]];
-		img[4] = [UIImage imageNamed:[NSString stringWithFormat:@"bg_%@_s.png", key]];
+		NSString* catStr;
+
+		if ([category compare:@"D10"] == NSOrderedSame) catStr = @"bg";
+		else if ([category compare:@"D20"] == NSOrderedSame) catStr = @"ck";
+		else if ([category compare:@"D30"] == NSOrderedSame) catStr = @"ds";
+		else if ([category compare:@"D40"] == NSOrderedSame) catStr = @"dr";
+		else if ([category compare:@"D50"] == NSOrderedSame) catStr = @"pk";
+
+		img[0] = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@_a.png", catStr, key]];
+		img[1] = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@_c.png", catStr, key]];
+		img[2] = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@_l.png", catStr, key]];
+		img[3] = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@_n.png", catStr, key]];
+		img[4] = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@_s.png", catStr, key]];
 	}
 	
 	return img[type];

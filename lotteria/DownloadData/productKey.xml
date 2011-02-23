@@ -1,56 +1,56 @@
 <Products>
-    <product menu_id="LB0001" key="bgb"/><!--D10	한우불고기버거-->
-    <product menu_id="LB0002" key="bgb"/><!--D10	한우스테이크-->
-    <product menu_id="LB0003" key="bgb"/><!--D10	RED & WHITE 버거-->
-    <product menu_id="LB0004" key="bgb"/><!--D10	불새버거-->
-    <product menu_id="LB0005" key="bgb"/><!--D10	유러피안프리코치즈버거4200-->
-    <product menu_id="LB0006" key="bgb"/><!--D10	텐더그릴치킨버거-->
-    <product menu_id="LB0007" key="bgb"/><!--D10	자이언트더블버거-->
-    <product menu_id="LB0008" key="bgb"/><!--D10	야채라이스불고기-->
+    <product menu_id="LB0001" key="hbb"/><!--D10	한우불고기버거-->
+    <product menu_id="LB0002" key="hs"/><!--D10	한우스테이크-->
+    <product menu_id="LB0003" key="rwb"/><!--D10	RED & WHITE 버거-->
+    <product menu_id="LB0004" key="bsb"/><!--D10	불새버거-->
+    <product menu_id="LB0005" key="ecb"/><!--D10	유러피안프리코치즈버거4200-->
+    <product menu_id="LB0006" key="tcb"/><!--D10	텐더그릴치킨버거-->
+    <product menu_id="LB0007" key="gdb"/><!--D10	자이언트더블버거-->
+    <product menu_id="LB0008" key="rbb"/><!--D10	야채라이스불고기-->
     <product menu_id="LB0009" key="bgb"/><!--D10	불갈비버거-->
-    <product menu_id="LB0010" key="bgb"/><!--D10	불고기버거-->
-    <product menu_id="LB0011" key="bgb"/><!--D10	신리브샌드-->
-    <product menu_id="LB0012" key="bgb"/><!--D10	새우햄버거-->
-    <product menu_id="LB0013" key="bgb"/><!--D10	오징어버거-->
-    <product menu_id="LB0014" key="bgb"/><!--D10	치킨버거-->
-    <product menu_id="LB0016" key="bgb"/><!--D10	데리버거-->
-    <product menu_id="LB0017" key="bgb"/><!--D10	치즈버거-->
-    <product menu_id="LB0021" key="bgb"/><!--D10	한우레이디버거-->
+    <product menu_id="LB0010" key="bb"/><!--D10	불고기버거-->
+    <product menu_id="LB0011" key="hr"/><!--D10	신리브샌드-->
+    <product menu_id="LB0012" key="shb"/><!--D10	새우햄버거-->
+    <product menu_id="LB0013" key="sb"/><!--D10	오징어버거-->
+    <product menu_id="LB0014" key="cb"/><!--D10	치킨버거-->
+    <product menu_id="LB0016" key="tb"/><!--D10	데리버거-->
+    <product menu_id="LB0017" key="ch"/><!--D10	치즈버거-->
+    <product menu_id="LB0021" key="hlb"/><!--D10	한우레이디버거-->
 
-    <product menu_id="200266" key="bgb"/><!--S11	한우불고기콤보(신)-->
+    <product menu_id="200266" key="hbc"/><!--S11	한우불고기콤보(신)-->
 
-    <product menu_id="200419" key="bgb"/><!--D50	한우연인팩-->
-    <product menu_id="200420" key="bgb"/><!--D50	한우더블팩-->
-    <product menu_id="200470" key="bgb"/><!--D50	치킨패밀리팩-->
-    <product menu_id="200471" key="bgb"/><!--D50	치킨풀팩-->
-    <product menu_id="200473" key="bgb"/><!--D50	치킨하프팩-->
-    <product menu_id="200786" key="bgb"/><!--D50	순살치킨하프팩-->
-    <product menu_id="200787" key="bgb"/><!--D50	순살치킨풀팩-->
-    <product menu_id="210470" key="bgb"/><!--D50	HOME 연인팩-->
-    <product menu_id="210471" key="bgb"/><!--D50	HOME 실속팩-->
-    <product menu_id="210472" key="bgb"/><!--D50	HOME 가족팩-->
+    <product menu_id="200419" key="hsp"/><!--D50	한우연인팩-->
+    <product menu_id="200420" key="hdp"/><!--D50	한우더블팩-->
+    <product menu_id="200470" key="cfp"/><!--D50	치킨패밀리팩-->
+    <product menu_id="200471" key="cfup"/><!--D50	치킨풀팩-->
+    <product menu_id="200473" key="chp"/><!--D50	치킨하프팩-->
+    <product menu_id="200786" key="bch"/><!--D50	순살치킨하프팩-->
+    <product menu_id="200787" key="bcf"/><!--D50	순살치킨풀팩-->
+    <product menu_id="210470" key="hcp"/><!--D50	HOME 연인팩-->
+    <product menu_id="210471" key="hp"/><!--D50	HOME 실속팩-->
+    <product menu_id="210472" key="hfp"/><!--D50	HOME 가족팩-->
 
-    <product menu_id="LC0001" key="bgb"/><!--D20	화이어윙2조각-->
-    <product menu_id="LC0002" key="bgb"/><!--D20	화이어윙(4)-->
-    <product menu_id="LC0003" key="bgb"/><!--D20	치킨휠레2조각-->
-    <product menu_id="LC0004" key="bgb"/><!--D20	치킨휠레-->
-    <product menu_id="LC0006" key="bgb"/><!--D20	치킨 1조각(9각)-->
+    <product menu_id="LC0001" key="fw2"/><!--D20	화이어윙2조각-->
+    <product menu_id="LC0002" key="fw4"/><!--D20	화이어윙(4)-->
+    <product menu_id="LC0003" key="cf2"/><!--D20	치킨휠레2조각-->
+    <product menu_id="LC0004" key="cf4"/><!--D20	치킨휠레4조각-->
+    <product menu_id="LC0006" key="c1"/><!--D20	치킨 1조각(9각)-->
 
-    <product menu_id="LD0004" key="bgb"/><!--D40	레몬에이드	LEMONADE-->
-    <product menu_id="LD0007" key="bgb"/><!--D40	오렌지(R)-->
-    <product menu_id="LD0008" key="bgb"/><!--D40	아이스티-->
-    <product menu_id="LD0009" key="bgb"/><!--D40	콜라(R)-->
-    <product menu_id="LD0010" key="bgb"/><!--D40	사이다(R)-->
-    <product menu_id="LD0019" key="bgb"/><!--D40	아메리카노(신)(T)-->
-    <product menu_id="LD0020" key="bgb"/><!--D40	아이스아메리카노-->
-    <product menu_id="LD0021" key="bgb"/><!--D40	카페라떼-->
-    <product menu_id="LD0022" key="bgb"/><!--D40	아이스카페라테(신)-->
+    <product menu_id="LD0004" key="la"/><!--D40	레몬에이드	LEMONADE-->
+    <product menu_id="LD0007" key="or"/><!--D40	오렌지(R)-->
+    <product menu_id="LD0008" key="ict"/><!--D40	아이스티-->
+    <product menu_id="LD0009" key="cl"/><!--D40	콜라(R)-->
+    <product menu_id="LD0010" key="cd"/><!--D40	사이다(R)-->
+    <product menu_id="LD0019" key="ame"/><!--D40	아메리카노(신)(T)-->
+    <product menu_id="LD0020" key="iam"/><!--D40	아이스아메리카노-->
+    <product menu_id="LD0021" key="hcl"/><!--D40	카페라떼-->
+    <product menu_id="LD0022" key="icl"/><!--D40	아이스카페라테(신)-->
 
-    <product menu_id="LS0004" key="bgb"/><!--D30	포테이토-->
-    <product menu_id="LS0006" key="bgb"/><!--D30	양념감자-->
-    <product menu_id="LS0008" key="bgb"/><!--D30	내츄럴 치즈스틱-->
-    <product menu_id="LS0009" key="bgb"/><!--D30	크런치새우-->
-    <product menu_id="LS0010" key="bgb"/><!--D30	오징어링-->
-    <product menu_id="LS0011" key="bgb"/><!--D30	콘샐러드-->
-    <product menu_id="LS0021" key="bgb"/><!--D30	고구마치즈볼-->
+    <product menu_id="LS0004" key="ptt"/><!--D30	포테이토-->
+    <product menu_id="LS0006" key="yg"/><!--D30	양념감자-->
+    <product menu_id="LS0008" key="ncs"/><!--D30	내츄럴 치즈스틱-->
+    <product menu_id="LS0009" key="cs"/><!--D30	크런치새우-->
+    <product menu_id="LS0010" key="sr"/><!--D30	오징어링-->
+    <product menu_id="LS0011" key="csa"/><!--D30	콘샐러드-->
+    <product menu_id="LS0021" key="spcb"/><!--D30	고구마치즈볼-->
 </Products>
