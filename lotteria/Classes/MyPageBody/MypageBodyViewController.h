@@ -1,6 +1,8 @@
 
+#import <UIKit/UIKit.h>
+#import "UIViewControllerTemplate.h"
 
-@interface MypageBodyViewController : UIViewController  {
+@interface MypageBodyViewController : UIViewControllerTemplate  {
 
 	
 	IBOutlet UIButton *OrderList;

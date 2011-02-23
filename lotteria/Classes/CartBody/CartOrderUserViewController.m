@@ -7,10 +7,10 @@
 //
 
 #import "CartOrderUserViewController.h"
-#import "CartOrderViewController.h"
-
+#import "MyShippingList.h"
+#import "DataList.h"
 @implementation CartOrderUserViewController
-
+@synthesize InfoOrder;
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -40,9 +40,19 @@
 
 - (IBAction)ContinueButton:(id)sender
 {
-	CartOrderViewController *Order = [[CartOrderViewController alloc] initWithNibName:@"CartOrderView" bundle:nil];
-	[self.view addSubview:Order.view];
-	[Order release];
+/*	CartOrderViewController *Order = [[CartOrderViewController alloc] initWithNibName:@"CartOrderView" bundle:nil];
+	[self presentModalViewController:Order animated:YES];
+	[Order release];*/
+	OrderUserInfo *UserInfo = [InfoOrder User];
+	
+	[UserInfo setOrderUser:Name.text];
+	[UserInfo setPhone:Phone.text];
+	
+	
+	MyShippingList *List = [[MyShippingList alloc] initWithNibName:@"MyShippingList" bundle:nil];
+	List.InfoOrder = self.InfoOrder;
+	[self presentModalViewController:List animated:YES];
+	[List release];
 }
 
 #pragma mark  -

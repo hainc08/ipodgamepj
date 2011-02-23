@@ -10,33 +10,7 @@
 #import "UITableViewCellTemplate.h"
 #import "HttpRequest.h"
 #import "XmlParser.h"
-@implementation CustomerDelivery
-
-@synthesize custid,seq ,phone ,si , gu;
-@synthesize dong,bunji , building ,addrdesc ,branchid;
-@synthesize regdate, regtime, upddate, updtime;
-
-- (void)dealloc {
-    [custid release];
-    [seq release];
-    [phone release];
-    [si release];
-    [gu release];
-	[dong release];
-    [bunji release];
-    [building release];
-    [addrdesc release];
-    [branchid release];
-	[regdate release];
-    [regtime release];
-    [upddate release];
-    [updtime release];
-	[super dealloc];
-}
-
-@end
-
-
+#import "DataList.h"
 
 @implementation MyCustomerDelivery
 
@@ -146,13 +120,6 @@
 }
 
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
