@@ -7,11 +7,11 @@
 //
 
 #import "CartOrderViewController.h"
-
+#import "OrderViewController.h"
 
 @implementation CartOrderViewController
 
-
+@synthesize InfoOrder;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,7 +32,19 @@
 }
 - (IBAction)OrderButton:(id)sender
 {
-	
+	if(sender == normalButton)
+	{
+		
+		[InfoOrder setOrderType:0];
+		OrderViewController *Order = [[OrderViewController alloc] initWithNibName:@"OrderViewController" bundle:nil];
+		Order.InfoOrder = self.InfoOrder;
+			[self presentModalViewController:Order animated:YES];
+		[Order release];
+	}
+	else {
+		[InfoOrder setOrderType:1];
+	}
+
 }
 
 - (void)dealloc {

@@ -26,6 +26,7 @@
 	[self.view addSubview:curView];
 	[self.view sendSubviewToBack:curView];
 	[self.view sendSubviewToBack:backImg];
+	
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -36,7 +37,7 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
 	if (lastTag == [item tag]) return;
-
+	[self dismissModalViewControllerAnimated:YES];
 	UIViewController* body;
 
 	switch ([item tag]) {

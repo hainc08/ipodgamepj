@@ -12,11 +12,13 @@
 @implementation ShippingCell
 @synthesize ShippingName;
 @synthesize ShippingAddress;
--(void)setInfo:(NSString*)_inName :(NSString *)_inMin :(NSString *)_inAddr
+@synthesize ShippingCall;
+-(void)setInfo:(NSString*)_inName :(NSString *)_inMin :(NSString *)_inAddr :(NSString *)_inCall
 {
 	NSString *temp = [NSString stringWithFormat:@"%@ (%@)", _inName,   _inMin];
 	[ShippingName setText: temp ];
 	[ShippingAddress setText:_inAddr];
+	[ShippingCall setText:_inCall];
 }
 @end
 

@@ -61,7 +61,7 @@
 	[[DataManager getInstance] setAccountId:ID.text];
 	[[DataManager getInstance] setAccountPass:Password.text];
 	// 접속할 주소 설정
-	NSString *url = @"http://your.webpage.url";
+	NSString *url = @"http://www.naver.com";
 	
 	// HTTP Request 인스턴스 생성
 	HTTPRequest *httpRequest = [[HTTPRequest alloc] init];

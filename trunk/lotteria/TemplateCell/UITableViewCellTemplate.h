@@ -73,12 +73,15 @@
 	
 	/* 배송지 주소		, FontColer : White */
 	IBOutlet UILabel* ShippingAddress;
+	
+	/* 배송지 전화번호 , FontColor : White */
+	IBOutlet UILabel* ShippingCall;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel* ShippingName;  
 @property (nonatomic, retain) IBOutlet UILabel* ShippingAddress;  
-
--(void)setInfo:(NSString*)_inName :(NSString *)_inMin :(NSString *)_inAddr;
+@property (nonatomic, retain) IBOutlet UILabel* ShippingCall;
+-(void)setInfo:(NSString*)_inName :(NSString *)_inMin :(NSString *)_inAddr :(NSString *)_inCall;
 @end
 
 /* 상세주문 Cell 

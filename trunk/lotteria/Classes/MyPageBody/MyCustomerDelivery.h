@@ -7,44 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewControllerTemplate.h"
 
 
-@interface CustomerDelivery : NSObject {
-	NSString *custid;
-	NSString *seq;
-	NSString *phone;
-	NSString *si;
-	NSString *gu;
-	NSString *dong;
-	NSString *bunji;
-	NSString *building;
-	NSString *addrdesc;
-	NSString *branchid;
-	NSString *regdate;
-	NSString *regtime;
-	NSString *upddate;
-	NSString *updtime;
-}
 
-@property (retain) NSString *custid;
-@property (retain) NSString *seq;
-@property (retain) NSString *phone;
-@property (retain) NSString *si;
-@property (retain) NSString *gu;
-@property (retain) NSString *dong;
-@property (retain) NSString *bunji;
-@property (retain) NSString *building;
-@property (retain) NSString *addrdesc;
-@property (retain) NSString *branchid;
-@property (retain) NSString *regdate;
-@property (retain) NSString *regtime;
-@property (retain) NSString *upddate;
-@property (retain) NSString *updtime;
-
-@end
-
-
-@interface MyCustomerDelivery : UIViewController <UITableViewDataSource, UITableViewDelegate > {
+@interface MyCustomerDelivery : UIViewControllerTemplate<UITableViewDataSource, UITableViewDelegate > {
 
 	IBOutlet UITableView *CustomerTable;
     NSMutableArray *CustomerArr;

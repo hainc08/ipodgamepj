@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewControllerTemplate.h"
 
-
-@interface CartOrderUserViewController : UIViewController {
+@class Order;
+@interface CartOrderUserViewController : UIViewControllerTemplate {
 	IBOutlet UITextField	*Name;
 	IBOutlet UITextField	*Phone;
+	Order *InfoOrder;
 }
+@property (nonatomic, retain) Order *InfoOrder;
 - (IBAction)ContinueButton:(id)sender;
 @end
