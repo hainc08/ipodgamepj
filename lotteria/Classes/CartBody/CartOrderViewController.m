@@ -34,7 +34,6 @@
 {
 	if(sender == normalButton)
 	{
-		
 		[InfoOrder setOrderType:0];
 		OrderViewController *Order = [[OrderViewController alloc] initWithNibName:@"OrderViewController" bundle:nil];
 		Order.InfoOrder = self.InfoOrder;

@@ -1,6 +1,7 @@
 #import "DetailViewController.h"
+#import "UIViewControllerTemplate.h"		
 
-@interface MainBodyViewController : UIViewController<UIScrollViewDelegate> {
+@interface MainBodyViewController : UIViewControllerTemplate<UIScrollViewDelegate> {
 	DetailViewController* detailView;
 
 	IBOutlet UIView* baseView;
@@ -31,6 +32,7 @@
 }
 
 - (IBAction)ButtonClick:(id)sender;
+- (IBAction)FindClick;
 - (void)addIcon:(NSString*)menuId isTop:(bool)isTop;
 - (void)iconClicked:(NSString*)mid;
 

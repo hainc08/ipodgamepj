@@ -1,7 +1,7 @@
 
 #import <UIKit/UIKit.h>
-#import "UIViewControllerTemplate.h"
-
+#import "UIViewControllerTemplate.h"		
+	
 @interface MypageBodyViewController : UIViewControllerTemplate  {
 
 	

@@ -18,33 +18,14 @@
 
 @implementation UIViewControllerTemplate
 
-@synthesize topBar;
+@synthesize navi;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	UIImage *buttonImage = [UIImage imageNamed:@"btn_com_top_help_off.png"];
-	UIButton *helpbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-
-	[helpbutton setImage:buttonImage forState:UIControlStateNormal];
-
-	helpbutton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
-
-	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:helpbutton];
-
-	[helpbutton addTarget:self action:@selector(HelpButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-	
-	self.topBar.topItem.rightBarButtonItem = rightButton;									
-
-	[helpbutton release];
-	[rightButton release];
-	
-	
-	
 	self.view.backgroundColor = 
 	[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_content.png"]];
-
 }
 
 - (IBAction)HelpButtonClicked:(id)sender

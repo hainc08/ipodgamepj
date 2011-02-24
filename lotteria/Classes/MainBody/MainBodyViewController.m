@@ -1,4 +1,5 @@
 #import "MainBodyViewController.h"
+#import "FindBodyViewController.h"
 #import "IconButton.h"
 
 @implementation MainBodyViewController
@@ -144,6 +145,12 @@
 
 	[scrollView setContentSize:CGSizeMake([[scrollView subviews] count]* 70, 70)];
 	[scrollView scrollRectToVisible:CGRectMake(0, 0, 320, 70) animated:false];
+}
+
+- (IBAction)FindClick
+{
+	FindBodyViewController* findBody = [[FindBodyViewController alloc] init];
+	[navi pushViewController:findBody animated:true];
 }
 
 - (void)viewDidUnload {

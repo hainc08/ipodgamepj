@@ -67,6 +67,7 @@ static DataManager *DataManagerInst;
 @synthesize isLoginNow;
 @synthesize accountId;
 @synthesize accountPass;
+@synthesize isCartDirty;
 
 + (DataManager*)getInstance
 {
@@ -104,6 +105,7 @@ static DataManager *DataManagerInst;
 	}
 
 	isLoginNow = false;
+	isCartDirty = false;
 	
 	[self loadProduct];
 }
@@ -112,11 +114,13 @@ static DataManager *DataManagerInst;
 - (void)addCartItem:(CartItem*)item
 {
 	[ShopCart addObject:item];
+	isCartDirty = true;
 }
 
 - (void)removeCartItem:(CartItem*)item
 {
 	[ShopCart removeObject:item];
+	isCartDirty = true;
 }
 
 - (NSMutableArray*)getShopCart

@@ -7,12 +7,8 @@
 //
 
 #import "MainViewController.h"
-
-#import "MainBodyViewController.h"
-#import "CartBodyViewController.h"
-#import "MypageBodyViewController.h"
-#import "LoginViewController.h"
-#import "MapBodyViewController.h"
+#import "NaviViewController.h"
+#import "LogoViewController.h"
 
 @implementation MainViewController
 
@@ -20,54 +16,33 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	MainBodyViewController* mainBody = [[MainBodyViewController alloc] init];
-	curView = mainBody.view;
+	LogoViewController* logoBody = [[LogoViewController alloc] init];
+	NaviViewController* navi = [[NaviViewController alloc] init];
+	curView = navi.view;
 	
 	[self.view addSubview:curView];
+	[self.view addSubview:logoBody.view];
+
 	[self.view sendSubviewToBack:curView];
 	[self.view sendSubviewToBack:backImg];
-	
-}
+	[self.view bringSubviewToFront:helpButton];
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	[logoImg setAlpha:0];
-	lastTag = 0;
+	[self.view bringSubviewToFront:logoBody.view];
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
 	if (lastTag == [item tag]) return;
 	[self dismissModalViewControllerAnimated:YES];
-	UIViewController* body;
-
-	switch ([item tag]) {
-		case 0:
-			body = [[MainBodyViewController alloc] init];
-			break;
-		case 1:
-			body = [[CartBodyViewController alloc] init];
-			break;
-		case 2:
-			if ([[DataManager getInstance] isLoginNow])
-			{
-				body = [[MypageBodyViewController alloc] init];
-			}
-			else
-			{
-				body = [[LoginViewController alloc] init];
-			}
-			break;
-		case 3:
-			body = [[MapBodyViewController alloc] init];
-			break;
-	}
+	NaviViewController* navi = [[NaviViewController alloc] init];
+	[navi setIdx:[item tag]];
 
 	UIView* oldView = curView;
-	curView = body.view;
+	curView = navi.view;
 
 	[self.view addSubview:curView];
 	[self.view sendSubviewToBack:curView];
 	[self.view sendSubviewToBack:backImg];
+	[self.view bringSubviewToFront:helpButton];
 
 	[oldView removeFromSuperview];
 	

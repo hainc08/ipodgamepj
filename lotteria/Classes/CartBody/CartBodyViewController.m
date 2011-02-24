@@ -1,8 +1,11 @@
 #import "CartBodyViewController.h"
 #import "CartOrderUserViewController.h"
 #import "DataList.h"
+
 @implementation CartBodyViewController
+
 @synthesize InfoOrder;
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
@@ -25,14 +28,31 @@
 	}
 	
 	[scrollView setContentSize:CGSizeMake(300, totListHeight + 15)];
+
 	[priceLabel setText:[[DataManager getInstance] getPriceStr:[[DataManager getInstance] getCartPrice]]];
 	
 	InfoOrder = [[[Order alloc] init] retain];
+
+	updateTimer = [[NSTimer scheduledTimerWithTimeInterval: 1.0f
+													target: self
+												  selector: @selector(update)
+												  userInfo: self
+												   repeats: YES] retain];	
+}
+
+- (void)update
+{
+	if ([[DataManager getInstance] isCartDirty] == false) return;
+	
+	[priceLabel setText:[[DataManager getInstance] getPriceStr:[[DataManager getInstance] getCartPrice]]];
+	[[DataManager getInstance] setIsCartDirty:false];
 }
 
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+	[updateTimer invalidate]; 
+	[updateTimer release]; 
 }
 
 - (void)dealloc {
@@ -58,8 +78,6 @@
 //	[self.view addSubview:UserInput.view ];
 
 	[UserInput release];
-
-	
 }
 
 @end

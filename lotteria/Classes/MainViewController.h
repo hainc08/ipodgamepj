@@ -10,8 +10,7 @@
 	int lastTag;
 	id curView;
 	IBOutlet UIImageView* backImg;
-	IBOutlet UIImageView* logoImg;
-	
+	IBOutlet UIButton* helpButton;
 }
 
 @end

@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIViewControllerTemplate.h"
-
-
-
+#import "UIViewControllerTemplate.h"		
+	
 @interface LoginViewController : UIViewControllerTemplate <UITextFieldDelegate> {
 
 	IBOutlet UITextField	*ID;

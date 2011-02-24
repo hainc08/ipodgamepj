@@ -1,0 +1,4 @@
+@interface LogoViewController : UIViewController {
+}
+
+@end

@@ -10,9 +10,8 @@
 
 
 @interface UIViewControllerTemplate : UIViewController {
-
-	IBOutlet UINavigationBar *topBar;
+	UINavigationController *navi;
 }
 
-@property (nonatomic , retain) IBOutlet UINavigationBar *topBar;
+@property (nonatomic , retain) UINavigationController *navi;
 @end

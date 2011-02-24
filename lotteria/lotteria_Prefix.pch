@@ -14,4 +14,4 @@
 #endif
 
 #import "DataManager.h"
-
+#import "NavigatorManager.h"
