@@ -13,6 +13,7 @@
 	side1Id = [item dessertId];
 	side2Id = [item drinkId];
 	count = [item count];
+	cartItem = item;
 
 	[self refreshData];
 }
@@ -92,6 +93,8 @@
 		if (sender == decCount) --count;
 
 		[self refreshData];
+		[cartItem setCount:count];
+		[[DataManager getInstance] setIsCartDirty:true];
 	}
 }
 

@@ -62,11 +62,13 @@ typedef enum _ImgType
 
 	NSMutableDictionary *allProductMap;
 	NSMutableArray* allProductList;
+	bool isCartDirty;
 }
 
 @property (readonly) bool isLoginNow;
 @property (retain) NSString* accountId;
 @property (retain) NSString* accountPass;
+@property (readwrite) bool isCartDirty;
 
 + (DataManager*)getInstance;
 + (void)initManager;

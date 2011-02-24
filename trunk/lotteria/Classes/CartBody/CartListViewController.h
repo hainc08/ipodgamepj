@@ -14,6 +14,8 @@
 	IBOutlet UILabel* sideLabel;
 	IBOutlet UILabel* countLabel;
 	IBOutlet UILabel* priceLabel;
+	
+	CartItem* cartItem;
 
 	int count;
 }
