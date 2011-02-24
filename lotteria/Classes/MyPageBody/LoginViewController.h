@@ -11,7 +11,7 @@
 
 
 
-@interface LoginViewController : UIViewControllerTemplate {
+@interface LoginViewController : UIViewControllerTemplate <UITextFieldDelegate> {
 
 	IBOutlet UITextField	*ID;
 	IBOutlet UITextField	*Password;

@@ -19,7 +19,7 @@
 
 - (void)showProduct:(NSString*)menu_id
 {
-	pId[0] = menu_id;
+	pId[0] = productId = menu_id;
 
 	[pImage setImage:[[DataManager getInstance] getProductImg:menu_id type:DETAIL]];
 	[nameImage setImage:[[DataManager getInstance] getProductImg:menu_id type:NAME]];
@@ -47,8 +47,9 @@
 		[closeButton setCenter:CGPointMake(300, 63)];
 		
 		//기본 사이드를 설정하자.
-		pId[1] = @"";
-		pId[2] = @"";
+		pId[0] = [[DataManager getInstance] getSetId:productId];
+		pId[1] = @"200504";	//세트포테이토
+		pId[2] = @"200807";	//세트콜라
 	}
 	else if (sender == singleButton)
 	{
@@ -68,18 +69,28 @@
 		[closeButton setCenter:CGPointMake(300, 90)];
 
 		//사이드가 없다.
-		pId[1] = @"200504";	//세트포테이토
-		pId[2] = @"200807";	//세트콜라
+		pId[0] = productId;
+		pId[1] = nil;
+		pId[2] = nil;
 	}
 	else if (sender == addCartButton)
 	{
 		[selectView setAlpha:0];
 		
-		CartItem* item = [[CartItem alloc] init];
+		CartItem* item = [[[CartItem alloc] init] retain];
+		
+		NSString* category = [[[DataManager getInstance] getProduct:productId] category];
+
+		if ([category compare:@"D10"] == NSOrderedSame) [item setListIdx:0];
+		else if ([category compare:@"D20"] == NSOrderedSame) [item setListIdx:1];
+		else if ([category compare:@"D30"] == NSOrderedSame) [item setListIdx:2];
+		else if ([category compare:@"D40"] == NSOrderedSame) [item setListIdx:3];
+		else if ([category compare:@"D50"] == NSOrderedSame) [item setListIdx:4];
+
 		[item setCount:count];
-		[item setMenuid:pId[0]];
-		[item setDrinkId:pId[1]];
-		[item setDessertId:pId[2]];
+		[item setMenuId:pId[0]];
+		[item setDessertId:pId[1]];
+		[item setDrinkId:pId[2]];
 		[[DataManager getInstance] addCartItem:item];
 	}
 	else if ((sender == incCount)||(sender == decCount))
