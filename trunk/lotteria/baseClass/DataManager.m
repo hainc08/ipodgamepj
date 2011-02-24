@@ -7,10 +7,11 @@ static DataManager *DataManagerInst;
 
 @implementation CartItem
 
-@synthesize menuid;
-@synthesize drinkId;
+@synthesize menuId;
 @synthesize dessertId;
+@synthesize drinkId;
 @synthesize count;
+@synthesize listIdx;
 
 @end
 
@@ -85,7 +86,7 @@ static DataManager *DataManagerInst;
 
 - (void)reset
 {
-	ShopKart = [[NSMutableArray alloc] initWithCapacity:0];
+	ShopCart = [[NSMutableArray alloc] initWithCapacity:0];
 
 	//account.txt에서 계정정보를 읽어오자
 	NSFileHandle* accountFile = openFileToRead(@"account.txt");
@@ -110,17 +111,47 @@ static DataManager *DataManagerInst;
 //-------------------장바구니 처리---------------------
 - (void)addCartItem:(CartItem*)item
 {
-	[ShopKart addObject:item];
+	[ShopCart addObject:item];
 }
 
 - (void)removeCartItem:(CartItem*)item
 {
-	[ShopKart removeObject:item];
+	[ShopCart removeObject:item];
 }
 
-- (NSMutableArray*)getShopKart
+- (NSMutableArray*)getShopCart
 {
-	return ShopKart;
+	return ShopCart;
+}
+
+- (int)itemCount:(int)listIdx
+{
+	int count = 0;
+	
+	for (CartItem* item in ShopCart)
+	{
+		if ([item listIdx] == listIdx)
+			++count;
+	}
+	
+	return count;
+}
+
+- (CartItem*)getCartItem:(int)idx listIdx:(int)listIdx
+{
+	for (CartItem* item in ShopCart)
+	{
+		if ([item listIdx] == listIdx)
+		{
+			if (idx == 0)
+			{
+				return item;
+			}
+			--idx;
+		}
+	}
+
+	return nil;
 }
 
 //-------------------상품 정보 처리---------------------
@@ -131,8 +162,8 @@ static DataManager *DataManagerInst;
 		XmlParser* parser = [[XmlParser alloc] init];
 		[parser parserBundleFile:@"product.xml"];
 
-		productMap = [[NSMutableDictionary alloc] init];
 		setProductMap = [[NSMutableDictionary alloc] init];
+		allProductMap = [[NSMutableDictionary alloc] init];
 		allProductList = [[NSMutableArray alloc] initWithCapacity:0];
 
 		Element* root = [parser getRoot:@"Products"];
@@ -155,13 +186,10 @@ static DataManager *DataManagerInst;
 					([[data category] compare:@"S11"] == NSOrderedSame))
 				{
 					[data setKey:[NSString stringWithString:[product getAttribute:@"ori_menu_id"]]];
-					[setProductMap setObject:data forKey:[data menuId]];
-				}
-				else 
-				{
-					[productMap setObject:data forKey:[data menuId]];
+					[setProductMap setObject:data forKey:[data key]];
 				}
 				
+				[allProductMap setObject:data forKey:[data menuId]];
 				[allProductList addObject:data];
 				
 				product = [root getNextChild];
@@ -198,7 +226,12 @@ static DataManager *DataManagerInst;
 
 - (ProductData*)getProduct:(NSString*)menuId
 {
-	return [productMap objectForKey:menuId];
+	return [allProductMap objectForKey:menuId];
+}
+
+- (NSString*)getSetId:(NSString*)menuId
+{
+	return [[setProductMap objectForKey:menuId] menuId];
 }
 
 - (UIImage*)getProductImg:(NSString*)menuId type:(ImgType)imgType
@@ -217,6 +250,47 @@ static DataManager *DataManagerInst;
 		}
 	}
 	return array;
+}
+
+- (NSString*)getPriceStr:(int)value
+{
+	if (value == 0) return @"0";
+
+	char temp[64];
+	temp[63] = 0x00;
+
+	int idx = 63;
+	while (value != 0)
+	{
+		--idx;
+		temp[idx] = '0' + value%10;
+
+		if ((60 - idx)%4 == 0)
+		{
+			--idx;
+			temp[idx] = ',';
+		}
+
+		value = (int)(value / 10);
+	}
+	
+	return [NSString stringWithFormat:@"%s", &temp[idx]];
+}
+
+- (int)getCartPrice
+{
+	int totPrice = 0;
+
+	for (CartItem* data in ShopCart)
+	{
+		totPrice += [data count] * [[self getProduct:[data menuId]] price];
+		if ([data dessertId] != nil)
+			totPrice += [data count] * [[self getProduct:[data dessertId]] price];
+		if ([data drinkId] != nil)
+			totPrice += [data count] * [[self getProduct:[data drinkId]] price];
+	}
+	
+	return totPrice;
 }
 
 @end

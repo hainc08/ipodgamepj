@@ -19,6 +19,7 @@
 	IBOutlet UIScrollView* contentScrollView;
 	
 	int count;
+	NSString* productId;
 	NSString* pId[3];
 	
 	IBOutlet UILabel* countLabel;
