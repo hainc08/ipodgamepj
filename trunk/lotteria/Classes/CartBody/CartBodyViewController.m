@@ -38,6 +38,7 @@
 												  selector: @selector(update)
 												  userInfo: self
 												   repeats: YES] retain];	
+	self.navigationItem.title = @"장바구니";
 }
 
 - (void)update

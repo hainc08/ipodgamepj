@@ -24,6 +24,7 @@
 	
 	ID.text =  [[DataManager getInstance] accountId];
 	Password.text =  [[DataManager getInstance] accountPass];
+	self.navigationItem.title = @"로그인";
 
 }
 

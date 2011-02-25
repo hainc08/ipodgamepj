@@ -40,6 +40,8 @@
 		56D8082E1317ED260049314B /* ShipAddressTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D808291317ED260049314B /* ShipAddressTable.xib */; };
 		56D8082F1317ED260049314B /* ShipSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D8082A1317ED260049314B /* ShipSearchView.xib */; };
 		56D808301317ED260049314B /* ShipSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D8082C1317ED260049314B /* ShipSearchViewController.m */; };
+		56D80A17131818420049314B /* ShipStreetBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D80A15131818420049314B /* ShipStreetBuilding.m */; };
+		56D80A18131818420049314B /* ShipStreetBuilding.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D80A16131818420049314B /* ShipStreetBuilding.xib */; };
 		842C27D2130EB1590003BAD4 /* bg_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C2656130EB1590003BAD4 /* bg_bottom.png */; };
 		842C27D3130EB1590003BAD4 /* bg_btn_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C2657130EB1590003BAD4 /* bg_btn_box.png */; };
 		842C27D4130EB1590003BAD4 /* bg_burger_select_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C2658130EB1590003BAD4 /* bg_burger_select_box.png */; };
@@ -501,6 +503,9 @@
 		56D8082A1317ED260049314B /* ShipSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShipSearchView.xib; path = Classes/ShipSearch/ShipSearchView.xib; sourceTree = "<group>"; };
 		56D8082B1317ED260049314B /* ShipSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipSearchViewController.h; path = Classes/ShipSearch/ShipSearchViewController.h; sourceTree = "<group>"; };
 		56D8082C1317ED260049314B /* ShipSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShipSearchViewController.m; path = Classes/ShipSearch/ShipSearchViewController.m; sourceTree = "<group>"; };
+		56D80A14131818420049314B /* ShipStreetBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipStreetBuilding.h; path = Classes/ShipSearch/ShipStreetBuilding.h; sourceTree = "<group>"; };
+		56D80A15131818420049314B /* ShipStreetBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShipStreetBuilding.m; path = Classes/ShipSearch/ShipStreetBuilding.m; sourceTree = "<group>"; };
+		56D80A16131818420049314B /* ShipStreetBuilding.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShipStreetBuilding.xib; path = Classes/ShipSearch/ShipStreetBuilding.xib; sourceTree = "<group>"; };
 		842C2656130EB1590003BAD4 /* bg_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_bottom.png; sourceTree = "<group>"; };
 		842C2657130EB1590003BAD4 /* bg_btn_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_btn_box.png; sourceTree = "<group>"; };
 		842C2658130EB1590003BAD4 /* bg_burger_select_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_burger_select_box.png; sourceTree = "<group>"; };
@@ -1085,6 +1090,9 @@
 				56D8082A1317ED260049314B /* ShipSearchView.xib */,
 				56D8082B1317ED260049314B /* ShipSearchViewController.h */,
 				56D8082C1317ED260049314B /* ShipSearchViewController.m */,
+				56D80A14131818420049314B /* ShipStreetBuilding.h */,
+				56D80A15131818420049314B /* ShipStreetBuilding.m */,
+				56D80A16131818420049314B /* ShipStreetBuilding.xib */,
 			);
 			name = "배송지";
 			sourceTree = "<group>";
@@ -2049,6 +2057,7 @@
 				849DBD161316FF1500C630CD /* NaviView.xib in Resources */,
 				56D8082E1317ED260049314B /* ShipAddressTable.xib in Resources */,
 				56D8082F1317ED260049314B /* ShipSearchView.xib in Resources */,
+				56D80A18131818420049314B /* ShipStreetBuilding.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2089,6 +2098,7 @@
 				849DBD171316FF1500C630CD /* NaviViewController.m in Sources */,
 				56D8082D1317ED260049314B /* ShipAddressTable.m in Sources */,
 				56D808301317ED260049314B /* ShipSearchViewController.m in Sources */,
+				56D80A17131818420049314B /* ShipStreetBuilding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

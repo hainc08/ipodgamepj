@@ -7,6 +7,8 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	self.navigationItem.title = @"매장찾기";
+	
 	
 	buttonImg[0][0] = [[UIImage imageNamed:@"btn_store_all_off.png"] retain];
 	buttonImg[0][1] = [[UIImage imageNamed:@"btn_store_all_on.png"] retain];

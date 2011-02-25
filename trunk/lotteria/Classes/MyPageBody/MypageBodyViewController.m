@@ -8,7 +8,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
+	self.navigationItem.title = @"마이페이지";
 }
 
 - (void)viewDidUnload {
