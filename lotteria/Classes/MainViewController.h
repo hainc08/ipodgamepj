@@ -11,6 +11,7 @@
 	id curView;
 	IBOutlet UIImageView* backImg;
 	IBOutlet UIButton* helpButton;
+	IBOutlet UIButton* listButton;
 }
 
 @end

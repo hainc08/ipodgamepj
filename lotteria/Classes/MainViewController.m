@@ -18,6 +18,9 @@
 
 	LogoViewController* logoBody = [[LogoViewController alloc] init];
 	NaviViewController* navi = [[NaviViewController alloc] init];
+	[navi setHelpButton:helpButton];
+	[navi setListButton:listButton];
+	
 	curView = navi.view;
 	
 	[self.view addSubview:curView];
@@ -26,8 +29,10 @@
 	[self.view sendSubviewToBack:curView];
 	[self.view sendSubviewToBack:backImg];
 	[self.view bringSubviewToFront:helpButton];
+	[self.view bringSubviewToFront:listButton];
 
 	[self.view bringSubviewToFront:logoBody.view];
+	[listButton setAlpha:0];
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
