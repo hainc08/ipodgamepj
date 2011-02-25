@@ -24,6 +24,8 @@
 	buttonOrigin[5] = findView.center;
 	
 	lastButton = nil;
+	
+	self.navigationItem.title = @"메뉴 선택";
 }
 
 - (IBAction)ButtonClick:(id)sender
