@@ -65,6 +65,8 @@
     [si release];
     [gu release];
 	[dong release];
+	[adong release];
+	[ldong release];
     [bunji release];
     [building release];
     [addrdesc release];

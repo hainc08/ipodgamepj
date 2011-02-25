@@ -13,12 +13,17 @@
 
 @interface MyShippingList : UIViewControllerTemplate<UITableViewDataSource, UITableViewDelegate > {
 	IBOutlet UITableView *CustomerTable;
-    NSMutableArray *CustomerArr;
+    IBOutlet UIButton	*regButton;
+	
+	NSMutableArray *CustomerArr;
+	
 	
 	Order	*InfoOrder;
 }
 @property (nonatomic, retain)     NSMutableArray *CustomerArr;
 @property (nonatomic, retain) IBOutlet UITableView *CustomerTable;
 @property (nonatomic, retain) Order *InfoOrder;
+
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
+- (IBAction)ShipRegButton:(id)sender;
 @end

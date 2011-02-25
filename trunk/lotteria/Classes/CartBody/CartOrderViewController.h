@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UIViewControllerTemplate.h"
 @class Order;
-@interface CartOrderViewController : UIViewController {
+@interface CartOrderViewController : UIViewControllerTemplate {
 	IBOutlet	UIButton *normalButton;
 	IBOutlet	UIButton *delayButton;
 	Order *InfoOrder;

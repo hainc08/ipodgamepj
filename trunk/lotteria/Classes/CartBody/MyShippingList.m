@@ -10,7 +10,9 @@
 #import "XmlParser.h"
 #import "CartOrderViewController.h"
 #import "UITableViewCellTemplate.h"
+#import "ShipSearchViewController.h"
 #import "DataList.h"
+#import "NaviViewController.h"
 
 @implementation MyShippingList
 
@@ -141,6 +143,18 @@
 	[super viewWillDisappear:animated];
 }
 
+- (IBAction)ShipRegButton:(id)sender
+{
+	/* 죽네.. ㅡ.ㅡ;; 왜 처죽어..;; 나중에 해결합시다.. 우선 화면부터 뽑고..
+	 
+	 */
+//	ShipSearchViewController *Search = [[ShipSearchViewController alloc] initWithNibName:@"ShipSearchView" bundle:nil];
+	NaviViewController *controller = [[NaviViewController alloc] init];
+	[controller setIdx:4];
+	[self  presentModalViewController:controller animated:YES];
+//	[Search release];
+	[controller release];
+}
 
 
 #pragma mark -
@@ -286,7 +300,7 @@
 	
 	CartOrderViewController *Order = [[CartOrderViewController alloc] initWithNibName:@"CartOrderView" bundle:nil];
 	Order.InfoOrder = self.InfoOrder;	
-	 [self presentModalViewController:Order animated:YES];
+	[self.navigationController pushViewController:Order animated:YES];
 	 [Order release];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

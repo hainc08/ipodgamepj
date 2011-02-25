@@ -64,6 +64,8 @@
 	NSString *si;	
 	NSString *gu;
 	NSString *dong;
+	NSString *adong;
+	NSString *ldong;
 	NSString *bunji;
 	NSString *building;
 	NSString *addrdesc;
@@ -75,6 +77,8 @@
 @property (retain) NSString *si;
 @property (retain) NSString *gu;
 @property (retain) NSString *dong;
+@property (retain) NSString *adong;
+@property (retain) NSString *ldong;
 @property (retain) NSString *bunji;
 @property (retain) NSString *building;
 @property (retain) NSString *addrdesc;

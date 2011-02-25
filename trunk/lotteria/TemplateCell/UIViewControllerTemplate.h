@@ -15,3 +15,9 @@
 
 @property (nonatomic , retain) UINavigationController *navi;
 @end
+
+@interface UIViewControllerDownTemplate : UIViewController {
+
+}
+
+@end

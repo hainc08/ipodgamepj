@@ -5,6 +5,7 @@
 #import "MypageBodyViewController.h"
 #import "LoginViewController.h"
 #import "MapBodyViewController.h"
+#import "ShipSearchViewController.h"
 
 @implementation NaviViewController
 
@@ -35,10 +36,14 @@
 		case 3:
 			body = [[MapBodyViewController alloc] init];
 			break;
+		case 4:
+			body = [[ShipSearchViewController alloc] init];
+			break;
 	}
 	
 	[self pushViewController:body animated:false];
 	[body setNavi:self];
+	
 
 	UINavigationBar* bar = [self navigationBar];
 	[bar setTintColor:[UIColor clearColor]];

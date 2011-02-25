@@ -95,8 +95,9 @@
 		[Customer setUpdtime:[[t_item getChild:@"upd_time"] getValue]];
 		
 		[CustomerArr  addObject:Customer];
+		[Customer release];
 	}
-	
+	[xmlParser release];
 /*
 
 	NSString *url = @"http://your.webpage.url";

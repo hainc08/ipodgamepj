@@ -51,7 +51,7 @@
 	
 	MyShippingList *List = [[MyShippingList alloc] initWithNibName:@"MyShippingList" bundle:nil];
 	List.InfoOrder = self.InfoOrder;
-	[self presentModalViewController:List animated:YES];
+	[self.navigationController pushViewController:List animated:YES];
 	[List release];
 }
 

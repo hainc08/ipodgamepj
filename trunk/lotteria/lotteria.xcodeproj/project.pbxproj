@@ -36,6 +36,10 @@
 		56A9CBF9131568200071D8A0 /* DataList.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A9CBF8131568200071D8A0 /* DataList.m */; };
 		56A9CD56131586770071D8A0 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A9CD54131586770071D8A0 /* OrderViewController.m */; };
 		56A9CD57131586770071D8A0 /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9CD55131586770071D8A0 /* OrderViewController.xib */; };
+		56D8082D1317ED260049314B /* ShipAddressTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D808281317ED260049314B /* ShipAddressTable.m */; };
+		56D8082E1317ED260049314B /* ShipAddressTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D808291317ED260049314B /* ShipAddressTable.xib */; };
+		56D8082F1317ED260049314B /* ShipSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D8082A1317ED260049314B /* ShipSearchView.xib */; };
+		56D808301317ED260049314B /* ShipSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D8082C1317ED260049314B /* ShipSearchViewController.m */; };
 		842C27D2130EB1590003BAD4 /* bg_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C2656130EB1590003BAD4 /* bg_bottom.png */; };
 		842C27D3130EB1590003BAD4 /* bg_btn_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C2657130EB1590003BAD4 /* bg_btn_box.png */; };
 		842C27D4130EB1590003BAD4 /* bg_burger_select_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 842C2658130EB1590003BAD4 /* bg_burger_select_box.png */; };
@@ -442,7 +446,6 @@
 		84C0AA5713146C9100DCD418 /* PlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C0AA5613146C9100DCD418 /* PlaceMark.m */; };
 		84D1BF0C1313E30F002C8A52 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D1BF0B1313E30F002C8A52 /* MapKit.framework */; };
 		84D85E281313F76300361C3B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D85E271313F76300361C3B /* CoreLocation.framework */; };
-		84E9CDC41317EEAD0053D855 /* FindCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E9CDC31317EEAD0053D855 /* FindCellView.xib */; };
 		84EB01351310DDD700AED472 /* IconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB01331310DDD700AED472 /* IconButton.m */; };
 		84EB01361310DDD700AED472 /* IconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EB01341310DDD700AED472 /* IconButton.xib */; };
 		84F1B8D1131450F3006FC7C7 /* productKey.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84F1B8D0131450F3006FC7C7 /* productKey.xml */; };
@@ -492,6 +495,12 @@
 		56A9CD53131586770071D8A0 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
 		56A9CD54131586770071D8A0 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		56A9CD55131586770071D8A0 /* OrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderViewController.xib; sourceTree = "<group>"; };
+		56D808271317ED260049314B /* ShipAddressTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipAddressTable.h; path = Classes/ShipSearch/ShipAddressTable.h; sourceTree = "<group>"; };
+		56D808281317ED260049314B /* ShipAddressTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShipAddressTable.m; path = Classes/ShipSearch/ShipAddressTable.m; sourceTree = "<group>"; };
+		56D808291317ED260049314B /* ShipAddressTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShipAddressTable.xib; path = Classes/ShipSearch/ShipAddressTable.xib; sourceTree = "<group>"; };
+		56D8082A1317ED260049314B /* ShipSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShipSearchView.xib; path = Classes/ShipSearch/ShipSearchView.xib; sourceTree = "<group>"; };
+		56D8082B1317ED260049314B /* ShipSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipSearchViewController.h; path = Classes/ShipSearch/ShipSearchViewController.h; sourceTree = "<group>"; };
+		56D8082C1317ED260049314B /* ShipSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShipSearchViewController.m; path = Classes/ShipSearch/ShipSearchViewController.m; sourceTree = "<group>"; };
 		842C2656130EB1590003BAD4 /* bg_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_bottom.png; sourceTree = "<group>"; };
 		842C2657130EB1590003BAD4 /* bg_btn_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_btn_box.png; sourceTree = "<group>"; };
 		842C2658130EB1590003BAD4 /* bg_burger_select_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_burger_select_box.png; sourceTree = "<group>"; };
@@ -1067,6 +1076,19 @@
 			name = DataList;
 			sourceTree = "<group>";
 		};
+		56D808261317ED140049314B /* 배송지 */ = {
+			isa = PBXGroup;
+			children = (
+				56D808271317ED260049314B /* ShipAddressTable.h */,
+				56D808281317ED260049314B /* ShipAddressTable.m */,
+				56D808291317ED260049314B /* ShipAddressTable.xib */,
+				56D8082A1317ED260049314B /* ShipSearchView.xib */,
+				56D8082B1317ED260049314B /* ShipSearchViewController.h */,
+				56D8082C1317ED260049314B /* ShipSearchViewController.m */,
+			);
+			name = "배송지";
+			sourceTree = "<group>";
+		};
 		842C2655130EB1590003BAD4 /* img */ = {
 			isa = PBXGroup;
 			children = (
@@ -1503,6 +1525,7 @@
 		84B4A35D130FFF1500A7A99B /* Main View */ = {
 			isa = PBXGroup;
 			children = (
+				56D808261317ED140049314B /* 배송지 */,
 				849DBD131316FF1500C630CD /* NaviView.xib */,
 				849DBD141316FF1500C630CD /* NaviViewController.h */,
 				849DBD151316FF1500C630CD /* NaviViewController.m */,
@@ -2024,7 +2047,8 @@
 				84B9C54A1316B020003FED88 /* bg_titlebar.png in Resources */,
 				84B9C56F1316B1EC003FED88 /* bg_com_top_logo.png in Resources */,
 				849DBD161316FF1500C630CD /* NaviView.xib in Resources */,
-				84E9CDC41317EEAD0053D855 /* FindCellView.xib in Resources */,
+				56D8082E1317ED260049314B /* ShipAddressTable.xib in Resources */,
+				56D8082F1317ED260049314B /* ShipSearchView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2063,6 +2087,8 @@
 				84B9C42813169D05003FED88 /* FindBodyViewController.m in Sources */,
 				84B9C5121316AC59003FED88 /* LogoViewController.m in Sources */,
 				849DBD171316FF1500C630CD /* NaviViewController.m in Sources */,
+				56D8082D1317ED260049314B /* ShipAddressTable.m in Sources */,
+				56D808301317ED260049314B /* ShipSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
