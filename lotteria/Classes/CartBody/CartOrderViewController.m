@@ -8,6 +8,7 @@
 
 #import "CartOrderViewController.h"
 #import "OrderViewController.h"
+#import "DataList.h"
 
 @implementation CartOrderViewController
 
@@ -37,7 +38,7 @@
 		[InfoOrder setOrderType:0];
 		OrderViewController *Order = [[OrderViewController alloc] initWithNibName:@"OrderViewController" bundle:nil];
 		Order.InfoOrder = self.InfoOrder;
-			[self presentModalViewController:Order animated:YES];
+		[self.navigationController pushViewController:Order animated:YES];
 		[Order release];
 	}
 	else {

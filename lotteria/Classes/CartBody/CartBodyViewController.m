@@ -62,7 +62,6 @@
 -(IBAction)OrderButton
 {
 	CartOrderUserViewController *UserInput = [[CartOrderUserViewController alloc] initWithNibName:@"CartOrderUserView" bundle:nil];
-	UserInput.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	OrderProductInfo *Product = [[[OrderProductInfo alloc] init ] retain];
 	[Product setMenuID:@"D10"];
 	[Product setMenuName:@"블고기 버거"];
@@ -74,9 +73,8 @@
 	[InfoOrder setUser:User];
 	[User release];
 	UserInput.InfoOrder	= self.InfoOrder;
-	[self presentModalViewController:UserInput animated:YES];
-//	[self.view addSubview:UserInput.view ];
-
+	
+	[self.navigationController pushViewController:UserInput animated:YES ];
 	[UserInput release];
 }
 
