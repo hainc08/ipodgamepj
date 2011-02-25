@@ -9,10 +9,12 @@
 @implementation NaviViewController
 
 @synthesize idx;
+@synthesize helpButton;
+@synthesize listButton;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
+
 	[self.view setCenter:CGPointMake(160, 220)];
 	
 	UIViewController* body;

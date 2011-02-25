@@ -35,5 +35,6 @@
 - (IBAction)FindClick;
 - (void)addIcon:(NSString*)menuId isTop:(bool)isTop;
 - (void)iconClicked:(NSString*)mid;
+- (void)setScrollBar:(NSString*)category;
 
 @end
