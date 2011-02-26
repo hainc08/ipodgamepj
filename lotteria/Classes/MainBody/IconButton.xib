@@ -42,10 +42,25 @@
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<object class="IBUIImageView" id="499698915">
+						<reference key="NSNextResponder" ref="423985313"/>
+						<int key="NSvFlags">256</int>
+						<string key="NSFrameSize">{62, 70}</string>
+						<reference key="NSSuperview" ref="423985313"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">4</int>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">bg_thumb_select_box.png</string>
+						</object>
+					</object>
 					<object class="IBUILabel" id="980983603">
 						<reference key="NSNextResponder" ref="423985313"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{-1, 43}, {60, 20}}</string>
+						<string key="NSFrame">{{-1, 50}, {62, 20}}</string>
 						<reference key="NSSuperview" ref="423985313"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -70,7 +85,7 @@
 					<object class="IBUIButton" id="738777585">
 						<reference key="NSNextResponder" ref="423985313"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrameSize">{60, 53}</string>
+						<string key="NSFrameSize">{62, 53}</string>
 						<reference key="NSSuperview" ref="423985313"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -100,7 +115,7 @@
 						</object>
 					</object>
 				</object>
-				<string key="NSFrameSize">{60, 66}</string>
+				<string key="NSFrameSize">{62, 70}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
@@ -146,6 +161,14 @@
 					</object>
 					<int key="connectionID">37</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">selectedImg</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="499698915"/>
+					</object>
+					<int key="connectionID">40</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -174,6 +197,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="738777585"/>
 							<reference ref="980983603"/>
+							<reference ref="499698915"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -185,6 +209,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">23</int>
 						<reference key="object" ref="738777585"/>
+						<reference key="parent" ref="423985313"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">38</int>
+						<reference key="object" ref="499698915"/>
 						<reference key="parent" ref="423985313"/>
 					</object>
 				</object>
@@ -214,7 +243,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwogAAA</bytes>
 					</object>
-					<string>{{522, 685}, {60, 66}}</string>
+					<string>{{522, 681}, {62, 70}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
@@ -234,7 +263,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">37</int>
+			<int key="maxID">42</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -259,11 +288,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>button</string>
 							<string>nameLabel</string>
+							<string>selectedImg</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIButton</string>
 							<string>UILabel</string>
+							<string>UIImageView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -272,6 +303,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>button</string>
 							<string>nameLabel</string>
+							<string>selectedImg</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -282,6 +314,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">nameLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">selectedImg</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 						</object>
 					</object>
@@ -401,6 +437,14 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">UIImageView</string>
+					<string key="superclassName">UIView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">UIKit.framework/Headers/UIImageView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">UILabel</string>
 					<string key="superclassName">UIView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -507,8 +551,17 @@
 		<string key="IBDocument.LastKnownRelativeProjectPath">../../lotteria.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">bg_sb_s.png</string>
-			<string key="NS.object.0">{60, 53}</string>
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>bg_sb_s.png</string>
+				<string>bg_thumb_select_box.png</string>
+			</object>
+			<object class="NSMutableArray" key="dict.values">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{62, 53}</string>
+				<string>{62, 70}</string>
+			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>
 	</data>

@@ -29,12 +29,13 @@
 	IBOutlet UIImageView* packBG;
 	
 	id lastButton;
+	id lastIconButton;
 }
 
 - (IBAction)ButtonClick:(id)sender;
 - (IBAction)FindClick;
 - (void)addIcon:(NSString*)menuId isTop:(bool)isTop;
-- (void)iconClicked:(NSString*)mid;
+- (void)iconClicked:(id)button :(NSString*)mid;
 - (void)setScrollBar:(NSString*)category;
 
 @end

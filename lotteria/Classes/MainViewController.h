@@ -7,11 +7,20 @@
 //
 
 @interface MainViewController : UIViewController {
-	int lastTag;
 	id curView;
 	IBOutlet UIImageView* backImg;
 	IBOutlet UIButton* helpButton;
 	IBOutlet UIButton* listButton;
+
+	UIButton* lastButton;
+
+	IBOutlet UIButton* tapButton1;
+	IBOutlet UIButton* tapButton2;
+	IBOutlet UIButton* tapButton3;
+	IBOutlet UIButton* tapButton4;
+	IBOutlet UIImageView* selectedBack;
 }
+
+- (IBAction)buttonClick:(id)sender;
 
 @end
