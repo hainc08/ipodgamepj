@@ -29,7 +29,7 @@
 
 	
 	CustomerArr = [[NSMutableArray alloc] init ];
-	/*
+	
 	
 	NSString *string = @"<NewDataSet>\
 	<item>\
@@ -93,31 +93,9 @@
 		[Customer setUpdtime:[[t_item getChild:@"upd_time"] getValue]];
 		
 		[CustomerArr  addObject:Customer];
-	}	*/
-	
-#ifdef LOCALTEST
-	// 회사 내부 테스트 용 */
-	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
-#else
-	// 롯데리아 사이트 테스트 
-	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
-#endif
-	
-	 
-	 // HTTP Request 인스턴스 생성
-	 HTTPRequest *httpRequest = [[HTTPRequest alloc] init];
-	 
-	 // POST로 전송할 데이터 설정
-	 NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-	 @"seyogo",@"cust_id",
-	 nil];
-	 
-	 // 통신 완료 후 호출할 델리게이트 셀렉터 설정
-	 [httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
-	 
-	 // 페이지 호출
-	 [httpRequest requestUrl:url bodyObject:bodyObject];
-	 
+	}	
+
+//	[self GetShippingList];
     [super viewDidLoad];
 }
 
@@ -136,6 +114,7 @@
 
 
 - (void)dealloc {
+	[httpRequest release];
     [super dealloc];
 }
 - (void)viewWillAppear:(BOOL)animated
@@ -186,6 +165,33 @@
  </item>
  </NewDataSet>
  */
+- (void)GetShippingList
+{
+	
+#ifdef LOCALTEST
+	// 회사 내부 테스트 용 */
+	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
+#else
+	// 롯데리아 사이트 테스트 
+	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
+#endif
+	
+	
+	// HTTP Request 인스턴스 생성
+	httpRequest = [[HTTPRequest alloc] init];
+	
+	// POST로 전송할 데이터 설정
+	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
+								@"seyogo",@"cust_id",
+								nil];
+	
+	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
+	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
+	
+	// 페이지 호출
+	[httpRequest requestUrl:url bodyObject:bodyObject];
+	
+}
 - (void)didReceiveFinished:(NSString *)result
 {
 	
@@ -224,7 +230,53 @@
 	}
 }
 
+/*
+ Cell 에서 삭제 버튼 눌렀을때 해당 대상 삭제하기
+ */
 
+-(IBAction)CellDeleteButton:(id)sender
+{
+	// page order 
+#ifdef LOCALTEST
+	// 회사 내부 테스트 용 */
+	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_delCustDelivery";
+#else
+	// 롯데리아 사이트 테스트 
+	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_delCustDelivery";
+#endif
+	UIButton *tmpButton	= (UIButton *)sender;
+	RemoveNum	= tmpButton.tag;
+	CustomerDelivery  *tmp = [CustomerArr objectAtIndex:RemoveNum];
+	// HTTP Request 인스턴스 생성
+	httpRequest = [[HTTPRequest alloc] init];
+	
+	// POST로 전송할 데이터 설정
+	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
+								tmp.custid ,@"cust_id",
+								tmp.seq ,@"seq",
+								nil];
+	
+	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
+	[httpRequest setDelegate:self selector:@selector(didDataDelete:)];
+	
+	// 페이지 호출
+	[httpRequest requestUrl:url bodyObject:bodyObject];
+}
+
+- (void)didDataDelete:(NSString *)result
+{	
+	if(![result compare:@"error"])
+	{
+		[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 삭제하는데 실패하였습니다."];	
+	}
+	else {
+		if(![result compare:@"<int>1<int>"])
+		{
+			[CustomerArr removeObjectAtIndex:RemoveNum];
+			[CustomerTable reloadData];	
+		}
+	}
+}
 
 #pragma mark -
 #pragma mark AlertView
@@ -268,7 +320,10 @@
 	}
 	
 	ShippingCell *tmp_cell = (ShippingCell *)cell;
-	tmp_cell.selectionStyle = UITableViewCellSelectionStyleGray;
+	/* cell에서 삭제하는 Button 엑션에 대한 클릭 이벤트 넣기 */
+	[tmp_cell.delbutton setTag:indexPath.row];
+	[tmp_cell.delbutton addTarget:self action:@selector(CellDeleteButton:) forControlEvents:UIControlEventTouchUpInside];
+	
 	CustomerDelivery  *tmp = [CustomerArr objectAtIndex:indexPath.row];
 	
 	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
@@ -284,7 +339,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 70;
+	return 97;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

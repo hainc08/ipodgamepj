@@ -76,11 +76,14 @@
 	
 	/* 배송지 전화번호 , FontColor : White */
 	IBOutlet UILabel* ShippingCall;
+	
+	IBOutlet UIButton	*delbutton;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel* ShippingName;  
 @property (nonatomic, retain) IBOutlet UILabel* ShippingAddress;  
 @property (nonatomic, retain) IBOutlet UILabel* ShippingCall;
+@property (nonatomic, retain) IBOutlet UIButton  *delbutton;
 -(void)setInfo:(NSString*)_inName :(NSString *)_inMin :(NSString *)_inAddr :(NSString *)_inCall;
 @end
 

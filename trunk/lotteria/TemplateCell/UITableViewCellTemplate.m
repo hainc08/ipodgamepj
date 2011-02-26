@@ -13,6 +13,7 @@
 @synthesize ShippingName;
 @synthesize ShippingAddress;
 @synthesize ShippingCall;
+@synthesize delbutton;
 -(void)setInfo:(NSString*)_inName :(NSString *)_inMin :(NSString *)_inAddr :(NSString *)_inCall
 {
 	NSString *temp = [NSString stringWithFormat:@"%@ (%@)", _inName,   _inMin];
