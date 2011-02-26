@@ -40,9 +40,7 @@
 
 - (IBAction)ContinueButton:(id)sender
 {
-/*	CartOrderViewController *Order = [[CartOrderViewController alloc] initWithNibName:@"CartOrderView" bundle:nil];
-	[self presentModalViewController:Order animated:YES];
-	[Order release];*/
+
 	OrderUserInfo *UserInfo = [InfoOrder User];
 	
 	[UserInfo setOrderUser:Name.text];

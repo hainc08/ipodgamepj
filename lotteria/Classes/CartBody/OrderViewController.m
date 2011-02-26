@@ -127,6 +127,8 @@
 		
 	}
 	ShippingCell *tmp_cell = (ShippingCell *)cell;
+		tmp_cell.backgroundColor = [UIColor clearColor];
+	///	tmp_cell.separatorColor = [UIColor clearColor];
 		OrderUserInfo  *tmp = InfoOrder.User;
 	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
 					   [tmp si], [tmp gu], [tmp dong], [tmp bunji], [tmp building], [tmp addrdesc]];
@@ -147,11 +149,9 @@
 }
 
 
-////////////////////////////////////////////////////////////////////////////////////////////
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 70;
+	return 97;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
