@@ -11,7 +11,8 @@
 - (IBAction)ButtonClick:(id)sender
 {
 	//경고 무시해도 상관없음...
-	[actionListener iconClicked:menu_id];
+	[self setSelected:true];
+	[actionListener iconClicked:self :menu_id];
 }
 
 - (void)setData:(NSString*)mid
@@ -25,6 +26,14 @@
 - (void)setListener:(UIViewController*)listener
 {
 	actionListener = listener;
+}
+
+- (void)setSelected:(bool)isSelected
+{
+	if (isSelected)
+		[selectedImg setAlpha:1];
+	else
+		[selectedImg setAlpha:0];
 }
 
 @end

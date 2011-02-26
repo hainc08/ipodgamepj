@@ -33,13 +33,25 @@
 
 	[self.view bringSubviewToFront:logoBody.view];
 	[listButton setAlpha:0];
+	
+	lastButton = nil;
 }
 
-- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-	if (lastTag == [item tag]) return;
+- (IBAction)buttonClick:(id)sender
+{
+	if (lastButton == sender) return;
+
+	int idx;
+	if (sender == tapButton1) idx= 0;
+	else if (sender == tapButton2) idx= 1;
+	else if (sender == tapButton3) idx= 2;
+	else if (sender == tapButton4) idx= 3;
+	
+	[selectedBack setCenter:CGPointMake(40 + idx * 80, 24)];
+	
 	[self dismissModalViewControllerAnimated:YES];
 	NaviViewController* navi = [[NaviViewController alloc] init];
-	[navi setIdx:[item tag]];
+	[navi setIdx:idx];
 
 	UIView* oldView = curView;
 	curView = navi.view;
@@ -51,7 +63,7 @@
 
 	[oldView removeFromSuperview];
 	
-	lastTag = [item tag];
+	lastButton = sender;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -41,10 +41,10 @@
 		[setBack setAlpha:1];
 
 		[optionView2 setAlpha:1];
-		[optionView1 setCenter:CGPointMake(160, 87)];
-		[addCartButton setCenter:CGPointMake(160, 214)];
+		[optionView1 setCenter:CGPointMake(160, 39 + 28 + 20)];
+		[addCartButton setCenter:CGPointMake(160, 39 + 150 + 25)];
 
-		[closeButton setCenter:CGPointMake(300, 63)];
+		[closeButton setCenter:CGPointMake(300, 39 + 21)];
 		
 		//기본 사이드를 설정하자.
 		pId[0] = [[DataManager getInstance] getSetId:productId];
@@ -63,10 +63,10 @@
 		[setBack setAlpha:0];
 
 		[optionView2 setAlpha:0];
-		[optionView1 setCenter:CGPointMake(160, 127)];
-		[addCartButton setCenter:CGPointMake(160, 184)];
+		[optionView1 setCenter:CGPointMake(160, 58 + 28 + 20)];
+		[addCartButton setCenter:CGPointMake(160, 58 + 98 + 25)];
 
-		[closeButton setCenter:CGPointMake(300, 90)];
+		[closeButton setCenter:CGPointMake(300, 58 + 21)];
 
 		//사이드가 없다.
 		pId[0] = productId;

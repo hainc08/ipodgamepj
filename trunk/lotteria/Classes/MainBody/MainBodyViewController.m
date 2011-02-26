@@ -24,6 +24,7 @@
 	buttonOrigin[5] = findView.center;
 	
 	lastButton = nil;
+	lastIconButton = nil;
 	
 	self.navigationItem.title = @"메뉴 선택";
 }
@@ -90,13 +91,17 @@
 	else scrollView = bottomScrollView;
 	
 	[scrollView addSubview:[icon view]];
-	[[icon view] setCenter:CGPointMake([[scrollView subviews] count] * 70 - 35, 35)];
+	[[icon view] setCenter:CGPointMake([[scrollView subviews] count] * 63 + 3 + 32 - 63, 35)];
 	[icon setData:menuId];
+	[icon setSelected:false];
 	[icon setListener:self];
 }
 
-- (void)iconClicked:(NSString*)mid
+- (void)iconClicked:(id)button :(NSString*)mid
 {
+	if (lastIconButton != nil) [(IconButton*)lastIconButton setSelected:false];
+	lastIconButton = button;
+
 	[UIView beginAnimations:@"menuAni" context:NULL];
 	[UIView setAnimationDuration:0.1];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
@@ -111,35 +116,37 @@
 - (void)setScrollBar:(NSString*)category
 {
 	bool isTopList;
-	
-	[burgerBG setAlpha:0];
-	[chickenBG setAlpha:0];
-	[drinkBG setAlpha:0];
-	[dessertBG setAlpha:0];
-	[packBG setAlpha:0];
 
 	if ([category compare:@"D10"] == NSOrderedSame)
 	{
 		[burgerBG setAlpha:1];
+		[chickenBG setAlpha:0];
 		isTopList = true;
 	}
 	else if ([category compare:@"D20"] == NSOrderedSame)
 	{
+		[burgerBG setAlpha:0];
 		[chickenBG setAlpha:1];
 		isTopList = true;
 	}
 	else if ([category compare:@"D30"] == NSOrderedSame)
 	{
+		[drinkBG setAlpha:0];
+		[packBG setAlpha:0];
 		[dessertBG setAlpha:1];
 		isTopList = false;
 	}
 	else if ([category compare:@"D40"] == NSOrderedSame)
 	{
+		[dessertBG setAlpha:0];
+		[packBG setAlpha:0];
 		[drinkBG setAlpha:1];
 		isTopList = false;
 	}
 	else if ([category compare:@"D50"] == NSOrderedSame)
 	{
+		[drinkBG setAlpha:0];
+		[dessertBG setAlpha:0];
 		[packBG setAlpha:1];
 		isTopList = false;
 	}
@@ -148,22 +155,19 @@
 	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 	
-	float offset[3];
+	float offset[2];
 	CGPoint centerPos = CGPointMake(160, [baseView frame].size.height * 0.5f);
 	
 	if (isTopList)
 	{
-		centerPos.y += 17;
-		[buttonView setCenter:centerPos];
-		centerPos.y += 18;
+		centerPos.y += 36;
 		[detailView.view setCenter:centerPos];
 		
 		[topList setCenter:CGPointMake(160, 40)];
-		[bottomList setCenter:CGPointMake(160, 368+40)];
+		[bottomList setCenter:CGPointMake(160, 367+40)];
 		
-		offset[0] = 40.f;
-		offset[1] = 20.f;
-		offset[2] = 10.f;
+		offset[0] = 47.f;
+		offset[1] = 19.f;
 		
 		NSArray* subviews = [topScrollView subviews];
 		for (id data in subviews)
@@ -174,17 +178,14 @@
 	}
 	else
 	{
-		centerPos.y -= 17;
-		[buttonView setCenter:centerPos];
-		centerPos.y -= 18;
+		centerPos.y -= 36;
 		[detailView.view setCenter:centerPos];
 		
 		[topList setCenter:CGPointMake(160, -40)];
-		[bottomList setCenter:CGPointMake(160, 368-40)];
+		[bottomList setCenter:CGPointMake(160, 367-40)];
 		
-		offset[0] = 0.f;
-		offset[1] = -20.f;
-		offset[2] = -30.f;
+		offset[0] = -5.f;
+		offset[1] = -15.f;
 		
 		NSArray* subviews = [bottomScrollView subviews];
 		for (id data in subviews)
@@ -199,9 +200,7 @@
 	[dessertButton	setCenter:CGPointMake(buttonOrigin[2].x, buttonOrigin[2].y + offset[1])];
 	[drinkButton	setCenter:CGPointMake(buttonOrigin[3].x, buttonOrigin[3].y + offset[1])];
 	[packButton		setCenter:CGPointMake(buttonOrigin[4].x, buttonOrigin[4].y + offset[1])];
-	
-	[findView		setCenter:CGPointMake(buttonOrigin[5].x, buttonOrigin[5].y + offset[2])];
-	
+
 	[UIView commitAnimations];
 	
 	NSMutableArray* products = [[DataManager getInstance] getProductArray:category];
