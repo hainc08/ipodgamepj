@@ -14,7 +14,7 @@
 @interface CartMyShippingList : UIViewControllerTemplate<UITableViewDataSource, UITableViewDelegate > {
 	IBOutlet UITableView *CustomerTable;
     IBOutlet UIButton	*regButton;
-	
+	IBOutlet UIImageView *noRegImage;
 	NSMutableArray *CustomerArr;
 	
 	
@@ -24,6 +24,7 @@
 }
 @property (nonatomic, retain)     NSMutableArray *CustomerArr;
 @property (nonatomic, retain) IBOutlet UITableView *CustomerTable;
+@property (nonatomic, retain) IBOutlet UIImageView *noRegImage;
 @property (nonatomic, retain) Order *InfoOrder;
 
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;

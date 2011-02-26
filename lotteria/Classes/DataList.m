@@ -14,7 +14,7 @@
 @synthesize custid,seq ,phone ,si , gu;
 @synthesize dong,bunji , building ,addrdesc ,branchid;
 @synthesize regdate, regtime, upddate, updtime;
-
+@synthesize branchname, branchtime;
 - (void)dealloc {
     [custid release];
     [seq release];
@@ -26,6 +26,8 @@
     [building release];
     [addrdesc release];
     [branchid release];
+	[branchname release];
+	[branchtime release];
 	[regdate release];
     [regtime release];
     [upddate release];
@@ -57,8 +59,11 @@
 
 @synthesize custid,OrderUser ,phone ,si , gu;
 @synthesize dong,bunji , building ,addrdesc;
-
+@synthesize branchid, branchtime, branchname;
 - (void)dealloc {
+	[branchid release];
+	[branchname release];
+	[branchtime release];
     [custid release];
     [OrderUser release];
     [phone release];
@@ -79,8 +84,13 @@
 
 @implementation Order 
 @synthesize Product,User ,OrderType;  
-
+@synthesize OrderMoney, OrderSale, OrderTotal;
+@synthesize OrderTime;
 - (void)dealloc {
+	[OrderTime release];
+	[OrderMoney release];
+	[OrderSale	release];
+	[OrderTotal	 release];
 	[Product release];
 	[User release];
 	[super dealloc];

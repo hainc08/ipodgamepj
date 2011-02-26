@@ -8,6 +8,7 @@
 
 #import "CartOrderViewController.h"
 #import "OrderViewController.h"
+#import "CartOrderReservationsView.h"
 #import "DataList.h"
 
 @implementation CartOrderViewController
@@ -43,6 +44,10 @@
 	}
 	else {
 		[InfoOrder setOrderType:1];
+		CartOrderReservationsView *Order = [[CartOrderReservationsView alloc] initWithNibName:@"CartOrderReservationsView" bundle:nil];
+		Order.InfoOrder = self.InfoOrder;
+		[self.navigationController pushViewController:Order animated:YES];
+		[Order release];
 	}
 
 }

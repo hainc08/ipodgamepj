@@ -85,6 +85,8 @@
 @property (nonatomic, retain) IBOutlet UILabel* ShippingCall;
 @property (nonatomic, retain) IBOutlet UIButton  *delbutton;
 -(void)setInfo:(NSString*)_inName :(NSString *)_inMin :(NSString *)_inAddr :(NSString *)_inCall;
+
+-(void)setDelButtonEnable:(bool)_inenable;
 @end
 
 /* 상세주문 Cell 
@@ -92,7 +94,12 @@
  ---  사용처 ---
  * 상세주문 내역
  */
-@interface OrderListCell : UITableViewCell
+@interface OrderListTopCell : UITableViewCell
+{
+}
+@end
+
+@interface OrderListMiddleCell : UITableViewCell
 {
 	/* 주문 제품    : FontColor : White */
 	IBOutlet UILabel* OrderProduct;  
@@ -109,6 +116,29 @@
 
 -(void)setInfo:(NSString*)_inOPd :(NSString *)_inOCnt :(NSString *)_inOPr;
 @end
+/* 상세주문 Cell 
+ 
+ ---  사용처 ---
+ * 상세주문 내역
+ */
+@interface OrderListBottomCell : UITableViewCell
+{
+	/* 주문 가격	*/
+	IBOutlet UILabel* OrderMoney;  
+	
+	/* 주문 세일	*/
+	IBOutlet UILabel* OrderSale;
+	
+	/* 주문한 총합,	 */
+	IBOutlet UILabel* OrderTotal; 
+}
+@property (nonatomic, retain) IBOutlet UILabel* OrderMoney;  
+@property (nonatomic, retain) IBOutlet UILabel* OrderSale;  
+@property (nonatomic, retain) IBOutlet UILabel* OrderTotal;  
+
+-(void)setInfo:(NSString*)_inOrderMoney :(NSString *)_inOrderSale :(NSString *)_inOrderTotal;
+@end
+
 
 /* 가격정보 Cell 
  

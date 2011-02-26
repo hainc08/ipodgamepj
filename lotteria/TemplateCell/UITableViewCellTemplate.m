@@ -14,12 +14,18 @@
 @synthesize ShippingAddress;
 @synthesize ShippingCall;
 @synthesize delbutton;
+
 -(void)setInfo:(NSString*)_inName :(NSString *)_inMin :(NSString *)_inAddr :(NSString *)_inCall
 {
 	NSString *temp = [NSString stringWithFormat:@"%@ (%@)", _inName,   _inMin];
 	[ShippingName setText: temp ];
 	[ShippingAddress setText:_inAddr];
 	[ShippingCall setText:_inCall];
+	
+}
+-(void)setDelButtonEnable:(bool)_inenable
+{
+	[delbutton setAlpha:_inenable ? 1 : 0];
 }
 @end
 
@@ -55,7 +61,9 @@
 }
 @end
 
-@implementation OrderListCell
+@implementation OrderListTopCell
+@end
+@implementation OrderListMiddleCell
 
 @synthesize OrderProduct;   
 @synthesize OrderCount;  
@@ -69,6 +77,19 @@
 }
 @end
 
+@implementation OrderListBottomCell
+
+@synthesize OrderMoney;   
+@synthesize OrderSale;  
+@synthesize OrderTotal;  
+
+-(void)setInfo:(NSString*)_inOrderMoney :(NSString *)_inOrderSale :(NSString *)_inOrderTotal
+{
+	[OrderMoney		setText:_inOrderMoney];
+	[OrderSale		setText:_inOrderSale];
+	[OrderTotal		setText:_inOrderTotal];
+}
+@end
 
 
 

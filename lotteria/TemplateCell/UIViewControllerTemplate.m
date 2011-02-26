@@ -11,7 +11,7 @@
 
 @implementation UINavigationBar (CustomImage)
 - (void)drawRect:(CGRect)rect {
-	UIImage *image = [UIImage imageNamed: @"bg_com_top_logo.png"];
+	UIImage *image = [UIImage imageNamed: @"bg_titlebar.png"];
 	[image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 }
 @end

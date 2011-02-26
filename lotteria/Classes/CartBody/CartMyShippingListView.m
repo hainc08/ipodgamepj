@@ -20,16 +20,17 @@
 @synthesize CustomerTable;
 @synthesize	CustomerArr;
 @synthesize	InfoOrder;
+@synthesize noRegImage;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 
 	CustomerTable.backgroundColor = [UIColor clearColor];
 	CustomerTable.opaque = NO;
-	CustomerTable.backgroundView = nil;
-
 	
-	CustomerArr = [[NSMutableArray alloc] init ];
+	CustomerArr = [[NSMutableArray alloc] initWithCapacity:0];
 	
+	[noRegImage setAlpha:0];
+	httpRequest = [[HTTPRequest alloc] init];
 	
 	NSString *string = @"<NewDataSet>\
 	<item>\
@@ -94,7 +95,7 @@
 		
 		[CustomerArr  addObject:Customer];
 	}	
-
+	[xmlParser release];
 //	[self GetShippingList];
     [super viewDidLoad];
 }
@@ -176,10 +177,6 @@
 	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
 #endif
 	
-	
-	// HTTP Request 인스턴스 생성
-	httpRequest = [[HTTPRequest alloc] init];
-	
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
 								@"seyogo",@"cust_id",
@@ -226,7 +223,18 @@
 			[CustomerArr  addObject:Customer];
 		}	
 		[xmlParser release];
-		[CustomerTable reloadData];	
+		if([CustomerArr count] > 0)
+		{
+			[CustomerTable setAlpha:1];
+			[noRegImage setAlpha:0];
+			[CustomerTable reloadData];	
+		}
+		else
+		{
+			[CustomerTable setAlpha:0];
+			[noRegImage setAlpha:1];
+		}
+
 	}
 }
 
@@ -248,8 +256,7 @@
 	RemoveNum	= tmpButton.tag;
 	CustomerDelivery  *tmp = [CustomerArr objectAtIndex:RemoveNum];
 	// HTTP Request 인스턴스 생성
-	httpRequest = [[HTTPRequest alloc] init];
-	
+
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
 								tmp.custid ,@"cust_id",
@@ -267,14 +274,28 @@
 {	
 	if(![result compare:@"error"])
 	{
-		[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 삭제하는데 실패하였습니다."];	
+		[self ShowOKAlert:@"ERROR" msg:@"서버에서 응답이 없습니다."];	
 	}
 	else {
 		if(![result compare:@"<int>1<int>"])
 		{
 			[CustomerArr removeObjectAtIndex:RemoveNum];
-			[CustomerTable reloadData];	
+			if([CustomerArr count] > 0)
+			{
+				[CustomerTable setAlpha:1];
+				[CustomerTable reloadData];	
+			}
+			else
+			{
+				[CustomerTable setAlpha:0];
+				[noRegImage setAlpha:1];
+			}
+
 		}
+		else {
+			[self ShowOKAlert:@"ERROR" msg:@"서버에서 데이터 삭제하는데 실패하였습니다."];	
+		}
+
 	}
 }
 
@@ -329,7 +350,7 @@
 	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
 					   [tmp si], [tmp gu], [tmp dong], [tmp bunji], [tmp building], [tmp addrdesc]];
 	
-	[tmp_cell setInfo:@"테스트"  :[tmp regtime] :s_tmp :[tmp phone] ];
+	[tmp_cell setInfo:[tmp branchname] :[tmp branchtime] :s_tmp :[tmp phone] ];
 
 	return cell;
 }
@@ -346,6 +367,9 @@
 {
 	CustomerDelivery  *Tmp = [CustomerArr objectAtIndex:indexPath.row];
 	OrderUserInfo *User = InfoOrder.User;
+	[User setBranchid:Tmp.branchid];
+	[User setBranchid:Tmp.branchname];
+	[User setBranchid:Tmp.branchtime];
 	[User setSi:Tmp.si];
 	[User setGu:Tmp.gu];
 	[User setDong:Tmp.dong];
