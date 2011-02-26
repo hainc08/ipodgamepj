@@ -12,16 +12,7 @@
 
 @implementation OrderViewController
 @synthesize InfoOrder;
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
+
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -30,8 +21,8 @@
 	
 	OrderTable.backgroundColor = [UIColor clearColor];
 	OrderTable.opaque = NO;
-	OrderTable.backgroundView = nil;
-	
+	OrderTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+	OrderTable.separatorColor = [UIColor clearColor];
 }
 
 
@@ -92,56 +83,135 @@
 #pragma mark TableView
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 1;
+	return 2;
 }
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-	switch (section) {
-		case 1:
-			return @"주문내역";
-		default:
-			return nil;
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	
+	if(section == 1)
+	{
+		
+		UIView *SectionHeader = [[[UIView alloc] initWithFrame:CGRectMake(0, 0,  85, 31)] autorelease];
+		SectionHeader.backgroundColor = [UIColor clearColor];
+		UIImageView *headerImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tit_order_list.png"]];
+		[SectionHeader addSubview:headerImage];
+		[headerImage release];
+		return SectionHeader;
 	}
+	else {
+		return	 nil;
+	}
+
+	
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	if(section == 1) return 31;
+	else return 0;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	NSString *CellIdentifier ;
 	if(indexPath.section == 0)
 	{
-	static NSString *CellIdentifier = @"ShippingCell";
+		CellIdentifier = @"ShippingCell";
 	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	
-	if (cell == nil)
-	{
-		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier 
-													 owner:self options:nil];
-		for (id oneObject in nib)
-		{
-			if ([oneObject isKindOfClass:[ShippingCell class]])
-			{
-				cell = oneObject;
-				break;
-			}
-		}
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		
-	}
-	ShippingCell *tmp_cell = (ShippingCell *)cell;
+		if (cell == nil)
+		{
+			NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier 
+													 owner:self options:nil];
+			for (id oneObject in nib)
+			{
+				if ([oneObject isKindOfClass:[ShippingCell class]])
+				{
+					cell = oneObject;
+					break;
+				}
+			}
+			
+		}
+		ShippingCell *tmp_cell = (ShippingCell *)cell;
 		tmp_cell.backgroundColor = [UIColor clearColor];
-	///	tmp_cell.separatorColor = [UIColor clearColor];
-		OrderUserInfo  *tmp = InfoOrder.User;
-	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
+		
+
+		OrderUserInfo  *tmp = InfoOrder.User;	
+		NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
 					   [tmp si], [tmp gu], [tmp dong], [tmp bunji], [tmp building], [tmp addrdesc]];
-	[tmp_cell setInfo:@"테스트"  :@"40Min" :s_tmp :[tmp phone] ];
+		[tmp_cell setInfo:@"테스트"  :@"40Min" :s_tmp :[tmp phone] ];
+		[tmp_cell setDelButtonEnable:false];
 	
-	return cell;
+		return cell;
 	}
 	else if(indexPath.section == 1)
 	{
-		if(indexPath.row <   [ InfoOrder.Product count] )
-		{
+		if(indexPath.row == 0)
+			CellIdentifier = @"OrderListTopCell";
+		else if( indexPath.row -1  <  [InfoOrder.Product count] )
+			CellIdentifier = @"OrderListMiddleCell";
+		else 
+			CellIdentifier = @"OrderListBottomCell";
+
+
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 			
+		if (cell == nil)
+		{
+			NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier 
+																owner:self options:nil];
+			for (id oneObject in nib)
+			{
+				if(indexPath.row == 0 )
+				{
+					if ([oneObject isKindOfClass:[OrderListTopCell class]])
+					{
+						cell = oneObject;
+						break;
+					}
+				}
+				else if(indexPath.row -1 < [InfoOrder.Product count])
+				{
+					if ([oneObject isKindOfClass:[OrderListMiddleCell class]])
+					{
+						cell = oneObject;
+						break;
+					}
+				}
+				else 
+				{
+					if ([oneObject isKindOfClass:[OrderListBottomCell class]])
+					{
+						cell = oneObject;
+						break;
+					}
+				}
+			}
 		}
+		
+		if(indexPath.row == 0)
+		{
+		//	OrderListTopCell *tmp_cell = (OrderListTopCell *)cell;
+		//	tmp_cell.backgroundColor = [UIColor clearColor];
+
+		}
+		else if(indexPath.row -1 <   [ InfoOrder.Product count] )
+		{
+			OrderListMiddleCell *tmp_cell = (OrderListMiddleCell *)cell;
+			//tmp_cell.backgroundColor = [UIColor clearColor];
+			
+			OrderProductInfo  *tmp = [InfoOrder.Product objectAtIndex:indexPath.row-1] ;	
+			[tmp_cell setInfo:tmp.MenuName :tmp.MenuID :tmp.MenuPrice];
+		}
+		else {
+			OrderListBottomCell *tmp_cell = (OrderListBottomCell *)cell;
+			//tmp_cell.backgroundColor = [UIColor clearColor];
+
+			[tmp_cell setInfo:InfoOrder.OrderMoney :InfoOrder.OrderSale :InfoOrder.OrderTotal];
+		}
+		return cell;
 	}
 
 	
@@ -149,20 +219,24 @@
 }
 
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 97;
+	if(indexPath.section == 0) return 97;
+	else {
+		if(indexPath.row == 0) return 14.0f;
+		else if (indexPath.row-1 < [InfoOrder.Product count]) return 51.0f;
+		else  return 116.0f;
+	}
+
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if(section == 0)
 		return 1;
-
-	return 0;
+	else
+		return [InfoOrder.Product count] +2;
 }
 
 

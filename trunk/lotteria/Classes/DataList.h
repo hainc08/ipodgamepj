@@ -18,6 +18,8 @@
 	NSString *building;
 	NSString *addrdesc;
 	NSString *branchid;
+	NSString *branchname;
+	NSString *branchtime;
 	NSString *regdate;
 	NSString *regtime;
 	NSString *upddate;
@@ -34,6 +36,8 @@
 @property (retain) NSString *building;
 @property (retain) NSString *addrdesc;
 @property (retain) NSString *branchid;
+@property (retain) NSString *branchname;
+@property (retain) NSString *branchtime;
 @property (retain) NSString *regdate;
 @property (retain) NSString *regtime;
 @property (retain) NSString *upddate;
@@ -61,6 +65,9 @@
 	NSString *custid;	// 앱로그인 사용자
 	NSString *OrderUser;	// 주문사용자
 	NSString *phone;		// 주문자 핸드폰
+	NSString *branchid;
+	NSString *branchname;
+	NSString *branchtime;
 	NSString *si;	
 	NSString *gu;
 	NSString *dong;
@@ -74,6 +81,9 @@
 @property (retain) NSString *custid;
 @property (retain) NSString *OrderUser;
 @property (retain) NSString *phone;
+@property (retain) NSString *branchid;
+@property (retain) NSString *branchname;
+@property (retain) NSString *branchtime;
 @property (retain) NSString *si;
 @property (retain) NSString *gu;
 @property (retain) NSString *dong;
@@ -88,13 +98,22 @@
 @interface Order : NSObject
 {
 	NSMutableArray	*Product; // OrderProductInfo
+	NSString		*OrderMoney;
+	NSString		*OrderSale;
+	NSString		*OrderTotal;
+	
 	OrderUserInfo	*User;
 	int				OrderType;
+	NSString		*OrderTime;
+
 }
 
 @property (retain) NSMutableArray *Product;
 @property (retain) OrderUserInfo *User;
 @property (readwrite) int	OrderType;
-
+@property (retain) NSString *OrderMoney;
+@property (retain) NSString *OrderSale;
+@property (retain) NSString *OrderTotal;
+@property (retain) NSString	*OrderTime;
 @end
 

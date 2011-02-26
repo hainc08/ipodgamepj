@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
-
-@interface CartOrderReservationsView : UIViewController {
-
+#import "UIViewControllerTemplate.h"
+@class Order;
+@interface CartOrderReservationsView : UIViewControllerTemplate<UITableViewDataSource, UITableViewDelegate >  {
+	IBOutlet UIDatePicker	*Picket;
+	IBOutlet UIButton		*reButton;
+	IBOutlet UITableView	*OrderBurial;
+	Order *InfoOrder;
 }
-
+@property (nonatomic, retain) IBOutlet UIDatePicker	*Picket;
+@property (nonatomic, retain) IBOutlet UIButton		*reButton;
+@property (nonatomic, retain) IBOutlet UITableView	*OrderBurial;
+@property (nonatomic, retain) 	Order *InfoOrder;
+- (IBAction)ReservationButton;
 @end
