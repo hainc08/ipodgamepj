@@ -92,4 +92,7 @@ typedef enum _ImgType
 - (NSString*)getPriceStr:(int)value;
 - (int)getCartPrice;
 
+// ----------------- 로그인 -------------------
+- (void)setLoginNow;
+
 @end

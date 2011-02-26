@@ -62,14 +62,18 @@
 
 -(IBAction)OrderButton
 {
+	NSMutableArray *arr = [[[NSMutableArray alloc] init]  retain];
+
 	CartOrderUserViewController *UserInput = [[CartOrderUserViewController alloc] initWithNibName:@"CartOrderUserView" bundle:nil];
 	OrderProductInfo *Product = [[[OrderProductInfo alloc] init ] retain];
 	[Product setMenuID:@"D10"];
 	[Product setMenuName:@"블고기 버거"];
 	[Product setMenuNumber:@"1"];
 	[Product setMenuPrice:@"10000"];
-	[InfoOrder setProduct:Product];
+	[arr insertObject:Product atIndex:0];
+	InfoOrder.Product = arr;
 	[Product release];
+	[arr release];
 	OrderUserInfo *User = [[[OrderUserInfo alloc] init ] retain];
 	[InfoOrder setUser:User];
 	[User release];

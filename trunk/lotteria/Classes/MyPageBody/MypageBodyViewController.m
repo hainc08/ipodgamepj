@@ -24,8 +24,7 @@
 - (IBAction)OrderListButton
 {
 	MyCustomerDelivery *Coustomer = [[MyCustomerDelivery alloc] initWithNibName:@"MyCustomerDelivery" bundle:nil];
-	[self presentModalViewController:Coustomer animated:YES];
-	
+	[self.navigationController pushViewController:Coustomer animated:YES];
 	[Coustomer release];
 }
 
