@@ -32,7 +32,7 @@
 	
 	CustomerArr = [[NSMutableArray alloc] init ];
 
-	
+/*
 	NSString *string = @"<NewDataSet>\
 	<item>\
 	<cust_id>seyogo</cust_id>\
@@ -98,17 +98,21 @@
 		[Customer release];
 	}
 	[xmlParser release];
-/*
+	*/
 
-	NSString *url = @"http://your.webpage.url";
-	
+#ifdef LOCALTEST
+	// 개발테스트 
+	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
+#else
+	// 사이트
+		NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
+#endif
 	// HTTP Request 인스턴스 생성
 	HTTPRequest *httpRequest = [[HTTPRequest alloc] init];
 	
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								@"1234",@"cust_id",
-								@"12345", @"cust_passwd",
+								@"seyogo",@"cust_id",
 								nil];
 	
 	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
@@ -116,7 +120,7 @@
 	
 	// 페이지 호출
 	[httpRequest requestUrl:url bodyObject:bodyObject];
-	*/
+	
     [super viewDidLoad];
 }
 
@@ -187,11 +191,8 @@
 	else {
 		XmlParser* xmlParser = [XmlParser alloc];
 		[xmlParser parserString:result];
-	
-
-		
 		Element* root = [xmlParser getRoot:@"NewDataSet"];
-
+		
 		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
 		{
 			
@@ -212,6 +213,7 @@
 			[Customer setUpdtime:[[t_item getChild:@"upd_time"] getValue]];
 			
 			[CustomerArr  addObject:Customer];
+			[Customer release];
 		}
 		
 		[xmlParser release];

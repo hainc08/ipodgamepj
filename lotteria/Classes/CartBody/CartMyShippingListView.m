@@ -6,15 +6,16 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "MyShippingList.h"
+#import "CartMyShippingListView.h"
 #import "XmlParser.h"
 #import "CartOrderViewController.h"
 #import "UITableViewCellTemplate.h"
 #import "ShipSearchViewController.h"
 #import "DataList.h"
 #import "NaviViewController.h"
+#import "HttpRequest.h"
 
-@implementation MyShippingList
+@implementation CartMyShippingList
 
 @synthesize CustomerTable;
 @synthesize	CustomerArr;
@@ -28,7 +29,7 @@
 
 	
 	CustomerArr = [[NSMutableArray alloc] init ];
-	
+	/*
 	
 	NSString *string = @"<NewDataSet>\
 	<item>\
@@ -92,18 +93,23 @@
 		[Customer setUpdtime:[[t_item getChild:@"upd_time"] getValue]];
 		
 		[CustomerArr  addObject:Customer];
-	}	
-	/*
-	 
-	 NSString *url = @"http://your.webpage.url";
+	}	*/
+	
+#ifdef LOCALTEST
+	// 회사 내부 테스트 용 */
+	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
+#else
+	// 롯데리아 사이트 테스트 
+	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
+#endif
+	
 	 
 	 // HTTP Request 인스턴스 생성
 	 HTTPRequest *httpRequest = [[HTTPRequest alloc] init];
 	 
 	 // POST로 전송할 데이터 설정
 	 NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-	 @"1234",@"cust_id",
-	 @"12345", @"cust_passwd",
+	 @"seyogo",@"cust_id",
 	 nil];
 	 
 	 // 통신 완료 후 호출할 델리게이트 셀렉터 설정
@@ -111,7 +117,7 @@
 	 
 	 // 페이지 호출
 	 [httpRequest requestUrl:url bodyObject:bodyObject];
-	 */
+	 
     [super viewDidLoad];
 }
 
@@ -145,9 +151,7 @@
 
 - (IBAction)ShipRegButton:(id)sender
 {
-	/* 죽네.. ㅡ.ㅡ;; 왜 처죽어..;; 나중에 해결합시다.. 우선 화면부터 뽑고..
-	 
-	 */
+
 //	ShipSearchViewController *Search = [[ShipSearchViewController alloc] initWithNibName:@"ShipSearchView" bundle:nil];
 	NaviViewController *controller = [[NaviViewController alloc] init];
 	[controller setIdx:4];
@@ -192,9 +196,6 @@
 	else {
 		XmlParser* xmlParser = [XmlParser alloc];
 		[xmlParser parserString:result];
-		
-		
-		
 		Element* root = [xmlParser getRoot:@"NewDataSet"];
 		
 		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
@@ -217,8 +218,7 @@
 			[Customer setUpdtime:[[t_item getChild:@"upd_time"] getValue]];
 			
 			[CustomerArr  addObject:Customer];
-		}
-		
+		}	
 		[xmlParser release];
 		[CustomerTable reloadData];	
 	}
@@ -273,6 +273,7 @@
 	
 	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
 					   [tmp si], [tmp gu], [tmp dong], [tmp bunji], [tmp building], [tmp addrdesc]];
+	
 	[tmp_cell setInfo:@"테스트"  :[tmp regtime] :s_tmp :[tmp phone] ];
 
 	return cell;

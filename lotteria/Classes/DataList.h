@@ -87,12 +87,12 @@
 
 @interface Order : NSObject
 {
-	OrderProductInfo *Product;
+	NSMutableArray	*Product; // OrderProductInfo
 	OrderUserInfo	*User;
 	int				OrderType;
 }
 
-@property (retain) OrderProductInfo *Product;
+@property (retain) NSMutableArray *Product;
 @property (retain) OrderUserInfo *User;
 @property (readwrite) int	OrderType;
 

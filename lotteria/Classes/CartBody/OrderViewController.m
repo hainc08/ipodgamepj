@@ -31,6 +31,7 @@
 	OrderTable.backgroundColor = [UIColor clearColor];
 	OrderTable.opaque = NO;
 	OrderTable.backgroundView = nil;
+	
 }
 
 
@@ -68,7 +69,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-	[super viewWillDisappear:animated];
+	[super viewWillDisappear:animated];	
 }
 
 
@@ -133,6 +134,14 @@
 	
 	return cell;
 	}
+	else if(indexPath.section == 1)
+	{
+		if(indexPath.row <   [ InfoOrder.Product count] )
+		{
+			
+		}
+	}
+
 	
 	return nil;
 }

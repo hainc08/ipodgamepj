@@ -297,4 +297,8 @@ static DataManager *DataManagerInst;
 	return totPrice;
 }
 
+- (void)setLoginNow
+{
+	isLoginNow = true;
+}
 @end

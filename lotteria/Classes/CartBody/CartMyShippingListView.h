@@ -11,7 +11,7 @@
 
 @class Order;
 
-@interface MyShippingList : UIViewControllerTemplate<UITableViewDataSource, UITableViewDelegate > {
+@interface CartMyShippingList : UIViewControllerTemplate<UITableViewDataSource, UITableViewDelegate > {
 	IBOutlet UITableView *CustomerTable;
     IBOutlet UIButton	*regButton;
 	

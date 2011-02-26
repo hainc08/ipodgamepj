@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "DataManager.h"
 #import "MypageBodyViewController.h"
+#import "NaviViewController.h"
 #import "HttpRequest.h"
 
 
@@ -104,9 +105,9 @@
 		[self ShowOKAlert:@"Login Error" msg:@"로그인에 실패 했습니다."];	
 	}
 	else */{
-		
+		[[DataManager getInstance] setLoginNow];
 		MypageBodyViewController *mypage = [[MypageBodyViewController alloc] initWithNibName:@"MypageBodyView" bundle:nil];
-		[self presentModalViewController:mypage animated:YES];
+		[self.navigationController pushViewController:mypage animated:YES];
 		[mypage release];
 	}
 
