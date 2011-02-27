@@ -139,6 +139,25 @@
 -(void)setInfo:(NSString*)_inOrderMoney :(NSString *)_inOrderSale :(NSString *)_inOrderTotal;
 @end
 
+@interface OrderMenuCell : UITableViewCell
+{
+	IBOutlet UILabel *MainCategory;
+	IBOutlet UILabel *SubCategory;
+	IBOutlet UILabel *Money;
+	IBOutlet UILabel *MenuCount;
+	IBOutlet UILabel *stock;
+	IBOutlet UIButton *delbutton;
+}
+@property (nonatomic, retain) IBOutlet UILabel *MainCategory;
+@property (nonatomic, retain) IBOutlet UILabel *SubCategory;
+@property (nonatomic, retain) IBOutlet UILabel *Money;
+@property (nonatomic, retain) IBOutlet UILabel *MenuCount;
+@property (nonatomic, retain) IBOutlet UILabel *stock;
+@property (nonatomic, retain) IBOutlet UIButton *delbutton;
+
+-(void)setInfo:(NSString*)_inMainCategory :(NSString *)_inSubCategory :(NSString *)_inMoney :(NSString *)_inMenuCount;
+-(void)setBackgroundImage:(bool)_intype;
+@end
 
 /* 가격정보 Cell 
  

@@ -93,6 +93,37 @@
 
 
 
+@implementation OrderMenuCell
+@synthesize MainCategory;
+@synthesize SubCategory;
+@synthesize Money;
+@synthesize MenuCount;
+@synthesize stock;
+@synthesize delbutton;
+
+-(void)setInfo:(NSString*)_inMainCategory :(NSString *)_inSubCategory :(NSString *)_inMoney :(NSString *)_inMenuCount
+{
+	[MainCategory	setText: _inMainCategory ];
+	[SubCategory	setText: _inSubCategory ];
+	[Money			setText: _inMoney ];
+	[MenuCount		setText: _inMenuCount ];	
+}
+-(void)setBackgroundImage:(bool)_intype
+{
+	if(_intype)
+	{
+		[stock setAlpha:0];
+		[self.imageView setImage:[UIImage imageNamed:@"bg_order_detail_box.png"]];
+	}
+	else
+	{
+		[stock setAlpha:1];
+		[self.imageView setImage:[UIImage imageNamed:@"bg_order_detail_box_2.png"]];
+	}
+}
+@end
+
+
 
 @implementation OrderMoneyCell
 

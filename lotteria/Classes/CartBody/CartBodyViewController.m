@@ -66,7 +66,9 @@
 
 	CartOrderUserViewController *UserInput = [[CartOrderUserViewController alloc] initWithNibName:@"CartOrderUserView" bundle:nil];
 	OrderProductInfo *Product = [[[OrderProductInfo alloc] init ] retain];
-	[Product setMenuID:@"D10"];
+	[Product setMenuOnOff:true];
+	[Product setMenuMainID:@"D10"];
+	[Product setMenuID:@"1234"];
 	[Product setMenuName:@"블고기 버거"];
 	[Product setMenuNumber:@"1"];
 	[Product setMenuPrice:@"10000"];
