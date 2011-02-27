@@ -65,6 +65,8 @@ typedef enum _ImgType
 
 	NSMutableDictionary *allProductMap;
 	NSMutableArray* allProductList;
+	
+	NSMutableArray* searchResult[5];
 	bool isCartDirty;
 }
 
@@ -94,6 +96,10 @@ typedef enum _ImgType
 
 - (NSString*)getPriceStr:(int)value;
 - (int)getCartPrice;
+
+- (ProductData*)getSearchProduct:(int)idx listIdx:(int)lIdx;
+- (int)getSearchProductCount:(int)lIdx;
+- (void)searchProduct:(NSString*)str;
 
 // ----------------- 로그인 -------------------
 - (void)setLoginNow;

@@ -2,6 +2,8 @@
 #import "FindBodyViewController.h"
 #import "IconButton.h"
 
+#define SearchBase @"메뉴를 검색해 주세요."
+
 @implementation MainBodyViewController
 
 - (void)viewDidLoad {
@@ -26,6 +28,8 @@
 	
 	lastButton = nil;
 	lastIconButton = nil;
+	
+	[searchField setText:SearchBase];
 	
 	self.navigationItem.title = @"메뉴 선택";
 }
@@ -59,6 +63,15 @@
 
 - (IBAction)FindClick
 {
+	if ([[searchField text] compare:SearchBase] == NSOrderedSame)
+	{
+		[[DataManager getInstance] searchProduct:@""];
+	}
+	else
+	{
+		[[DataManager getInstance] searchProduct:[searchField text]];
+	}
+	
 	FindBodyViewController* findBody = [[FindBodyViewController alloc] init];
 	[findBody setNavi:navi];
 	[findBody setBackView:self];

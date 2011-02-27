@@ -10,9 +10,12 @@
 	
 }
 
-- (void)setData:(NSString*)menuId
+- (void)setData:(ProductData*)data
 {
-	
+	[nameLabel setText:[data name]];
+	[descLabel setText:@"설명은 어디에?"];
+	[priceLabel setText:[[DataManager getInstance] getPriceStr:[data price]]];
+	[menuImg setImage:[data getProductImg:MIDDLE]];
 }
 
 - (void)setLast:(bool)isLast
@@ -61,11 +64,6 @@
 	[tableView scrollRectToVisible:CGRectMake(0,0,320,330) animated:true];
 }
 
-//	[navi popViewControllerAnimated:true];
-//	
-//	MainBodyViewController* bView = (MainBodyViewController*)backView;
-//	[bView setScrollBar:[[[DataManager getInstance] getProduct:@"LB0011"] category]];
-//	[bView iconClicked:@"LB0011"];
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	return 80;
@@ -89,21 +87,15 @@
 	
 	FindCellView* findCell = (FindCellView*)cell;
 	
-//	[findCell setData:[[DataManager getInstance] getCartItem:indexPath.row listIdx:listIdx]];
+	[findCell setData:[[DataManager getInstance] getSearchProduct:indexPath.row listIdx:idx]];
 	[findCell setLast:(indexPath.row == itemCount[idx]-1)];
-	
-	if (idx == 0) [[findCell menuImg] setImage:[UIImage imageNamed:@"bg_bb_a.png"]];
-	else if (idx == 1) [[findCell menuImg] setImage:[UIImage imageNamed:@"ck_cf2_a.png"]];
-	else if (idx == 2) [[findCell menuImg] setImage:[UIImage imageNamed:@"dr_ame_a.png"]];
-	else if (idx == 3) [[findCell menuImg] setImage:[UIImage imageNamed:@"ds_cs_a.png"]];
-	else if (idx == 4) [[findCell menuImg] setImage:[UIImage imageNamed:@"pk_cfp_a.png"]];
-	
+
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView*)sender numberOfRowsInSection:(NSInteger)section
 {
-	itemCount[idx] = 10;
+	itemCount[idx] = [[DataManager getInstance] getSearchProductCount:idx];
 	return itemCount[idx];
 }
 
