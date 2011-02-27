@@ -12,6 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="102"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -37,7 +38,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUITableViewCell" id="206078282">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -288,6 +289,7 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{300, 100}</string>
+				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -359,19 +361,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">changeSide2</string>
+						<string key="label">changeDrink</string>
 						<reference key="source" ref="206078282"/>
 						<reference key="destination" ref="999835023"/>
 					</object>
-					<int key="connectionID">120</int>
+					<int key="connectionID">126</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">changeSide1</string>
+						<string key="label">changeDessert</string>
 						<reference key="source" ref="206078282"/>
 						<reference key="destination" ref="633659060"/>
 					</object>
-					<int key="connectionID">121</int>
+					<int key="connectionID">127</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -380,7 +382,7 @@
 						<reference key="destination" ref="206078282"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">122</int>
+					<int key="connectionID">128</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -389,7 +391,7 @@
 						<reference key="destination" ref="206078282"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">123</int>
+					<int key="connectionID">129</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -398,7 +400,7 @@
 						<reference key="destination" ref="206078282"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">124</int>
+					<int key="connectionID">130</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -407,7 +409,7 @@
 						<reference key="destination" ref="206078282"/>
 						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">125</int>
+					<int key="connectionID">131</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -575,7 +577,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">125</int>
+			<int key="maxID">131</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -598,8 +600,8 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>changeSide1</string>
-							<string>changeSide2</string>
+							<string>changeDessert</string>
+							<string>changeDrink</string>
 							<string>countLabel</string>
 							<string>decCount</string>
 							<string>incCount</string>
@@ -625,8 +627,8 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>changeSide1</string>
-							<string>changeSide2</string>
+							<string>changeDessert</string>
+							<string>changeDrink</string>
 							<string>countLabel</string>
 							<string>decCount</string>
 							<string>incCount</string>
@@ -638,11 +640,11 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">changeSide1</string>
+								<string key="name">changeDessert</string>
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">changeSide2</string>
+								<string key="name">changeDrink</string>
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">

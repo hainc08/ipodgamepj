@@ -518,6 +518,14 @@
 		84B9C5001316ABA1003FED88 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B9C4FF1316ABA1003FED88 /* MainView.xib */; };
 		84B9C50F1316AC4E003FED88 /* LogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B9C50E1316AC4E003FED88 /* LogoView.xib */; };
 		84B9C5121316AC59003FED88 /* LogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9C5111316AC59003FED88 /* LogoViewController.m */; };
+		84BB813E131A340F00991EC4 /* ChangeSideCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BB813A131A340F00991EC4 /* ChangeSideCellView.xib */; };
+		84BB813F131A340F00991EC4 /* ChangeSideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BB813B131A340F00991EC4 /* ChangeSideView.xib */; };
+		84BB8140131A340F00991EC4 /* ChangeSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BB813D131A340F00991EC4 /* ChangeSideViewController.m */; };
+		84BB8174131A36AD00991EC4 /* ds_c1_a.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BB816F131A36AD00991EC4 /* ds_c1_a.png */; };
+		84BB8175131A36AD00991EC4 /* ds_c1_c.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BB8170131A36AD00991EC4 /* ds_c1_c.png */; };
+		84BB8176131A36AD00991EC4 /* ds_c1_l.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BB8171131A36AD00991EC4 /* ds_c1_l.png */; };
+		84BB8177131A36AD00991EC4 /* ds_c1_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BB8172131A36AD00991EC4 /* ds_c1_n.png */; };
+		84BB8178131A36AD00991EC4 /* ds_c1_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 84BB8173131A36AD00991EC4 /* ds_c1_s.png */; };
 		84C0AA5713146C9100DCD418 /* PlaceMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C0AA5613146C9100DCD418 /* PlaceMark.m */; };
 		84D1BF0C1313E30F002C8A52 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D1BF0B1313E30F002C8A52 /* MapKit.framework */; };
 		84D85E281313F76300361C3B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D85E271313F76300361C3B /* CoreLocation.framework */; };
@@ -1070,6 +1078,15 @@
 		84B9C50E1316AC4E003FED88 /* LogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoView.xib; sourceTree = "<group>"; };
 		84B9C5101316AC59003FED88 /* LogoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogoViewController.h; path = Classes/LogoViewController.h; sourceTree = "<group>"; };
 		84B9C5111316AC59003FED88 /* LogoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogoViewController.m; path = Classes/LogoViewController.m; sourceTree = "<group>"; };
+		84BB813A131A340F00991EC4 /* ChangeSideCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChangeSideCellView.xib; path = Classes/ChangeSideCellView.xib; sourceTree = "<group>"; };
+		84BB813B131A340F00991EC4 /* ChangeSideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChangeSideView.xib; path = Classes/ChangeSideView.xib; sourceTree = "<group>"; };
+		84BB813C131A340F00991EC4 /* ChangeSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangeSideViewController.h; path = Classes/ChangeSideViewController.h; sourceTree = "<group>"; };
+		84BB813D131A340F00991EC4 /* ChangeSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChangeSideViewController.m; path = Classes/ChangeSideViewController.m; sourceTree = "<group>"; };
+		84BB816F131A36AD00991EC4 /* ds_c1_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ds_c1_a.png; sourceTree = "<group>"; };
+		84BB8170131A36AD00991EC4 /* ds_c1_c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ds_c1_c.png; sourceTree = "<group>"; };
+		84BB8171131A36AD00991EC4 /* ds_c1_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ds_c1_l.png; sourceTree = "<group>"; };
+		84BB8172131A36AD00991EC4 /* ds_c1_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ds_c1_n.png; sourceTree = "<group>"; };
+		84BB8173131A36AD00991EC4 /* ds_c1_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ds_c1_s.png; sourceTree = "<group>"; };
 		84C0AA5513146C9100DCD418 /* PlaceMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceMark.h; sourceTree = "<group>"; };
 		84C0AA5613146C9100DCD418 /* PlaceMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceMark.m; sourceTree = "<group>"; };
 		84D1BF0B1313E30F002C8A52 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -1078,15 +1095,6 @@
 		84EB01321310DDD700AED472 /* IconButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconButton.h; sourceTree = "<group>"; };
 		84EB01331310DDD700AED472 /* IconButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconButton.m; sourceTree = "<group>"; };
 		84EB01341310DDD700AED472 /* IconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconButton.xib; sourceTree = "<group>"; };
-		84F09C96131966120032B722 /* ChangeSideCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChangeSideCellView.xib; path = Classes/ChangeSideCellView.xib; sourceTree = "<group>"; };
-		84F09C97131966120032B722 /* ChangeSideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChangeSideView.xib; path = Classes/ChangeSideView.xib; sourceTree = "<group>"; };
-		84F09C98131966120032B722 /* ChangeSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangeSideViewController.h; path = Classes/ChangeSideViewController.h; sourceTree = "<group>"; };
-		84F09C99131966120032B722 /* ChangeSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChangeSideViewController.m; path = Classes/ChangeSideViewController.m; sourceTree = "<group>"; };
-		84F09D361319E59E0032B722 /* ds_c1_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ds_c1_a.png; sourceTree = "<group>"; };
-		84F09D371319E59E0032B722 /* ds_c1_c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ds_c1_c.png; sourceTree = "<group>"; };
-		84F09D381319E59E0032B722 /* ds_c1_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ds_c1_l.png; sourceTree = "<group>"; };
-		84F09D391319E59E0032B722 /* ds_c1_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ds_c1_n.png; sourceTree = "<group>"; };
-		84F09D3A1319E59E0032B722 /* ds_c1_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ds_c1_s.png; sourceTree = "<group>"; };
 		84F1B8D0131450F3006FC7C7 /* productKey.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = productKey.xml; path = DownloadData/productKey.xml; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* lotteria-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "lotteria-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1480,11 +1488,11 @@
 		56D80C2E1318F75B0049314B /* products */ = {
 			isa = PBXGroup;
 			children = (
-				84F09D361319E59E0032B722 /* ds_c1_a.png */,
-				84F09D371319E59E0032B722 /* ds_c1_c.png */,
-				84F09D381319E59E0032B722 /* ds_c1_l.png */,
-				84F09D391319E59E0032B722 /* ds_c1_n.png */,
-				84F09D3A1319E59E0032B722 /* ds_c1_s.png */,
+				84BB816F131A36AD00991EC4 /* ds_c1_a.png */,
+				84BB8170131A36AD00991EC4 /* ds_c1_c.png */,
+				84BB8171131A36AD00991EC4 /* ds_c1_l.png */,
+				84BB8172131A36AD00991EC4 /* ds_c1_n.png */,
+				84BB8173131A36AD00991EC4 /* ds_c1_s.png */,
 				56D80C2F1318F75B0049314B /* bg_bb_a.png */,
 				56D80C301318F75B0049314B /* bg_bb_c.png */,
 				56D80C311318F75B0049314B /* bg_bb_l.png */,
@@ -1785,10 +1793,10 @@
 				84B4A362130FFF2800A7A99B /* MainViewController.m */,
 				84B9C5101316AC59003FED88 /* LogoViewController.h */,
 				84B9C5111316AC59003FED88 /* LogoViewController.m */,
-				84F09C96131966120032B722 /* ChangeSideCellView.xib */,
-				84F09C97131966120032B722 /* ChangeSideView.xib */,
-				84F09C98131966120032B722 /* ChangeSideViewController.h */,
-				84F09C99131966120032B722 /* ChangeSideViewController.m */,
+				84BB813A131A340F00991EC4 /* ChangeSideCellView.xib */,
+				84BB813B131A340F00991EC4 /* ChangeSideView.xib */,
+				84BB813C131A340F00991EC4 /* ChangeSideViewController.h */,
+				84BB813D131A340F00991EC4 /* ChangeSideViewController.m */,
 				56A9CBF6131567B60071D8A0 /* DataList */,
 				56D808261317ED140049314B /* 배송지 */,
 				56A9CA62131550AD0071D8A0 /* Help */,
@@ -2378,6 +2386,13 @@
 				56D811901319574F0049314B /* OrderListTopCell.xib in Resources */,
 				56D813F51319E4D60049314B /* OrderMenuCell.xib in Resources */,
 				56D8142C1319EB5B0049314B /* CartOrderShopMenu.xib in Resources */,
+				84BB813E131A340F00991EC4 /* ChangeSideCellView.xib in Resources */,
+				84BB813F131A340F00991EC4 /* ChangeSideView.xib in Resources */,
+				84BB8174131A36AD00991EC4 /* ds_c1_a.png in Resources */,
+				84BB8175131A36AD00991EC4 /* ds_c1_c.png in Resources */,
+				84BB8176131A36AD00991EC4 /* ds_c1_l.png in Resources */,
+				84BB8177131A36AD00991EC4 /* ds_c1_n.png in Resources */,
+				84BB8178131A36AD00991EC4 /* ds_c1_s.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2421,6 +2436,7 @@
 				56D80B361318F1470049314B /* CartOrderReservationsView.m in Sources */,
 				56D80B411318F1F70049314B /* CartMyShippingListView.m in Sources */,
 				56D8142B1319EB5B0049314B /* CartOrderShopMenuViewController.m in Sources */,
+				84BB8140131A340F00991EC4 /* ChangeSideViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

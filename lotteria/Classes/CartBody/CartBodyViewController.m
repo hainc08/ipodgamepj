@@ -18,6 +18,7 @@
 		int listHeight = 45 + 100 * itemCount;
 
 		cartList[i] = [[CartListViewController alloc] init];
+		[cartList[i] setNavi:navi];
 		[cartList[i] setCategory:i];
 		[scrollView addSubview:cartList[i].view];
 		[cartList[i].view setFrame:CGRectMake(0, 0, 300, listHeight)];
