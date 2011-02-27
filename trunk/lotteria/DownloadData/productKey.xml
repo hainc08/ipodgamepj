@@ -36,6 +36,23 @@
     <product menu_id="LC0004" key="cf4"/><!--D20	치킨휠레4조각-->
     <product menu_id="LC0006" key="c1"/><!--D20	치킨 1조각(9각)-->
 
+    <product menu_id="LS0004" key="ptt"/><!--D30	포테이토-->
+    <product menu_id="LS0006" key="yg"/><!--D30	양념감자-->
+    <product menu_id="LS0008" key="ncs"/><!--D30	내츄럴 치즈스틱-->
+    <product menu_id="LS0009" key="cs"/><!--D30	크런치새우-->
+    <product menu_id="LS0010" key="sr"/><!--D30	오징어링-->
+    <product menu_id="LS0011" key="csa"/><!--D30	콘샐러드-->
+    <product menu_id="LS0021" key="spcb"/><!--D30	고구마치즈볼-->
+
+    <product menu_id="200504" key="ptt"/><!--S30	세트포테이토-->
+    <product menu_id="200505" key="csa"/><!--S30	선택콘샐러드-->
+    <product menu_id="200509" key="c1"/><!--S30	선택 치킨1조각-->
+    <product menu_id="200513" key="ncs"/><!--S30	선택 내츄럴 치즈스틱-->
+    <product menu_id="201014" key="sr"/><!--S30	선택오징어링-->
+    <product menu_id="201015" key="yg"/><!--S30	선택양념감자-->
+    <product menu_id="201017" key="cs"/><!--S30	선택 크런치새우-->
+    <product menu_id="201081" key="spcb"/><!--S30	선택고구마치즈볼-->
+
     <product menu_id="LD0004" key="la"/><!--D40	레몬에이드	LEMONADE-->
     <product menu_id="LD0007" key="or"/><!--D40	오렌지(R)-->
     <product menu_id="LD0008" key="ict"/><!--D40	아이스티-->
@@ -46,11 +63,17 @@
     <product menu_id="LD0021" key="hcl"/><!--D40	카페라떼-->
     <product menu_id="LD0022" key="icl"/><!--D40	아이스카페라테(신)-->
 
-    <product menu_id="LS0004" key="ptt"/><!--D30	포테이토-->
-    <product menu_id="LS0006" key="yg"/><!--D30	양념감자-->
-    <product menu_id="LS0008" key="ncs"/><!--D30	내츄럴 치즈스틱-->
-    <product menu_id="LS0009" key="cs"/><!--D30	크런치새우-->
-    <product menu_id="LS0010" key="sr"/><!--D30	오징어링-->
-    <product menu_id="LS0011" key="csa"/><!--D30	콘샐러드-->
-    <product menu_id="LS0021" key="spcb"/><!--D30	고구마치즈볼-->
+    <product menu_id="200807" key="cl"/><!--S40	세트콜라(R)-->
+    <product menu_id="200808" key="cd"/><!--S40	선택사이다(R)-->
+    <product menu_id="200810" key="or"/><!--S40	선택오렌지(R)-->
+    <product menu_id="200813" key="ict"/><!--S40	선택 아이스티-->
+    <product menu_id="200846" key="ame"/><!--S40	선택아메리카노(신)-->
+    <product menu_id="200847" key="iam"/><!--S40	선택아이스아메리카노(신)-->
+    <product menu_id="200848" key="hcl"/><!--S40	선택카페라테(신)-->
+    <product menu_id="200849" key="icl"/><!--S40	선택아이스카페라떼(신)-->
+    <product menu_id="200872" key="   "/><!--S40	선택포도주스-->
+    <product menu_id="200937" key="la"/><!--S40	선택 레모네이드-->
+    <product menu_id="202872" key="   "/><!--S40	선택 자몽에이드-->
+    <product menu_id="202873" key="   "/><!--S40	선택 파인애플에이드-->
+    <product menu_id="202874" key="   "/><!--S40	선택 사과주스-->
 </Products>

@@ -14,8 +14,6 @@
 @end
 
 @interface FindBodyViewController : UIViewControllerTemplate<UITableViewDataSource> {
-	UIViewController* backView;
-	
 	IBOutlet UIButton* bgButton;
 	IBOutlet UIButton* chButton;
 	IBOutlet UIButton* drButton;
@@ -26,8 +24,6 @@
 	int itemCount[5];
 	int idx;
 }
-
-@property (retain) UIViewController* backView;
 
 - (IBAction)button:(id)sender;
 

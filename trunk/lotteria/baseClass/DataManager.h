@@ -7,6 +7,9 @@ typedef enum _ImgType
 	SMALL = 4
 } ImgType;
 
+#define SIDE_DRINK 0
+#define SIDE_DESSERT 1
+
 @interface CartItem : NSObject
 {
 	NSString* menuId;

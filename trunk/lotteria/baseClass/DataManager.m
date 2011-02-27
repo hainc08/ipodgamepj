@@ -49,6 +49,9 @@ static DataManager *DataManagerInst;
 		else if ([category compare:@"D40"] == NSOrderedSame) catStr = @"dr";
 		else if ([category compare:@"D50"] == NSOrderedSame) catStr = @"pk";
 
+		else if ([category compare:@"S30"] == NSOrderedSame) catStr = @"ds";
+		else if ([category compare:@"S40"] == NSOrderedSame) catStr = @"dr";
+	
 		img[0] = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@_a.png", catStr, key]];
 		img[1] = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@_c.png", catStr, key]];
 		img[2] = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@_l.png", catStr, key]];

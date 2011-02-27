@@ -25,8 +25,6 @@
 
 @implementation FindBodyViewController
 
-@synthesize backView;
-
 - (void)viewDidLoad {
 	[super viewDidLoad];
 }
