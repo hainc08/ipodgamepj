@@ -163,6 +163,10 @@ static DataManager *DataManagerInst;
 
 	return nil;
 }
+- (CartItem*)getCartItem:(int)idx
+{
+	return [ShopCart objectAtIndex:idx];
+}
 
 //-------------------상품 정보 처리---------------------
 - (void)loadProduct
