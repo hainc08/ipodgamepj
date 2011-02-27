@@ -493,8 +493,11 @@
 		56D813F51319E4D60049314B /* OrderMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D813F41319E4D60049314B /* OrderMenuCell.xib */; };
 		56D8142B1319EB5B0049314B /* CartOrderShopMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D814291319EB5B0049314B /* CartOrderShopMenuViewController.m */; };
 		56D8142C1319EB5B0049314B /* CartOrderShopMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D8142A1319EB5B0049314B /* CartOrderShopMenu.xib */; };
+		56D815CD131A9A190049314B /* OrderPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D815CB131A9A190049314B /* OrderPriceViewController.m */; };
+		56D815CE131A9A190049314B /* OrderPrice.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D815CC131A9A190049314B /* OrderPrice.xib */; };
+		56D81660131AB13E0049314B /* OrderEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D8165E131AB13E0049314B /* OrderEndViewController.m */; };
+		56D81661131AB13E0049314B /* OrderEnd.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D8165F131AB13E0049314B /* OrderEnd.xib */; };
 		84384256130F862200EE2887 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84384255130F862200EE2887 /* DataManager.m */; };
-		843C9FB5131A505A002D4B9A /* FindCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843C9FB4131A505A002D4B9A /* FindCellView.xib */; };
 		84774392130F8F2100FB2532 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 84774391130F8F2100FB2532 /* FileIO.m */; };
 		848B04AD1313864E00A1C50E /* XmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 848B04AC1313864E00A1C50E /* XmlParser.m */; };
 		848B6F67131382DF000E3272 /* product.xml in Resources */ = {isa = PBXBuildFile; fileRef = 848B6F66131382DF000E3272 /* product.xml */; };
@@ -1041,6 +1044,12 @@
 		56D814281319EB5B0049314B /* CartOrderShopMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartOrderShopMenuViewController.h; sourceTree = "<group>"; };
 		56D814291319EB5B0049314B /* CartOrderShopMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartOrderShopMenuViewController.m; sourceTree = "<group>"; };
 		56D8142A1319EB5B0049314B /* CartOrderShopMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartOrderShopMenu.xib; sourceTree = "<group>"; };
+		56D815CA131A9A190049314B /* OrderPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderPriceViewController.h; sourceTree = "<group>"; };
+		56D815CB131A9A190049314B /* OrderPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPriceViewController.m; sourceTree = "<group>"; };
+		56D815CC131A9A190049314B /* OrderPrice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderPrice.xib; sourceTree = "<group>"; };
+		56D8165D131AB13E0049314B /* OrderEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderEndViewController.h; sourceTree = "<group>"; };
+		56D8165E131AB13E0049314B /* OrderEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderEndViewController.m; sourceTree = "<group>"; };
+		56D8165F131AB13E0049314B /* OrderEnd.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderEnd.xib; sourceTree = "<group>"; };
 		84384254130F862200EE2887 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		84384255130F862200EE2887 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		843C9FB4131A505A002D4B9A /* FindCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindCellView.xib; sourceTree = "<group>"; };
@@ -1215,21 +1224,21 @@
 		56A9C828131420690071D8A0 /* 주문 */ = {
 			isa = PBXGroup;
 			children = (
-				56A9C830131426D50071D8A0 /* CartOrderUserViewController.h */,
-				56A9C831131426D50071D8A0 /* CartOrderUserViewController.m */,
-				56A9C832131426D50071D8A0 /* CartOrderUserView.xib */,
 				56D80B3E1318F1F70049314B /* CartMyShippingListView.h */,
 				56D80B3F1318F1F70049314B /* CartMyShippingListView.m */,
 				56D80B401318F1F70049314B /* CartMyShippingListView.xib */,
+				56D814281319EB5B0049314B /* CartOrderShopMenuViewController.h */,
+				56D814291319EB5B0049314B /* CartOrderShopMenuViewController.m */,
+				56D8142A1319EB5B0049314B /* CartOrderShopMenu.xib */,
 				56A9C8291314213A0071D8A0 /* CartOrderViewController.h */,
 				56A9C82A1314213A0071D8A0 /* CartOrderViewController.m */,
 				56A9C82B1314213A0071D8A0 /* CartOrderView.xib */,
 				56D80B331318F1470049314B /* CartOrderReservationsView.h */,
 				56D80B341318F1470049314B /* CartOrderReservationsView.m */,
 				56D80B351318F1470049314B /* CartOrderReservationsView.xib */,
-				56D814281319EB5B0049314B /* CartOrderShopMenuViewController.h */,
-				56D814291319EB5B0049314B /* CartOrderShopMenuViewController.m */,
-				56D8142A1319EB5B0049314B /* CartOrderShopMenu.xib */,
+				56A9C830131426D50071D8A0 /* CartOrderUserViewController.h */,
+				56A9C831131426D50071D8A0 /* CartOrderUserViewController.m */,
+				56A9C832131426D50071D8A0 /* CartOrderUserView.xib */,
 			);
 			name = "주문";
 			sourceTree = "<group>";
@@ -1275,6 +1284,12 @@
 				56A9CD53131586770071D8A0 /* OrderViewController.h */,
 				56A9CD54131586770071D8A0 /* OrderViewController.m */,
 				56A9CD55131586770071D8A0 /* OrderViewController.xib */,
+				56D815CA131A9A190049314B /* OrderPriceViewController.h */,
+				56D815CB131A9A190049314B /* OrderPriceViewController.m */,
+				56D815CC131A9A190049314B /* OrderPrice.xib */,
+				56D8165D131AB13E0049314B /* OrderEndViewController.h */,
+				56D8165E131AB13E0049314B /* OrderEndViewController.m */,
+				56D8165F131AB13E0049314B /* OrderEnd.xib */,
 			);
 			name = "결제";
 			sourceTree = "<group>";
@@ -2394,7 +2409,8 @@
 				84BB8176131A36AD00991EC4 /* ds_c1_l.png in Resources */,
 				84BB8177131A36AD00991EC4 /* ds_c1_n.png in Resources */,
 				84BB8178131A36AD00991EC4 /* ds_c1_s.png in Resources */,
-				843C9FB5131A505A002D4B9A /* FindCellView.xib in Resources */,
+				56D815CE131A9A190049314B /* OrderPrice.xib in Resources */,
+				56D81661131AB13E0049314B /* OrderEnd.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2439,6 +2455,8 @@
 				56D80B411318F1F70049314B /* CartMyShippingListView.m in Sources */,
 				56D8142B1319EB5B0049314B /* CartOrderShopMenuViewController.m in Sources */,
 				84BB8140131A340F00991EC4 /* ChangeSideViewController.m in Sources */,
+				56D815CD131A9A190049314B /* OrderPriceViewController.m in Sources */,
+				56D81660131AB13E0049314B /* OrderEndViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

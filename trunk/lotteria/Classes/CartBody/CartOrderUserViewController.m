@@ -7,7 +7,7 @@
 //
 
 #import "CartOrderUserViewController.h"
-#import "CartMyShippingListView.h"
+#import "OrderViewController.h"
 #import "DataList.h"
 @implementation CartOrderUserViewController
 @synthesize InfoOrder;
@@ -47,7 +47,7 @@
 	[UserInfo setPhone:Phone.text];
 	
 	
-	CartMyShippingList *List = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil];
+	OrderViewController *List = [[OrderViewController alloc] initWithNibName:@"OrderViewController" bundle:nil];
 	List.InfoOrder = self.InfoOrder;
 	[self.navigationController pushViewController:List animated:YES];
 	[List release];

@@ -100,13 +100,20 @@
 @synthesize MenuCount;
 @synthesize stock;
 @synthesize delbutton;
+@synthesize target;
+@synthesize selector;
 
--(void)setInfo:(NSString*)_inMainCategory :(NSString *)_inSubCategory :(NSString *)_inMoney :(NSString *)_inMenuCount
+-(void)setMenuData:(int)category :(CartItem *)_inData
 {
-	[MainCategory	setText: _inMainCategory ];
-	[SubCategory	setText: _inSubCategory ];
-	[Money			setText: _inMoney ];
-	[MenuCount		setText: _inMenuCount ];	
+	item = _inData;
+	ProductData *p_data = [[DataManager getInstance] getProduct:_inData.menuId];
+	[MainCategory	setText: p_data.category  ];
+	[SubCategory	setText: p_data.name ];
+	[Money			setText: [[DataManager getInstance] getPriceStr:p_data.price ]];
+	[MenuCount		setText: [NSString stringWithFormat:@"%d", _inData.count]];	
+	
+//	[self setBackgroundImage:item.StoreMenuOnOff];
+	[self setBackgroundImage:TRUE];
 }
 -(void)setBackgroundImage:(bool)_intype
 {
@@ -121,6 +128,18 @@
 		[self.imageView setImage:[UIImage imageNamed:@"bg_order_detail_box_2.png"]];
 	}
 }
+
+-(IBAction)CellDeleteButton
+{
+	[[DataManager getInstance]  removeCartItem:item];
+	[target performSelector:selector withObject:@"delete" ];
+}
+- (void)setDelegate:(id)aTarget selector:(SEL)aSelector
+{
+	self.target = aTarget;
+	self.selector = aSelector;
+}
+
 @end
 
 

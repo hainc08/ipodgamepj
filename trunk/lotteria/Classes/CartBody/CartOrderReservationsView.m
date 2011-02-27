@@ -8,7 +8,7 @@
 
 #import "CartOrderReservationsView.h"
 #import "UITableViewCellTemplate.h"
-#import "OrderViewController.h"
+#import "CartOrderUserViewController.h"
 #import "DataList.h"
 
 
@@ -50,7 +50,7 @@
 	[locale release];
 	[dateFormatter release];
 	
-	OrderViewController *Order = [[OrderViewController alloc] initWithNibName:@"OrderViewController" bundle:nil];
+	CartOrderUserViewController *Order = [[CartOrderUserViewController alloc] initWithNibName:@"CartOrderUserView" bundle:nil];
 	Order.InfoOrder = self.InfoOrder;
 	[self.navigationController pushViewController:Order animated:YES];
 	[Order release];

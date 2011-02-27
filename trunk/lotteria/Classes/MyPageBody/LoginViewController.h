@@ -20,6 +20,7 @@
 }
 
 - (IBAction)LoginButton;
+- (IBAction)IDSaveButton;
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 
 @end

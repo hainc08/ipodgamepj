@@ -18,10 +18,9 @@
 
 @implementation CartMyShippingList
 
-@synthesize CustomerTable;
 @synthesize	CustomerArr;
 @synthesize	InfoOrder;
-@synthesize noRegImage;
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 
@@ -133,11 +132,9 @@
 - (IBAction)ShipRegButton:(id)sender
 {
 
-//	ShipSearchViewController *Search = [[ShipSearchViewController alloc] initWithNibName:@"ShipSearchView" bundle:nil];
 	NaviViewController *controller = [[NaviViewController alloc] init];
 	[controller setIdx:4];
 	[self  presentModalViewController:controller animated:YES];
-//	[Search release];
 	[controller release];
 }
 

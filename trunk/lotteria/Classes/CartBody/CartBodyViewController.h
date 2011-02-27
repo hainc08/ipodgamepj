@@ -7,9 +7,11 @@
 
 	IBOutlet UIScrollView* scrollView;
 	CartListViewController* cartList[5];
-		Order	*InfoOrder;
+
 	IBOutlet UILabel* priceLabel;
 	NSTimer *updateTimer;
+	
+	Order	*InfoOrder;
 }
 
 @property (nonatomic ,retain) Order *InfoOrder;

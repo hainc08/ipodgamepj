@@ -1,5 +1,7 @@
 #import "MypageBodyViewController.h"
 #import "MyCustomerDelivery.h"
+#import "LoginViewController.h"
+#import "DataManager.h"
 
 
 @implementation MypageBodyViewController
@@ -9,6 +11,13 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.navigationItem.title = @"마이페이지";
+	if (![[DataManager getInstance] isLoginNow])
+	{
+		LoginViewController *loginBody = [[LoginViewController alloc] init];
+		[loginBody setNavi:navi];
+		[loginBody setBackView:self];
+		[navi pushViewController:loginBody animated:NO];
+	}
 }
 
 - (void)viewDidUnload {
@@ -20,6 +29,11 @@
     [super dealloc];
 }
 
+- (IBAction)LogOutButton
+{
+	[[DataManager getInstance] setIsLoginNow:FALSE];
+	/* LoginView 로이동 */
+}
 
 - (IBAction)OrderListButton
 {

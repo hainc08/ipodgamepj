@@ -7,6 +7,7 @@
 //
 
 #import "OrderViewController.h"
+#import "OrderPriceViewController.h"
 #import "UITableViewCellTemplate.h"
 #import "DataList.h"
 
@@ -62,7 +63,13 @@
 {
 	[super viewWillDisappear:animated];	
 }
-
+-(IBAction) PriceButton
+{
+	OrderPriceViewController *Priceview = [[OrderPriceViewController alloc] initWithNibName:@"OrderPrice"  bundle:nil];
+	
+	[self.navigationController pushViewController:Priceview animated:YES];
+	[Priceview release];
+}
 
 #pragma mark -
 #pragma mark AlertView

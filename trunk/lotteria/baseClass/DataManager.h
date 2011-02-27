@@ -18,6 +18,7 @@ typedef enum _ImgType
 
 	int count;
 	int listIdx;
+	bool	StoreMenuOnOff;	// 매장에서 파는지 여부 확인 Update
 }
 
 @property (retain) NSString* menuId;
@@ -26,6 +27,7 @@ typedef enum _ImgType
 
 @property (readwrite) int count;
 @property (readwrite) int listIdx;
+@property (readwrite) bool StoreMenuOnOff;
 
 @end
 
@@ -56,6 +58,7 @@ typedef enum _ImgType
 @interface DataManager : NSObject
 {
 	bool isLoginNow;
+	bool isLoginSave;
 	NSString* accountId;
 	NSString* accountPass;
 
@@ -70,7 +73,8 @@ typedef enum _ImgType
 	bool isCartDirty;
 }
 
-@property (readonly) bool isLoginNow;
+@property (readwrite) bool isLoginNow;
+@property (readwrite) bool isLoginSave;
 @property (retain) NSString* accountId;
 @property (retain) NSString* accountPass;
 @property (readwrite) bool isCartDirty;
@@ -97,11 +101,5 @@ typedef enum _ImgType
 - (NSString*)getPriceStr:(int)value;
 - (int)getCartPrice;
 
-- (ProductData*)getSearchProduct:(int)idx listIdx:(int)lIdx;
-- (int)getSearchProductCount:(int)lIdx;
-- (void)searchProduct:(NSString*)str;
-
-// ----------------- 로그인 -------------------
-- (void)setLoginNow;
 
 @end

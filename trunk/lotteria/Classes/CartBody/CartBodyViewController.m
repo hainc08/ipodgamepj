@@ -1,5 +1,5 @@
 #import "CartBodyViewController.h"
-#import "CartOrderUserViewController.h"
+#import "CartMyShippingListView.h"
 #import "DataList.h"
 
 @implementation CartBodyViewController
@@ -63,20 +63,9 @@
 
 -(IBAction)OrderButton
 {
-	NSMutableArray *arr = [[[NSMutableArray alloc] init]  retain];
 
-	CartOrderUserViewController *UserInput = [[CartOrderUserViewController alloc] initWithNibName:@"CartOrderUserView" bundle:nil];
-	OrderProductInfo *Product = [[[OrderProductInfo alloc] init ] retain];
-	[Product setMenuOnOff:true];
-	[Product setMenuMainID:@"D10"];
-	[Product setMenuID:@"1234"];
-	[Product setMenuName:@"블고기 버거"];
-	[Product setMenuNumber:@"1"];
-	[Product setMenuPrice:@"10000"];
-	[arr insertObject:Product atIndex:0];
-	InfoOrder.Product = arr;
-	[Product release];
-	[arr release];
+
+	CartMyShippingList *UserInput = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil];
 	OrderUserInfo *User = [[[OrderUserInfo alloc] init ] retain];
 	[InfoOrder setUser:User];
 	[User release];

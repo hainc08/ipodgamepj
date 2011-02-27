@@ -7,8 +7,8 @@
 //
 
 #import "CartOrderViewController.h"
-#import "OrderViewController.h"
 #import "CartOrderReservationsView.h"
+#import "CartOrderUserViewController.h"
 #import "DataList.h"
 
 @implementation CartOrderViewController
@@ -20,13 +20,6 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
-}
-
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -37,7 +30,7 @@
 	if(sender == normalButton)
 	{
 		[InfoOrder setOrderType:0];
-		OrderViewController *Order = [[OrderViewController alloc] initWithNibName:@"OrderViewController" bundle:nil];
+		CartOrderUserViewController *Order = [[CartOrderUserViewController alloc] initWithNibName:@"CartOrderUserView" bundle:nil];
 		Order.InfoOrder = self.InfoOrder;
 		[self.navigationController pushViewController:Order animated:YES];
 		[Order release];

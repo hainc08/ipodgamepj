@@ -71,6 +71,7 @@
 	NSString *branchid;
 	NSString *branchname;
 	NSString *branchtime;
+	NSString *branchPhone;	// 매장 전화번호 
 	NSString *si;	
 	NSString *gu;
 	NSString *dong;
