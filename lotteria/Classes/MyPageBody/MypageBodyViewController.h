@@ -6,9 +6,10 @@
 
 	
 	IBOutlet UIButton *OrderList;
+	IBOutlet UIButton *LogOut;
 }
 
 - (IBAction)OrderListButton;
-
+- (IBAction)LogOutButton;
 
 @end

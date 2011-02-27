@@ -23,8 +23,6 @@
 	int		RemoveNum;
 }
 @property (nonatomic, retain)     NSMutableArray *CustomerArr;
-@property (nonatomic, retain) IBOutlet UITableView *CustomerTable;
-@property (nonatomic, retain) IBOutlet UIImageView *noRegImage;
 @property (nonatomic, retain) Order *InfoOrder;
 
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;

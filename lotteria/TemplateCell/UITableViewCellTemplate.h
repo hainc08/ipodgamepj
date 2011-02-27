@@ -147,6 +147,9 @@
 	IBOutlet UILabel *MenuCount;
 	IBOutlet UILabel *stock;
 	IBOutlet UIButton *delbutton;
+	CartItem	*item;
+	id target;
+	SEL selector;
 }
 @property (nonatomic, retain) IBOutlet UILabel *MainCategory;
 @property (nonatomic, retain) IBOutlet UILabel *SubCategory;
@@ -154,9 +157,14 @@
 @property (nonatomic, retain) IBOutlet UILabel *MenuCount;
 @property (nonatomic, retain) IBOutlet UILabel *stock;
 @property (nonatomic, retain) IBOutlet UIButton *delbutton;
+@property (nonatomic, assign) id target;
+@property (nonatomic, assign) SEL selector;
 
--(void)setInfo:(NSString*)_inMainCategory :(NSString *)_inSubCategory :(NSString *)_inMoney :(NSString *)_inMenuCount;
 -(void)setBackgroundImage:(bool)_intype;
+-(void)setMenuData:(int)category :(CartItem *)_inData;
+- (void)setDelegate:(id)aTarget selector:(SEL)aSelector;
+
+-(IBAction)CellDeleteButton;
 @end
 
 /* 가격정보 Cell 

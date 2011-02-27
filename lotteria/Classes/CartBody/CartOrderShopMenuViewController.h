@@ -19,11 +19,11 @@
 	
 	Order *InfoOrder;
 	bool buttontype;
+	
 }
 @property (nonatomic , retain) Order *InfoOrder;
-@property (nonatomic , retain) IBOutlet UIButton	*orderButton;;
-@property (nonatomic , retain) IBOutlet UIButton	*againButton;;
 
+- (void)didDataDelete:(NSString *)result;
 - (IBAction)CellDeleteButton:(id)sender;
 - (IBAction)OrderButton:(id)sender;
 

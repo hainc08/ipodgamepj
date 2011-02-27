@@ -12,6 +12,7 @@ static DataManager *DataManagerInst;
 @synthesize drinkId;
 @synthesize count;
 @synthesize listIdx;
+@synthesize StoreMenuOnOff;
 
 @end
 
@@ -68,6 +69,7 @@ static DataManager *DataManagerInst;
 @implementation DataManager
 
 @synthesize isLoginNow;
+@synthesize isLoginSave;
 @synthesize accountId;
 @synthesize accountPass;
 @synthesize isCartDirty;
@@ -108,6 +110,7 @@ static DataManager *DataManagerInst;
 	}
 
 	isLoginNow = false;
+	isLoginSave = false;
 	isCartDirty = false;
 	
 	[self loadProduct];
@@ -300,60 +303,4 @@ static DataManager *DataManagerInst;
 	return totPrice;
 }
 
-- (ProductData*)getSearchProduct:(int)idx listIdx:(int)lIdx
-{
-	for (ProductData* data in searchResult[lIdx])
-	{
-		if (idx == 0) return data;
-		--idx;
-	}
-
-	return nil;
-}
-
-- (int)getSearchProductCount:(int)lIdx
-{
-	return [searchResult[lIdx] count];
-}
-
-- (void)searchProduct:(NSString*)str
-{
-	for (int i=0; i<5; ++i)
-	{
-		if (searchResult[i] != nil) [searchResult[i] removeAllObjects];
-		else searchResult[i] = [[NSMutableArray alloc] initWithCapacity:0];
-	}
-
-	if ([str compare:@""] == NSOrderedSame)
-	{
-		for (ProductData* data in allProductList)
-		{
-			if ([[data category] compare:@"D10"] == NSOrderedSame) [searchResult[0] addObject:data];
-			else if ([[data category] compare:@"D20"] == NSOrderedSame) [searchResult[1] addObject:data];
-			else if ([[data category] compare:@"D40"] == NSOrderedSame) [searchResult[2] addObject:data];
-			else if ([[data category] compare:@"D30"] == NSOrderedSame) [searchResult[3] addObject:data];
-			else if ([[data category] compare:@"D50"] == NSOrderedSame) [searchResult[4] addObject:data];
-		}
-	}
-	else
-	{
-		for (ProductData* data in allProductList)
-		{
-			NSRange range = [[data name] rangeOfString:str];
-			if (range.location != NSNotFound)
-			{
-				if ([[data category] compare:@"D10"] == NSOrderedSame) [searchResult[0] addObject:data];
-				else if ([[data category] compare:@"D20"] == NSOrderedSame) [searchResult[1] addObject:data];
-				else if ([[data category] compare:@"D40"] == NSOrderedSame) [searchResult[2] addObject:data];
-				else if ([[data category] compare:@"D30"] == NSOrderedSame) [searchResult[3] addObject:data];
-				else if ([[data category] compare:@"D50"] == NSOrderedSame) [searchResult[4] addObject:data];
-			}
-		}
-	}
-}
-
-- (void)setLoginNow
-{
-	isLoginNow = true;
-}
 @end

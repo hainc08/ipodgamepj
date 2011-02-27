@@ -18,14 +18,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
 	ID.returnKeyType = UIReturnKeyDone;
 	Password.returnKeyType = UIReturnKeyDone;
 	ID.delegate = self;
 	Password.delegate = self;
 	
-	ID.text =  [[DataManager getInstance] accountId];
-	Password.text =  [[DataManager getInstance] accountPass];
-	self.navigationItem.title = @"로그인";
+	if([[DataManager getInstance] isLoginSave])
+	{
+		ID.text =  [[DataManager getInstance] accountId];
+		Password.text =  [[DataManager getInstance] accountPass];
+	}
 
 }
 
@@ -43,26 +46,30 @@
     [super dealloc];
 }
 
+- (IBAction)IDSaveButton
+{
+	[[DataManager getInstance] setIsLoginSave:![[DataManager getInstance] isLoginSave]];
+	if([[DataManager getInstance] isLoginSave])
+		ID_Save.imageView.image = [UIImage imageNamed:@"check_box_on.png"];
+	else 
+		ID_Save.imageView.image = [UIImage imageNamed:@"check_box_off.png"];
+}
 - (IBAction)LoginButton 
 {
 
-	
-	
 	// Login 하자..
 	if([ID.text length] >  10 || [ID.text length] < 4 )
 	{
 		[self ShowOKAlert:@"Login Error" msg:@"Login ID 가 10자 이상입니다."];
 		return;
 	}
+	
 	if([Password.text length] >  12)
 	{
 		[self ShowOKAlert:@"Login Error" msg:@"Password 가 12자 이상입니다."];
 		return;
 	}
-	
-	[[DataManager getInstance] setAccountId:ID.text];
-	[[DataManager getInstance] setAccountPass:Password.text];
-	// 접속할 주소 설정
+		// 접속할 주소 설정
 	NSString *url = @"http://www.naver.com";
 	
 	// HTTP Request 인스턴스 생성
@@ -70,8 +77,8 @@
 	
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								@"1234",@"cust_id",
-								@"12345", @"cust_passwd",
+								ID.text,@"cust_id",
+								Password.text, @"cust_passwd",
 								nil];
 	
 	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
@@ -105,10 +112,21 @@
 		[self ShowOKAlert:@"Login Error" msg:@"로그인에 실패 했습니다."];	
 	}
 	else */{
+		
+		if([[DataManager getInstance] isLoginSave])
+		{
+			[[DataManager getInstance] setAccountId:ID.text];
+			[[DataManager getInstance] setAccountPass:Password.text];
+		}
+	
+		[[DataManager getInstance] setIsLoginNow:TRUE];
+		[navi popViewControllerAnimated:NO];
+		/*
 		[[DataManager getInstance] setLoginNow];
 		MypageBodyViewController *mypage = [[MypageBodyViewController alloc] initWithNibName:@"MypageBodyView" bundle:nil];
 		[self.navigationController pushViewController:mypage animated:YES];
 		[mypage release];
+		 */
 	}
 
 	

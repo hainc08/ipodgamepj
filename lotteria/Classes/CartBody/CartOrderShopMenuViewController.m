@@ -12,17 +12,21 @@
 #import "UITableViewCellTemplate.h"
 
 #import "XmlParser.h"
-#import	"CartOrderViewController.h"
+#import "CartOrderViewController.h"
 
 
 
 @implementation CartOrderShopMenuViewController
 @synthesize InfoOrder;
-@synthesize againButton;
-@synthesize orderButton;
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+	menuTable.backgroundColor = [UIColor clearColor];
+	menuTable.opaque = NO;
+	menuTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+	menuTable.separatorColor = [UIColor clearColor];
 	
 	buttontype = true;
 	[self GetOrderMenuSearch];
@@ -72,6 +76,8 @@
 
 - (void)GetOrderMenuSearch
 {
+	/* Menu 불러와서 Order정보에 판매매장에서 파는지 여부 확인해야 함 */
+	
 	
 #ifdef LOCALTEST
 	// 회사 내부 테스트 용 */
@@ -122,12 +128,9 @@
  Cell 에서 삭제 버튼 눌렀을때 해당 대상 삭제하기
  */
 
--(IBAction)CellDeleteButton:(id)sender
+- (void)didDataDelete:(NSString *)result
 {
-	UIButton *button = (UIButton *)sender;
-	[InfoOrder.Product removeObjectAtIndex:button.tag];
 	[menuTable	reloadData];
-	[self SetButton];
 }
 
 /* 
@@ -164,6 +167,10 @@
 
 #pragma mark -
 #pragma mark TableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	return 5;
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -189,15 +196,12 @@
 	}
 	
 	OrderMenuCell *tmp_cell = (OrderMenuCell *)cell;
-	/* cell에서 삭제하는 Button 엑션에 대한 클릭 이벤트 넣기 */
-	[tmp_cell.delbutton setTag:indexPath.row];
-	[tmp_cell.delbutton addTarget:self action:@selector(CellDeleteButton:) forControlEvents:UIControlEventTouchUpInside];
-	
-
-	OrderProductInfo  *tmp = [InfoOrder.Product objectAtIndex:indexPath.row];
-	buttontype &= tmp.MenuOnOff;
-	[tmp_cell setBackgroundImage:tmp.MenuOnOff];
-	[tmp_cell setInfo:[tmp MenuMainID] :[tmp MenuID] :[tmp MenuPrice] :[tmp MenuNumber]];
+	/* cell에서 삭제하는 데이터가 있으면 ReloadData 호출하기..*/
+	CartItem *item = [[DataManager getInstance] getCartItem:indexPath.row listIdx:indexPath.section];
+	//buttontype &= item.StoreMenuOnOff;
+	buttontype &= true;
+	[tmp_cell setDelegate:self selector:@selector(didDataDelete:)];
+	[tmp_cell setMenuData:indexPath.section  :item];
 	
 	return cell;
 }
@@ -210,13 +214,12 @@
 	return 108;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
 
-}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [InfoOrder.Product count];
+	int itemCount = [[DataManager getInstance] itemCount:section];
+	return itemCount;
 }
 
+	
 @end

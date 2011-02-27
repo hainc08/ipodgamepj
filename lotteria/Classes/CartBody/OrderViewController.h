@@ -11,9 +11,11 @@
 @class Order;
 @interface OrderViewController :  UIViewControllerTemplate<UITableViewDataSource, UITableViewDelegate >  {
 	IBOutlet UITableView *OrderTable;
+	IBOutlet UIButton *Price;
 	Order	*InfoOrder;
 }
 @property (nonatomic, retain) Order *InfoOrder;
 
+-(IBAction) PriceButton;
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 @end
