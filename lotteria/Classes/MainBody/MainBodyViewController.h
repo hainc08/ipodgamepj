@@ -27,6 +27,8 @@
 	IBOutlet UIImageView* dessertBG;
 	IBOutlet UIImageView* drinkBG;
 	IBOutlet UIImageView* packBG;
+
+	IBOutlet UITextField* searchField;
 	
 	id lastButton;
 	id lastIconButton;

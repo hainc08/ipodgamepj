@@ -3,12 +3,16 @@
 @interface FindCellView : UITableViewCell {
 	IBOutlet UIImageView* underLine;
 	IBOutlet UIImageView* menuImg;
+	
+	IBOutlet UILabel* nameLabel;
+	IBOutlet UILabel* descLabel;
+	IBOutlet UILabel* priceLabel;
 }
 
 @property (retain) UIImageView* menuImg;
 
 - (IBAction)buttonClick:(id)sender;
-- (void)setData:(NSString*)menuId;
+- (void)setData:(ProductData*)data;
 - (void)setLast:(bool)isLast;
 
 @end
