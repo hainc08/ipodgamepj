@@ -60,6 +60,8 @@
 @synthesize custid,OrderUser ,phone ,si , gu;
 @synthesize dong,bunji , building ,addrdesc;
 @synthesize branchid, branchtime, branchname;
+@synthesize adong, ldong;
+
 - (void)dealloc {
 	[branchid release];
 	[branchname release];

@@ -1,6 +1,9 @@
 #import "CartListViewController.h"
+#import "ChangeSideViewController.h"
 
 @implementation CartCellView
+
+@synthesize navi;
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -10,8 +13,8 @@
 - (void)setData:(CartItem*)item
 {
 	mainId = [item menuId];
-	side1Id = [item dessertId];
-	side2Id = [item drinkId];
+	dessertId = [item dessertId];
+	drinkId = [item drinkId];
 	count = [item count];
 	cartItem = item;
 
@@ -34,9 +37,9 @@
 
 	price = [product[0] price];
 
-	if (side1Id != nil)
+	if (dessertId != nil)
 	{
-		product[1] = [[DataManager getInstance] getProduct:side1Id];
+		product[1] = [[DataManager getInstance] getProduct:dessertId];
 		price += [product[1] price];
 	}
 	else
@@ -44,9 +47,9 @@
 		product[1] = nil;
 	}
 
-	if (side2Id != nil)
+	if (drinkId != nil)
 	{
-		product[2] = [[DataManager getInstance] getProduct:side2Id];
+		product[2] = [[DataManager getInstance] getProduct:drinkId];
 		price += [product[2] price];
 	}
 	else
@@ -59,26 +62,26 @@
 		[sideLabel setText:[NSString stringWithFormat:@"%@ + %@",
 							[product[1] name], [product[2] name]]];
 		
-		[changeSide1 setAlpha:1];
-		[changeSide2 setAlpha:1];
+		[changeDessert setAlpha:1];
+		[changeDrink setAlpha:1];
 	}
 	else if (product[1] != nil)
 	{
 		[sideLabel setText:[product[1] name]];
-		[changeSide1 setAlpha:1];
-		[changeSide2 setAlpha:0];
+		[changeDessert setAlpha:1];
+		[changeDrink setAlpha:0];
 	}
 	else if (product[2] != nil)
 	{
 		[sideLabel setText:[product[2] name]];
-		[changeSide1 setAlpha:0];
-		[changeSide2 setAlpha:1];
+		[changeDessert setAlpha:0];
+		[changeDrink setAlpha:1];
 	}
 	else
 	{
 		[sideLabel setText:@""];
-		[changeSide1 setAlpha:0];
-		[changeSide2 setAlpha:0];
+		[changeDessert setAlpha:0];
+		[changeDrink setAlpha:0];
 	}
 
 	[countLabel setText:[NSString stringWithFormat:@"%d", count]];
@@ -96,11 +99,51 @@
 		[cartItem setCount:count];
 		[[DataManager getInstance] setIsCartDirty:true];
 	}
+	else if (sender == changeDessert)
+	{
+		ChangeSideViewController* changeView = [[ChangeSideViewController alloc] init];
+		[changeView setNavi:navi];
+		[changeView setSideType:SIDE_DESSERT];
+		[changeView setBackView:self];
+		[changeView selectId:dessertId];
+		
+		[navi pushViewController:changeView animated:true];
+	}
+	else if (sender == changeDrink)
+	{
+		ChangeSideViewController* changeView = [[ChangeSideViewController alloc] init];
+		[changeView setNavi:navi];
+		[changeView setSideType:SIDE_DRINK];
+		[changeView setBackView:self];
+		[changeView selectId:drinkId];
+		
+		[navi pushViewController:changeView animated:true];
+	}
+}
+
+- (void)sideSelected:(int)idx :(ProductData*)data
+{
+	if (idx == SIDE_DRINK)
+	{
+		drinkId = [data menuId];	
+		[cartItem setDrinkId:drinkId];
+	}
+	else if (idx == SIDE_DESSERT)
+	{
+		dessertId = [data menuId];
+		[cartItem setDessertId:dessertId];
+	}
+
+	[[DataManager getInstance] setIsCartDirty:true];
+	
+	[self refreshData];
 }
 
 @end
 
 @implementation CartListViewController
+
+@synthesize navi;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -141,11 +184,12 @@
 			}
 		}
     }
-	
+
 	CartCellView* cartCell = (CartCellView*)cell;
 	
 	[cartCell setData:[[DataManager getInstance] getCartItem:indexPath.row listIdx:listIdx]];
 	[cartCell setLast:(indexPath.row == itemCount-1)];
+	[cartCell setNavi:navi];
 	
     return cell;
 }
