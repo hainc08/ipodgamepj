@@ -167,10 +167,6 @@
 
 #pragma mark -
 #pragma mark TableView
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-	return 5;
-}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -197,7 +193,7 @@
 	
 	OrderMenuCell *tmp_cell = (OrderMenuCell *)cell;
 	/* cell에서 삭제하는 데이터가 있으면 ReloadData 호출하기..*/
-	CartItem *item = [[DataManager getInstance] getCartItem:indexPath.row listIdx:indexPath.section];
+	CartItem *item = [[DataManager getInstance] getCartItem:indexPath.row];
 	//buttontype &= item.StoreMenuOnOff;
 	buttontype &= true;
 	[tmp_cell setDelegate:self selector:@selector(didDataDelete:)];
@@ -217,7 +213,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	int itemCount = [[DataManager getInstance] itemCount:section];
+	int itemCount = [[[DataManager getInstance] getShopCart] count] ;
 	return itemCount;
 }
 

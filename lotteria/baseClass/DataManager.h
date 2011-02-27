@@ -90,6 +90,7 @@ typedef enum _ImgType
 - (NSMutableArray*)getShopCart;
 - (int)itemCount:(int)listIdx;
 - (CartItem*)getCartItem:(int)idx listIdx:(int)listIdx;
+- (CartItem*)getCartItem:(int)idx;
 
 //-------------------상품 정보 처리---------------------
 - (void)loadProduct;
