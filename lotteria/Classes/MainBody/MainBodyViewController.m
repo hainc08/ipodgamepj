@@ -7,6 +7,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	detailView = [[DetailViewController alloc] init];
+	[detailView setNavi:navi];
 	[baseView addSubview:detailView.view];
 	[detailView.view setCenter:CGPointMake(160, 250)];
 	[detailView.view setAlpha:0];

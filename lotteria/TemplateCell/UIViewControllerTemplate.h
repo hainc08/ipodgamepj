@@ -11,9 +11,12 @@
 
 @interface UIViewControllerTemplate : UIViewController {
 	UINavigationController *navi;
+	UIViewController* backView;
 }
 
 @property (nonatomic , retain) UINavigationController *navi;
+@property (nonatomic , retain) UIViewController* backView;
+
 @end
 
 @interface UIViewControllerDownTemplate : UIViewController {

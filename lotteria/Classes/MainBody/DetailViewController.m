@@ -1,4 +1,5 @@
 #import "DetailViewController.h"
+#import "ChangeSideViewController.h"
 
 @implementation DetailViewController
 
@@ -107,6 +108,40 @@
 		[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 		[selectView setAlpha:0];
 		[UIView commitAnimations];
+	}
+	else if (sender == side1Select)
+	{
+		ChangeSideViewController* changeView = [[ChangeSideViewController alloc] init];
+		[changeView setNavi:navi];
+		[changeView setSideType:SIDE_DESSERT];
+		[changeView setBackView:self];
+		[changeView selectId:pId[1]];
+		
+		[navi pushViewController:changeView animated:true];
+	}
+	else if (sender == side2Select)
+	{
+		ChangeSideViewController* changeView = [[ChangeSideViewController alloc] init];
+		[changeView setNavi:navi];
+		[changeView setSideType:SIDE_DRINK];
+		[changeView setBackView:self];
+		[changeView selectId:pId[2]];
+		
+		[navi pushViewController:changeView animated:true];
+	}
+}
+
+- (void)sideSelected:(int)idx :(ProductData*)data
+{
+	if (idx == SIDE_DESSERT)
+	{
+		pId[1] = [data menuId];
+		[side1Label setText:[data name]];
+	}
+	else if (idx == SIDE_DRINK)
+	{
+		pId[2] = [data menuId];
+		[side2Label setText:[data name]];
 	}
 }
 
