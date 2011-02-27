@@ -48,16 +48,19 @@
 
 
 @interface OrderProductInfo : NSObject {
+	NSString *MenuMainID;	// 메뉴 대분류 ID
 	NSString *MenuID;		// 메뉴 ID
 	NSString *MenuName;		// 메뉴 이름	
 	NSString *MenuNumber;	// 메뉴 개수 
 	NSString *MenuPrice;	// 메뉴 가격
+	bool	 MenuOnOff;		// 주문 매장에서 판매여부 
 }
-
+@property (retain) 	NSString *MenuMainID;
 @property (retain) NSString *MenuID;
 @property (retain) NSString *MenuName;
 @property (retain) NSString *MenuNumber;
 @property (retain) NSString *MenuPrice;
+@property (readwrite)	bool	 MenuOnOff;
 @end
 
 

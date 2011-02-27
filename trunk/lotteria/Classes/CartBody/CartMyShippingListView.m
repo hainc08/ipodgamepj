@@ -14,6 +14,7 @@
 #import "DataList.h"
 #import "NaviViewController.h"
 #import "HttpRequest.h"
+#import "CartOrderShopMenuViewController.h"
 
 @implementation CartMyShippingList
 
@@ -189,6 +190,7 @@
 	[httpRequest requestUrl:url bodyObject:bodyObject];
 	
 }
+
 - (void)didReceiveFinished:(NSString *)result
 {
 	
@@ -377,11 +379,10 @@
 	[User setBuilding:Tmp.building];
 	[User setAddrdesc:Tmp.addrdesc];
 
-	
-	CartOrderViewController *Order = [[CartOrderViewController alloc] initWithNibName:@"CartOrderView" bundle:nil];
+	CartOrderShopMenuViewController *Order = [[CartOrderShopMenuViewController alloc] initWithNibName:@"CartOrderShopMenu" bundle:nil];
 	Order.InfoOrder = self.InfoOrder;	
 	[self.navigationController pushViewController:Order animated:YES];
-	 [Order release];
+	[Order release];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

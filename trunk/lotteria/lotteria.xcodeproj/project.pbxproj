@@ -490,6 +490,9 @@
 		56D80EF51318F75C0049314B /* tit_request_input.png in Resources */ = {isa = PBXBuildFile; fileRef = 56D80D2A1318F75C0049314B /* tit_request_input.png */; };
 		56D81181131954FC0049314B /* OrderListBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D81180131954FC0049314B /* OrderListBottomCell.xib */; };
 		56D811901319574F0049314B /* OrderListTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D8118F1319574F0049314B /* OrderListTopCell.xib */; };
+		56D813F51319E4D60049314B /* OrderMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D813F41319E4D60049314B /* OrderMenuCell.xib */; };
+		56D8142B1319EB5B0049314B /* CartOrderShopMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D814291319EB5B0049314B /* CartOrderShopMenuViewController.m */; };
+		56D8142C1319EB5B0049314B /* CartOrderShopMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D8142A1319EB5B0049314B /* CartOrderShopMenu.xib */; };
 		84384256130F862200EE2887 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84384255130F862200EE2887 /* DataManager.m */; };
 		84774392130F8F2100FB2532 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 84774391130F8F2100FB2532 /* FileIO.m */; };
 		848B04AD1313864E00A1C50E /* XmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 848B04AC1313864E00A1C50E /* XmlParser.m */; };
@@ -520,14 +523,6 @@
 		84D85E281313F76300361C3B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D85E271313F76300361C3B /* CoreLocation.framework */; };
 		84EB01351310DDD700AED472 /* IconButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB01331310DDD700AED472 /* IconButton.m */; };
 		84EB01361310DDD700AED472 /* IconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84EB01341310DDD700AED472 /* IconButton.xib */; };
-		84F09C9A131966120032B722 /* ChangeSideCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F09C96131966120032B722 /* ChangeSideCellView.xib */; };
-		84F09C9B131966120032B722 /* ChangeSideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F09C97131966120032B722 /* ChangeSideView.xib */; };
-		84F09C9C131966120032B722 /* ChangeSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F09C99131966120032B722 /* ChangeSideViewController.m */; };
-		84F09D3B1319E59E0032B722 /* ds_c1_a.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F09D361319E59E0032B722 /* ds_c1_a.png */; };
-		84F09D3C1319E59E0032B722 /* ds_c1_c.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F09D371319E59E0032B722 /* ds_c1_c.png */; };
-		84F09D3D1319E59E0032B722 /* ds_c1_l.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F09D381319E59E0032B722 /* ds_c1_l.png */; };
-		84F09D3E1319E59E0032B722 /* ds_c1_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F09D391319E59E0032B722 /* ds_c1_n.png */; };
-		84F09D3F1319E59E0032B722 /* ds_c1_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F09D3A1319E59E0032B722 /* ds_c1_s.png */; };
 		84F1B8D1131450F3006FC7C7 /* productKey.xml in Resources */ = {isa = PBXBuildFile; fileRef = 84F1B8D0131450F3006FC7C7 /* productKey.xml */; };
 /* End PBXBuildFile section */
 
@@ -1033,6 +1028,10 @@
 		56D80D2A1318F75C0049314B /* tit_request_input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tit_request_input.png; sourceTree = "<group>"; };
 		56D81180131954FC0049314B /* OrderListBottomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = OrderListBottomCell.xib; path = TemplateCell/OrderListBottomCell.xib; sourceTree = "<group>"; };
 		56D8118F1319574F0049314B /* OrderListTopCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = OrderListTopCell.xib; path = TemplateCell/OrderListTopCell.xib; sourceTree = "<group>"; };
+		56D813F41319E4D60049314B /* OrderMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = OrderMenuCell.xib; path = TemplateCell/OrderMenuCell.xib; sourceTree = "<group>"; };
+		56D814281319EB5B0049314B /* CartOrderShopMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartOrderShopMenuViewController.h; sourceTree = "<group>"; };
+		56D814291319EB5B0049314B /* CartOrderShopMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartOrderShopMenuViewController.m; sourceTree = "<group>"; };
+		56D8142A1319EB5B0049314B /* CartOrderShopMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartOrderShopMenu.xib; sourceTree = "<group>"; };
 		84384254130F862200EE2887 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		84384255130F862200EE2887 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		84774390130F8F2100FB2532 /* FileIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileIO.h; sourceTree = "<group>"; };
@@ -1196,6 +1195,7 @@
 				56D8118F1319574F0049314B /* OrderListTopCell.xib */,
 				56A9C7AD1313FC930071D8A0 /* OrderListMiddleCell.xib */,
 				56D81180131954FC0049314B /* OrderListBottomCell.xib */,
+				56D813F41319E4D60049314B /* OrderMenuCell.xib */,
 				56A9C7AF1313FCC40071D8A0 /* OrderMoneyCell.xib */,
 				56A9C9E81315420A0071D8A0 /* UIViewControllerTemplate.h */,
 				56A9C9E91315420A0071D8A0 /* UIViewControllerTemplate.m */,
@@ -1218,6 +1218,9 @@
 				56D80B331318F1470049314B /* CartOrderReservationsView.h */,
 				56D80B341318F1470049314B /* CartOrderReservationsView.m */,
 				56D80B351318F1470049314B /* CartOrderReservationsView.xib */,
+				56D814281319EB5B0049314B /* CartOrderShopMenuViewController.h */,
+				56D814291319EB5B0049314B /* CartOrderShopMenuViewController.m */,
+				56D8142A1319EB5B0049314B /* CartOrderShopMenu.xib */,
 			);
 			name = "주문";
 			sourceTree = "<group>";
@@ -2373,13 +2376,8 @@
 				56D80EF51318F75C0049314B /* tit_request_input.png in Resources */,
 				56D81181131954FC0049314B /* OrderListBottomCell.xib in Resources */,
 				56D811901319574F0049314B /* OrderListTopCell.xib in Resources */,
-				84F09C9A131966120032B722 /* ChangeSideCellView.xib in Resources */,
-				84F09C9B131966120032B722 /* ChangeSideView.xib in Resources */,
-				84F09D3B1319E59E0032B722 /* ds_c1_a.png in Resources */,
-				84F09D3C1319E59E0032B722 /* ds_c1_c.png in Resources */,
-				84F09D3D1319E59E0032B722 /* ds_c1_l.png in Resources */,
-				84F09D3E1319E59E0032B722 /* ds_c1_n.png in Resources */,
-				84F09D3F1319E59E0032B722 /* ds_c1_s.png in Resources */,
+				56D813F51319E4D60049314B /* OrderMenuCell.xib in Resources */,
+				56D8142C1319EB5B0049314B /* CartOrderShopMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2422,7 +2420,7 @@
 				56D80A17131818420049314B /* ShipStreetBuilding.m in Sources */,
 				56D80B361318F1470049314B /* CartOrderReservationsView.m in Sources */,
 				56D80B411318F1F70049314B /* CartMyShippingListView.m in Sources */,
-				84F09C9C131966120032B722 /* ChangeSideViewController.m in Sources */,
+				56D8142B1319EB5B0049314B /* CartOrderShopMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

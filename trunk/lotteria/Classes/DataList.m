@@ -40,9 +40,9 @@
 
 
 @implementation OrderProductInfo
-
+@synthesize MenuMainID;
 @synthesize MenuID,MenuName ,MenuNumber ,MenuPrice;
-
+@synthesize  MenuOnOff;
 - (void)dealloc {
     [MenuID release];
     [MenuName release];
