@@ -9,7 +9,7 @@
 #import "CartOrderReservationsView.h"
 #import "UITableViewCellTemplate.h"
 #import "CartOrderUserViewController.h"
-#import "DataList.h"
+#import "DataManager.h"
 
 
 @implementation CartOrderReservationsView
@@ -17,7 +17,6 @@
 @synthesize Picket;
 @synthesize reButton;
 @synthesize	OrderBurial;
-@synthesize InfoOrder;
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -46,12 +45,12 @@
 	NSDateFormatter *dateFormatter		=	[[NSDateFormatter alloc] init];
 	[dateFormatter setLocale:locale];
 	[dateFormatter setDateFormat:@"h:mm a"];
-	InfoOrder.OrderTime = [dateFormatter stringFromDate:[Picket date]];
+	Order *Data = [[DataManager getInstance] UserOrder];
+	[Data setOrderTime:[dateFormatter stringFromDate:[Picket date]]];
 	[locale release];
 	[dateFormatter release];
 	
 	CartOrderUserViewController *Order = [[CartOrderUserViewController alloc] initWithNibName:@"CartOrderUserView" bundle:nil];
-	Order.InfoOrder = self.InfoOrder;
 	[self.navigationController pushViewController:Order animated:YES];
 	[Order release];
 }
@@ -83,12 +82,14 @@
 	}
 	
 	ShippingCell *tmp_cell = (ShippingCell *)cell;
+	Order *Data = [[DataManager getInstance] UserOrder];
+	
 	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
-					   [InfoOrder.User si], [InfoOrder.User gu], [InfoOrder.User dong], [InfoOrder.User bunji],
-					   [InfoOrder.User building], [InfoOrder.User addrdesc]];
+					   [Data.UserAddr si], [Data.UserAddr gu], [Data.UserAddr dong], [Data.UserAddr bunji],
+					   [Data.UserAddr building], [Data.UserAddr addrdesc]];
 	
 	[tmp_cell setDelButtonEnable:false];
-	[tmp_cell setInfo:[InfoOrder.User branchname]  :[InfoOrder.User branchtime] :s_tmp :[InfoOrder.User phone] ];
+	[tmp_cell setInfo:[Data branchname] :s_tmp :[Data branchPhone] ];
 	
 	return cell;
 }

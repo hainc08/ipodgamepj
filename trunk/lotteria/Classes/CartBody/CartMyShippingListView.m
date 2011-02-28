@@ -11,10 +11,10 @@
 #import "CartOrderViewController.h"
 #import "UITableViewCellTemplate.h"
 #import "ShipSearchViewController.h"
-#import "DataList.h"
 #import "NaviViewController.h"
 #import "HttpRequest.h"
 #import "CartOrderShopMenuViewController.h"
+#import "DataManager.h"
 
 @implementation CartMyShippingList
 
@@ -204,7 +204,6 @@
 		{
 			
 			CustomerDelivery *Customer  = [[[CustomerDelivery alloc] init] retain];
-			[Customer setCustid:[[t_item getChild:@"cust_id"] getValue]];
 			[Customer setSeq:[[t_item getChild:@"seq"] getValue]];
 			[Customer setPhone:[[t_item getChild:@"phone"] getValue]];
 			[Customer setSi:[[t_item getChild:@"si"] getValue]];
@@ -349,7 +348,7 @@
 	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
 					   [tmp si], [tmp gu], [tmp dong], [tmp bunji], [tmp building], [tmp addrdesc]];
 	
-	[tmp_cell setInfo:[tmp branchname] :[tmp branchtime] :s_tmp :[tmp phone] ];
+	[tmp_cell setInfo:[tmp branchname] :s_tmp :[tmp phone] ];
 
 	return cell;
 }
@@ -365,19 +364,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	CustomerDelivery  *Tmp = [CustomerArr objectAtIndex:indexPath.row];
-	OrderUserInfo *User = InfoOrder.User;
-	[User setBranchid:Tmp.branchid];
-	[User setBranchid:Tmp.branchname];
-	[User setBranchid:Tmp.branchtime];
-	[User setSi:Tmp.si];
-	[User setGu:Tmp.gu];
-	[User setDong:Tmp.dong];
-	[User setBunji:Tmp.bunji];
-	[User setBuilding:Tmp.building];
-	[User setAddrdesc:Tmp.addrdesc];
+	Order *OrderUser = [[DataManager getInstance] UserOrder];
+						
+	[OrderUser setBranchid:Tmp.branchid];		// 주문지  ID
+	[OrderUser setBranchid:Tmp.branchname];		// 주문지 이름
+	[OrderUser setBranchid:Tmp.branchtime];		// 주문지 Phone
+	
+	[OrderUser.UserAddr setAddrSeq:Tmp.seq ];
+	[OrderUser.UserAddr setSi:Tmp.si];
+	[OrderUser.UserAddr setGu:Tmp.gu];
+	[OrderUser.UserAddr setDong:Tmp.dong];
+	[OrderUser.UserAddr setBunji:Tmp.bunji];
+	[OrderUser.UserAddr setBuilding:Tmp.building];
+	[OrderUser.UserAddr setAddrdesc:Tmp.addrdesc];
 
 	CartOrderShopMenuViewController *Order = [[CartOrderShopMenuViewController alloc] initWithNibName:@"CartOrderShopMenu" bundle:nil];
-	Order.InfoOrder = self.InfoOrder;	
 	[self.navigationController pushViewController:Order animated:YES];
 	[Order release];
 }

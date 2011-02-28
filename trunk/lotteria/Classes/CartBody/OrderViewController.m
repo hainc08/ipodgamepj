@@ -9,12 +9,9 @@
 #import "OrderViewController.h"
 #import "OrderPriceViewController.h"
 #import "UITableViewCellTemplate.h"
-#import "DataList.h"
+#import "DataManager.h"\
 
 @implementation OrderViewController
-@synthesize InfoOrder;
-
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -145,10 +142,11 @@
 		tmp_cell.backgroundColor = [UIColor clearColor];
 		
 
-		OrderUserInfo  *tmp = InfoOrder.User;	
+		Order *UserInfo =  [[DataManager getInstance] UserOrder];
 		NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
-					   [tmp si], [tmp gu], [tmp dong], [tmp bunji], [tmp building], [tmp addrdesc]];
-		[tmp_cell setInfo:@"테스트"  :@"40Min" :s_tmp :[tmp phone] ];
+					   [UserInfo.UserAddr si], [UserInfo.UserAddr gu], [UserInfo.UserAddr dong], 
+					   [UserInfo.UserAddr bunji], [UserInfo.UserAddr building], [UserInfo.UserAddr addrdesc]];
+		[tmp_cell setInfo:[UserInfo branchname] :s_tmp :[UserInfo branchPhone] ];
 		[tmp_cell setDelButtonEnable:false];
 	
 		return cell;
@@ -157,7 +155,7 @@
 	{
 		if(indexPath.row == 0)
 			CellIdentifier = @"OrderListTopCell";
-		else if( indexPath.row -1  <  [InfoOrder.Product count] )
+		else if( indexPath.row -1  <  [[[DataManager getInstance] getShopCart]  count] )
 			CellIdentifier = @"OrderListMiddleCell";
 		else 
 			CellIdentifier = @"OrderListBottomCell";
@@ -179,7 +177,7 @@
 						break;
 					}
 				}
-				else if(indexPath.row -1 < [InfoOrder.Product count])
+				else if(indexPath.row -1 < [[[DataManager getInstance] getShopCart]  count])
 				{
 					if ([oneObject isKindOfClass:[OrderListMiddleCell class]])
 					{
@@ -204,19 +202,24 @@
 		//	tmp_cell.backgroundColor = [UIColor clearColor];
 
 		}
-		else if(indexPath.row -1 <   [ InfoOrder.Product count] )
+		else if(indexPath.row -1 <   [[[DataManager getInstance] getShopCart]  count] )
 		{
 			OrderListMiddleCell *tmp_cell = (OrderListMiddleCell *)cell;
 			//tmp_cell.backgroundColor = [UIColor clearColor];
 			
-			OrderProductInfo  *tmp = [InfoOrder.Product objectAtIndex:indexPath.row-1] ;	
-			[tmp_cell setInfo:tmp.MenuName :tmp.MenuID :tmp.MenuPrice];
+			CartItem  *tmp =  [[[DataManager getInstance] getShopCart] objectAtIndex:indexPath.row-1] ;	
+			ProductData *p_data = [[DataManager getInstance] getProduct:tmp.menuId];
+			[tmp_cell setInfo:[p_data  category]
+							 :[NSString stringWithFormat:@"%d", tmp.count]
+							 : [[DataManager getInstance] getPriceStr:[p_data price] *  tmp.count ]];
 		}
 		else {
 			OrderListBottomCell *tmp_cell = (OrderListBottomCell *)cell;
 			//tmp_cell.backgroundColor = [UIColor clearColor];
 
-			[tmp_cell setInfo:InfoOrder.OrderMoney :InfoOrder.OrderSale :InfoOrder.OrderTotal];
+			[tmp_cell setInfo:[[DataManager getInstance] getPriceStr:[[DataManager getInstance] getCartPrice]]
+					:@"0"
+					:[[DataManager getInstance] getPriceStr:[[DataManager getInstance] getCartPrice]]];
 		}
 		return cell;
 	}
@@ -232,7 +235,7 @@
 	if(indexPath.section == 0) return 97;
 	else {
 		if(indexPath.row == 0) return 14.0f;
-		else if (indexPath.row-1 < [InfoOrder.Product count]) return 51.0f;
+		else if (indexPath.row-1 < [[[DataManager getInstance] getShopCart]  count]) return 51.0f;
 		else  return 116.0f;
 	}
 
@@ -243,7 +246,7 @@
 	if(section == 0)
 		return 1;
 	else
-		return [InfoOrder.Product count] +2;
+		return [[[DataManager getInstance] getShopCart]  count] +2;
 }
 
 

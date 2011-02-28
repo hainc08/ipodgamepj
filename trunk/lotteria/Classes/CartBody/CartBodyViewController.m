@@ -76,14 +76,7 @@
 
 -(IBAction)OrderButton
 {
-
-
 	CartMyShippingList *UserInput = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil];
-	OrderUserInfo *User = [[[OrderUserInfo alloc] init ] retain];
-	[InfoOrder setUser:User];
-	[User release];
-	UserInput.InfoOrder	= self.InfoOrder;
-	
 	[self.navigationController pushViewController:UserInput animated:YES ];
 	[UserInput release];
 }

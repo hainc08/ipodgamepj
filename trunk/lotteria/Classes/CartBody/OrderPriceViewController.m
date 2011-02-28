@@ -15,6 +15,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	Comment.returnKeyType = UIReturnKeyDone;
+	[MoneyTxt setText:[[DataManager getInstance] getPriceStr:[[DataManager getInstance] getCartPrice]]];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -68,13 +68,13 @@
  */
 @interface ShippingCell : UITableViewCell
 {
-	/*  모란점 (Min)  , FontColor : Yellow */
+	/*  모란점*/
 	IBOutlet UILabel* ShippingName;  
 	
-	/* 배송지 주소		, FontColer : White */
+	/* 배송지 주소	*/
 	IBOutlet UILabel* ShippingAddress;
 	
-	/* 배송지 전화번호 , FontColor : White */
+	/* 배송지 전화번호  */
 	IBOutlet UILabel* ShippingCall;
 	
 	IBOutlet UIButton	*delbutton;
@@ -84,7 +84,7 @@
 @property (nonatomic, retain) IBOutlet UILabel* ShippingAddress;  
 @property (nonatomic, retain) IBOutlet UILabel* ShippingCall;
 @property (nonatomic, retain) IBOutlet UIButton  *delbutton;
--(void)setInfo:(NSString*)_inName :(NSString *)_inMin :(NSString *)_inAddr :(NSString *)_inCall;
+-(void)setInfo:(NSString*)_inName :(NSString *)_inAddr :(NSString *)_inCall;
 
 -(void)setDelButtonEnable:(bool)_inenable;
 @end

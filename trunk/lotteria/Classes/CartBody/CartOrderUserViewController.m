@@ -8,9 +8,9 @@
 
 #import "CartOrderUserViewController.h"
 #import "OrderViewController.h"
-#import "DataList.h"
+#import "DataManager.h"
 @implementation CartOrderUserViewController
-@synthesize InfoOrder;
+
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -41,14 +41,14 @@
 - (IBAction)ContinueButton:(id)sender
 {
 
-	OrderUserInfo *UserInfo = [InfoOrder User];
 	
-	[UserInfo setOrderUser:Name.text];
-	[UserInfo setPhone:Phone.text];
+	Order *Data = [[DataManager getInstance] UserOrder];
+	
+	[Data setUserName:Name.text];
+	[Data setUserPhone:Phone.text];
 	
 	
 	OrderViewController *List = [[OrderViewController alloc] initWithNibName:@"OrderViewController" bundle:nil];
-	List.InfoOrder = self.InfoOrder;
 	[self.navigationController pushViewController:List animated:YES];
 	[List release];
 }

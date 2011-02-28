@@ -13,8 +13,6 @@
 @interface CartOrderUserViewController : UIViewControllerTemplate {
 	IBOutlet UITextField	*Name;
 	IBOutlet UITextField	*Phone;
-	Order *InfoOrder;
 }
-@property (nonatomic, retain) Order *InfoOrder;
 - (IBAction)ContinueButton:(id)sender;
 @end
