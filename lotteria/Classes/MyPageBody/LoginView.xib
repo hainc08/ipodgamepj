@@ -130,6 +130,27 @@
 							<string key="NSResourceName">check_box_off.png</string>
 						</object>
 					</object>
+					<object class="IBUIButton" id="87966050">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{72, 121}, {26, 26}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="986984622"/>
+						<reference key="IBUIHighlightedTitleColor" ref="405440349"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="164847817"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">check_box_on.png</string>
+						</object>
+					</object>
 					<object class="IBUIButton" id="576624804">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
@@ -277,6 +298,23 @@
 					</object>
 					<int key="connectionID">26</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">IDSaveButton</string>
+						<reference key="source" ref="87966050"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">28</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">ID_Save2</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="87966050"/>
+					</object>
+					<int key="connectionID">29</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -300,6 +338,7 @@
 							<reference ref="296154986"/>
 							<reference ref="874017763"/>
 							<reference ref="576624804"/>
+							<reference ref="87966050"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -354,6 +393,11 @@
 						<reference key="object" ref="874017763"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">27</int>
+						<reference key="object" ref="87966050"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -378,6 +422,8 @@
 					<string>23.IBViewBoundsToFrameTransform</string>
 					<string>24.IBPluginDependency</string>
 					<string>24.IBViewBoundsToFrameTransform</string>
+					<string>27.IBPluginDependency</string>
+					<string>27.IBViewBoundsToFrameTransform</string>
 					<string>8.IBPluginDependency</string>
 					<string>8.IBViewBoundsToFrameTransform</string>
 				</object>
@@ -389,7 +435,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABCkAAAwwwAAA</bytes>
+						<bytes key="NSTransformStruct">AUKQAABC8gAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -417,6 +463,10 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABCmgAAwxYAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AULMAABB6AAAA</bytes>
 					</object>
 				</object>
@@ -437,7 +487,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">26</int>
+			<int key="maxID">29</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -483,12 +533,14 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>ID</string>
 							<string>ID_Save</string>
+							<string>ID_Save2</string>
 							<string>Login</string>
 							<string>Password</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UITextField</string>
+							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>UITextField</string>
@@ -500,6 +552,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>ID</string>
 							<string>ID_Save</string>
+							<string>ID_Save2</string>
 							<string>Login</string>
 							<string>Password</string>
 						</object>
@@ -511,6 +564,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">ID_Save</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">ID_Save2</string>
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -760,6 +817,7 @@
 				<string>btn_login_off.png</string>
 				<string>btn_login_on.png</string>
 				<string>check_box_off.png</string>
+				<string>check_box_on.png</string>
 				<string>img_login_tip.png</string>
 				<string>img_txt_id.png</string>
 				<string>img_txt_idpw_save.png</string>
@@ -769,6 +827,7 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{280, 38}</string>
 				<string>{280, 38}</string>
+				<string>{26, 26}</string>
 				<string>{26, 26}</string>
 				<string>{282, 69}</string>
 				<string>{80, 22}</string>

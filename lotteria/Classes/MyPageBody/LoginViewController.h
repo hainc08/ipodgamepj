@@ -15,6 +15,7 @@
 	IBOutlet UITextField	*Password;
 	
 	IBOutlet UIButton		*ID_Save;
+	IBOutlet UIButton		*ID_Save2;
 	IBOutlet UIButton		*Login;
 	
 }

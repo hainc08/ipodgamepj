@@ -13,13 +13,10 @@
 
 @interface MyCustomerDelivery : UIViewControllerTemplate<UITableViewDataSource, UITableViewDelegate > {
 
-	IBOutlet UITableView *CustomerTable;
-    NSMutableArray *CustomerArr;
+	IBOutlet UIWebView *WebView;
 	
 }
 
-@property (nonatomic, retain) NSMutableArray	*CustomerArr;
-@property (nonatomic, retain) IBOutlet UITableView *CustomerTable;
 
 
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
