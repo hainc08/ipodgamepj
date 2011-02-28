@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "UIViewControllerTemplate.h"
 
-@class OrderUserInfo;
+//@class OrderUserInfo;
 @interface ShipAddressTable : UIViewController <UITableViewDataSource, UITableViewDelegate > {
 	IBOutlet UITableView *ShipTable;
     NSMutableArray *ShipAddressArr;
 	int ShipType ; // 0 : 동   1 : 주소 
-	OrderUserInfo *Info;
+	//OrderUserInfo *Info;
 	NSString *dong;
 	IBOutlet UIButton *BackButton;
 }

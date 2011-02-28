@@ -8,7 +8,6 @@
 
 #import "ShipAddressTable.h"
 #import "HttpRequest.h"
-#import "DataList.h"
 #import "XmlParser.h"
 #import "ShipStreetBuilding.h"
 @implementation ShipAddressTable
@@ -77,7 +76,7 @@
 		</NewDataSet>"
 		;
 	}
-
+#if 0 
 
 
 	XmlParser* xmlParser = [XmlParser alloc];
@@ -111,7 +110,7 @@
 	
 	[xmlParser release];
 	[ShipTable reloadData];	
-
+#endif
 
 /*
 	NSString *url;
@@ -178,6 +177,7 @@
 {
 	[self.navigationController popViewControllerAnimated:YES];
 }
+#if 0 
 #pragma mark -
 #pragma mark HttpRequestDelegate
 
@@ -236,7 +236,7 @@
  */
 - (void)didReceiveFinished:(NSString *)result
 {
-	
+
 	if(![result compare:@"error"])
 	{
 		[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
@@ -349,4 +349,5 @@
 {
 	return [ShipAddressArr count];
 }
+#endif
 @end
