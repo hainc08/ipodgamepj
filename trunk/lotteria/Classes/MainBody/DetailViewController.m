@@ -3,10 +3,14 @@
 
 @implementation DetailViewController
 
+@synthesize fullType;
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[contentScrollView setContentSize:CGSizeMake(320, 380)];
 	count = 1;
+
+	[self showProduct:productId];
 }
 
 - (void)viewDidUnload {
@@ -64,7 +68,7 @@
 		[setBack setAlpha:0];
 
 		[optionView2 setAlpha:0];
-		[optionView1 setCenter:CGPointMake(160, 58 + 28 + 20)];
+		[optionView1 setCenter:CGPointMake(160, 58 + 28 + 35)];
 		[addCartButton setCenter:CGPointMake(160, 58 + 98 + 25)];
 
 		[closeButton setCenter:CGPointMake(300, 58 + 21)];
@@ -129,6 +133,14 @@
 		
 		[navi pushViewController:changeView animated:true];
 	}
+}
+
+- (void)makeHalfMode
+{
+	[self.view setFrame:CGRectMake(0, 0, 320, 296)];
+
+	[contentScrollView setFrame:CGRectMake(0, 0, 320, 296)];
+	[contentScrollView setCenter:CGPointMake(160, 148)];
 }
 
 - (void)sideSelected:(int)idx :(ProductData*)data

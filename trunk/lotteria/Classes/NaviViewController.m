@@ -18,7 +18,7 @@
 
 	[self.view setCenter:CGPointMake(160, 220)];
 	
-	UIViewController* body;
+	UIViewControllerTemplate* body;
 
 	switch (idx) {
 		case 0:

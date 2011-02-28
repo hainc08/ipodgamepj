@@ -1,6 +1,9 @@
 #import "UIViewControllerTemplate.h"		
 
 @interface FindCellView : UITableViewCell {
+	UINavigationController *navi;
+	
+	ProductData* product;
 	IBOutlet UIImageView* underLine;
 	IBOutlet UIImageView* menuImg;
 	
@@ -10,6 +13,7 @@
 }
 
 @property (retain) UIImageView* menuImg;
+@property (nonatomic , retain) UINavigationController *navi;
 
 - (IBAction)buttonClick:(id)sender;
 - (void)setData:(ProductData*)data;

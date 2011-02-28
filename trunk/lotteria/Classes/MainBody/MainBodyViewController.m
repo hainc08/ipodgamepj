@@ -11,8 +11,8 @@
 	detailView = [[DetailViewController alloc] init];
 	[detailView setNavi:navi];
 	[baseView addSubview:detailView.view];
-	[detailView.view setCenter:CGPointMake(160, 250)];
 	[detailView.view setAlpha:0];
+	[detailView makeHalfMode];
 
 	[baseView bringSubviewToFront:topList];
 	[baseView bringSubviewToFront:bottomList];
@@ -57,7 +57,7 @@
 	}
 	else if (sender == packButton)
 	{
-		[self setScrollBar:@"D10"];
+		[self setScrollBar:@"D50"];
 	}
 }
 
@@ -174,7 +174,7 @@
 	
 	if (isTopList)
 	{
-		centerPos.y += 36;
+		centerPos.y += 34;
 		[detailView.view setCenter:centerPos];
 		
 		[topList setCenter:CGPointMake(160, 40)];
@@ -192,7 +192,7 @@
 	}
 	else
 	{
-		centerPos.y -= 36;
+		centerPos.y -= 35;
 		[detailView.view setCenter:centerPos];
 		
 		[topList setCenter:CGPointMake(160, -40)];

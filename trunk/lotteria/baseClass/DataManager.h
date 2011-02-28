@@ -70,14 +70,15 @@ typedef enum _ImgType
 	NSMutableArray* allProductList;
 	
 	NSMutableArray* searchResult[5];
-	bool isCartDirty;
+	
+	UIViewController* cartView;
 }
 
+@property (retain) UIViewController* cartView;
 @property (readwrite) bool isLoginNow;
 @property (readwrite) bool isLoginSave;
 @property (retain) NSString* accountId;
 @property (retain) NSString* accountPass;
-@property (readwrite) bool isCartDirty;
 
 + (DataManager*)getInstance;
 + (void)initManager;
@@ -91,6 +92,7 @@ typedef enum _ImgType
 - (int)itemCount:(int)listIdx;
 - (CartItem*)getCartItem:(int)idx listIdx:(int)listIdx;
 - (CartItem*)getCartItem:(int)idx;
+- (void)cartUpdate;
 
 //-------------------상품 정보 처리---------------------
 - (void)loadProduct;
@@ -102,5 +104,8 @@ typedef enum _ImgType
 - (NSString*)getPriceStr:(int)value;
 - (int)getCartPrice;
 
+- (ProductData*)getSearchProduct:(int)idx listIdx:(int)lIdx;
+- (int)getSearchProductCount:(int)lIdx;
+- (void)searchProduct:(NSString*)str;
 
 @end

@@ -1,17 +1,27 @@
 #import "FindBodyViewController.h"
 #import "MainBodyViewController.h"
+#import "DetailViewController.h"
 
 @implementation FindCellView
 
 @synthesize menuImg;
+@synthesize navi;
 
 - (IBAction)buttonClick:(id)sender
 {
-	
+	DetailViewController* detailBody = [[DetailViewController alloc] init];
+	[detailBody showProduct:[product menuId]];
+	[detailBody setNavi:navi];
+
+	[navi pushViewController:detailBody animated:true];
+
+	[detailBody.view setFrame:CGRectMake(0, 0, 320, 412)];
 }
 
 - (void)setData:(ProductData*)data
 {
+	product = data;
+
 	[nameLabel setText:[data name]];
 	[descLabel setText:@"설명은 어디에?"];
 	[priceLabel setText:[[DataManager getInstance] getPriceStr:[data price]]];
@@ -89,6 +99,7 @@
 	
 	[findCell setData:[[DataManager getInstance] getSearchProduct:indexPath.row listIdx:idx]];
 	[findCell setLast:(indexPath.row == itemCount[idx]-1)];
+	[findCell setNavi:navi];
 
     return cell;
 }

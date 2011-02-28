@@ -44,5 +44,6 @@
 @property (nonatomic ,retain) UINavigationController* navi;
 
 - (void)setCategory:(int)idx;
+- (void)reloadData;
 
 @end
