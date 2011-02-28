@@ -10,7 +10,6 @@
 #import "UITableViewCellTemplate.h"
 #import "HttpRequest.h"
 #import "XmlParser.h"
-#import "DataList.h"
 
 @implementation MyCustomerDelivery
 
