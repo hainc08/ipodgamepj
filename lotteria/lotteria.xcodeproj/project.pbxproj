@@ -497,6 +497,7 @@
 		56D81660131AB13E0049314B /* OrderEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D8165E131AB13E0049314B /* OrderEndViewController.m */; };
 		56D81661131AB13E0049314B /* OrderEnd.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D8165F131AB13E0049314B /* OrderEnd.xib */; };
 		84384256130F862200EE2887 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84384255130F862200EE2887 /* DataManager.m */; };
+		8443E434131C185F00DB34BC /* FindCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8443E433131C185F00DB34BC /* FindCellView.xib */; };
 		84774392130F8F2100FB2532 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 84774391130F8F2100FB2532 /* FileIO.m */; };
 		848B04AD1313864E00A1C50E /* XmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 848B04AC1313864E00A1C50E /* XmlParser.m */; };
 		848B6F67131382DF000E3272 /* product.xml in Resources */ = {isa = PBXBuildFile; fileRef = 848B6F66131382DF000E3272 /* product.xml */; };
@@ -1049,7 +1050,7 @@
 		56D8165F131AB13E0049314B /* OrderEnd.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderEnd.xib; sourceTree = "<group>"; };
 		84384254130F862200EE2887 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		84384255130F862200EE2887 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		843C9FB4131A505A002D4B9A /* FindCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindCellView.xib; sourceTree = "<group>"; };
+		8443E433131C185F00DB34BC /* FindCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindCellView.xib; sourceTree = "<group>"; };
 		84774390130F8F2100FB2532 /* FileIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileIO.h; sourceTree = "<group>"; };
 		84774391130F8F2100FB2532 /* FileIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileIO.m; sourceTree = "<group>"; };
 		848B04AB1313864E00A1C50E /* XmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlParser.h; sourceTree = "<group>"; };
@@ -1826,7 +1827,7 @@
 				84B9C42413169D05003FED88 /* FindBodyView.xib */,
 				84B9C42513169D05003FED88 /* FindBodyViewController.h */,
 				84B9C42613169D05003FED88 /* FindBodyViewController.m */,
-				843C9FB4131A505A002D4B9A /* FindCellView.xib */,
+				8443E433131C185F00DB34BC /* FindCellView.xib */,
 			);
 			name = MainBody;
 			path = Classes/MainBody;
@@ -2398,6 +2399,7 @@
 				84BB8178131A36AD00991EC4 /* ds_c1_s.png in Resources */,
 				56D815CE131A9A190049314B /* OrderPrice.xib in Resources */,
 				56D81661131AB13E0049314B /* OrderEnd.xib in Resources */,
+				8443E434131C185F00DB34BC /* FindCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

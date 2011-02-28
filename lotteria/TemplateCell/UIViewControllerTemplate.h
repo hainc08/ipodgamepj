@@ -12,15 +12,18 @@
 @interface UIViewControllerTemplate : UIViewController {
 	UINavigationController *navi;
 	NSObject* backView;
+	UIButton *backButton;
 }
 
 @property (nonatomic , retain) UINavigationController *navi;
 @property (nonatomic , retain) NSObject* backView;
+@property (nonatomic , retain) UIButton* backButton;
+
+- (void)back;
 
 @end
 
 @interface UIViewControllerDownTemplate : UIViewController {
-
 }
 
 @end

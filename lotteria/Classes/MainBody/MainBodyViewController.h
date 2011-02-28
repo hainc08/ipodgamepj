@@ -34,6 +34,7 @@
 	id lastIconButton;
 }
 
+- (void)back;
 - (IBAction)ButtonClick:(id)sender;
 - (IBAction)FindClick;
 - (void)addIcon:(NSString*)menuId isTop:(bool)isTop;

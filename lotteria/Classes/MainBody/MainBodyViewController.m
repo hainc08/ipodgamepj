@@ -34,6 +34,22 @@
 	self.navigationItem.title = @"메뉴 선택";
 }
 
+-(void)back
+{
+	self.navigationItem.leftBarButtonItem = nil;
+	[backButton removeFromSuperview];
+	
+	//디테일 뷰를 숨기자...
+	[UIView beginAnimations:@"menuAni" context:NULL];
+	[UIView setAnimationDuration:0.1];
+	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	
+	[buttonView setAlpha:1];
+	[detailView.view setAlpha:0];
+	
+	[UIView commitAnimations];
+}
+
 - (IBAction)ButtonClick:(id)sender
 {
 	if (sender == lastButton) return;
@@ -114,12 +130,32 @@
 - (void)iconClicked:(id)button :(NSString*)mid
 {
 	if (lastIconButton != nil) [(IconButton*)lastIconButton setSelected:false];
+
+	{
+		UIImage *buttonImage = [UIImage imageNamed:@"btn_com_top_back_off.png"];
+		UIImage *buttonImage2 = [UIImage imageNamed:@"btn_com_top_back_on.png"];
+		
+		backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[backButton setImage:buttonImage forState:UIControlStateNormal];
+		[backButton setImage:buttonImage2 forState:UIControlStateHighlighted];
+		[backButton setImage:buttonImage2 forState:UIControlStateSelected];
+		
+		backButton.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
+		
+		[backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+		
+		UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+		self.navigationItem.leftBarButtonItem = customBarItem;
+		[customBarItem release];
+	}
+
 	lastIconButton = button;
 
 	[UIView beginAnimations:@"menuAni" context:NULL];
 	[UIView setAnimationDuration:0.1];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 
+	[backButton setAlpha:1];
 	[buttonView setAlpha:0];
 	[detailView showProduct:mid];
 	[detailView.view setAlpha:1];

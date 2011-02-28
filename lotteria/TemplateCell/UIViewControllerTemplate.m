@@ -19,6 +19,7 @@
 @implementation UIViewControllerTemplate
 @synthesize navi;
 @synthesize backView;
+@synthesize backButton;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -26,6 +27,30 @@
 	[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_content.png"]];
 	
 	[super viewDidLoad];
+
+	if ([[self.navigationController viewControllers] count] > 1)
+	{
+		UIImage *buttonImage = [UIImage imageNamed:@"btn_com_top_back_off.png"];
+		UIImage *buttonImage2 = [UIImage imageNamed:@"btn_com_top_back_on.png"];
+		
+		backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[backButton setImage:buttonImage forState:UIControlStateNormal];
+		[backButton setImage:buttonImage2 forState:UIControlStateHighlighted];
+		[backButton setImage:buttonImage2 forState:UIControlStateSelected];
+		
+		backButton.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
+		
+		[backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+		
+		UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+		self.navigationItem.leftBarButtonItem = customBarItem;
+		[customBarItem release];
+	}
+}
+
+- (void)back
+{
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)HelpButtonClicked:(id)sender
@@ -42,6 +67,7 @@
 }
 
 - (void)viewDidUnload {
+	[backButton release];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
