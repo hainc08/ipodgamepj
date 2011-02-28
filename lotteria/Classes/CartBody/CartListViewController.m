@@ -92,12 +92,17 @@
 {
 	if ((sender == incCount)||(sender == decCount))
 	{
+		if (count == 0) return;
+
 		if (sender == incCount) ++count;
 		if (sender == decCount) --count;
 
 		[self refreshData];
 		[cartItem setCount:count];
-		[[DataManager getInstance] setIsCartDirty:true];
+		
+		if (count == 0) [[DataManager getInstance] removeCartItem:cartItem];
+
+		[[DataManager getInstance] cartUpdate];
 	}
 	else if (sender == changeDessert)
 	{
@@ -134,7 +139,7 @@
 		[cartItem setDessertId:dessertId];
 	}
 
-	[[DataManager getInstance] setIsCartDirty:true];
+	[[DataManager getInstance] cartUpdate];
 	
 	[self refreshData];
 }
@@ -199,6 +204,11 @@
 	itemCount = [[DataManager getInstance] itemCount:listIdx];
 	[listTable setFrame:CGRectMake(0, 45, 300, itemCount*100)];
 	return itemCount;
+}
+
+- (void)reloadData
+{
+	[listTable reloadData];
 }
 
 @end

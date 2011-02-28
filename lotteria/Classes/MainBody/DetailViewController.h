@@ -34,10 +34,15 @@
 	IBOutlet UIButton* incCount;
 
 	IBOutlet UIButton* closeButton;
+
+	bool fullType;
 }
+
+@property (readwrite) bool fullType;
 
 - (void)showProduct:(NSString*)menu_id;
 - (IBAction)ButtonClick:(id)sender;
+- (void)makeHalfMode;
 - (void)sideSelected:(int)idx :(ProductData*)data;
 
 @end

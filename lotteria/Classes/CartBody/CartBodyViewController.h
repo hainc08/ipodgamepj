@@ -16,6 +16,7 @@
 
 @property (nonatomic ,retain) Order *InfoOrder;
 
+-(void)setupData;
 -(IBAction)OrderButton;
 -(void)update;
 
