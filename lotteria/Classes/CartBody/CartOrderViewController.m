@@ -9,11 +9,10 @@
 #import "CartOrderViewController.h"
 #import "CartOrderReservationsView.h"
 #import "CartOrderUserViewController.h"
-#import "DataList.h"
+#import "DataManager.h"
 
 @implementation CartOrderViewController
 
-@synthesize InfoOrder;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,18 +26,17 @@
 }
 - (IBAction)OrderButton:(id)sender
 {
+	Order *Data = [[DataManager getInstance] UserOrder];
 	if(sender == normalButton)
 	{
-		[InfoOrder setOrderType:0];
+		[Data setOrderType:0];
 		CartOrderUserViewController *Order = [[CartOrderUserViewController alloc] initWithNibName:@"CartOrderUserView" bundle:nil];
-		Order.InfoOrder = self.InfoOrder;
 		[self.navigationController pushViewController:Order animated:YES];
 		[Order release];
 	}
 	else {
-		[InfoOrder setOrderType:1];
+		[Data  setOrderType:1];
 		CartOrderReservationsView *Order = [[CartOrderReservationsView alloc] initWithNibName:@"CartOrderReservationsView" bundle:nil];
-		Order.InfoOrder = self.InfoOrder;
 		[self.navigationController pushViewController:Order animated:YES];
 		[Order release];
 	}

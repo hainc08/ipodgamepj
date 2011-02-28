@@ -55,6 +55,110 @@ typedef enum _ImgType
 
 @end
 
+
+@interface CustomerDelivery : NSObject {
+	NSString *custid;
+	NSString *seq;
+	NSString *phone;
+	NSString *si;
+	NSString *gu;
+	NSString *dong;
+	NSString *bunji;
+	NSString *building;
+	NSString *addrdesc;
+	NSString *branchid;
+	NSString *branchname;
+	NSString *branchtime;
+	NSString *regdate;
+	NSString *regtime;
+	NSString *upddate;
+	NSString *updtime;
+}
+
+@property (retain) NSString *custid;
+@property (retain) NSString *seq;
+@property (retain) NSString *phone;
+@property (retain) NSString *si;
+@property (retain) NSString *gu;
+@property (retain) NSString *dong;
+@property (retain) NSString *bunji;
+@property (retain) NSString *building;
+@property (retain) NSString *addrdesc;
+@property (retain) NSString *branchid;
+@property (retain) NSString *branchname;
+@property (retain) NSString *branchtime;
+@property (retain) NSString *regdate;
+@property (retain) NSString *regtime;
+@property (retain) NSString *upddate;
+@property (retain) NSString *updtime;
+
+@end
+
+
+@interface OrderUserAddr : NSObject 
+{
+	NSString *addrSeq;		// 주소키 값 주겠지..ㅡ.ㅡ; 주소 다보내 달라고 하지는 않겠지..
+	NSString *si;	
+	NSString *gu;
+	NSString *dong;
+	NSString *adong;
+	NSString *ldong;
+	NSString *bunji;
+	NSString *building;
+	NSString *addrdesc;
+}
+
+@property (retain) NSString	*addrSeq;
+@property (retain) NSString *si;
+@property (retain) NSString *gu;
+@property (retain) NSString *dong;
+@property (retain) NSString *adong;
+@property (retain) NSString *ldong;
+@property (retain) NSString *bunji;
+@property (retain) NSString *building;
+@property (retain) NSString *addrdesc;
+
+@end
+
+@interface Order : NSObject
+{
+	
+	OrderUserAddr	*UserAddr;			// 사용자 배송지주소
+
+	NSString		*UserName;			// 주문사용자
+	NSString		*UserPhone;				// 주문자 핸드폰
+	
+	int				OrderMoney;			// 주문 값
+	int				OrderSaleMoney;		// 세일 값 (?? 있으려나 )
+	int				OrderTotalMoney;	// 두개 sum 
+
+	int				OrderType;			// 일반 주문 : 0   예약주문 : 1
+	NSString		*OrderTime;			// 예약시 예약 시간
+	
+	NSString		*branchid;			// 매장 ID
+	NSString		*branchname;		// 매장 Name
+	NSString		*branchPhone;		// 매장 전화번호 
+	
+}
+
+@property (retain)		OrderUserAddr *UserAddr;
+@property (retain)		NSString	*UserName;			// 주문사용자
+@property (retain)		NSString	*UserPhone;				// 주문자 핸드폰
+@property (readwrite) int	OrderMoney;			// 주문 값
+@property (readwrite) int	OrderSaleMoney;		// 세일 값 (?? 있으려나 )
+@property (readwrite) int	OrderTotalMoney;	// 두개 sum 
+
+@property (readwrite) int	OrderType;			// 일반 주문 : 0   예약주문 : 1
+
+@property (retain) NSString	*OrderTime;			// 예약시 예약 시간
+
+@property (retain) NSString	*branchid;			// 매장 ID
+@property (retain) NSString	*branchname;		// 매장 Name
+@property (retain) NSString	*branchPhone;		// 매장 전화번호 
+@end
+
+
+
 @interface DataManager : NSObject
 {
 	bool isLoginNow;
@@ -62,6 +166,7 @@ typedef enum _ImgType
 	NSString* accountId;
 	NSString* accountPass;
 
+	Order		 *UserOrder;
 	NSMutableArray* ShopCart;
 	
 	NSMutableDictionary *setProductMap;
@@ -79,6 +184,7 @@ typedef enum _ImgType
 @property (readwrite) bool isLoginSave;
 @property (retain) NSString* accountId;
 @property (retain) NSString* accountPass;
+@property (retain) Order	 *UserOrder;
 
 + (DataManager*)getInstance;
 + (void)initManager;

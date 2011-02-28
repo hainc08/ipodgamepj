@@ -16,12 +16,10 @@
 	IBOutlet UITableView *menuTable;
 	IBOutlet UIButton	*orderButton;
 	IBOutlet UIButton	*againButton;
-	
-	Order *InfoOrder;
+
 	bool buttontype;
 	
 }
-@property (nonatomic , retain) Order *InfoOrder;
 
 - (void)didDataDelete:(NSString *)result;
 - (IBAction)CellDeleteButton:(id)sender;

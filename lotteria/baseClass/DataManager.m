@@ -67,6 +67,79 @@ static DataManager *DataManagerInst;
 @end
 
 
+@implementation CustomerDelivery
+
+@synthesize custid,seq ,phone ,si , gu;
+@synthesize dong,bunji , building ,addrdesc ,branchid;
+@synthesize regdate, regtime, upddate, updtime;
+@synthesize branchname, branchtime;
+- (void)dealloc {
+    [custid release];
+    [seq release];
+    [phone release];
+    [si release];
+    [gu release];
+	[dong release];
+    [bunji release];
+    [building release];
+    [addrdesc release];
+    [branchid release];
+	[branchname release];
+	[branchtime release];
+	[regdate release];
+    [regtime release];
+    [upddate release];
+    [updtime release];
+	[super dealloc];
+}
+
+@end
+
+
+@implementation OrderUserAddr
+
+@synthesize addrSeq,si , gu;
+@synthesize dong,bunji , building ,addrdesc;
+@synthesize adong, ldong;
+
+- (void)dealloc {
+	[addrSeq release];
+    [si release];
+    [gu release];
+	[dong release];
+	[adong release];
+	[ldong release];
+    [bunji release];
+    [building release];
+    [addrdesc release];
+	
+	[super dealloc];
+}
+
+@end
+
+@implementation Order 
+@synthesize UserName,UserPhone ,OrderType;  
+@synthesize OrderMoney, OrderSaleMoney, OrderTotalMoney;
+@synthesize OrderTime;
+@synthesize UserAddr;	
+@synthesize branchid, branchname, branchPhone;
+- (void)dealloc {
+	[UserName release];
+	[UserPhone release];
+	[OrderTime release];
+
+	[UserAddr release];
+	[branchid release];
+	[branchPhone release];
+	[branchname release];
+	
+	[super dealloc];
+}
+
+@end
+
+
 @implementation DataManager
 
 @synthesize cartView;
@@ -74,6 +147,7 @@ static DataManager *DataManagerInst;
 @synthesize isLoginSave;
 @synthesize accountId;
 @synthesize accountPass;
+@synthesize UserOrder;
 
 + (DataManager*)getInstance
 {
@@ -95,6 +169,11 @@ static DataManager *DataManagerInst;
 {
 	ShopCart = [[NSMutableArray alloc] initWithCapacity:0];
 
+	UserOrder = [[Order alloc] init];
+	OrderUserAddr *UserAddr = [[OrderUserAddr alloc] init];
+	[UserOrder setUserAddr:UserAddr];
+	[UserAddr release];
+	
 	//account.txt에서 계정정보를 읽어오자
 	NSFileHandle* accountFile = openFileToRead(@"account.txt");
 	if (accountFile == nil)

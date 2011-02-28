@@ -7,7 +7,7 @@
 //
 
 #import "CartOrderShopMenuViewController.h"
-#import "DataList.h"
+#import "DataManager.h"
 #import "HttpRequest.h"
 #import "UITableViewCellTemplate.h"
 
@@ -17,7 +17,6 @@
 
 
 @implementation CartOrderShopMenuViewController
-@synthesize InfoOrder;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -62,7 +61,7 @@
 }
 - (void)SetButton
 {
-	if(buttontype && [InfoOrder.Product count] > 0)
+	if(buttontype && [[[DataManager getInstance] getShopCart] count] > 0)
 	{
 		[orderButton setAlpha:1];
 		[againButton setAlpha:0];
@@ -140,7 +139,6 @@
 	if(sender == orderButton)
 	{
 		CartOrderViewController *Order = [[CartOrderViewController alloc] initWithNibName:@"CartOrderView" bundle:nil];
-		Order.InfoOrder = self.InfoOrder;
 		[self.navigationController pushViewController:Order animated:YES];
 		[Order release];
 	}
