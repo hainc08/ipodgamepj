@@ -189,7 +189,6 @@
 				break;
 			}
 		}
-		
 	}
 	
 	OrderMenuCell *tmp_cell = (OrderMenuCell *)cell;

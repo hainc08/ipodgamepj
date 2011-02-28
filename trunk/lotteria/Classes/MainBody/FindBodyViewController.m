@@ -71,12 +71,12 @@
 	
 	idx = i;
 	[tableView reloadData];
-	[tableView scrollRectToVisible:CGRectMake(0,0,320,330) animated:true];
+	[tableView scrollRectToVisible:CGRectMake(0,0,320,321) animated:true];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 80;
+	return 86;
 }
 
 - (UITableViewCell*)tableView:(UITableView*)sender cellForRowAtIndexPath:(NSIndexPath *)indexPath

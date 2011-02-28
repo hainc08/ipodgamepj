@@ -25,10 +25,20 @@
 - (void)showProduct:(NSString*)menu_id
 {
 	pId[0] = productId = menu_id;
+	ProductData* data = [[DataManager getInstance] getProduct:menu_id];
+	
+	if ([[data category] compare:@"D10"] == NSOrderedSame)
+	{
+		[setButton setAlpha:1];
+	}
+	else
+	{
+		[setButton setAlpha:0];
+	}
 
-	[pImage setImage:[[DataManager getInstance] getProductImg:menu_id type:DETAIL]];
-	[nameImage setImage:[[DataManager getInstance] getProductImg:menu_id type:NAME]];
-	[descImage setImage:[[DataManager getInstance] getProductImg:menu_id type:DESC]];
+	[pImage setImage:[data getProductImg:DETAIL]];
+	[nameImage setImage:[data getProductImg:NAME]];
+	[descImage setImage:[data getProductImg:DESC]];
 	[selectView setAlpha:0];
 }
 
