@@ -28,7 +28,14 @@
 	{
 		ID.text =  [[DataManager getInstance] accountId];
 		Password.text =  [[DataManager getInstance] accountPass];
+		[ID_Save setAlpha:0];
+		[ID_Save2 setAlpha:1];
 	}
+	else {
+		[ID_Save setAlpha:1];
+		[ID_Save2 setAlpha:0];
+	}
+[ID_Save setAlpha:1];
 
 }
 
@@ -50,9 +57,15 @@
 {
 	[[DataManager getInstance] setIsLoginSave:![[DataManager getInstance] isLoginSave]];
 	if([[DataManager getInstance] isLoginSave])
-		ID_Save.imageView.image = [UIImage imageNamed:@"check_box_on.png"];
+	{
+		[ID_Save setAlpha:0];
+		[ID_Save2 setAlpha:1];
+	}
 	else 
-		ID_Save.imageView.image = [UIImage imageNamed:@"check_box_off.png"];
+	{
+		[ID_Save setAlpha:1];
+		[ID_Save2 setAlpha:0];
+	}
 }
 - (IBAction)LoginButton 
 {

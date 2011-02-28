@@ -27,6 +27,9 @@
 	menuTable.separatorStyle = UITableViewCellSeparatorStyleNone;
 	menuTable.separatorColor = [UIColor clearColor];
 	
+
+	[Scroll addSubview:menuTable];
+	Scroll.frame = CGRectMake(12, 5, 297, 232);
 	buttontype = true;
 	[self GetOrderMenuSearch];
 	

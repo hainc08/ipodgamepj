@@ -13,8 +13,6 @@
 
 @implementation MyCustomerDelivery
 
-@synthesize CustomerArr;
-@synthesize CustomerTable;
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -29,7 +27,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	
-	CustomerArr = [[NSMutableArray alloc] init ];
+//	CustomerArr = [[NSMutableArray alloc] init ];
 
 /*
 	NSString *string = @"<NewDataSet>\
@@ -145,7 +143,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-	[CustomerTable reloadData];	
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -157,28 +154,6 @@
 #pragma mark -
 #pragma mark HttpRequestDelegate
 
-/*
- 
- <NewDataSet>
- <item>
- <cust_id>seyogo</cust_id>
- <seq>1</seq>
- <phone>01029281740</phone>
- <si>서울특별시</si>
- <gu>영등포구</gu>
- <dong>여의도동</dong>
- <bunji/>
- <building>한양아파트</building>
- <addr_desc>1층 101호</addr_desc>
- <branch_id>99999999</branch_id>
- <cust_flag>2</cust_flag>
- <reg_date>20101227</reg_date>
- <reg_time>135000</reg_time>
- <upd_date/>
- <upd_time/>
- </item>
- </NewDataSet>
- */
 - (void)didReceiveFinished:(NSString *)result
 {
 
@@ -188,35 +163,7 @@
 		[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
 	}
 	else {
-		XmlParser* xmlParser = [XmlParser alloc];
-		[xmlParser parserString:result];
-		Element* root = [xmlParser getRoot:@"NewDataSet"];
-		
-		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
-		{
-			
-			CustomerDelivery *Customer  = [[[CustomerDelivery alloc] init] retain];
-			[Customer setCustid:[[t_item getChild:@"cust_id"] getValue]];
-			[Customer setSeq:[[t_item getChild:@"seq"] getValue]];
-			[Customer setPhone:[[t_item getChild:@"phone"] getValue]];
-			[Customer setSi:[[t_item getChild:@"si"] getValue]];
-			[Customer setGu:[[t_item getChild:@"gu"] getValue]];
-			[Customer setDong:[[t_item getChild:@"dong"] getValue]];
-			[Customer setBunji:[[t_item getChild:@"bunji"] getValue]];
-			[Customer setBuilding:[[t_item getChild:@"building"] getValue]];
-			[Customer setAddrdesc:[[t_item getChild:@"addr_desc"] getValue]];
-			[Customer setBranchid:[[t_item getChild:@"branch_id"] getValue]];
-			[Customer setRegdate:[[t_item getChild:@"reg_date"] getValue]];
-			[Customer setRegtime:[[t_item getChild:@"reg_time"] getValue]];
-			[Customer setUpddate:[[t_item getChild:@"upd_date"] getValue]];
-			[Customer setUpdtime:[[t_item getChild:@"upd_time"] getValue]];
-			
-			[CustomerArr  addObject:Customer];
-			[Customer release];
-		}
-		
-		[xmlParser release];
-		[CustomerTable reloadData];	
+	
 	}
 }
 
@@ -238,53 +185,6 @@
 	// 필요한 엑션이 있으면 넣자 ..
 }
 
-#pragma mark -
-#pragma mark TableView
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-	static NSString *CellIdentifier = @"OldOrderCell";
-	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	
-	if (cell == nil)
-	{
-		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:CellIdentifier 
-													 owner:self options:nil];
-		for (id oneObject in nib)
-		{
-			if ([oneObject isKindOfClass:[OldOrderCell class]])
-			{
-				cell = oneObject;
-				break;
-			}
-		}
-		
-	}
-	OldOrderCell *tmp_cell = (OldOrderCell *)cell;
-	CustomerDelivery  *tmp = [CustomerArr objectAtIndex:indexPath.row];
-	[tmp_cell setInfo:[tmp seq] :[tmp regdate ] :[tmp branchid]];
-	return cell;
-}
-
-
-////////////////////////////////////////////////////////////////////////////////////////////
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	return 70;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-}
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-	return [CustomerArr count];
-}
 
 
 @end
