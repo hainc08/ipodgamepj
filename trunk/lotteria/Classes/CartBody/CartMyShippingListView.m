@@ -11,6 +11,7 @@
 #import "CartOrderViewController.h"
 #import "UITableViewCellTemplate.h"
 #import "ShipSearchViewController.h"
+
 #import "NaviViewController.h"
 #import "HttpRequest.h"
 #import "CartOrderShopMenuViewController.h"
@@ -30,6 +31,12 @@
 	CustomerArr = [[NSMutableArray alloc] initWithCapacity:0];
 	
 	[noRegImage setAlpha:0];
+	
+	
+	
+	
+	
+	
 	httpRequest = [[HTTPRequest alloc] init];
 	
 	NSString *string = @"<NewDataSet>\
@@ -130,12 +137,10 @@
 }
 
 - (IBAction)ShipRegButton:(id)sender
-{
-
-	NaviViewController *controller = [[NaviViewController alloc] init];
-	[controller setIdx:4];
-	[self  presentModalViewController:controller animated:YES];
-	[controller release];
+{	
+	ShipSearchViewController *ShipData =  [[ShipSearchViewController alloc] initWithNibName:@"ShipSearchView" bundle:nil];
+	[self.navigationController pushViewController:ShipData animated:NO];
+	[ShipData release];
 }
 
 

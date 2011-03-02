@@ -24,6 +24,12 @@
 @end
 
 @interface UIViewControllerDownTemplate : UIViewController {
+	UINavigationController *navi;
+	UIButton *backButton;
+	bool	closetype;
 }
-
+@property (assign) bool closetype;
+@property (nonatomic , retain) UIButton* backButton;
+@property (nonatomic , retain) UINavigationController *navi;
+- (void)back;
 @end

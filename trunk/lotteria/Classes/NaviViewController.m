@@ -17,7 +17,7 @@
 	[super viewDidLoad];
 
 	[self.view setCenter:CGPointMake(160, 220)];
-	
+
 	UIViewControllerTemplate* body;
 
 	switch (idx) {
@@ -28,20 +28,20 @@
 			body = [[CartBodyViewController alloc] init];
 			break;
 		case 2:
-		//	if ([[DataManager getInstance] isLoginNow])
+			if ([[DataManager getInstance] isLoginNow])
+			{
 				body = [[MypageBodyViewController alloc] init];
-		//	else
-		//		body = [[LoginViewController alloc] init];
+			}else {
+				body = [[LoginViewController alloc] init];
+			}
+
 			break;
 		case 3:
 			body = [[MapBodyViewController alloc] init];
 			break;
-		case 4:
-			body = [[ShipSearchViewController alloc] init];
-			break;
 	}
-	
-	[self pushViewController:body animated:false];
+
+	[self pushViewController:body animated:NO];
 	[body setNavi:self];
 	
 

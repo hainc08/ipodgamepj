@@ -13,111 +13,21 @@
 
 @implementation MyCustomerDelivery
 
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	
-//	CustomerArr = [[NSMutableArray alloc] init ];
 
-/*
-	NSString *string = @"<NewDataSet>\
-	<item>\
-	<cust_id>seyogo</cust_id>\
-	<seq>1</seq>\
-	<phone>01029281740</phone>\
-	<si>서울특별시</si>\
-	<gu>영등포구</gu>\
-	<dong>여의도동</dong>\
-	<bunji/>\
-	<building>한양아파트</building>\
-	<addr_desc>1층 101호</addr_desc>\
-	<branch_id>99999999</branch_id>\
-	<cust_flag>2</cust_flag>\
-	<reg_date>20101227</reg_date>\
-	<reg_time>135000</reg_time>\
-	<upd_date/>\
-	<upd_time/>\
-	</item>\
-	<item>\
-	<cust_id>seyogo</cust_id>\
-	<seq>1</seq>\
-	<phone>01029281740</phone>\
-	<si>서울특별시</si>\
-	<gu>영등포구</gu>\
-	<dong>여의도동</dong>\
-	<bunji/>\
-	<building>한양아파트</building>\
-	<addr_desc>1층 101호</addr_desc>\
-	<branch_id>99999999</branch_id>\
-	<cust_flag>2</cust_flag>\
-	<reg_date>20101227</reg_date>\
-	<reg_time>135000</reg_time>\
-	<upd_date/>\
-	<upd_time/>\
-	</item>\
-	</NewDataSet>";
-	
-	
-	XmlParser* xmlParser = [XmlParser alloc];
-	[xmlParser parserString:string];
-	Element* root = [xmlParser getRoot:@"NewDataSet"];
-	
-	for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
-	{
-		
-		CustomerDelivery *Customer  = [[[CustomerDelivery alloc] init] retain];
-		[Customer setCustid:[[t_item getChild:@"cust_id"] getValue]];
-		[Customer setSeq:[[t_item getChild:@"seq"] getValue]];
-		[Customer setPhone:[[t_item getChild:@"phone"] getValue]];
-		[Customer setSi:[[t_item getChild:@"si"] getValue]];
-		[Customer setGu:[[t_item getChild:@"gu"] getValue]];
-		[Customer setDong:[[t_item getChild:@"dong"] getValue]];
-		[Customer setBunji:[[t_item getChild:@"bunji"] getValue]];
-		[Customer setBuilding:[[t_item getChild:@"building"] getValue]];
-		[Customer setAddrdesc:[[t_item getChild:@"addr_desc"] getValue]];
-		[Customer setBranchid:[[t_item getChild:@"branch_id"] getValue]];
-		[Customer setRegdate:[[t_item getChild:@"reg_date"] getValue]];
-		[Customer setRegtime:[[t_item getChild:@"reg_time"] getValue]];
-		[Customer setUpddate:[[t_item getChild:@"upd_date"] getValue]];
-		[Customer setUpdtime:[[t_item getChild:@"upd_time"] getValue]];
-		
-		[CustomerArr  addObject:Customer];
-		[Customer release];
-	}
-	[xmlParser release];
-	*/
 
-#ifdef LOCALTEST
-	// 개발테스트 
-	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
-#else
-	// 사이트
-		NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
-#endif
-	// HTTP Request 인스턴스 생성
-	HTTPRequest *httpRequest = [[HTTPRequest alloc] init];
+	int timeout=10.0;
+	/* URL 알려주면 */
+	NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://m.naver.com"]
+														  cachePolicy:NSURLRequestReloadIgnoringCacheData 
+													  timeoutInterval:timeout];
 	
-	// POST로 전송할 데이터 설정
-	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								@"seyogo",@"cust_id",
-								nil];
+
 	
-	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
-	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
-	
-	// 페이지 호출
-	[httpRequest requestUrl:url bodyObject:bodyObject];
-	
+	[WebView loadRequest:request];	
     [super viewDidLoad];
 }
 
@@ -149,25 +59,11 @@
 {
 	[super viewWillDisappear:animated];
 }
+#pragma mark - 
+#pragma mark WebView 
 
-
-#pragma mark -
-#pragma mark HttpRequestDelegate
-
-- (void)didReceiveFinished:(NSString *)result
-{
-
-	
-	if(![result compare:@"error"])
-	{
-		[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
-	}
-	else {
-	
-	}
+- (void)webViewDidFinishLoad:(UIWebView *)webView1 { 
 }
-
-
 
 
 #pragma mark -
@@ -184,7 +80,5 @@
 {
 	// 필요한 엑션이 있으면 넣자 ..
 }
-
-
 
 @end

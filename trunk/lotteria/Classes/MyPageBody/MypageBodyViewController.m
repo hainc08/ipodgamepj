@@ -10,19 +10,14 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	self.navigationItem.title = @"마이페이지";
 
-	if (![[DataManager getInstance] isLoginNow])
-	{
-		LoginViewController *loginBody = [[LoginViewController alloc] init];
-		[loginBody setNavi:navi];
-		[loginBody setBackView:self];
-		[navi pushViewController:loginBody animated:NO];
-	}
+
 }
 
+
 - (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+	
 }
 
 - (void)dealloc {
@@ -32,7 +27,16 @@
 - (IBAction)LogOutButton
 {
 	[[DataManager getInstance] setIsLoginNow:FALSE];
-	/* LoginView 로이동 */
+	
+	UINavigationController *navicontrol = self.navigationController;
+	NSMutableArray *Arr = [[self.navigationController.viewControllers mutableCopy] autorelease];
+	[Arr removeLastObject];
+	navicontrol.viewControllers = Arr;
+	LoginViewController *login = [[LoginViewController alloc] init];
+	[login setLoginNextType:MYPAGE];
+	[navicontrol pushViewController:login animated:NO];
+	[login release];
+	
 }
 
 - (IBAction)OrderListButton

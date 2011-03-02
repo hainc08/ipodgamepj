@@ -191,6 +191,7 @@ typedef enum _ImgType
 - (void)closeManager;
 - (void)reset;
 
+- (void)LoginSave;
 //-------------------장바구니 처리---------------------
 - (void)addCartItem:(CartItem*)item;
 - (void)removeCartItem:(CartItem*)item;

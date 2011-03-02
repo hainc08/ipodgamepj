@@ -11,6 +11,7 @@
 
 @class Order;
 @class HTTPRequest;
+
 @interface CartMyShippingList : UIViewControllerTemplate<UITableViewDataSource, UITableViewDelegate > {
 	IBOutlet UITableView *CustomerTable;
     IBOutlet UIButton	*regButton;
@@ -21,6 +22,8 @@
 	HTTPRequest *httpRequest;
 	Order	*InfoOrder;
 	int		RemoveNum;
+	
+
 }
 @property (nonatomic, retain)     NSMutableArray *CustomerArr;
 @property (nonatomic, retain) Order *InfoOrder;

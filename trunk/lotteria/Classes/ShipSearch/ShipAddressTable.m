@@ -173,10 +173,7 @@
 - (void)dealloc {
     [super dealloc];
 }
-- (IBAction)BackButton:(id)sender
-{
-	[self.navigationController popViewControllerAnimated:YES];
-}
+
 #if 0 
 #pragma mark -
 #pragma mark HttpRequestDelegate

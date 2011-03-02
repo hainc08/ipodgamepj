@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIViewControllerTemplate.h"
 
-@interface ShipSearchViewController : UIViewControllerTemplate {
+@interface ShipSearchViewController : UIViewControllerDownTemplate {
 	IBOutlet UITextField	*SearchText;
 	IBOutlet UIButton		*SearchButton;
 }

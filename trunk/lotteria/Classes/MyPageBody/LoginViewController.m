@@ -9,13 +9,13 @@
 #import "LoginViewController.h"
 #import "DataManager.h"
 #import "MypageBodyViewController.h"
+#import "CartMyShippingListView.h"
 #import "NaviViewController.h"
 #import "HttpRequest.h"
 
 
 @implementation LoginViewController
-
-
+@synthesize LoginNextType;
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
@@ -23,25 +23,9 @@
 	Password.returnKeyType = UIReturnKeyDone;
 	ID.delegate = self;
 	Password.delegate = self;
+	self.navigationItem.title = @"로그인";
+	[self reset];
 	
-	if([[DataManager getInstance] isLoginSave])
-	{
-		ID.text =  [[DataManager getInstance] accountId];
-		Password.text =  [[DataManager getInstance] accountPass];
-		[ID_Save setAlpha:0];
-		[ID_Save2 setAlpha:1];
-	}
-	else {
-		[ID_Save setAlpha:1];
-		[ID_Save2 setAlpha:0];
-	}
-[ID_Save setAlpha:1];
-
-}
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
 }
 
 - (void)viewDidUnload {
@@ -51,6 +35,23 @@
 
 - (void)dealloc {
     [super dealloc];
+}
+
+- (void)reset
+{
+	if([[DataManager getInstance] isLoginSave])
+	{
+		ID.text =  [[DataManager getInstance] accountId];
+		Password.text =  [[DataManager getInstance] accountPass];
+		[ID_Save setAlpha:0];
+		[ID_Save2 setAlpha:1];
+	}
+	else {
+		ID.text = @"";
+		Password.text = @"";
+		[ID_Save setAlpha:1];
+		[ID_Save2 setAlpha:0];
+	}
 }
 
 - (IBAction)IDSaveButton
@@ -130,16 +131,33 @@
 		{
 			[[DataManager getInstance] setAccountId:ID.text];
 			[[DataManager getInstance] setAccountPass:Password.text];
+			[[DataManager getInstance] LoginSave];
 		}
-	
+		else {
+			[[DataManager getInstance] setAccountId:@""];
+			[[DataManager getInstance] setAccountPass:Password.text];
+			[[DataManager getInstance] LoginSave];
+		}
+		
 		[[DataManager getInstance] setIsLoginNow:TRUE];
-		[navi popViewControllerAnimated:NO];
-		/*
-		[[DataManager getInstance] setLoginNow];
-		MypageBodyViewController *mypage = [[MypageBodyViewController alloc] initWithNibName:@"MypageBodyView" bundle:nil];
-		[self.navigationController pushViewController:mypage animated:YES];
-		[mypage release];
-		 */
+
+		UINavigationController *navicontrol = self.navigationController;
+		NSMutableArray *Arr = [[self.navigationController.viewControllers mutableCopy] autorelease];
+		[Arr removeLastObject];
+		navicontrol.viewControllers = Arr;
+		UIViewController *next;
+		if(LoginNextType == MYPAGE)
+		{
+			next = [[MypageBodyViewController alloc] init];
+			[navicontrol pushViewController:next animated:NO];
+		}
+		else {
+			next = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil];
+			[navicontrol pushViewController:next animated:YES];
+		}
+
+		[next release];
+		
 	}
 
 	

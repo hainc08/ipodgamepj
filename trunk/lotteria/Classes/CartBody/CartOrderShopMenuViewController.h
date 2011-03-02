@@ -22,7 +22,6 @@
 }
 
 - (void)didDataDelete:(NSString *)result;
-- (IBAction)CellDeleteButton:(id)sender;
 - (IBAction)OrderButton:(id)sender;
 
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
