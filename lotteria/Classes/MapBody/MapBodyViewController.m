@@ -1,4 +1,5 @@
 #import "MapBodyViewController.h"
+#import "MapSearchViewController.h"
 #import "PlaceMark.h"
 
 @implementation MapBodyViewController
@@ -38,6 +39,22 @@
 	
     [super dealloc];
 }
+#pragma mark  -
+#pragma mark TextField
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	MapSearchViewController *SearchControl = [[MapSearchViewController alloc] initWithNibName:@"MapSearchView" bundle:nil];
+	[self.navigationController pushViewController:SearchControl animated:YES];
+	[SearchControl release];
+
+	return YES;
+}
+
+#pragma mark -
+#pragma mark Map
+
 
 -(void)setupMap
 {
