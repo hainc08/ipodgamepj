@@ -9,7 +9,7 @@
 	IBOutlet UIButton* storeAll;
 	IBOutlet UIButton* storeDelivery;
 	IBOutlet UIButton* store24;
-
+	IBOutlet UITextField *Search;
 	UIImage* buttonImg[3][2];
 	int selectIdx;
 }

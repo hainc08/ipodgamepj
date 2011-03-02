@@ -496,6 +496,10 @@
 		56D815CE131A9A190049314B /* OrderPrice.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D815CC131A9A190049314B /* OrderPrice.xib */; };
 		56D81660131AB13E0049314B /* OrderEndViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D8165E131AB13E0049314B /* OrderEndViewController.m */; };
 		56D81661131AB13E0049314B /* OrderEnd.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D8165F131AB13E0049314B /* OrderEnd.xib */; };
+		56D81F85131E3B950049314B /* MapSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D81F83131E3B950049314B /* MapSearchViewController.m */; };
+		56D81F86131E3B950049314B /* MapSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D81F84131E3B950049314B /* MapSearchView.xib */; };
+		56D81FC0131E81480049314B /* MapSearchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D81FBE131E81480049314B /* MapSearchDetailViewController.m */; };
+		56D81FC1131E81480049314B /* MapSearchDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D81FBF131E81480049314B /* MapSearchDetailView.xib */; };
 		84384256130F862200EE2887 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84384255130F862200EE2887 /* DataManager.m */; };
 		8443E434131C185F00DB34BC /* FindCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8443E433131C185F00DB34BC /* FindCellView.xib */; };
 		84774392130F8F2100FB2532 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 84774391130F8F2100FB2532 /* FileIO.m */; };
@@ -1048,6 +1052,12 @@
 		56D8165D131AB13E0049314B /* OrderEndViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderEndViewController.h; sourceTree = "<group>"; };
 		56D8165E131AB13E0049314B /* OrderEndViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderEndViewController.m; sourceTree = "<group>"; };
 		56D8165F131AB13E0049314B /* OrderEnd.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderEnd.xib; sourceTree = "<group>"; };
+		56D81F82131E3B950049314B /* MapSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSearchViewController.h; sourceTree = "<group>"; };
+		56D81F83131E3B950049314B /* MapSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSearchViewController.m; sourceTree = "<group>"; };
+		56D81F84131E3B950049314B /* MapSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapSearchView.xib; sourceTree = "<group>"; };
+		56D81FBD131E81480049314B /* MapSearchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSearchDetailViewController.h; sourceTree = "<group>"; };
+		56D81FBE131E81480049314B /* MapSearchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSearchDetailViewController.m; sourceTree = "<group>"; };
+		56D81FBF131E81480049314B /* MapSearchDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapSearchDetailView.xib; sourceTree = "<group>"; };
 		84384254130F862200EE2887 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		84384255130F862200EE2887 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		8443E433131C185F00DB34BC /* FindCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindCellView.xib; sourceTree = "<group>"; };
@@ -1841,6 +1851,12 @@
 				84B4A42F131008C100A7A99B /* MapBodyViewController.m */,
 				84C0AA5513146C9100DCD418 /* PlaceMark.h */,
 				84C0AA5613146C9100DCD418 /* PlaceMark.m */,
+				56D81F82131E3B950049314B /* MapSearchViewController.h */,
+				56D81F83131E3B950049314B /* MapSearchViewController.m */,
+				56D81F84131E3B950049314B /* MapSearchView.xib */,
+				56D81FBD131E81480049314B /* MapSearchDetailViewController.h */,
+				56D81FBE131E81480049314B /* MapSearchDetailViewController.m */,
+				56D81FBF131E81480049314B /* MapSearchDetailView.xib */,
 			);
 			name = MapBody;
 			path = Classes/MapBody;
@@ -2400,6 +2416,8 @@
 				56D815CE131A9A190049314B /* OrderPrice.xib in Resources */,
 				56D81661131AB13E0049314B /* OrderEnd.xib in Resources */,
 				8443E434131C185F00DB34BC /* FindCellView.xib in Resources */,
+				56D81F86131E3B950049314B /* MapSearchView.xib in Resources */,
+				56D81FC1131E81480049314B /* MapSearchDetailView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2445,6 +2463,8 @@
 				84BB8140131A340F00991EC4 /* ChangeSideViewController.m in Sources */,
 				56D815CD131A9A190049314B /* OrderPriceViewController.m in Sources */,
 				56D81660131AB13E0049314B /* OrderEndViewController.m in Sources */,
+				56D81F85131E3B950049314B /* MapSearchViewController.m in Sources */,
+				56D81FC0131E81480049314B /* MapSearchDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
