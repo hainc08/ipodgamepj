@@ -183,17 +183,28 @@ static DataManager *DataManagerInst;
 	}
 	else
 	{
-		accountId = [readString(accountFile) retain];
+		isLoginSave  = readInt(accountFile) ? true :false;
+		accountId	= [readString(accountFile) retain];
 		accountPass = [readString(accountFile) retain];
 		
 		closeFile(accountFile);
 	}
 
 	isLoginNow = false;
-	isLoginSave = false;
 	cartView = nil;
 	
 	[self loadProduct];
+}
+- (void)LoginSave
+{
+	NSFileHandle* accountFile = makeFileToWrite(@"account.txt");
+	if (accountFile != nil)
+	{
+		writeInt(accountFile, isLoginSave ? 1 : 0);
+		writeString(accountFile  ,accountId);
+		writeString(accountFile  ,accountPass);
+		closeFile(accountFile);
+	}
 }
 
 //-------------------장바구니 처리---------------------

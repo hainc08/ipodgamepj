@@ -14,33 +14,10 @@
 
 
 - (void)viewDidLoad {
+  [super viewDidLoad];	
 	
-	UIImage *buttonImage = [UIImage imageNamed:@"btn_box_close_on.png"];
-	UIButton *closebutton = [UIButton buttonWithType:UIButtonTypeCustom];
-	
-	[closebutton setImage:buttonImage forState:UIControlStateNormal];
-	
-	closebutton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
-	
-	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:closebutton];
-	
-	[closebutton addTarget:self action:@selector(CloseButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-	
-	self.navigationController.navigationBarHidden =NO;
-	self.navigationItem.leftBarButtonItem  = leftButton;		
-	[closebutton release];
-	[leftButton release];
-	self.view.backgroundColor = 
-	[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_content.png"]];
-	
-	
-    [super viewDidLoad];
 }
 
-- (IBAction)CloseButtonClicked:(id)sender
-{
-	[self dismissModalViewControllerAnimated:YES];
-}
 
 
 - (void)didReceiveMemoryWarning {

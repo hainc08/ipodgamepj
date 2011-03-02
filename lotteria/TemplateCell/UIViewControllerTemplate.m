@@ -83,45 +83,33 @@
 
 
 @implementation UIViewControllerDownTemplate
-
+@synthesize navi;
+@synthesize backButton;
+@synthesize closetype;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	
-	UIImage *buttonImage = [UIImage imageNamed:@"btn_com_top_help_off.png"];
-	UIButton *helpbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-	
-	[helpbutton setImage:buttonImage forState:UIControlStateNormal];
-	
-	helpbutton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
-	
-	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:helpbutton];
-	
-	[helpbutton addTarget:self action:@selector(HelpButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-	
-	
-	self.navigationItem.rightBarButtonItem = rightButton;		
-	
-	[helpbutton release];
-	[rightButton release];
-
-	buttonImage = [UIImage imageNamed:@"btn_box_close_on.png"];
-	UIButton *closebutton = [UIButton buttonWithType:UIButtonTypeCustom];
-	
-	[closebutton setImage:buttonImage forState:UIControlStateNormal];
-	
-	closebutton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
-	
-	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:closebutton];
-	
-	[closebutton addTarget:self action:@selector(CloseButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-	
-	self.navigationItem.leftBarButtonItem  = leftButton;		
-	[closebutton release];
-	[leftButton release];
+	[super viewDidLoad];
 	self.view.backgroundColor = 
 	[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_content.png"]];
 	
-	[super viewDidLoad];
+	if( closetype)
+	{
+	UIImage *buttonImage = [UIImage imageNamed:@"btn_box_close_on.png"];
+	
+	backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[backButton setImage:buttonImage forState:UIControlStateNormal];
+
+	backButton.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
+	
+	[backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+	
+	UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+	self.navigationItem.leftBarButtonItem = customBarItem;
+	[customBarItem release];
+	}
+	else
+	self.navigationItem.leftBarButtonItem = nil;
 	
 }
 
@@ -131,11 +119,17 @@
 	[self presentModalViewController:Help animated:YES];
 	[Help release];
 }
-
-- (IBAction)CloseButtonClicked:(id)sender
+- (void)back
 {
-	[self dismissModalViewControllerAnimated:YES];
+	[self.navigationController popViewControllerAnimated:NO];
 }
+- (void)viewDidUnload {
+	[backButton release];
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
 
 
 - (void)dealloc {

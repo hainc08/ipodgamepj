@@ -64,7 +64,7 @@
 }
 - (void)SetButton
 {
-	if(buttontype && [[[DataManager getInstance] getShopCart] count] > 0)
+	if(buttontype && [[DataManager getInstance] getCartPrice] > 8000 )
 	{
 		[orderButton setAlpha:1];
 		[againButton setAlpha:0];
@@ -132,6 +132,7 @@
 
 - (void)didDataDelete:(NSString *)result
 {
+	[self SetButton];
 	[menuTable	reloadData];
 }
 
@@ -139,14 +140,23 @@
  */
 - (IBAction)OrderButton:(id)sender
 {
+	
 	if(sender == orderButton)
 	{
-		CartOrderViewController *Order = [[CartOrderViewController alloc] initWithNibName:@"CartOrderView" bundle:nil];
-		[self.navigationController pushViewController:Order animated:YES];
-		[Order release];
+		if( [[DataManager getInstance] getCartPrice] < 8000)
+		{
+			[self ShowOKAlert:@"주문" msg:@"8000원 이상주문하셔야 합니다."];
+		}
+		else {
+			CartOrderViewController *Order = [[CartOrderViewController alloc] initWithNibName:@"CartOrderView" bundle:nil];
+			[self.navigationController pushViewController:Order animated:YES];
+			[Order release];
+		}
 	}
 	else {
 		// 메뉴로 돌아가기..
+		// 장바구니 창으로 이동~
+		[self.navigationController popToRootViewControllerAnimated:YES];
 	}
 
 }
@@ -194,6 +204,7 @@
 	OrderMenuCell *tmp_cell = (OrderMenuCell *)cell;
 	/* cell에서 삭제하는 데이터가 있으면 ReloadData 호출하기..*/
 	CartItem *item = [[DataManager getInstance] getCartItem:indexPath.row];
+	
 	//buttontype &= item.StoreMenuOnOff;
 	buttontype &= true;
 	[tmp_cell setDelegate:self selector:@selector(didDataDelete:)];

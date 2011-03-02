@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIViewControllerTemplate.h"
 
-
-
-@interface MyCustomerDelivery : UIViewControllerTemplate<UITableViewDataSource, UITableViewDelegate > {
+@interface MyCustomerDelivery : UIViewControllerTemplate {
 
 	IBOutlet UIWebView *WebView;
 	

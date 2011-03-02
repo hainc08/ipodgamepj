@@ -1,6 +1,6 @@
 #import "CartBodyViewController.h"
 #import "CartMyShippingListView.h"
-
+#import "LoginViewController.h"
 @implementation CartBodyViewController
 
 @synthesize InfoOrder;
@@ -72,12 +72,45 @@
 - (void)dealloc {
     [super dealloc];
 }
+#pragma mark -
+#pragma mark AlertView
+- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message
+												   delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+	[alert show];
+	[alert release];
+}
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	// 필요한 엑션이 있으면 넣자 ..
+}
 
 -(IBAction)OrderButton
 {
-	CartMyShippingList *UserInput = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil];
-	[self.navigationController pushViewController:UserInput animated:YES ];
-	[UserInput release];
+	if( [[DataManager getInstance] getCartPrice] < 8000)
+	{
+		[self ShowOKAlert:@"주문" msg:@"8000원 이상주문하셔야 합니다."];
+	}
+	else
+	{
+		if (![[DataManager getInstance] isLoginNow])
+		{
+			LoginViewController *login = [[LoginViewController alloc] init];
+			login.closetype = true;
+			[login setLoginNextType:CART];
+			[self.navigationController pushViewController:login	animated:YES];
+			[login release];
+		}
+		else {
+			CartMyShippingList *UserInput = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil];
+			[self.navigationController pushViewController:UserInput animated:YES ];
+			[UserInput release];
+		}
+	}
+
+
 }
 
 @end
