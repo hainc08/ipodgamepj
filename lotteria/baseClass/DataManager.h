@@ -214,5 +214,6 @@ typedef enum _ImgType
 - (ProductData*)getSearchProduct:(int)idx listIdx:(int)lIdx;
 - (int)getSearchProductCount:(int)lIdx;
 - (void)searchProduct:(NSString*)str;
+- (NSString*)getCategoryName:(NSString*)cat;
 
 @end
