@@ -210,6 +210,18 @@ static DataManager *DataManagerInst;
 //-------------------장바구니 처리---------------------
 - (void)addCartItem:(CartItem*)item
 {
+	for (CartItem* i in ShopCart)
+	{
+		if (([[i menuId] compare:[item menuId]] == NSOrderedSame)&&
+			([[i drinkId] compare:[item drinkId]] == NSOrderedSame)&&
+			([[i dessertId] compare:[item dessertId]] == NSOrderedSame))
+		{
+			[i setCount:[item count] + [i count]];
+			[self cartUpdate];
+			return;
+		}
+	}
+	
 	[ShopCart addObject:item];
 	[self cartUpdate];
 }
