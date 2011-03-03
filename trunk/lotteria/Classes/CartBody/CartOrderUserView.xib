@@ -87,7 +87,7 @@
 							<bytes key="NSRGB">MC4yMTE3NjQ3MDU5IDAuMTg0MzEzNzI1NSAwLjE3NjQ3MDU4ODIAA</bytes>
 						</object>
 						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">H2gtrE</string>
+							<string key="NSName">LucidaGrande</string>
 							<double key="NSSize">14</double>
 							<int key="NSfFlags">16</int>
 						</object>
@@ -95,8 +95,9 @@
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<int key="IBUIAutocapitalizationType">1</int>
+							<int key="IBUIAutocorrectionType">1</int>
 							<int key="IBUIKeyboardType">2</int>
-							<int key="IBUIReturnKeyType">9</int>
+							<int key="IBUIReturnKeyType">3</int>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 						<object class="NSCustomResource" key="IBUIBackground" id="97748157">
@@ -184,6 +185,8 @@
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
+							<int key="IBUIAutocorrectionType">1</int>
+							<int key="IBUIReturnKeyType">4</int>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 						<reference key="IBUIBackground" ref="97748157"/>
@@ -273,9 +276,9 @@
 							<reference ref="12554729"/>
 							<reference ref="50269174"/>
 							<reference ref="234015513"/>
-							<reference ref="15349124"/>
 							<reference ref="421956898"/>
 							<reference ref="972254202"/>
+							<reference ref="15349124"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -370,7 +373,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC3AAAwngAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABC0gAAwoIAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">

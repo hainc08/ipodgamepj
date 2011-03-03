@@ -351,7 +351,12 @@
 	CustomerDelivery  *tmp = [CustomerArr objectAtIndex:indexPath.row];
 	
 	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
-					   [tmp si], [tmp gu], [tmp dong], [tmp bunji], [tmp building], [tmp addrdesc]];
+					   ([tmp si]?[tmp si]:@""),
+					   ([tmp gu]?[tmp si]:@""),
+					   ([tmp dong]?[tmp dong]:@""),
+					   ([tmp bunji]?[tmp bunji]:@""),
+					   ([tmp building]?[tmp building]:@""),
+					   ([tmp addrdesc]?[tmp addrdesc]:@"")];
 	
 	[tmp_cell setInfo:[tmp branchname] :s_tmp :[tmp phone] ];
 
@@ -363,7 +368,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 97;
+	return 112;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
