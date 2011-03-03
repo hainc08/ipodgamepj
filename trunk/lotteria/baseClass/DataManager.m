@@ -470,4 +470,16 @@ static DataManager *DataManagerInst;
 	}
 }
 
+- (NSString*)getCategoryName:(NSString*)cat
+{
+	if ([cat compare:@"D10"] == NSOrderedSame) return @"햄버거";
+	if ([cat compare:@"D20"] == NSOrderedSame) return @"치킨";
+	if ([cat compare:@"D30"] == NSOrderedSame) return @"디저트";
+	if ([cat compare:@"D40"] == NSOrderedSame) return @"음료";
+	if ([cat compare:@"D50"] == NSOrderedSame) return @"팩";
+
+	if ([cat compare:@"S10"] == NSOrderedSame) return @"햄버거세트";
+	if ([cat compare:@"S11"] == NSOrderedSame) return @"콤보";
+}
+
 @end

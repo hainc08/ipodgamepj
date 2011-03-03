@@ -106,7 +106,7 @@
 {
 	item = _inData;
 	ProductData *p_data = [[DataManager getInstance] getProduct:_inData.menuId];
-	[MainCategory	setText: p_data.category  ];
+	[MainCategory	setText: [[DataManager getInstance] getCategoryName:p_data.category]];
 	[SubCategory	setText: p_data.name ];
 	[Money			setText: [[DataManager getInstance] getPriceStr:p_data.price ]];
 	[MenuCount		setText: [NSString stringWithFormat:@"%d", _inData.count]];	
