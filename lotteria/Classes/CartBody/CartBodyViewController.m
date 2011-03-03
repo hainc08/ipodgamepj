@@ -1,5 +1,5 @@
 #import "CartBodyViewController.h"
-#import "CartMyShippingListView.h"
+#import "CartOrderViewController.h"
 #import "LoginViewController.h"
 @implementation CartBodyViewController
 
@@ -104,9 +104,9 @@
 			[login release];
 		}
 		else {
-			CartMyShippingList *UserInput = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil];
-			[self.navigationController pushViewController:UserInput animated:YES ];
-			[UserInput release];
+			CartOrderViewController *OrderView = [[CartOrderViewController alloc] init];
+			[self.navigationController pushViewController:OrderView animated:YES ];
+			[OrderView release];
 		}
 	}
 
