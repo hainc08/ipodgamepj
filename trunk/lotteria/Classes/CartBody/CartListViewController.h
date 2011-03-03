@@ -1,10 +1,6 @@
-@interface CartCellView : UITableViewCell {
+@interface CartCellView : UIViewController {
 	IBOutlet UIImageView* underLine;
 	UINavigationController *navi;
-
-	NSString* mainId;
-	NSString* drinkId;
-	NSString* dessertId;
 	
 	IBOutlet UIButton* incCount;
 	IBOutlet UIButton* decCount;
@@ -17,25 +13,24 @@
 	IBOutlet UILabel* priceLabel;
 	
 	CartItem* cartItem;
-	
-	int count;
+	bool isLast;
 }
 
 @property (nonatomic ,retain) UINavigationController* navi;
+@property (readwrite) bool isLast;
 
 - (void)refreshData;
 - (IBAction)buttonClick:(id)sender;
-- (void)setLast:(bool)isLast;
 - (void)setData:(CartItem*)item;
 - (void)sideSelected:(int)idx :(ProductData*)data;
 
 @end
 
-@interface CartListViewController : UIViewController<UITableViewDataSource> {
+@interface CartListViewController : UIViewController {
 	UINavigationController *navi;
 
 	IBOutlet UIImageView* topImg;
-	IBOutlet UITableView* listTable;
+	IBOutlet UIView* listView;
 
 	int listIdx;
 	int itemCount;

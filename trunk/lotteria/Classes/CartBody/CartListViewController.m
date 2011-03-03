@@ -4,27 +4,19 @@
 @implementation CartCellView
 
 @synthesize navi;
+@synthesize isLast;
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super dealloc];
+- (void)viewDidLoad
+{
+	[super viewDidLoad];
+	[self refreshData];
 }
 
 - (void)setData:(CartItem*)item
 {
-	mainId = [item menuId];
-	dessertId = [item dessertId];
-	drinkId = [item drinkId];
-	count = [item count];
 	cartItem = item;
 
 	[self refreshData];
-}
-
-- (void)setLast:(bool)isLast
-{
-	if (isLast) [underLine setAlpha:0];
-	else [underLine setAlpha:1];
 }
 
 - (void)refreshData
@@ -32,14 +24,14 @@
 	ProductData* product[3];
 	int price;
 
-	product[0] = [[DataManager getInstance] getProduct:mainId];
+	product[0] = [[DataManager getInstance] getProduct:[cartItem menuId]];
 	[mainLabel setText:[product[0] name]];
 
 	price = [product[0] price];
 
-	if (dessertId != nil)
+	if ([cartItem dessertId] != nil)
 	{
-		product[1] = [[DataManager getInstance] getProduct:dessertId];
+		product[1] = [[DataManager getInstance] getProduct:[cartItem dessertId]];
 		price += [product[1] price];
 	}
 	else
@@ -47,9 +39,9 @@
 		product[1] = nil;
 	}
 
-	if (drinkId != nil)
+	if ([cartItem drinkId] != nil)
 	{
-		product[2] = [[DataManager getInstance] getProduct:drinkId];
+		product[2] = [[DataManager getInstance] getProduct:[cartItem drinkId]];
 		price += [product[2] price];
 	}
 	else
@@ -84,14 +76,18 @@
 		[changeDrink setAlpha:0];
 	}
 
-	[countLabel setText:[NSString stringWithFormat:@"%d", count]];
-	[priceLabel setText:[NSString stringWithFormat:@"%@원", [[DataManager getInstance] getPriceStr:price * count]]];
+	[countLabel setText:[NSString stringWithFormat:@"%d", [cartItem count]]];
+	[priceLabel setText:[NSString stringWithFormat:@"%@원", [[DataManager getInstance] getPriceStr:price * [cartItem count]]]];
+	
+	if (isLast) [underLine setAlpha:0];
+	else [underLine setAlpha:1];
 }
 
 - (IBAction)buttonClick:(id)sender
 {
 	if ((sender == incCount)||(sender == decCount))
 	{
+		int count = [cartItem count];
 		if (count == 0) return;
 
 		if (sender == incCount) ++count;
@@ -110,7 +106,7 @@
 		[changeView setNavi:navi];
 		[changeView setSideType:SIDE_DESSERT];
 		[changeView setBackView:self];
-		[changeView selectId:dessertId];
+		[changeView selectId:[cartItem dessertId]];
 		
 		[navi pushViewController:changeView animated:true];
 	}
@@ -120,7 +116,7 @@
 		[changeView setNavi:navi];
 		[changeView setSideType:SIDE_DRINK];
 		[changeView setBackView:self];
-		[changeView selectId:drinkId];
+		[changeView selectId:[cartItem drinkId]];
 		
 		[navi pushViewController:changeView animated:true];
 	}
@@ -130,13 +126,11 @@
 {
 	if (idx == SIDE_DRINK)
 	{
-		drinkId = [data menuId];	
-		[cartItem setDrinkId:drinkId];
+		[cartItem setDrinkId:[data menuId]];
 	}
 	else if (idx == SIDE_DESSERT)
 	{
-		dessertId = [data menuId];
-		[cartItem setDessertId:dessertId];
+		[cartItem setDessertId:[data menuId]];
 	}
 
 	[[DataManager getInstance] cartUpdate];
@@ -170,46 +164,28 @@
 	listIdx = idx;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	return 100;
-}
-
-- (UITableViewCell*)tableView:(UITableView*)sender cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	UITableViewCell *cell = [listTable dequeueReusableCellWithIdentifier:@"CartCellView"];
-	
-    if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CartCellView" 
-                                                     owner:self options:nil];
-        for (id oneObject in nib)
-		{
-			if ([oneObject isKindOfClass:[CartCellView class]])
-			{
-				cell = oneObject;
-			}
-		}
-    }
-
-	CartCellView* cartCell = (CartCellView*)cell;
-	
-	[cartCell setData:[[DataManager getInstance] getCartItem:indexPath.row listIdx:listIdx]];
-	[cartCell setLast:(indexPath.row == itemCount-1)];
-	[cartCell setNavi:navi];
-	
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView*)sender numberOfRowsInSection:(NSInteger)section
-{
-	itemCount = [[DataManager getInstance] itemCount:listIdx];
-	[listTable setFrame:CGRectMake(0, 45, 300, itemCount*100)];
-	return itemCount;
-}
-
 - (void)reloadData
 {
-	[listTable reloadData];
+	//데이터 리로드...
+	itemCount = [[DataManager getInstance] itemCount:listIdx];
+	[listView setFrame:CGRectMake(0, 39, 300, itemCount * 100)];
+
+	for (UIView* v in [listView subviews])
+	{
+		[v removeFromSuperview];
+	}
+
+	for (int i=0; i<itemCount; ++i)
+	{
+		CartCellView *cartCell = [[CartCellView alloc] init];
+	
+		[cartCell setData:[[DataManager getInstance] getCartItem:i listIdx:listIdx]];
+		[cartCell setIsLast:(i == itemCount-1)];
+		[cartCell setNavi:navi];
+		[cartCell.view setCenter:CGPointMake(150, i * 100 + 50)];
+
+		[listView addSubview:cartCell.view];
+	}
 }
 
 @end
