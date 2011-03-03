@@ -63,21 +63,22 @@
 							<bytes key="NSRGB">MC4yMTE3NjQ3MDU5IDAuMTg0MzEzNzI1NSAwLjE3NjQ3MDU4ODIAA</bytes>
 						</object>
 						<object class="NSFont" key="IBUIFont" id="837962642">
-							<string key="NSName">H2gtrE</string>
+							<string key="NSName">LucidaGrande</string>
 							<double key="NSSize">14</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
-							<int key="IBUIAutocapitalizationType">1</int>
+							<int key="IBUIAutocorrectionType">1</int>
+							<int key="IBUIReturnKeyType">4</int>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 					</object>
 					<object class="IBUITextField" id="211347353">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{102, 74}, {180, 31}}</string>
+						<string key="NSFrame">{{102, 73}, {180, 31}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="IBUIBackgroundColor" ref="198053422"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -95,7 +96,7 @@
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
-							<int key="IBUIAutocapitalizationType">1</int>
+							<int key="IBUIReturnKeyType">3</int>
 							<bool key="IBUISecureTextEntry">YES</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
@@ -333,13 +334,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="522409968"/>
 							<reference ref="590852212"/>
-							<reference ref="211347353"/>
 							<reference ref="219520261"/>
 							<reference ref="398456620"/>
 							<reference ref="296154986"/>
 							<reference ref="874017763"/>
 							<reference ref="576624804"/>
 							<reference ref="87966050"/>
+							<reference ref="211347353"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -448,7 +449,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC1gAAwnwAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABCzAAAws4AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -495,7 +496,7 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
 					<string key="className">LoginViewController</string>
-					<string key="superclassName">UIViewControllerTemplate</string>
+					<string key="superclassName">UIViewControllerDownTemplate</string>
 					<object class="NSMutableDictionary" key="actions">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
@@ -587,7 +588,7 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">UIViewControllerTemplate</string>
+					<string key="className">UIViewControllerDownTemplate</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>

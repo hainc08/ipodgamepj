@@ -11,7 +11,7 @@
 @class Order;
 @interface CartOrderViewController : UIViewControllerTemplate {
 	IBOutlet	UIButton *normalButton;
-	IBOutlet	UIButton *delayButton;
+	IBOutlet	UIButton *reserveButton;
 }
 - (IBAction)OrderButton:(id)sender;
 @end

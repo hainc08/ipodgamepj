@@ -7,7 +7,7 @@
 //
 
 #import "CartOrderUserViewController.h"
-#import "OrderViewController.h"
+#import "CartMyShippingListView.h"
 #import "DataManager.h"
 @implementation CartOrderUserViewController
 
@@ -40,17 +40,14 @@
 
 - (IBAction)ContinueButton:(id)sender
 {
-
-	
 	Order *Data = [[DataManager getInstance] UserOrder];
 	
 	[Data setUserName:Name.text];
 	[Data setUserPhone:Phone.text];
-	
-	
-	OrderViewController *List = [[OrderViewController alloc] initWithNibName:@"OrderViewController" bundle:nil];
-	[self.navigationController pushViewController:List animated:YES];
-	[List release];
+
+	CartMyShippingList *shipping = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil];
+	[self.navigationController pushViewController:shipping animated:YES];
+	[shipping release];
 }
 
 #pragma mark  -

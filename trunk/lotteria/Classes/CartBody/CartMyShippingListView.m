@@ -358,7 +358,18 @@
 					   ([tmp building]?[tmp building]:@""),
 					   ([tmp addrdesc]?[tmp addrdesc]:@"")];
 	
-	[tmp_cell setInfo:[tmp branchname] :s_tmp :[tmp phone] ];
+	NSString* p_tmp;
+	int len = [[tmp phone] length];
+	int t = 3;
+	
+	if ([[[tmp phone] substringWithRange:NSMakeRange(0, 2)] compare:@"02"] == NSOrderedSame) t = 2;
+	
+	p_tmp = [NSString stringWithFormat:@"%@-%@-%@",
+			 [[tmp phone] substringWithRange:NSMakeRange(0, t)],
+			 [[tmp phone] substringWithRange:NSMakeRange(t, len - 4 - t)],
+			 [[tmp phone] substringWithRange:NSMakeRange(len - 4, 4)]];
+					   
+	[tmp_cell setInfo:[tmp branchname] :s_tmp :p_tmp ];
 
 	return cell;
 }
