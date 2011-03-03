@@ -17,7 +17,8 @@
 	IBOutlet UILabel *StoreAddress;
 	IBOutlet UIImageView *StoreImg;
 	
+	IBOutlet UIButton *callbutton;
 	
 }
-
+- (IBAction)callbutton;
 @end

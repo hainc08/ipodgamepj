@@ -55,5 +55,10 @@
     [super dealloc];
 }
 
+- (IBAction)callbutton
+{
+    NSString *call = [NSString stringWithFormat:@"tel://010-0000-0000"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:call]];
+}
 
 @end
