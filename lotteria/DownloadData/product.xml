@@ -16,7 +16,7 @@
     <product menu_id="200372" CATE_ID="S10"	menu_nm="오징어버거세트" price="4000" ori_menu_id="LB0013" use_flag="Y"/>
     <product menu_id="200383" CATE_ID="S10"	menu_nm="한우불고기세트" price="7000" ori_menu_id="LB0001" use_flag="Y"/>
     <product menu_id="201101" CATE_ID="S10"	menu_nm="야채라이스불고기세트" price="5500" ori_menu_id="LB0008" use_flag="Y"/>
-    <product menu_id="201103" CATE_ID="S10"	menu_nm="RED n WHITE 버거세트" price="5500" ori_menu_id="LB0003" use_flag="Y"/>
+    <product menu_id="201103" CATE_ID="S10"	menu_nm="RED＆WHITE 버거세트" price="5500" ori_menu_id="LB0003" use_flag="Y"/>
     <product menu_id="210652" CATE_ID="S10"	menu_nm="한우레이디세트" price="6000" ori_menu_id="LB0021" use_flag="Y"/>
 
     <product menu_id="200266" CATE_ID="S11"	menu_nm="한우불고기콤보(신)" price="6200" ori_menu_id="LB0001" use_flag="Y"/>
@@ -56,7 +56,7 @@
 
     <product menu_id="LB0001" CATE_ID="D10"	menu_nm="한우불고기버거" price="5300" use_flag="Y"/>
     <product menu_id="LB0002" CATE_ID="D10"	menu_nm="한우스테이크" price="4500" use_flag="Y"/>
-    <product menu_id="LB0003" CATE_ID="D10"	menu_nm="RED n WHITE 버거" price="3700" use_flag="Y"/>
+    <product menu_id="LB0003" CATE_ID="D10"	menu_nm="RED＆WHITE 버거" price="3700" use_flag="Y"/>
     <product menu_id="LB0004" CATE_ID="D10"	menu_nm="불새버거" price="3500" use_flag="Y"/>
     <product menu_id="LB0005" CATE_ID="D10"	menu_nm="유러피안프리코치즈버거4200" price="4200" use_flag="Y"/>
     <product menu_id="LB0006" CATE_ID="D10"	menu_nm="텐더그릴치킨버거" price="3700" use_flag="Y"/>
