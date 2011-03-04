@@ -276,6 +276,10 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
 	[textField resignFirstResponder];
+	[self FindClick];
+//	FindBodyViewController * find = [[FindBodyViewController alloc] init];
+//	[self.navigationController pushViewController:find  animated:YES];
+//	[find release];
 	return YES;
 }
 
