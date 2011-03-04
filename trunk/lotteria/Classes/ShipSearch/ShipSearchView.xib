@@ -137,23 +137,6 @@
 					</object>
 					<int key="connectionID">9</int>
 				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">SearchButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="842115634"/>
-					</object>
-					<int key="connectionID">10</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">SearchButton:</string>
-						<reference key="source" ref="842115634"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">12</int>
-				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -249,7 +232,7 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
 					<string key="className">ShipSearchViewController</string>
-					<string key="superclassName">UIViewController</string>
+					<string key="superclassName">UIViewControllerDownTemplate</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">SearchButton:</string>
 						<string key="NS.object.0">id</string>
@@ -296,6 +279,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/ShipSearch/ShipSearchViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UIViewControllerDownTemplate</string>
+					<string key="superclassName">UIViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">TemplateCell/UIViewControllerTemplate.h</string>
 					</object>
 				</object>
 			</object>

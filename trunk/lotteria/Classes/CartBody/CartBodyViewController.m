@@ -1,5 +1,5 @@
 #import "CartBodyViewController.h"
-#import "CartOrderViewController.h"
+#import "CartMyShippingListView.h"
 #import "LoginViewController.h"
 @implementation CartBodyViewController
 
@@ -104,7 +104,7 @@
 			[login release];
 		}
 		else {
-			CartOrderViewController *OrderView = [[CartOrderViewController alloc] init];
+			CartMyShippingList *OrderView = [[CartMyShippingList alloc] init];
 			[self.navigationController pushViewController:OrderView animated:YES ];
 			[OrderView release];
 		}

@@ -70,7 +70,7 @@
 
 -(void)setInfo:(NSString*)_inOPd :(NSString *)_inOCnt :(NSString *)_inOPr;
 {
-	[OrderProduct	setText: _inOPd ];
+	[OrderProduct	setText: [[DataManager getInstance] getCategoryName:_inOPd]];
 	[OrderCount		setText:_inOCnt];
 	[OrderPrice		setText:_inOPr];
 }
