@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "DataManager.h"
 #import "MypageBodyViewController.h"
-#import "CartOrderViewController.h"
+#import "CartMyShippingListView.h"
 #import "NaviViewController.h"
 #import "HttpRequest.h"
 
@@ -152,7 +152,7 @@
 			[navicontrol pushViewController:next animated:NO];
 		}
 		else {
-			next = [[CartOrderViewController alloc] init];
+			next = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil];
 			[navicontrol pushViewController:next animated:YES];
 		}
 

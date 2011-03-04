@@ -139,6 +139,7 @@
 - (IBAction)ShipRegButton:(id)sender
 {	
 	ShipSearchViewController *ShipData =  [[ShipSearchViewController alloc] initWithNibName:@"ShipSearchView" bundle:nil];
+	ShipData.closetype = true;
 	[self.navigationController pushViewController:ShipData animated:NO];
 	[ShipData release];
 }

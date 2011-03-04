@@ -7,7 +7,7 @@
 //
 
 #import "CartOrderUserViewController.h"
-#import "CartMyShippingListView.h"
+#import "OrderViewController.h"
 #import "DataManager.h"
 @implementation CartOrderUserViewController
 
@@ -45,7 +45,7 @@
 	[Data setUserName:Name.text];
 	[Data setUserPhone:Phone.text];
 
-	CartMyShippingList *shipping = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil];
+	OrderViewController *shipping = [[OrderViewController alloc] initWithNibName:@"OrderViewController" bundle:nil];
 	[self.navigationController pushViewController:shipping animated:YES];
 	[shipping release];
 }
