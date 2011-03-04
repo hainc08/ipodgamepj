@@ -1,7 +1,7 @@
 #import "DetailViewController.h"
 #import "UIViewControllerTemplate.h"		
 
-@interface MainBodyViewController : UIViewControllerTemplate<UIScrollViewDelegate> {
+@interface MainBodyViewController : UIViewControllerTemplate<UIScrollViewDelegate , UITextFieldDelegate> {
 	DetailViewController* detailView;
 
 	IBOutlet UIView* baseView;

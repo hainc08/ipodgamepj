@@ -29,7 +29,9 @@
 	lastButton = nil;
 	lastIconButton = nil;
 	
-	[searchField setText:SearchBase];
+	searchField.delegate = self;
+	
+	//[searchField setText:SearchBase];
 	
 	self.navigationItem.title = @"메뉴 선택";
 }
@@ -266,6 +268,15 @@
 	
 	[scrollView setContentSize:CGSizeMake([[scrollView subviews] count]* 70, 70)];
 	[scrollView scrollRectToVisible:CGRectMake(0, 0, 320, 70) animated:false];
+}
+
+#pragma mark  -
+#pragma mark TextField
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	return YES;
 }
 
 @end
