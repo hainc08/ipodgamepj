@@ -35,6 +35,7 @@
 	
 	[menuTable reloadData];
 	[self SetButton];
+	self.navigationItem.title = @"주문하기";
 }
 
 /*

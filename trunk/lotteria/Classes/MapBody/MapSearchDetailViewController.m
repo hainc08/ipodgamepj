@@ -11,31 +11,40 @@
 
 @implementation MapSearchDetailViewController
 
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
+@synthesize Info;
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-*/
+	[StoreName setText:Info.storename];
+	[StorePhone setText:Info.storephone];
+	
+	NSString *Store = [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
+	 [Info si], [Info gu], [Info dong], [Info bunji],
+	 [Info building], [Info addrdesc]];
+	
+	[StoreAddress setText:Store];
+	
+	if(Info.storetype == TIMESTORE)
+	{
+		[StoreType setText:@"24 시간매장"];
+		[StoreImg setImage:[UIImage imageNamed:@"icon_store_24.png"]];
+	}
+	else if(Info.storetype == DELIVERYSTORE )
+	{
+		[StoreType setText:@"배달매장"];
+		[StoreImg setImage:[UIImage imageNamed:@"icon_store_delivery.png"]];
+	}
+	else if(Info.storetype == NORMALSTORE)
+	{
+		[StoreType setText:@"일반매장"];
+		[StoreImg setImage:[UIImage imageNamed:@"icon_store_general.png"]];
+	}
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	self.navigationItem.title = @"매장정보";
 }
-*/
+
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

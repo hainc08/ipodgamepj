@@ -16,6 +16,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	self.navigationItem.title = @"주문방법 선택";
 }
 
 

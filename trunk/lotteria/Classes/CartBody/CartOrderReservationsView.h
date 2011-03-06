@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIViewControllerTemplate.h"
-@class Order;
+
 @interface CartOrderReservationsView : UIViewControllerTemplate<UITableViewDataSource, UITableViewDelegate >  {
 	IBOutlet UIDatePicker	*Picket;
 	IBOutlet UIButton		*reButton;

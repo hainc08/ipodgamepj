@@ -55,6 +55,46 @@ typedef enum _ImgType
 
 @end
 
+typedef enum _Storetype
+{
+	ALLSTORE = 0,
+	TIMESTORE,	// 24시매장
+	DELIVERYSTORE,	// 배달가능 매장
+	NORMALSTORE,	// 일반매장
+}Storetype;
+
+
+@interface StoreInfo : NSObject {
+	NSString *storeid;
+	NSString *storename;
+	NSString *storephone;
+	
+	int		storetype;
+
+	NSString *si;
+	NSString *gu;
+	NSString *dong;
+	NSString *bunji;
+	NSString *building;
+	NSString *addrdesc;
+	
+	float	coordinate; // 좌표 맵에서 사용될 좌표 .. 나중에 최종 값 나오면 ..
+}
+
+@property (retain) NSString *storeid;
+@property (retain) NSString *storename;
+@property (retain) NSString *storephone;
+@property (readwrite) int storetype;
+
+@property (retain) NSString *si;
+@property (retain) NSString *gu;
+@property (retain) NSString *dong;
+@property (retain) NSString *bunji;
+@property (retain) NSString *building;
+@property (retain) NSString *addrdesc;
+
+@end
+
 
 @interface CustomerDelivery : NSObject {
 	NSString *custid;

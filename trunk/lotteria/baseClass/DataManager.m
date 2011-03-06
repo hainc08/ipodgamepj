@@ -66,6 +66,28 @@ static DataManager *DataManagerInst;
 
 @end
 
+@implementation StoreInfo
+@synthesize storeid, storename, storephone;
+@synthesize	storetype, si , gu;
+@synthesize dong,bunji , building ,addrdesc;
+
+- (void)dealloc {
+	[storeid release];
+	[storename release];
+	[storephone release];
+	
+    [si release];
+    [gu release];
+	[dong release];
+    [bunji release];
+    [building release];
+    [addrdesc release];
+
+	[super dealloc];
+}
+
+@end
+
 
 @implementation CustomerDelivery
 
@@ -480,6 +502,8 @@ static DataManager *DataManagerInst;
 
 	if ([cat compare:@"S10"] == NSOrderedSame) return @"햄버거세트";
 	if ([cat compare:@"S11"] == NSOrderedSame) return @"콤보";
+	
+	return nil;		// 엉뚱한값이면 
 }
 
 @end

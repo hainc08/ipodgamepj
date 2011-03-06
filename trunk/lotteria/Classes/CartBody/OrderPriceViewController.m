@@ -16,6 +16,7 @@
     [super viewDidLoad];
 	Comment.returnKeyType = UIReturnKeyDone;
 	[MoneyTxt setText:[[DataManager getInstance] getPriceStr:[[DataManager getInstance] getCartPrice]]];
+	self.navigationItem.title = @"결제하기";
 }
 
 - (void)didReceiveMemoryWarning {

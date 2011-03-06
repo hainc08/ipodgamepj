@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewControllerTemplate.h"
 
-@interface HelpViewController : UIViewController {
-		IBOutlet UINavigationBar *topBar;
+@interface HelpViewController : UIViewControllerTemplate {
+	IBOutlet UIButton *OrderInfo;
+	IBOutlet UIButton *PersonalInfo;
+	IBOutlet UIButton *StipulationInfo;
+	IBOutlet UIButton *CalorieInfo;
 }
-@property (nonatomic , retain) IBOutlet UINavigationBar *topBar;
+- (IBAction)HelpButtonInfo:(id)sender;
 @end

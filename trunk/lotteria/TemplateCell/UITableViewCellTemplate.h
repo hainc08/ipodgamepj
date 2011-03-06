@@ -45,18 +45,15 @@
 	/* 배송지 주소		, FontColor : White */
 	IBOutlet UILabel* ShippingAddress;
 	
-	/* 주문한사람	,	  FontColor : White */
-	IBOutlet UILabel* OrderName; 
 	/*전화번호	,	  FontColor : White */
 	IBOutlet UILabel* OrderPhone;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel* ShippingName;  
 @property (nonatomic, retain) IBOutlet UILabel* ShippingAddress;  
-@property (nonatomic, retain) IBOutlet UILabel* OrderName;  
 @property (nonatomic, retain) IBOutlet UILabel* OrderPhone;  
 
--(void)setInfo:(NSString*)_inName :(NSString *)_inCall :(NSString *)_inAddr :(NSString *)_inOrdrName :(NSString *)_inPhone;
+-(void)setInfo:(NSString*)_inName :(NSString *)_inAddr :(NSString *)_inPhone;
 @end
 
 
@@ -189,4 +186,23 @@
 @property (nonatomic, retain) IBOutlet UILabel* TotalMoney;  
 
 -(void)setInfo:(NSString*)_inOMoney :(NSString *)_inSMoney :(NSString *)_inTMoney;
+@end
+
+
+/* 맵 주소  Cell 
+ 
+ ---  사용처 ---
+ * 맵 상세 주소 정보
+ */
+@interface StoreAddressCell : UITableViewCell
+{
+	IBOutlet UILabel* StoreName;  
+	IBOutlet UILabel* StoreAddress;
+	
+}
+
+@property (nonatomic, retain) IBOutlet UILabel* StoreName;  
+@property (nonatomic, retain) IBOutlet UILabel* StoreAddress;  
+
+-(void)setInfo:(NSString*)_inName :(NSString *)_inAddr;
 @end

@@ -5,7 +5,8 @@
 @interface MapBodyViewController : UIViewControllerTemplate <CLLocationManagerDelegate, MKMapViewDelegate> {
 	IBOutlet MKMapView *mapView;
 	CLLocationManager *locationManager;
-
+	
+	IBOutlet UIButton* listView;
 	IBOutlet UIButton* storeAll;
 	IBOutlet UIButton* storeDelivery;
 	IBOutlet UIButton* store24;

@@ -33,15 +33,12 @@
 @implementation ShippingOrderCell 
 @synthesize ShippingName;  
 @synthesize ShippingAddress;
-@synthesize OrderName; 
 @synthesize OrderPhone;
 
--(void)setInfo:(NSString*)_inName :(NSString *)_inCall :(NSString *)_inAddr :(NSString *)_inOrdrName :(NSString *)_inPhone
+-(void)setInfo:(NSString*)_inName :(NSString *)_inAddr :(NSString *)_inPhone
 {
-	NSString *Temp = [NSString stringWithFormat:@"%@%@",_inName, _inCall];
-	[ShippingName setText:Temp];
+	[ShippingName setText:_inName];
 	[ShippingAddress setText:_inAddr];
-	[OrderName setText:_inOrdrName];
 	[OrderPhone setText:_inPhone];
 }
 @end
@@ -156,3 +153,19 @@
 	[TotalMoney	setText:_inTMoney];
 }
 @end
+
+
+@implementation StoreAddressCell
+@synthesize StoreName;
+@synthesize StoreAddress;
+
+-(void)setInfo:(NSString*)_inName :(NSString *)_inAddr
+{
+	[StoreName setText: _inName ];
+	[StoreAddress setText:_inAddr];
+	
+}
+
+@end
+
+

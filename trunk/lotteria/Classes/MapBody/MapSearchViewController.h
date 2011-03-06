@@ -10,13 +10,18 @@
 #import "UIViewControllerTemplate.h"
 
 @class HTTPRequest;
-@interface MapSearchViewController : UIViewControllerTemplate {
 
+
+@interface MapSearchViewController : UIViewControllerTemplate {
+	
 	IBOutlet UILabel *SearchLabel;
 	IBOutlet UITableView *SearchTable;
 	IBOutlet UIButton *MapButton;
 	NSMutableArray *AddressArr;
+	
+	int			StoreType;
 	HTTPRequest *httpRequest;
 }
+
 - (IBAction)MapButton;
 @end

@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "UIViewControllerTemplate.h"
 
+@class StoreInfo;
 @interface MapSearchDetailViewController : UIViewControllerTemplate {
 	
-	IBOutlet UILabel *StoreInfo;
+	IBOutlet UILabel *StoreName;
 	IBOutlet UILabel *StoreType;
 	IBOutlet UILabel *StorePhone;
 	IBOutlet UILabel *StoreAddress;
@@ -19,6 +20,9 @@
 	
 	IBOutlet UIButton *callbutton;
 	
+	StoreInfo *Info;
+	
 }
+@property (nonatomic, retain) StoreInfo *Info;
 - (IBAction)callbutton;
 @end

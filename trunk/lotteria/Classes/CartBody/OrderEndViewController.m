@@ -18,6 +18,7 @@
 	Order *tmp =	[[DataManager getInstance] UserOrder ];
 	[Store setText:tmp.branchname];
 	[StorePhone setText:tmp.branchPhone];
+	self.navigationItem.title = @"주문완료";
 }
 
 - (void)viewDidUnload {

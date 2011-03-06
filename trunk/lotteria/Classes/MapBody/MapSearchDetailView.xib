@@ -158,6 +158,9 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
+							<integer value="0" key="IBUIAccessibilityTraits"/>
+						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Label</string>
 						<reference key="IBUIFont" ref="467320643"/>
@@ -263,14 +266,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">StoreInfo</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="590741912"/>
-					</object>
-					<int key="connectionID">16</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">StorePhone</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="586267369"/>
@@ -301,6 +296,14 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">22</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">StoreName</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="590741912"/>
+					</object>
+					<int key="connectionID">23</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -482,7 +485,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">22</int>
+			<int key="maxID">23</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -507,7 +510,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>StoreAddress</string>
 							<string>StoreImg</string>
-							<string>StoreInfo</string>
+							<string>StoreName</string>
 							<string>StorePhone</string>
 							<string>StoreType</string>
 							<string>callbutton</string>
@@ -528,7 +531,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>StoreAddress</string>
 							<string>StoreImg</string>
-							<string>StoreInfo</string>
+							<string>StoreName</string>
 							<string>StorePhone</string>
 							<string>StoreType</string>
 							<string>callbutton</string>
@@ -544,7 +547,7 @@
 								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">StoreInfo</string>
+								<string key="name">StoreName</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">

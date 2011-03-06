@@ -26,6 +26,7 @@
 	Picket.date = [NSDate date];
 	Picket.backgroundColor = [UIColor clearColor];
 	[OrderBurial reloadData];
+	self.navigationItem.title = @"주문하기";
 }
 
 - (void)viewDidUnload {
@@ -62,7 +63,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	static NSString *CellIdentifier = @"ShippingCell";
+	static NSString *CellIdentifier = @"ShippingOrderCell";
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
@@ -72,7 +73,7 @@
 													 owner:self options:nil];
 		for (id oneObject in nib)
 		{
-			if ([oneObject isKindOfClass:[ShippingCell class]])
+			if ([oneObject isKindOfClass:[ShippingOrderCell class]])
 			{
 				cell = oneObject;
 				break;
@@ -81,14 +82,13 @@
 		
 	}
 	
-	ShippingCell *tmp_cell = (ShippingCell *)cell;
+	ShippingOrderCell *tmp_cell = (ShippingOrderCell *)cell;
 	Order *Data = [[DataManager getInstance] UserOrder];
 	
 	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
 					   [Data.UserAddr si], [Data.UserAddr gu], [Data.UserAddr dong], [Data.UserAddr bunji],
 					   [Data.UserAddr building], [Data.UserAddr addrdesc]];
-	
-	[tmp_cell setDelButtonEnable:false];
+
 	[tmp_cell setInfo:[Data branchname] :s_tmp :[Data branchPhone] ];
 	
 	return cell;
@@ -99,7 +99,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 97;
+	return 75;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
