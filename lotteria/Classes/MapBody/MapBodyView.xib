@@ -45,7 +45,7 @@
 					<object class="IBUIImageView" id="400197767">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{8, 50}, {304, 310}}</string>
+						<string key="NSFrame">{{0, 44}, {320, 323}}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -60,7 +60,7 @@
 					<object class="IBMKMapView" id="191982087">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{12, 53}, {295, 301}}</string>
+						<string key="NSFrame">{{12, 55}, {296, 297}}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -69,7 +69,7 @@
 					<object class="IBUIButton" id="416261271">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{259, 55}, {50, 43}}</string>
+						<string key="NSFrame">{{258, 59}, {50, 43}}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -100,7 +100,7 @@
 					<object class="IBUIButton" id="573474291">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{259, 137}, {50, 43}}</string>
+						<string key="NSFrame">{{258, 141}, {50, 43}}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -121,7 +121,7 @@
 					<object class="IBUIButton" id="779034652">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{259, 98}, {50, 39}}</string>
+						<string key="NSFrame">{{258, 102}, {50, 39}}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>

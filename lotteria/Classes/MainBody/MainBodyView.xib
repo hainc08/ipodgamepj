@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="99"/>
+			<integer value="34"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -383,7 +383,7 @@
 									<object class="IBUIImageView" id="469328885">
 										<reference key="NSNextResponder" ref="925170315"/>
 										<int key="NSvFlags">256</int>
-										<string key="NSFrameSize">{320, 76}</string>
+										<string key="NSFrameSize">{320, 80}</string>
 										<reference key="NSSuperview" ref="925170315"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -398,7 +398,7 @@
 									<object class="IBUIImageView" id="586246702">
 										<reference key="NSNextResponder" ref="925170315"/>
 										<int key="NSvFlags">256</int>
-										<string key="NSFrame">{{-2, 0}, {320, 80}}</string>
+										<string key="NSFrameSize">{320, 80}</string>
 										<reference key="NSSuperview" ref="925170315"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -413,7 +413,7 @@
 									<object class="IBUIImageView" id="255846615">
 										<reference key="NSNextResponder" ref="925170315"/>
 										<int key="NSvFlags">256</int>
-										<string key="NSFrame">{{-2, 0}, {320, 80}}</string>
+										<string key="NSFrameSize">{320, 80}</string>
 										<reference key="NSSuperview" ref="925170315"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -940,6 +940,8 @@
 					<string>127.IBViewBoundsToFrameTransform</string>
 					<string>128.IBPluginDependency</string>
 					<string>128.IBViewBoundsToFrameTransform</string>
+					<string>137.IBViewBoundsToFrameTransform</string>
+					<string>138.IBViewBoundsToFrameTransform</string>
 					<string>139.IBViewBoundsToFrameTransform</string>
 					<string>140.IBViewBoundsToFrameTransform</string>
 					<string>141.IBViewBoundsToFrameTransform</string>
@@ -970,7 +972,7 @@
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwogAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDDQAAwpwAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -996,6 +998,12 @@
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw7cAAA</bytes>
 					</object>
 					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABB8AAAwpwAAA</bytes>
+					</object>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABCbAAAwpwAAA</bytes>
+					</object>
+					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwpQAAA</bytes>
 					</object>
 					<object class="NSAffineTransform">
@@ -1009,10 +1017,10 @@
 						<bytes key="NSTransformStruct">P4AAAL+AAABByAAAwhAAAA</bytes>
 					</object>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAADAoAAAwpQAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwpwAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{501, 284}, {320, 412}}</string>
+					<string>{{501, 285}, {320, 412}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -1559,7 +1567,7 @@
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{292, 34}</string>
-				<string>{320, 76}</string>
+				<string>{320, 80}</string>
 				<string>{320, 80}</string>
 				<string>{320, 80}</string>
 				<string>{320, 80}</string>
