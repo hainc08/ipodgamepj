@@ -7,6 +7,7 @@
 @implementation MainBodyViewController
 
 - (void)viewDidLoad {
+	naviImgIdx = 1;
 	[super viewDidLoad];
 	detailView = [[DetailViewController alloc] init];
 	[detailView setNavi:navi];
@@ -30,10 +31,6 @@
 	lastIconButton = nil;
 	
 	searchField.delegate = self;
-	
-	//[searchField setText:SearchBase];
-	
-	self.navigationItem.title = @"메뉴 선택";
 }
 
 -(void)back
@@ -48,6 +45,15 @@
 	
 	[buttonView setAlpha:1];
 	[detailView.view setAlpha:0];
+
+	[normalBG1 setAlpha:0];
+	[normalBG2 setAlpha:0];
+
+	[burgerBG setAlpha:alphaValue[0]];
+	[chickenBG setAlpha:alphaValue[1]];
+	[dessertBG setAlpha:alphaValue[2]];
+	[drinkBG setAlpha:alphaValue[3]];
+	[packBG setAlpha:alphaValue[4]];
 	
 	[UIView commitAnimations];
 }
@@ -131,12 +137,28 @@
 
 - (void)iconClicked:(id)button :(NSString*)mid
 {
-	if (lastIconButton != nil) [(IconButton*)lastIconButton setSelected:false];
+	[normalBG1 setAlpha:1];
+	[normalBG2 setAlpha:1];
+
+	alphaValue[0] = [burgerBG alpha];
+	alphaValue[1] = [chickenBG alpha];
+	alphaValue[2] = [dessertBG alpha];
+	alphaValue[3] = [drinkBG alpha];
+	alphaValue[4] = [packBG alpha];
+
+	[burgerBG setAlpha:0];
+	[chickenBG setAlpha:0];
+	[dessertBG setAlpha:0];
+	[drinkBG setAlpha:0];
+	[packBG setAlpha:0];
+	
+	if ((lastIconButton != nil)&&
+		(button != lastIconButton)) [(IconButton*)lastIconButton setSelected:false];
 
 	{
 		UIImage *buttonImage = [UIImage imageNamed:@"btn_com_top_back_off.png"];
 		UIImage *buttonImage2 = [UIImage imageNamed:@"btn_com_top_back_on.png"];
-		
+
 		backButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[backButton setImage:buttonImage forState:UIControlStateNormal];
 		[backButton setImage:buttonImage2 forState:UIControlStateHighlighted];
@@ -168,6 +190,8 @@
 - (void)setScrollBar:(NSString*)category
 {
 	bool isTopList;
+	[normalBG1 setAlpha:0];
+	[normalBG2 setAlpha:0];
 
 	if ([category compare:@"D10"] == NSOrderedSame)
 	{
@@ -281,6 +305,34 @@
 //	[self.navigationController pushViewController:find  animated:YES];
 //	[find release];
 	return YES;
+}
+
+- (IBAction)FieldStart
+{
+	[self.view bringSubviewToFront:fieldGuard];
+	[self.view bringSubviewToFront:findView];
+	
+	[UIView beginAnimations:@"findAni" context:NULL];
+	[UIView setAnimationDuration:0.2];
+	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	
+	[self.view setCenter:CGPointMake(160, 30)];
+	
+	[UIView commitAnimations];
+}
+
+- (IBAction)FieldEnd
+{
+	[self.view sendSubviewToBack:findView];
+	[self.view sendSubviewToBack:fieldGuard];
+	
+	[UIView beginAnimations:@"findAni" context:NULL];
+	[UIView setAnimationDuration:0.2];
+	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	
+	[self.view setCenter:CGPointMake(160, 208)];
+	
+	[UIView commitAnimations];
 }
 
 @end

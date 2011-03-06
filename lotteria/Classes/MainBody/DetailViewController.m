@@ -6,6 +6,7 @@
 @synthesize fullType;
 
 - (void)viewDidLoad {
+	naviImgIdx = 1;
 	[super viewDidLoad];
 	[contentScrollView setContentSize:CGSizeMake(320, 380)];
 	count = 1;
@@ -130,7 +131,7 @@
 		[changeView setSideType:SIDE_DESSERT];
 		[changeView setBackView:self];
 		[changeView selectId:pId[1]];
-		
+
 		[navi pushViewController:changeView animated:true];
 	}
 	else if (sender == side2Select)
@@ -140,7 +141,7 @@
 		[changeView setSideType:SIDE_DRINK];
 		[changeView setBackView:self];
 		[changeView selectId:pId[2]];
-		
+
 		[navi pushViewController:changeView animated:true];
 	}
 }

@@ -217,14 +217,20 @@ typedef enum _Storetype
 	NSMutableArray* searchResult[5];
 	
 	UIViewController* cartView;
+	UIViewController* mainView;
+
+	int naviImgIdx;
+	UIImage* naviBackImg[2];
 }
 
 @property (retain) UIViewController* cartView;
+@property (retain) UIViewController* mainView;
 @property (readwrite) bool isLoginNow;
 @property (readwrite) bool isLoginSave;
 @property (retain) NSString* accountId;
 @property (retain) NSString* accountPass;
 @property (retain) Order	 *UserOrder;
+@property (readwrite) int naviImgIdx;
 
 + (DataManager*)getInstance;
 + (void)initManager;
@@ -255,5 +261,8 @@ typedef enum _Storetype
 - (int)getSearchProductCount:(int)lIdx;
 - (void)searchProduct:(NSString*)str;
 - (NSString*)getCategoryName:(NSString*)cat;
+
+//-------------------네비게이션 바 배경화면 선택(싱글턴 꼽사리)---------------------
+- (UIImage*)getNaviImg;
 
 @end

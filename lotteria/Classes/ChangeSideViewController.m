@@ -59,6 +59,7 @@
 @implementation ChangeSideViewController
 
 - (void)viewDidLoad {
+	naviImgIdx = 0;
 	[super viewDidLoad];
 }
 
@@ -70,8 +71,16 @@
 - (void)setSideType:(int)type
 {
 	sType = type;
-	if (type == SIDE_DRINK) products = [[DataManager getInstance] getProductArray:@"S40"];
-	else if (type == SIDE_DESSERT) products = [[DataManager getInstance] getProductArray:@"S30"];
+	if (type == SIDE_DRINK)
+	{
+		self.navigationItem.title = @"드링크 변경하기";
+		products = [[DataManager getInstance] getProductArray:@"S40"];
+	}
+	else if (type == SIDE_DESSERT)
+	{
+		self.navigationItem.title = @"디저트 변경하기";
+		products = [[DataManager getInstance] getProductArray:@"S30"];
+	}
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

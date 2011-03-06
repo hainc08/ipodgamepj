@@ -6,6 +6,8 @@
 @synthesize InfoOrder;
 
 - (void)viewDidLoad {
+	naviImgIdx = 0;
+
 	[super viewDidLoad];
 
 	for (int i=0; i<5; ++i)

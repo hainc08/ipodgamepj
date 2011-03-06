@@ -19,8 +19,14 @@
 	IBOutlet UIButton* tapButton3;
 	IBOutlet UIButton* tapButton4;
 	IBOutlet UIImageView* selectedBack;
+
+	IBOutlet UIImageView* cartCountBack1;
+	IBOutlet UIImageView* cartCountBack2;
+	IBOutlet UIImageView* cartCountBack3;
+	IBOutlet UILabel* cartCountLabel;
 }
 
 - (IBAction)buttonClick:(id)sender;
+- (void)cartUpdate;
 
 @end

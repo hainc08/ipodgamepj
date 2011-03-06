@@ -9,10 +9,9 @@
 
 
 - (void)viewDidLoad {
+	naviImgIdx = 0;
 	[super viewDidLoad];
 	self.navigationItem.title = @"마이페이지";
-
-
 }
 
 

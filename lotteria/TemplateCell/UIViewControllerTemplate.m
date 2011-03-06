@@ -11,7 +11,8 @@
 
 @implementation UINavigationBar (CustomImage)
 - (void)drawRect:(CGRect)rect {
-	UIImage *image = [UIImage imageNamed: @"bg_titlebar.png"];
+	//DataManager에 들어갈만한 함수는 아니지만 싱글턴이 이것밖에 없어서 걍 이걸로...
+	UIImage *image = [[DataManager getInstance] getNaviImg];
 	[image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 }
 @end
@@ -20,6 +21,7 @@
 @synthesize navi;
 @synthesize backView;
 @synthesize backButton;
+@synthesize naviImgIdx;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -46,11 +48,16 @@
 		self.navigationItem.leftBarButtonItem = customBarItem;
 		[customBarItem release];
 	}
+
+	[[DataManager getInstance] setNaviImgIdx:naviImgIdx];
+	[navi.navigationBar setNeedsDisplay];
 }
 
 - (void)back
 {
 	[self.navigationController popViewControllerAnimated:YES];
+	[[DataManager getInstance] setNaviImgIdx:[(UIViewControllerTemplate*)backView naviImgIdx]];
+	[navi.navigationBar setNeedsDisplay];
 }
 
 - (IBAction)HelpButtonClicked:(id)sender
@@ -59,6 +66,7 @@
 	[self presentModalViewController:Help animated:YES];
 	[Help release];
 }
+
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -86,6 +94,8 @@
 @synthesize navi;
 @synthesize backButton;
 @synthesize closetype;
+@synthesize naviImgIdx;
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	
@@ -110,7 +120,9 @@
 	}
 	else
 	self.navigationItem.leftBarButtonItem = nil;
-	
+
+	[[DataManager getInstance] setNaviImgIdx:naviImgIdx];
+	[navi.navigationBar setNeedsDisplay];
 }
 
 - (IBAction)HelpButtonClicked:(id)sender
@@ -119,10 +131,12 @@
 	[self presentModalViewController:Help animated:YES];
 	[Help release];
 }
+
 - (void)back
 {
-	[self.navigationController popViewControllerAnimated:NO];
+	[self.navigationController popViewControllerAnimated:YES];
 }
+
 - (void)viewDidUnload {
 	[backButton release];
     [super viewDidUnload];

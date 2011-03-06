@@ -7,9 +7,9 @@
 @synthesize mapView;
 
 - (void)viewDidLoad {
+	naviImgIdx = 0;
 	[super viewDidLoad];
 	self.navigationItem.title = @"매장찾기";
-	
 	
 	buttonImg[0][0] = [[UIImage imageNamed:@"btn_store_all_off.png"] retain];
 	buttonImg[0][1] = [[UIImage imageNamed:@"btn_store_all_on.png"] retain];
@@ -46,7 +46,7 @@
 {
 	[textField resignFirstResponder];
 	MapSearchViewController *SearchControl = [[MapSearchViewController alloc] initWithNibName:@"MapSearchView" bundle:nil];
-	[self.navigationController pushViewController:SearchControl animated:YES];
+	[self.navi pushViewController:SearchControl animated:YES];
 	[SearchControl release];
 
 	return YES;
