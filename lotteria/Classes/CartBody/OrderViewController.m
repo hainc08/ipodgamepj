@@ -21,6 +21,7 @@
 	OrderTable.opaque = NO;
 	OrderTable.separatorStyle = UITableViewCellSeparatorStyleNone;
 	OrderTable.separatorColor = [UIColor clearColor];
+	self.navigationItem.title = @"주문하기";
 }
 
 
@@ -232,7 +233,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if(indexPath.section == 0) return 97;
+	if(indexPath.section == 0) return 112;
 	else {
 		if(indexPath.row == 0) return 14.0f;
 		else if (indexPath.row-1 < [[[DataManager getInstance] getShopCart]  count]) return 51.0f;

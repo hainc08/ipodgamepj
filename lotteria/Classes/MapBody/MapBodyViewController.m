@@ -109,6 +109,13 @@
 	if (sender == storeAll) [self selectCategory:0];
 	else if (sender == storeDelivery) [self selectCategory:1];
 	else if (sender == store24) [self selectCategory:2];
+	else if (sender == listView) 
+	{
+		MapSearchViewController *SearchControl = [[MapSearchViewController alloc] initWithNibName:@"MapSearchView" bundle:nil];
+		
+		[self.navigationController pushViewController:SearchControl animated:YES];
+		[SearchControl release];
+	}
 }
 
 //테스트용...실제 데이타는 어떻게 들어오려나?

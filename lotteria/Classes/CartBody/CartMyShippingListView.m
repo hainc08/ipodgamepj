@@ -33,7 +33,7 @@
 	[noRegImage setAlpha:0];
 	
 	
-	
+	self.navigationItem.title = @"배송지선택";
 	
 	
 	
@@ -341,7 +341,8 @@
 				break;
 			}
 		}
-		
+		cell.selectedBackgroundView = [[[UIImageView alloc] init] autorelease];
+		((UIImageView *)cell.selectedBackgroundView).image = [UIImage imageNamed:@"bg_delivery_box_on.png"] ;
 	}
 	
 	ShippingCell *tmp_cell = (ShippingCell *)cell;

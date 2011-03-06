@@ -11,12 +11,13 @@
 #import "DataManager.h"
 @implementation CartOrderUserViewController
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	self.navigationItem.title = @"수령자 정보";
 }
-*/
+
 
 
 - (void)didReceiveMemoryWarning {

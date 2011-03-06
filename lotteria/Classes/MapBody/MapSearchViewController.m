@@ -18,7 +18,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	AddressArr = [[NSMutableArray alloc] initWithCapacity:0];
 	httpRequest = [[HTTPRequest alloc] init];
+	self.navigationItem.title = @"매장찾기";
+	
+	
+	
+	StoreInfo *storeaddr  = [[[StoreInfo alloc] init] retain];
+	[storeaddr setStoreid:@"111111"];
+	[storeaddr setStorename:@"테스트 매장"];
+	[storeaddr setStorephone:@"00000000000"];
+	
+	//NSString *type  =[[t_item getChild:@"storetype"] getValue];
+	[storeaddr setStoretype:TIMESTORE];
+	[storeaddr setSi:@"서울시"];
+	[storeaddr setGu:@"구로구"];
+	[storeaddr setDong:@"서초동"];
+	[storeaddr setBunji:@"100번지"];
+	[storeaddr setBuilding:@"솔몰리에빌랭"];
+	[storeaddr setAddrdesc:@"메롱"];
+	
+	[AddressArr  addObject:storeaddr];
+	
+	[SearchTable reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,22 +134,21 @@
 		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
 		{
 			
-			CustomerDelivery *Customer  = [[[CustomerDelivery alloc] init] retain];
-			[Customer setSeq:[[t_item getChild:@"seq"] getValue]];
-			[Customer setPhone:[[t_item getChild:@"phone"] getValue]];
-			[Customer setSi:[[t_item getChild:@"si"] getValue]];
-			[Customer setGu:[[t_item getChild:@"gu"] getValue]];
-			[Customer setDong:[[t_item getChild:@"dong"] getValue]];
-			[Customer setBunji:[[t_item getChild:@"bunji"] getValue]];
-			[Customer setBuilding:[[t_item getChild:@"building"] getValue]];
-			[Customer setAddrdesc:[[t_item getChild:@"addr_desc"] getValue]];
-			[Customer setBranchid:[[t_item getChild:@"branch_id"] getValue]];
-			[Customer setRegdate:[[t_item getChild:@"reg_date"] getValue]];
-			[Customer setRegtime:[[t_item getChild:@"reg_time"] getValue]];
-			[Customer setUpddate:[[t_item getChild:@"upd_date"] getValue]];
-			[Customer setUpdtime:[[t_item getChild:@"upd_time"] getValue]];
+			StoreInfo *storeaddr  = [[[StoreInfo alloc] init] retain];
+			[storeaddr setStoreid:[[t_item getChild:@"seq"] getValue]];
+			[storeaddr setStorename:[[t_item getChild:@"name"] getValue]];
+			[storeaddr setStorephone:[[t_item getChild:@"phone"] getValue]];
 			
-			[AddressArr  addObject:Customer];
+			//NSString *type  =[[t_item getChild:@"storetype"] getValue];
+			[storeaddr setStoretype:TIMESTORE];
+			[storeaddr setSi:[[t_item getChild:@"si"] getValue]];
+			[storeaddr setGu:[[t_item getChild:@"gu"] getValue]];
+			[storeaddr setDong:[[t_item getChild:@"dong"] getValue]];
+			[storeaddr setBunji:[[t_item getChild:@"bunji"] getValue]];
+			[storeaddr setBuilding:[[t_item getChild:@"building"] getValue]];
+			[storeaddr setAddrdesc:[[t_item getChild:@"addr_desc"] getValue]];
+			
+			[AddressArr  addObject:storeaddr];
 		}	
 		[xmlParser release];
 
@@ -142,7 +164,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	
-	static NSString *CellIdentifier = @"ShippingCell";
+	static NSString *CellIdentifier = @"StoreAddressCell";
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
@@ -152,24 +174,26 @@
 													 owner:self options:nil];
 		for (id oneObject in nib)
 		{
-			if ([oneObject isKindOfClass:[ShippingCell class]])
+			if ([oneObject isKindOfClass:[StoreAddressCell class]])
 			{
 				cell = oneObject;
 				break;
 			}
 		}
+		cell.selectedBackgroundView = [[[UIImageView alloc] init] autorelease];
+		((UIImageView *)cell.selectedBackgroundView).image = [UIImage imageNamed:@"bg_select_bar.png"] ;
 		
 	}
 	
-	ShippingCell *tmp_cell = (ShippingCell *)cell;
-	Order *Data = [[DataManager getInstance] UserOrder];
+	StoreAddressCell *tmp_cell = (StoreAddressCell *)cell;
+	
+	StoreInfo *Info = [AddressArr objectAtIndex:indexPath.row];
 	
 	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
-					   [Data.UserAddr si], [Data.UserAddr gu], [Data.UserAddr dong], [Data.UserAddr bunji],
-					   [Data.UserAddr building], [Data.UserAddr addrdesc]];
-	
-	[tmp_cell setDelButtonEnable:false];
-	[tmp_cell setInfo:[Data branchname] :s_tmp :[Data branchPhone] ];
+					   [Info si], [Info gu], [Info dong], [Info bunji],
+					   [Info building], [Info addrdesc]];
+
+	[tmp_cell setInfo:[Info storename] :s_tmp ];
 	
 	return cell;
 }
@@ -178,19 +202,21 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	
 	 MapSearchDetailViewController *SearchControl = [[MapSearchDetailViewController alloc] initWithNibName:@"MapSearchDetailView" bundle:nil];
+	SearchControl.Info = [AddressArr objectAtIndex:indexPath.row];
 	[self.navigationController pushViewController:SearchControl animated:YES];
 	[SearchControl release];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 97;
+	return 53;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 1;
+	return  [AddressArr count];
 }
 
 @end

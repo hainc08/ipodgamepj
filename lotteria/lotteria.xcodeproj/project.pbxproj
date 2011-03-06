@@ -500,6 +500,9 @@
 		56D81F86131E3B950049314B /* MapSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D81F84131E3B950049314B /* MapSearchView.xib */; };
 		56D81FC0131E81480049314B /* MapSearchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D81FBE131E81480049314B /* MapSearchDetailViewController.m */; };
 		56D81FC1131E81480049314B /* MapSearchDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D81FBF131E81480049314B /* MapSearchDetailView.xib */; };
+		56D82124132161650049314B /* StoreAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D82123132161650049314B /* StoreAddressCell.xib */; };
+		56D82166132365B90049314B /* HelpWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D82164132365B90049314B /* HelpWebViewController.m */; };
+		56D82167132365B90049314B /* HelpWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D82165132365B90049314B /* HelpWebView.xib */; };
 		84384256130F862200EE2887 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84384255130F862200EE2887 /* DataManager.m */; };
 		8443E434131C185F00DB34BC /* FindCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8443E433131C185F00DB34BC /* FindCellView.xib */; };
 		84774392130F8F2100FB2532 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 84774391130F8F2100FB2532 /* FileIO.m */; };
@@ -1058,6 +1061,10 @@
 		56D81FBD131E81480049314B /* MapSearchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSearchDetailViewController.h; sourceTree = "<group>"; };
 		56D81FBE131E81480049314B /* MapSearchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSearchDetailViewController.m; sourceTree = "<group>"; };
 		56D81FBF131E81480049314B /* MapSearchDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapSearchDetailView.xib; sourceTree = "<group>"; };
+		56D82123132161650049314B /* StoreAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = StoreAddressCell.xib; path = TemplateCell/StoreAddressCell.xib; sourceTree = "<group>"; };
+		56D82163132365B90049314B /* HelpWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpWebViewController.h; path = Classes/Help/HelpWebViewController.h; sourceTree = "<group>"; };
+		56D82164132365B90049314B /* HelpWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpWebViewController.m; path = Classes/Help/HelpWebViewController.m; sourceTree = "<group>"; };
+		56D82165132365B90049314B /* HelpWebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HelpWebView.xib; path = Classes/Help/HelpWebView.xib; sourceTree = "<group>"; };
 		84384254130F862200EE2887 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		84384255130F862200EE2887 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		8443E433131C185F00DB34BC /* FindCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindCellView.xib; sourceTree = "<group>"; };
@@ -1223,6 +1230,7 @@
 				56D81180131954FC0049314B /* OrderListBottomCell.xib */,
 				56D813F41319E4D60049314B /* OrderMenuCell.xib */,
 				56A9C7AF1313FCC40071D8A0 /* OrderMoneyCell.xib */,
+				56D82123132161650049314B /* StoreAddressCell.xib */,
 				56A9C9E81315420A0071D8A0 /* UIViewControllerTemplate.h */,
 				56A9C9E91315420A0071D8A0 /* UIViewControllerTemplate.m */,
 			);
@@ -1257,6 +1265,9 @@
 				56A9CA64131550F00071D8A0 /* HelpViewController.h */,
 				56A9CA65131550F00071D8A0 /* HelpViewController.m */,
 				56A9CA66131550F00071D8A0 /* HelpView.xib */,
+				56D82163132365B90049314B /* HelpWebViewController.h */,
+				56D82164132365B90049314B /* HelpWebViewController.m */,
+				56D82165132365B90049314B /* HelpWebView.xib */,
 			);
 			name = Help;
 			sourceTree = "<group>";
@@ -2418,6 +2429,8 @@
 				8443E434131C185F00DB34BC /* FindCellView.xib in Resources */,
 				56D81F86131E3B950049314B /* MapSearchView.xib in Resources */,
 				56D81FC1131E81480049314B /* MapSearchDetailView.xib in Resources */,
+				56D82124132161650049314B /* StoreAddressCell.xib in Resources */,
+				56D82167132365B90049314B /* HelpWebView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2465,6 +2478,7 @@
 				56D81660131AB13E0049314B /* OrderEndViewController.m in Sources */,
 				56D81F85131E3B950049314B /* MapSearchViewController.m in Sources */,
 				56D81FC0131E81480049314B /* MapSearchDetailViewController.m in Sources */,
+				56D82166132365B90049314B /* HelpWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
