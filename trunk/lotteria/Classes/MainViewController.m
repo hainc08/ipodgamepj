@@ -10,6 +10,8 @@
 #import "NaviViewController.h"
 #import "LogoViewController.h"
 
+#import "HelpViewController.h"
+
 @implementation MainViewController
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -25,7 +27,7 @@
 	
 	[self.view addSubview:curView];
 	[self.view addSubview:logoBody.view];
-
+	
 	[self.view sendSubviewToBack:curView];
 	[self.view sendSubviewToBack:backImg];
 	[self.view bringSubviewToFront:helpButton];
@@ -35,10 +37,9 @@
 	[listButton setAlpha:0];
 	
 	lastButton = nil;
-	helpView = nil;
 
 	[self cartUpdate];
-	[[DataManager getInstance] setMainView:self];
+	[[ViewManager getInstance] setMainView:self];
 }
 
 - (IBAction)buttonClick:(id)sender
@@ -55,6 +56,8 @@
 	
 	[self dismissModalViewControllerAnimated:YES];
 	NaviViewController* navi = [[NaviViewController alloc] init];
+	[navi setHelpButton:helpButton];
+	[navi setParentView:self];
 	[navi setIdx:idx];
 
 	UIView* oldView = curView;
@@ -64,43 +67,14 @@
 	[self viewAlign];
 
 	[oldView removeFromSuperview];
-	if (helpView != nil) [[helpView body] back];
+	[[ViewManager getInstance] closePopUp];
 
-	[helpButton setAlpha:1];
 	lastButton = sender;
 }
 
 - (IBAction)helpClick
 {
-	[self dismissModalViewControllerAnimated:YES];
-
-	if (helpView != nil)
-	{
-		[helpView.view removeFromSuperview];
-		[helpView release];
-		helpView = nil;
-	}
-	
-	helpView = [[NaviViewController alloc] init];
-	[(NaviViewController*)helpView setIdx:4];
-	[(NaviViewController*)helpView setHelpButton:helpButton];
-	
-	[self.view addSubview:helpView.view];
-
-	[self.view sendSubviewToBack:helpView.view];
-	[self viewAlign];
-
-	[helpView.view setCenter:CGPointMake(160, 480 + 206)];
-	
-	[UIView beginAnimations:@"helpAni" context:NULL];
-	[UIView setAnimationDuration:0.3];
-	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-	
-	[helpView.view setCenter:CGPointMake(160, 220)];
-	
-	[UIView commitAnimations];
-
-	[helpButton setAlpha:0];
+	[[ViewManager getInstance] popUp:[[HelpViewController alloc] init] button:helpButton owner:nil];
 	lastButton = nil;
 }
 

@@ -23,7 +23,7 @@
 
 - (IBAction)CloseButtonClicked:(id)sender
 {
-	[self dismissModalViewControllerAnimated:YES];
+	[[ViewManager getInstance] closePopUp];
 }
 
 - (IBAction)HelpButtonInfo:(id)sender

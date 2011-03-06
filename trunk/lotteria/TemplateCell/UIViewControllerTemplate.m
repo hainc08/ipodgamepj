@@ -12,7 +12,7 @@
 @implementation UINavigationBar (CustomImage)
 - (void)drawRect:(CGRect)rect {
 	//DataManager에 들어갈만한 함수는 아니지만 싱글턴이 이것밖에 없어서 걍 이걸로...
-	UIImage *image = [[DataManager getInstance] getNaviImg];
+	UIImage *image = [[ViewManager getInstance] getNaviImg];
 	[image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 }
 @end
@@ -49,14 +49,14 @@
 		[customBarItem release];
 	}
 
-	[[DataManager getInstance] setNaviImgIdx:naviImgIdx];
+	[[ViewManager getInstance] setNaviImgIdx:naviImgIdx];
 	[navi.navigationBar setNeedsDisplay];
 }
 
 - (void)back
 {
 	[self.navigationController popViewControllerAnimated:YES];
-	[[DataManager getInstance] setNaviImgIdx:[(UIViewControllerTemplate*)backView naviImgIdx]];
+	[[ViewManager getInstance] setNaviImgIdx:[(UIViewControllerTemplate*)backView naviImgIdx]];
 	[navi.navigationBar setNeedsDisplay];
 }
 
@@ -104,7 +104,7 @@
 		
 		backButton.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
 		
-		[backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+		[backButton addTarget:self action:@selector(viewClose) forControlEvents:UIControlEventTouchUpInside];
 		
 		UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
 		self.navigationItem.rightBarButtonItem = customBarItem;
@@ -113,7 +113,7 @@
 	else
 	self.navigationItem.leftBarButtonItem = nil;
 
-	[[DataManager getInstance] setNaviImgIdx:naviImgIdx];
+	[[ViewManager getInstance] setNaviImgIdx:naviImgIdx];
 	[navi.navigationBar setNeedsDisplay];
 
 	[navi.view setCenter:CGPointMake(160, 480 + 206)];
@@ -127,6 +127,11 @@
 	[UIView commitAnimations];
 }
 
+- (void)viewClose
+{
+	[[ViewManager getInstance] closePopUp];
+}
+
 - (void)back
 {
 	[UIView beginAnimations:@"helpAni" context:NULL];
@@ -136,8 +141,7 @@
 	[navi.view setCenter:CGPointMake(160, 480 + 206)];
 		
 	[UIView commitAnimations];
-		
-	[[navi helpButton] setAlpha:1];
+
 	self.navigationItem.rightBarButtonItem = nil;
 }
 

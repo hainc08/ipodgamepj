@@ -16,11 +16,11 @@
 #import "HttpRequest.h"
 #import "CartOrderShopMenuViewController.h"
 #import "DataManager.h"
+#import "LoginViewController.h"
 
 @implementation CartMyShippingList
 
 - (void)viewDidLoad {
-
 	CustomerTable.backgroundColor = [UIColor clearColor];
 	CustomerTable.opaque = NO;
 	
@@ -28,11 +28,23 @@
 	
 	[noRegImage setAlpha:0];
 	
-	
 	self.navigationItem.title = @"배송지선택";
 	
-	
-	
+    [super viewDidLoad];
+
+	if ([[DataManager getInstance] isLoginNow] == false)
+	{
+		LoginViewController* popView = [[LoginViewController alloc] init];
+		[[ViewManager getInstance] popUp:popView button:[navi helpButton] owner:self];
+	}
+	else
+	{
+		[self refresh];
+	}
+}
+
+- (void)refresh
+{
 	//httpRequest = [[HTTPRequest alloc] init];
 	
 	NSString *string = @"<NewDataSet>\
@@ -99,7 +111,7 @@
 		[CustomerArr  addObject:Customer];
 	}	
 	[xmlParser release];
-//	[self GetShippingList];
+	//	[self GetShippingList];
 	[CustomerTable reloadData];	
     [super viewDidLoad];
 }

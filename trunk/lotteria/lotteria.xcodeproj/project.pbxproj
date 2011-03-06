@@ -504,6 +504,7 @@
 		8421656413234C8200F9A5F3 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8421656213234C8200F9A5F3 /* Icon@2x.png */; };
 		84384256130F862200EE2887 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84384255130F862200EE2887 /* DataManager.m */; };
 		8443E434131C185F00DB34BC /* FindCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8443E433131C185F00DB34BC /* FindCellView.xib */; };
+		8463A0891323D84B0064F123 /* ViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463A0881323D84B0064F123 /* ViewManager.m */; };
 		84774392130F8F2100FB2532 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 84774391130F8F2100FB2532 /* FileIO.m */; };
 		848B04AD1313864E00A1C50E /* XmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 848B04AC1313864E00A1C50E /* XmlParser.m */; };
 		848B6F67131382DF000E3272 /* product.xml in Resources */ = {isa = PBXBuildFile; fileRef = 848B6F66131382DF000E3272 /* product.xml */; };
@@ -1066,6 +1067,8 @@
 		84384254130F862200EE2887 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		84384255130F862200EE2887 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		8443E433131C185F00DB34BC /* FindCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindCellView.xib; sourceTree = "<group>"; };
+		8463A0871323D84B0064F123 /* ViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewManager.h; sourceTree = "<group>"; };
+		8463A0881323D84B0064F123 /* ViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewManager.m; sourceTree = "<group>"; };
 		84774390130F8F2100FB2532 /* FileIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileIO.h; sourceTree = "<group>"; };
 		84774391130F8F2100FB2532 /* FileIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileIO.m; sourceTree = "<group>"; };
 		848B04AB1313864E00A1C50E /* XmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlParser.h; sourceTree = "<group>"; };
@@ -1776,6 +1779,8 @@
 				84774391130F8F2100FB2532 /* FileIO.m */,
 				84384254130F862200EE2887 /* DataManager.h */,
 				84384255130F862200EE2887 /* DataManager.m */,
+				8463A0871323D84B0064F123 /* ViewManager.h */,
+				8463A0881323D84B0064F123 /* ViewManager.m */,
 				848B04AB1313864E00A1C50E /* XmlParser.h */,
 				848B04AC1313864E00A1C50E /* XmlParser.m */,
 			);
@@ -2479,6 +2484,7 @@
 				56D81F85131E3B950049314B /* MapSearchViewController.m in Sources */,
 				56D81FC0131E81480049314B /* MapSearchDetailViewController.m in Sources */,
 				56D82166132365B90049314B /* HelpWebViewController.m in Sources */,
+				8463A0891323D84B0064F123 /* ViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

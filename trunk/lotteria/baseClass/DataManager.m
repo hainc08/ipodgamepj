@@ -166,14 +166,11 @@ static DataManager *DataManagerInst;
 
 @implementation DataManager
 
-@synthesize cartView;
-@synthesize mainView;
 @synthesize isLoginNow;
 @synthesize isLoginSave;
 @synthesize accountId;
 @synthesize accountPass;
 @synthesize UserOrder;
-@synthesize naviImgIdx;
 
 + (DataManager*)getInstance
 {
@@ -217,14 +214,10 @@ static DataManager *DataManagerInst;
 	}
 
 	isLoginNow = false;
-	cartView = nil;
 	
 	[self loadProduct];
-	
-	naviImgIdx = 0;
-	naviBackImg[0] = [UIImage imageNamed: @"bg_titlebar.png"];
-	naviBackImg[1] = [UIImage imageNamed: @"bg_logo_titlebar.png"];
 }
+
 - (void)LoginSave
 {
 	NSFileHandle* accountFile = makeFileToWrite(@"account.txt");
@@ -247,36 +240,24 @@ static DataManager *DataManagerInst;
 			([[i dessertId] compare:[item dessertId]] == NSOrderedSame))
 		{
 			[i setCount:[item count] + [i count]];
-			[self cartUpdate];
+			[[ViewManager getInstance] cartUpdate];
 			return;
 		}
 	}
 	
 	[ShopCart addObject:item];
-	[self cartUpdate];
+	[[ViewManager getInstance] cartUpdate];
 }
 
 - (void)removeCartItem:(CartItem*)item
 {
 	[ShopCart removeObject:item];
-	[self cartUpdate];
+	[[ViewManager getInstance] cartUpdate];
 }
 
 - (NSMutableArray*)getShopCart
 {
 	return ShopCart;
-}
-
-- (void)cartUpdate
-{
-	if (cartView != nil)
-	{
-		[(CartBodyViewController*)cartView update];
-	}
-	if (mainView != nil)
-	{
-		[(MainViewController*)mainView cartUpdate];
-	}
 }
 
 - (int)itemCount:(int)listIdx
@@ -518,11 +499,6 @@ static DataManager *DataManagerInst;
 	if ([cat compare:@"S11"] == NSOrderedSame) return @"콤보";
 
 	return nil;		// 엉뚱한값이면 
-}
-
-- (UIImage*)getNaviImg
-{
-	return naviBackImg[naviImgIdx];
 }
 
 @end

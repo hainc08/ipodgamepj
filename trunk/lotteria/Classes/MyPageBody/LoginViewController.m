@@ -144,7 +144,7 @@
 		[[DataManager getInstance] setIsLoginNow:TRUE];
 	}
 
-	[self back];
+	[[ViewManager getInstance] closePopUp];
 }
 
 

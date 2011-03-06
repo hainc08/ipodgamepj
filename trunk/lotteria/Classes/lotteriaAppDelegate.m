@@ -20,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.  
+	[ViewManager initManager];
 	[DataManager initManager];
 
     // Add the main view controller's view to the window and display.
@@ -82,6 +83,7 @@
     [mainViewController release];
     [window release];
 
+	[[ViewManager getInstance] closeManager];
 	[[DataManager getInstance] closeManager];
 	[super dealloc];
 }

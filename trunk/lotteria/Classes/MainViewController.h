@@ -24,8 +24,6 @@
 	IBOutlet UIImageView* cartCountBack2;
 	IBOutlet UIImageView* cartCountBack3;
 	IBOutlet UILabel* cartCountLabel;
-	
-	UIViewController* helpView;
 }
 
 - (IBAction)buttonClick:(id)sender;

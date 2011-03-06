@@ -24,7 +24,7 @@
 	
 	InfoOrder = [[[Order alloc] init] retain];
 
-	[[DataManager getInstance] setCartView:self];
+	[[ViewManager getInstance] setCartView:self];
 	
 	self.navigationItem.title = @"장바구니";
 }
@@ -97,19 +97,9 @@
 	}
 	else
 	{
-		if (![[DataManager getInstance] isLoginNow])
-		{
-			LoginViewController *login = [[LoginViewController alloc] init];
-			login.closetype = true;
-			[login setLoginNextType:CART];
-			[self.navigationController pushViewController:login	animated:YES];
-			[login release];
-		}
-		else {
-			CartMyShippingList *OrderView = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil ];
-			[self.navigationController pushViewController:OrderView animated:YES ];
-			[OrderView release];
-		}
+		CartMyShippingList *OrderView = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil ];
+		[self.navigationController pushViewController:OrderView animated:YES ];
+		[OrderView release];
 	}
 
 
