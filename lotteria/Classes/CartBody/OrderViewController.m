@@ -137,7 +137,7 @@
 					break;
 				}
 			}
-			
+			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		}
 		ShippingCell *tmp_cell = (ShippingCell *)cell;
 		tmp_cell.backgroundColor = [UIColor clearColor];
@@ -199,9 +199,7 @@
 		
 		if(indexPath.row == 0)
 		{
-		//	OrderListTopCell *tmp_cell = (OrderListTopCell *)cell;
-		//	tmp_cell.backgroundColor = [UIColor clearColor];
-
+			
 		}
 		else if(indexPath.row -1 <   [[[DataManager getInstance] getShopCart]  count] )
 		{

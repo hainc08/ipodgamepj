@@ -7,18 +7,19 @@
 //
 
 #import "ShipSearchViewController.h"
-#import "ShipAddressTable.h"
-#import "HelpViewController.h"
 
 @implementation ShipSearchViewController
 
 
 - (void)viewDidLoad {
-  [super viewDidLoad];	
 	
+	self.navigationItem.title = @"배송지등록";
+	NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://m.naver.com"]
+														  cachePolicy:NSURLRequestReloadIgnoringCacheData 
+													  timeoutInterval:10.0];
+	[webview loadRequest:request];	
+	[super viewDidLoad];	
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -37,26 +38,14 @@
 - (void)dealloc {
     [super dealloc];
 }
-- (IBAction) SearchButton:(id)sender
-{
-	ShipAddressTable *shiptable = [[ShipAddressTable alloc] initWithNibName:@"ShipAddressTable" bundle:nil];
-	//ShipAddressTable *shiptable = [[ShipAddressTable alloc] init];
-	[shiptable setDong:SearchText.text];
-	shiptable.ShipType = 0;
-	[self.navigationController pushViewController:shiptable animated:YES];
-	[shiptable release];
-	
+
+
+#pragma mark - 
+#pragma mark WebView 
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView1 { 
+	/* 무슨처리 해야되나? */
 }
-
-#pragma mark  -
-#pragma mark TextField
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-	[textField resignFirstResponder];
-	return YES;
-}
-
 
 
 #pragma mark -

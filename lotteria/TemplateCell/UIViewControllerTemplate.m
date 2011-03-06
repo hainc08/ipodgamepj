@@ -60,13 +60,6 @@
 	[navi.navigationBar setNeedsDisplay];
 }
 
-- (IBAction)HelpButtonClicked:(id)sender
-{
-	HelpViewController *Help = [[HelpViewController alloc] initWithNibName:@"HelpView" bundle:nil];
-	[self presentModalViewController:Help animated:YES];
-	[Help release];
-}
-
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -85,7 +78,6 @@
 - (void)dealloc {
     [super dealloc];
 }
-
 
 @end
 
@@ -135,13 +127,6 @@
 	[UIView commitAnimations];
 }
 
-- (IBAction)HelpButtonClicked:(id)sender
-{
-	HelpViewController *Help = [[HelpViewController alloc] initWithNibName:@"HelpView" bundle:nil];
-	[self presentModalViewController:Help animated:YES];
-	[Help release];
-}
-
 - (void)back
 {
 	[UIView beginAnimations:@"helpAni" context:NULL];
@@ -162,8 +147,6 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
-
-
 
 - (void)dealloc {
     [super dealloc];

@@ -21,7 +21,9 @@
 	
 	int			StoreType;
 	HTTPRequest *httpRequest;
+	NSString	*Dong;	// 검색 동 
 }
-
+@property (nonatomic, retain) NSString *Dong;
+- (void)GetStoreInfo;
 - (IBAction)MapButton;
 @end

@@ -19,10 +19,6 @@
 
 @implementation CartMyShippingList
 
-@synthesize	CustomerArr;
-@synthesize	InfoOrder;
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 
 	CustomerTable.backgroundColor = [UIColor clearColor];
@@ -37,7 +33,7 @@
 	
 	
 	
-	httpRequest = [[HTTPRequest alloc] init];
+	//httpRequest = [[HTTPRequest alloc] init];
 	
 	NSString *string = @"<NewDataSet>\
 	<item>\
@@ -104,6 +100,7 @@
 	}	
 	[xmlParser release];
 //	[self GetShippingList];
+	[CustomerTable reloadData];	
     [super viewDidLoad];
 }
 
@@ -123,18 +120,10 @@
 
 - (void)dealloc {
 	[httpRequest release];
+	[CustomerArr release];
     [super dealloc];
 }
-- (void)viewWillAppear:(BOOL)animated
-{
-	[super viewWillAppear:animated];
-	[CustomerTable reloadData];	
-}
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
 
 - (IBAction)ShipRegButton:(id)sender
 {	

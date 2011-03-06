@@ -71,6 +71,7 @@ static DataManager *DataManagerInst;
 @synthesize storeid, storename, storephone;
 @synthesize	storetype, si , gu;
 @synthesize dong,bunji , building ,addrdesc;
+@synthesize coordinate;
 
 - (void)dealloc {
 	[storeid release];

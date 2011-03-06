@@ -25,8 +25,7 @@
 }
 
 - (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+	
 }
 
 - (void)dealloc {
@@ -39,13 +38,19 @@
 	
     [super dealloc];
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event	
+{
+	[Search resignFirstResponder];
+}
+
 #pragma mark  -
 #pragma mark TextField
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-	[textField resignFirstResponder];
 	MapSearchViewController *SearchControl = [[MapSearchViewController alloc] initWithNibName:@"MapSearchView" bundle:nil];
+	
 	[self.navi pushViewController:SearchControl animated:YES];
 	[SearchControl release];
 
@@ -112,10 +117,11 @@
 	else if (sender == listView) 
 	{
 		MapSearchViewController *SearchControl = [[MapSearchViewController alloc] initWithNibName:@"MapSearchView" bundle:nil];
-		
-		[self.navigationController pushViewController:SearchControl animated:YES];
+		SearchControl.Dong = Search.text;
+		[self.navi pushViewController:SearchControl animated:YES];
 		[SearchControl release];
 	}
+	else if (sender == TextClear)	[Search setText:@""];
 }
 
 //테스트용...실제 데이타는 어떻게 들어오려나?
@@ -125,6 +131,7 @@
 	anote.idx = shopIdx;
 	anote.shopType = shopIdx;
 	anote.coordinate = location;
+	
 	
 	anote.title =@"롯데리아 대청점";
 

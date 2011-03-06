@@ -2,10 +2,11 @@
 #import <MapKit/MapKit.h>
 #import "UIViewControllerTemplate.h"		
 
-@interface MapBodyViewController : UIViewControllerTemplate <CLLocationManagerDelegate, MKMapViewDelegate> {
+@interface MapBodyViewController : UIViewControllerTemplate <CLLocationManagerDelegate, MKMapViewDelegate > {
 	IBOutlet MKMapView *mapView;
 	CLLocationManager *locationManager;
 	
+	IBOutlet UIButton* TextClear;
 	IBOutlet UIButton* listView;
 	IBOutlet UIButton* storeAll;
 	IBOutlet UIButton* storeDelivery;

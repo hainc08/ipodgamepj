@@ -18,7 +18,6 @@
 		56928BEC1312BEEC000700A9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56928BEA1312BEEC000700A9 /* LoginViewController.m */; };
 		56928C871312D787000700A9 /* MyCustomerDelivery.m in Sources */ = {isa = PBXBuildFile; fileRef = 56928C851312D787000700A9 /* MyCustomerDelivery.m */; };
 		56928C881312D787000700A9 /* MyCustomerDelivery.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56928C861312D787000700A9 /* MyCustomerDelivery.xib */; };
-		56A9C7AA1313FC3D0071D8A0 /* OldOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9C7A91313FC3D0071D8A0 /* OldOrderCell.xib */; };
 		56A9C7AC1313FC660071D8A0 /* ShippingOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9C7AB1313FC660071D8A0 /* ShippingOrderCell.xib */; };
 		56A9C7AE1313FC930071D8A0 /* OrderListMiddleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9C7AD1313FC930071D8A0 /* OrderListMiddleCell.xib */; };
 		56A9C7B01313FCC40071D8A0 /* OrderMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9C7AF1313FCC40071D8A0 /* OrderMoneyCell.xib */; };
@@ -33,12 +32,8 @@
 		56A9CA68131550F00071D8A0 /* HelpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9CA66131550F00071D8A0 /* HelpView.xib */; };
 		56A9CD56131586770071D8A0 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A9CD54131586770071D8A0 /* OrderViewController.m */; };
 		56A9CD57131586770071D8A0 /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9CD55131586770071D8A0 /* OrderViewController.xib */; };
-		56D8082D1317ED260049314B /* ShipAddressTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D808281317ED260049314B /* ShipAddressTable.m */; };
-		56D8082E1317ED260049314B /* ShipAddressTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D808291317ED260049314B /* ShipAddressTable.xib */; };
 		56D8082F1317ED260049314B /* ShipSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D8082A1317ED260049314B /* ShipSearchView.xib */; };
 		56D808301317ED260049314B /* ShipSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D8082C1317ED260049314B /* ShipSearchViewController.m */; };
-		56D80A17131818420049314B /* ShipStreetBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D80A15131818420049314B /* ShipStreetBuilding.m */; };
-		56D80A18131818420049314B /* ShipStreetBuilding.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D80A16131818420049314B /* ShipStreetBuilding.xib */; };
 		56D80B361318F1470049314B /* CartOrderReservationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D80B341318F1470049314B /* CartOrderReservationsView.m */; };
 		56D80B371318F1470049314B /* CartOrderReservationsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D80B351318F1470049314B /* CartOrderReservationsView.xib */; };
 		56D80B411318F1F70049314B /* CartMyShippingListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D80B3F1318F1F70049314B /* CartMyShippingListView.m */; };
@@ -569,7 +564,6 @@
 		56928C841312D787000700A9 /* MyCustomerDelivery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomerDelivery.h; sourceTree = "<group>"; };
 		56928C851312D787000700A9 /* MyCustomerDelivery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomerDelivery.m; sourceTree = "<group>"; };
 		56928C861312D787000700A9 /* MyCustomerDelivery.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCustomerDelivery.xib; sourceTree = "<group>"; };
-		56A9C7A91313FC3D0071D8A0 /* OldOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = OldOrderCell.xib; path = TemplateCell/OldOrderCell.xib; sourceTree = "<group>"; };
 		56A9C7AB1313FC660071D8A0 /* ShippingOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShippingOrderCell.xib; path = TemplateCell/ShippingOrderCell.xib; sourceTree = "<group>"; };
 		56A9C7AD1313FC930071D8A0 /* OrderListMiddleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = OrderListMiddleCell.xib; path = TemplateCell/OrderListMiddleCell.xib; sourceTree = "<group>"; };
 		56A9C7AF1313FCC40071D8A0 /* OrderMoneyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = OrderMoneyCell.xib; path = TemplateCell/OrderMoneyCell.xib; sourceTree = "<group>"; };
@@ -590,15 +584,9 @@
 		56A9CD53131586770071D8A0 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
 		56A9CD54131586770071D8A0 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		56A9CD55131586770071D8A0 /* OrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderViewController.xib; sourceTree = "<group>"; };
-		56D808271317ED260049314B /* ShipAddressTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipAddressTable.h; path = Classes/ShipSearch/ShipAddressTable.h; sourceTree = "<group>"; };
-		56D808281317ED260049314B /* ShipAddressTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShipAddressTable.m; path = Classes/ShipSearch/ShipAddressTable.m; sourceTree = "<group>"; };
-		56D808291317ED260049314B /* ShipAddressTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShipAddressTable.xib; path = Classes/ShipSearch/ShipAddressTable.xib; sourceTree = "<group>"; };
 		56D8082A1317ED260049314B /* ShipSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShipSearchView.xib; path = Classes/ShipSearch/ShipSearchView.xib; sourceTree = "<group>"; };
 		56D8082B1317ED260049314B /* ShipSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipSearchViewController.h; path = Classes/ShipSearch/ShipSearchViewController.h; sourceTree = "<group>"; };
 		56D8082C1317ED260049314B /* ShipSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShipSearchViewController.m; path = Classes/ShipSearch/ShipSearchViewController.m; sourceTree = "<group>"; };
-		56D80A14131818420049314B /* ShipStreetBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipStreetBuilding.h; path = Classes/ShipSearch/ShipStreetBuilding.h; sourceTree = "<group>"; };
-		56D80A15131818420049314B /* ShipStreetBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShipStreetBuilding.m; path = Classes/ShipSearch/ShipStreetBuilding.m; sourceTree = "<group>"; };
-		56D80A16131818420049314B /* ShipStreetBuilding.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShipStreetBuilding.xib; path = Classes/ShipSearch/ShipStreetBuilding.xib; sourceTree = "<group>"; };
 		56D80B331318F1470049314B /* CartOrderReservationsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartOrderReservationsView.h; sourceTree = "<group>"; };
 		56D80B341318F1470049314B /* CartOrderReservationsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartOrderReservationsView.m; sourceTree = "<group>"; };
 		56D80B351318F1470049314B /* CartOrderReservationsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartOrderReservationsView.xib; sourceTree = "<group>"; };
@@ -1238,7 +1226,6 @@
 				56A9C7B31313FD1B0071D8A0 /* UITableViewCellTemplate.m */,
 				56A9C7B11313FD1B0071D8A0 /* ShippingCell.xib */,
 				56A9C7AB1313FC660071D8A0 /* ShippingOrderCell.xib */,
-				56A9C7A91313FC3D0071D8A0 /* OldOrderCell.xib */,
 				56D8118F1319574F0049314B /* OrderListTopCell.xib */,
 				56A9C7AD1313FC930071D8A0 /* OrderListMiddleCell.xib */,
 				56D81180131954FC0049314B /* OrderListBottomCell.xib */,
@@ -1289,15 +1276,9 @@
 		56D808261317ED140049314B /* 배송지 */ = {
 			isa = PBXGroup;
 			children = (
-				56D808271317ED260049314B /* ShipAddressTable.h */,
-				56D808281317ED260049314B /* ShipAddressTable.m */,
-				56D808291317ED260049314B /* ShipAddressTable.xib */,
-				56D8082A1317ED260049314B /* ShipSearchView.xib */,
 				56D8082B1317ED260049314B /* ShipSearchViewController.h */,
 				56D8082C1317ED260049314B /* ShipSearchViewController.m */,
-				56D80A14131818420049314B /* ShipStreetBuilding.h */,
-				56D80A15131818420049314B /* ShipStreetBuilding.m */,
-				56D80A16131818420049314B /* ShipStreetBuilding.xib */,
+				56D8082A1317ED260049314B /* ShipSearchView.xib */,
 			);
 			name = "배송지";
 			sourceTree = "<group>";
@@ -1896,8 +1877,8 @@
 			children = (
 				56A9C69B1313E26E0071D8A0 /* 주문목록 */,
 				56928BE91312BEEC000700A9 /* LoginView.xib */,
-				56928BEA1312BEEC000700A9 /* LoginViewController.m */,
 				56928BED1312BF03000700A9 /* LoginViewController.h */,
+				56928BEA1312BEEC000700A9 /* LoginViewController.m */,
 				84B4A4271310089000A7A99B /* MypageBodyView.xib */,
 				84B4A4281310089000A7A99B /* MypageBodyViewController.h */,
 				84B4A4291310089000A7A99B /* MypageBodyViewController.m */,
@@ -1969,7 +1950,6 @@
 				56928C881312D787000700A9 /* MyCustomerDelivery.xib in Resources */,
 				848B6F67131382DF000E3272 /* product.xml in Resources */,
 				84F1B8D1131450F3006FC7C7 /* productKey.xml in Resources */,
-				56A9C7AA1313FC3D0071D8A0 /* OldOrderCell.xib in Resources */,
 				56A9C7AC1313FC660071D8A0 /* ShippingOrderCell.xib in Resources */,
 				56A9C7AE1313FC930071D8A0 /* OrderListMiddleCell.xib in Resources */,
 				56A9C7B01313FCC40071D8A0 /* OrderMoneyCell.xib in Resources */,
@@ -1982,9 +1962,7 @@
 				84B9C5001316ABA1003FED88 /* MainView.xib in Resources */,
 				84B9C50F1316AC4E003FED88 /* LogoView.xib in Resources */,
 				849DBD161316FF1500C630CD /* NaviView.xib in Resources */,
-				56D8082E1317ED260049314B /* ShipAddressTable.xib in Resources */,
 				56D8082F1317ED260049314B /* ShipSearchView.xib in Resources */,
-				56D80A18131818420049314B /* ShipStreetBuilding.xib in Resources */,
 				56D80B371318F1470049314B /* CartOrderReservationsView.xib in Resources */,
 				56D80B421318F1F70049314B /* CartMyShippingListView.xib in Resources */,
 				56D80D2B1318F75C0049314B /* bg_approval_box.png in Resources */,
@@ -2491,9 +2469,7 @@
 				84B9C42813169D05003FED88 /* FindBodyViewController.m in Sources */,
 				84B9C5121316AC59003FED88 /* LogoViewController.m in Sources */,
 				849DBD171316FF1500C630CD /* NaviViewController.m in Sources */,
-				56D8082D1317ED260049314B /* ShipAddressTable.m in Sources */,
 				56D808301317ED260049314B /* ShipSearchViewController.m in Sources */,
-				56D80A17131818420049314B /* ShipStreetBuilding.m in Sources */,
 				56D80B361318F1470049314B /* CartOrderReservationsView.m in Sources */,
 				56D80B411318F1F70049314B /* CartMyShippingListView.m in Sources */,
 				56D8142B1319EB5B0049314B /* CartOrderShopMenuViewController.m in Sources */,

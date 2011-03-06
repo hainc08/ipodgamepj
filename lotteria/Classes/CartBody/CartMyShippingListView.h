@@ -20,13 +20,10 @@
 	
 	
 	HTTPRequest *httpRequest;
-	Order	*InfoOrder;
 	int		RemoveNum;
 	
 
 }
-@property (nonatomic, retain)     NSMutableArray *CustomerArr;
-@property (nonatomic, retain) Order *InfoOrder;
 
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 
