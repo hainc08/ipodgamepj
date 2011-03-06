@@ -60,7 +60,30 @@
 
 - (IBAction)ButtonClick:(id)sender
 {
-	if (sender == lastButton) return;
+	if (sender == lastButton)
+	{
+		[UIView beginAnimations:@"menuAni" context:NULL];
+		[UIView setAnimationDuration:0.2];
+		[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+		
+		CGPoint centerPos = CGPointMake(160, [baseView frame].size.height * 0.5f);
+		[detailView.view setCenter:centerPos];
+		
+		[topList setCenter:CGPointMake(160, -40)];
+		[bottomList setCenter:CGPointMake(160, 367+40)];
+
+		[burgerButton	setCenter:buttonOrigin[0]];
+		[chickenButton	setCenter:buttonOrigin[1]];
+		[dessertButton	setCenter:buttonOrigin[2]];
+		[drinkButton	setCenter:buttonOrigin[3]];
+		[packButton		setCenter:buttonOrigin[4]];
+		
+		[UIView commitAnimations];
+		lastButton = nil;
+
+		return;
+	}
+	
 	lastButton = sender;
 
 	if (sender == burgerButton)
