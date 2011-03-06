@@ -35,6 +35,9 @@
 	[listButton setAlpha:0];
 	
 	lastButton = nil;
+
+	[self cartUpdate];
+	[[DataManager getInstance] setMainView:self];
 }
 
 - (IBAction)buttonClick:(id)sender
@@ -91,6 +94,26 @@
 
 - (void)dealloc {
     [super dealloc];
+}
+
+- (void)cartUpdate
+{
+	int count = [[DataManager getInstance] itemCount:-1];
+
+	[cartCountBack1 setAlpha:0];
+	[cartCountBack2 setAlpha:0];
+	[cartCountBack3 setAlpha:0];
+	[cartCountLabel setAlpha:0];
+	
+	if (count > 0)
+	{
+		[cartCountLabel setAlpha:1];
+		[cartCountLabel setText:[NSString stringWithFormat:@"%d", count]];
+
+		if (count < 10) [cartCountBack1 setAlpha:1];
+		else if (count < 100) [cartCountBack2 setAlpha:1];
+		else if (count < 1000) [cartCountBack3 setAlpha:1];
+	}
 }
 
 @end

@@ -39,8 +39,8 @@
 @implementation FindBodyViewController
 
 - (void)viewDidLoad {
+	naviImgIdx = 1;
 	[super viewDidLoad];
-	
 }
 
 - (IBAction)button:(id)sender;

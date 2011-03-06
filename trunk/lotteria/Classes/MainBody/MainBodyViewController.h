@@ -27,11 +27,17 @@
 	IBOutlet UIImageView* dessertBG;
 	IBOutlet UIImageView* drinkBG;
 	IBOutlet UIImageView* packBG;
+	float alphaValue[5];
+
+	IBOutlet UIImageView* normalBG1;
+	IBOutlet UIImageView* normalBG2;
 
 	IBOutlet UITextField* searchField;
 	
 	id lastButton;
 	id lastIconButton;
+	
+	IBOutlet UIView* fieldGuard;
 }
 
 - (void)back;
@@ -40,5 +46,8 @@
 - (void)addIcon:(NSString*)menuId isTop:(bool)isTop;
 - (void)iconClicked:(id)button :(NSString*)mid;
 - (void)setScrollBar:(NSString*)category;
+
+- (IBAction)FieldStart;
+- (IBAction)FieldEnd;
 
 @end

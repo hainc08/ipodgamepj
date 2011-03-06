@@ -17,6 +17,8 @@
 @implementation LoginViewController
 @synthesize LoginNextType;
 - (void)viewDidLoad {
+	naviImgIdx = 0;
+
     [super viewDidLoad];
 	
 	ID.returnKeyType = UIReturnKeyDone;
