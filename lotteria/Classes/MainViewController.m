@@ -35,6 +35,7 @@
 	[listButton setAlpha:0];
 	
 	lastButton = nil;
+	helpView = nil;
 
 	[self cartUpdate];
 	[[DataManager getInstance] setMainView:self];
@@ -60,13 +61,47 @@
 	curView = navi.view;
 
 	[self.view addSubview:curView];
-	[self.view sendSubviewToBack:curView];
-	[self.view sendSubviewToBack:backImg];
-	[self.view bringSubviewToFront:helpButton];
+	[self viewAlign];
 
 	[oldView removeFromSuperview];
-	
+	if (helpView != nil) [[helpView body] back];
+
+	[helpButton setAlpha:1];
 	lastButton = sender;
+}
+
+- (IBAction)helpClick
+{
+	[self dismissModalViewControllerAnimated:YES];
+
+	if (helpView != nil)
+	{
+		[helpView.view removeFromSuperview];
+		[helpView release];
+		helpView = nil;
+	}
+	
+	helpView = [[NaviViewController alloc] init];
+	[(NaviViewController*)helpView setIdx:4];
+	[(NaviViewController*)helpView setHelpButton:helpButton];
+	
+	[self.view addSubview:helpView.view];
+
+	[self.view sendSubviewToBack:helpView.view];
+	[self viewAlign];
+
+	[helpView.view setCenter:CGPointMake(160, 480 + 206)];
+	
+	[UIView beginAnimations:@"helpAni" context:NULL];
+	[UIView setAnimationDuration:0.3];
+	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	
+	[helpView.view setCenter:CGPointMake(160, 220)];
+	
+	[UIView commitAnimations];
+
+	[helpButton setAlpha:0];
+	lastButton = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,6 +149,13 @@
 		else if (count < 100) [cartCountBack2 setAlpha:1];
 		else if (count < 1000) [cartCountBack3 setAlpha:1];
 	}
+}
+
+- (void)viewAlign
+{
+	[self.view sendSubviewToBack:curView];
+	[self.view sendSubviewToBack:backImg];
+	[self.view bringSubviewToFront:helpButton];
 }
 
 @end

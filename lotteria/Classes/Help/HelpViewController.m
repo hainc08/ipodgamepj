@@ -11,13 +11,11 @@
 
 @implementation HelpViewController
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	closetype = true;
+	naviImgIdx = 1;
     [super viewDidLoad];
-
-
- 
 }
 
 - (IBAction)CloseButtonClicked:(id)sender
@@ -55,6 +53,5 @@
 - (void)dealloc {
     [super dealloc];
 }
-
 
 @end

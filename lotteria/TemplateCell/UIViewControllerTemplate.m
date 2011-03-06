@@ -105,24 +105,34 @@
 	
 	if( closetype)
 	{
-	UIImage *buttonImage = [UIImage imageNamed:@"btn_box_close_on.png"];
-	
-	backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	[backButton setImage:buttonImage forState:UIControlStateNormal];
-
-	backButton.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
-	
-	[backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-	
-	UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-	self.navigationItem.leftBarButtonItem = customBarItem;
-	[customBarItem release];
+		UIImage *buttonImage = [UIImage imageNamed:@"btn_box_close_on.png"];
+		
+		backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[backButton setImage:buttonImage forState:UIControlStateNormal];
+		
+		backButton.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
+		
+		[backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+		
+		UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+		self.navigationItem.rightBarButtonItem = customBarItem;
+		[customBarItem release];
 	}
 	else
 	self.navigationItem.leftBarButtonItem = nil;
 
 	[[DataManager getInstance] setNaviImgIdx:naviImgIdx];
 	[navi.navigationBar setNeedsDisplay];
+
+	[navi.view setCenter:CGPointMake(160, 480 + 206)];
+	
+	[UIView beginAnimations:@"helpAni" context:NULL];
+	[UIView setAnimationDuration:0.3];
+	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	
+	[navi.view setCenter:CGPointMake(160, 220)];
+
+	[UIView commitAnimations];
 }
 
 - (IBAction)HelpButtonClicked:(id)sender
@@ -134,7 +144,16 @@
 
 - (void)back
 {
-	[self.navigationController popViewControllerAnimated:YES];
+	[UIView beginAnimations:@"helpAni" context:NULL];
+	[UIView setAnimationDuration:0.3];
+	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+		
+	[navi.view setCenter:CGPointMake(160, 480 + 206)];
+		
+	[UIView commitAnimations];
+		
+	[[navi helpButton] setAlpha:1];
+	self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)viewDidUnload {
