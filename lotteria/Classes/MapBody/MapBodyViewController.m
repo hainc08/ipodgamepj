@@ -159,6 +159,8 @@
 
 	location.latitude=newLocation.coordinate.latitude + 0.001f;
 	location.longitude=newLocation.coordinate.longitude - 0.001f;
+	location.latitude=newLocation.coordinate.latitude;
+	location.longitude=newLocation.coordinate.longitude;
 	[self addShopMark:0 location:location];
 
 	location.latitude=newLocation.coordinate.latitude + 0.003f;
@@ -200,7 +202,7 @@
 	}
 	//    annView.animatesDrop = TRUE;
 	annView.canShowCallout = YES;
-	annView.centerOffset = CGPointMake(4, -11);
+	annView.centerOffset = CGPointMake(0, -30);
 	
 	UIButton *disclosureButton = [UIButton buttonWithType: UIButtonTypeDetailDisclosure];
 	annView.canShowCallout = YES;
