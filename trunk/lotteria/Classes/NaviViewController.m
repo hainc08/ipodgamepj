@@ -6,19 +6,19 @@
 #import "LoginViewController.h"
 #import "MapBodyViewController.h"
 #import "ShipSearchViewController.h"
+#import "HelpViewController.h"
 
 @implementation NaviViewController
 
 @synthesize idx;
 @synthesize helpButton;
 @synthesize listButton;
+@synthesize body;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
 	[self.view setCenter:CGPointMake(160, 220)];
-
-	UIViewControllerTemplate* body;
 
 	switch (idx) {
 		case 0:
@@ -28,22 +28,21 @@
 			body = [[CartBodyViewController alloc] init];
 			break;
 		case 2:
-			if ([[DataManager getInstance] isLoginNow])
-			{
-				body = [[MypageBodyViewController alloc] init];
-			}else {
-				body = [[LoginViewController alloc] init];
-			}
-
+			body = [[MypageBodyViewController alloc] init];
 			break;
 		case 3:
 			body = [[MapBodyViewController alloc] init];
+			break;
+		case 4:
+			body = [[HelpViewController alloc] init];
+			break;
+		case 5:
+			body = [[LoginViewController alloc] init];
 			break;
 	}
 
 	[self pushViewController:body animated:NO];
 	[body setNavi:self];
-	
 
 	UINavigationBar* bar = [self navigationBar];
 	[bar setTintColor:[UIColor clearColor]];

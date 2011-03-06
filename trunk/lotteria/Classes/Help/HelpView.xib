@@ -45,7 +45,7 @@
 					<object class="IBUIButton" id="262405683">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{15, 7}, {146, 179}}</string>
+						<string key="NSFrame">{{15, 4}, {146, 179}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -80,7 +80,7 @@
 					<object class="IBUIButton" id="773357022">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{161, 7}, {144, 179}}</string>
+						<string key="NSFrame">{{161, 4}, {144, 179}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -105,7 +105,7 @@
 					<object class="IBUIButton" id="126173867">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 194}, {146, 188}}</string>
+						<string key="NSFrame">{{15, 183}, {146, 188}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -130,7 +130,7 @@
 					<object class="IBUIButton" id="536440874">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{161, 194}, {144, 188}}</string>
+						<string key="NSFrame">{{161, 183}, {144, 188}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -150,7 +150,7 @@
 						<reference key="IBUINormalImage" ref="821982551"/>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 460}</string>
+				<string key="NSFrameSize">{320, 412}</string>
 				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="365993333"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -311,7 +311,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>HelpViewController</string>
 					<string>UIResponder</string>
-					<string>{{433, 245}, {320, 460}}</string>
+					<string>{{433, 293}, {320, 412}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -323,11 +323,11 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBEAAAwzgAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABBcAAAwzgAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDGwAAwzgAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDIQAAwzgAAA</bytes>
 					</object>
 				</object>
 			</object>

@@ -1,8 +1,7 @@
 #import "MypageBodyViewController.h"
 #import "MyCustomerDelivery.h"
-#import "LoginViewController.h"
+#import "NaviViewController.h"
 #import "DataManager.h"
-
 
 @implementation MypageBodyViewController
 
@@ -12,6 +11,14 @@
 	naviImgIdx = 0;
 	[super viewDidLoad];
 	self.navigationItem.title = @"마이페이지";
+	
+	if ([[DataManager getInstance] isLoginNow] == false)
+	{
+		NaviViewController* naviCon = [[NaviViewController alloc] init];
+		[naviCon setIdx:5];
+		[self.parentViewController.view addSubview:naviCon.view];
+		[self.parentViewController.parentViewController viewAlign];
+	}
 }
 
 
@@ -26,16 +33,11 @@
 - (IBAction)LogOutButton
 {
 	[[DataManager getInstance] setIsLoginNow:FALSE];
-	
-	UINavigationController *navicontrol = self.navigationController;
-	NSMutableArray *Arr = [[self.navigationController.viewControllers mutableCopy] autorelease];
-	[Arr removeLastObject];
-	navicontrol.viewControllers = Arr;
-	LoginViewController *login = [[LoginViewController alloc] init];
-	[login setLoginNextType:MYPAGE];
-	[navicontrol pushViewController:login animated:NO];
-	[login release];
-	
+
+	NaviViewController* naviCon = [[NaviViewController alloc] init];
+	[naviCon setIdx:5];
+	[self.parentViewController.view addSubview:naviCon.view];
+	[self.parentViewController.parentViewController viewAlign];
 }
 
 - (IBAction)OrderListButton

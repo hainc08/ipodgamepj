@@ -142,26 +142,9 @@
 		}
 		
 		[[DataManager getInstance] setIsLoginNow:TRUE];
-
-		UINavigationController *navicontrol = self.navigationController;
-		NSMutableArray *Arr = [[self.navigationController.viewControllers mutableCopy] autorelease];
-		[Arr removeLastObject];
-		navicontrol.viewControllers = Arr;
-		UIViewController *next;
-		if(LoginNextType == MYPAGE)
-		{
-			next = [[MypageBodyViewController alloc] init];
-			[navicontrol pushViewController:next animated:NO];
-		}
-		else {
-			next = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil];
-			[navicontrol pushViewController:next animated:YES];
-		}
-
-		[next release];
-		
 	}
 
+	[self back];
 }
 
 

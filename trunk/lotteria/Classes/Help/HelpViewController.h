@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "UIViewControllerTemplate.h"
 
-@interface HelpViewController : UIViewControllerTemplate {
+@interface HelpViewController : UIViewControllerDownTemplate {
 	IBOutlet UIButton *OrderInfo;
 	IBOutlet UIButton *PersonalInfo;
 	IBOutlet UIButton *StipulationInfo;
 	IBOutlet UIButton *CalorieInfo;
 }
+
+- (void)back;
 - (IBAction)HelpButtonInfo:(id)sender;
 @end
