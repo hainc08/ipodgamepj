@@ -28,8 +28,6 @@
 }
 @end
 
-
-
 @implementation ShippingOrderCell 
 @synthesize ShippingName;  
 @synthesize ShippingAddress;
@@ -43,22 +41,10 @@
 }
 @end
 
-@implementation OldOrderCell 
-
-@synthesize OrderNumber;  
-@synthesize OrderDate;  
-@synthesize OrderClass; 
- 
--(void)setInfo:(NSString*)_inNumber :(NSString *)_inDate :(NSString *)_inClass
-{
-	[OrderNumber setText:_inNumber];
-	[OrderDate setText:_inDate];
-	[OrderClass setText:_inClass];
-}
-@end
 
 @implementation OrderListTopCell
 @end
+
 @implementation OrderListMiddleCell
 
 @synthesize OrderProduct;   

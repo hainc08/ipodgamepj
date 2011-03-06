@@ -31,7 +31,7 @@
 	[self.view bringSubviewToFront:helpButton];
 	[self.view bringSubviewToFront:listButton];
 
-	[self.view bringSubviewToFront:logoBody.view];
+	[self.view bringSubviewToFront:logoBody.view]; 
 	[listButton setAlpha:0];
 	
 	lastButton = nil;

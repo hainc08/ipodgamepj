@@ -14,8 +14,11 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	closetype = true;
-	naviImgIdx = 1;
+	naviImgIdx = 0;
     [super viewDidLoad];
+
+	self.navigationItem.title = @"도움말";
+
 }
 
 - (IBAction)CloseButtonClicked:(id)sender
@@ -27,10 +30,18 @@
 {
 	HelpWebViewController *Info  = [[HelpWebViewController alloc] initWithNibName:@"HelpWebView" bundle:nil];
 
-	if		( OrderInfo == sender)			Info.URLInfo = @"";
-	else if ( PersonalInfo == sender)		Info.URLInfo = @"";
-	else if ( StipulationInfo == sender)	Info.URLInfo = @"";
-	else if ( CalorieInfo == sender)		Info.URLInfo = @"";
+	if		( OrderInfo == sender){			Info.URLInfo = @"http://m.naver.com";
+											Info.TitleName = @"주문안내";
+	}
+	else if ( PersonalInfo == sender){		Info.URLInfo = @"http://m.naver.com";
+											Info.TitleName = @"개인정보";
+	}
+	else if ( StipulationInfo == sender){	Info.URLInfo = @"http://m.naver.com";
+											Info.TitleName = @"이용약관";
+	}
+	else if ( CalorieInfo == sender){		Info.URLInfo = @"http://m.naver.com";
+											Info.TitleName = @"열량정보";
+	}
 
 	[self.navigationController pushViewController:Info animated:YES];
 	[Info release];

@@ -11,9 +11,10 @@
 
 @interface HelpWebViewController : UIViewController {
 	NSString *URLInfo;
-	UIWebView *Webview; 
+	NSString *TitleName;
+	IBOutlet UIWebView *Webview; 
 }
 
 @property (nonatomic , retain) NSString *URLInfo;
-@property (nonatomic , retain) UIWebView *Webview;
+@property (nonatomic , retain) NSString *TitleName;
 @end

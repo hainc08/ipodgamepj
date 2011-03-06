@@ -8,30 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
-/*주문목록 Cell 
- 
- ---  사용처 ---
- * 주문목록
- */
-@interface OldOrderCell : UITableViewCell
-{
-	/*  주문번호 , FontColor : White */
-	IBOutlet UILabel* OrderNumber;  
-	
-	/* 주문일자	, FontColer : White */
-	IBOutlet UILabel* OrderDate;
-	
-	/* 주문구분	  , FontColer : White */
-	IBOutlet UILabel* OrderClass;
-}
-@property (nonatomic, retain) IBOutlet UILabel* OrderNumber;  
-@property (nonatomic, retain) IBOutlet UILabel* OrderDate;  
-@property (nonatomic, retain) IBOutlet UILabel* OrderClass;  
-
--(void)setInfo:(NSString*)_inNumber :(NSString *)_inDate :(NSString *)_inClass;
-@end
-
 /* 상세주문 Cell 
  
  ---  사용처 ---

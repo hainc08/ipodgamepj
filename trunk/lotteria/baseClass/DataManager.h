@@ -1,3 +1,5 @@
+#import <MapKit/MapKit.h>
+
 typedef enum _ImgType
 {
 	MIDDLE = 0,
@@ -78,7 +80,7 @@ typedef enum _Storetype
 	NSString *building;
 	NSString *addrdesc;
 	
-	float	coordinate; // 좌표 맵에서 사용될 좌표 .. 나중에 최종 값 나오면 ..
+	CLLocationCoordinate2D coordinate;
 }
 
 @property (retain) NSString *storeid;
@@ -92,7 +94,7 @@ typedef enum _Storetype
 @property (retain) NSString *bunji;
 @property (retain) NSString *building;
 @property (retain) NSString *addrdesc;
-
+@property(nonatomic,assign) CLLocationCoordinate2D coordinate;
 @end
 
 

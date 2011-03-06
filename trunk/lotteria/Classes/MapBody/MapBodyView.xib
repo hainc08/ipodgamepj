@@ -208,7 +208,7 @@
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 					</object>
-					<object class="IBUIButton" id="781069353">
+					<object class="IBUIButton" id="847652823">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{237, -1}, {83, 44}}</string>
@@ -334,18 +334,43 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">listView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="781069353"/>
+						<reference key="destination" ref="847652823"/>
 					</object>
 					<int key="connectionID">99</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">buttonClick:</string>
-						<reference key="source" ref="781069353"/>
+						<reference key="source" ref="847652823"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">100</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">TextClear</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="706926197"/>
+					</object>
+					<int key="connectionID">101</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">buttonClick:</string>
+						<reference key="source" ref="706926197"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">102</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="191982087"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">103</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -381,7 +406,7 @@
 							<reference ref="400197767"/>
 							<reference ref="266295194"/>
 							<reference ref="706926197"/>
-							<reference ref="781069353"/>
+							<reference ref="847652823"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -427,7 +452,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">97</int>
-						<reference key="object" ref="781069353"/>
+						<reference key="object" ref="847652823"/>
 						<reference key="parent" ref="883825266"/>
 					</object>
 				</object>
@@ -460,7 +485,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>MapBodyViewController</string>
 					<string>UIResponder</string>
-					<string>{{364, 163}, {320, 412}}</string>
+					<string>{{681, 180}, {320, 412}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -511,7 +536,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100</int>
+			<int key="maxID">103</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -535,6 +560,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>Search</string>
+							<string>TextClear</string>
 							<string>listView</string>
 							<string>mapView</string>
 							<string>store24</string>
@@ -544,6 +570,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UITextField</string>
+							<string>UIButton</string>
 							<string>UIButton</string>
 							<string>MKMapView</string>
 							<string>UIButton</string>
@@ -556,6 +583,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>Search</string>
+							<string>TextClear</string>
 							<string>listView</string>
 							<string>mapView</string>
 							<string>store24</string>
@@ -567,6 +595,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">Search</string>
 								<string key="candidateClassName">UITextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">TextClear</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">listView</string>

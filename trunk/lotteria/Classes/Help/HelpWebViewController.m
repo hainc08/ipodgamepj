@@ -12,12 +12,12 @@
 @implementation HelpWebViewController
 
 @synthesize URLInfo;
-@synthesize Webview;
+@synthesize TitleName;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+	self.navigationItem.title = TitleName;
 	NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLInfo]
 														  cachePolicy:NSURLRequestReloadIgnoringCacheData 
 													  timeoutInterval:10.0];

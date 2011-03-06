@@ -106,7 +106,7 @@
 			[login release];
 		}
 		else {
-			CartMyShippingList *OrderView = [[CartMyShippingList alloc] init];
+			CartMyShippingList *OrderView = [[CartMyShippingList alloc] initWithNibName:@"CartMyShippingListView" bundle:nil ];
 			[self.navigationController pushViewController:OrderView animated:YES ];
 			[OrderView release];
 		}

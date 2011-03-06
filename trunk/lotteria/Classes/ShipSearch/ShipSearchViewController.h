@@ -10,10 +10,8 @@
 #import "UIViewControllerTemplate.h"
 
 @interface ShipSearchViewController : UIViewControllerDownTemplate {
-	IBOutlet UITextField	*SearchText;
-	IBOutlet UIButton		*SearchButton;
+	IBOutlet UIWebView *webview;
 }
 
--(IBAction)SearchButton:(id)sender;
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 @end

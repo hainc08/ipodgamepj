@@ -66,8 +66,7 @@
 
 - (IBAction)callbutton
 {
-    NSString *call = [NSString stringWithFormat:@"tel://010-0000-0000"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:call]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[Info storephone]]];
 }
 
 @end

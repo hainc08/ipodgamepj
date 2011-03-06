@@ -14,7 +14,7 @@
 
 @implementation MapSearchViewController
 
-
+@synthesize Dong;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,6 +24,16 @@
 	self.navigationItem.title = @"매장찾기";
 	
 	
+	if( [Dong	compare:@""] == NSOrderedSame )
+	{
+		// 전체 매장 찾기 
+		[SearchLabel setText:@"전국매장"];
+	}
+	else {
+		// 동 매장 찾기 
+		[SearchLabel setText:Dong];
+	}
+
 	
 	StoreInfo *storeaddr  = [[[StoreInfo alloc] init] retain];
 	[storeaddr setStoreid:@"111111"];
@@ -59,6 +69,8 @@
 
 
 - (void)dealloc {
+	[httpRequest release];
+	[AddressArr release];
     [super dealloc];
 }
 
@@ -69,33 +81,25 @@
 
 
 
+#pragma mark -
+#pragma mark AlertView
+- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message
+												   delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+	[alert show];
+	[alert release];
+}
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	// 필요한 엑션이 있으면 넣자 ..
+}
 
 #pragma mark -
 #pragma mark HttpRequestDelegate
 
-/*
- 
- <NewDataSet>
- <item>
- <cust_id>seyogo</cust_id>
- <seq>1</seq>
- <phone>01029281740</phone>
- <si>서울특별시</si>
- <gu>영등포구</gu>
- <dong>여의도동</dong>
- <bunji/>
- <building>한양아파트</building>
- <addr_desc>1층 101호</addr_desc>
- <branch_id>99999999</branch_id>
- <cust_flag>2</cust_flag>
- <reg_date>20101227</reg_date>
- <reg_time>135000</reg_time>
- <upd_date/>
- <upd_time/>
- </item>
- </NewDataSet>
- */
-- (void)GetShippingList
+- (void)GetStoreInfo
 {
 	
 #ifdef LOCALTEST
