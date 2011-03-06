@@ -41,6 +41,9 @@
 	[nameImage setImage:[data getProductImg:NAME]];
 	[descImage setImage:[data getProductImg:DESC]];
 	[selectView setAlpha:0];
+	
+	count = 1;
+	[countLabel setText:[NSString stringWithFormat:@"%d", count]];
 }
 
 - (IBAction)ButtonClick:(id)sender

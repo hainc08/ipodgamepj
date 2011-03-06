@@ -137,21 +137,24 @@
 
 - (void)iconClicked:(id)button :(NSString*)mid
 {
-	[normalBG1 setAlpha:1];
-	[normalBG2 setAlpha:1];
+	if ([normalBG1 alpha] == 0)
+	{
+		[normalBG1 setAlpha:1];
+		[normalBG2 setAlpha:1];
+		
+		alphaValue[0] = [burgerBG alpha];
+		alphaValue[1] = [chickenBG alpha];
+		alphaValue[2] = [dessertBG alpha];
+		alphaValue[3] = [drinkBG alpha];
+		alphaValue[4] = [packBG alpha];
+		
+		[burgerBG setAlpha:0];
+		[chickenBG setAlpha:0];
+		[dessertBG setAlpha:0];
+		[drinkBG setAlpha:0];
+		[packBG setAlpha:0];
+	}
 
-	alphaValue[0] = [burgerBG alpha];
-	alphaValue[1] = [chickenBG alpha];
-	alphaValue[2] = [dessertBG alpha];
-	alphaValue[3] = [drinkBG alpha];
-	alphaValue[4] = [packBG alpha];
-
-	[burgerBG setAlpha:0];
-	[chickenBG setAlpha:0];
-	[dessertBG setAlpha:0];
-	[drinkBG setAlpha:0];
-	[packBG setAlpha:0];
-	
 	if ((lastIconButton != nil)&&
 		(button != lastIconButton)) [(IconButton*)lastIconButton setSelected:false];
 

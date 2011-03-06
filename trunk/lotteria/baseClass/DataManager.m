@@ -425,13 +425,13 @@ static DataManager *DataManagerInst;
 		--idx;
 		temp[idx] = '0' + value%10;
 
-		if ((60 - idx)%4 == 0)
+		value = (int)(value / 10);
+		
+		if ((value != 0) && ((60 - idx)%4 == 0))
 		{
 			--idx;
 			temp[idx] = ',';
 		}
-
-		value = (int)(value / 10);
 	}
 	
 	return [NSString stringWithFormat:@"%s", &temp[idx]];
