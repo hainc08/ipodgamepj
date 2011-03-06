@@ -98,7 +98,7 @@
 		
 		if (count == 0) [[DataManager getInstance] removeCartItem:cartItem];
 
-		[[DataManager getInstance] cartUpdate];
+		[[ViewManager getInstance] cartUpdate];
 	}
 	else if (sender == changeDessert)
 	{
@@ -133,7 +133,7 @@
 		[cartItem setDessertId:[data menuId]];
 	}
 
-	[[DataManager getInstance] cartUpdate];
+	[[ViewManager getInstance] cartUpdate];
 	
 	[self refreshData];
 }

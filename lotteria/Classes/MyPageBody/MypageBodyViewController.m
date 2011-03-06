@@ -1,11 +1,9 @@
 #import "MypageBodyViewController.h"
 #import "MyCustomerDelivery.h"
-#import "NaviViewController.h"
+#import "LoginViewController.h"
 #import "DataManager.h"
 
 @implementation MypageBodyViewController
-
-
 
 - (void)viewDidLoad {
 	naviImgIdx = 0;
@@ -14,16 +12,13 @@
 	
 	if ([[DataManager getInstance] isLoginNow] == false)
 	{
-		NaviViewController* naviCon = [[NaviViewController alloc] init];
-		[naviCon setIdx:5];
-		[self.parentViewController.view addSubview:naviCon.view];
-		[self.parentViewController.parentViewController viewAlign];
+		LoginViewController* popView = [[LoginViewController alloc] init];
+		[[ViewManager getInstance] popUp:popView button:[navi helpButton] owner:nil];
 	}
 }
 
-
 - (void)viewDidUnload {
-	
+	[[ViewManager getInstance] closePopUp];
 }
 
 - (void)dealloc {
@@ -34,10 +29,8 @@
 {
 	[[DataManager getInstance] setIsLoginNow:FALSE];
 
-	NaviViewController* naviCon = [[NaviViewController alloc] init];
-	[naviCon setIdx:5];
-	[self.parentViewController.view addSubview:naviCon.view];
-	[self.parentViewController.parentViewController viewAlign];
+	LoginViewController* popView = [[LoginViewController alloc] init];
+	[[ViewManager getInstance] popUp:popView button:[navi helpButton] owner:nil];
 }
 
 - (IBAction)OrderListButton

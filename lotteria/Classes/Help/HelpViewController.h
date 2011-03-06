@@ -16,6 +16,5 @@
 	IBOutlet UIButton *CalorieInfo;
 }
 
-- (void)back;
 - (IBAction)HelpButtonInfo:(id)sender;
 @end

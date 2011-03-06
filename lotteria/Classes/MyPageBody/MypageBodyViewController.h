@@ -7,6 +7,8 @@
 
 	IBOutlet UIButton *OrderList;
 	IBOutlet UIButton *LogOut;
+	
+	UINavigationController* loginCon;
 }
 
 - (IBAction)OrderListButton;
