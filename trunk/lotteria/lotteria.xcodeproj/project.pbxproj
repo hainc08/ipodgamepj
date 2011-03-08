@@ -510,6 +510,7 @@
 		848B6F67131382DF000E3272 /* product.xml in Resources */ = {isa = PBXBuildFile; fileRef = 848B6F66131382DF000E3272 /* product.xml */; };
 		849DBD161316FF1500C630CD /* NaviView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849DBD131316FF1500C630CD /* NaviView.xib */; };
 		849DBD171316FF1500C630CD /* NaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DBD151316FF1500C630CD /* NaviViewController.m */; };
+		84A59ED11326BAD300FC0F95 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A59ED01326BAD300FC0F95 /* QuartzCore.framework */; };
 		84AA542513115FD5007CE392 /* CartBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AA542213115FD5007CE392 /* CartBodyView.xib */; };
 		84AA542613115FD5007CE392 /* CartBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA542413115FD5007CE392 /* CartBodyViewController.m */; };
 		84AA543B1311734E007CE392 /* CartListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AA54381311734E007CE392 /* CartListView.xib */; };
@@ -1077,6 +1078,7 @@
 		849DBD131316FF1500C630CD /* NaviView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NaviView.xib; path = Classes/NaviView.xib; sourceTree = "<group>"; };
 		849DBD141316FF1500C630CD /* NaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NaviViewController.h; path = Classes/NaviViewController.h; sourceTree = "<group>"; };
 		849DBD151316FF1500C630CD /* NaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NaviViewController.m; path = Classes/NaviViewController.m; sourceTree = "<group>"; };
+		84A59ED01326BAD300FC0F95 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84AA542213115FD5007CE392 /* CartBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartBodyView.xib; sourceTree = "<group>"; };
 		84AA542313115FD5007CE392 /* CartBodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartBodyViewController.h; sourceTree = "<group>"; };
 		84AA542413115FD5007CE392 /* CartBodyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartBodyViewController.m; sourceTree = "<group>"; };
@@ -1137,6 +1139,7 @@
 				288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */,
 				84D1BF0C1313E30F002C8A52 /* MapKit.framework in Frameworks */,
 				84D85E281313F76300361C3B /* CoreLocation.framework in Frameworks */,
+				84A59ED11326BAD300FC0F95 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1208,6 +1211,7 @@
 				288765580DF743DE002DB57D /* CoreGraphics.framework */,
 				84D1BF0B1313E30F002C8A52 /* MapKit.framework */,
 				84D85E271313F76300361C3B /* CoreLocation.framework */,
+				84A59ED01326BAD300FC0F95 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
