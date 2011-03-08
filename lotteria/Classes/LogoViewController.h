@@ -1,5 +1,11 @@
 @interface LogoViewController : UIViewController {
-	IBOutlet UIActivityIndicatorView* loadingNow;
+	IBOutlet UIButton* closeButton;
+	IBOutlet UIImageView* noticeImg;
+	IBOutlet UIView* noticeView;
+	
+	bool isNoticeCheck;
 }
+
+- (IBAction)buttonClick;
 
 @end
