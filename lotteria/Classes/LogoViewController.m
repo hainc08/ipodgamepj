@@ -1,4 +1,7 @@
 #import "LogoViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
+#define kAnimationDuration  0.25
 
 @implementation LogoViewController
 
@@ -6,19 +9,41 @@
 {
 	[super viewDidLoad];
 	isNoticeCheck = false;
-	
-	[noticeView setAlpha:0.f];
-	[noticeView setTransform:CGAffineTransformMake(1, 0, 0, 1, 0.5, 0.5)];
-	
-	[UIView beginAnimations:@"logoAni" context:NULL];
-	[UIView setAnimationDuration:0.3];
-	[UIView setAnimationDelay:0.3];
-	[UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-	
-	[noticeView setAlpha:1.f];
-	[noticeView setTransform:CGAffineTransformMake(1, 0, 0, 1, 1, 1)];
-	
-	[UIView commitAnimations];
+
+	CALayer *viewLayer = noticeView.layer;
+    CAKeyframeAnimation* popInAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    
+    popInAnimation.duration = kAnimationDuration;
+    popInAnimation.values = [NSArray arrayWithObjects:
+                             [NSNumber numberWithFloat:0.6],
+                             [NSNumber numberWithFloat:1.1],
+							 [NSNumber numberWithFloat:.9],
+							 [NSNumber numberWithFloat:1],
+                             nil];
+    popInAnimation.keyTimes = [NSArray arrayWithObjects:
+                               [NSNumber numberWithFloat:0.0],
+                               [NSNumber numberWithFloat:1.0],
+							   [NSNumber numberWithFloat:1.1],
+							   [NSNumber numberWithFloat:1.2],
+                               nil];    
+    popInAnimation.delegate = nil;
+    
+    [viewLayer addAnimation:popInAnimation forKey:@"transform.scale"];  
+
+    CAKeyframeAnimation* fadeInAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+    
+    fadeInAnimation.duration = kAnimationDuration;
+    fadeInAnimation.values = [NSArray arrayWithObjects:
+                             [NSNumber numberWithFloat:0.0],
+							 [NSNumber numberWithFloat:1],
+                             nil];
+    fadeInAnimation.keyTimes = [NSArray arrayWithObjects:
+                               [NSNumber numberWithFloat:0.0],
+							   [NSNumber numberWithFloat:1],
+                               nil];    
+    fadeInAnimation.delegate = nil;
+    
+    [viewLayer addAnimation:fadeInAnimation forKey:@"opacity"];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -32,11 +57,11 @@
 - (IBAction)buttonClick
 {
 	[UIView beginAnimations:@"logoAni" context:NULL];
-	[UIView setAnimationDuration:0.3];
+	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
 	
 	[noticeView setAlpha:0.f];
-	[noticeView setTransform:CGAffineTransformMake(1, 0, 0, 1, 0.5, 0.5)];
+	[noticeView setTransform:CGAffineTransformMake(0.5, 0, 0, 0.5, 0, 0)];
 	
 	[UIView commitAnimations];
 		
