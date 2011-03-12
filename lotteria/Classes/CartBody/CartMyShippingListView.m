@@ -45,42 +45,30 @@
 
 - (void)refresh
 {
-	//httpRequest = [[HTTPRequest alloc] init];
+	httpRequest = [[HTTPRequest alloc] init];
 	
 	NSString *string = @"<NewDataSet>\
 	<item>\
-	<cust_id>seyogo</cust_id>\
-	<seq>1</seq>\
 	<phone>01029281740</phone>\
 	<si>서울특별시</si>\
 	<gu>영등포구</gu>\
 	<dong>여의도동</dong>\
 	<bunji/>\
 	<building>한양아파트</building>\
-	<addr_desc>1층 101호</addr_desc>\
+	<addr_append>1층 101호</addr_append>\
 	<branch_id>99999999</branch_id>\
-	<cust_flag>2</cust_flag>\
-	<reg_date>20101227</reg_date>\
-	<reg_time>135000</reg_time>\
-	<upd_date/>\
-	<upd_time/>\
+	<branch_nm>233</branch_nm>\
 	</item>\
 	<item>\
-	<cust_id>seyogo</cust_id>\
-	<seq>1</seq>\
 	<phone>01029281740</phone>\
 	<si>서울특별시</si>\
 	<gu>영등포구</gu>\
 	<dong>여의도동</dong>\
 	<bunji/>\
 	<building>한양아파트</building>\
-	<addr_desc>1층 101호</addr_desc>\
+	<addr_append>1층 101호</addr_append>\
 	<branch_id>99999999</branch_id>\
-	<cust_flag>2</cust_flag>\
-	<reg_date>20101227</reg_date>\
-	<reg_time>135000</reg_time>\
-	<upd_date/>\
-	<upd_time/>\
+	<branch_nm>233</branch_nm>\
 	</item>\
 	</NewDataSet>";
 	
@@ -93,21 +81,17 @@
 	{
 		
 		CustomerDelivery *Customer  = [[[CustomerDelivery alloc] init] retain];
-		[Customer setCustid:[[t_item getChild:@"cust_id"] getValue]];
-		[Customer setSeq:[[t_item getChild:@"seq"] getValue]];
-		[Customer setPhone:[[t_item getChild:@"phone"] getValue]];
 		[Customer setSi:[[t_item getChild:@"si"] getValue]];
 		[Customer setGu:[[t_item getChild:@"gu"] getValue]];
 		[Customer setDong:[[t_item getChild:@"dong"] getValue]];
 		[Customer setBunji:[[t_item getChild:@"bunji"] getValue]];
 		[Customer setBuilding:[[t_item getChild:@"building"] getValue]];
-		[Customer setAddrdesc:[[t_item getChild:@"addr_desc"] getValue]];
+		[Customer setAddrdesc:[[t_item getChild:@"addr_append"] getValue]];
 		[Customer setBranchid:[[t_item getChild:@"branch_id"] getValue]];
-		[Customer setRegdate:[[t_item getChild:@"reg_date"] getValue]];
-		[Customer setRegtime:[[t_item getChild:@"reg_time"] getValue]];
-		[Customer setUpddate:[[t_item getChild:@"upd_date"] getValue]];
-		[Customer setUpdtime:[[t_item getChild:@"upd_time"] getValue]];
+		[Customer setBranchname:[[t_item getChild:@"branch_nm"] getValue]];
+		[Customer setPhone:[[t_item getChild:@"phone"] getValue]];
 		
+
 		[CustomerArr  addObject:Customer];
 	}	
 	[xmlParser release];
@@ -139,10 +123,8 @@
 
 - (IBAction)ShipRegButton:(id)sender
 {	
-	ShipSearchViewController *ShipData =  [[ShipSearchViewController alloc] initWithNibName:@"ShipSearchView" bundle:nil];
-	ShipData.closetype = true;
-	[self.navigationController pushViewController:ShipData animated:NO];
-	[ShipData release];
+	ShipSearchViewController *ShipData  = [[ShipSearchViewController alloc] init];
+	[[ViewManager getInstance] popUp:ShipData button:nil owner:self];
 }
 
 
@@ -150,48 +132,31 @@
 #pragma mark HttpRequestDelegate
 
 /*
- 
  <NewDataSet>
  <item>
- <cust_id>seyogo</cust_id>
- <seq>1</seq>
- <phone>01029281740</phone>
- <si>서울특별시</si>
- <gu>영등포구</gu>
- <dong>여의도동</dong>
- <bunji/>
- <building>한양아파트</building>
- <addr_desc>1층 101호</addr_desc>
- <branch_id>99999999</branch_id>
- <cust_flag>2</cust_flag>
- <reg_date>20101227</reg_date>
- <reg_time>135000</reg_time>
- <upd_date/>
- <upd_time/>
+ <PHONE>01012345678</PHONE>
+ <SI>서울특별시</SI>
+ <GU>은평구</GU>
+ <DONG>증산동</DONG>
+ <BUNJI />
+ <BUILDING>증산동사무소</BUILDING>
+ <ADDR_APPEND>증산동사무소</ADDR_APPEND>
+ <BRANCH_ID>11136</BRANCH_ID>
+ <BRANCH_NM>응암사거리</BRANCH_NM>
  </item>
  </NewDataSet>
  */
 - (void)GetShippingList
 {
-	
-#ifdef LOCALTEST
-	// 회사 내부 테스트 용 */
-	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
-#else
-	// 롯데리아 사이트 테스트 
-	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
-#endif
-	
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
 								@"seyogo",@"cust_id",
+								@"seyogo",@"cust_flag",
 								nil];
-	
 	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
 	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
-	
 	// 페이지 호출
-	[httpRequest requestUrl:url bodyObject:bodyObject];
+	[httpRequest requestUrl:@"/MbCust.asmx/ws_getCustDeliveryXml" bodyObject:bodyObject bodyArray:nil];
 	
 }
 
@@ -211,20 +176,16 @@
 		{
 			
 			CustomerDelivery *Customer  = [[[CustomerDelivery alloc] init] retain];
-			[Customer setSeq:[[t_item getChild:@"seq"] getValue]];
-			[Customer setPhone:[[t_item getChild:@"phone"] getValue]];
 			[Customer setSi:[[t_item getChild:@"si"] getValue]];
 			[Customer setGu:[[t_item getChild:@"gu"] getValue]];
 			[Customer setDong:[[t_item getChild:@"dong"] getValue]];
 			[Customer setBunji:[[t_item getChild:@"bunji"] getValue]];
 			[Customer setBuilding:[[t_item getChild:@"building"] getValue]];
-			[Customer setAddrdesc:[[t_item getChild:@"addr_desc"] getValue]];
+			[Customer setAddrdesc:[[t_item getChild:@"addr_append"] getValue]];
 			[Customer setBranchid:[[t_item getChild:@"branch_id"] getValue]];
-			[Customer setRegdate:[[t_item getChild:@"reg_date"] getValue]];
-			[Customer setRegtime:[[t_item getChild:@"reg_time"] getValue]];
-			[Customer setUpddate:[[t_item getChild:@"upd_date"] getValue]];
-			[Customer setUpdtime:[[t_item getChild:@"upd_time"] getValue]];
-			
+			[Customer setBranchname:[[t_item getChild:@"branch_nm"] getValue]];
+			[Customer setPhone:[[t_item getChild:@"phone"] getValue]];
+
 			[CustomerArr  addObject:Customer];
 		}	
 		[xmlParser release];
@@ -249,30 +210,22 @@
 
 -(IBAction)CellDeleteButton:(id)sender
 {
-	// page order 
-#ifdef LOCALTEST
-	// 회사 내부 테스트 용 */
-	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_delCustDelivery";
-#else
-	// 롯데리아 사이트 테스트 
-	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_delCustDelivery";
-#endif
+
 	UIButton *tmpButton	= (UIButton *)sender;
 	RemoveNum	= tmpButton.tag;
-	CustomerDelivery  *tmp = [CustomerArr objectAtIndex:RemoveNum];
-	// HTTP Request 인스턴스 생성
+//	CustomerDelivery  *tmp = [CustomerArr objectAtIndex:RemoveNum];
 
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								tmp.custid ,@"cust_id",
-								tmp.seq ,@"seq",
+								[[DataManager getInstance] accountId] ,@"cust_id",
+								1 ,@"seq",
 								nil];
 	
 	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
 	[httpRequest setDelegate:self selector:@selector(didDataDelete:)];
 	
 	// 페이지 호출
-	[httpRequest requestUrl:url bodyObject:bodyObject];
+	[httpRequest requestUrl:@"/MbCust.asmx/ws_delCustDelivery" bodyObject:bodyObject bodyArray:nil];
 }
 
 - (void)didDataDelete:(NSString *)result
@@ -392,9 +345,8 @@
 						
 	[OrderUser setBranchid:Tmp.branchid];		// 주문지  ID
 	[OrderUser setBranchid:Tmp.branchname];		// 주문지 이름
-	[OrderUser setBranchid:Tmp.branchtime];		// 주문지 Phone
+	[OrderUser setBranchid:Tmp.phone];		// 주문지 Phone
 	
-	[OrderUser.UserAddr setAddrSeq:Tmp.seq ];
 	[OrderUser.UserAddr setSi:Tmp.si];
 	[OrderUser.UserAddr setGu:Tmp.gu];
 	[OrderUser.UserAddr setDong:Tmp.dong];

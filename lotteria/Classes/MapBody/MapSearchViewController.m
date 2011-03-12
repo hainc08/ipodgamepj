@@ -119,7 +119,7 @@
 	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
 	
 	// 페이지 호출
-	[httpRequest requestUrl:url bodyObject:bodyObject];
+	[httpRequest requestUrl:url bodyObject:bodyObject bodyArray:nil];
 	
 }
 

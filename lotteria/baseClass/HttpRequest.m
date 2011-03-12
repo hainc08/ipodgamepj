@@ -1,5 +1,6 @@
 
 #import "HttpRequest.h"
+#import "DataManager.h"
 
 @implementation HTTPRequest
 
@@ -9,13 +10,13 @@
 @synthesize target;
 @synthesize selector;
 
-- (BOOL)requestUrl:(NSString *)url bodyObject:(NSDictionary *)bodyObject
+- (BOOL)requestUrl:(NSString *)url bodyObject:(NSDictionary *)bodyObject  bodyArray:(NSMutableArray *)bodyarr
 {
 	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	
 	// URL Request 객체 생성
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", SERVERURL, url]]
 														   cachePolicy:NSURLRequestUseProtocolCachePolicy
 													   timeoutInterval:5.0f];
 	
@@ -45,6 +46,11 @@
 		// 값들을 &로 연결하여 Body에 사용
 		[request setHTTPBody:[[parts componentsJoinedByString:@"&"] dataUsingEncoding:NSUTF8StringEncoding]];
 	}
+	else {
+		// 값들을 &로 연결하여 Body에 사용
+		[request setHTTPBody:[[bodyarr componentsJoinedByString:@"&"] dataUsingEncoding:NSUTF8StringEncoding]];
+	}
+
 	// Request를 사용하여 실제 연결을 시도하는 NSURLConnection 인스턴스 생성
 	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	
@@ -96,7 +102,6 @@
 	{
 		[target performSelector:selector withObject:result ];
 	}
-	
 
 }
 
@@ -109,6 +114,7 @@
 
 - (void)dealloc
 {
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	[receivedData release];
 	[response release];
 	[result release];

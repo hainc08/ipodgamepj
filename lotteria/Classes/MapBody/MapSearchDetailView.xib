@@ -162,15 +162,16 @@
 							<integer value="0" key="IBUIAccessibilityTraits"/>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Label</string>
+						<string key="IBUIText">주소</string>
 						<reference key="IBUIFont" ref="467320643"/>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC41MjE1Njg2Mjc1IDAuMjgyMzUyOTQxMiAwLjEzMzMzMzMzMzMAA</bytes>
 						</object>
 						<reference key="IBUIHighlightedColor" ref="188479022"/>
-						<int key="IBUIBaselineAdjustment">1</int>
+						<int key="IBUIBaselineAdjustment">0</int>
 						<float key="IBUIMinimumFontSize">10</float>
+						<int key="IBUINumberOfLines">0</int>
 					</object>
 					<object class="IBUIImageView" id="908900311">
 						<reference key="NSNextResponder" ref="191373211"/>

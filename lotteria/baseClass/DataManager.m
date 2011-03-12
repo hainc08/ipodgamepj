@@ -29,6 +29,7 @@ static DataManager *DataManagerInst;
 @implementation ProductData
 
 @synthesize menuId;
+@synthesize menuDIS;
 @synthesize category;
 @synthesize key;
 @synthesize name;
@@ -93,13 +94,10 @@ static DataManager *DataManagerInst;
 
 @implementation CustomerDelivery
 
-@synthesize custid,seq ,phone ,si , gu;
+@synthesize phone ,si , gu;
 @synthesize dong,bunji , building ,addrdesc ,branchid;
-@synthesize regdate, regtime, upddate, updtime;
-@synthesize branchname, branchtime;
+@synthesize branchname;
 - (void)dealloc {
-    [custid release];
-    [seq release];
     [phone release];
     [si release];
     [gu release];
@@ -109,11 +107,6 @@ static DataManager *DataManagerInst;
     [addrdesc release];
     [branchid release];
 	[branchname release];
-	[branchtime release];
-	[regdate release];
-    [regtime release];
-    [upddate release];
-    [updtime release];
 	[super dealloc];
 }
 
@@ -125,6 +118,7 @@ static DataManager *DataManagerInst;
 @synthesize addrSeq,si , gu;
 @synthesize dong,bunji , building ,addrdesc;
 @synthesize adong, ldong;
+@synthesize gis_x, gis_y;
 
 - (void)dealloc {
 	[addrSeq release];
@@ -136,7 +130,8 @@ static DataManager *DataManagerInst;
     [bunji release];
     [building release];
     [addrdesc release];
-	
+	[gis_x release];
+	[gis_y	release];
 	[super dealloc];
 }
 
@@ -145,9 +140,10 @@ static DataManager *DataManagerInst;
 @implementation Order 
 @synthesize UserName,UserPhone ,OrderType;  
 @synthesize OrderMoney, OrderSaleMoney, OrderTotalMoney;
-@synthesize OrderTime;
+@synthesize OrderTime, OrderMemo;
 @synthesize UserAddr;	
 @synthesize branchid, branchname, branchPhone;
+
 - (void)dealloc {
 	[UserName release];
 	[UserPhone release];
@@ -155,9 +151,12 @@ static DataManager *DataManagerInst;
 
 	[UserAddr release];
 	[branchid release];
+	
+	[branchid release];
 	[branchPhone release];
 	[branchname release];
 	
+	[OrderMemo release];
 	[super dealloc];
 }
 

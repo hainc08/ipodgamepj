@@ -1,5 +1,10 @@
 #import <MapKit/MapKit.h>
+#
+#if 0
+#define SERVERURL	@"http://192.168.106.203:8010/ws/mobile"
+#endif
 
+#define SERVERURL	@"http://124.243.56.11/ws/mobile"
 typedef enum _ImgType
 {
 	MIDDLE = 0,
@@ -36,6 +41,7 @@ typedef enum _ImgType
 @interface ProductData : NSObject
 {
 	NSString* menuId;
+	NSString* menuDIS; // 할인코드 -- 주문시 필요
 	NSString* category;
 
 	NSString* key;
@@ -47,6 +53,7 @@ typedef enum _ImgType
 }
 
 @property (retain) NSString* menuId;
+@property (retain) NSString* menuDIS;
 @property (retain) NSString* category;
 
 @property (retain) NSString* key;
@@ -99,8 +106,6 @@ typedef enum _Storetype
 
 
 @interface CustomerDelivery : NSObject {
-	NSString *custid;
-	NSString *seq;
 	NSString *phone;
 	NSString *si;
 	NSString *gu;
@@ -110,15 +115,8 @@ typedef enum _Storetype
 	NSString *addrdesc;
 	NSString *branchid;
 	NSString *branchname;
-	NSString *branchtime;
-	NSString *regdate;
-	NSString *regtime;
-	NSString *upddate;
-	NSString *updtime;
 }
 
-@property (retain) NSString *custid;
-@property (retain) NSString *seq;
 @property (retain) NSString *phone;
 @property (retain) NSString *si;
 @property (retain) NSString *gu;
@@ -128,11 +126,6 @@ typedef enum _Storetype
 @property (retain) NSString *addrdesc;
 @property (retain) NSString *branchid;
 @property (retain) NSString *branchname;
-@property (retain) NSString *branchtime;
-@property (retain) NSString *regdate;
-@property (retain) NSString *regtime;
-@property (retain) NSString *upddate;
-@property (retain) NSString *updtime;
 
 @end
 
@@ -148,6 +141,9 @@ typedef enum _Storetype
 	NSString *bunji;
 	NSString *building;
 	NSString *addrdesc;
+	
+	NSString *gis_x;
+	NSString *gis_y;
 }
 
 @property (retain) NSString	*addrSeq;
@@ -159,6 +155,8 @@ typedef enum _Storetype
 @property (retain) NSString *bunji;
 @property (retain) NSString *building;
 @property (retain) NSString *addrdesc;
+@property (retain) NSString *gis_x;
+@property (retain) NSString *gis_y;
 
 @end
 
@@ -180,6 +178,7 @@ typedef enum _Storetype
 	NSString		*branchid;			// 매장 ID
 	NSString		*branchname;		// 매장 Name
 	NSString		*branchPhone;		// 매장 전화번호 
+	NSString		*OrderMemo;
 	
 }
 
@@ -197,6 +196,7 @@ typedef enum _Storetype
 @property (retain) NSString	*branchid;			// 매장 ID
 @property (retain) NSString	*branchname;		// 매장 Name
 @property (retain) NSString	*branchPhone;		// 매장 전화번호 
+@property (retain) NSString	*OrderMemo;		// 매장 전화번호 
 @end
 
 
@@ -217,6 +217,7 @@ typedef enum _Storetype
 	NSMutableArray* allProductList;
 	
 	NSMutableArray* searchResult[5];
+
 }
 
 @property (readwrite) bool isLoginNow;

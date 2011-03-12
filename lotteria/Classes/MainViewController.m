@@ -12,8 +12,9 @@
 
 #import "HelpViewController.h"
 
+#import "WaitViewController.h"
 @implementation MainViewController
-
+@synthesize WaitView;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -131,5 +132,4 @@
 	[self.view sendSubviewToBack:backImg];
 	[self.view bringSubviewToFront:helpButton];
 }
-
 @end

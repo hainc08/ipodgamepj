@@ -12,7 +12,7 @@ enum TYPE {
 	MYPAGE = 0,
 	CART,
 };
-
+@class HTTPRequest;
 @interface LoginViewController : UIViewControllerDownTemplate <UITextFieldDelegate> {
 
 	IBOutlet UITextField	*ID;
@@ -22,6 +22,7 @@ enum TYPE {
 	IBOutlet UIButton		*ID_Save2;
 	IBOutlet UIButton		*Login;
 	int		LoginNextType;
+	HTTPRequest *httpRequest;
 }
 @property (readwrite) int LoginNextType;
 

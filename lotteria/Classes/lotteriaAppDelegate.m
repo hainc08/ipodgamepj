@@ -8,6 +8,7 @@
 
 #import "lotteriaAppDelegate.h"
 #import "MainViewController.h"
+#import "WaitViewController.h"
 
 @implementation lotteriaAppDelegate
 
@@ -87,5 +88,6 @@
 	[[DataManager getInstance] closeManager];
 	[super dealloc];
 }
+
 
 @end

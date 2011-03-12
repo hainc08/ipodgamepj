@@ -10,8 +10,8 @@
 	id target;
 	SEL selector;
 }
-
-- (BOOL)requestUrl:(NSString *)url bodyObject:(NSDictionary *)bodyObject;
+			/* URL 정보는 " /파일명/FUNC " 만을 받는다. */
+- (BOOL)requestUrl:(NSString *)url bodyObject:(NSDictionary *)bodyObject   bodyArray:(NSMutableArray *)bodyarr;
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)aResponse;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;

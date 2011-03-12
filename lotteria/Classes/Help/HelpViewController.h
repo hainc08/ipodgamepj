@@ -15,6 +15,5 @@
 	IBOutlet UIButton *StipulationInfo;
 	IBOutlet UIButton *CalorieInfo;
 }
-
 - (IBAction)HelpButtonInfo:(id)sender;
 @end

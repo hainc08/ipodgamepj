@@ -81,27 +81,36 @@
 {
 	/* Menu 불러와서 Order정보에 판매매장에서 파는지 여부 확인해야 함 */
 	
-	
-#ifdef LOCALTEST
-	// 회사 내부 테스트 용 */
-	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
-#else
-	// 롯데리아 사이트 테스트 
-	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
-#endif
-	
 	// POST로 전송할 데이터 설정
-	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								@"seyogo",@"cust_id",
-								@"", @"buindid",
-								@"", @"menulist",
-								nil];
+	NSMutableArray	*Body = [[NSMutableArray alloc] initWithCapacity:0];
+	NSMutableArray	*MenuID = [[NSMutableArray alloc] initWithCapacity:0];	
+	NSMutableArray	*MenuDIS = [[NSMutableArray alloc] initWithCapacity:0];		
+	
+	[Body addObject:[NSString stringWithFormat:@"gis_x=%@", [[DataManager getInstance] UserOrder].UserAddr.gis_x]];
+	[Body addObject:[NSString stringWithFormat:@"gis_y=%@", [[DataManager getInstance] UserOrder].UserAddr.gis_y]];
+	
+	NSMutableArray *ShopItemArr = [[DataManager getInstance] getShopCart];
+	
+
+	for (objectInstance in ShopItemArr) {
+		
+		if (![objectInstance.menuId compare:@""] )
+		{
+			[MenuID	 addObject:[NSString stringWithFormat:@"menu_id=%@", 
+								[ objectInstance.menuId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
+			
+			[MenuDIS addObject:[NSString stringWithFormat:@"menu_dis=%@", 
+					[[[DataManager getInstance] getProduct:objectInstance.menuId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
+		}
+	}
+	[Body addObjectsFromArray:MenuID];
+	[Body addObjectsFromArray:MenuDIS];
 	
 	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
 	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
 	
 	// 페이지 호출
-	[httpRequest requestUrl:url bodyObject:bodyObject];
+	[httpRequest requestUrl:@"/member.asmx/ws_getCustDeliveryXml" bodyObject:nil bodyArray:Body];
 	
 }
 
@@ -120,6 +129,11 @@
 		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
 		{
 			
+			NSString *menu_id = [[t_item getChild:@"menu_id"] getValue];
+			NSString *menu_dis =  [[t_item getChild:@"menu_dis"] getValue];
+			
+			NSString *short_flag = [[t_item getChild:@"short_flag"] getValue];
+			// 비교 처리.. 비교 하는데 세트메뉴는 어쩌나?ㅡ.ㅡ;
 		}	
 		[xmlParser release];
 		[menuTable reloadData];
