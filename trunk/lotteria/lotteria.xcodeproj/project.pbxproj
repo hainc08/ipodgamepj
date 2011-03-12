@@ -20,7 +20,6 @@
 		56928C881312D787000700A9 /* MyCustomerDelivery.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56928C861312D787000700A9 /* MyCustomerDelivery.xib */; };
 		56A9C7AC1313FC660071D8A0 /* ShippingOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9C7AB1313FC660071D8A0 /* ShippingOrderCell.xib */; };
 		56A9C7AE1313FC930071D8A0 /* OrderListMiddleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9C7AD1313FC930071D8A0 /* OrderListMiddleCell.xib */; };
-		56A9C7B01313FCC40071D8A0 /* OrderMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9C7AF1313FCC40071D8A0 /* OrderMoneyCell.xib */; };
 		56A9C7B41313FD1B0071D8A0 /* ShippingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56A9C7B11313FD1B0071D8A0 /* ShippingCell.xib */; };
 		56A9C7B51313FD1B0071D8A0 /* UITableViewCellTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A9C7B31313FD1B0071D8A0 /* UITableViewCellTemplate.m */; };
 		56A9C82C1314213A0071D8A0 /* CartOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A9C82A1314213A0071D8A0 /* CartOrderViewController.m */; };
@@ -497,6 +496,7 @@
 		56D82124132161650049314B /* StoreAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D82123132161650049314B /* StoreAddressCell.xib */; };
 		56D82166132365B90049314B /* HelpWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D82164132365B90049314B /* HelpWebViewController.m */; };
 		56D82167132365B90049314B /* HelpWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D82165132365B90049314B /* HelpWebView.xib */; };
+		56D8273F132558960049314B /* WaitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D8273E132558960049314B /* WaitViewController.m */; };
 		842165271323475800F9A5F3 /* bg_badge_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 842165241323475800F9A5F3 /* bg_badge_1.png */; };
 		842165281323475800F9A5F3 /* bg_badge_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 842165251323475800F9A5F3 /* bg_badge_2.png */; };
 		842165291323475800F9A5F3 /* bg_badge_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 842165261323475800F9A5F3 /* bg_badge_3.png */; };
@@ -568,7 +568,6 @@
 		56928C861312D787000700A9 /* MyCustomerDelivery.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCustomerDelivery.xib; sourceTree = "<group>"; };
 		56A9C7AB1313FC660071D8A0 /* ShippingOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShippingOrderCell.xib; path = TemplateCell/ShippingOrderCell.xib; sourceTree = "<group>"; };
 		56A9C7AD1313FC930071D8A0 /* OrderListMiddleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = OrderListMiddleCell.xib; path = TemplateCell/OrderListMiddleCell.xib; sourceTree = "<group>"; };
-		56A9C7AF1313FCC40071D8A0 /* OrderMoneyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = OrderMoneyCell.xib; path = TemplateCell/OrderMoneyCell.xib; sourceTree = "<group>"; };
 		56A9C7B11313FD1B0071D8A0 /* ShippingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShippingCell.xib; path = TemplateCell/ShippingCell.xib; sourceTree = "<group>"; };
 		56A9C7B21313FD1B0071D8A0 /* UITableViewCellTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITableViewCellTemplate.h; path = TemplateCell/UITableViewCellTemplate.h; sourceTree = "<group>"; };
 		56A9C7B31313FD1B0071D8A0 /* UITableViewCellTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITableViewCellTemplate.m; path = TemplateCell/UITableViewCellTemplate.m; sourceTree = "<group>"; };
@@ -1060,6 +1059,8 @@
 		56D82163132365B90049314B /* HelpWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpWebViewController.h; path = Classes/Help/HelpWebViewController.h; sourceTree = "<group>"; };
 		56D82164132365B90049314B /* HelpWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpWebViewController.m; path = Classes/Help/HelpWebViewController.m; sourceTree = "<group>"; };
 		56D82165132365B90049314B /* HelpWebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HelpWebView.xib; path = Classes/Help/HelpWebView.xib; sourceTree = "<group>"; };
+		56D8273D132558960049314B /* WaitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitViewController.h; path = Classes/WaitViewController.h; sourceTree = "<group>"; };
+		56D8273E132558960049314B /* WaitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaitViewController.m; path = Classes/WaitViewController.m; sourceTree = "<group>"; };
 		842165241323475800F9A5F3 /* bg_badge_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_badge_1.png; sourceTree = "<group>"; };
 		842165251323475800F9A5F3 /* bg_badge_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_badge_2.png; sourceTree = "<group>"; };
 		842165261323475800F9A5F3 /* bg_badge_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_badge_3.png; sourceTree = "<group>"; };
@@ -1237,7 +1238,6 @@
 				56A9C7AD1313FC930071D8A0 /* OrderListMiddleCell.xib */,
 				56D81180131954FC0049314B /* OrderListBottomCell.xib */,
 				56D813F41319E4D60049314B /* OrderMenuCell.xib */,
-				56A9C7AF1313FCC40071D8A0 /* OrderMoneyCell.xib */,
 				56D82123132161650049314B /* StoreAddressCell.xib */,
 				56A9C9E81315420A0071D8A0 /* UIViewControllerTemplate.h */,
 				56A9C9E91315420A0071D8A0 /* UIViewControllerTemplate.m */,
@@ -1837,6 +1837,8 @@
 				84AA542113115FD5007CE392 /* CartBody */,
 				84B4A400131006EE00A7A99B /* MyPageBody */,
 				84B4A3FC131006EE00A7A99B /* MapBody */,
+				56D8273D132558960049314B /* WaitViewController.h */,
+				56D8273E132558960049314B /* WaitViewController.m */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -1961,7 +1963,6 @@
 				84F1B8D1131450F3006FC7C7 /* productKey.xml in Resources */,
 				56A9C7AC1313FC660071D8A0 /* ShippingOrderCell.xib in Resources */,
 				56A9C7AE1313FC930071D8A0 /* OrderListMiddleCell.xib in Resources */,
-				56A9C7B01313FCC40071D8A0 /* OrderMoneyCell.xib in Resources */,
 				56A9C7B41313FD1B0071D8A0 /* ShippingCell.xib in Resources */,
 				56A9C82D1314213A0071D8A0 /* CartOrderView.xib in Resources */,
 				56A9C834131426D50071D8A0 /* CartOrderUserView.xib in Resources */,
@@ -2489,6 +2490,7 @@
 				56D81FC0131E81480049314B /* MapSearchDetailViewController.m in Sources */,
 				56D82166132365B90049314B /* HelpWebViewController.m in Sources */,
 				8463A0891323D84B0064F123 /* ViewManager.m in Sources */,
+				56D8273F132558960049314B /* WaitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

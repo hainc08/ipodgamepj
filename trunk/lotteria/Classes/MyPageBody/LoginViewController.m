@@ -12,6 +12,7 @@
 #import "CartMyShippingListView.h"
 #import "NaviViewController.h"
 #import "HttpRequest.h"
+#import "ViewManager.h"
 
 
 @implementation LoginViewController
@@ -27,15 +28,23 @@
 	Password.delegate = self;
 	self.navigationItem.title = @"로그인";
 	[self reset];
-	
+	httpRequest = [[HTTPRequest alloc] init];
 }
 
 - (void)viewDidUnload {
-    [super viewDidUnload];
+	if(httpRequest){
+		[httpRequest release];
+		httpRequest = nil;
+    }
+	[super viewDidUnload];
 }
 
 
 - (void)dealloc {
+	if(httpRequest){
+		[httpRequest release];
+		httpRequest = nil;
+    }
     [super dealloc];
 }
 
@@ -89,7 +98,7 @@
 	NSString *url = @"http://www.naver.com";
 	
 	// HTTP Request 인스턴스 생성
-	HTTPRequest *httpRequest = [[HTTPRequest alloc] init];
+
 	
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -101,8 +110,8 @@
 	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
 	
 	// 페이지 호출
-	[httpRequest requestUrl:url bodyObject:bodyObject];
-
+	[httpRequest requestUrl:url bodyObject:bodyObject bodyArray:nil];
+	[[ViewManager getInstance] waitview:self.view isBlock:YES];
 }
 #pragma mark  -
 #pragma mark TextField
@@ -143,7 +152,7 @@
 		
 		[[DataManager getInstance] setIsLoginNow:TRUE];
 	}
-
+	[[ViewManager getInstance] waitview:self.view isBlock:NO];
 	[[ViewManager getInstance] closePopUp];
 }
 

@@ -2,7 +2,7 @@
 #import "CartBodyViewController.h"
 #import "MainViewController.h"
 #import "NaviViewController.h"
-
+#import "WaitViewController.h"
 static ViewManager *ViewManagerInst;
 
 @implementation ViewManager
@@ -10,6 +10,7 @@ static ViewManager *ViewManagerInst;
 @synthesize cartView;
 @synthesize mainView;
 @synthesize naviImgIdx;
+@synthesize WaitView;
 
 + (ViewManager*)getInstance
 {
@@ -83,4 +84,18 @@ static ViewManager *ViewManagerInst;
 	if (popOwner != nil) [popOwner refresh];
 }
 
+#pragma mark WaitViewController
+- (void) waitview: (UIView *) view isBlock: (BOOL) isBlock {
+	if (isBlock) {
+		if (self.WaitView == nil) {
+			self.WaitView = [[WaitViewController alloc] init];
+			self.WaitView.view.frame = CGRectMake(0, 0, 320, 460);
+		}
+		WaitView.view.frame = CGRectMake(0, 0, 320, 460);
+		[view addSubview: self.WaitView.view];
+	}
+	else {
+		[self.WaitView.view removeFromSuperview];
+	}
+}
 @end

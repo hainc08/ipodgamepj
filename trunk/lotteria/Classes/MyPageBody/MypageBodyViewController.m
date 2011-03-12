@@ -14,6 +14,7 @@
 	{
 		LoginViewController* popView = [[LoginViewController alloc] init];
 		[[ViewManager getInstance] popUp:popView button:[navi helpButton] owner:nil];
+		[popView release];
 	}
 }
 
@@ -31,6 +32,7 @@
 
 	LoginViewController* popView = [[LoginViewController alloc] init];
 	[[ViewManager getInstance] popUp:popView button:[navi helpButton] owner:nil];
+	[popView release];
 }
 
 - (IBAction)OrderListButton

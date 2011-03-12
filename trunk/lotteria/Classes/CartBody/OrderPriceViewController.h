@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "UIViewControllerTemplate.h"
 
+@class HTTPRequest;
+
+enum ORDERTYPE {
+	MONEY = 0,
+	CARD ,
+	ONLINE,
+};
+
 @interface OrderPriceViewController : UIViewControllerTemplate {
 	IBOutlet UIButton *Money;
 	IBOutlet UIButton *Card;
@@ -16,8 +24,11 @@
 	IBOutlet UIButton *Card2;
 	IBOutlet UILabel *MoneyTxt;
 	IBOutlet UITextField *Comment;
+		HTTPRequest *httpRequest;
+	int OrderType;
 }
-
+- (void)didReceiveFinished:(NSString *)result;
+- (void)OrderParamSetting:(int)_inType;
 - (IBAction) OrderButton:(id)sender;
 - (void)ShowOKCancleAlert:(NSString *)title msg:(NSString *)message;
 @end

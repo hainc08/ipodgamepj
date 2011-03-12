@@ -12,7 +12,8 @@
 
 
 - (void)viewDidLoad {
-	
+	closetype = true;
+	naviImgIdx = 0;
 	self.navigationItem.title = @"배송지등록";
 	NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://m.naver.com"]
 														  cachePolicy:NSURLRequestReloadIgnoringCacheData 

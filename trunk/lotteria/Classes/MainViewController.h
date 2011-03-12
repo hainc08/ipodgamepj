@@ -5,7 +5,7 @@
 //  Created by Sasin on 11. 2. 18..
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-
+@class WaitViewController;
 @interface MainViewController : UIViewController {
 	id curView;
 	IBOutlet UIImageView* backImg;
@@ -24,8 +24,10 @@
 	IBOutlet UIImageView* cartCountBack2;
 	IBOutlet UIImageView* cartCountBack3;
 	IBOutlet UILabel* cartCountLabel;
+	
+	WaitViewController *WaitView;
 }
-
+@property (nonatomic, retain) WaitViewController *WaitView;
 - (IBAction)buttonClick:(id)sender;
 - (IBAction)helpClick;
 - (void)cartUpdate;

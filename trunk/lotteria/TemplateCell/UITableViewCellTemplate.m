@@ -126,21 +126,6 @@
 
 
 
-@implementation OrderMoneyCell
-
-@synthesize OrderMoney;  
-@synthesize SaleMoney;  
-@synthesize TotalMoney;  
-
--(void)setInfo:(NSString*)_inOMoney :(NSString *)_inSMoney :(NSString *)_inTMoney;
-{
-	[OrderMoney setText: _inOMoney ];
-	[SaleMoney	setText:_inSMoney];
-	[TotalMoney	setText:_inTMoney];
-}
-@end
-
-
 @implementation StoreAddressCell
 @synthesize StoreName;
 @synthesize StoreAddress;

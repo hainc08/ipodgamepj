@@ -140,30 +140,6 @@
 -(IBAction)CellDeleteButton;
 @end
 
-/* 가격정보 Cell 
- 
- ---  사용처 ---
- * 상세주문 내역
- * 주문하기 
- */
-@interface OrderMoneyCell : UITableViewCell
-{
-	/* 주문금액    : FontColor : White */
-	IBOutlet UILabel* OrderMoney;  
-	
-	/* 할인금액	, FontColor : White */
-	IBOutlet UILabel* SaleMoney;
-	
-	/* 결제금액	,	  FontColor : White */
-	IBOutlet UILabel* TotalMoney; 
-}
-@property (nonatomic, retain) IBOutlet UILabel* OrderMoney;  
-@property (nonatomic, retain) IBOutlet UILabel* SaleMoney;  
-@property (nonatomic, retain) IBOutlet UILabel* TotalMoney;  
-
--(void)setInfo:(NSString*)_inOMoney :(NSString *)_inSMoney :(NSString *)_inTMoney;
-@end
-
 
 /* 맵 주소  Cell 
  

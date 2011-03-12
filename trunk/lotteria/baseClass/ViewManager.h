@@ -1,3 +1,4 @@
+@class	WaitViewController;
 
 @interface ViewManager : NSObject
 {
@@ -11,11 +12,15 @@
 	UIButton* popButton;
 	SEL refreshAction;
 	UIViewController* popOwner;
+	
+	WaitViewController *WaitView;
 }
 
 @property (retain) UIViewController* cartView;
 @property (retain) UIViewController* mainView;
 @property (readwrite) int naviImgIdx;
+@property (nonatomic, retain) WaitViewController *WaitView;
+
 
 + (ViewManager*)getInstance;
 + (void)initManager;
@@ -31,5 +36,6 @@
 //-------------------팝업처리---------------------
 - (void)popUp:(UIViewController*)pop button:(UIButton*)button owner:(UIViewController*)owner;
 - (void)closePopUp;
-
+#pragma mark blockView
+- (void) waitview: (UIView *) view isBlock: (BOOL) isBlock;
 @end
