@@ -52,7 +52,7 @@
 {
 	int intVal[13];
 	int valCount;
-	NSString* strVal[7];
+	NSString* strVal[10];
 }
 
 @property (readwrite) int valCount;

@@ -576,17 +576,20 @@
 	{
 		[[SaveManager getInstance] setItemFlag:idx-500];
 	}
-	
+
 	if (data != chrData[i])
 	{
 		if (data == nil) img = nil;
+		else if (data == oldChrData[i]) img = [oldChrView[i] image];
 		else img = [[[UIImage alloc] initWithData:data] autorelease];
+		
+		oldChrData[i] = chrData[i];
 		chrData[i] = data;
-
+		
 		UIImageView* swap = chrView[i];
 		chrView[i] = oldChrView[i];
 		oldChrView[i] = swap;
-		
+
 		[chrView[i] setImage:img];
 
 		[oldChrView[i] setAlpha:1];

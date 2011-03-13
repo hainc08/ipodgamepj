@@ -4,7 +4,7 @@
 
 - (void)setSerihu:(NSString*)chr serihu:(NSString*)str
 {
-	NSString* serihu = [NSString stringWithFormat:@"%@\n\n\n\n\n\n\n\n\n", str];
+	NSString* serihu = [NSString stringWithFormat:@"%@\n\n\n\n\n\n\n\n\n\n\n\n", str];
 	if ([chr length] == 0) [nameBoard setAlpha:0];
 	else [nameBoard setAlpha:1];
 	

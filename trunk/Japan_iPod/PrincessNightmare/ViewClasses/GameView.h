@@ -50,6 +50,8 @@
 	NSData* chrData[4];
 	NSData* bgData;
 
+	NSData* oldChrData[4];
+
 	IBOutlet id blackBoard;
 	
 	IBOutlet id board;
