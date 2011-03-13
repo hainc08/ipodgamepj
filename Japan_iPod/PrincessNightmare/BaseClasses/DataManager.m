@@ -790,7 +790,7 @@ static NSString* ResourcePath;
 	
 	Msg* m = [Msg alloc];
 	msg[msgCount] = m;
-
+	
 //	Tag, Index 프리로딩
 //	nowScene = idx;
 //	nowIdx = msgCount;
@@ -806,7 +806,7 @@ static NSString* ResourcePath;
 	switch (bgIdx)
 	{
 		case 606:
-		case 607:
+		case 608:
 		case 610:
 		case 612:
 		case 616:
@@ -819,6 +819,7 @@ static NSString* ResourcePath;
 		case 792:
 		case 794:
 			[m setIntVal:5 val:bgIdx-1];
+			--bgIdx;
 	}
 
 	int strCount, intCount;
@@ -1054,8 +1055,11 @@ static NSString* ResourcePath;
 				[preloadScene[j] setFXrepeat:false];
 				[preloadScene[j] setNextChapter:-1];
 				[preloadScene[j] setFlagStrCount:0];
-				
-				for (int l=0; l<[msg[willSceneId] valCount]; ++l)
+
+				int strcount = 2;
+				if ((sceneType != 1) && (sceneType != 6)) strcount = sceneType + 1;
+
+				for (int l=strcount; l<[msg[willSceneId] valCount]; ++l)
 				{
 					optionStr = [[msg[willSceneId] getStrVal:l] autorelease];
 
