@@ -11,6 +11,7 @@ static ViewManager *ViewManagerInst;
 @synthesize mainView;
 @synthesize naviImgIdx;
 @synthesize WaitView;
+@synthesize helpButton;
 
 + (ViewManager*)getInstance
 {
@@ -56,7 +57,7 @@ static ViewManager *ViewManagerInst;
 	return naviBackImg[naviImgIdx];
 }
 
-- (void)popUp:(UIViewController*)pop button:(UIButton*)button owner:(UIViewController*)owner
+- (void)popUp:(UIViewController*)pop owner:(UIViewController*)owner
 {
 	if (popUpView != nil)
 	{
@@ -66,7 +67,6 @@ static ViewManager *ViewManagerInst;
 	}
 	
 	popUpView = [[NaviViewController alloc] init];
-	popButton = button;
 	popOwner = owner;
 	[(NaviViewController*)popUpView setBody:pop];
 	
@@ -74,13 +74,13 @@ static ViewManager *ViewManagerInst;
 	[mainView.view sendSubviewToBack:popUpView.view];
 	[mainView viewAlign];
 	
-	if (popButton != nil) [popButton setAlpha:0];
+	[helpButton setAlpha:0];
 }
 
 - (void)closePopUp
 {
 	[[(NaviViewController*)popUpView body] back];
-	if (popButton != nil) [popButton setAlpha:1];
+	[helpButton setAlpha:1];
 	if (popOwner != nil) [popOwner refresh];
 }
 

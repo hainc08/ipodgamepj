@@ -1,6 +1,6 @@
 #import "NaviViewController.h"
 
-#import "MainBodyViewController.h"
+#import "MenuBodyViewController.h"
 #import "CartBodyViewController.h"
 #import "MypageBodyViewController.h"
 #import "MapBodyViewController.h"
@@ -9,7 +9,6 @@
 @implementation NaviViewController
 
 @synthesize idx;
-@synthesize helpButton;
 @synthesize listButton;
 @synthesize body;
 @synthesize parentView;
@@ -23,7 +22,7 @@
 	{
 		switch (idx) {
 			case 0:
-				body = [[MainBodyViewController alloc] init];
+				body = [[MenuBodyViewController alloc] init];
 				break;
 			case 1:
 				body = [[CartBodyViewController alloc] init];

@@ -35,7 +35,7 @@
 	if ([[DataManager getInstance] isLoginNow] == false)
 	{
 		LoginViewController* popView = [[LoginViewController alloc] init];
-		[[ViewManager getInstance] popUp:popView button:[navi helpButton] owner:self];
+		[[ViewManager getInstance] popUp:popView owner:self];
 	}
 	else
 	{
@@ -122,9 +122,9 @@
 
 
 - (IBAction)ShipRegButton:(id)sender
-{	
+{
 	ShipSearchViewController *ShipData  = [[ShipSearchViewController alloc] init];
-	[[ViewManager getInstance] popUp:ShipData button:nil owner:self];
+	[[ViewManager getInstance] popUp:ShipData owner:self];
 }
 
 
