@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewControllerTemplate.h"
 
-
-@interface HelpWebViewController : UIViewController {
+@interface HelpWebViewController : UIViewControllerTemplate {
 	NSString *URLInfo;
 	NSString *TitleName;
 	IBOutlet UIWebView *Webview; 

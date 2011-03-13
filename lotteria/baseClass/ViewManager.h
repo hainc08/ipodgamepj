@@ -9,9 +9,9 @@
 	UIImage* naviBackImg[2];
 
 	UINavigationController* popUpView;
-	UIButton* popButton;
 	SEL refreshAction;
 	UIViewController* popOwner;
+	UIButton* helpButton;
 	
 	WaitViewController *WaitView;
 }
@@ -20,7 +20,7 @@
 @property (retain) UIViewController* mainView;
 @property (readwrite) int naviImgIdx;
 @property (nonatomic, retain) WaitViewController *WaitView;
-
+@property (nonatomic, retain) UIButton* helpButton;
 
 + (ViewManager*)getInstance;
 + (void)initManager;
@@ -34,7 +34,7 @@
 - (UIImage*)getNaviImg;
 
 //-------------------팝업처리---------------------
-- (void)popUp:(UIViewController*)pop button:(UIButton*)button owner:(UIViewController*)owner;
+- (void)popUp:(UIViewController*)pop owner:(UIViewController*)owner;
 - (void)closePopUp;
 #pragma mark blockView
 - (void) waitview: (UIView *) view isBlock: (BOOL) isBlock;

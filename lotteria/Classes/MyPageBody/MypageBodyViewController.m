@@ -13,7 +13,7 @@
 	if ([[DataManager getInstance] isLoginNow] == false)
 	{
 		LoginViewController* popView = [[LoginViewController alloc] init];
-		[[ViewManager getInstance] popUp:popView button:[navi helpButton] owner:nil];
+		[[ViewManager getInstance] popUp:popView owner:nil];
 		[popView release];
 	}
 }
@@ -31,7 +31,7 @@
 	[[DataManager getInstance] setIsLoginNow:FALSE];
 
 	LoginViewController* popView = [[LoginViewController alloc] init];
-	[[ViewManager getInstance] popUp:popView button:[navi helpButton] owner:nil];
+	[[ViewManager getInstance] popUp:popView owner:nil];
 	[popView release];
 }
 

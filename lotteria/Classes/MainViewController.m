@@ -21,8 +21,9 @@
 
 	LogoViewController* logoBody = [[LogoViewController alloc] init];
 	NaviViewController* navi = [[NaviViewController alloc] init];
-	[navi setHelpButton:helpButton];
 	[navi setListButton:listButton];
+	
+	[[ViewManager getInstance] setHelpButton:helpButton];
 	
 	curView = navi.view;
 	
@@ -57,9 +58,10 @@
 	
 	[self dismissModalViewControllerAnimated:YES];
 	NaviViewController* navi = [[NaviViewController alloc] init];
-	[navi setHelpButton:helpButton];
 	[navi setParentView:self];
 	[navi setIdx:idx];
+	
+	[[ViewManager getInstance] setHelpButton:helpButton];
 
 	UIView* oldView = curView;
 	curView = navi.view;
@@ -75,7 +77,7 @@
 
 - (IBAction)helpClick
 {
-	[[ViewManager getInstance] popUp:[[HelpViewController alloc] init] button:helpButton owner:nil];
+	[[ViewManager getInstance] popUp:[[HelpViewController alloc] init] owner:nil];
 	lastButton = nil;
 }
 

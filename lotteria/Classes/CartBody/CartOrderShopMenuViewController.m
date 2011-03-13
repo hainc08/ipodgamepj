@@ -92,7 +92,7 @@
 	NSMutableArray *ShopItemArr = [[DataManager getInstance] getShopCart];
 	
 
-	for (objectInstance in ShopItemArr) {
+	for (CartItem* objectInstance in ShopItemArr) {
 		
 		if (![objectInstance.menuId compare:@""] )
 		{
