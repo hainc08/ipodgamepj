@@ -415,7 +415,7 @@ static NSString* ResourcePath;
 	for (int i=0; i<18; ++i)
 		[vname[i] release];
 	
-	for (int i=0; i<15; ++i)
+	for (int i=0; i<EVENTCOUNT; ++i)
 		[eventList[i] release];
 	
 	for (int i=0; i<22031; ++i)
@@ -427,7 +427,7 @@ static NSString* ResourcePath;
 
 - (void)reset
 {
-	for (int i=0; i<15; ++i)
+	for (int i=0; i<EVENTCOUNT; ++i)
 	{
 		eventList[i] = nil;
 	}
@@ -499,7 +499,7 @@ static NSString* ResourcePath;
 	{
 		tempVoiceList[i] = temp[i];
 	}
-
+	
 	moveBG[0] = 142;
 	moveBG[1] = 605;
 	moveBG[2] = 607;
@@ -1240,19 +1240,19 @@ GABBAGE_CHECK_OK:
 	return 0;
 }
 
-- (void)setEventData:(int)idx :(int)data
+- (void)setEventData:(int)idx :(char)data
 {
 	if (eventList[idx] == nil) eventList[idx] = [EventList alloc];
-	for (int i=0; i<12; ++i)
+	for (int i=0; i<3; ++i)
 	{
-		[eventList[idx] setIsShow:i :(1 == ((data >> i) & 0x01))];
+		[eventList[idx] setIsShow:i :(0x01 == ((data >> i) & 0x01))];
 	} 
 }
 
-- (int)getEventData:(int)idx
+- (char)getEventData:(int)idx
 {
-	int data = 0;
-	for (int i=0; i<12; ++i)
+	char data = 0;
+	for (int i=0; i<3 ; ++i)
 	{
 		if ([eventList[idx] getIsShow:i]) data |= (0x01 << i);
 	}
@@ -1262,7 +1262,7 @@ GABBAGE_CHECK_OK:
 - (bool)setEventShow:(int)eventIdx
 {
 	bool result = false;
-	for (int i=0; i<15; ++i)
+	for (int i=0; i<124; ++i)
 	{
 		result = result || [eventList[i] setIsShowByIdx:eventIdx];
 	}

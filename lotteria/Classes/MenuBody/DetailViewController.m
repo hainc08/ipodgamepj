@@ -41,15 +41,18 @@
 	[nameImage setImage:[data getProductImg:NAME]];
 	[descImage setImage:[data getProductImg:DESC]];
 	[selectView setAlpha:0];
-	
+
 	count = 1;
-	[countLabel setText:[NSString stringWithFormat:@"%d", count]];
+	[self refreshCount];
 }
 
 - (IBAction)ButtonClick:(id)sender
 {
 	if (sender == setButton)
 	{
+		[incCount setAlpha:0];
+		[decCount setAlpha:0];
+		
 		[UIView beginAnimations:@"menuAni" context:NULL];
 		[UIView setAnimationDuration:0.1];
 		[UIView setAnimationCurve:UIViewAnimationCurveLinear];
@@ -69,9 +72,15 @@
 		pId[0] = [[DataManager getInstance] getSetId:productId];
 		pId[1] = @"200504";	//세트포테이토
 		pId[2] = @"200807";	//세트콜라
+
+		count = 1;
+		[self refreshCount];
 	}
 	else if (sender == singleButton)
 	{
+		[incCount setAlpha:1];
+		[decCount setAlpha:1];
+		
 		[UIView beginAnimations:@"menuAni" context:NULL];
 		[UIView setAnimationDuration:0.1];
 		[UIView setAnimationCurve:UIViewAnimationCurveLinear];
@@ -91,33 +100,43 @@
 		pId[0] = productId;
 		pId[1] = nil;
 		pId[2] = nil;
+
+		count = 1;
+		[self refreshCount];
 	}
 	else if (sender == addCartButton)
 	{
-		[selectView setAlpha:0];
-		
-		CartItem* item = [[[CartItem alloc] init] retain];
-		
-		NSString* category = [[[DataManager getInstance] getProduct:productId] category];
-
-		if ([category compare:@"D10"] == NSOrderedSame) [item setListIdx:0];
-		else if ([category compare:@"D20"] == NSOrderedSame) [item setListIdx:1];
-		else if ([category compare:@"D30"] == NSOrderedSame) [item setListIdx:2];
-		else if ([category compare:@"D40"] == NSOrderedSame) [item setListIdx:3];
-		else if ([category compare:@"D50"] == NSOrderedSame) [item setListIdx:4];
-
-		[item setCount:count];
-		[item setMenuId:pId[0]];
-		[item setDessertId:pId[1]];
-		[item setDrinkId:pId[2]];
-		[[DataManager getInstance] addCartItem:item];
+		if ([self checkCount])
+		{
+			[selectView setAlpha:0];
+			
+			CartItem* item = [[[CartItem alloc] init] retain];
+			
+			NSString* category = [[[DataManager getInstance] getProduct:productId] category];
+			
+			if ([category compare:@"D10"] == NSOrderedSame) [item setListIdx:0];
+			else if ([category compare:@"D20"] == NSOrderedSame) [item setListIdx:1];
+			else if ([category compare:@"D30"] == NSOrderedSame) [item setListIdx:2];
+			else if ([category compare:@"D40"] == NSOrderedSame) [item setListIdx:3];
+			else if ([category compare:@"D50"] == NSOrderedSame) [item setListIdx:4];
+			
+			[item setCount:count];
+			[item setMenuId:pId[0]];
+			[item setDessertId:pId[1]];
+			[item setDrinkId:pId[2]];
+			[[DataManager getInstance] addCartItem:item];
+		}
 	}
 	else if ((sender == incCount)||(sender == decCount))
 	{
-		if (sender == incCount) ++count;
+		if (sender == incCount)
+		{
+			++count;
+			if ([self checkCount] == false) --count;
+		}
 		else if (count > 1) --count;
 
-		[countLabel setText:[NSString stringWithFormat:@"%d", count]];
+		[self refreshCount];
 	}
 	else if (sender == closeButton)
 	{
@@ -169,6 +188,27 @@
 		pId[2] = [data menuId];
 		[side2Label setText:[data name]];
 	}
+}
+
+- (void)refreshCount
+{
+	[countLabel setText:[NSString stringWithFormat:@"%d", count]];
+}
+
+- (bool)checkCount
+{
+	ProductData* data = [[DataManager getInstance] getProduct:productId];
+	
+	if ([[data category] compare:@"D10"] == NSOrderedSame)
+	{
+		if ([[DataManager getInstance] checkBurgerCount:count] == false)
+		{
+			[self ShowOKAlert:@"주문오류" msg:[NSString stringWithFormat:@"햄버거는 %d개까지 주문가능합니다.", MAX_BURGER]];
+			return false;
+		}
+	}
+		
+	return true;
 }
 
 @end

@@ -25,8 +25,6 @@
 
 }
 
-- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
-
 - (void)GetShippingList;
 - (IBAction)ShipRegButton:(id)sender;
 -(IBAction)CellDeleteButton:(id)sender;

@@ -239,6 +239,7 @@ typedef enum _Storetype
 - (int)itemCount:(int)listIdx;
 - (CartItem*)getCartItem:(int)idx listIdx:(int)listIdx;
 - (CartItem*)getCartItem:(int)idx;
+- (bool)checkBurgerCount:(int)count;
 
 //-------------------상품 정보 처리---------------------
 - (void)loadProduct;

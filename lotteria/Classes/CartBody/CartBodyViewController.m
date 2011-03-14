@@ -74,20 +74,6 @@
 - (void)dealloc {
     [super dealloc];
 }
-#pragma mark -
-#pragma mark AlertView
-- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message
-{
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message
-												   delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-	[alert show];
-	[alert release];
-}
-
-- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	// 필요한 엑션이 있으면 넣자 ..
-}
 
 -(IBAction)OrderButton
 {
@@ -101,8 +87,6 @@
 		[self.navigationController pushViewController:OrderView animated:YES ];
 		[OrderView release];
 	}
-
-
 }
 
 @end

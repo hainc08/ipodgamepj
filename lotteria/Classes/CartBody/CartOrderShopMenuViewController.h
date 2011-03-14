@@ -24,7 +24,6 @@
 - (void)didDataDelete:(NSString *)result;
 - (IBAction)OrderButton:(id)sender;
 
-- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 - (void)didReceiveFinished:(NSString *)result;
 - (void)GetOrderMenuSearch;
 - (void)SetButton;

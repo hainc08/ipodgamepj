@@ -90,7 +90,25 @@
 		int count = [cartItem count];
 		if (count == 0) return;
 
-		if (sender == incCount) ++count;
+		if (sender == incCount)
+		{
+			ProductData* data = [[DataManager getInstance] getProduct:[cartItem menuId]];
+		
+			if ([[data category] compare:@"D10"] == NSOrderedSame)
+			{
+				if ([[DataManager getInstance] checkBurgerCount:0] == false)
+				{
+					UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"주문오류"
+																	message:[NSString stringWithFormat:@"햄버거는 %d개까지 주문가능합니다.", MAX_BURGER]
+																   delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+					[alert show];
+					[alert release];
+					return;
+				}
+			}
+
+			++count;
+		}
 		if (sender == decCount) --count;
 
 		[self refreshData];
