@@ -1,3 +1,5 @@
+#define EVENTCOUNT 126
+
 @interface Scenario : NSObject
 {
 	//뭔내용인지 모르니 네이밍이 이따위...
@@ -33,8 +35,8 @@
 @interface EventList : NSObject
 {
 	int valCount;
-	int intVal[12];
-	bool isShow[12];
+	int intVal[3];
+	bool isShow[3];
 }
 
 @property (readwrite) int valCount;
@@ -157,7 +159,7 @@
 	CGPoint chrID[82];
 	NSString* BGMname[29];
 	VName* vname[18];
-	EventList* eventList[15];	
+	EventList* eventList[EVENTCOUNT];	
 	NSString* itemName[23][2];
 	
 	bool musicShowData[35];
@@ -225,8 +227,8 @@
 - (void)gotoEnding:(int)type idx:(int)idx;
 - (NSString*)getSceneIdxStr;
 
-- (void)setEventData:(int)idx :(int)data;
-- (int)getEventData:(int)idx;
+- (void)setEventData:(int)idx :(char)data;
+- (char)getEventData:(int)idx;
 - (bool)setEventShow:(int)eventIdx;
 
 - (void)setMusicShowWithoutSave:(int)idx;

@@ -21,5 +21,4 @@
 -(void)setupData;
 -(IBAction)OrderButton;
 -(void)update;
-- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 @end

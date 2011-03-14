@@ -13,5 +13,4 @@
 	IBOutlet UIWebView *webview;
 }
 
-- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 @end

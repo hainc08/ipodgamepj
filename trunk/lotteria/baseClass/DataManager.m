@@ -232,18 +232,21 @@ static DataManager *DataManagerInst;
 //-------------------장바구니 처리---------------------
 - (void)addCartItem:(CartItem*)item
 {
-	for (CartItem* i in ShopCart)
+	if ([[[self getProduct:[item menuId]] category] compare:@"S10"] != NSOrderedSame)
 	{
-		if (([[i menuId] compare:[item menuId]] == NSOrderedSame)&&
-			([[i drinkId] compare:[item drinkId]] == NSOrderedSame)&&
-			([[i dessertId] compare:[item dessertId]] == NSOrderedSame))
+		for (CartItem* i in ShopCart)
 		{
-			[i setCount:[item count] + [i count]];
-			[[ViewManager getInstance] cartUpdate];
-			return;
+			if (([[i menuId] compare:[item menuId]] == NSOrderedSame)&&
+				([[i drinkId] compare:[item drinkId]] == NSOrderedSame)&&
+				([[i dessertId] compare:[item dessertId]] == NSOrderedSame))
+			{
+				[i setCount:[item count] + [i count]];
+				[[ViewManager getInstance] cartUpdate];
+				return;
+			}
 		}
 	}
-	
+
 	[ShopCart addObject:item];
 	[[ViewManager getInstance] cartUpdate];
 }
@@ -290,9 +293,26 @@ static DataManager *DataManagerInst;
 
 	return nil;
 }
+
 - (CartItem*)getCartItem:(int)idx
 {
 	return [ShopCart objectAtIndex:idx];
+}
+
+- (bool)checkBurgerCount:(int)addCount
+{
+	int count = 0;
+	for (CartItem* i in ShopCart)
+	{
+		NSString* category = [[self getProduct:[i menuId]] category];
+		if (([category compare:@"D10"] != NSOrderedSame)||
+			([category compare:@"S10"] != NSOrderedSame))
+		{
+			count += [i count];
+		}
+	}
+	
+	return ((addCount + count) < MAX_BURGER);
 }
 
 //-------------------상품 정보 처리---------------------

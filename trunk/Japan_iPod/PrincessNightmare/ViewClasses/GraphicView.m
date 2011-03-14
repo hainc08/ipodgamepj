@@ -46,37 +46,41 @@
 	
 	[[SaveManager getInstance] loadExtraFile];
 	[self loadPage:1];
+	showCount = 0;
 }
 
 - (void)loadPage:(int)page
 {
 	curPage = page;
 
-	[pageLabel setText:[NSString stringWithFormat:@"%d / 14", curPage]];
+	[pageLabel setText:[NSString stringWithFormat:@"%d / 11", curPage]];
 
 	if (curPage == 1) [prevButton setAlpha:0];
 	else [prevButton setAlpha:1];
 
-	if (curPage == 14) [nextButton setAlpha:0];
+	if (curPage == 11) [nextButton setAlpha:0];
 	else [nextButton setAlpha:1];
 	
-	eList = [[DataManager getInstance] getEventList:page];
-
 	for (int i=0; i<12; ++i)
 	{
-		if ( i < [eList valCount])
+		int idx = ((curPage - 1) * 12 + i + 1);
+		if ( idx < EVENTCOUNT )
 		{
+			EventList* data = [[DataManager getInstance] getEventList:idx];
 			UIImage* tempImg;
 
-			if ([eList getIsShow:i])
+			for (int j=0; j<[data valCount]; ++j)
 			{
-				int imgId = [eList getIntVal:i];
-				tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_%03ds.jpg", imgId]];
+				if ([data getIsShow:j])
+				{
+					int imgId = [data getIntVal:j];
+					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"ev_%03ds.jpg", imgId]];
+					goto FINDIMG;
+				}
 			}
-			else
-			{
-				tempImg = baseImg;
-			}
+
+			tempImg = baseImg;
+		FINDIMG:
 
 			[imageButton[i] setAlpha:1];
 			[imageButton[i] setImage:tempImg forState:UIControlStateNormal];
@@ -107,7 +111,10 @@
 	}
 	else if (sender == imageBigButton)
 	{
-		[imageBigButton setAlpha:0];
+		if ([self ShowImg:nowIdx] == false)
+		{
+			[imageBigButton setAlpha:0];
+		}
 	}
 	else
 	{
@@ -115,63 +122,78 @@
 		{
 			if (sender == imageButton[i])
 			{
-				if ([eList getIsShow:i] == false) return;
-
-				UIImage* tempImg;
-				
-				int imgId = [eList getIntVal:i];
-				
-				if (imgId >= 400)
-				{
-					[[SoundManager getInstance] stopBGM];
-					[self playAnime:[NSString stringWithFormat:@"%d", imgId]];
-					
-					endView = (MovieEndView*)[[ViewManager getInstance] getInstView:@"MovieEndView"];
-					
-					NSArray *windows = [[UIApplication sharedApplication] windows];
-					if ([windows count] > 1)
-					{
-						// Locate the movie player window
-						UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
-						// Add our overlay view to the movie player's subviews so it is 
-						// displayed above it.
-						
-						[moviePlayerWindow addSubview:endView];
-						[endView setCenter:CGPointMake(240,160)];
-					}
-					else
-					{
-						[self addSubview:endView];
-						[endView setCenter:CGPointMake(240,160)];
-					}
-				}
-				else
-				{
-					tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_%03d.jpg", imgId]];
-					
-					[imageBigButton setFrame:CGRectMake(0, 0, [tempImg size].width, [tempImg size].height)];
-					[imageBigButton setImage:tempImg forState:UIControlStateNormal];
-					[imageBigButton setAlpha:1];
-
-					if ([tempImg size].height > 500)
-					{
-						[UIView beginAnimations:@"scene" context:NULL];
-						[UIView setAnimationDuration:5];
-						[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-						[imageBigButton setCenter:CGPointMake(240, 340 - (int)([tempImg size].height / 2))];
-						[UIView commitAnimations];
-					}
-					else
-					{
-						[imageBigButton setCenter:CGPointMake(240, 160)];
-					}
-
-				}
-
+				nowIdx = ((curPage - 1) * 12 + i + 1);
+				[self ShowImg:nowIdx];
 				return;
 			}
 		}
 	}
+}
+
+- (bool) ShowImg:(int)idx
+{
+	EventList* data = [[DataManager getInstance] getEventList:idx];
+
+	for (int j=showCount; j<[data valCount]; ++j)
+	{
+		if ([data getIsShow:j])
+		{
+			int imgId = [data getIntVal:j];
+			UIImage* tempImg;
+			
+			if (imgId >= 400)
+			{
+				[[SoundManager getInstance] stopBGM];
+				[self playAnime:[NSString stringWithFormat:@"%d", imgId]];
+				
+				endView = (MovieEndView*)[[ViewManager getInstance] getInstView:@"MovieEndView"];
+				
+				NSArray *windows = [[UIApplication sharedApplication] windows];
+				if ([windows count] > 1)
+				{
+					// Locate the movie player window
+					UIWindow *moviePlayerWindow = [[UIApplication sharedApplication] keyWindow];
+					// Add our overlay view to the movie player's subviews so it is 
+					// displayed above it.
+					
+					[moviePlayerWindow addSubview:endView];
+					[endView setCenter:CGPointMake(240,160)];
+				}
+				else
+				{
+					[self addSubview:endView];
+					[endView setCenter:CGPointMake(240,160)];
+				}
+			}
+			else
+			{
+				tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_%03d.jpg", imgId]];
+				
+				[imageBigButton setFrame:CGRectMake(0, 0, [tempImg size].width, [tempImg size].height)];
+				[imageBigButton setImage:tempImg forState:UIControlStateNormal];
+				[imageBigButton setAlpha:1];
+				
+				if ([tempImg size].height > 500)
+				{
+					[UIView beginAnimations:@"scene" context:NULL];
+					[UIView setAnimationDuration:5];
+					[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+					[imageBigButton setCenter:CGPointMake(240, 340 - (int)([tempImg size].height / 2))];
+					[UIView commitAnimations];
+				}
+				else
+				{
+					[imageBigButton setCenter:CGPointMake(240, 160)];
+				}
+				
+			}
+			
+			++showCount;
+			return true;
+		}
+	}
+	
+	return false;
 }
 
 - (void) BaseSoundPlay

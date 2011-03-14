@@ -28,6 +28,5 @@ enum TYPE {
 
 - (IBAction)LoginButton;
 - (IBAction)IDSaveButton;
-- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 - (void)reset;
 @end

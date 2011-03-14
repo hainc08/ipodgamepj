@@ -44,5 +44,7 @@
 - (IBAction)ButtonClick:(id)sender;
 - (void)makeHalfMode;
 - (void)sideSelected:(int)idx :(ProductData*)data;
+- (bool)checkCount;
+- (void)refreshCount;
 
 @end

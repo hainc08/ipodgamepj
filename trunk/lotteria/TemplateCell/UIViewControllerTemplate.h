@@ -24,24 +24,15 @@
 @property (readonly) int naviImgIdx;
 
 - (void)back;
+- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @end
 
-@interface UIViewControllerDownTemplate : UIViewController {
-	UINavigationController *navi;
-
-	UIButton *backButton;
+@interface UIViewControllerDownTemplate : UIViewControllerTemplate {
 	bool	closetype;
-
-	int naviImgIdx;
 }
 
 @property (assign) bool closetype;
-@property (nonatomic , retain) UIButton* backButton;
-@property (nonatomic , retain) UINavigationController *navi;
-
-@property (readonly) int naviImgIdx;
-
-- (void)back;
 
 @end

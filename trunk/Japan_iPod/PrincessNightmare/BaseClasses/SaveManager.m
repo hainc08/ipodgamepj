@@ -22,6 +22,23 @@ void writeInt(NSFileHandle* writeFile, int value)
 										 length:sizeof(int)]];
 }
 
+char readChar(NSFileHandle* readFile)
+{
+	int temp;
+	
+	NSData *data;
+	data = [readFile readDataOfLength:sizeof(char)];
+	[data getBytes:&temp];
+	
+	return temp;
+}
+
+void writeChar(NSFileHandle* writeFile, char value)
+{
+	[writeFile writeData: [NSData dataWithBytes:&value
+										 length:sizeof(char)]];
+}
+
 @implementation SaveManager
 
 @synthesize opt1;
@@ -255,12 +272,12 @@ void writeInt(NSFileHandle* writeFile, int value)
 	}
 
 	//버전정보심기
-	int ver = 1;
+	int ver = 2;
 	writeInt(writeFile, ver);
 
-	for (int i=0; i<15; ++i)
+	for (int i=0; i<EVENTCOUNT; ++i)
 	{
-		writeInt(writeFile, [[DataManager getInstance] getEventData:i]);
+		writeChar(writeFile, [[DataManager getInstance] getEventData:i]);
 	}
     
 	[writeFile closeFile];
@@ -282,12 +299,20 @@ void writeInt(NSFileHandle* writeFile, int value)
 	//버전정보확인
 	int ver = readInt(readFile);
 
-	if (ver == 1)
+	if (ver == 2)
 	{
-		for (int i=0; i<15; ++i)
+		for (int i=0; i<EVENTCOUNT; ++i)
 		{
-			[[DataManager getInstance] setEventData:i :readInt(readFile)];
+			[[DataManager getInstance] setEventData:i :readChar(readFile)];
 		}
+	}
+	else
+	{
+		//이걸 어떻게 변환한다?
+//		for (int i=0; i<15; ++i)
+//		{
+//			[[DataManager getInstance] setEventData:i :readInt(readFile)];
+//		}
 	}
 #ifdef __DEBUGGING__	
 	else

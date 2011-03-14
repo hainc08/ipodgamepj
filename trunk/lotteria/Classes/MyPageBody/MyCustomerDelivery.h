@@ -15,8 +15,4 @@
 	
 }
 
-
-
-- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
-
 @end

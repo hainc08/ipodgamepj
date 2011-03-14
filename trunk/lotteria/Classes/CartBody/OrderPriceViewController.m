@@ -85,7 +85,8 @@
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	
+	[super alertView:actionSheet clickedButtonAtIndex:buttonIndex];
+
 	if(buttonIndex)
 	{
 		OrderEndViewController *OrderEnd = [[OrderEndViewController alloc] initWithNibName:@"OrderEnd"  bundle:nil];

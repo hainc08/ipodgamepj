@@ -18,15 +18,18 @@
 	
 	int curPage;
 
-	EventList* eList;
 	UIImage* baseImg;
 
 	MovieEndView* endView;
+
+	int nowIdx;
+	int showCount;
 }
 
 - (IBAction)ButtonClick:(id)sender;
 - (void)loadPage:(int)page;
 - (IBAction)playAnime:(NSString*)name;
 - (void)playVideoWithURL:(NSURL *)url showControls:(BOOL)showControls;
+- (bool) ShowImg:(int)idx;
 
 @end

@@ -60,11 +60,19 @@
 	[navi.navigationBar setNeedsDisplay];
 }
 
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
+- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message
+												   delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+	[alert show];
+	[alert release];
+}
+
+#pragma mark -
+#pragma mark AlertView
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	// 필요한 엑션이 있으면 넣자 ..
 }
 
 - (void)viewDidUnload {
@@ -74,26 +82,15 @@
     // e.g. self.myOutlet = nil;
 }
 
-
-- (void)dealloc {
-    [super dealloc];
-}
-
 @end
 
-
 @implementation UIViewControllerDownTemplate
-@synthesize navi;
-@synthesize backButton;
 @synthesize closetype;
-@synthesize naviImgIdx;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	
 	[super viewDidLoad];
-	self.view.backgroundColor = 
-	[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_content.png"]];
 	
 	if( closetype)
 	{
@@ -112,9 +109,6 @@
 	}
 	else
 	self.navigationItem.leftBarButtonItem = nil;
-
-	[[ViewManager getInstance] setNaviImgIdx:naviImgIdx];
-	[navi.navigationBar setNeedsDisplay];
 
 	[navi.view setCenter:CGPointMake(160, 480 + 206)];
 	
@@ -144,17 +138,5 @@
 
 	self.navigationItem.rightBarButtonItem = nil;
 }
-
-- (void)viewDidUnload {
-	[backButton release];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (void)dealloc {
-    [super dealloc];
-}
-
 
 @end

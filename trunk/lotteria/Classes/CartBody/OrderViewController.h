@@ -14,5 +14,4 @@
 }
 
 -(IBAction) PriceButton;
-- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 @end

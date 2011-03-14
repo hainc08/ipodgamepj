@@ -15,4 +15,6 @@
 
 #import "DataManager.h"
 #import "ViewManager.h"
+
+#define MAX_BURGER 12
 //#import "NavigatorManager.h"
