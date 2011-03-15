@@ -70,7 +70,7 @@ static DataManager *DataManagerInst;
 
 @implementation StoreInfo
 @synthesize storeid, storename, storephone;
-@synthesize	storetype, si , gu;
+@synthesize	store_flag, si , gu;
 @synthesize dong,bunji , building ,addrdesc;
 @synthesize coordinate;
 
@@ -92,12 +92,13 @@ static DataManager *DataManagerInst;
 @end
 
 
-@implementation CustomerDelivery
+@implementation DeliveryAddrInfo
 
-@synthesize phone ,si , gu;
+@synthesize Seq, phone ,si , gu;
 @synthesize dong,bunji , building ,addrdesc ,branchid;
-@synthesize branchname;
+@synthesize branchname, gis_x, gis_y;
 - (void)dealloc {
+	[Seq release];
     [phone release];
     [si release];
     [gu release];
@@ -107,29 +108,6 @@ static DataManager *DataManagerInst;
     [addrdesc release];
     [branchid release];
 	[branchname release];
-	[super dealloc];
-}
-
-@end
-
-
-@implementation OrderUserAddr
-
-@synthesize addrSeq,si , gu;
-@synthesize dong,bunji , building ,addrdesc;
-@synthesize adong, ldong;
-@synthesize gis_x, gis_y;
-
-- (void)dealloc {
-	[addrSeq release];
-    [si release];
-    [gu release];
-	[dong release];
-	[adong release];
-	[ldong release];
-    [bunji release];
-    [building release];
-    [addrdesc release];
 	[gis_x release];
 	[gis_y	release];
 	[super dealloc];
@@ -141,22 +119,16 @@ static DataManager *DataManagerInst;
 @synthesize UserName,UserPhone ,OrderType;  
 @synthesize OrderMoney, OrderSaleMoney, OrderTotalMoney;
 @synthesize OrderTime, OrderMemo;
-@synthesize UserAddr;	
-@synthesize branchid, branchname, branchPhone;
+@synthesize UserAddr;
 
 - (void)dealloc {
 	[UserName release];
 	[UserPhone release];
 	[OrderTime release];
-
-	[UserAddr release];
-	[branchid release];
-	
-	[branchid release];
-	[branchPhone release];
-	[branchname release];
-	
 	[OrderMemo release];
+	
+	[UserAddr release];
+
 	[super dealloc];
 }
 
@@ -192,7 +164,7 @@ static DataManager *DataManagerInst;
 	ShopCart = [[NSMutableArray alloc] initWithCapacity:0];
 
 	UserOrder = [[Order alloc] init];
-	OrderUserAddr *UserAddr = [[OrderUserAddr alloc] init];
+	DeliveryAddrInfo *UserAddr = [[DeliveryAddrInfo alloc] init];
 	[UserOrder setUserAddr:UserAddr];
 	[UserAddr release];
 	
@@ -232,6 +204,8 @@ static DataManager *DataManagerInst;
 //-------------------장바구니 처리---------------------
 - (void)addCartItem:(CartItem*)item
 {
+	item.StoreMenuOnOff = true;
+	
 	if ([[[self getProduct:[item menuId]] category] compare:@"S10"] != NSOrderedSame)
 	{
 		for (CartItem* i in ShopCart)
@@ -297,6 +271,18 @@ static DataManager *DataManagerInst;
 - (CartItem*)getCartItem:(int)idx
 {
 	return [ShopCart objectAtIndex:idx];
+}
+- (void)updateCartMenuStatus:(NSString *)menu_id dis:(NSString *)menu_dis flag:(bool)Flag
+{
+	for (CartItem* item in ShopCart)
+	{
+		if ( ([item.menuId compare:menu_id] == NSOrderedSame ) || 
+			( [item.drinkId compare:menu_id] == NSOrderedSame ) || 
+			( [item.dessertId compare:menu_id] == NSOrderedSame ))
+		{
+			if (item.StoreMenuOnOff) item.StoreMenuOnOff = Flag;	
+		}
+	}
 }
 
 - (bool)checkBurgerCount:(int)addCount

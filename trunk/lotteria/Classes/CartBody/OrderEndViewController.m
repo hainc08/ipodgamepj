@@ -17,8 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	Order *tmp =	[[DataManager getInstance] UserOrder ];
-	[Store setText:tmp.branchname];
-	[StorePhone setText:tmp.branchPhone];
+	[Store setText:tmp.UserAddr.branchname];
+	[StorePhone setText:tmp.UserPhone ];
 	
 	httpRequest = [[HTTPRequest alloc] init];
 	self.navigationItem.title = @"주문완료";

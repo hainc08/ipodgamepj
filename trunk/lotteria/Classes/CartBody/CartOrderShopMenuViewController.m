@@ -31,7 +31,6 @@
 	[Scroll addSubview:menuTable];
 	Scroll.frame = CGRectMake(12, 5, 297, 232);
 	buttontype = true;
-	[self GetOrderMenuSearch];
 	
 	[menuTable reloadData];
 	[self SetButton];
@@ -75,70 +74,6 @@
 		[againButton setAlpha:1];
 	}
 
-}
-
-- (void)GetOrderMenuSearch
-{
-	/* Menu 불러와서 Order정보에 판매매장에서 파는지 여부 확인해야 함 */
-	
-	// POST로 전송할 데이터 설정
-	NSMutableArray	*Body = [[NSMutableArray alloc] initWithCapacity:0];
-	NSMutableArray	*MenuID = [[NSMutableArray alloc] initWithCapacity:0];	
-	NSMutableArray	*MenuDIS = [[NSMutableArray alloc] initWithCapacity:0];		
-	
-	[Body addObject:[NSString stringWithFormat:@"gis_x=%@", [[DataManager getInstance] UserOrder].UserAddr.gis_x]];
-	[Body addObject:[NSString stringWithFormat:@"gis_y=%@", [[DataManager getInstance] UserOrder].UserAddr.gis_y]];
-	
-	NSMutableArray *ShopItemArr = [[DataManager getInstance] getShopCart];
-	
-
-	for (CartItem* objectInstance in ShopItemArr) {
-		
-		if (![objectInstance.menuId compare:@""] )
-		{
-			[MenuID	 addObject:[NSString stringWithFormat:@"menu_id=%@", 
-								[ objectInstance.menuId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
-			
-			[MenuDIS addObject:[NSString stringWithFormat:@"menu_dis=%@", 
-					[[[DataManager getInstance] getProduct:objectInstance.menuId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
-		}
-	}
-	[Body addObjectsFromArray:MenuID];
-	[Body addObjectsFromArray:MenuDIS];
-	
-	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
-	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
-	
-	// 페이지 호출
-	[httpRequest requestUrl:@"/member.asmx/ws_getCustDeliveryXml" bodyObject:nil bodyArray:Body];
-	
-}
-
-- (void)didReceiveFinished:(NSString *)result
-{
-	
-	if(![result compare:@"error"])
-	{
-		[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
-	}
-	else {
-		XmlParser* xmlParser = [XmlParser alloc];
-		[xmlParser parserString:result];
-		Element* root = [xmlParser getRoot:@"NewDataSet"];
-		
-		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
-		{
-			
-			NSString *menu_id = [[t_item getChild:@"menu_id"] getValue];
-			NSString *menu_dis =  [[t_item getChild:@"menu_dis"] getValue];
-			
-			NSString *short_flag = [[t_item getChild:@"short_flag"] getValue];
-			// 비교 처리.. 비교 하는데 세트메뉴는 어쩌나?ㅡ.ㅡ;
-		}	
-		[xmlParser release];
-		[menuTable reloadData];
-		[self SetButton];
-	}
 }
 
 /*
@@ -205,8 +140,8 @@
 	/* cell에서 삭제하는 데이터가 있으면 ReloadData 호출하기..*/
 	CartItem *item = [[DataManager getInstance] getCartItem:indexPath.row];
 	
-	//buttontype &= item.StoreMenuOnOff;
-	buttontype &= true;
+	buttontype &= item.StoreMenuOnOff;
+	//buttontype &= true;
 	[tmp_cell setDelegate:self selector:@selector(didDataDelete:)];
 	[tmp_cell setMenuData:indexPath.section  :item];
 	
