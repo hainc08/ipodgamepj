@@ -37,7 +37,8 @@
 	[buttonImg[1][1] release]; 
 	[buttonImg[2][0] release]; 
 	[buttonImg[2][1] release]; 
-	
+	if(httpRequest != nil)
+		[httpRequest release];
     [super dealloc];
 }
 
@@ -114,6 +115,7 @@
 		[xmlParser release];
 	}
 	[httpRequest release];
+	httpRequest = nil;
 }
 
 #pragma mark  -
@@ -122,8 +124,8 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
 	MapSearchViewController *SearchControl = [[MapSearchViewController alloc] initWithNibName:@"MapSearchView" bundle:nil];
-	
-	[self.navi pushViewController:SearchControl animated:YES];
+	SearchControl.Dong = Search.text;
+	[self.navigationController pushViewController:SearchControl animated:YES];
 	[SearchControl release];
 
 	return YES;
