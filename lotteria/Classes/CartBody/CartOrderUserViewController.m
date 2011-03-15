@@ -16,6 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.navigationItem.title = @"수령자 정보";
+
 }
 
 
@@ -53,7 +54,10 @@
 
 #pragma mark  -
 #pragma mark TextField
+- (BOOL)textField:(UITextField *)textField_ shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string 
+{     
 
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
 	[textField resignFirstResponder];

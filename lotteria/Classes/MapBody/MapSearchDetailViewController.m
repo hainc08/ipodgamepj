@@ -21,8 +21,9 @@
 	[StorePhone setText:Info.storephone];
 	
 	NSString *Store = [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
-	 [Info si], [Info gu], [Info dong], [Info bunji],
-	 [Info building], [Info addrdesc]];
+					   ([Info si] ? [Info	si] : @""), ([Info gu] ? [Info gu] : @"" ) , 
+					   ([Info dong] ? [Info dong] : @"") , ( [Info bunji] ? [Info bunji] : @""),
+					   ( [Info building] ? [Info building] : @""), ([Info addrdesc] ? [Info addrdesc] : @"")];
 	
 	[StoreAddress setText:Store];
 	

@@ -15,7 +15,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-		httpRequest = [[HTTPRequest alloc] init];
+
 	Comment.returnKeyType = UIReturnKeyDone;
 	[MoneyTxt setText:[[DataManager getInstance] getPriceStr:[[DataManager getInstance] getCartPrice]]];
 	self.navigationItem.title = @"결제하기";
@@ -36,6 +36,8 @@
 
 
 - (void)dealloc {
+	if(httpRequest != nil)
+		[httpRequest release];
     [super dealloc];
 }
 #pragma mark  -
@@ -104,7 +106,7 @@
 	
 	NSUInteger GroupIDIndex = 0;
 	NSMutableArray	*Body = [[NSMutableArray alloc] initWithCapacity:0];
-	
+	httpRequest = [[HTTPRequest alloc] init];
 	
 	Order *Temp = [[DataManager getInstance] UserOrder];
 	
@@ -144,7 +146,7 @@
 	
 	for (objectInstance in ShopItemArr) {
 		
-		if (![objectInstance.menuId compare:@""] )
+		if (objectInstance.menuId  != nil )
 		{
 			[MenuID	 addObject:[NSString stringWithFormat:@"item_menu_id=%@", 
 								[ objectInstance.menuId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
@@ -161,7 +163,7 @@
 		}
 		
 		
-		if (![objectInstance.dessertId compare:@""])
+		if (objectInstance.dessertId  != nil)
 		{
 			[MenuID	 addObject:[NSString stringWithFormat:@"item_menu_id=%@", 
 								[ objectInstance.dessertId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]];
@@ -176,7 +178,7 @@
 								  [[DataManager getInstance] getProduct:objectInstance.menuId].price ]]; // 매뉴 가격
 			[Dis_money addObject:[NSString stringWithFormat:@"item_disc_money=''"]];	// 할인 가격
 		}
-		if (![objectInstance.drinkId compare:@""])
+		if (objectInstance.drinkId  != nil)
 		{
 			[MenuID	 addObject:[NSString stringWithFormat:@"item_menu_id=%@", 
 								[ objectInstance.drinkId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]];
@@ -248,6 +250,8 @@
 	else 
 	{
 	}
+	[httpRequest release];
+	httpRequest = nil;
 }
 
 @end

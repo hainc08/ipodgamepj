@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "UIViewControllerTemplate.h"
 
-@class Order;
 @class HTTPRequest;
 @interface CartOrderShopMenuViewController : UIViewControllerTemplate {
 	HTTPRequest	*httpRequest;
@@ -21,10 +20,7 @@
 	
 }
 
-- (void)didDataDelete:(NSString *)result;
 - (IBAction)OrderButton:(id)sender;
-
-- (void)didReceiveFinished:(NSString *)result;
-- (void)GetOrderMenuSearch;
+- (void)didDataDelete:(NSString *)result;
 - (void)SetButton;
 @end
