@@ -20,7 +20,7 @@
     [super viewDidLoad];
 	
 	AddressArr = [[NSMutableArray alloc] initWithCapacity:0];
-	httpRequest = [[HTTPRequest alloc] init];
+
 	self.navigationItem.title = @"매장찾기";
 	
 	
@@ -34,23 +34,7 @@
 		[SearchLabel setText:Dong];
 	}
 
-	
-	StoreInfo *storeaddr  = [[[StoreInfo alloc] init] retain];
-	[storeaddr setStoreid:@"111111"];
-	[storeaddr setStorename:@"테스트 매장"];
-	[storeaddr setStorephone:@"00000000000"];
-	
-	//NSString *type  =[[t_item getChild:@"storetype"] getValue];
-	[storeaddr setStoretype:TIMESTORE];
-	[storeaddr setSi:@"서울시"];
-	[storeaddr setGu:@"구로구"];
-	[storeaddr setDong:@"서초동"];
-	[storeaddr setBunji:@"100번지"];
-	[storeaddr setBuilding:@"솔몰리에빌랭"];
-	[storeaddr setAddrdesc:@"메롱"];
-	
-	[AddressArr  addObject:storeaddr];
-	
+	[self GetStoreInfo];
 	[SearchTable reloadData];
 }
 
@@ -69,6 +53,7 @@
 
 
 - (void)dealloc {
+	if(httpRequest != nil)
 	[httpRequest release];
 	[AddressArr release];
     [super dealloc];
@@ -84,31 +69,23 @@
 
 - (void)GetStoreInfo
 {
-	
-#ifdef LOCALTEST
-	// 회사 내부 테스트 용 */
-	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
-#else
-	// 롯데리아 사이트 테스트 
-	NSString *url = @"http://192.168.106.203:8010/ws/member.asmx/ws_getCustDeliveryXml";
-#endif
-	
+	httpRequest = [[HTTPRequest alloc] init];
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								@"seyogo",@"cust_id",
+								Dong,@"dong",
 								nil];
 	
 	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
 	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
 	
 	// 페이지 호출
-	[httpRequest requestUrl:url bodyObject:bodyObject bodyArray:nil];
-	
+	[httpRequest requestUrl:@"/MbBranch.asmx/ws_getBranchDongXml" bodyObject:bodyObject bodyArray:nil];
+	[[ViewManager getInstance] waitview:self.view isBlock:YES];
 }
 
 - (void)didReceiveFinished:(NSString *)result
 {
-	
+	[[ViewManager getInstance] waitview:self.view isBlock:NO];	
 	if(![result compare:@"error"])
 	{
 		[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
@@ -122,18 +99,31 @@
 		{
 			
 			StoreInfo *storeaddr  = [[[StoreInfo alloc] init] retain];
-			[storeaddr setStoreid:[[t_item getChild:@"seq"] getValue]];
-			[storeaddr setStorename:[[t_item getChild:@"name"] getValue]];
-			[storeaddr setStorephone:[[t_item getChild:@"phone"] getValue]];
+			[storeaddr setStoreid:[[t_item getChild:@"BRANCH_ID"] getValue]];
+			[storeaddr setStorename:[[t_item getChild:@"BRANCH_NM"] getValue]];
+			[storeaddr setStorephone:[[t_item getChild:@"BRANCH_TEL1"] getValue]];
 			
-			//NSString *type  =[[t_item getChild:@"storetype"] getValue];
-			[storeaddr setStoretype:TIMESTORE];
-			[storeaddr setSi:[[t_item getChild:@"si"] getValue]];
-			[storeaddr setGu:[[t_item getChild:@"gu"] getValue]];
-			[storeaddr setDong:[[t_item getChild:@"dong"] getValue]];
-			[storeaddr setBunji:[[t_item getChild:@"bunji"] getValue]];
-			[storeaddr setBuilding:[[t_item getChild:@"building"] getValue]];
-			[storeaddr setAddrdesc:[[t_item getChild:@"addr_desc"] getValue]];
+			[storeaddr setSi:[[t_item getChild:@"SI"] getValue]];
+			[storeaddr setGu:[[t_item getChild:@"GU"] getValue]];
+			[storeaddr setDong:[[t_item getChild:@"DONG"] getValue]];
+			[storeaddr setBunji:[[t_item getChild:@"BUNJI"] getValue]];
+			[storeaddr setBuilding:[[t_item getChild:@"BUILDING"] getValue]];
+			[storeaddr setAddrdesc:[[t_item getChild:@"ADDR_DESC"] getValue]];
+			
+			NSString *xvalue = [[t_item getChild:@"GIS_X"] getValue];
+			NSString *yvalue = [[t_item getChild:@"GIS_Y"] getValue];
+			
+			CLLocationCoordinate2D temp;
+			temp.latitude	= [xvalue integerValue];
+			temp.longitude	= [yvalue integerValue];
+			[storeaddr setCoordinate:temp];
+			
+			NSString *delivery = [[t_item getChild:@"DELIVERY_FLAG"] getValue];
+			NSString *open = [[t_item getChild:@"OPEN_FLAG"] getValue];
+			
+			if ( [delivery compare:@"Y"] == NSOrderedSame ) [storeaddr setStore_flag:DELIVERYSTORE];
+			else if ( [open compare:@"Y"] == NSOrderedSame ) [storeaddr setStore_flag:TIMESTORE];
+			else [storeaddr setStore_flag:NORMALSTORE];
 			
 			[AddressArr  addObject:storeaddr];
 		}	
@@ -141,6 +131,7 @@
 
 		[SearchTable reloadData];	
 	}
+	[httpRequest release];
 }
 
 

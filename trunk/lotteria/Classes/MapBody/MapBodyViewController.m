@@ -1,6 +1,8 @@
 #import "MapBodyViewController.h"
 #import "MapSearchViewController.h"
 #import "PlaceMark.h"
+#import "HttpRequest.h"
+#import "XmlParser.h"
 
 @implementation MapBodyViewController
 
@@ -42,6 +44,76 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event	
 {
 	[Search resignFirstResponder];
+}
+
+
+#pragma mark -
+#pragma mark HttpRequestDelegate
+
+- (void)GetStoreInfo:(NSString *)gis_x gis_y:(NSString *)gis_y
+{
+	httpRequest = [[HTTPRequest alloc] init];
+	// POST로 전송할 데이터 설정
+	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
+								gis_x,@"gis_x",
+								gis_y,@"gis_y",
+								nil];
+	
+	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
+	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
+	
+	// 페이지 호출
+	[httpRequest requestUrl:@"/MbBranch.asmx/ws_getBranchGisXml" bodyObject:bodyObject bodyArray:nil];
+	[[ViewManager getInstance] waitview:self.view isBlock:YES];
+}
+
+- (void)didReceiveFinished:(NSString *)result
+{
+	[[ViewManager getInstance] waitview:self.view isBlock:NO];
+	if(![result compare:@"error"])
+	{
+		[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
+	}
+	else {
+		XmlParser* xmlParser = [XmlParser alloc];
+		[xmlParser parserString:result];
+		Element* root = [xmlParser getRoot:@"NewDataSet"];
+		
+		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
+		{
+			
+			StoreInfo *storeaddr  = [[[StoreInfo alloc] init] retain];
+			[storeaddr setStoreid:[[t_item getChild:@"BRANCH_ID"] getValue]];
+			[storeaddr setStorename:[[t_item getChild:@"BRANCH_NM"] getValue]];
+			[storeaddr setStorephone:[[t_item getChild:@"BRANCH_TEL1"] getValue]];
+			
+			[storeaddr setSi:[[t_item getChild:@"SI"] getValue]];
+			[storeaddr setGu:[[t_item getChild:@"GU"] getValue]];
+			[storeaddr setDong:[[t_item getChild:@"DONG"] getValue]];
+			[storeaddr setBunji:[[t_item getChild:@"BUNJI"] getValue]];
+			[storeaddr setBuilding:[[t_item getChild:@"BUILDING"] getValue]];
+			[storeaddr setAddrdesc:[[t_item getChild:@"ADDR_DESC"] getValue]];
+			
+			NSString *xvalue = [[t_item getChild:@"GIS_X"] getValue];
+			NSString *yvalue = [[t_item getChild:@"GIS_Y"] getValue];
+			
+			CLLocationCoordinate2D temp;
+			temp.latitude	= [xvalue integerValue];
+			temp.longitude	= [yvalue integerValue];
+			[storeaddr setCoordinate:temp];
+			
+			NSString *delivery = [[t_item getChild:@"DELIVERY_FLAG"] getValue];
+			NSString *open = [[t_item getChild:@"OPEN_FLAG"] getValue];
+			
+			if ( [delivery compare:@"Y"] == NSOrderedSame ) [storeaddr setStore_flag:DELIVERYSTORE];
+			else if ( [open compare:@"Y"] == NSOrderedSame ) [storeaddr setStore_flag:TIMESTORE];
+			else [storeaddr setStore_flag:NORMALSTORE];
+			
+			[AddressArr  addObject:storeaddr];
+		}	
+		[xmlParser release];
+	}
+	[httpRequest release];
 }
 
 #pragma mark  -
@@ -118,7 +190,7 @@
 	{
 		MapSearchViewController *SearchControl = [[MapSearchViewController alloc] initWithNibName:@"MapSearchView" bundle:nil];
 		SearchControl.Dong = Search.text;
-		[self.navi pushViewController:SearchControl animated:YES];
+		[self.navigationController pushViewController:SearchControl animated:YES];
 		[SearchControl release];
 	}
 	else if (sender == TextClear)	[Search setText:@""];

@@ -28,7 +28,7 @@
 	Password.delegate = self;
 	self.navigationItem.title = @"로그인";
 	[self reset];
-	httpRequest = [[HTTPRequest alloc] init];
+
 }
 
 - (void)viewDidUnload {
@@ -94,6 +94,8 @@
 		[self ShowOKAlert:@"Login Error" msg:@"Password 가 12자 이상입니다."];
 		return;
 	}
+	httpRequest = [[HTTPRequest alloc] init];
+	
 		// 접속할 주소 설정
 	NSString *url = @"http://www.naver.com";
 	
@@ -152,8 +154,11 @@
 		
 		[[DataManager getInstance] setIsLoginNow:TRUE];
 	}
+	[httpRequest release];
+	httpRequest = nil;
 	[[ViewManager getInstance] waitview:self.view isBlock:NO];
 	[[ViewManager getInstance] closePopUp];
+
 }
 
 @end

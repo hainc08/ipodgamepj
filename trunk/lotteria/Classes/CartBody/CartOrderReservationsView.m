@@ -45,7 +45,7 @@
 	NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
 	NSDateFormatter *dateFormatter		=	[[NSDateFormatter alloc] init];
 	[dateFormatter setLocale:locale];
-	[dateFormatter setDateFormat:@"h:mm a"];
+	[dateFormatter setDateFormat:@"hhmi"];
 	Order *Data = [[DataManager getInstance] UserOrder];
 	[Data setOrderTime:[dateFormatter stringFromDate:[Picket date]]];
 	[locale release];
@@ -89,7 +89,18 @@
 					   [Data.UserAddr si], [Data.UserAddr gu], [Data.UserAddr dong], [Data.UserAddr bunji],
 					   [Data.UserAddr building], [Data.UserAddr addrdesc]];
 
-	[tmp_cell setInfo:[Data branchname] :s_tmp :[Data branchPhone] ];
+	NSString* p_tmp;
+	int len = [[Data.UserAddr phone] length];
+	int t = 3;
+	
+	if ([[[Data.UserAddr  phone] substringWithRange:NSMakeRange(0, 2)] compare:@"02"] == NSOrderedSame) t = 2;
+	
+	p_tmp = [NSString stringWithFormat:@"%@-%@-%@",
+			 [[Data.UserAddr  phone]  substringWithRange:NSMakeRange(0, t)],
+			 [[Data.UserAddr  phone] substringWithRange:NSMakeRange(t, len - 4 - t)],
+			 [[Data.UserAddr  phone] substringWithRange:NSMakeRange(len - 4, 4)]];
+	
+	[tmp_cell setInfo:[Data.UserAddr branchname] :s_tmp :p_tmp ];
 	
 	return cell;
 }
