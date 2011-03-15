@@ -54,7 +54,7 @@
 
 - (void)dealloc {
 	if(httpRequest != nil)
-	[httpRequest release];
+		[httpRequest release];
 	[AddressArr release];
     [super dealloc];
 }
@@ -72,7 +72,7 @@
 	httpRequest = [[HTTPRequest alloc] init];
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								Dong,@"dong",
+								(Dong ? Dong : @""),@"dong",
 								nil];
 	
 	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
@@ -132,6 +132,7 @@
 		[SearchTable reloadData];	
 	}
 	[httpRequest release];
+	httpRequest = nil;
 }
 
 
