@@ -1,4 +1,4 @@
-#define EVENTCOUNT 126
+#define EVENTCOUNT 125
 
 @interface Scenario : NSObject
 {
