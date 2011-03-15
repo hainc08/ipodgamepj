@@ -4,7 +4,8 @@
 #define SERVERURL	@"http://192.168.106.203:8010/ws/mobile"
 #endif
 
-#define SERVERURL	@"http://124.243.56.11/ws/mobile"
+#define SERVERURL	@"http://homeservice.lotteria.co.kr/mobile"
+#define SERVERURLWS	@"http://homeservice.lotteria.co.kr/ws/mobile"
 typedef enum _ImgType
 {
 	MIDDLE = 0,

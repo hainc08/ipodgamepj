@@ -18,17 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.navigationItem.title = TitleName;
-	
-	NSString *paramStr = [[NSString alloc] initWithFormat: @"CUST_ID=%@&CUST_FLAG=%d",@"seyogo", 3];
-	
+	self.view.backgroundColor = 
+	[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_content.png"]];
+	Webview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_content.png"]];
 	int timeout=10.0;
-	NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/order/step_01.asp", SERVERURL] ]
+	NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLInfo ]
 														  cachePolicy:NSURLRequestReloadIgnoringCacheData 
 													  timeoutInterval:timeout];
 	
-	[request setHTTPMethod:@"POST"];
-	[request setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
-	[paramStr release];
 	[Webview loadRequest:request];	
 }
 
