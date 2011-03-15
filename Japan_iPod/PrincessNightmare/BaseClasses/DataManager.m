@@ -170,6 +170,7 @@ static NSString* ResourcePath;
 
 - (bool)getIsShow:(int)idx
 {
+	return true;
 	return isShow[idx];
 }
 

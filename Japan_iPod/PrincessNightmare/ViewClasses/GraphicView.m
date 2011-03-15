@@ -34,13 +34,16 @@
 			[imageButton[i] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 		}
 		
-		imageBigButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 480, 360)];
-		[self addSubview:imageBigButton];
-		[self bringSubviewToFront:imageBigButton];
-		[imageBigButton setCenter:CGPointMake(240, 160)];
-		[imageBigButton addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-		[imageBigButton setAlpha:0];
-
+		for (int i=0; i<3; ++i)
+		{
+			imageBigButton[i] = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 480, 360)];
+			[self addSubview:imageBigButton[i]];
+			[self bringSubviewToFront:imageBigButton[i]];
+			[imageBigButton[i] setCenter:CGPointMake(240, 160)];
+			[imageBigButton[i] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+			[imageBigButton[i] setAlpha:0];
+		}
+			
 		isInit = true;
 	}
 	
@@ -67,6 +70,12 @@
 		if ( idx < EVENTCOUNT )
 		{
 			EventList* data = [[DataManager getInstance] getEventList:idx];
+			if ([data valCount] == 0)
+			{
+				[imageButton[i] setAlpha:0];
+				continue;
+			}
+
 			UIImage* tempImg;
 
 			for (int j=0; j<[data valCount]; ++j)
@@ -109,11 +118,25 @@
 		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[self loadPage:curPage-1];
 	}
-	else if (sender == imageBigButton)
+	else if ((sender == imageBigButton[0])||
+			 (sender == imageBigButton[1])||
+			 (sender == imageBigButton[2]))
 	{
 		if ([self ShowImg:nowIdx] == false)
 		{
-			[imageBigButton setAlpha:0];
+			--showCount;
+			[imageBigButton[0] setAlpha:0];
+			[imageBigButton[1] setAlpha:0];
+			[imageBigButton[2] setAlpha:0];
+
+			[imageBigButton[showCount] setAlpha:1];
+			
+			[UIView beginAnimations:@"scene" context:NULL];
+			[UIView setAnimationDuration:0.5];
+			[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+			[imageBigButton[showCount] setAlpha:0];
+			[UIView commitAnimations];
+			showCount = 0;
 		}
 	}
 	else
@@ -168,24 +191,34 @@
 			else
 			{
 				tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_%03d.jpg", imgId]];
-				
-				[imageBigButton setFrame:CGRectMake(0, 0, [tempImg size].width, [tempImg size].height)];
-				[imageBigButton setImage:tempImg forState:UIControlStateNormal];
-				[imageBigButton setAlpha:1];
+
+				[imageBigButton[j] setFrame:CGRectMake(0, 0, [tempImg size].width, [tempImg size].height)];
+				[imageBigButton[j] setImage:tempImg forState:UIControlStateNormal];
+				[imageBigButton[j] setImage:tempImg forState:UIControlStateHighlighted];
+				[imageBigButton[j] setImage:tempImg forState:UIControlStateSelected];
+				[self bringSubviewToFront:imageBigButton[j]];
 				
 				if ([tempImg size].height > 500)
 				{
+					[imageBigButton[j] setAlpha:1];
+
 					[UIView beginAnimations:@"scene" context:NULL];
 					[UIView setAnimationDuration:5];
 					[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-					[imageBigButton setCenter:CGPointMake(240, 340 - (int)([tempImg size].height / 2))];
+					[imageBigButton[j] setCenter:CGPointMake(240, 340 - (int)([tempImg size].height / 2))];
 					[UIView commitAnimations];
 				}
 				else
 				{
-					[imageBigButton setCenter:CGPointMake(240, 160)];
+					[imageBigButton[j] setAlpha:0];
+					[imageBigButton[j] setCenter:CGPointMake(240, 160)];
+					
+					[UIView beginAnimations:@"scene" context:NULL];
+					[UIView setAnimationDuration:0.5];
+					[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+					[imageBigButton[j] setAlpha:1];
+					[UIView commitAnimations];
 				}
-				
 			}
 			
 			++showCount;
@@ -212,6 +245,7 @@
 	if ([endView showEnd])
 	{
 		[player stop];
+		showCount = 0;
 	}
 }
 
