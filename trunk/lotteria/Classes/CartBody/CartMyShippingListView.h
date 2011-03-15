@@ -26,6 +26,7 @@
 }
 - (void)refresh;
 - (void)GetShippingList;
+- (void)GetOrderMenuSearch:(NSString *)gis_x :(NSString *)gis_y;
 - (IBAction)ShipRegButton:(id)sender;
 -(IBAction)CellDeleteButton:(id)sender;
 

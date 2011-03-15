@@ -30,16 +30,16 @@
 {
 	HelpWebViewController *Info  = [[HelpWebViewController alloc] initWithNibName:@"HelpWebView" bundle:nil];
 
-	if		( OrderInfo == sender){			Info.URLInfo = @"http://m.naver.com";
+	if		( OrderInfo == sender){			Info.URLInfo = [NSString stringWithFormat:@"%@/iphone/help/help_info.asp", SERVERURL ];
 											Info.TitleName = @"주문안내";
 	}
-	else if ( PersonalInfo == sender){		Info.URLInfo = @"http://m.naver.com";
+	else if ( PersonalInfo == sender){		Info.URLInfo = [NSString stringWithFormat:@"%@/iphone/help/privacy.asp", SERVERURL ];
 											Info.TitleName = @"개인정보";
 	}
-	else if ( StipulationInfo == sender){	Info.URLInfo = @"http://m.naver.com";
+	else if ( StipulationInfo == sender){	Info.URLInfo = [NSString stringWithFormat:@"%@/iphone/help/agreement.asp", SERVERURL ];
 											Info.TitleName = @"이용약관";
 	}
-	else if ( CalorieInfo == sender){		Info.URLInfo = @"http://m.naver.com";
+	else if ( CalorieInfo == sender){		Info.URLInfo = [NSString stringWithFormat:@"%@/iphone/help/calorie_info.asp", SERVERURL ];
 											Info.TitleName = @"열량정보";
 	}
 

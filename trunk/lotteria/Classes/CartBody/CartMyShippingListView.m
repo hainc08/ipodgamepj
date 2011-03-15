@@ -21,6 +21,10 @@
 @implementation CartMyShippingList
 
 - (void)viewDidLoad {
+	
+	httpRequest = [[HTTPRequest alloc] init];
+
+	
 	CustomerTable.backgroundColor = [UIColor clearColor];
 	CustomerTable.opaque = NO;
 	
@@ -45,8 +49,6 @@
 
 - (void)refresh
 {
-	httpRequest = [[HTTPRequest alloc] init];
-
 	[self GetShippingList];
 	[CustomerTable reloadData];	
     [super viewDidLoad];
@@ -102,7 +104,7 @@
 {
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								@"seyogo",@"cust_id",
+								@"mobileuser",@"cust_id",
 								@"3",@"cust_flag",
 								nil];
 	
@@ -127,7 +129,7 @@
 		
 		if( [root childCount] == 0 )
 		{
-			[self ShowOKAlert:nil msg:@"등록된 배송지 목록이 없습니다."];	
+			//[self ShowOKAlert:nil msg:@"등록된 배송지 목록이 없습니다."];	
 		}
 		else {
 			
@@ -149,28 +151,26 @@
 				[Customer setGis_y:[[t_item getChild:@"GIS_Y"] getValue]];
 				[CustomerArr  addObject:Customer];
 			}	
-
-			if([CustomerArr count] > 0)
-			{
-				[CustomerTable setAlpha:1];
-				[noRegImage setAlpha:0];
-				[CustomerTable reloadData];	
-			}
-			else
-			{
-				[CustomerTable setAlpha:0];
-				[noRegImage setAlpha:1];
-			}
-			
 		}
 		[xmlParser release];
-
+		
+		if([CustomerArr count] > 0)
+		{
+			[CustomerTable setAlpha:1];
+			[noRegImage setAlpha:0];
+			[CustomerTable reloadData];	
+		}
+		else
+		{
+			[CustomerTable setAlpha:0];
+			[noRegImage setAlpha:1];
+		}
 	}
 }
 #pragma mark -
 #pragma mark ORDERMENUCHECK
 
-- (void)GetOrderMenuSearch
+- (void)GetOrderMenuSearch:(NSString *)gis_x :(NSString *)gis_y
 {
 	/* Menu 불러와서 Order정보에 판매매장에서 파는지 여부 확인해야 함 */
 	
@@ -179,14 +179,14 @@
 	NSMutableArray	*MenuID = [[NSMutableArray alloc] initWithCapacity:0];	
 	NSMutableArray	*MenuDIS = [[NSMutableArray alloc] initWithCapacity:0];		
 	
-	[Body addObject:[NSString stringWithFormat:@"gis_x=%@", [[DataManager getInstance] UserOrder].UserAddr.gis_x]];
-	[Body addObject:[NSString stringWithFormat:@"gis_y=%@", [[DataManager getInstance] UserOrder].UserAddr.gis_y]];
+	[Body addObject:[NSString stringWithFormat:@"gis_x=%@", gis_x]];
+	[Body addObject:[NSString stringWithFormat:@"gis_y=%@", gis_y]];
 	
 	NSMutableArray *ShopItemArr = [[DataManager getInstance] getShopCart];
 	
 	for (CartItem* objectInstance in ShopItemArr) {
 		
-		if (![objectInstance.menuId compare:@""] )
+		if (objectInstance.menuId != nil )
 		{
 			[MenuID	 addObject:[NSString stringWithFormat:@"menu_id=%@", 
 								[ objectInstance.menuId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
@@ -194,7 +194,7 @@
 			[MenuDIS addObject:[NSString stringWithFormat:@"menu_dis=%@", 
 								[[[DataManager getInstance] getProduct:objectInstance.menuId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
 		}
-		if (![objectInstance.drinkId compare:@""] )
+		if (objectInstance.drinkId != nil )
 		{
 			[MenuID	 addObject:[NSString stringWithFormat:@"menu_id=%@", 
 								[ objectInstance.drinkId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
@@ -202,7 +202,7 @@
 			[MenuDIS addObject:[NSString stringWithFormat:@"menu_dis=%@", 
 								[[[DataManager getInstance] getProduct:objectInstance.drinkId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
 		}
-		if (![objectInstance.dessertId compare:@""] )
+		if (objectInstance.dessertId != nil )
 		{
 			[MenuID	 addObject:[NSString stringWithFormat:@"menu_id=%@", 
 								[ objectInstance.dessertId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
@@ -211,15 +211,15 @@
 								[[[DataManager getInstance] getProduct:objectInstance.dessertId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
 		}
 	}
-	[Body addObjectsFromArray:MenuID];
-	[Body addObjectsFromArray:MenuDIS];
+	[Body addObjectsFromArray:MenuID ];	[MenuID release];
+	[Body addObjectsFromArray:MenuDIS];	[MenuDIS release];
 	
 	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
 	[httpRequest setDelegate:self selector:@selector(didReceiveMenuCheckFinished:)];
 	
 	// 페이지 호출
 	[httpRequest requestUrl:@"/member.asmx/ws_getCustDeliveryXml" bodyObject:nil bodyArray:Body];
-	
+	[Body release];
 }
 
 - (void)didReceiveMenuCheckFinished:(NSString *)result
@@ -268,18 +268,10 @@
 				}
 
 			}	
-			
-			if([CustomerArr count] > 0)
-			{
-				[CustomerTable setAlpha:1];
-				[noRegImage setAlpha:0];
-				[CustomerTable reloadData];	
-			}
-			else
-			{
-				[CustomerTable setAlpha:0];
-				[noRegImage setAlpha:1];
-			}
+
+			CartOrderShopMenuViewController *Order = [[CartOrderShopMenuViewController alloc] initWithNibName:@"CartOrderShopMenu" bundle:nil];
+			[self.navigationController pushViewController:Order animated:YES];
+			[Order release];
 			
 		}		
 		[xmlParser release];
@@ -407,20 +399,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[self GetOrderMenuSearch];
-	DeliveryAddrInfo  *Tmp = [CustomerArr objectAtIndex:indexPath.row];
-	Order *OrderUser = [[DataManager getInstance] UserOrder];
-							
-	[OrderUser.UserAddr setSi:Tmp.si];
-	[OrderUser.UserAddr setGu:Tmp.gu];
-	[OrderUser.UserAddr setDong:Tmp.dong];
-	[OrderUser.UserAddr setBunji:Tmp.bunji];
-	[OrderUser.UserAddr setBuilding:Tmp.building];
-	[OrderUser.UserAddr setAddrdesc:Tmp.addrdesc];
 
-	CartOrderShopMenuViewController *Order = [[CartOrderShopMenuViewController alloc] initWithNibName:@"CartOrderShopMenu" bundle:nil];
-	[self.navigationController pushViewController:Order animated:YES];
-	[Order release];
+	DeliveryAddrInfo  *Tmp = [CustomerArr objectAtIndex:indexPath.row];
+	[self GetOrderMenuSearch:Tmp.gis_x :Tmp.gis_y ];			
+
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
