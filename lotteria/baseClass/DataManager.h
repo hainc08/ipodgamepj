@@ -42,6 +42,9 @@ typedef enum _ImgType
 {
 	NSString* menuId;
 	NSString* menuDIS; // 할인코드 -- 주문시 필요
+	
+	NSString* kcal;		// 칼로리 
+	NSString* menucomment;	// 메뉴 설명
 	NSString* category;
 
 	NSString* key;
@@ -78,7 +81,7 @@ typedef enum _Storetype
 	NSString *storename;
 	NSString *storephone;
 	
-	int		storetype;
+	Storetype		store_flag;		// 
 
 	NSString *si;
 	NSString *gu;
@@ -93,7 +96,7 @@ typedef enum _Storetype
 @property (retain) NSString *storeid;
 @property (retain) NSString *storename;
 @property (retain) NSString *storephone;
-@property (readwrite) int storetype;
+@property (nonatomic, assign) Storetype store_flag;
 
 @property (retain) NSString *si;
 @property (retain) NSString *gu;
@@ -105,98 +108,70 @@ typedef enum _Storetype
 @end
 
 
-@interface CustomerDelivery : NSObject {
-	NSString *phone;
+@interface DeliveryAddrInfo : NSObject {
+	NSString *Seq;
+	NSString *phone;		// 주문 사용자 Phone
+	
 	NSString *si;
 	NSString *gu;
 	NSString *dong;
 	NSString *bunji;
 	NSString *building;
 	NSString *addrdesc;
+	
 	NSString *branchid;
 	NSString *branchname;
-}
-
-@property (retain) NSString *phone;
-@property (retain) NSString *si;
-@property (retain) NSString *gu;
-@property (retain) NSString *dong;
-@property (retain) NSString *bunji;
-@property (retain) NSString *building;
-@property (retain) NSString *addrdesc;
-@property (retain) NSString *branchid;
-@property (retain) NSString *branchname;
-
-@end
-
-
-@interface OrderUserAddr : NSObject 
-{
-	NSString *addrSeq;		// 주소키 값 주겠지..ㅡ.ㅡ; 주소 다보내 달라고 하지는 않겠지..
-	NSString *si;	
-	NSString *gu;
-	NSString *dong;
-	NSString *adong;
-	NSString *ldong;
-	NSString *bunji;
-	NSString *building;
-	NSString *addrdesc;
 	
 	NSString *gis_x;
 	NSString *gis_y;
 }
+@property (retain) 	NSString *Seq;
+@property (retain) NSString *phone;
 
-@property (retain) NSString	*addrSeq;
 @property (retain) NSString *si;
 @property (retain) NSString *gu;
 @property (retain) NSString *dong;
-@property (retain) NSString *adong;
-@property (retain) NSString *ldong;
 @property (retain) NSString *bunji;
 @property (retain) NSString *building;
 @property (retain) NSString *addrdesc;
+
+@property (retain) NSString *branchid;
+@property (retain) NSString *branchname;
+
 @property (retain) NSString *gis_x;
 @property (retain) NSString *gis_y;
-
 @end
+
 
 @interface Order : NSObject
 {
 	
-	OrderUserAddr	*UserAddr;			// 사용자 배송지주소
+	DeliveryAddrInfo	*UserAddr;			// 사용자 배송지주소
 
 	NSString		*UserName;			// 주문사용자
-	NSString		*UserPhone;				// 주문자 핸드폰
-	
+	NSString		*UserPhone;			// 주문자 핸드폰
+
+	NSString		*OrderMemo;
 	int				OrderMoney;			// 주문 값
-	int				OrderSaleMoney;		// 세일 값 (?? 있으려나 )
+	int				OrderSaleMoney;		// 세일 값 (장남감 가격 1500 원 들어감 )
 	int				OrderTotalMoney;	// 두개 sum 
 
 	int				OrderType;			// 일반 주문 : 0   예약주문 : 1
 	NSString		*OrderTime;			// 예약시 예약 시간
-	
-	NSString		*branchid;			// 매장 ID
-	NSString		*branchname;		// 매장 Name
-	NSString		*branchPhone;		// 매장 전화번호 
-	NSString		*OrderMemo;
-	
+
 }
 
-@property (retain)		OrderUserAddr *UserAddr;
+@property (retain)		DeliveryAddrInfo *UserAddr;
 @property (retain)		NSString	*UserName;			// 주문사용자
 @property (retain)		NSString	*UserPhone;				// 주문자 핸드폰
+@property (retain)		NSString	*OrderMemo;		// 주문 내용
+
+@property (readwrite) int	OrderType;			// 일반 주문 : 0   예약주문 : 1
+@property (retain) NSString	*OrderTime;			// 예약시 예약 시간
+
 @property (readwrite) int	OrderMoney;			// 주문 값
 @property (readwrite) int	OrderSaleMoney;		// 세일 값 (?? 있으려나 )
 @property (readwrite) int	OrderTotalMoney;	// 두개 sum 
-
-@property (readwrite) int	OrderType;			// 일반 주문 : 0   예약주문 : 1
-
-@property (retain) NSString	*OrderTime;			// 예약시 예약 시간
-
-@property (retain) NSString	*branchid;			// 매장 ID
-@property (retain) NSString	*branchname;		// 매장 Name
-@property (retain) NSString	*branchPhone;		// 매장 전화번호 
-@property (retain) NSString	*OrderMemo;		// 매장 전화번호 
 @end
 
 
@@ -209,7 +184,9 @@ typedef enum _Storetype
 	NSString* accountPass;
 
 	Order		 *UserOrder;
-	NSMutableArray* ShopCart;
+	
+	// D10 + S10 의 합이 12개 주문할수 있음 나머지 메뉴는 무한대로 주문 가능
+	NSMutableArray* ShopCart;		
 	
 	NSMutableDictionary *setProductMap;
 
@@ -239,6 +216,7 @@ typedef enum _Storetype
 - (int)itemCount:(int)listIdx;
 - (CartItem*)getCartItem:(int)idx listIdx:(int)listIdx;
 - (CartItem*)getCartItem:(int)idx;
+- (void)updateCartMenuStatus:(NSString *)menu_id dis:(NSString *)menu_dis flag:(bool)Flag;
 - (bool)checkBurgerCount:(int)count;
 
 //-------------------상품 정보 처리---------------------

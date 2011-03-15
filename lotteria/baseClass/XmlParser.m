@@ -40,6 +40,8 @@
 - (Element*)getFirstChild
 {
 	curIdx = 0;
+	if ( [childs count] == 0) 
+		return nil;
 	return [childs objectAtIndex:curIdx];
 }
 

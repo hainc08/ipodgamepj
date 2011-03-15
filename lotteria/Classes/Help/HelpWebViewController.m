@@ -18,12 +18,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.navigationItem.title = TitleName;
-	NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLInfo]
+	
+	NSString *paramStr = [[NSString alloc] initWithFormat: @"CUST_ID=%@&CUST_FLAG=%d",@"seyogo", 3];
+	
+	int timeout=10.0;
+	NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/order/step_01.asp", SERVERURL] ]
 														  cachePolicy:NSURLRequestReloadIgnoringCacheData 
-													  timeoutInterval:10.0];
+													  timeoutInterval:timeout];
 	
-	
-	
+	[request setHTTPMethod:@"POST"];
+	[request setHTTPBody:[paramStr dataUsingEncoding:NSUTF8StringEncoding]];
+	[paramStr release];
 	[Webview loadRequest:request];	
 }
 

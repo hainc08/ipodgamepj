@@ -17,7 +17,7 @@
 #import "CartOrderShopMenuViewController.h"
 #import "DataManager.h"
 #import "LoginViewController.h"
-
+#import "ViewManager.h"
 @implementation CartMyShippingList
 
 - (void)viewDidLoad {
@@ -46,56 +46,8 @@
 - (void)refresh
 {
 	httpRequest = [[HTTPRequest alloc] init];
-	
-	NSString *string = @"<NewDataSet>\
-	<item>\
-	<phone>01029281740</phone>\
-	<si>서울특별시</si>\
-	<gu>영등포구</gu>\
-	<dong>여의도동</dong>\
-	<bunji/>\
-	<building>한양아파트</building>\
-	<addr_append>1층 101호</addr_append>\
-	<branch_id>99999999</branch_id>\
-	<branch_nm>233</branch_nm>\
-	</item>\
-	<item>\
-	<phone>01029281740</phone>\
-	<si>서울특별시</si>\
-	<gu>영등포구</gu>\
-	<dong>여의도동</dong>\
-	<bunji/>\
-	<building>한양아파트</building>\
-	<addr_append>1층 101호</addr_append>\
-	<branch_id>99999999</branch_id>\
-	<branch_nm>233</branch_nm>\
-	</item>\
-	</NewDataSet>";
-	
-	
-	XmlParser* xmlParser = [XmlParser alloc];
-	[xmlParser parserString:string];
-	Element* root = [xmlParser getRoot:@"NewDataSet"];
-	
-	for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
-	{
-		
-		CustomerDelivery *Customer  = [[[CustomerDelivery alloc] init] retain];
-		[Customer setSi:[[t_item getChild:@"si"] getValue]];
-		[Customer setGu:[[t_item getChild:@"gu"] getValue]];
-		[Customer setDong:[[t_item getChild:@"dong"] getValue]];
-		[Customer setBunji:[[t_item getChild:@"bunji"] getValue]];
-		[Customer setBuilding:[[t_item getChild:@"building"] getValue]];
-		[Customer setAddrdesc:[[t_item getChild:@"addr_append"] getValue]];
-		[Customer setBranchid:[[t_item getChild:@"branch_id"] getValue]];
-		[Customer setBranchname:[[t_item getChild:@"branch_nm"] getValue]];
-		[Customer setPhone:[[t_item getChild:@"phone"] getValue]];
-		
 
-		[CustomerArr  addObject:Customer];
-	}	
-	[xmlParser release];
-	//	[self GetShippingList];
+	[self GetShippingList];
 	[CustomerTable reloadData];	
     [super viewDidLoad];
 }
@@ -151,16 +103,126 @@
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
 								@"seyogo",@"cust_id",
-								@"seyogo",@"cust_flag",
+								@"3",@"cust_flag",
 								nil];
+	
 	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
 	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
 	// 페이지 호출
 	[httpRequest requestUrl:@"/MbCust.asmx/ws_getCustDeliveryXml" bodyObject:bodyObject bodyArray:nil];
-	
+	[[ViewManager getInstance] waitview:self.view	isBlock:YES];
 }
 
 - (void)didReceiveFinished:(NSString *)result
+{
+	[[ViewManager getInstance] waitview:self.view isBlock:NO];
+	if(![result compare:@"error"])
+	{
+		[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
+	}
+	else {
+		XmlParser* xmlParser = [XmlParser alloc];
+		[xmlParser parserString:result];
+		Element* root = [xmlParser getRoot:@"NewDataSet"];
+		
+		if( [root childCount] == 0 )
+		{
+			[self ShowOKAlert:nil msg:@"등록된 배송지 목록이 없습니다."];	
+		}
+		else {
+			
+			for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
+			{
+			
+				DeliveryAddrInfo *Customer  = [[[DeliveryAddrInfo alloc] init] retain];
+				[Customer setSeq:[[t_item getChild:@"SEQ"] getValue]];
+				[Customer setPhone:[[t_item getChild:@"PHONE"] getValue]];
+				[Customer setSi:[[t_item getChild:@"SI"] getValue]];
+				[Customer setGu:[[t_item getChild:@"GU"] getValue]];
+				[Customer setDong:[[t_item getChild:@"DONG"] getValue]];
+				[Customer setBunji:[[t_item getChild:@"BUNJI"] getValue]];
+				[Customer setBuilding:[[t_item getChild:@"BUILDING"] getValue]];
+				[Customer setAddrdesc:[[t_item getChild:@"ADDR_APPEND"] getValue]];
+				[Customer setBranchid:[[t_item getChild:@"BRANCH_ID"] getValue]];
+				[Customer setBranchname:[[t_item getChild:@"BRANCH_NM"] getValue]];
+				[Customer setGis_x:[[t_item getChild:@"GIS_X"] getValue]];
+				[Customer setGis_y:[[t_item getChild:@"GIS_Y"] getValue]];
+				[CustomerArr  addObject:Customer];
+			}	
+
+			if([CustomerArr count] > 0)
+			{
+				[CustomerTable setAlpha:1];
+				[noRegImage setAlpha:0];
+				[CustomerTable reloadData];	
+			}
+			else
+			{
+				[CustomerTable setAlpha:0];
+				[noRegImage setAlpha:1];
+			}
+			
+		}
+		[xmlParser release];
+
+	}
+}
+#pragma mark -
+#pragma mark ORDERMENUCHECK
+
+- (void)GetOrderMenuSearch
+{
+	/* Menu 불러와서 Order정보에 판매매장에서 파는지 여부 확인해야 함 */
+	
+	// POST로 전송할 데이터 설정
+	NSMutableArray	*Body = [[NSMutableArray alloc] initWithCapacity:0];
+	NSMutableArray	*MenuID = [[NSMutableArray alloc] initWithCapacity:0];	
+	NSMutableArray	*MenuDIS = [[NSMutableArray alloc] initWithCapacity:0];		
+	
+	[Body addObject:[NSString stringWithFormat:@"gis_x=%@", [[DataManager getInstance] UserOrder].UserAddr.gis_x]];
+	[Body addObject:[NSString stringWithFormat:@"gis_y=%@", [[DataManager getInstance] UserOrder].UserAddr.gis_y]];
+	
+	NSMutableArray *ShopItemArr = [[DataManager getInstance] getShopCart];
+	
+	for (CartItem* objectInstance in ShopItemArr) {
+		
+		if (![objectInstance.menuId compare:@""] )
+		{
+			[MenuID	 addObject:[NSString stringWithFormat:@"menu_id=%@", 
+								[ objectInstance.menuId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
+			
+			[MenuDIS addObject:[NSString stringWithFormat:@"menu_dis=%@", 
+								[[[DataManager getInstance] getProduct:objectInstance.menuId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
+		}
+		if (![objectInstance.drinkId compare:@""] )
+		{
+			[MenuID	 addObject:[NSString stringWithFormat:@"menu_id=%@", 
+								[ objectInstance.drinkId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
+			
+			[MenuDIS addObject:[NSString stringWithFormat:@"menu_dis=%@", 
+								[[[DataManager getInstance] getProduct:objectInstance.drinkId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
+		}
+		if (![objectInstance.dessertId compare:@""] )
+		{
+			[MenuID	 addObject:[NSString stringWithFormat:@"menu_id=%@", 
+								[ objectInstance.dessertId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
+			
+			[MenuDIS addObject:[NSString stringWithFormat:@"menu_dis=%@", 
+								[[[DataManager getInstance] getProduct:objectInstance.dessertId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
+		}
+	}
+	[Body addObjectsFromArray:MenuID];
+	[Body addObjectsFromArray:MenuDIS];
+	
+	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
+	[httpRequest setDelegate:self selector:@selector(didReceiveMenuCheckFinished:)];
+	
+	// 페이지 호출
+	[httpRequest requestUrl:@"/member.asmx/ws_getCustDeliveryXml" bodyObject:nil bodyArray:Body];
+	
+}
+
+- (void)didReceiveMenuCheckFinished:(NSString *)result
 {
 	
 	if(![result compare:@"error"])
@@ -172,35 +234,55 @@
 		[xmlParser parserString:result];
 		Element* root = [xmlParser getRoot:@"NewDataSet"];
 		
-		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
+		
+		if( [root childCount] == 0 )
 		{
+			[self ShowOKAlert:nil msg:@"등록된 배송지 목록이 없습니다."];	
+		}
+		else {
 			
-			CustomerDelivery *Customer  = [[[CustomerDelivery alloc] init] retain];
-			[Customer setSi:[[t_item getChild:@"si"] getValue]];
-			[Customer setGu:[[t_item getChild:@"gu"] getValue]];
-			[Customer setDong:[[t_item getChild:@"dong"] getValue]];
-			[Customer setBunji:[[t_item getChild:@"bunji"] getValue]];
-			[Customer setBuilding:[[t_item getChild:@"building"] getValue]];
-			[Customer setAddrdesc:[[t_item getChild:@"addr_append"] getValue]];
-			[Customer setBranchid:[[t_item getChild:@"branch_id"] getValue]];
-			[Customer setBranchname:[[t_item getChild:@"branch_nm"] getValue]];
-			[Customer setPhone:[[t_item getChild:@"phone"] getValue]];
+			for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
+			{
+				if ( [t_item.name compare:@"BRANCH"]  == NSOrderedSame ) {
+					
+				DeliveryAddrInfo *Customer  = [[DataManager getInstance] UserOrder];
+				[Customer setSeq:[[t_item getChild:@"SEQ"] getValue]];
+				[Customer setPhone:[[t_item getChild:@"PHONE"] getValue]];
+				[Customer setSi:[[t_item getChild:@"SI"] getValue]];
+				[Customer setGu:[[t_item getChild:@"GU"] getValue]];
+				[Customer setDong:[[t_item getChild:@"DONG"] getValue]];
+				[Customer setBunji:[[t_item getChild:@"BUNJI"] getValue]];
+				[Customer setBuilding:[[t_item getChild:@"BUILDING"] getValue]];
+				[Customer setAddrdesc:[[t_item getChild:@"ADDR_APPEND"] getValue]];
+				[Customer setBranchid:[[t_item getChild:@"BRANCH_ID"] getValue]];
+				[Customer setBranchname:[[t_item getChild:@"BRANCH_NM"] getValue]];
+				[Customer setGis_x:[[t_item getChild:@"GIS_X"] getValue]];
+				[Customer setGis_y:[[t_item getChild:@"GIS_Y"] getValue]];
+					
+				}
+				else if( [t_item.name compare:@"ITEM"] == NSOrderedSame ) {
+					
+				[[DataManager getInstance] 	updateCartMenuStatus:[[t_item getChild:@"MENU_ID"] getValue] 
+				 dis:[[t_item getChild:@"MENU_DIS"] getValue] 
+				 flag:[[[t_item getChild:@"SHORT_FLAG"] getValue] compare:@"Y"] ? true : false];
+				}
 
-			[CustomerArr  addObject:Customer];
-		}	
+			}	
+			
+			if([CustomerArr count] > 0)
+			{
+				[CustomerTable setAlpha:1];
+				[noRegImage setAlpha:0];
+				[CustomerTable reloadData];	
+			}
+			else
+			{
+				[CustomerTable setAlpha:0];
+				[noRegImage setAlpha:1];
+			}
+			
+		}		
 		[xmlParser release];
-		if([CustomerArr count] > 0)
-		{
-			[CustomerTable setAlpha:1];
-			[noRegImage setAlpha:0];
-			[CustomerTable reloadData];	
-		}
-		else
-		{
-			[CustomerTable setAlpha:0];
-			[noRegImage setAlpha:1];
-		}
-
 	}
 }
 
@@ -289,7 +371,7 @@
 	[tmp_cell.delbutton setTag:indexPath.row];
 	[tmp_cell.delbutton addTarget:self action:@selector(CellDeleteButton:) forControlEvents:UIControlEventTouchUpInside];
 	
-	CustomerDelivery  *tmp = [CustomerArr objectAtIndex:indexPath.row];
+	DeliveryAddrInfo  *tmp = [CustomerArr objectAtIndex:indexPath.row];
 	
 	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
 					   ([tmp si]?[tmp si]:@""),
@@ -325,13 +407,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	CustomerDelivery  *Tmp = [CustomerArr objectAtIndex:indexPath.row];
+	[self GetOrderMenuSearch];
+	DeliveryAddrInfo  *Tmp = [CustomerArr objectAtIndex:indexPath.row];
 	Order *OrderUser = [[DataManager getInstance] UserOrder];
-						
-	[OrderUser setBranchid:Tmp.branchid];		// 주문지  ID
-	[OrderUser setBranchid:Tmp.branchname];		// 주문지 이름
-	[OrderUser setBranchid:Tmp.phone];		// 주문지 Phone
-	
+							
 	[OrderUser.UserAddr setSi:Tmp.si];
 	[OrderUser.UserAddr setGu:Tmp.gu];
 	[OrderUser.UserAddr setDong:Tmp.dong];

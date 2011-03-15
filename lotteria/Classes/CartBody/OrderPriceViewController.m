@@ -108,7 +108,7 @@
 	
 	Order *Temp = [[DataManager getInstance] UserOrder];
 	
-	[Body	 addObject:[NSString stringWithFormat:@"cust_delivery_seq=%@", Temp.UserAddr.addrSeq ]];
+	[Body	 addObject:[NSString stringWithFormat:@"cust_delivery_seq=%@", Temp.UserAddr.Seq ]];
 	
 	[Body	 addObject:[NSString stringWithFormat:@"cust_id=%@",[[DataManager getInstance] accountId] ]];
 	[Body	 addObject:[NSString stringWithFormat:@"phone=%@", 

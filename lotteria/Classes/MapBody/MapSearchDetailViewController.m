@@ -26,17 +26,17 @@
 	
 	[StoreAddress setText:Store];
 	
-	if(Info.storetype == TIMESTORE)
+	if(Info.store_flag == TIMESTORE)
 	{
 		[StoreType setText:@"24 시간매장"];
 		[StoreImg setImage:[UIImage imageNamed:@"icon_store_24.png"]];
 	}
-	else if(Info.storetype == DELIVERYSTORE )
+	else if(Info.store_flag == DELIVERYSTORE )
 	{
 		[StoreType setText:@"배달매장"];
 		[StoreImg setImage:[UIImage imageNamed:@"icon_store_delivery.png"]];
 	}
-	else if(Info.storetype == NORMALSTORE)
+	else if(Info.store_flag == NORMALSTORE)
 	{
 		[StoreType setText:@"일반매장"];
 		[StoreImg setImage:[UIImage imageNamed:@"icon_store_general.png"]];

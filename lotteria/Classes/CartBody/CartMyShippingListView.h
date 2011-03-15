@@ -24,7 +24,7 @@
 	
 
 }
-
+- (void)refresh;
 - (void)GetShippingList;
 - (IBAction)ShipRegButton:(id)sender;
 -(IBAction)CellDeleteButton:(id)sender;
