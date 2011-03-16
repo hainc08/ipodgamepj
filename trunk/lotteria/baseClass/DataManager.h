@@ -6,6 +6,7 @@
 
 #define SERVERURL	@"http://homeservice.lotteria.co.kr/mobile"
 #define SERVERURLWS	@"http://homeservice.lotteria.co.kr/ws/mobile"
+
 typedef enum _ImgType
 {
 	MIDDLE = 0,
@@ -174,8 +175,6 @@ typedef enum _Storetype
 @property (readwrite) int	OrderSaleMoney;		// 세일 값 (?? 있으려나 )
 @property (readwrite) int	OrderTotalMoney;	// 두개 sum 
 @end
-
-
 
 @interface DataManager : NSObject
 {
