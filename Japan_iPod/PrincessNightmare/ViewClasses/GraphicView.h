@@ -14,7 +14,10 @@
 	IBOutlet UILabel* pageLabel;
 
 	UIButton* imageButton[12];
-	UIButton* imageBigButton[3];
+	UIButton* imageBigButton[4];
+	
+	IBOutlet UIView* button1;
+	IBOutlet UIView* button2;
 	
 	int curPage;
 

@@ -106,6 +106,7 @@
 		[timer setAlpha:0];
 		
 		[self bringSubviewToFront:blackBoard];
+		menuButtonOrigin = [menuButton center];
 
 		isInit = true;
 	}
@@ -637,7 +638,7 @@
 		
 		[bgView setFrame:CGRectMake(0, 0, [img size].width, [img size].height)];
 	}
-
+	
 	if ([s preLoadBgIdx] > 500)
 	{
 		if ([[DataManager getInstance] setEventShow:[s preLoadBgIdx] - 500])
@@ -650,8 +651,17 @@
 	switch ([s animeType])
 	{
 		case 0:
-			if ([[bgView image] size].height == 320)
-				[bgView setCenter:CGPointMake(240, 160)];
+			if ([[bgView image] size].height == 360)
+			{
+				if (([s preLoadBgIdx] >= 623)&&([s preLoadBgIdx] <= 625))
+				{
+					[bgView setCenter:CGPointMake(240, 180)];
+				}
+				else
+				{
+					[bgView setCenter:CGPointMake(240, 160)];
+				}
+			}
 			else
 			{
 				if ([s preLoadBgIdx] == 791)
@@ -728,6 +738,14 @@
 	}
 
 	[[SaveManager getInstance] setSceneExp2:[s sceneId]];
+	if ([s preLoadBgIdx] == 707)
+	{
+		[menuButton setCenter:CGPointMake(40, 43.5)];
+	}
+	else
+	{
+		[menuButton setCenter:menuButtonOrigin];
+	}
 
 	[self playBGM:s];
 	[self playFx:s];

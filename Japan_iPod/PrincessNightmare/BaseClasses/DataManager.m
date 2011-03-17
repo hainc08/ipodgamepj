@@ -170,7 +170,7 @@ static NSString* ResourcePath;
 
 - (bool)getIsShow:(int)idx
 {
-	return true;
+//	return true;
 	return isShow[idx];
 }
 
@@ -1244,7 +1244,7 @@ GABBAGE_CHECK_OK:
 - (void)setEventData:(int)idx :(char)data
 {
 	if (eventList[idx] == nil) eventList[idx] = [EventList alloc];
-	for (int i=0; i<3; ++i)
+	for (int i=0; i<4; ++i)
 	{
 		[eventList[idx] setIsShow:i :(0x01 == ((data >> i) & 0x01))];
 	} 
@@ -1253,7 +1253,7 @@ GABBAGE_CHECK_OK:
 - (char)getEventData:(int)idx
 {
 	char data = 0;
-	for (int i=0; i<3 ; ++i)
+	for (int i=0; i<4 ; ++i)
 	{
 		if ([eventList[idx] getIsShow:i]) data |= (0x01 << i);
 	}

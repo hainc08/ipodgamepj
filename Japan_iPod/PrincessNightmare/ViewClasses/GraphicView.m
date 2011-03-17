@@ -34,7 +34,7 @@
 			[imageButton[i] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 		}
 		
-		for (int i=0; i<3; ++i)
+		for (int i=0; i<4; ++i)
 		{
 			imageBigButton[i] = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 480, 360)];
 			[self addSubview:imageBigButton[i]];
@@ -118,29 +118,32 @@
 		[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
 		[self loadPage:curPage-1];
 	}
-	else if ((sender == imageBigButton[0])||
-			 (sender == imageBigButton[1])||
-			 (sender == imageBigButton[2]))
-	{
-		if ([self ShowImg:nowIdx] == false)
-		{
-			--showCount;
-			[imageBigButton[0] setAlpha:0];
-			[imageBigButton[1] setAlpha:0];
-			[imageBigButton[2] setAlpha:0];
-
-			[imageBigButton[showCount] setAlpha:1];
-			
-			[UIView beginAnimations:@"scene" context:NULL];
-			[UIView setAnimationDuration:0.5];
-			[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-			[imageBigButton[showCount] setAlpha:0];
-			[UIView commitAnimations];
-			showCount = 0;
-		}
-	}
 	else
 	{
+		for (int i=0; i<4; ++i)
+		{
+			if (sender == imageBigButton[i])
+			{
+				if ([self ShowImg:nowIdx] == false)
+				{
+					--showCount;
+					[imageBigButton[0] setAlpha:0];
+					[imageBigButton[1] setAlpha:0];
+					[imageBigButton[2] setAlpha:0];
+					[imageBigButton[3] setAlpha:0];
+					
+					[imageBigButton[showCount] setAlpha:1];
+					
+					[UIView beginAnimations:@"scene" context:NULL];
+					[UIView setAnimationDuration:0.5];
+					[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+					[imageBigButton[showCount] setAlpha:0];
+					[UIView commitAnimations];
+					showCount = 0;
+				}
+			}
+		}
+
 		for (int i=0; i<12; ++i)
 		{
 			if (sender == imageButton[i])
@@ -211,7 +214,15 @@
 				else
 				{
 					[imageBigButton[j] setAlpha:0];
-					[imageBigButton[j] setCenter:CGPointMake(240, 160)];
+
+					if ((imgId >= 123)&&(imgId <= 125))
+					{
+						[imageBigButton[j] setCenter:CGPointMake(240, 180)];
+					}
+					else
+					{
+						[imageBigButton[j] setCenter:CGPointMake(240, 160)];
+					}
 					
 					[UIView beginAnimations:@"scene" context:NULL];
 					[UIView setAnimationDuration:0.5];
@@ -220,6 +231,9 @@
 					[UIView commitAnimations];
 				}
 			}
+			
+			[self bringSubviewToFront:button1];
+			[self bringSubviewToFront:button2];
 			
 			++showCount;
 			return true;
