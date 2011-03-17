@@ -147,8 +147,8 @@
 			[Customer setAddrdesc:[[t_item getChild:@"ADDR_APPEND"] getValue]];
 			[Customer setBranchid:[[t_item getChild:@"BRANCH_ID"] getValue]];
 			[Customer setBranchname:[[t_item getChild:@"BRANCH_NM"] getValue]];
-			[Customer setGis_x:[[t_item getChild:@"GIS_X"] getValue]];
-			[Customer setGis_y:[[t_item getChild:@"GIS_Y"] getValue]];
+			[Customer setGis_x:[[t_item getChild:@"POINT_X"] getValue]];
+			[Customer setGis_y:[[t_item getChild:@"POINT_Y"] getValue]];
 			[CustomerArr  addObject:Customer];
 		}	
 	}
@@ -184,7 +184,7 @@
 	DeliveryAddrInfo  *Tmp = [CustomerArr objectAtIndex:RemoveNum];
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								@"test" ,@"cust_id",
+								@"mobileuser" ,@"cust_id",
 								[Tmp Seq] ,@"seq",
 								nil];
 	
@@ -199,7 +199,13 @@
 - (void)didDataDelete:(NSString *)result
 {	
 	[[ViewManager getInstance] waitview:self.view	isBlock:NO];
-	if(![result compare:@"<RESULT_CODE>Y</RUELST_CODE>"])
+	
+	
+	XmlParser* xmlParser = [XmlParser alloc];
+	[xmlParser parserString:result];
+	Element* root = [xmlParser getRoot:@"RESULT_CODE"];
+	
+	if(![[root getValue] compare:@"Y"])
 	{
 		[CustomerArr removeObjectAtIndex:RemoveNum];
 		if([CustomerArr count] > 0)
@@ -213,7 +219,7 @@
 			[noRegImage setAlpha:1];
 		}
 	}
-	else if( ![result compare:@"<RESULT_CODE>N</RUELST_CODE>"])
+	else if(![[root getValue] compare:@"N"])
 		[self ShowOKAlert:nil msg:@"삭제하는데 실패하였습니다."];	
 	else 
 		[self ShowOKAlert:@"ERROR" msg:@"시스템 오류가 발생했습니다.."];
@@ -231,7 +237,6 @@
 	// POST로 전송할 데이터 설정
 	NSMutableArray	*Body = [[NSMutableArray alloc] initWithCapacity:0];
 	NSMutableArray	*MenuID = [[NSMutableArray alloc] initWithCapacity:0];	
-	NSMutableArray	*MenuDIS = [[NSMutableArray alloc] initWithCapacity:0];		
 	
 	[Body addObject:[NSString stringWithFormat:@"gis_x=%@", gis_x]];
 	[Body addObject:[NSString stringWithFormat:@"gis_y=%@", gis_y]];
@@ -245,7 +250,7 @@
 			[MenuID	 addObject:[NSString stringWithFormat:@"menu_id=%@", 
 								[ objectInstance.menuId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
 			
-			[MenuDIS addObject:[NSString stringWithFormat:@"menu_dis=%@", 
+			[MenuID addObject:[NSString stringWithFormat:@"menu_dis=%@", 
 								[[[DataManager getInstance] getProduct:objectInstance.menuId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
 		}
 		if (objectInstance.drinkId != nil )
@@ -253,7 +258,7 @@
 			[MenuID	 addObject:[NSString stringWithFormat:@"menu_id=%@", 
 								[ objectInstance.drinkId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
 			
-			[MenuDIS addObject:[NSString stringWithFormat:@"menu_dis=%@", 
+			[MenuID addObject:[NSString stringWithFormat:@"menu_dis=%@", 
 								[[[DataManager getInstance] getProduct:objectInstance.drinkId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
 		}
 		if (objectInstance.dessertId != nil )
@@ -261,18 +266,17 @@
 			[MenuID	 addObject:[NSString stringWithFormat:@"menu_id=%@", 
 								[ objectInstance.dessertId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
 			
-			[MenuDIS addObject:[NSString stringWithFormat:@"menu_dis=%@", 
+			[MenuID addObject:[NSString stringWithFormat:@"menu_dis=%@", 
 								[[[DataManager getInstance] getProduct:objectInstance.dessertId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
 		}
 	}
 	[Body addObjectsFromArray:MenuID ];	[MenuID release];
-	[Body addObjectsFromArray:MenuDIS];	[MenuDIS release];
-	
+
 	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
 	[httpRequest setDelegate:self selector:@selector(didReceiveMenuCheckFinished:)];
 	
 	// 페이지 호출
-	[httpRequest requestUrl:@"/member.asmx/ws_getCustDeliveryXml" bodyObject:nil bodyArray:Body];
+	[httpRequest requestUrl:@"/MbBranch.asmx/ws_getOrderBranchMenuXml" bodyObject:nil bodyArray:Body];
 	[Body release];
 	[[ViewManager getInstance] waitview:self.view	isBlock:YES];
 }

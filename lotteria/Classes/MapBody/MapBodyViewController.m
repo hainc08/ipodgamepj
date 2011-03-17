@@ -21,7 +21,8 @@
 	buttonImg[2][1] = [[UIImage imageNamed:@"btn_store_24_on.png"] retain];
 	
 	selectIdx = -1;
-	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+	blackview = nil;
 	[self selectCategory:0];
 	[self setupMap];
 }
@@ -37,16 +38,69 @@
 	[buttonImg[1][1] release]; 
 	[buttonImg[2][0] release]; 
 	[buttonImg[2][1] release]; 
-	if(httpRequest != nil)
+	if(httpRequest)
 		[httpRequest release];
+	if(blackview)
+	{
+		[blackview removeFromSuperview];
+		[blackview release];
+	}
     [super dealloc];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event	
+
+- (void)keyboardWillShow:(NSNotification *)note
 {
-	[Search resignFirstResponder];
+	blackview = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, 360)];
+	blackview.backgroundColor =  [UIColor colorWithWhite: 0.0 alpha: 0.4];
+	[self.view addSubview:blackview];
+    NSDictionary *info = [note userInfo];
+    NSValue *keyBounds = [info objectForKey:UIKeyboardBoundsUserInfoKey];
+	
+    CGRect bndKey;
+    [keyBounds getValue:&bndKey];
+	
+
+	UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, bndKey.size.width, 40)];
+	UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease]; 
+	UIBarButtonItem *barButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"취소" style:UIBarButtonItemStyleBordered target:self action:@selector(buttonClicked)] autorelease];
+	NSArray *items = [[NSArray alloc] initWithObjects:flexibleSpace,barButtonItem, nil];
+	[toolbar setItems:items];
+	[items release];
+	
+	//[self.view addSubview:toolbar];
+	
+	UIWindow* tempWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:1];
+	UIView* keyboard;
+	for(int i = 0; i < [tempWindow.subviews count]; i++)
+	{
+		keyboard = [tempWindow.subviews objectAtIndex:i];
+		
+		if([[keyboard description] hasPrefix:@"<UIKeyboard"] == YES)
+		{
+			[keyboard addSubview:toolbar];
+			keyboard.bounds = CGRectMake(bndKey.origin.x ,bndKey.origin.y ,bndKey.size.width , bndKey.size.height +80);
+			for(UIView *subKeyborad in [keyboard subviews])
+			{
+				if([[subKeyborad description] hasPrefix:@"<UIKeyboardImpl"] == YES)
+				{
+					subKeyborad.bounds = CGRectMake(bndKey.origin.x ,bndKey.origin.y-40 ,bndKey.size.width , bndKey.size.height);
+				}
+			}
+			
+		}
+	}
+	[toolbar release];
 }
 
+- (void)buttonClicked
+{
+	[blackview removeFromSuperview];
+	[blackview release];
+	blackview = nil;
+	
+	[Search resignFirstResponder];
+}
 
 #pragma mark -
 #pragma mark HttpRequestDelegate

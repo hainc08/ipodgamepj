@@ -21,7 +21,7 @@
 
 	int timeout=10.0;
 	/* URL 알려주면 */
-	NSString *url = [NSString stringWithFormat:@"%@/iphone/mypage/order_list.asp?cust_id=%@&cust_flag=%d", SERVERURL, @"seyogo", 3 ];
+	NSString *url = [NSString stringWithFormat:@"%@/iphone/mypage/order_list.asp?cust_id=%@&cust_flag=%d", SERVERURL, [[DataManager getInstance] accountId], 3 ];
 	NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
 														  cachePolicy:NSURLRequestReloadIgnoringCacheData 
 													  timeoutInterval:timeout];

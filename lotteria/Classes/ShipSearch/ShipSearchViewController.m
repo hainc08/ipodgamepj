@@ -32,9 +32,9 @@
 }
 
 - (void)viewDidUnload {
+	[webview stopLoading];
+	webview.delegate = nil;
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 
@@ -47,7 +47,17 @@
 #pragma mark WebView 
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView1 { 
-	/* 무슨처리 해야되나? */
-}
 
+}
+- (BOOL)webView:(UIWebView *)webview shouldStartLoadWithRequest:(NSURLRequest *)req navigationType:(UIWebViewNavigationType)navigationtype
+{
+	
+	if([[[req URL] absoluteString] isEqualToString:@"about:blank"]){
+		NSLog(@"webview close");
+		
+		[[ViewManager getInstance] closePopUp];	
+		return NO;
+	}
+	return true;
+}
 @end
