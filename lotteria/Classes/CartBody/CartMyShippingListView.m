@@ -364,14 +364,6 @@
 	
 	DeliveryAddrInfo  *tmp = [CustomerArr objectAtIndex:indexPath.row];
 	
-	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
-					   ([tmp si]?[tmp si]:@""),
-					   ([tmp gu]?[tmp si]:@""),
-					   ([tmp dong]?[tmp dong]:@""),
-					   ([tmp bunji]?[tmp bunji]:@""),
-					   ([tmp building]?[tmp building]:@""),
-					   ([tmp addrdesc]?[tmp addrdesc]:@"")];
-	
 	NSString* p_tmp;
 	int len = [[tmp phone] length];
 	int t = 3;
@@ -383,7 +375,7 @@
 			 [[tmp phone] substringWithRange:NSMakeRange(t, len - 4 - t)],
 			 [[tmp phone] substringWithRange:NSMakeRange(len - 4, 4)]];
 					   
-	[tmp_cell setInfo:[tmp branchname] :s_tmp :p_tmp ];
+	[tmp_cell setInfo:[tmp branchname] :[tmp getAddressStr] :p_tmp ];
 
 	return cell;
 }

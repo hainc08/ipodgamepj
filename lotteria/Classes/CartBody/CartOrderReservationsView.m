@@ -85,10 +85,6 @@
 	ShippingOrderCell *tmp_cell = (ShippingOrderCell *)cell;
 	Order *Data = [[DataManager getInstance] UserOrder];
 	
-	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
-					   [Data.UserAddr si], [Data.UserAddr gu], [Data.UserAddr dong], [Data.UserAddr bunji],
-					   [Data.UserAddr building], [Data.UserAddr addrdesc]];
-
 	NSString* p_tmp;
 	int len = [[Data.UserAddr phone] length];
 	int t = 3;
@@ -100,7 +96,7 @@
 			 [[Data.UserAddr  phone] substringWithRange:NSMakeRange(t, len - 4 - t)],
 			 [[Data.UserAddr  phone] substringWithRange:NSMakeRange(len - 4, 4)]];
 	
-	[tmp_cell setInfo:[Data.UserAddr branchname] :s_tmp :p_tmp ];
+	[tmp_cell setInfo:[Data.UserAddr branchname] :[Data.UserAddr getAddressStr] :p_tmp ];
 	
 	return cell;
 }

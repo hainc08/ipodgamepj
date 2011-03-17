@@ -107,6 +107,9 @@ typedef enum _Storetype
 @property (retain) NSString *building;
 @property (retain) NSString *addrdesc;
 @property(nonatomic,assign) CLLocationCoordinate2D coordinate;
+
+- (NSString*)getAddressStr;
+
 @end
 
 
@@ -142,6 +145,9 @@ typedef enum _Storetype
 
 @property (retain) NSString *gis_x;
 @property (retain) NSString *gis_y;
+
+- (NSString*)getAddressStr;
+
 @end
 
 
