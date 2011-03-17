@@ -28,7 +28,16 @@
 		[StoreName setText:[NSString stringWithFormat:@"롯데리아 %@점", Info.storename]];
 	}
 
-	[StorePhone setText:Info.storephone];
+	NSString *p_tmp;
+	len = [[Info storephone] length];
+	int t = 3;
+	if ([[[Info storephone] substringWithRange:NSMakeRange(0, 2)] compare:@"02"] == NSOrderedSame) t = 2;
+	
+	p_tmp = [NSString stringWithFormat:@"%@-%@-%@",
+			 [[Info storephone] substringWithRange:NSMakeRange(0, t)],
+			 [[Info storephone] substringWithRange:NSMakeRange(t, len - 4 - t)],
+			 [[Info storephone] substringWithRange:NSMakeRange(len - 4, 4)]];
+	[StorePhone setText:p_tmp];
 	[StoreAddress setText:[NSString stringWithFormat:@"%@\n\n\n\n\n\n\n\n\n\n\n\n\n\n",[Info getAddressStr]]];
 	
 	if(Info.store_flag == TIMESTORE)
@@ -70,8 +79,18 @@
 }
 
 - (IBAction)callbutton
-{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[Info storephone]]];
+{// 핸드폰에서 전하걸림.
+	NSString *p_tmp;
+	int len = [[Info storephone] length];
+	int t = 3;
+	if ([[[Info storephone] substringWithRange:NSMakeRange(0, 2)] compare:@"02"] == NSOrderedSame) t = 2;
+	
+	p_tmp = [NSString stringWithFormat:@"tel://%@-%@-%@",
+			 [[Info storephone] substringWithRange:NSMakeRange(0, t)],
+			 [[Info storephone] substringWithRange:NSMakeRange(t, len - 4 - t)],
+			 [[Info storephone] substringWithRange:NSMakeRange(len - 4, 4)]];
+	
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:p_tmp]];
 }
 
 @end
