@@ -17,15 +17,19 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[StoreName setText:Info.storename];
+
+	int len = [Info.storename length];
+	if ([[Info.storename substringFromIndex:len - 1] compare:@"점"] == NSOrderedSame)
+	{
+		[StoreName setText:[NSString stringWithFormat:@"롯데리아 %@", Info.storename]];
+	}
+	else
+	{
+		[StoreName setText:[NSString stringWithFormat:@"롯데리아 %@점", Info.storename]];
+	}
+
 	[StorePhone setText:Info.storephone];
-	
-	NSString *Store = [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
-					   ([Info si] ? [Info	si] : @""), ([Info gu] ? [Info gu] : @"" ) , 
-					   ([Info dong] ? [Info dong] : @"") , ( [Info bunji] ? [Info bunji] : @""),
-					   ( [Info building] ? [Info building] : @""), ([Info addrdesc] ? [Info addrdesc] : @"")];
-	
-	[StoreAddress setText:Store];
+	[StoreAddress setText:[NSString stringWithFormat:@"%@\n\n\n\n\n\n\n\n\n\n\n\n\n\n",[Info getAddressStr]]];
 	
 	if(Info.store_flag == TIMESTORE)
 	{

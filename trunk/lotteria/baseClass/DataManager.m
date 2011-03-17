@@ -74,6 +74,17 @@ static DataManager *DataManagerInst;
 @synthesize dong,bunji , building ,addrdesc;
 @synthesize coordinate;
 
+- (NSString*)getAddressStr
+{
+	return [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@", 
+			(si ? si:@""), (si ? @" ":@""),
+			(gu ? si:@""), (gu ? @" ":@""),
+			(dong ? dong:@""), (dong ? @" ":@""),
+			(bunji ? bunji:@""), (bunji ? @" ":@""),
+			(building ? building:@""), (building ? @" ":@""),
+			(addrdesc ? addrdesc:@"")];
+}
+
 - (void)dealloc {
 	[storeid release];
 	[storename release];
@@ -97,6 +108,18 @@ static DataManager *DataManagerInst;
 @synthesize Seq, phone ,si , gu;
 @synthesize dong,bunji , building ,addrdesc ,branchid;
 @synthesize branchname, gis_x, gis_y;
+
+- (NSString*)getAddressStr
+{
+	return [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@", 
+						(si ? si:@""), (si ? @" ":@""),
+						(gu ? si:@""), (gu ? @" ":@""),
+						(dong ? dong:@""), (dong ? @" ":@""),
+						(bunji ? bunji:@""), (bunji ? @" ":@""),
+						(building ? building:@""), (building ? @" ":@""),
+						(addrdesc ? addrdesc:@"")];
+}
+
 - (void)dealloc {
 	[Seq release];
     [phone release];

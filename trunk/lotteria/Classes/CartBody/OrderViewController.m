@@ -129,15 +129,7 @@
 		
 
 		Order *UserInfo =  [[DataManager getInstance] UserOrder];
-		NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
-						   ([UserInfo.UserAddr si] ?  [UserInfo.UserAddr si]  :@"")  , 
-						   ([UserInfo.UserAddr gu] ?  [UserInfo.UserAddr gu] : @"") , 
-						   ([UserInfo.UserAddr dong] ? [UserInfo.UserAddr dong] : @""), 
-						   ([UserInfo.UserAddr bunji] ? [UserInfo.UserAddr bunji] : @""), 
-						   ([UserInfo.UserAddr building] ? [UserInfo.UserAddr building] : @"" ),
-						   ([UserInfo.UserAddr addrdesc] ? [UserInfo.UserAddr addrdesc] : @"" )
-						   ];
-		[tmp_cell setInfo:[UserInfo branchname] :s_tmp :[UserInfo branchPhone] ];
+		[tmp_cell setInfo:[UserInfo branchname] :[UserInfo.UserAddr getAddressStr] :[UserInfo branchPhone] ];
 		[tmp_cell setDelButtonEnable:false];
 	
 		return cell;

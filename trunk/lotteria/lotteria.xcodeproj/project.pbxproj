@@ -1936,7 +1936,7 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
-			projectRoot = /Users/embmaster/Code/ipodgamepj/lotteria;
+			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* lotteria */,
 			);

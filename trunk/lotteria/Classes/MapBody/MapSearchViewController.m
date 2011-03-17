@@ -168,11 +168,7 @@
 	
 	StoreInfo *Info = [AddressArr objectAtIndex:indexPath.row];
 	
-	NSString *s_tmp	= [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", 
-					   [Info si], [Info gu], [Info dong], [Info bunji],
-					   [Info building], [Info addrdesc]];
-
-	[tmp_cell setInfo:[Info storename] :s_tmp ];
+	[tmp_cell setInfo:[Info storename] :[Info getAddressStr]];
 	
 	return cell;
 }
