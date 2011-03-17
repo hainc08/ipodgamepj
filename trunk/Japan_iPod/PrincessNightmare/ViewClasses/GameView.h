@@ -91,6 +91,7 @@
 	int skipEnd;
 	
 	MovieBoard* movieBoard;
+	CGPoint menuButtonOrigin;
 }
 
 - (IBAction)SkipButtonClick:(id)sender;

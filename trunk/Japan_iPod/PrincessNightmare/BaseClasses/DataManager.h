@@ -35,8 +35,8 @@
 @interface EventList : NSObject
 {
 	int valCount;
-	int intVal[3];
-	bool isShow[3];
+	int intVal[4];
+	bool isShow[4];
 }
 
 @property (readwrite) int valCount;
