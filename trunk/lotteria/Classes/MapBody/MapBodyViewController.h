@@ -18,6 +18,9 @@
 	HTTPRequest *httpRequest;
 	
 	NSMutableArray *AddressArr;
+	
+	UIView *blackview;
+
 }
 
 @property (nonatomic, retain) MKMapView *mapView;

@@ -8,6 +8,7 @@
 
 #import "UIViewControllerTemplate.h"
 #import "HelpViewController.h"
+#import "ViewManager.h"
 
 @implementation UINavigationBar (CustomImage)
 - (void)drawRect:(CGRect)rect {

@@ -4,6 +4,7 @@
 
 @interface HTTPRequest : NSObject
 {
+	NSMutableURLRequest *request;
 	NSMutableData *receivedData;
 	NSURLResponse *response;
 	NSString *result;
@@ -18,6 +19,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
 - (void)setDelegate:(id)aTarget selector:(SEL)aSelector;
 
+@property (nonatomic, retain) 	NSMutableURLRequest *request;
 @property (nonatomic, retain) NSMutableData *receivedData;
 @property (nonatomic, retain) NSURLResponse *response;
 @property (nonatomic, assign) NSString *result;

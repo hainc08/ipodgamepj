@@ -53,8 +53,9 @@
 
 
 - (void)dealloc {
-	if(httpRequest != nil)
+	if(httpRequest)
 		[httpRequest release];
+	
 	[AddressArr release];
     [super dealloc];
 }

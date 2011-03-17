@@ -4,6 +4,7 @@
 
 @implementation HTTPRequest
 
+@synthesize request;
 @synthesize receivedData;
 @synthesize response;
 @synthesize result;
@@ -16,7 +17,7 @@
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	
 	// URL Request 객체 생성
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", SERVERURLWS, url]]
+	request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", SERVERURLWS, url]]
 														   cachePolicy:NSURLRequestUseProtocolCachePolicy
 													   timeoutInterval:5.0f];
 	
@@ -115,8 +116,8 @@
 - (void)dealloc
 {
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-	[receivedData release];
 	[response release];
+	[receivedData release];
 	[result release];
 	[super dealloc];
 }
