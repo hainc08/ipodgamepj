@@ -5,6 +5,7 @@
 
 @synthesize navi;
 @synthesize isLast;
+@synthesize naviImgIdx;
 
 - (void)viewDidLoad
 {
@@ -25,6 +26,18 @@
 	int price;
 
 	product[0] = [[DataManager getInstance] getProduct:[cartItem menuId]];
+
+	if ([[product[0] category] compare:@"S10"] == NSOrderedSame)
+	{
+		[incCount setAlpha:0];
+		[decCount setAlpha:0];
+	}
+	else
+	{
+		[incCount setAlpha:1];
+		[decCount setAlpha:1];
+	}
+	
 	[mainLabel setText:[product[0] name]];
 
 	price = [product[0] price];
@@ -200,6 +213,7 @@
 		[cartCell setData:[[DataManager getInstance] getCartItem:i listIdx:listIdx]];
 		[cartCell setIsLast:(i == itemCount-1)];
 		[cartCell setNavi:navi];
+		[cartCell setNaviImgIdx:[[self parentViewController] naviImgIdx]];
 		[cartCell.view setCenter:CGPointMake(150, i * 100 + 50)];
 
 		[listView addSubview:cartCell.view];

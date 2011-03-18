@@ -57,7 +57,7 @@
 - (void)back
 {
 	[self.navigationController popViewControllerAnimated:YES];
-	[[ViewManager getInstance] setNaviImgIdx:[(UIViewControllerTemplate*)backView naviImgIdx]];
+	[[ViewManager getInstance] setNaviImgIdx:[backView naviImgIdx]];
 	[navi.navigationBar setNeedsDisplay];
 }
 

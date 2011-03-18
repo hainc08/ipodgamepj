@@ -42,4 +42,5 @@
 	UINavigationBar* bar = [self navigationBar];
 	[bar setTintColor:[UIColor clearColor]];
 }
+
 @end

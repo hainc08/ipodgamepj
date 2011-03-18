@@ -73,6 +73,9 @@
 		pId[1] = @"200504";	//세트포테이토
 		pId[2] = @"200807";	//세트콜라
 
+		[side1Label setText:[[[DataManager getInstance] getProduct:pId[1]] name]];
+		[side2Label setText:[[[DataManager getInstance] getProduct:pId[2]] name]];
+		
 		count = 1;
 		[self refreshCount];
 	}

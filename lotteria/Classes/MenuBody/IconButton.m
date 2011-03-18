@@ -18,7 +18,8 @@
 - (void)setData:(NSString*)mid
 {
 	menu_id = mid;
-	[nameLabel setText:[[[DataManager getInstance] getProduct:menu_id] name]];
+	NSString* nameStr = [[[DataManager getInstance] getProduct:menu_id] name];
+	[nameLabel setText:[nameStr substringToIndex:MIN(5, [nameStr length])]];
 
 	[button setImage:[[DataManager getInstance] getProductImg:menu_id type:SMALL] forState:UIControlStateNormal];
 }
