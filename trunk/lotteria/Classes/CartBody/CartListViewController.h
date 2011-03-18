@@ -14,10 +14,13 @@
 	
 	CartItem* cartItem;
 	bool isLast;
+	
+	int naviImgIdx;
 }
 
 @property (nonatomic ,retain) UINavigationController* navi;
 @property (readwrite) bool isLast;
+@property (readwrite) int naviImgIdx;
 
 - (void)refreshData;
 - (IBAction)buttonClick:(id)sender;
