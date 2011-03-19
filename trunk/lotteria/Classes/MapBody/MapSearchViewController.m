@@ -69,7 +69,7 @@
 #pragma mark HttpRequestDelegate
 
 - (void)GetStoreInfo
-{
+{	
 	httpRequest = [[HTTPRequest alloc] init];
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:

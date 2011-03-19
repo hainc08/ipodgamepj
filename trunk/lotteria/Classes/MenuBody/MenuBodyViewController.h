@@ -33,7 +33,7 @@
 	IBOutlet UIImageView* normalBG2;
 
 	IBOutlet UITextField* searchField;
-	
+	UIToolbar *toolbar;
 	id lastButton;
 	id lastIconButton;
 	
