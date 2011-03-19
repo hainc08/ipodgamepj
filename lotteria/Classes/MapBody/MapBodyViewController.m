@@ -22,12 +22,29 @@
 	
 	selectIdx = -1;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-	blackview = nil;
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil]; 
+	
+	
+	blackview = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, 360)];
+	blackview.backgroundColor =  [UIColor colorWithWhite: 0.0 alpha: 0.4];
+	[self.view addSubview:blackview];
+	[blackview setAlpha:0];
+	
+	toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+	UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease]; 
+	UIBarButtonItem *barButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancleButton:)] autorelease];
+	NSArray *items = [[NSArray alloc] initWithObjects:flexibleSpace,barButtonItem, nil];
+	[toolbar setItems:items];
+	[items release];
+	
+	Search.inputAccessoryView = toolbar;
+	
 	[self selectCategory:0];
 	[self setupMap];
+	[self GetStoreInfo:[NSString stringWithFormat:@"%ld", mapView.userLocation.coordinate.latitude] gis_y:[NSString stringWithFormat:@"%ld", mapView.userLocation.coordinate.longitude]];
 }
-
 - (void)viewDidUnload {
+
 	
 }
 
@@ -40,66 +57,12 @@
 	[buttonImg[2][1] release]; 
 	if(httpRequest)
 		[httpRequest release];
-	if(blackview)
-	{
-		[blackview removeFromSuperview];
-		[blackview release];
-	}
-    [super dealloc];
-}
 
-
-- (void)keyboardWillShow:(NSNotification *)note
-{
-	blackview = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, 360)];
-	blackview.backgroundColor =  [UIColor colorWithWhite: 0.0 alpha: 0.4];
-	[self.view addSubview:blackview];
-    NSDictionary *info = [note userInfo];
-    NSValue *keyBounds = [info objectForKey:UIKeyboardBoundsUserInfoKey];
-	
-    CGRect bndKey;
-    [keyBounds getValue:&bndKey];
-	
-
-	UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, bndKey.size.width, 40)];
-	UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease]; 
-	UIBarButtonItem *barButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"취소" style:UIBarButtonItemStyleBordered target:self action:@selector(buttonClicked)] autorelease];
-	NSArray *items = [[NSArray alloc] initWithObjects:flexibleSpace,barButtonItem, nil];
-	[toolbar setItems:items];
-	[items release];
-	
-	//[self.view addSubview:toolbar];
-	
-	UIWindow* tempWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:1];
-	UIView* keyboard;
-	for(int i = 0; i < [tempWindow.subviews count]; i++)
-	{
-		keyboard = [tempWindow.subviews objectAtIndex:i];
-		
-		if([[keyboard description] hasPrefix:@"<UIKeyboard"] == YES)
-		{
-			[keyboard addSubview:toolbar];
-			keyboard.bounds = CGRectMake(bndKey.origin.x ,bndKey.origin.y ,bndKey.size.width , bndKey.size.height +80);
-			for(UIView *subKeyborad in [keyboard subviews])
-			{
-				if([[subKeyborad description] hasPrefix:@"<UIKeyboardImpl"] == YES)
-				{
-					subKeyborad.bounds = CGRectMake(bndKey.origin.x ,bndKey.origin.y-40 ,bndKey.size.width , bndKey.size.height);
-				}
-			}
-			
-		}
-	}
+	[blackview release];	
 	[toolbar release];
-}
-
-- (void)buttonClicked
-{
-	[blackview removeFromSuperview];
-	[blackview release];
-	blackview = nil;
-	
-	[Search resignFirstResponder];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    [super dealloc];
 }
 
 #pragma mark -
@@ -125,14 +88,21 @@
 - (void)didReceiveFinished:(NSString *)result
 {
 	[[ViewManager getInstance] waitview:self.view isBlock:NO];
-	if(![result compare:@"error"])
+	XmlParser* xmlParser = [XmlParser alloc];
+	[xmlParser parserString:result];
+	Element* root = [xmlParser getRoot:@"NewDataSet"];
+	
+	
+	if(root == nil)
 	{
-		[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
+		NSString *Value  = [[xmlParser getRoot:@"RESULT_CODE"] getValue];
+		if( [Value compare:@"N"] == NSOrderedSame )
+			[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
+		else 	if( [Value compare:@"C"] == NSOrderedSame )
+			[self ShowOKAlert:@"Data Fail" msg:@"서버에 오류가 발생하였습니다."];	
 	}
 	else {
-		XmlParser* xmlParser = [XmlParser alloc];
-		[xmlParser parserString:result];
-		Element* root = [xmlParser getRoot:@"NewDataSet"];
+	
 		
 		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
 		{
@@ -175,10 +145,30 @@
 #pragma mark  -
 #pragma mark TextField
 
+
+- (void)keyboardWillShow:(NSNotification *)note
+{
+	[blackview setAlpha:1];
+}
+
+
+- (void)keyboardWillHide:(NSNotification*)notification {
+	[blackview setAlpha:0];
+}
+- (void)cancleButton:(id)sender
+{
+	[Search setText:@""];
+	[Search resignFirstResponder];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
 	MapSearchViewController *SearchControl = [[MapSearchViewController alloc] initWithNibName:@"MapSearchView" bundle:nil];
 	SearchControl.Dong = Search.text;
+	
+	[Search setText:@""];
+	[textField resignFirstResponder];
+	
 	[self.navigationController pushViewController:SearchControl animated:YES];
 	[SearchControl release];
 
@@ -212,6 +202,7 @@
 //	region.span=span;
 //	
 //	[mapView setRegion:region animated:TRUE];
+
 }
 
 -(void)selectCategory:(int)idx
@@ -244,9 +235,12 @@
 	else if (sender == store24) [self selectCategory:2];
 	else if (sender == listView) 
 	{
+		[Search resignFirstResponder];		
 		MapSearchViewController *SearchControl = [[MapSearchViewController alloc] initWithNibName:@"MapSearchView" bundle:nil];
 		SearchControl.Dong = Search.text;
-		[self.navigationController pushViewController:SearchControl animated:YES];
+
+		[Search setText:@""];
+		[self.navi pushViewController:SearchControl animated:YES];
 		[SearchControl release];
 	}
 	else if (sender == TextClear)	[Search setText:@""];
@@ -270,10 +264,33 @@
 					   phoneRgCode ,
 					   [phoneNumber substringToIndex:[phoneNumber length]-4],
 					   [phoneNumber substringFromIndex:[phoneNumber length]-4]];
-	
+
 	[mapView addAnnotation:anote];
 }
 
+-(void)addShopMark:(int)shopIdx  store:(StoreInfo *)Info
+{
+	PlaceMark *anote = [[PlaceMark alloc] init];
+	anote.idx = shopIdx;
+	anote.shopType = Info.store_flag	;
+	anote.coordinate = Info.coordinate ;
+		
+		
+	anote.title = [NSString	 stringWithFormat:@"롯데리아 %@" , Info.storename] ;
+	
+	int len = [[Info storephone] length];
+	int t = 3;
+	if ([[[Info storephone] substringWithRange:NSMakeRange(0, 2)] compare:@"02"] == NSOrderedSame) t = 2;
+	
+	anote.subtitle = [NSString stringWithFormat:@"%@-%@-%@",
+			 [[Info storephone] substringWithRange:NSMakeRange(0, t)],
+			 [[Info storephone] substringWithRange:NSMakeRange(t, len - 4 - t)],
+			 [[Info storephone] substringWithRange:NSMakeRange(len - 4, 4)]];
+	
+	[mapView addAnnotation:anote];
+ }
+						   
+						   
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
 	mapView.hidden = NO;

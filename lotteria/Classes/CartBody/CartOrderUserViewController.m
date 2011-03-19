@@ -56,7 +56,8 @@
 #pragma mark TextField
 - (BOOL)textField:(UITextField *)textField_ shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string 
 {     
-
+	
+	return TRUE;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

@@ -1,5 +1,7 @@
 #import "LogoViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "HttpRequest.h"
+#import "XmlParser.h"
 
 #define kAnimationDuration  0.25
 
@@ -44,12 +46,16 @@
     fadeInAnimation.delegate = nil;
     
     [viewLayer addAnimation:fadeInAnimation forKey:@"opacity"];
+	
+	[noticeView setAlpha:0];
+	[self GetVersion];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	if (isNoticeCheck)
 	{
+		
 		[self.view setAlpha:0];
 	}
 }
@@ -68,4 +74,78 @@
 	isNoticeCheck = true;
 }
 
+#pragma mark -
+#pragma mark HttpRequestDelegate
+
+- (void)GetVersion
+{
+	httpRequest = [[HTTPRequest alloc] init];
+	// POST로 전송할 데이터 설정
+	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
+								@"3",@"cust_flag",
+								nil];
+	
+	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
+	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
+	
+	// 페이지 호출
+	[httpRequest requestUrl:@"/MbVersion.asmx/ws_getVersionXml" bodyObject:bodyObject bodyArray:nil];
+}
+
+- (void)didReceiveFinished:(NSString *)result
+{
+	NSString *Version=nil;
+	if(![result compare:@"error"])
+	{
+		[self ShowOKCancleAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
+	}
+	else {
+		XmlParser* xmlParser = [XmlParser alloc];
+		[xmlParser parserString:result];
+		Element* root = [xmlParser getRoot:@"NewDataSet"];
+		Element* t_item = [root getFirstChild];
+		Version = [ [t_item getChild:@"VERSION"] getValue];
+		NSString *Image = [[t_item getChild:@"IMG_NM"] getValue];
+		
+		[xmlParser release];
+	}
+	[httpRequest release];
+	httpRequest = nil;
+/*
+	if( [Version compare:[[DataManager getInstance] getVersion]] != NSOrderedSame )
+	{
+		[self ShowOKCancleAlert:nil msg:@"버전이 업그레이드 되었습니다. 앱스토어에서 다시 다운받으세요 "];
+	}
+	else {
+		[noticeView setAlpha:1];
+	}
+ */
+	[noticeView setAlpha:1];
+
+}
+
+#pragma mark -
+#pragma mark AlertView
+
+- (void)ShowOKCancleAlert:(NSString *)title msg:(NSString *)message
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message
+												   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+	[alert show];
+	[alert release];
+}
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	[super alertView:actionSheet clickedButtonAtIndex:buttonIndex];
+	
+	if(buttonIndex)
+	{
+		//[[UIApplication sharedApplication] openURL:@"앱 스토어 "];
+	}
+	else {
+		/* 앱종료 */
+	}
+
+}
 @end
