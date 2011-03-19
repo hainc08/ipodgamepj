@@ -11,5 +11,6 @@
 
 - (IBAction)buttonClick;
 - (void)GetVersion;
+-(void)GetMenuList;
 - (void)ShowOKCancleAlert:(NSString *)title msg:(NSString *)message;
 @end

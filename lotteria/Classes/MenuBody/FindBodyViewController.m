@@ -23,7 +23,8 @@
 	product = data;
 
 	[nameLabel setText:[data name]];
-	[descLabel setText:@"설명은 어디에?"];
+	[descLabel setText:[data menucomment] ];
+	[newImg	setAlpha:[data new_flag] ? 1 : 0];
 	[priceLabel setText:[[DataManager getInstance] getPriceStr:[data price]]];
 	[menuImg setImage:[data getProductImg:MIDDLE]];
 }

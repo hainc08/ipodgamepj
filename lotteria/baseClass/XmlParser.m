@@ -58,7 +58,11 @@
 }
 - (NSString*)getValue
 {
-	return value;
+	if(value)
+		return value;
+	else 
+		return @"";
+
 }
 
 - (int)childCount
