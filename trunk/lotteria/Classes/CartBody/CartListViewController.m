@@ -30,12 +30,10 @@
 	if ([[product[0] category] compare:@"S10"] == NSOrderedSame)
 	{
 		[incCount setAlpha:0];
-		[decCount setAlpha:0];
 	}
 	else
 	{
 		[incCount setAlpha:1];
-		[decCount setAlpha:1];
 	}
 	
 	[mainLabel setText:[product[0] name]];
