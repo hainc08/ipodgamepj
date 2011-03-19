@@ -6,7 +6,7 @@
 	ProductData* product;
 	IBOutlet UIImageView* underLine;
 	IBOutlet UIImageView* menuImg;
-	
+	IBOutlet UIImageView* newImg;
 	IBOutlet UILabel* nameLabel;
 	IBOutlet UILabel* descLabel;
 	IBOutlet UILabel* priceLabel;

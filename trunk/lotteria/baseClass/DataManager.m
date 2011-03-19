@@ -34,6 +34,10 @@ static DataManager *DataManagerInst;
 @synthesize key;
 @synthesize name;
 @synthesize price;
+@synthesize menucomment;
+@synthesize set_flag;
+@synthesize new_flag;
+@synthesize kcal;
 
 - (id)init
 {
@@ -209,7 +213,7 @@ static DataManager *DataManagerInst;
 
 	isLoginNow = false;
 	
-	[self loadProduct];
+
 }
 
 - (void)LoginSave
@@ -325,6 +329,7 @@ static DataManager *DataManagerInst;
 }
 
 //-------------------상품 정보 처리---------------------
+/*
 - (void)loadProduct
 {
 	//product.xml에 상품 정보를 읽자!!!
@@ -390,6 +395,104 @@ static DataManager *DataManagerInst;
 			product = [root getNextChild];
 		}
 
+		[parser dealloc];
+	}
+}
+ */
+
+- (void)loadProduct
+{
+	//product.xml에 상품 정보를 읽자!!!
+	{
+		NSString *readxml = nil;
+		NSFileHandle *readfile =  openFileToRead(@"menu.xml");
+		
+		if(readfile)
+		{
+			readxml = readString(readfile);
+			closeFile(readfile);
+		}
+		
+		XmlParser* parser = [[XmlParser alloc] init];
+		[parser parserString:readxml];
+		
+		setProductMap = [[NSMutableDictionary alloc] init];
+		allProductMap = [[NSMutableDictionary alloc] init];
+		allProductList = [[NSMutableArray alloc] initWithCapacity:0];
+		
+		Element* root = [parser getRoot:@"NewDataSet"];
+		Element* product = [root getFirstChild];
+		
+		while (product)
+		{
+	
+			ProductData* data = [[[ProductData alloc] init] retain];
+				
+			[data setMenuId:[NSString stringWithString:[[product getChild:@"MENU_ID"] getValue]]];
+			[data setMenuDIS:[NSString stringWithString:[[product getChild:@"MENU_DIS"] getValue]]];
+			
+			[data setName:[NSString stringWithString:[[product getChild:@"MENU_NM"]  getValue]]];
+			[data setCategory:[NSString stringWithString:[[product getChild:@"CATE_ID"] getValue]]];
+			
+			Element *tmp = [product getChild:@"KCAL"];	// 없는 제품이 있음.. 
+			if(tmp)
+				[data setKcal:[NSString stringWithString:[[product getChild:@"KCAL"] getValue]]];
+			else  [data	 setKcal:@"0"];
+			[data setMenucomment:[NSString stringWithString:[[product getChild:@"MENU_EXPLAIN"] getValue]]];
+			
+			// 세트 플레그 3번은 장남감 
+			[data setSet_flag:[NSString stringWithString:[[product getChild:@"SET_FLAG"] getValue]]];	
+			[data setNew_flag: ( [[[product getChild:@"NEW_FLAG"] getValue] compare:@"Y"] == NSOrderedSame) ? TRUE : FALSE ];
+
+			[data setPrice:[[[product getChild:@"PRICE"] getValue] intValue]];
+				
+			//세트는 따로 분류해 놓자...
+			//세트는 key에 단품코드가 들어간다.
+			if (([[data category] compare:@"S10"] == NSOrderedSame)||
+				([[data category] compare:@"S11"] == NSOrderedSame))
+			{
+				// 200370 이건 org_menu_id가 없음.. 우선 버림..
+				tmp = [product getChild:@"ORI_MENU_ID"];
+				if(tmp)
+				{
+					[data setKey:[NSString stringWithString:[[product getChild:@"ORI_MENU_ID"] getValue]]];
+					[setProductMap setObject:data forKey:[data key]];
+				}
+				else 
+					goto next;	// 우선 이부분은 추후에 변경 협의 필요 ..ㅡ.ㅡ; 우선 안보이게..
+
+			}
+				
+			[allProductMap setObject:data forKey:[data menuId]];
+			[allProductList addObject:data];
+		next:
+			product = [root getNextChild];
+		}
+		
+		[parser dealloc];
+	}
+	
+	//productKey.xml에서 상품별 구분키를 읽자!!
+	//이건 실제 DB에 없는데이터이기 때문에 별도로 관리한다.
+	{
+		XmlParser* parser = [[XmlParser alloc] init];
+		[parser parserBundleFile:@"productKey.xml"];
+		
+		Element* root = [parser getRoot:@"Products"];
+		Element* product = [root getFirstChild];
+		
+		while (product)
+		{
+			//세트는 별도의 이미지가 없으니 무시...
+			ProductData* data = [self getProduct:[product getAttribute:@"menu_id"]];
+			if (data)
+			{
+				[data setKey:[NSString stringWithString:[product getAttribute:@"key"]]];
+			}
+			
+			product = [root getNextChild];
+		}
+		
 		[parser dealloc];
 	}
 }

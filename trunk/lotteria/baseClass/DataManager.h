@@ -48,10 +48,13 @@ typedef enum _ImgType
 	NSString* kcal;		// 칼로리 
 	NSString* menucomment;	// 메뉴 설명
 	NSString* category;
-
+	
+	NSString* set_flag;	// 3이면 장남감 세트 
+	
 	NSString* key;
 	NSString* name;
 
+	bool new_flag;		// TRUE면 new이미지 사용 아니면 사용하지 않음.
 	int price;
 	
 	UIImage* img[5];
@@ -60,6 +63,10 @@ typedef enum _ImgType
 @property (retain) NSString* menuId;
 @property (retain) NSString* menuDIS;
 @property (retain) NSString* category;
+@property (retain) NSString* kcal;
+@property (retain) NSString* menucomment;
+@property (retain) NSString* set_flag;
+@property (readwrite) bool new_flag;
 
 @property (retain) NSString* key;
 @property (retain) NSString* name;

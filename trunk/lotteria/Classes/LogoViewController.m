@@ -2,7 +2,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "HttpRequest.h"
 #import "XmlParser.h"
-
+#import "FileIO.h"
+#import "DataManager.h"
 #define kAnimationDuration  0.25
 
 @implementation LogoViewController
@@ -71,7 +72,9 @@
 	
 	[UIView commitAnimations];
 		
-	isNoticeCheck = true;
+
+	
+	[self GetMenuList];
 }
 
 #pragma mark -
@@ -123,7 +126,50 @@
 	[noticeView setAlpha:1];
 
 }
+-(void)GetMenuList
+{
+	httpRequest = [[HTTPRequest alloc] init];
+	// POST로 전송할 데이터 설정
+	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
+								@"",@"menu_nm",
+								nil];
+	
+	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
+	[httpRequest setDelegate:self selector:@selector(didMenuReceiveFinished:)];
+	
+	// 페이지 호출
+	[httpRequest requestUrl:@"/MbMenu.asmx/ws_getMenuXml" bodyObject:bodyObject bodyArray:nil];
+}
 
+- (void)didMenuReceiveFinished:(NSString *)result
+{
+	if(![result compare:@"error"])
+	{
+		[self ShowOKCancleAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
+	}
+	else {
+		XmlParser* xmlParser = [XmlParser alloc];
+		[xmlParser parserString:result];
+		Element* root = [xmlParser getRoot:@"NewDataSet"];
+		if(root != nil)
+		{
+			deleteFile(@"menu.xml");
+			NSFileHandle* accountFile = makeFileToWrite(@"menu.xml");
+			if (accountFile != nil)
+			{
+				writeString(accountFile  ,result);
+				closeFile(accountFile);
+			}
+		}
+		[xmlParser release];
+	}
+	[httpRequest release];
+	httpRequest = nil;
+	[[DataManager getInstance] loadProduct];
+
+	isNoticeCheck = true;
+	
+}
 #pragma mark -
 #pragma mark AlertView
 
