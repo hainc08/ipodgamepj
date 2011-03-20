@@ -46,17 +46,29 @@
 #pragma mark - 
 #pragma mark WebView 
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView1 { 
-
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+	
+	NSRange rangeRound = [[[webView.request URL] absoluteString] rangeOfString:@"RESULT.asp"];
+	
+	if (rangeRound.length) {
+		
+		NSString *authToken = [[webView stringByEvaluatingJavaScriptFromString: @"document.getElementById('token').innerHTML"]
+							   stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		NSLog(@"authToken: %@", authToken);
+		
+	}
 }
 - (BOOL)webView:(UIWebView *)webview shouldStartLoadWithRequest:(NSURLRequest *)req navigationType:(UIWebViewNavigationType)navigationtype
 {
 	
-	if([[[req URL] absoluteString] isEqualToString:@"about:blank"]){
+	if (navigationtype == UIWebViewNavigationTypeLinkClicked) 
+	{
+	if([[[req URL] absoluteString] isEqualToString:@"RESULT.asp"]){
 		NSLog(@"webview close");
 		
 		[[ViewManager getInstance] closePopUp];	
 		return NO;
+	}
 	}
 	return true;
 }

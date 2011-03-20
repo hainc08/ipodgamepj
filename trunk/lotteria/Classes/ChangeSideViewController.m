@@ -14,8 +14,8 @@
 	product = item;
 
 	[nameLabel setText:[item name]];
-	[calLabel setText:[NSString stringWithFormat:@"%@ kcal",  [item kcal]]];
-	[priceLabel setText:[NSString stringWithFormat:@"%d 원 추가", [item price]]];
+	[calLabel setText:[NSString stringWithFormat:@"/ %@ kcal",  [item kcal]]];
+	[priceLabel setText:[NSString stringWithFormat:@"%d 원 추가 ", [item price]]];
 	[thumbImg setImage:[[DataManager getInstance] getProductImg:[item menuId] type:SMALL]];
 	
 	color1 = nameLabel.textColor;

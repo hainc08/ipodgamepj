@@ -112,7 +112,7 @@ static DataManager *DataManagerInst;
 @synthesize Seq, phone ,si , gu;
 @synthesize dong,bunji , building ,addrdesc ,branchid;
 @synthesize branchname, gis_x, gis_y;
-
+@synthesize branchtel, terminal_id, business_date;
 - (NSString*)getAddressStr
 {
 	return [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@", 
@@ -137,6 +137,9 @@ static DataManager *DataManagerInst;
 	[branchname release];
 	[gis_x release];
 	[gis_y	release];
+	[branchtel release];
+	[terminal_id release];
+	[business_date release];
 	[super dealloc];
 }
 
@@ -144,7 +147,7 @@ static DataManager *DataManagerInst;
 
 @implementation Order 
 @synthesize UserName,UserPhone ,OrderType;  
-@synthesize OrderMoney, OrderSaleMoney, OrderTotalMoney;
+@synthesize OrderMoney, OrderSaleMoney;
 @synthesize OrderTime, OrderMemo;
 @synthesize UserAddr;
 
@@ -437,7 +440,9 @@ static DataManager *DataManagerInst;
 			Element *tmp = [product getChild:@"KCAL"];	// 없는 제품이 있음.. 
 			if(tmp)
 				[data setKcal:[NSString stringWithString:[[product getChild:@"KCAL"] getValue]]];
-			else  [data	 setKcal:@"0"];
+			else 
+				[data	 setKcal:@"0"];
+			
 			[data setMenucomment:[NSString stringWithString:[[product getChild:@"MENU_EXPLAIN"] getValue]]];
 			
 			// 세트 플레그 3번은 장남감 
@@ -549,7 +554,7 @@ static DataManager *DataManagerInst;
 	
 	return [NSString stringWithFormat:@"%s", &temp[idx]];
 }
-
+/* 장난감 세트에 가격에는 1500 원이 합한 가격이 나온다 .. 음.. 가격은 우선 전부 더해서 보여주고 조정하자  */
 - (int)getCartPrice
 {
 	int totPrice = 0;
@@ -564,6 +569,20 @@ static DataManager *DataManagerInst;
 	}
 	
 	return totPrice;
+}
+
+/* 메뉴중에 장난감 세트일 경우 */
+- (int)getCartSalePrice
+{
+	int totSalePrice = 0;
+	
+	for (CartItem* data in ShopCart)
+	{
+		if( [[[self getProduct:[data menuId]] set_flag] compare:@"3"] == NSOrderedSame )
+			totSalePrice += [data count] * 1500;
+	}
+	
+	return totSalePrice;
 }
 
 - (ProductData*)getSearchProduct:(int)idx listIdx:(int)lIdx
@@ -632,4 +651,21 @@ static DataManager *DataManagerInst;
 	return nil;		// 엉뚱한값이면 
 }
 
+- (NSString*)getPhoneStr:(NSString*)PhoneNumber
+{
+	if(PhoneNumber ==nil) return @"";
+	
+	NSString* p_tmp;
+	int len = [PhoneNumber length];
+	int t = 3;
+	
+	if ([[PhoneNumber substringWithRange:NSMakeRange(0, 2)] compare:@"02"] == NSOrderedSame) t = 2;
+	
+	p_tmp = [NSString stringWithFormat:@"%@-%@-%@",
+			 [PhoneNumber substringWithRange:NSMakeRange(0, t)],
+			 [PhoneNumber substringWithRange:NSMakeRange(t, len - 4 - t)],
+			 [PhoneNumber substringWithRange:NSMakeRange(len - 4, 4)]]; 
+	
+	return p_tmp;
+}
 @end

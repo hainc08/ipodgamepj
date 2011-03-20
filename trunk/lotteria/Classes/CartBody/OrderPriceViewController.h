@@ -13,6 +13,7 @@
 
 enum ORDERTYPE {
 	MONEY = 0,
+	MONEY_PERSONAL,
 	CARD ,
 	ONLINE,
 };
@@ -28,7 +29,7 @@ enum ORDERTYPE {
 	int OrderType;
 }
 - (void)didReceiveFinished:(NSString *)result;
-- (void)OrderParamSetting:(int)_inType;
+- (void)OrderParamSetting;
 - (IBAction) OrderButton:(id)sender;
 - (void)ShowOKCancleAlert:(NSString *)title msg:(NSString *)message;
 @end
