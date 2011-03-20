@@ -38,8 +38,14 @@
 	[toolbar setItems:items];
 	[items release];
 	
-	
-	searchField.inputAccessoryView = toolbar ;
+	searchField.delegate = self;
+	//searchField.inputAccessoryView = toolbar ;
+	[toolbar release];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	NSLog(@"is viewWillAppear called?");
+	[super viewWillAppear:animated];
 }
 
 -(void)back
@@ -142,7 +148,7 @@
 }
 
 - (void)dealloc {
-	[toolbar release];
+
     [super dealloc];
 }
 

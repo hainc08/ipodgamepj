@@ -36,11 +36,13 @@
 	NSArray *items = [[NSArray alloc] initWithObjects:flexibleSpace,barButtonItem, nil];
 	[toolbar setItems:items];
 	[items release];
-	
-	Search.inputAccessoryView = toolbar;
+	Search.delegate = self;
+//	Search.inputAccessoryView = toolbar;
+	[toolbar release];
 	
 	[self selectCategory:0];
 	[self setupMap];
+	
 	[self GetStoreInfo:[NSString stringWithFormat:@"%ld", mapView.userLocation.coordinate.latitude] gis_y:[NSString stringWithFormat:@"%ld", mapView.userLocation.coordinate.longitude]];
 }
 - (void)viewDidUnload {
@@ -59,7 +61,7 @@
 		[httpRequest release];
 
 	[blackview release];	
-	[toolbar release];
+
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     [super dealloc];

@@ -129,7 +129,7 @@
 		
 
 		Order *UserInfo =  [[DataManager getInstance] UserOrder];
-		[tmp_cell setInfo:[UserInfo branchname] :[UserInfo.UserAddr getAddressStr] :[UserInfo branchPhone] ];
+		[tmp_cell setInfo:[UserInfo.UserAddr branchname ] :[UserInfo.UserAddr getAddressStr] :[[DataManager getInstance] getPhoneStr:[UserInfo.UserAddr phone]] ];
 		[tmp_cell setDelButtonEnable:false];
 	
 		return cell;
@@ -186,8 +186,7 @@
 		else if(indexPath.row -1 <   [[[DataManager getInstance] getShopCart]  count] )
 		{
 			OrderListMiddleCell *tmp_cell = (OrderListMiddleCell *)cell;
-			//tmp_cell.backgroundColor = [UIColor clearColor];
-			
+
 			CartItem  *tmp =  [[[DataManager getInstance] getShopCart] objectAtIndex:indexPath.row-1] ;	
 			ProductData *p_data = [[DataManager getInstance] getProduct:tmp.menuId];
 			[tmp_cell setInfo:[p_data  category]
@@ -196,11 +195,11 @@
 		}
 		else {
 			OrderListBottomCell *tmp_cell = (OrderListBottomCell *)cell;
-			//tmp_cell.backgroundColor = [UIColor clearColor];
-
-			[tmp_cell setInfo:[[DataManager getInstance] getPriceStr:[[DataManager getInstance] getCartPrice]]
-					:@"0"
-					:[[DataManager getInstance] getPriceStr:[[DataManager getInstance] getCartPrice]]];
+			
+			Order *order = [[DataManager getInstance] UserOrder];
+			[tmp_cell setInfo:[[DataManager getInstance] getPriceStr:[order OrderMoney] + [order OrderSaleMoney]]
+					: [[DataManager getInstance] getPriceStr:[order OrderSaleMoney]]
+					:[[DataManager getInstance] getPriceStr:[order OrderMoney] ] ];
 		}
 		return cell;
 	}

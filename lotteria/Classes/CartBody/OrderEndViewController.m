@@ -18,9 +18,8 @@
     [super viewDidLoad];
 	Order *tmp =	[[DataManager getInstance] UserOrder ];
 	[Store setText:tmp.UserAddr.branchname];
-	[StorePhone setText:tmp.UserPhone ];
+	[StorePhone setText:[[DataManager getInstance] getPhoneStr:tmp.UserAddr.branchtel]];
 	
-	httpRequest = [[HTTPRequest alloc] init];
 	self.navigationItem.title = @"주문완료";
 }
 
@@ -49,7 +48,6 @@
 }
 
 - (void)dealloc {
-	[httpRequest release];
     [super dealloc];
 }
 

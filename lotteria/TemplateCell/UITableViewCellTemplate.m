@@ -94,8 +94,7 @@
 	[Money			setText: [[DataManager getInstance] getPriceStr:p_data.price ]];
 	[MenuCount		setText: [NSString stringWithFormat:@"%d", _inData.count]];	
 	
-//	[self setBackgroundImage:item.StoreMenuOnOff];
-	[self setBackgroundImage:TRUE];
+	[self setBackgroundImage:item.StoreMenuOnOff];
 }
 -(void)setBackgroundImage:(bool)_intype
 {

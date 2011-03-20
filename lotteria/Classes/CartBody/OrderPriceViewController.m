@@ -9,6 +9,7 @@
 #import "OrderPriceViewController.h"
 #import "OrderEndViewController.h"
 #import "HttpRequest.h"
+#import "XmlParser.h"
 
 @implementation OrderPriceViewController
 
@@ -59,7 +60,7 @@
 	}
 	else if(sender == Money2)
 	{
-				OrderType = MONEY;
+				OrderType = MONEY_PERSONAL;
 		[self ShowOKCancleAlert:@"주문" msg:@"현금+현금영수증 주문이 맞습니까?"];
 	}
 	else if(sender == Card)
@@ -91,17 +92,36 @@
 
 	if(buttonIndex)
 	{
-		OrderEndViewController *OrderEnd = [[OrderEndViewController alloc] initWithNibName:@"OrderEnd"  bundle:nil];
-	
-		[self.navigationController pushViewController:OrderEnd animated:YES];
-		[OrderEnd release];
+		[self OrderParamSetting];
 	}
 }
 
 
+- (NSArray *) GetMenuData:(NSString *)menuId group_id:(int)g_id  cnt:(int)ordercnt
+{
+	NSMutableArray	*MenuData = [[[NSMutableArray alloc] initWithCapacity:0] autorelease];
+	ProductData *prdata = [[DataManager getInstance] getProduct:menuId];
+						   
+	[MenuData	 addObject:[NSString stringWithFormat:@"item_menu_id=%@", 
+				[ menuId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
+						   
+	[MenuData addObject:[NSString stringWithFormat:@"item_menu_dis=%@", 
+				[[prdata menuDIS] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 할인코드		
+	[MenuData addObject:[NSString stringWithFormat:@"item_group_id=%d", g_id]];	// GroupID 는 하나의 세트 내용을 모두
+	[MenuData addObject:[NSString stringWithFormat:@"item_disc_flag="]];	// 할인 플레그 
+	[MenuData addObject:[NSString stringWithFormat:@"item_free_flag=%@", 
+				( [[prdata category] compare:@"Z10"] == NSOrderedSame ) ? @"Y" : @"" ]];
+	[MenuData addObject:[NSString stringWithFormat:@"item_disc_cd=%@",
+				( [[prdata category] compare:@"Z10"] == NSOrderedSame ) ? @"04" : @"" ]];	// 할인 코드  ( 장난감 '04' )
+	[MenuData addObject:[NSString stringWithFormat:@"item_qty=%d", ordercnt]];	// 주문 개수 
+	[MenuData addObject:[NSString stringWithFormat:@"item_pay_money=%d", [prdata price ]]]; // 매뉴 가격
+	[MenuData addObject:[NSString stringWithFormat:@"item_disc_money=%d", 
+				( [[prdata category] compare:@"Z10"] == NSOrderedSame ) ? [prdata price] : 0 ]];	// 할인 가격 ( 장난감은 넣어야한다 )
 
+	return [[MenuData copy] autorelease];
+}
 
-- (void)OrderParamSetting:(int)_inType
+- (void)OrderParamSetting
 {
 	
 	NSUInteger GroupIDIndex = 0;
@@ -110,113 +130,78 @@
 	
 	Order *Temp = [[DataManager getInstance] UserOrder];
 	
+
+	
+	NSMutableArray	*MenuData = [[NSMutableArray alloc] initWithCapacity:0];
+
+	NSMutableArray *ShopItemArr = [[DataManager getInstance] getShopCart];
+	
+	for (CartItem *objectInstance in ShopItemArr) {
+		if (objectInstance.menuId  != nil )
+		{
+			ProductData *prdata = [[DataManager getInstance] getProduct:objectInstance.menuId];
+						
+			[MenuData addObjectsFromArray:[self GetMenuData:objectInstance.menuId group_id:GroupIDIndex cnt:objectInstance.count]];
+			if	 ( [[prdata set_flag] compare:@"3"] == NSOrderedSame )
+			{
+				/* 이달에 장난감을 찾아 해당 장난감코드를 준다. */
+				[MenuData addObjectsFromArray:[self GetMenuData:objectInstance.menuId group_id:GroupIDIndex cnt:objectInstance.count]];
+			}
+		}
+		
+		if (objectInstance.dessertId  != nil)
+		{
+			[MenuData addObjectsFromArray:[self GetMenuData:objectInstance.menuId group_id:GroupIDIndex cnt:objectInstance.count]];
+			
+		}
+		if (objectInstance.drinkId  != nil)
+		{
+			[MenuData addObjectsFromArray:[self GetMenuData:objectInstance.menuId group_id:GroupIDIndex cnt:objectInstance.count]];
+		}
+		GroupIDIndex++;
+	}
 	[Body	 addObject:[NSString stringWithFormat:@"cust_delivery_seq=%@", Temp.UserAddr.Seq ]];
 	
-	[Body	 addObject:[NSString stringWithFormat:@"cust_id=%@",[[DataManager getInstance] accountId] ]];
+	[Body	 addObject:[NSString stringWithFormat:@"cust_id=%@", @"mobileuser" ]];
+	[Body	 addObject:[NSString stringWithFormat:@"branch_id=%@", Temp.UserAddr.branchid ]];
 	[Body	 addObject:[NSString stringWithFormat:@"phone=%@", 
 						[ Temp.UserPhone stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]];
 	[Body	 addObject:[NSString stringWithFormat:@"cust_nm=%@", 
 						[ Temp.UserName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]];
 	
 	[Body	 addObject:[NSString stringWithFormat:@"order_memo=%@", 
-						[Temp.OrderMemo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]];
+						(Temp.OrderMemo != nil ? [Temp.OrderMemo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] : @"") ]];
 	
 	[Body	 addObject:@"order_flag=3"];	//아이폰은  3번  
 	
+	[Body	 addObject:[NSString stringWithFormat:@"terminal_flag=%@",(OrderType == CARD ? @"Y" : @"N")]];
+	[Body	 addObject:[NSString stringWithFormat:@"business_date=%@",Temp.UserAddr.business_date]];
+	
 	[Body	 addObject:[NSString stringWithFormat:@"reser_flag=%@", Temp.OrderType ? @"Y" : @"N"  ]]; //예약 플래그
 	
-	[Body	 addObject:[NSString stringWithFormat:@"reser_time=%@", 
+	[Body	 addObject:[NSString stringWithFormat:@"reser_time=%@00", 
 						Temp.OrderType ?	[Temp.OrderTime stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  : @"" ]];	// 6자리 시간
 	
-	[Body	 addObject:[NSString stringWithFormat:@"pay_money=%d", Temp.OrderMoney ]];
+	[Body	 addObject:[NSString stringWithFormat:@"pay_money=%d", Temp.OrderMoney + Temp.OrderSaleMoney ]];
 	[Body	 addObject:[NSString stringWithFormat:@"disc_money=%d", Temp.OrderSaleMoney ]];
-	
-	CartItem *objectInstance;
-	NSMutableArray	*MenuID = [[NSMutableArray alloc] initWithCapacity:0];
-	NSMutableArray	*Dis_menu = [[NSMutableArray alloc] initWithCapacity:0];
-	NSMutableArray	*GroupID = [[NSMutableArray alloc] initWithCapacity:0];
-	NSMutableArray	*Dis_flag = [[NSMutableArray alloc] initWithCapacity:0];
-	NSMutableArray	*Dis_code = [[NSMutableArray alloc] initWithCapacity:0];
-	NSMutableArray	*Count = [[NSMutableArray alloc] initWithCapacity:0];
-	NSMutableArray	*Pay_money = [[NSMutableArray alloc] initWithCapacity:0];
-	NSMutableArray	*Dis_money = [[NSMutableArray alloc] initWithCapacity:0];	
+
 	
 	
-	NSMutableArray *ShopItemArr = [[DataManager getInstance] getShopCart];
+	[Body addObjectsFromArray:MenuData];		[MenuData release];
 	
-	for (objectInstance in ShopItemArr) {
-		
-		if (objectInstance.menuId  != nil )
-		{
-			[MenuID	 addObject:[NSString stringWithFormat:@"item_menu_id=%@", 
-								[ objectInstance.menuId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]]; // 메뉴ID
-			
-			[Dis_menu addObject:[NSString stringWithFormat:@"item_menu_dis=%@", 
-								[[[DataManager getInstance] getProduct:objectInstance.menuId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
-			[GroupID addObject:[NSString stringWithFormat:@"item_group_id=%d", GroupIDIndex]];	// GroupID 는 하나의 세트 내용을 모두
-			[Dis_flag addObject:[NSString stringWithFormat:@"item_disc_flag=''"]];	// 할인 플레그 
-			[Dis_code addObject:[NSString stringWithFormat:@"item_disc_cd=''"]];	// 할인 코드 
-			[Count addObject:[NSString stringWithFormat:@"item_qty=%d", objectInstance.count ]];	// 주문 개수 
-			[Pay_money addObject:[NSString stringWithFormat:@"item_pay_money=%d", 
-								  [[DataManager getInstance] getProduct:objectInstance.menuId].price ]]; // 매뉴 가격
-			[Dis_money addObject:[NSString stringWithFormat:@"item_disc_money=''"]];	// 할인 가격
-		}
-		
-		
-		if (objectInstance.dessertId  != nil)
-		{
-			[MenuID	 addObject:[NSString stringWithFormat:@"item_menu_id=%@", 
-								[ objectInstance.dessertId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]];
-			
-			[Dis_menu addObject:[NSString stringWithFormat:@"item_menu_dis=%@", 
-								 [[[DataManager getInstance] getProduct:objectInstance.menuId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
-			[GroupID addObject:[NSString stringWithFormat:@"item_group_id=%d", GroupIDIndex]];	// GroupID 는 하나의 세트 내용을 모두
-			[Dis_flag addObject:[NSString stringWithFormat:@"item_disc_flag=''"]];	// 할인 플레그 
-			[Dis_code addObject:[NSString stringWithFormat:@"item_disc_cd=''"]];	// 할인 코드 
-			[Count addObject:[NSString stringWithFormat:@"item_qty=%d", objectInstance.count ]];	// 주문 개수 
-			[Pay_money addObject:[NSString stringWithFormat:@"item_pay_money=%d", 
-								  [[DataManager getInstance] getProduct:objectInstance.menuId].price ]]; // 매뉴 가격
-			[Dis_money addObject:[NSString stringWithFormat:@"item_disc_money=''"]];	// 할인 가격
-		}
-		if (objectInstance.drinkId  != nil)
-		{
-			[MenuID	 addObject:[NSString stringWithFormat:@"item_menu_id=%@", 
-								[ objectInstance.drinkId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ]];
-			
-			[Dis_menu addObject:[NSString stringWithFormat:@"item_menu_dis=%@", 
-								 [[[DataManager getInstance] getProduct:objectInstance.menuId].menuDIS stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]]; // 할인코드		
-			[GroupID addObject:[NSString stringWithFormat:@"item_group_id=%d", GroupIDIndex]];	// GroupID 는 하나의 세트 내용을 모두
-			[Dis_flag addObject:[NSString stringWithFormat:@"item_disc_flag=''"]];	// 할인 플레그 
-			[Dis_code addObject:[NSString stringWithFormat:@"item_disc_cd=''"]];	// 할인 코드 
-			[Count addObject:[NSString stringWithFormat:@"item_qty=%d", objectInstance.count ]];	// 주문 개수 
-			[Pay_money addObject:[NSString stringWithFormat:@"item_pay_money=%d", 
-								  [[DataManager getInstance] getProduct:objectInstance.menuId].price ]]; // 매뉴 가격
-			[Dis_money addObject:[NSString stringWithFormat:@"item_disc_money=''"]];	// 할인 가격
-		}
-		GroupIDIndex++;
-	}
-	[Body addObjectsFromArray:MenuID];		[MenuID release];
-	[Body addObjectsFromArray:Dis_menu];	[Dis_menu release];
-	[Body addObjectsFromArray:GroupID];		[GroupID release];
-	[Body addObjectsFromArray:Dis_flag];	[Dis_flag	release];
-	[Body addObjectsFromArray:Dis_code];	[Dis_code release];
-	[Body addObjectsFromArray:Count];		[Count release];
-	[Body addObjectsFromArray:Pay_money];	[Pay_money release];
-	[Body addObjectsFromArray:Dis_money];	[Dis_money release];
+	[Body addObject:[NSString stringWithFormat:@"pay_master_pay_money=%d", Temp.OrderMoney ]];  // 결제금액    
+	[Body addObject:[NSString stringWithFormat:@"pay_master_disc_money=%d", Temp.OrderSaleMoney ]];  // 할인금액
+	[Body addObject:[NSString stringWithFormat:@"pay_master_save_money=%d", 0 ]];  // 적립금액	
+	[Body addObject:[NSString stringWithFormat:@"pay_master_receipt_flag=%@", ( OrderType == MONEY_PERSONAL ? @"Y" : @"") ]];  // 영수증사용여부
 	
-	[Body addObject:[NSString stringWithFormat:@"pay_master_pay_money=%d",
-					  [[DataManager getInstance] getProduct:objectInstance.menuId].price ]];  // 결제금액    
-	[Body addObject:[NSString stringWithFormat:@"pay_master_disc_money=%d", 0 ]];  // 할인금액
-	[Body addObject:[NSString stringWithFormat:@"pay_master_save_money=%d", 0 ]];  // 적립금액
-	
-	[Body addObject:[NSString stringWithFormat:@"pay_master_receipt_flag=%@", (OrderType == MONEY ? @"Y" : @"") ]];  // 영수증사용여부
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_pay_cd=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 결제종류
+	 
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_pay_cd=%@", 
+					 (OrderType == MONEY_PERSONAL || OrderType == MONEY) ? @"02" : @"01" ]];  // 결제종류 (01 : 카드 02:현금  03: 교환권 04:할인 05:적립)
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_no=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 카드번호
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_ex=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 유효기간
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_acc=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 할부
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_control_no=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인넘버
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_money=%d", 
-					  [[DataManager getInstance] getProduct:objectInstance.menuId].price]];  // 승인금액 ( 추후에 변경되면 바꾸자 )
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_money=%d",Temp.OrderMoney]];  // 승인금액 ( 토탈금액 )
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_no=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인번호
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_date=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인일자
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_time=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인시간
@@ -224,9 +209,27 @@
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_nm=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 발급사명
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_terminal_id=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 터미널 ID 
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_msg=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인메시지
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_point_able=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 잔여포인트
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_point_use=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 사용포인트
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_point_add=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 적립포인트
+	 
+	 
+	if(Temp.OrderSaleMoney > 0)
+	 {
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_pay_cd=%@",@"04"]];  // 결제종류 ( 장난감은 추가해야됨.)
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_no=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 카드번호
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_ex=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 유효기간
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_acc=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 할부
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_control_no=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인넘버
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_money=%d",Temp.OrderSaleMoney] ];  // 승인금액 ( 장난감 금액 )
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_no=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인번호
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_date=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인일자
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_time=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인시간
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_cd=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 발급사코드
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_nm=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 발급사명
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_terminal_id=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 터미널 ID 
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_msg=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인메시지
+	 }
+	
+	//if(Temp.UserPhone)  // 일반전화 ? 핸드폰 체크 ( 핸드폰 번호는 배송입력받거나 , 로그인 사용자 번호던가 
+	[Body addObject:[NSString stringWithFormat:@"personal_mobile=%@", (OrderType == MONEY_PERSONAL ?  Temp.UserPhone : @"") ]];  // 현금영수증 전화번호
 	
 	
 	
@@ -243,13 +246,24 @@
 	// 로그인 성공하면 이뷰는 사라진다. 
 	// xml에서 로그인처리 
 	
-	if(![result compare:@"error"])
+	XmlParser* xmlParser = [XmlParser alloc];
+	[xmlParser parserString:result];
+	Element* root = [xmlParser getRoot:@"RESULT_CODE"];
+	
+	if(![[root getValue] compare:@"Y"])
 	{
-		[self ShowOKAlert:@"Login Error" msg:@"로그인에 실패 했습니다."];	
+		
+		OrderEndViewController *OrderEnd = [[OrderEndViewController alloc] initWithNibName:@"OrderEnd"  bundle:nil];
+		
+		[self.navigationController pushViewController:OrderEnd animated:YES];
+		[OrderEnd release];
+		
 	}
+	else if(![[root getValue] compare:@"N"])
+		[self ShowOKAlert:nil msg:@"주문에 실패하였습니다."];	
 	else 
-	{
-	}
+		[self ShowOKAlert:@"ERROR" msg:@"시스템 오류가 발생했습니다.."];
+	
 	[httpRequest release];
 	httpRequest = nil;
 }

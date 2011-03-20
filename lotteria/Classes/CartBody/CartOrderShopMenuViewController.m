@@ -98,6 +98,10 @@
 			[self ShowOKAlert:@"주문" msg:@"8000원 이상주문하셔야 합니다."];
 		}
 		else {
+			Order *order = [[DataManager getInstance] UserOrder];
+			[order setOrderMoney:[[DataManager getInstance] getCartPrice]];
+			[order setOrderSaleMoney:[[DataManager getInstance] getCartSalePrice]];
+			
 			CartOrderViewController *Order = [[CartOrderViewController alloc] initWithNibName:@"CartOrderView" bundle:nil];
 			[self.navigationController pushViewController:Order animated:YES];
 			[Order release];
@@ -141,7 +145,6 @@
 	CartItem *item = [[DataManager getInstance] getCartItem:indexPath.row];
 	
 	buttontype &= item.StoreMenuOnOff;
-	//buttontype &= true;
 	[tmp_cell setDelegate:self selector:@selector(didDataDelete:)];
 	[tmp_cell setMenuData:indexPath.section  :item];
 	

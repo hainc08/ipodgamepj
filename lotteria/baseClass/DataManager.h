@@ -133,7 +133,10 @@ typedef enum _Storetype
 	
 	NSString *branchid;
 	NSString *branchname;
-	
+	NSString *branchtel; 
+	NSString *terminal_id;	// 주문시 사용 
+	NSString *business_date;	// 주무시 사용
+
 	NSString *gis_x;
 	NSString *gis_y;
 }
@@ -153,6 +156,9 @@ typedef enum _Storetype
 @property (retain) NSString *gis_x;
 @property (retain) NSString *gis_y;
 
+@property (retain) NSString *branchtel; 
+@property (retain) NSString *terminal_id;	// 주문시 사용 
+@property (retain) NSString *business_date;
 - (NSString*)getAddressStr;
 
 @end
@@ -169,7 +175,6 @@ typedef enum _Storetype
 	NSString		*OrderMemo;
 	int				OrderMoney;			// 주문 값
 	int				OrderSaleMoney;		// 세일 값 (장남감 가격 1500 원 들어감 )
-	int				OrderTotalMoney;	// 두개 sum 
 
 	int				OrderType;			// 일반 주문 : 0   예약주문 : 1
 	NSString		*OrderTime;			// 예약시 예약 시간
@@ -185,8 +190,7 @@ typedef enum _Storetype
 @property (retain) NSString	*OrderTime;			// 예약시 예약 시간
 
 @property (readwrite) int	OrderMoney;			// 주문 값
-@property (readwrite) int	OrderSaleMoney;		// 세일 값 (?? 있으려나 )
-@property (readwrite) int	OrderTotalMoney;	// 두개 sum 
+@property (readwrite) int	OrderSaleMoney;		// 세일 값 
 @end
 
 @interface DataManager : NSObject
@@ -240,11 +244,11 @@ typedef enum _Storetype
 - (NSMutableArray*)getProductArray:(NSString*)category;
 
 - (NSString*)getPriceStr:(int)value;
-- (int)getCartPrice;
-
+- (int)getCartPrice;	// 전체 Cart
+- (int)getCartSalePrice;	//장난감 세트의 값 
 - (ProductData*)getSearchProduct:(int)idx listIdx:(int)lIdx;
 - (int)getSearchProductCount:(int)lIdx;
 - (void)searchProduct:(NSString*)str;
 - (NSString*)getCategoryName:(NSString*)cat;
-
+- (NSString*)getPhoneStr:(NSString*)PhoneNumber;
 @end

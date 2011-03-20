@@ -9,13 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "UIViewControllerTemplate.h"
 
-@class HTTPRequest;
 @interface OrderEndViewController : UIViewControllerTemplate {
 	IBOutlet UIButton *OrderInfo;
 	IBOutlet UILabel *Store;
 	IBOutlet UILabel *StorePhone;
-	
-	HTTPRequest *httpRequest;
 }
 
 -(IBAction) OrderInfo;

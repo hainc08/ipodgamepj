@@ -299,9 +299,8 @@
 		{
 			if ( [t_item.name compare:@"BRANCH"]  == NSOrderedSame ) {
 					
-			DeliveryAddrInfo *Customer  = [[DataManager getInstance] UserOrder];
-			[Customer setSeq:[[t_item getChild:@"SEQ"] getValue]];
-			[Customer setPhone:[[t_item getChild:@"PHONE"] getValue]];
+			DeliveryAddrInfo *Customer  = [[[DataManager getInstance] UserOrder] UserAddr];
+
 			[Customer setSi:[[t_item getChild:@"SI"] getValue]];
 			[Customer setGu:[[t_item getChild:@"GU"] getValue]];
 			[Customer setDong:[[t_item getChild:@"DONG"] getValue]];
@@ -312,13 +311,17 @@
 			[Customer setBranchname:[[t_item getChild:@"BRANCH_NM"] getValue]];
 			[Customer setGis_x:[[t_item getChild:@"GIS_X"] getValue]];
 			[Customer setGis_y:[[t_item getChild:@"GIS_Y"] getValue]];
+			[Customer setTerminal_id:[[t_item getChild:@"TERMINAL_ID"] getValue]];
+			[Customer setBusiness_date:[[t_item getChild:@"BUSINESS_DATE"] getValue]];
+			[Customer setBranchtel:[[t_item getChild:@"BRANCH_TEL1"] getValue]];
+
 			
 			}
 			else if( [t_item.name compare:@"ITEM"] == NSOrderedSame ) {
 					
 			[[DataManager getInstance] 	updateCartMenuStatus:[[t_item getChild:@"MENU_ID"] getValue] 
 				dis:[[t_item getChild:@"MENU_DIS"] getValue] 
-				flag:[[[t_item getChild:@"SHORT_FLAG"] getValue] compare:@"Y"] ? true : false];
+				flag: ( [[[t_item getChild:@"SHORT_FLAG"] getValue] compare:@"Y"] == NSOrderedSame ) ? false: true ]; // Y 이면 결품
 			}
 
 		}	
@@ -368,18 +371,8 @@
 	
 	DeliveryAddrInfo  *tmp = [CustomerArr objectAtIndex:indexPath.row];
 	
-	NSString* p_tmp;
-	int len = [[tmp phone] length];
-	int t = 3;
-	
-	if ([[[tmp phone] substringWithRange:NSMakeRange(0, 2)] compare:@"02"] == NSOrderedSame) t = 2;
-	
-	p_tmp = [NSString stringWithFormat:@"%@-%@-%@",
-			 [[tmp phone] substringWithRange:NSMakeRange(0, t)],
-			 [[tmp phone] substringWithRange:NSMakeRange(t, len - 4 - t)],
-			 [[tmp phone] substringWithRange:NSMakeRange(len - 4, 4)]];
 					   
-	[tmp_cell setInfo:[tmp branchname] :[tmp getAddressStr] :p_tmp ];
+	[tmp_cell setInfo:[tmp branchname] :[tmp getAddressStr] :[[DataManager getInstance] getPhoneStr:[tmp phone]]];
 
 	return cell;
 }
@@ -396,6 +389,10 @@
 {
 
 	DeliveryAddrInfo  *Tmp = [CustomerArr objectAtIndex:indexPath.row];
+	DeliveryAddrInfo *Customer  = [[[DataManager getInstance] UserOrder] UserAddr];
+	[Customer setSeq:Tmp.Seq];
+	[Customer setPhone:Tmp.phone];
+	
 	[self GetOrderMenuSearch:Tmp.gis_x :Tmp.gis_y ];			
 
 }

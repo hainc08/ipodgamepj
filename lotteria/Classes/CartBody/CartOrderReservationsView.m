@@ -85,18 +85,7 @@
 	ShippingOrderCell *tmp_cell = (ShippingOrderCell *)cell;
 	Order *Data = [[DataManager getInstance] UserOrder];
 	
-	NSString* p_tmp;
-	int len = [[Data.UserAddr phone] length];
-	int t = 3;
-	
-	if ([[[Data.UserAddr  phone] substringWithRange:NSMakeRange(0, 2)] compare:@"02"] == NSOrderedSame) t = 2;
-	
-	p_tmp = [NSString stringWithFormat:@"%@-%@-%@",
-			 [[Data.UserAddr  phone]  substringWithRange:NSMakeRange(0, t)],
-			 [[Data.UserAddr  phone] substringWithRange:NSMakeRange(t, len - 4 - t)],
-			 [[Data.UserAddr  phone] substringWithRange:NSMakeRange(len - 4, 4)]];
-	
-	[tmp_cell setInfo:[Data.UserAddr branchname] :[Data.UserAddr getAddressStr] :p_tmp ];
+	[tmp_cell setInfo:[Data.UserAddr branchname] :[Data.UserAddr getAddressStr] :[[DataManager getInstance] getPhoneStr:[Data.UserAddr branchtel]] ];
 	
 	return cell;
 }
