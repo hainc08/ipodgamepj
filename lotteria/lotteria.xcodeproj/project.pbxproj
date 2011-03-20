@@ -2529,8 +2529,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: SeongYong Lee (XZ3S2XAKBV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SeongYong Lee (XZ3S2XAKBV)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -2553,8 +2553,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "9ED8CB87-FD3F-4494-877A-CC841BA9E601";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9ED8CB87-FD3F-4494-877A-CC841BA9E601";
+				PROVISIONING_PROFILE = "D5FECF47-18CB-458C-895D-BFD7D4B7AD53";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D5FECF47-18CB-458C-895D-BFD7D4B7AD53";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
