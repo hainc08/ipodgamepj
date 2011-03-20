@@ -20,14 +20,18 @@
 	NSMutableArray *AddressArr;
 	UIToolbar *toolbar;
 	UIView *blackview;
+	
+	NSMutableArray *Annotations;
 }
 
 @property (nonatomic, retain) MKMapView *mapView;
 
--(void)setupMap;
--(void)selectCategory:(int)idx;
--(IBAction)buttonClick:(id)sender;
--(void)addShopMark:(int)shopIdx location:(CLLocationCoordinate2D)location;
--(void)addShopMark:(int)shopIdx  store:(StoreInfo *)Info;
+- (void)setupMap;
+- (void)selectCategory:(int)idx;
+- (IBAction)buttonClick:(id)sender;
+- (void)addShopMark:(int)shopIdx location:(CLLocationCoordinate2D)location;
+- (void)addShopMark:(int)shopIdx  store:(StoreInfo *)Info;
 - (void)GetStoreInfo:(NSString *)gis_x gis_y:(NSString *)gis_y;
+- (void)reloadMapAnnotation;
+
 @end
