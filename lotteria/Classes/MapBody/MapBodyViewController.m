@@ -40,11 +40,12 @@
 //	Search.inputAccessoryView = toolbar;
 	[toolbar release];
 	
+	Annotations = [[NSMutableArray alloc] initWithObjects:0];
+	
 	[self selectCategory:0];
 	[self setupMap];
-	
-	[self GetStoreInfo:[NSString stringWithFormat:@"%ld", mapView.userLocation.coordinate.latitude] gis_y:[NSString stringWithFormat:@"%ld", mapView.userLocation.coordinate.longitude]];
 }
+
 - (void)viewDidUnload {
 
 	
@@ -94,6 +95,8 @@
 	[xmlParser parserString:result];
 	Element* root = [xmlParser getRoot:@"NewDataSet"];
 	
+	if (AddressArr == nil) AddressArr = [[NSMutableArray alloc] initWithArray:0];
+	else [AddressArr removeAllObjects];
 	
 	if(root == nil)
 	{
@@ -142,6 +145,8 @@
 	}
 	[httpRequest release];
 	httpRequest = nil;
+
+	[self reloadMapAnnotation];
 }
 
 #pragma mark  -
@@ -268,6 +273,7 @@
 					   [phoneNumber substringFromIndex:[phoneNumber length]-4]];
 
 	[mapView addAnnotation:anote];
+	[Annotations addObject:anote];
 }
 
 -(void)addShopMark:(int)shopIdx  store:(StoreInfo *)Info
@@ -290,9 +296,9 @@
 			 [[Info storephone] substringWithRange:NSMakeRange(len - 4, 4)]];
 	
 	[mapView addAnnotation:anote];
+	[Annotations addObject:anote];
  }
-						   
-						   
+
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
 	mapView.hidden = NO;
@@ -302,28 +308,14 @@
 	region.center=newLocation.coordinate;
 	
 	MKCoordinateSpan span;
-	span.latitudeDelta=0.01f;
-	span.longitudeDelta=0.01f;
+	span.latitudeDelta=0.02f;
+	span.longitudeDelta=0.02f;
 	region.span=span;
 	
 	[mapView setRegion:region animated:FALSE];
 	mapView.userLocation.title = @"내위치";
 
-	CLLocationCoordinate2D location;
-
-	location.latitude=newLocation.coordinate.latitude + 0.001f;
-	location.longitude=newLocation.coordinate.longitude - 0.001f;
-	location.latitude=newLocation.coordinate.latitude;
-	location.longitude=newLocation.coordinate.longitude;
-	[self addShopMark:0 location:location];
-
-	location.latitude=newLocation.coordinate.latitude + 0.003f;
-	location.longitude=newLocation.coordinate.longitude + 0.001f;
-	[self addShopMark:1 location:location];
-
-	location.latitude=newLocation.coordinate.latitude - 0.002f;
-	location.longitude=newLocation.coordinate.longitude - 0.002f;
-	[self addShopMark:2 location:location];
+	[self GetStoreInfo:[NSString stringWithFormat:@"%f", newLocation.coordinate.latitude] gis_y:[NSString stringWithFormat:@"%f", newLocation.coordinate.longitude]];
 }
 	 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -341,19 +333,22 @@
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation{
 	PlaceMark *anote = (PlaceMark*)annotation;
 	
+	//MKPinAnnotationView *annView=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
 	MKAnnotationView *annView=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
-	switch (anote.shopType)
+
+	if (anote.shopType == TIMESTORE)
 	{
-		case 0:
-			annView.image = [UIImage imageNamed:@"icon_pin_all"];
-			break;
-		case 1:
-			annView.image = [UIImage imageNamed:@"icon_pin_24"];
-			break;
-		case 2:
-			annView.image = [UIImage imageNamed:@"icon_pin_delivery"];
-			break;
+		annView.image = [UIImage imageNamed:@"icon_pin_24.png"];
 	}
+	else if (anote.shopType == DELIVERYSTORE)
+	{
+		annView.image = [UIImage imageNamed:@"icon_pin_delivery.png"];
+	}
+	else if (anote.shopType == NORMALSTORE)
+	{
+		annView.image = [UIImage imageNamed:@"icon_pin_all.png"];
+	}
+	
 	//    annView.animatesDrop = TRUE;
 	annView.canShowCallout = YES;
 	annView.centerOffset = CGPointMake(0, -30);
@@ -361,8 +356,23 @@
 	UIButton *disclosureButton = [UIButton buttonWithType: UIButtonTypeDetailDisclosure];
 	annView.canShowCallout = YES;
 	annView.rightCalloutAccessoryView = disclosureButton;
+
+	//annView.pinColor = MKPinAnnotationColorGreen;  
 	
 	return annView;
+}
+
+- (void)reloadMapAnnotation
+{
+	[mapView removeAnnotations:Annotations];
+	[Annotations removeAllObjects];
+
+	int i = 0;
+	for (StoreInfo* storeaddr in AddressArr)
+	{
+		[self addShopMark:i store:storeaddr];
+		++i;
+	}
 }
 
 @end
