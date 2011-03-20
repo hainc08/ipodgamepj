@@ -12,6 +12,23 @@
 {
 	[super viewDidLoad];
 	isNoticeCheck = false;
+	[noticeView setAlpha:0.f];
+	[loadingNow startAnimating];
+	[self GetVersion];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	if (isNoticeCheck)
+	{
+		[self.view setAlpha:0];
+	}
+}
+
+- (void)loadingDone
+{
+	[loadingNow stopAnimating];
+	[loadingNow setAlpha:0.f];
 
 	CALayer *viewLayer = noticeView.layer;
     CAKeyframeAnimation* popInAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
@@ -32,33 +49,22 @@
     popInAnimation.delegate = nil;
     
     [viewLayer addAnimation:popInAnimation forKey:@"transform.scale"];  
-
+	
     CAKeyframeAnimation* fadeInAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
     
     fadeInAnimation.duration = kAnimationDuration;
     fadeInAnimation.values = [NSArray arrayWithObjects:
-                             [NSNumber numberWithFloat:0.0],
-							 [NSNumber numberWithFloat:1],
-                             nil];
+							  [NSNumber numberWithFloat:0.0],
+							  [NSNumber numberWithFloat:1],
+							  nil];
     fadeInAnimation.keyTimes = [NSArray arrayWithObjects:
-                               [NSNumber numberWithFloat:0.0],
-							   [NSNumber numberWithFloat:1],
-                               nil];    
+								[NSNumber numberWithFloat:0.0],
+								[NSNumber numberWithFloat:1],
+								nil];    
     fadeInAnimation.delegate = nil;
     
+	[noticeView setAlpha:1.f];
     [viewLayer addAnimation:fadeInAnimation forKey:@"opacity"];
-	
-	[noticeView setAlpha:0];
-	[self GetVersion];
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-	if (isNoticeCheck)
-	{
-		
-		[self.view setAlpha:0];
-	}
 }
 
 - (IBAction)buttonClick
@@ -120,12 +126,12 @@
 		[self ShowOKCancleAlert:nil msg:@"버전이 업그레이드 되었습니다. 앱스토어에서 다시 다운받으세요 "];
 	}
 	else {
-		[noticeView setAlpha:1];
+		[self loadingDone];
 	}
  */
-	[noticeView setAlpha:1];
-
+	[self loadingDone];
 }
+
 -(void)GetMenuList
 {
 	httpRequest = [[HTTPRequest alloc] init];
