@@ -13,6 +13,7 @@
 #import "HelpViewController.h"
 
 #import "WaitViewController.h"
+#import "MyCustomerDelivery.h"
 @implementation MainViewController
 @synthesize WaitView;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -74,6 +75,42 @@
 
 	lastButton = sender;
 }
+
+/* MYPAGE이동  , 메뉴선택 이동 ...*/
+- (void)ClieckEvent:(int)index  viewType:(int)Type
+{
+	
+	[selectedBack setCenter:CGPointMake(40 + index * 80, 24)];
+	
+	[self dismissModalViewControllerAnimated:YES];
+	NaviViewController* navi = [[NaviViewController alloc] init];
+	[navi setParentView:self];
+	[navi setIdx:index];
+	
+	[[ViewManager getInstance] setHelpButton:helpButton];
+	
+	UIView* oldView = curView;
+	curView = navi.view;
+	
+	[self.view addSubview:curView];
+	[self viewAlign];
+	
+	[oldView removeFromSuperview];
+	[[ViewManager getInstance] closePopUp];
+	if(Type == MYPAGEMOVE)
+	{
+		MyCustomerDelivery *Coustomer = [[MyCustomerDelivery alloc] initWithNibName:@"MyCustomerDelivery" bundle:nil];
+		[navi pushViewController:Coustomer animated:YES];
+		[Coustomer release];
+	}
+	id sender;
+	if (index == 0 ) sender = tapButton1;
+	else if (index == 0 ) sender =tapButton2;
+	else if (index == 0 ) sender =tapButton3;
+	else if (index == 0 ) sender =tapButton4;
+	lastButton = sender;
+}
+
 
 - (IBAction)helpClick
 {

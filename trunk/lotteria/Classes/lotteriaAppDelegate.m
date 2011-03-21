@@ -89,5 +89,8 @@
 	[super dealloc];
 }
 
-
+- (void)UpdateMoveView:(int)index   viewType:(int)Type
+{
+	[mainViewController ClieckEvent:index viewType:Type];
+}
 @end

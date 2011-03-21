@@ -34,6 +34,7 @@
 	NSString* menuId;
 }
 
+- (IBAction) ButtonClick:(id)sender;
 - (void)setSideType:(int)type;
 - (void)selectId:(NSString*)mId;
 - (void)reloadData;

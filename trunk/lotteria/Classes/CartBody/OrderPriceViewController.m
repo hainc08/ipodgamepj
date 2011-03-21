@@ -151,12 +151,12 @@
 		
 		if (objectInstance.dessertId  != nil)
 		{
-			[MenuData addObjectsFromArray:[self GetMenuData:objectInstance.menuId group_id:GroupIDIndex cnt:objectInstance.count]];
+			[MenuData addObjectsFromArray:[self GetMenuData:objectInstance.dessertId group_id:GroupIDIndex cnt:objectInstance.count]];
 			
 		}
 		if (objectInstance.drinkId  != nil)
 		{
-			[MenuData addObjectsFromArray:[self GetMenuData:objectInstance.menuId group_id:GroupIDIndex cnt:objectInstance.count]];
+			[MenuData addObjectsFromArray:[self GetMenuData:objectInstance.drinkId group_id:GroupIDIndex cnt:objectInstance.count]];
 		}
 		GroupIDIndex++;
 	}
@@ -252,11 +252,10 @@
 	
 	if(![[root getValue] compare:@"Y"])
 	{
+		[[DataManager getInstance] allremoveCartItem];
 		
-		OrderEndViewController *OrderEnd = [[OrderEndViewController alloc] initWithNibName:@"OrderEnd"  bundle:nil];
-		
-		[self.navigationController pushViewController:OrderEnd animated:YES];
-		[OrderEnd release];
+		OrderEndViewController* popView = [[OrderEndViewController alloc] initWithNibName:@"OrderEnd"  bundle:nil];
+		[[ViewManager getInstance] popUp:popView owner:nil];
 		
 	}
 	else if(![[root getValue] compare:@"N"])
@@ -267,5 +266,8 @@
 	[httpRequest release];
 	httpRequest = nil;
 }
+- (void) refresh
+{
 
+}
 @end

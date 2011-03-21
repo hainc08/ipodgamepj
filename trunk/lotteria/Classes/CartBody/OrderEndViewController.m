@@ -15,36 +15,25 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
+	
 	Order *tmp =	[[DataManager getInstance] UserOrder ];
 	[Store setText:tmp.UserAddr.branchname];
 	[StorePhone setText:[[DataManager getInstance] getPhoneStr:tmp.UserAddr.branchtel]];
+	UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease]; 
+
+	self.navigationItem.backBarButtonItem = flexibleSpace;
+	self.navigationItem.leftBarButtonItem = flexibleSpace;
 	
 	self.navigationItem.title = @"주문완료";
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 -(IBAction) OrderInfo
 {
-}
-
-- (void)didReceiveFinished:(NSString *)result
-{
-	
-	// 로그인 성공하면 이뷰는 사라진다. 
-	// xml에서 로그인처리 
-	
-	if(![result compare:@"error"])
-	{
-	[self ShowOKAlert:@"Login Error" msg:@"로그인에 실패 했습니다."];	
-	}
-	else 
-	{
-	}
+	[[[UIApplication sharedApplication] delegate]UpdateMoveView:2 viewType:MYPAGEMOVE];
 }
 
 - (void)dealloc {

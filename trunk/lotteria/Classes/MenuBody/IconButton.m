@@ -19,8 +19,8 @@
 {
 	menu_id = mid;
 	NSString* nameStr = [[[DataManager getInstance] getProduct:menu_id] name];
-	[nameLabel setText:[nameStr substringToIndex:MIN(5, [nameStr length])]];
-
+//	[nameLabel setText:[nameStr substringToIndex:MIN(5, [nameStr length])]];// 메뉴명이 이상하다하니.. 잠시 보류..
+	[nameLabel setText:nameStr];
 	[button setImage:[[DataManager getInstance] getProductImg:menu_id type:SMALL] forState:UIControlStateNormal];
 }
 

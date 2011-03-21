@@ -36,6 +36,8 @@
 		[httpRequest release];
 		httpRequest = nil;
     }
+	[ID resignFirstResponder];
+	[Password resignFirstResponder];
 	[super viewDidUnload];
 }
 
@@ -45,6 +47,8 @@
 		[httpRequest release];
 		httpRequest = nil;
     }
+	[ID resignFirstResponder];
+	[Password resignFirstResponder];
     [super dealloc];
 }
 
@@ -157,6 +161,8 @@
 	[httpRequest release];
 	httpRequest = nil;
 	[[ViewManager getInstance] waitview:self.view isBlock:NO];
+	[ID resignFirstResponder];
+	[Password resignFirstResponder];
 	[[ViewManager getInstance] closePopUp];
 
 }
