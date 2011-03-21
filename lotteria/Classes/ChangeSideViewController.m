@@ -67,7 +67,10 @@
 	[products release];
     [super dealloc];
 }
-
+- (IBAction) ButtonClick:(id)sender
+{
+	[self back];
+}
 - (void)setSideType:(int)type
 {
 	sType = type;

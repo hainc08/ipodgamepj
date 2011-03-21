@@ -20,7 +20,7 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet MainViewController *mainViewController;
 
-
+- (void)UpdateMoveView:(int)index   viewType:(int)Type;
 
 @end
 

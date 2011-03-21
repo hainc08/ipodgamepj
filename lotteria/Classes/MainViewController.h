@@ -5,6 +5,7 @@
 //  Created by Sasin on 11. 2. 18..
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
+
 @class WaitViewController;
 @interface MainViewController : UIViewController {
 	id curView;
@@ -29,6 +30,7 @@
 }
 @property (nonatomic, retain) WaitViewController *WaitView;
 - (IBAction)buttonClick:(id)sender;
+- (void)ClieckEvent:(int)index  viewType:(int)Type;
 - (IBAction)helpClick;
 - (void)cartUpdate;
 

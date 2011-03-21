@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIViewControllerTemplate.h"
 
-@interface OrderEndViewController : UIViewControllerTemplate {
+@interface OrderEndViewController :UIViewControllerDownTemplate   {
 	IBOutlet UIButton *OrderInfo;
 	IBOutlet UILabel *Store;
 	IBOutlet UILabel *StorePhone;

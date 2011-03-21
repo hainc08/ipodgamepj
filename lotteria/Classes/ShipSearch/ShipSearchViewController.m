@@ -61,9 +61,9 @@
 - (BOOL)webView:(UIWebView *)webview shouldStartLoadWithRequest:(NSURLRequest *)req navigationType:(UIWebViewNavigationType)navigationtype
 {
 	
-	if (navigationtype == UIWebViewNavigationTypeLinkClicked) 
+	if (navigationtype == UIWebViewNavigationTypeFormSubmitted) 
 	{
-	if([[[req URL] absoluteString] isEqualToString:@"RESULT.asp"]){
+	if([[[req URL] absoluteString] hasSuffix:@"RESULT_PAGE.ASP"]){
 		NSLog(@"webview close");
 		
 		[[ViewManager getInstance] closePopUp];	

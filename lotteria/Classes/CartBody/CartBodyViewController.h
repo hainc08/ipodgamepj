@@ -1,7 +1,6 @@
 #import "CartListViewController.h"
 #import "UIViewControllerTemplate.h"		
 	
-@class Order;
 @class LoginViewController;
 @interface CartBodyViewController : UIViewControllerTemplate {
 
@@ -11,12 +10,9 @@
 	IBOutlet UILabel* priceLabel;
 	NSTimer *updateTimer;
 	
-	Order	*InfoOrder;
-	
 
 }
 
-@property (nonatomic ,retain) Order *InfoOrder;
 
 -(void)setupData;
 -(IBAction)OrderButton;

@@ -3,7 +3,6 @@
 #import "LoginViewController.h"
 @implementation CartBodyViewController
 
-@synthesize InfoOrder;
 
 - (void)viewDidLoad {
 	naviImgIdx = 0;
@@ -21,8 +20,6 @@
 	[self setupData];
 
 	[priceLabel setText:[[DataManager getInstance] getPriceStr:[[DataManager getInstance] getCartPrice]]];
-	
-	InfoOrder = [[[Order alloc] init] retain];
 
 	[[ViewManager getInstance] setCartView:self];
 	

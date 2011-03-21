@@ -64,7 +64,7 @@
 }
 - (void)SetButton
 {
-	if(buttontype && [[DataManager getInstance] getCartPrice] > 8000 )
+	if(buttontype && [[DataManager getInstance] getCartPrice] >= 8000 )
 	{
 		[orderButton setAlpha:1];
 		[againButton setAlpha:0];

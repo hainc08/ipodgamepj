@@ -260,6 +260,11 @@ static DataManager *DataManagerInst;
 	[ShopCart removeObject:item];
 	[[ViewManager getInstance] cartUpdate];
 }
+- (void)allremoveCartItem
+{
+	[ShopCart removeAllObjects];
+	[[ViewManager getInstance] cartUpdate];
+}
 
 - (NSMutableArray*)getShopCart
 {
@@ -653,7 +658,7 @@ static DataManager *DataManagerInst;
 
 - (NSString*)getPhoneStr:(NSString*)PhoneNumber
 {
-	if(PhoneNumber ==nil) return @"";
+	if(PhoneNumber ==nil || [ PhoneNumber length] < 7) return @"";
 	
 	NSString* p_tmp;
 	int len = [PhoneNumber length];

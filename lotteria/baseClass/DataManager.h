@@ -6,7 +6,10 @@
 
 #define SERVERURL	@"http://homeservice.lotteria.co.kr/mobile"
 #define SERVERURLWS	@"http://homeservice.lotteria.co.kr/ws/mobile"
-
+typedef enum _MOVEMENU {
+	MYPAGEMOVE,
+	MENUPAGEMOVE,
+}MOVEMENU;
 typedef enum _ImgType
 {
 	MIDDLE = 0,
@@ -229,6 +232,7 @@ typedef enum _Storetype
 //-------------------장바구니 처리---------------------
 - (void)addCartItem:(CartItem*)item;
 - (void)removeCartItem:(CartItem*)item;
+- (void)allremoveCartItem;
 - (NSMutableArray*)getShopCart;
 - (int)itemCount:(int)listIdx;
 - (CartItem*)getCartItem:(int)idx listIdx:(int)listIdx;
