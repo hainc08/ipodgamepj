@@ -321,8 +321,8 @@ static DataManager *DataManagerInst;
 	for (CartItem* i in ShopCart)
 	{
 		NSString* category = [[self getProduct:[i menuId]] category];
-		if (([category compare:@"D10"] != NSOrderedSame)||
-			([category compare:@"S10"] != NSOrderedSame))
+		if (([category compare:@"D10"] == NSOrderedSame)||
+			([category compare:@"S10"] == NSOrderedSame))
 		{
 			count += [i count];
 		}
@@ -659,8 +659,11 @@ static DataManager *DataManagerInst;
 	int len = [PhoneNumber length];
 	int t = 3;
 	
-	if ([[PhoneNumber substringWithRange:NSMakeRange(0, 2)] compare:@"02"] == NSOrderedSame) t = 2;
-	
+	//길이가 7자보다 적거나, 스트링안에 "-"가 있는 경우에는 그냥 리턴한다.
+	if (([PhoneNumber rangeOfString:@"-"].length == 0) || (len < 7)) return PhoneNumber;
+
+	if ([PhoneNumber hasPrefix:@"02"]) t = 2;
+		  
 	p_tmp = [NSString stringWithFormat:@"%@-%@-%@",
 			 [PhoneNumber substringWithRange:NSMakeRange(0, t)],
 			 [PhoneNumber substringWithRange:NSMakeRange(t, len - 4 - t)],

@@ -51,8 +51,6 @@
 	if ( [CustomerArr count] > 0)
 		[CustomerArr removeAllObjects];	
 	[self GetShippingList];
-	
-    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning {
