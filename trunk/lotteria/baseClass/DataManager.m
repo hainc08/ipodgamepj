@@ -461,6 +461,9 @@ static DataManager *DataManagerInst;
 			if (([[data category] compare:@"S10"] == NSOrderedSame)||
 				([[data category] compare:@"S11"] == NSOrderedSame))
 			{
+				if ( [[data set_flag] compare:@"3"] == NSOrderedSame) {
+					goto next;
+				}
 				// 200370 이건 org_menu_id가 없음.. 우선 버림..
 				tmp = [product getChild:@"ORI_MENU_ID"];
 				if(tmp)
