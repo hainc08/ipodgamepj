@@ -43,7 +43,7 @@
 - (IBAction)ContinueButton:(id)sender
 {
 	if(Name.text == nil || Phone.text == nil)
-		[self ShowCancelOKAlert:nil msg:@"수령자명과 핸드폰 번호를 입력 해주세요"];
+		[self ShowOKCancleAlert:nil msg:@"수령자명과 핸드폰 번호를 입력 해주세요"];
 	else {
 		Order *Data = [[DataManager getInstance] UserOrder];
 		
