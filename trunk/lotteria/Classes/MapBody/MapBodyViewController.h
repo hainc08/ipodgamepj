@@ -18,7 +18,7 @@
 	HTTPRequest *httpRequest;
 	
 	NSMutableArray *AddressArr;
-	UIToolbar *toolbar;
+
 	UIView *blackview;
 	
 	NSMutableArray *Annotations;

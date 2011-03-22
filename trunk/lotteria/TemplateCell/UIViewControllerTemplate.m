@@ -68,6 +68,13 @@
 	[alert show];
 	[alert release];
 }
+- (void)ShowCancelOKAlert:(NSString *)title msg:(NSString *)message
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message
+												   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+	[alert show];
+	[alert release];
+}
 
 #pragma mark -
 #pragma mark AlertView

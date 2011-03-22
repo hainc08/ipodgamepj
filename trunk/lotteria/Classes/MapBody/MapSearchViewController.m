@@ -62,7 +62,7 @@
 
 - (IBAction)MapButton
 {
-	[self.navigationController popViewControllerAnimated:YES];
+	[self back];
 }
 
 #pragma mark -

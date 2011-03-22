@@ -48,15 +48,6 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 	
-	NSRange rangeRound = [[[webView.request URL] absoluteString] rangeOfString:@"RESULT.asp"];
-	
-	if (rangeRound.length) {
-		
-		NSString *authToken = [[webView stringByEvaluatingJavaScriptFromString: @"document.getElementById('token').innerHTML"]
-							   stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-		NSLog(@"authToken: %@", authToken);
-		
-	}
 }
 - (BOOL)webView:(UIWebView *)webview shouldStartLoadWithRequest:(NSURLRequest *)req navigationType:(UIWebViewNavigationType)navigationtype
 {

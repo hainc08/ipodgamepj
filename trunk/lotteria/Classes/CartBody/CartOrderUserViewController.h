@@ -13,6 +13,7 @@
 @interface CartOrderUserViewController : UIViewControllerTemplate {
 	IBOutlet UITextField	*Name;
 	IBOutlet UITextField	*Phone;
+	NSString *OrgPhone;
 }
 - (IBAction)ContinueButton:(id)sender;
 @end

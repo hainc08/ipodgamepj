@@ -10,7 +10,7 @@
 #import "OrderEndViewController.h"
 #import "HttpRequest.h"
 #import "XmlParser.h"
-
+#import <time.h>
 @implementation OrderPriceViewController
 
 
@@ -78,14 +78,6 @@
 #pragma mark -
 #pragma mark AlertView
 
-- (void)ShowOKCancleAlert:(NSString *)title msg:(NSString *)message
-{
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message
-												   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-	[alert show];
-	[alert release];
-}
-
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	[super alertView:actionSheet clickedButtonAtIndex:buttonIndex];
@@ -145,7 +137,10 @@
 			if	 ( [[prdata set_flag] compare:@"3"] == NSOrderedSame )
 			{
 				/* 이달에 장난감을 찾아 해당 장난감코드를 준다. */
-				[MenuData addObjectsFromArray:[self GetMenuData:objectInstance.menuId group_id:GroupIDIndex cnt:objectInstance.count]];
+				time_t cur_time =time(NULL);
+				struct tm *time = localtime(&cur_time);
+				NSString *MenuID = [NSString stringWithFormat:@"LE00%2d", time->tm_mon-1];
+				[MenuData addObjectsFromArray:[self GetMenuData:MenuID group_id:GroupIDIndex cnt:objectInstance.count]];
 			}
 		}
 		
