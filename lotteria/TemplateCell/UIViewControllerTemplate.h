@@ -25,7 +25,7 @@
 
 - (void)back;
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
-- (void)ShowCancelOKAlert:(NSString *)title msg:(NSString *)message;
+- (void)ShowOKCancleAlert:(NSString *)title msg:(NSString *)message;
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @end
