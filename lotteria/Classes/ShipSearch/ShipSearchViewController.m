@@ -16,7 +16,7 @@
 	closetype = true;
 	naviImgIdx = 0;
 	self.navigationItem.title = @"배송지등록";
-	NSString *url = [NSString stringWithFormat:@"%@/iphone/order/step_01.asp?cust_id=%@&cust_flag=%d", SERVERURL, @"seyogo", 3 ];
+	NSString *url = [NSString stringWithFormat:@"%@/iphone/order/step_01.asp?cust_id=%@&cust_flag=%d", SERVERURL, @"mobileuser", 3 ];
 	NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] 
 										cachePolicy:NSURLRequestReloadIgnoringCacheData 
 													  timeoutInterval:10.0];

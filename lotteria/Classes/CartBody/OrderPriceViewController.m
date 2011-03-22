@@ -71,7 +71,7 @@
 	else if(sender == Card2)
 	{
 			OrderType = CARD;
-		[self ShowOKCancleAlert:@"주문" msg:@"온라인 결제 주문이 맞습니까?"];
+		[self ShowOKAlert:nil msg:@"온라인 결제는 준비중입니다."];
 	}
 }
 
@@ -257,7 +257,8 @@
 		[self ShowOKAlert:nil msg:@"주문에 실패하였습니다."];	
 	else 
 		[self ShowOKAlert:@"ERROR" msg:@"시스템 오류가 발생했습니다.."];
-	
+
+	[xmlParser release];
 	[httpRequest release];
 	httpRequest = nil;
 }

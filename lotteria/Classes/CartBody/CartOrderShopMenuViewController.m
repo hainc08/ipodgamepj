@@ -82,8 +82,8 @@
 
 - (void)didDataDelete:(NSString *)result
 {
-	[self SetButton];
 	[menuTable	reloadData];
+	[self SetButton];
 }
 
 /* 
@@ -110,7 +110,8 @@
 	else {
 		// 메뉴로 돌아가기..
 		// 장바구니 창으로 이동~
-		[self.navigationController popToRootViewControllerAnimated:YES];
+		//[self.navigationController popToRootViewControllerAnimated:YES];
+		[[[UIApplication sharedApplication] delegate]UpdateMoveView:0 viewType:-1];
 	}
 
 }
@@ -145,6 +146,7 @@
 	CartItem *item = [[DataManager getInstance] getCartItem:indexPath.row];
 	
 	buttontype &= item.StoreMenuOnOff;
+	[self SetButton];
 	[tmp_cell setDelegate:self selector:@selector(didDataDelete:)];
 	[tmp_cell setMenuData:indexPath.section  :item];
 	

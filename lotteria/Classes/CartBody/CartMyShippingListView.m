@@ -289,7 +289,7 @@
 		
 	if( [root childCount] == 0 )
 	{
-		[self ShowOKAlert:nil msg:@"등록된 배송지 목록이 없습니다."];	
+		[self ShowOKAlert:nil msg:@"배송가능한 매장이 존재 하지 않습니다."];	
 	}
 	else {
 			
