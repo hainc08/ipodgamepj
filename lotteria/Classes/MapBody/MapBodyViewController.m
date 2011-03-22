@@ -30,14 +30,15 @@
 	[self.view addSubview:blackview];
 	[blackview setAlpha:0];
 	
-	toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+	UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
 	UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease]; 
 	UIBarButtonItem *barButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancleButton:)] autorelease];
 	NSArray *items = [[NSArray alloc] initWithObjects:flexibleSpace,barButtonItem, nil];
 	[toolbar setItems:items];
 	[items release];
-	Search.delegate = self;
-//	Search.inputAccessoryView = toolbar;
+	UIView *addView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+	[addView addSubview:toolbar];
+	Search.inputAccessoryView = (UIView *)addView;
 	[toolbar release];
 	
 	Annotations = [[NSMutableArray alloc] initWithObjects:0];
