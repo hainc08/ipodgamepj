@@ -189,7 +189,7 @@
 
 			CartItem  *tmp =  [[[DataManager getInstance] getShopCart] objectAtIndex:indexPath.row-1] ;	
 			ProductData *p_data = [[DataManager getInstance] getProduct:tmp.menuId];
-			[tmp_cell setInfo:[p_data  category]
+			[tmp_cell setInfo:[p_data  name]
 							 :[NSString stringWithFormat:@"%d", tmp.count]
 							 : [[DataManager getInstance] getPriceStr:[p_data price] *  tmp.count ]];
 		}
