@@ -31,5 +31,4 @@ enum ORDERTYPE {
 - (void)didReceiveFinished:(NSString *)result;
 - (void)OrderParamSetting;
 - (IBAction) OrderButton:(id)sender;
-- (void)ShowOKCancleAlert:(NSString *)title msg:(NSString *)message;
 @end

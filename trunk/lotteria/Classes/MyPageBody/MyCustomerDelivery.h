@@ -12,7 +12,7 @@
 @interface MyCustomerDelivery : UIViewControllerTemplate {
 
 	IBOutlet UIWebView *WebView;
-	
+	NSString *URLInfo;
 }
 
 @end

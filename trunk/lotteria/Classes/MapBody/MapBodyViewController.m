@@ -38,7 +38,7 @@
 	[items release];
 	UIView *addView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
 	[addView addSubview:toolbar];
-	Search.inputAccessoryView = (UIView *)addView;
+	//Search.inputAccessoryView = (UIView *)addView;
 	[toolbar release];
 	
 	Annotations = [[NSMutableArray alloc] initWithObjects:0];

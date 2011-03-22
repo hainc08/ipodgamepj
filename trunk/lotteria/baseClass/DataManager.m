@@ -658,14 +658,14 @@ static DataManager *DataManagerInst;
 
 - (NSString*)getPhoneStr:(NSString*)PhoneNumber
 {
-	if(PhoneNumber ==nil || [ PhoneNumber length] < 11) return @"";
+	if(PhoneNumber ==nil || [ PhoneNumber length] < 9) return @"";
 	
 	NSString* p_tmp;
 	int len = [PhoneNumber length];
 	int t = 3;
 	
-	//길이가 7자보다 적거나, 스트링안에 "-"가 있는 경우에는 그냥 리턴한다.
-	if (([PhoneNumber rangeOfString:@"-"].length == 0) || (len < 11)) return PhoneNumber;
+	//길이가 7자보다 적거나, 스트링안에 "-"가 있는 경우에는 그냥 리턴한다. ( DB에는모든값에 - 는없음..
+	//if (([PhoneNumber rangeOfString:@"-"].length == 0) || (len < 7)) return PhoneNumber;
 
 	if ([PhoneNumber hasPrefix:@"02"]) t = 2;
 		  

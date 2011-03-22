@@ -21,7 +21,7 @@
 	self.navigationItem.title = @"마이페이지";
 	int timeout=10.0;
 	/* URL 알려주면 */
-	NSString *url = [NSString stringWithFormat:@"%@/iphone/mypage/order_list.asp?cust_id=%@&cust_flag=%d", SERVERURL, @"mobileuser", 3 ];
+	NSString *url = [NSString stringWithFormat:@"%@/iphone/mypage/order_list.asp?cust_id=%@&order_flag=%d", SERVERURL, @"mobileuser", 3 ];
 	NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
 														  cachePolicy:NSURLRequestReloadIgnoringCacheData 
 													  timeoutInterval:timeout];
@@ -65,5 +65,12 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView1 { 
 }
-
+- (BOOL)webView:(UIWebView *)webview shouldStartLoadWithRequest:(NSURLRequest *)req navigationType:(UIWebViewNavigationType)navigationtype
+{
+	
+	if (navigationtype == UIWebViewNavigationTypeFormSubmitted) 
+	{
+	}
+	return true;
+}
 @end
