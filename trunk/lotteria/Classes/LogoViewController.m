@@ -13,7 +13,7 @@
 	[super viewDidLoad];
 	isNoticeCheck = false;
 	[noticeView setAlpha:0.f];
-	[loadingNow startAnimating];
+	doneStep = 0;
 	[self GetVersion];
 }
 
@@ -27,9 +27,6 @@
 
 - (void)loadingDone
 {
-	[loadingNow stopAnimating];
-	[loadingNow setAlpha:0.f];
-
 	CALayer *viewLayer = noticeView.layer;
     CAKeyframeAnimation* popInAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
     
@@ -77,10 +74,8 @@
 	[noticeView setTransform:CGAffineTransformMake(0.5, 0, 0, 0.5, 0, 0)];
 	
 	[UIView commitAnimations];
-		
 
-	
-	[self GetMenuList];
+	isNoticeCheck = true;
 }
 
 #pragma mark -
@@ -88,6 +83,9 @@
 
 - (void)GetVersion
 {
+	[loadingNow setAlpha:1];
+	[loadingNow startAnimating];
+
 	httpRequest = [[HTTPRequest alloc] init];
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -103,10 +101,14 @@
 
 - (void)didReceiveFinished:(NSString *)result
 {
+	[loadingNow stopAnimating];
+	[loadingNow setAlpha:0];
+
 	NSString *Version=nil;
 	if(![result compare:@"error"])
 	{
-		[self ShowOKCancleAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
+		[self ShowOKAlert:@"연결 에러" msg:@"서버에서 버전 정보를 읽는데 실패하였습니다."];
+		return;
 	}
 	else {
 		XmlParser* xmlParser = [XmlParser alloc];
@@ -120,6 +122,8 @@
 	}
 	[httpRequest release];
 	httpRequest = nil;
+
+	doneStep = 1;
 /*
 	if( [Version compare:[[DataManager getInstance] getVersion]] != NSOrderedSame )
 	{
@@ -129,11 +133,14 @@
 		[self loadingDone];
 	}
  */
-	[self loadingDone];
+	[self GetMenuList];
 }
 
 -(void)GetMenuList
 {
+	[loadingNow setAlpha:1];
+	[loadingNow startAnimating];
+
 	httpRequest = [[HTTPRequest alloc] init];
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -149,32 +156,37 @@
 
 - (void)didMenuReceiveFinished:(NSString *)result
 {
+	[loadingNow stopAnimating];
+	[loadingNow setAlpha:0];
+
 	if(![result compare:@"error"])
 	{
-		[self ShowOKCancleAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
+		[self ShowOKAlert:@"연결 에러" msg:@"서버에서 메뉴정보를 읽는데 실패하였습니다."];	
+		return;
 	}
 	else {
-		XmlParser* xmlParser = [XmlParser alloc];
-		[xmlParser parserString:result];
-		Element* root = [xmlParser getRoot:@"NewDataSet"];
-		if(root != nil)
+		//혹여나 과거정보가 틀린 경우도 있으니
+		//일단 무조건 과거정보는 지운다.
+		deleteFile(@"menu.xml");
+
+		NSFileHandle* accountFile = makeFileToWrite(@"menu.xml");
+		if (accountFile != nil)
 		{
-			deleteFile(@"menu.xml");
-			NSFileHandle* accountFile = makeFileToWrite(@"menu.xml");
-			if (accountFile != nil)
-			{
-				writeString(accountFile  ,result);
-				closeFile(accountFile);
-			}
+			writeString(accountFile  ,result);
+			closeFile(accountFile);
 		}
-		[xmlParser release];
 	}
 	[httpRequest release];
 	httpRequest = nil;
-	[[DataManager getInstance] loadProduct];
+	if ([[DataManager getInstance] loadProduct])
+	{
+		doneStep = 2;
+		[self loadingDone];
+		return;
+	}
 
-	isNoticeCheck = true;
-	
+	//혹여나 잘못된 정보가 넘어오는 경우 다시시도하게 한다.
+	[self ShowOKAlert:@"연결 에러" msg:@"서버에서 메뉴정보를 읽는데 실패하였습니다."];	
 }
 #pragma mark -
 #pragma mark AlertView
@@ -189,15 +201,19 @@
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	[super alertView:actionSheet clickedButtonAtIndex:buttonIndex];
-	
-	if(buttonIndex)
+	if(buttonIndex == 0)
 	{
-		//[[UIApplication sharedApplication] openURL:@"앱 스토어 "];
+		//다시시도...
+		if (doneStep == 0) [self GetVersion];
+		else if (doneStep == 1) [self GetMenuList];
 	}
-	else {
-		/* 앱종료 */
-	}
+}
 
+- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message
+{
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message
+												   delegate:self cancelButtonTitle:nil otherButtonTitles:@"다시시도", nil];
+	[alert show];
+	[alert release];
 }
 @end
