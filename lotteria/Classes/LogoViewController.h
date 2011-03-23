@@ -18,7 +18,6 @@
 - (void)GetMenuList;
 - (void)loadingDone;
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
-- (void)ShowOKCancleAlert:(NSString *)title msg:(NSString *)message;
-- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
+- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message button:(NSString*)button;
 
 @end

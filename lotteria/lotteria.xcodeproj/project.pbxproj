@@ -534,6 +534,7 @@
 		84AA543B1311734E007CE392 /* CartListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AA54381311734E007CE392 /* CartListView.xib */; };
 		84AA543C1311734E007CE392 /* CartListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA543A1311734E007CE392 /* CartListViewController.m */; };
 		84AA544D13118208007CE392 /* CartCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AA544A13118208007CE392 /* CartCellView.xib */; };
+		84AE31C2133A6E8000F849B2 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE31C1133A6E8000F849B2 /* default.png */; };
 		84B4A363130FFF2800A7A99B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A362130FFF2800A7A99B /* MainViewController.m */; };
 		84B4A42A1310089000A7A99B /* MypageBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B4A4271310089000A7A99B /* MypageBodyView.xib */; };
 		84B4A42B1310089000A7A99B /* MypageBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A4291310089000A7A99B /* MypageBodyViewController.m */; };
@@ -1119,6 +1120,7 @@
 		84AA54391311734E007CE392 /* CartListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartListViewController.h; sourceTree = "<group>"; };
 		84AA543A1311734E007CE392 /* CartListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartListViewController.m; sourceTree = "<group>"; };
 		84AA544A13118208007CE392 /* CartCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartCellView.xib; sourceTree = "<group>"; };
+		84AE31C1133A6E8000F849B2 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
 		84B4A361130FFF2800A7A99B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
 		84B4A362130FFF2800A7A99B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		84B4A4271310089000A7A99B /* MypageBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MypageBodyView.xib; sourceTree = "<group>"; };
@@ -1220,6 +1222,7 @@
 				8D1107310486CEB800E47090 /* lotteria-Info.plist */,
 				8421656113234C8200F9A5F3 /* Icon.png */,
 				8421656213234C8200F9A5F3 /* Icon@2x.png */,
+				84AE31C1133A6E8000F849B2 /* default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -2483,6 +2486,7 @@
 				845D7DE7133A3A3D00698700 /* st_tb_l.png in Resources */,
 				845D7DE8133A3A3D00698700 /* st_tb_n.png in Resources */,
 				845D7DE9133A3A3D00698700 /* st_tb_s.png in Resources */,
+				84AE31C2133A6E8000F849B2 /* default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

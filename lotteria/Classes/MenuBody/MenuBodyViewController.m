@@ -166,7 +166,7 @@
 	else scrollView = bottomScrollView;
 	
 	[scrollView addSubview:[icon view]];
-	[[icon view] setCenter:CGPointMake([[scrollView subviews] count] * 63 + 3 + 32 - 63, 35)];
+	[[icon view] setCenter:CGPointMake([[scrollView subviews] count] * 64 + 32 - 64, 35)];
 	[icon setData:menuId];
 	[icon setSelected:false];
 	[icon setListener:self];
@@ -330,7 +330,7 @@
 	if (isTopList) scrollView = topScrollView;
 	else scrollView = bottomScrollView;
 	
-	[scrollView setContentSize:CGSizeMake([[scrollView subviews] count]* 70, 70)];
+	[scrollView setContentSize:CGSizeMake([[scrollView subviews] count] * 64, 70)];
 	[scrollView scrollRectToVisible:CGRectMake(0, 0, 320, 70) animated:false];
 }
 
