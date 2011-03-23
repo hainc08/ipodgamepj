@@ -276,7 +276,7 @@
 										</object>
 									</object>
 								</object>
-								<string key="NSFrameSize">{320, 354}</string>
+								<string key="NSFrameSize">{320, 370}</string>
 								<reference key="NSSuperview" ref="547637441"/>
 								<reference key="IBUIBackgroundColor" ref="170490558"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -434,7 +434,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 						</object>
-						<string key="NSFrameSize">{320, 354}</string>
+						<string key="NSFrameSize">{320, 370}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<reference key="IBUIBackgroundColor" ref="170490558"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
