@@ -243,7 +243,7 @@ typedef enum _Storetype
 - (bool)checkBurgerCount:(int)count;
 
 //-------------------상품 정보 처리---------------------
-- (void)loadProduct;
+- (bool)loadProduct;
 - (ProductData*)getProduct:(NSString*)menuId;
 - (NSString*)getSetId:(NSString*)menuId;
 - (UIImage*)getProductImg:(NSString*)menuId type:(ImgType)imgType;

@@ -410,7 +410,7 @@ static DataManager *DataManagerInst;
 }
  */
 
-- (void)loadProduct
+- (bool)loadProduct
 {
 	//product.xml에 상품 정보를 읽자!!!
 	{
@@ -485,6 +485,9 @@ static DataManager *DataManagerInst;
 		[parser dealloc];
 	}
 	
+	//읽어들인 제품의 정보가 10개 미만이면 잘못 읽은 것이니 다시 읽어보자...
+	if ([allProductList count] < 10) return false;
+	
 	//productKey.xml에서 상품별 구분키를 읽자!!
 	//이건 실제 DB에 없는데이터이기 때문에 별도로 관리한다.
 	{
@@ -508,6 +511,8 @@ static DataManager *DataManagerInst;
 		
 		[parser dealloc];
 	}
+	
+	return true;
 }
 
 - (ProductData*)getProduct:(NSString*)menuId
