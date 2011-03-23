@@ -1,4 +1,7 @@
 <Products>
+    <product menu_id="200370" key="tb"/><!--S10	데리버거 장난감세트-->
+    <product menu_id="200369" key="bb"/><!--S10	불고기버거 장난감세트-->
+
     <product menu_id="LB0001" key="hbb"/><!--D10	한우불고기버거-->
     <product menu_id="LB0002" key="hs"/><!--D10	한우스테이크-->
     <product menu_id="LB0003" key="rwb"/><!--D10	RED & WHITE 버거-->

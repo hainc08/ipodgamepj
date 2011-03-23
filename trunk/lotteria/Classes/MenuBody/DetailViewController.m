@@ -28,7 +28,8 @@
 	pId[0] = productId = menu_id;
 	ProductData* data = [[DataManager getInstance] getProduct:menu_id];
 	
-	if ([[data category] compare:@"D10"] == NSOrderedSame)
+	if (([[data category] compare:@"D10"] == NSOrderedSame)||
+		([[data category] compare:@"S10"] == NSOrderedSame))
 	{
 		[setButton setAlpha:1];
 	}
@@ -37,6 +38,15 @@
 		[setButton setAlpha:0];
 	}
 
+	if ([[data category] compare:@"S10"] == NSOrderedSame)
+	{
+		[singleButton setAlpha:0];
+	}
+	else
+	{
+		[singleButton setAlpha:1];
+	}
+	
 	[pImage setImage:[data getProductImg:DETAIL]];
 	[nameImage setImage:[data getProductImg:NAME]];
 	[descImage setImage:[data getProductImg:DESC]];
@@ -69,7 +79,16 @@
 		[closeButton setCenter:CGPointMake(300, 39 + 21)];
 		
 		//기본 사이드를 설정하자.
-		pId[0] = [[DataManager getInstance] getSetId:productId];
+		ProductData* data = [[DataManager getInstance] getProduct:productId];
+		if ([[data category] compare:@"S10"] == NSOrderedSame)
+		{
+			pId[0] = productId;
+		}
+		else
+		{
+			pId[0] = [[DataManager getInstance] getSetId:productId];
+		}
+
 		pId[1] = @"200504";	//세트포테이토
 		pId[2] = @"200807";	//세트콜라
 
