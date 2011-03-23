@@ -55,6 +55,7 @@ typedef enum _ImgType
 	NSString* set_flag;	// 3이면 장남감 세트 
 	
 	NSString* key;
+	NSString* origin;
 	NSString* name;
 
 	bool new_flag;		// TRUE면 new이미지 사용 아니면 사용하지 않음.
@@ -72,6 +73,7 @@ typedef enum _ImgType
 @property (readwrite) bool new_flag;
 
 @property (retain) NSString* key;
+@property (retain) NSString* origin;
 @property (retain) NSString* name;
 @property (readwrite) int price;
 

@@ -32,6 +32,7 @@ static DataManager *DataManagerInst;
 @synthesize menuDIS;
 @synthesize category;
 @synthesize key;
+@synthesize origin;
 @synthesize name;
 @synthesize price;
 @synthesize menucomment;
@@ -50,16 +51,17 @@ static DataManager *DataManagerInst;
 	if (img[0] == nil)
 	{
 		NSString* catStr;
-
-		if ([category compare:@"D10"] == NSOrderedSame) catStr = @"bg";
+		
+		if ([category compare:@"S10"] == NSOrderedSame) catStr = @"st";
+		else if ([category compare:@"D10"] == NSOrderedSame) catStr = @"bg";
 		else if ([category compare:@"D20"] == NSOrderedSame) catStr = @"ck";
 		else if ([category compare:@"D30"] == NSOrderedSame) catStr = @"ds";
 		else if ([category compare:@"D40"] == NSOrderedSame) catStr = @"dr";
 		else if ([category compare:@"D50"] == NSOrderedSame) catStr = @"pk";
-
+		
 		else if ([category compare:@"S30"] == NSOrderedSame) catStr = @"ds";
 		else if ([category compare:@"S40"] == NSOrderedSame) catStr = @"dr";
-	
+		
 		img[0] = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@_a.png", catStr, key]];
 		img[1] = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@_c.png", catStr, key]];
 		img[2] = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@_l.png", catStr, key]];
@@ -457,23 +459,21 @@ static DataManager *DataManagerInst;
 			[data setPrice:[[[product getChild:@"PRICE"] getValue] intValue]];
 				
 			//세트는 따로 분류해 놓자...
-			//세트는 key에 단품코드가 들어간다.
+			//세트는 origin에 단품코드가 들어간다.
 			if (([[data category] compare:@"S10"] == NSOrderedSame)||
 				([[data category] compare:@"S11"] == NSOrderedSame))
 			{
-				if ( [[data set_flag] compare:@"3"] == NSOrderedSame) {
-					goto next;
-				}
-				// 200370 이건 org_menu_id가 없음.. 우선 버림..
-				tmp = [product getChild:@"ORI_MENU_ID"];
-				if(tmp)
+				//장난감세트는 세트맵에는 넣지 않는다.
+				//그냥 버거에서 세트ID를 찾을 때 꼬이기 때문에...
+				if ([[data set_flag] intValue] != 3)
 				{
-					[data setKey:[NSString stringWithString:[[product getChild:@"ORI_MENU_ID"] getValue]]];
-					[setProductMap setObject:data forKey:[data key]];
+					tmp = [product getChild:@"ORI_MENU_ID"];
+					if(tmp)
+					{
+						[data setOrigin:[NSString stringWithString:[tmp getValue]]];
+						[setProductMap setObject:data forKey:[data origin]];
+					}
 				}
-				else 
-					goto next;	// 우선 이부분은 추후에 변경 협의 필요 ..ㅡ.ㅡ; 우선 안보이게..
-
 			}
 				
 			[allProductMap setObject:data forKey:[data menuId]];
@@ -528,6 +528,7 @@ static DataManager *DataManagerInst;
 - (NSMutableArray*)getProductArray:(NSString*)category
 {
 	NSMutableArray* array = [[[NSMutableArray alloc] initWithCapacity:0] retain];
+
 	for (ProductData* data in allProductList)
 	{
 		if ([[data category] compare:category] == NSOrderedSame)
@@ -535,6 +536,20 @@ static DataManager *DataManagerInst;
 			[array addObject:data];
 		}
 	}
+	
+	//햄버거의 경우 세트중에 장난감도 찾는다...(이뭐...)
+	if ([category compare:@"D10"] == NSOrderedSame)
+	{
+		for (ProductData* data in allProductList)
+		{
+			if (([[data category] compare:@"S10"] == NSOrderedSame) &&
+				([[data set_flag] intValue] == 3))
+			{
+				[array addObject:data];
+			}
+		}
+	}
+	
 	return array;
 }
 
