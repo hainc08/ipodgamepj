@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="100"/>
+			<integer value="34"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -72,10 +72,6 @@
 								<int key="IBUIContentMode">4</int>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">img_notice_001.jpg</string>
-								</object>
 							</object>
 							<object class="IBUIButton" id="58002283">
 								<reference key="NSNextResponder" ref="1005542378"/>
@@ -621,14 +617,12 @@
 				<string>btn_close_off.png</string>
 				<string>btn_close_on.png</string>
 				<string>img_intro.png</string>
-				<string>img_notice_001.jpg</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{110, 40}</string>
 				<string>{110, 40}</string>
 				<string>{320, 460}</string>
-				<string>{280, 385}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>

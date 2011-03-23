@@ -7,6 +7,7 @@
 	NSMutableURLRequest *request;
 	NSMutableData *receivedData;
 	NSURLResponse *response;
+	NSURLConnection *connection;
 	NSString *result;
 	id target;
 	SEL selector;

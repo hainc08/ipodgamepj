@@ -154,7 +154,15 @@
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-	[curElement setValue:string];
+	if(curElement != oldElement)
+	{
+		[curElement setValue:string];
+		oldElement = curElement;
+	}
+	else {
+		[curElement setValue:[NSString stringWithFormat:@"%@%@", curElement.value,  string]];
+	}
+
 }
 
 

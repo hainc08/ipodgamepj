@@ -35,6 +35,7 @@
 {
 	Element *root;
 	Element *curElement;
+	Element *oldElement;
 }
 
 - (Element*)getRoot:(NSString*)name;

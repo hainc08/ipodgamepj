@@ -7,7 +7,7 @@
 @implementation MapBodyViewController
 
 @synthesize mapView;
-
+@synthesize toolbar;
 - (void)viewDidLoad {
 	naviImgIdx = 0;
 	[super viewDidLoad];
@@ -30,16 +30,13 @@
 	[self.view addSubview:blackview];
 	[blackview setAlpha:0];
 	
-	UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+	toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 480, 320, 40)];
 	UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease]; 
 	UIBarButtonItem *barButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancleButton:)] autorelease];
 	NSArray *items = [[NSArray alloc] initWithObjects:flexibleSpace,barButtonItem, nil];
 	[toolbar setItems:items];
 	[items release];
-	UIView *addView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-	[addView addSubview:toolbar];
-	//Search.inputAccessoryView = (UIView *)addView;
-	[toolbar release];
+	[self.view addSubview:toolbar];
 	
 	Annotations = [[NSMutableArray alloc] initWithObjects:0];
 	
@@ -61,6 +58,8 @@
 	[buttonImg[2][1] release]; 
 	if(httpRequest)
 		[httpRequest release];
+	
+	[toolbar release];
 
 	[blackview release];	
 
@@ -157,11 +156,27 @@
 - (void)keyboardWillShow:(NSNotification *)note
 {
 	[blackview setAlpha:1];
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	
+	CGRect frame = self.toolbar.frame;
+	frame.origin.y = self.view.frame.size.height - 255.0;
+	self.toolbar.frame = frame;
+	
+	[UIView commitAnimations];
 }
 
 
 - (void)keyboardWillHide:(NSNotification*)notification {
 	[blackview setAlpha:0];
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	
+	CGRect frame = self.toolbar.frame;
+	frame.origin.y = self.view.frame.size.height;
+	self.toolbar.frame = frame;
+	
+	[UIView commitAnimations];
 }
 - (void)cancleButton:(id)sender
 {

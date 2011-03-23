@@ -282,7 +282,12 @@
 - (void)didReceiveMenuCheckFinished:(NSString *)result
 {
 	[[ViewManager getInstance] waitview:self.view	isBlock:NO];
-
+	if(![result compare:@"error"])
+	{
+		[self ShowOKAlert:nil msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
+	}
+	else 
+	{
 	XmlParser* xmlParser = [XmlParser alloc];
 	[xmlParser parserString:result];
 	Element* root = [xmlParser getRoot:@"NewDataSet"];
@@ -330,6 +335,7 @@
 			
 	}		
 	[xmlParser release];
+	}
 	[httpRequest release];
 	httpRequest = nil;
 }
