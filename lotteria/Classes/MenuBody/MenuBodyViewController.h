@@ -39,7 +39,7 @@
 	
 	IBOutlet UIView* fieldGuard;
 }
-
+@property (nonatomic, retain) UIToolbar *toolbar;
 - (void)back;
 - (IBAction)ButtonClick:(id)sender;
 - (IBAction)FindClick;

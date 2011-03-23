@@ -5,7 +5,7 @@
 #define SearchBase @"메뉴를 검색해 주세요."
 
 @implementation MenuBodyViewController
-
+@synthesize toolbar;
 - (void)viewDidLoad {
 	naviImgIdx = 1;
 	[super viewDidLoad];
@@ -30,17 +30,14 @@
 	lastButton = nil;
 	lastIconButton = nil;
 
-	
-	toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, -40, 320, 40)];
+	toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 400, 320, 40)];
 	UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease]; 
 	UIBarButtonItem *barButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(buttonClicked)] autorelease];
 	NSArray *items = [[NSArray alloc] initWithObjects:flexibleSpace,barButtonItem, nil];
 	[toolbar setItems:items];
 	[items release];
 	
-	searchField.delegate = self;
-	//searchField.inputAccessoryView = toolbar ;
-	[toolbar release];
+	[self.view addSubview:toolbar];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -148,7 +145,7 @@
 }
 
 - (void)dealloc {
-
+	[toolbar release];
     [super dealloc];
 }
 
@@ -339,6 +336,9 @@
 
 #pragma mark  -
 #pragma mark TextField
+#pragma mark  -
+#pragma mark TextField
+
 - (void)buttonClicked
 {
 	[searchField setText:@""];
@@ -357,11 +357,11 @@
 	[self.view bringSubviewToFront:findView];
 	
 	[UIView beginAnimations:@"findAni" context:NULL];
-	[UIView setAnimationDuration:0.2];
+	[UIView setAnimationDuration:0.3];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 	
 	[self.view setCenter:CGPointMake(160, -10)];
-	
+	[toolbar setFrame:CGRectMake(0, 380, 320, 40)];
 	[UIView commitAnimations];
 }
 
@@ -371,9 +371,9 @@
 	[self.view sendSubviewToBack:fieldGuard];
 	
 	[UIView beginAnimations:@"findAni" context:NULL];
-	[UIView setAnimationDuration:0.2];
+	[UIView setAnimationDuration:0.3];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-	
+	[toolbar setFrame:CGRectMake(0, 400, 320, 40)];
 	[self.view setCenter:CGPointMake(160, 208)];
 	
 	[UIView commitAnimations];

@@ -20,12 +20,12 @@
 	NSMutableArray *AddressArr;
 
 	UIView *blackview;
-	
+	UIToolbar *toolbar;
 	NSMutableArray *Annotations;
 }
 
 @property (nonatomic, retain) MKMapView *mapView;
-
+@property (nonatomic, retain) UIToolbar *toolbar;
 - (void)setupMap;
 - (void)selectCategory:(int)idx;
 - (IBAction)buttonClick:(id)sender;

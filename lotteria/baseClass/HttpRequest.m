@@ -53,8 +53,8 @@
 	}
 
 	// Request를 사용하여 실제 연결을 시도하는 NSURLConnection 인스턴스 생성
-	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-	
+	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+
 	// 정상적으로 연결이 되었다면
 	if(connection)
 	{
@@ -91,7 +91,6 @@
 	}
 
 }
-
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -116,6 +115,8 @@
 - (void)dealloc
 {
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+	[connection cancel];
+	[connection release];
 	[response release];
 	[receivedData release];
 	[result release];

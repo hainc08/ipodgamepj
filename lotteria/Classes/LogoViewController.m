@@ -76,6 +76,8 @@
 	[UIView commitAnimations];
 
 	isNoticeCheck = true;
+
+
 }
 
 #pragma mark -
@@ -105,18 +107,20 @@
 	[loadingNow setAlpha:0];
 
 	NSString *Version=nil;
+	NSString *Image;
 	if(![result compare:@"error"])
 	{
-		[self ShowOKAlert:@"연결 에러" msg:@"서버에서 버전 정보를 읽는데 실패하였습니다."];
+		[self ShowOKAlert:@"연결 에러" msg:@"서버에서 메뉴정보를 읽는데 실패하였습니다."];	
 		return;
 	}
-	else {
+	else 
+	{
 		XmlParser* xmlParser = [XmlParser alloc];
 		[xmlParser parserString:result];
 		Element* root = [xmlParser getRoot:@"NewDataSet"];
 		Element* t_item = [root getFirstChild];
 		Version = [ [t_item getChild:@"VERSION"] getValue];
-		NSString *Image = [[t_item getChild:@"IMG_NM"] getValue];
+		Image= [[t_item getChild:@"IMG_NM"] getValue];
 		
 		[xmlParser release];
 	}
@@ -133,11 +137,18 @@
 		[self loadingDone];
 	}
  */
+	NSString *remoteImagePath = [NSString stringWithFormat:@"%@/iphone/notice/%@",SERVERURL,Image];
+	UIImage *localImage = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:remoteImagePath]]];
+	[noticeImg setImage:localImage];
+	[localImage release];
+	[self loadingDone];
+
 	[self GetMenuList];
 }
 
 -(void)GetMenuList
 {
+
 	[loadingNow setAlpha:1];
 	[loadingNow startAnimating];
 
@@ -161,10 +172,11 @@
 
 	if(![result compare:@"error"])
 	{
-		[self ShowOKAlert:@"연결 에러" msg:@"서버에서 메뉴정보를 읽는데 실패하였습니다."];	
+		[self ShowOKAlert:@"연결 에러" msg:@"서버에서 버전 정보를 읽는데 실패하였습니다."];
 		return;
 	}
-	else {
+	else 
+	{
 		//혹여나 과거정보가 틀린 경우도 있으니
 		//일단 무조건 과거정보는 지운다.
 		deleteFile(@"menu.xml");
@@ -184,7 +196,8 @@
 		[self loadingDone];
 		return;
 	}
-
+	[loadingNow stopAnimating];
+	[loadingNow setAlpha:0.f];
 	//혹여나 잘못된 정보가 넘어오는 경우 다시시도하게 한다.
 	[self ShowOKAlert:@"연결 에러" msg:@"서버에서 메뉴정보를 읽는데 실패하였습니다."];	
 }

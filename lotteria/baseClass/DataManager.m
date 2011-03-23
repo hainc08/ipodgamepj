@@ -478,7 +478,7 @@ static DataManager *DataManagerInst;
 				
 			[allProductMap setObject:data forKey:[data menuId]];
 			[allProductList addObject:data];
-		next:
+
 			product = [root getNextChild];
 		}
 		
