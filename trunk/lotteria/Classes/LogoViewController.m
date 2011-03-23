@@ -6,6 +6,16 @@
 #import "DataManager.h"
 #define kAnimationDuration  0.25
 
+#define ERROR_TITLE @"연결에러"
+#define VER_ERROR_MSG @"서버에서 버전 정보를 읽는데 실패하였습니다."
+#define MENU_ERROR_MSG @"서버에서 메뉴정보를 읽는데 실패하였습니다."
+
+#define UPDATE_TITLE @"업데이트"
+#define VER_MISMATCH_MSG @"최신버전의 어플이 아닙니다.\n앱스토어에서 최신버전으로\n업데이트 하시기바랍니다."
+
+#define UPDATE_AGAIN @"다시시도"
+#define EXIT_APP @"어플닫기"
+
 @implementation LogoViewController
 
 - (void)viewDidLoad
@@ -76,8 +86,6 @@
 	[UIView commitAnimations];
 
 	isNoticeCheck = true;
-
-
 }
 
 #pragma mark -
@@ -110,7 +118,7 @@
 	NSString *Image;
 	if(![result compare:@"error"])
 	{
-		[self ShowOKAlert:@"연결 에러" msg:@"서버에서 메뉴정보를 읽는데 실패하였습니다."];	
+		[self ShowOKAlert:ERROR_TITLE msg:VER_ERROR_MSG button:UPDATE_AGAIN];
 		return;
 	}
 	else 
@@ -118,9 +126,28 @@
 		XmlParser* xmlParser = [XmlParser alloc];
 		[xmlParser parserString:result];
 		Element* root = [xmlParser getRoot:@"NewDataSet"];
-		Element* t_item = [root getFirstChild];
-		Version = [ [t_item getChild:@"VERSION"] getValue];
-		Image= [[t_item getChild:@"IMG_NM"] getValue];
+
+		if (root == nil)
+		{
+			[self ShowOKAlert:ERROR_TITLE msg:VER_ERROR_MSG button:UPDATE_AGAIN];
+			return;
+		}
+		else
+		{
+			Element* t_item = [root getFirstChild];
+			Version = [ [t_item getChild:@"VERSION"] getValue];
+			
+			NSString* bundleVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+			
+			if ([Version floatValue] > [bundleVersion floatValue])
+			{
+				doneStep = 100;
+				[self ShowOKAlert:UPDATE_TITLE msg:VER_MISMATCH_MSG button:EXIT_APP];
+				return;
+			}
+
+			Image = [[t_item getChild:@"IMG_NM"] getValue];
+		}
 		
 		[xmlParser release];
 	}
@@ -148,7 +175,6 @@
 
 -(void)GetMenuList
 {
-
 	[loadingNow setAlpha:1];
 	[loadingNow startAnimating];
 
@@ -172,7 +198,7 @@
 
 	if(![result compare:@"error"])
 	{
-		[self ShowOKAlert:@"연결 에러" msg:@"서버에서 버전 정보를 읽는데 실패하였습니다."];
+		[self ShowOKAlert:ERROR_TITLE msg:MENU_ERROR_MSG button:UPDATE_AGAIN];	
 		return;
 	}
 	else 
@@ -181,11 +207,23 @@
 		//일단 무조건 과거정보는 지운다.
 		deleteFile(@"menu.xml");
 
-		NSFileHandle* accountFile = makeFileToWrite(@"menu.xml");
-		if (accountFile != nil)
+		XmlParser* xmlParser = [XmlParser alloc];
+		[xmlParser parserString:result];
+		Element* root = [xmlParser getRoot:@"NewDataSet"];
+		
+		if (root == nil)
 		{
-			writeString(accountFile  ,result);
-			closeFile(accountFile);
+			[self ShowOKAlert:ERROR_TITLE msg:MENU_ERROR_MSG button:UPDATE_AGAIN];
+			return;
+		}
+		else
+		{
+			NSFileHandle* accountFile = makeFileToWrite(@"menu.xml");
+			if (accountFile != nil)
+			{
+				writeString(accountFile  ,result);
+				closeFile(accountFile);
+			}
 		}
 	}
 	[httpRequest release];
@@ -196,21 +234,12 @@
 		[self loadingDone];
 		return;
 	}
-	[loadingNow stopAnimating];
-	[loadingNow setAlpha:0.f];
+
 	//혹여나 잘못된 정보가 넘어오는 경우 다시시도하게 한다.
-	[self ShowOKAlert:@"연결 에러" msg:@"서버에서 메뉴정보를 읽는데 실패하였습니다."];	
+	[self ShowOKAlert:ERROR_TITLE msg:MENU_ERROR_MSG button:UPDATE_AGAIN];
 }
 #pragma mark -
 #pragma mark AlertView
-
-- (void)ShowOKCancleAlert:(NSString *)title msg:(NSString *)message
-{
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message
-												   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-	[alert show];
-	[alert release];
-}
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -219,13 +248,14 @@
 		//다시시도...
 		if (doneStep == 0) [self GetVersion];
 		else if (doneStep == 1) [self GetMenuList];
+		else if (doneStep == 100) exit(0);
 	}
 }
 
-- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message
+- (void)ShowOKAlert:(NSString *)title msg:(NSString *)message button:(NSString*)button
 {
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message
-												   delegate:self cancelButtonTitle:nil otherButtonTitles:@"다시시도", nil];
+												   delegate:self cancelButtonTitle:nil otherButtonTitles:button, nil];
 	[alert show];
 	[alert release];
 }
