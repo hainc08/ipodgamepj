@@ -502,6 +502,7 @@
 		842165291323475800F9A5F3 /* bg_badge_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 842165261323475800F9A5F3 /* bg_badge_3.png */; };
 		8421656313234C8200F9A5F3 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8421656113234C8200F9A5F3 /* Icon.png */; };
 		8421656413234C8200F9A5F3 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8421656213234C8200F9A5F3 /* Icon@2x.png */; };
+		84361D96133CF79700500E91 /* icon_pin_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 84361D95133CF79700500E91 /* icon_pin_home.png */; };
 		84384256130F862200EE2887 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84384255130F862200EE2887 /* DataManager.m */; };
 		845D7DE0133A3A3D00698700 /* st_bb_a.png in Resources */ = {isa = PBXBuildFile; fileRef = 845D7DD6133A3A3D00698700 /* st_bb_a.png */; };
 		845D7DE1133A3A3D00698700 /* st_bb_c.png in Resources */ = {isa = PBXBuildFile; fileRef = 845D7DD7133A3A3D00698700 /* st_bb_c.png */; };
@@ -1077,6 +1078,7 @@
 		842165261323475800F9A5F3 /* bg_badge_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_badge_3.png; sourceTree = "<group>"; };
 		8421656113234C8200F9A5F3 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		8421656213234C8200F9A5F3 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		84361D95133CF79700500E91 /* icon_pin_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pin_home.png; sourceTree = "<group>"; };
 		84384254130F862200EE2887 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		84384255130F862200EE2887 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		845D7DD6133A3A3D00698700 /* st_bb_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = st_bb_a.png; sourceTree = "<group>"; };
@@ -1336,6 +1338,7 @@
 				842165241323475800F9A5F3 /* bg_badge_1.png */,
 				842165251323475800F9A5F3 /* bg_badge_2.png */,
 				842165261323475800F9A5F3 /* bg_badge_3.png */,
+				84361D95133CF79700500E91 /* icon_pin_home.png */,
 				84F0EB5A1323751C00F5DB68 /* bg_thumb_box2.png */,
 				56D80B5F1318F75B0049314B /* bg_approval_box.png */,
 				56D80B601318F75B0049314B /* bg_bottom.png */,
@@ -2487,6 +2490,7 @@
 				845D7DE8133A3A3D00698700 /* st_tb_n.png in Resources */,
 				845D7DE9133A3A3D00698700 /* st_tb_s.png in Resources */,
 				84AE31C2133A6E8000F849B2 /* default.png in Resources */,
+				84361D96133CF79700500E91 /* icon_pin_home.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2573,8 +2577,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: SeongYong Lee (XZ3S2XAKBV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SeongYong Lee (XZ3S2XAKBV)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

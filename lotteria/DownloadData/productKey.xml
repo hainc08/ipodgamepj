@@ -74,9 +74,9 @@
     <product menu_id="200847" key="iam"/><!--S40	선택아이스아메리카노(신)-->
     <product menu_id="200848" key="hcl"/><!--S40	선택카페라테(신)-->
     <product menu_id="200849" key="icl"/><!--S40	선택아이스카페라떼(신)-->
-    <product menu_id="200872" key="   "/><!--S40	선택포도주스-->
+    <product menu_id="200872" key="gr"/><!--S40	선택포도주스-->
     <product menu_id="200937" key="la"/><!--S40	선택 레모네이드-->
-    <product menu_id="202872" key="   "/><!--S40	선택 자몽에이드-->
-    <product menu_id="202873" key="   "/><!--S40	선택 파인애플에이드-->
-    <product menu_id="202874" key="   "/><!--S40	선택 사과주스-->
+    <product menu_id="202872" key="qra"/><!--S40	선택 자몽에이드-->
+    <product menu_id="202873" key="pin"/><!--S40	선택 파인애플에이드-->
+    <product menu_id="202874" key="app"/><!--S40	선택 사과주스-->
 </Products>

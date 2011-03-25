@@ -510,6 +510,7 @@ static DataManager *DataManagerInst;
 			}
 			
 			product = [root getNextChild];
+			UIImage* img = [data getProductImg:0];
 		}
 		
 		[parser dealloc];
