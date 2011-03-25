@@ -100,23 +100,20 @@
 	}
 	httpRequest = [[HTTPRequest alloc] init];
 	
-		// 접속할 주소 설정
-	NSString *url = @"http://www.naver.com";
-	
 	// HTTP Request 인스턴스 생성
 
 	
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
 								ID.text,@"cust_id",
-								Password.text, @"cust_passwd",
+								Password.text, @"cust_pw",
 								nil];
 	
 	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
 	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
 	
 	// 페이지 호출
-	[httpRequest requestUrl:url bodyObject:bodyObject bodyArray:nil];
+	[httpRequest requestUrl:@"/MbCust.asmx/ws_isLogin" bodyObject:bodyObject bodyArray:nil];
 	[[ViewManager getInstance] waitview:self.view isBlock:YES];
 }
 #pragma mark  -
@@ -138,11 +135,11 @@
 	// 로그인 성공하면 이뷰는 사라진다. 
 	// xml에서 로그인처리 
 	
-	/*if(![result compare:@"error"])
+	if(![result compare:@"error"])
 	{
-		[self ShowOKAlert:@"Login Error" msg:@"로그인에 실패 했습니다."];	
+		[self ShowOKAlert:@"Server Error" msg:@"서버와의 연결에 실패하셨습니다."];	
 	}
-	else */{
+	else {
 		
 		if([[DataManager getInstance] isLoginSave])
 		{
@@ -160,6 +157,7 @@
 	}
 	[httpRequest release];
 	httpRequest = nil;
+	
 	[[ViewManager getInstance] waitview:self.view isBlock:NO];
 	[ID resignFirstResponder];
 	[Password resignFirstResponder];

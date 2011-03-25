@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	[Picket addTarget:self action:@selector(controlEventValueChanged:) forControlEvents:UIControlEventValueChanged];
 	Picket.date = [NSDate date];
 	Picket.backgroundColor = [UIColor clearColor];
 	[OrderBurial reloadData];
@@ -40,6 +41,21 @@
     [super dealloc];
 }
 
+-(void)controlEventValueChanged:(id)sender
+{
+	if ( [[Picket date] timeIntervalSince1970] < [[NSDate date] timeIntervalSince1970] )
+	{
+		[Picket setDate:[[NSDate date] addTimeInterval:10*60]] ;
+		[self ShowOKAlert:nil msg:@"배달 가능한 시간이 아닙니다."];
+	}
+	else if ( [[Picket date] timeIntervalSince1970] < [[NSDate date] timeIntervalSince1970] )
+	{
+		[Picket setDate:[[NSDate date] addTimeInterval:10*60]] ;
+		[self ShowOKAlert:nil msg:@"배달 가능한 시간이 아닙니다."];
+	}
+	
+
+}
 - (IBAction)ReservationButton
 {
 	NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];

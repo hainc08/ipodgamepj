@@ -115,6 +115,8 @@ static DataManager *DataManagerInst;
 @synthesize dong,bunji , building ,addrdesc ,branchid;
 @synthesize branchname, gis_x, gis_y;
 @synthesize branchtel, terminal_id, business_date;
+@synthesize opendate, closedate;
+@synthesize deliverytime;
 - (NSString*)getAddressStr
 {
 	return [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@", 
@@ -127,21 +129,22 @@ static DataManager *DataManagerInst;
 }
 
 - (void)dealloc {
-	[Seq release];
-    [phone release];
-    [si release];
-    [gu release];
-	[dong release];
-    [bunji release];
-    [building release];
-    [addrdesc release];
-    [branchid release];
-	[branchname release];
-	[gis_x release];
-	[gis_y	release];
-	[branchtel release];
-	[terminal_id release];
-	[business_date release];
+	if(Seq)				[Seq release];
+    if(phone)			[phone release];
+    if(si)				[si release];
+    if(gu)				[gu release];
+	if(dong)			[dong release];
+    if(bunji)			[bunji release];
+    if(building)		[building release];
+    if(addrdesc)		[addrdesc release];
+    if(branchid)		[branchid release];
+	if(branchname)		[branchname release];
+	if(gis_x)			[gis_x release];
+	if(gis_y)			[gis_y	release];
+	if(branchtel)		[branchtel release];
+	if(terminal_id)		[terminal_id release];
+	if(business_date)	[business_date release];
+	if(deliverytime)	[deliverytime release];
 	[super dealloc];
 }
 
@@ -154,12 +157,12 @@ static DataManager *DataManagerInst;
 @synthesize UserAddr;
 
 - (void)dealloc {
-	[UserName release];
-	[UserPhone release];
-	[OrderTime release];
-	[OrderMemo release];
+	if(UserName)	[UserName release];
+	if(UserPhone)	[UserPhone release];
+	if(OrderTime)	[OrderTime release];
+	if(OrderMemo)	[OrderMemo release];
 	
-	[UserAddr release];
+	if(UserAddr)	[UserAddr release];
 
 	[super dealloc];
 }

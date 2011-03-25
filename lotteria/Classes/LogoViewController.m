@@ -168,7 +168,6 @@
 	UIImage *localImage = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:remoteImagePath]]];
 	[noticeImg setImage:localImage];
 	[localImage release];
-	[self loadingDone];
 
 	[self GetMenuList];
 }
