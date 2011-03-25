@@ -52,6 +52,7 @@
 
 - (IBAction) OrderButton:(id)sender
 {
+	
 	if(sender == Money)
 	{
 				OrderType = MONEY;
@@ -139,7 +140,7 @@
 				/* 이달에 장난감을 찾아 해당 장난감코드를 준다. */
 				time_t cur_time =time(NULL);
 				struct tm *time = localtime(&cur_time);
-				NSString *MenuID = [NSString stringWithFormat:@"LE00%2d", time->tm_mon-1];
+				NSString *MenuID = [NSString stringWithFormat:@"LE00%02d", time->tm_mon+1];
 				[MenuData addObjectsFromArray:[self GetMenuData:MenuID group_id:GroupIDIndex cnt:objectInstance.count]];
 			}
 		}
@@ -159,13 +160,13 @@
 	
 	[Body	 addObject:[NSString stringWithFormat:@"cust_id=%@", @"mobileuser" ]];
 	[Body	 addObject:[NSString stringWithFormat:@"branch_id=%@", Temp.UserAddr.branchid ]];
-	[Body	 addObject:[NSString stringWithFormat:@"phone=%@", 
-						[ Temp.UserPhone stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]];
 	[Body	 addObject:[NSString stringWithFormat:@"cust_nm=%@", 
 						[ Temp.UserName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]];
+	[Body	 addObject:[NSString stringWithFormat:@"phone=%@", 
+						[ Temp.UserPhone stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]];
 	
 	[Body	 addObject:[NSString stringWithFormat:@"order_memo=%@", 
-						(Temp.OrderMemo != nil ? [Temp.OrderMemo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] : @"") ]];
+						(Comment.text != nil ? [Comment.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] : @"") ]];
 	
 	[Body	 addObject:@"order_flag=3"];	//아이폰은  3번  
 	

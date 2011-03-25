@@ -18,4 +18,5 @@
 @property (nonatomic, retain) IBOutlet UIButton		*reButton;
 @property (nonatomic, retain) IBOutlet UITableView	*OrderBurial;
 - (IBAction)ReservationButton;
+-(void)controlEventValueChanged:(id)sender;
 @end

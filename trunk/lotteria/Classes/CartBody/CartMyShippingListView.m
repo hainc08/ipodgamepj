@@ -130,6 +130,8 @@
 	if( [root childCount] == 0 )
 	{
 			//[self ShowOKAlert:nil msg:@"등록된 배송지 목록이 없습니다."];	
+		[CustomerTable setAlpha:0];
+		[noRegImage setAlpha:1];
 	}
 	else {
 		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
@@ -151,15 +153,13 @@
 		}	
 	}
 	[xmlParser release];
-		
 	if([CustomerArr count] > 0)
 	{
 		[CustomerTable setAlpha:1];
 		[noRegImage setAlpha:0];
 		[CustomerTable reloadData];	
 	}
-	else
-	{
+	else {
 		[CustomerTable setAlpha:0];
 		[noRegImage setAlpha:1];
 	}
