@@ -9,7 +9,7 @@
 #import "OrderViewController.h"
 #import "OrderPriceViewController.h"
 #import "UITableViewCellTemplate.h"
-#import "DataManager.h"\
+#import "DataManager.h"
 
 @implementation OrderViewController
 

@@ -15,7 +15,6 @@
 #import "CartOrderViewController.h"
 
 
-
 @implementation CartOrderShopMenuViewController
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -28,6 +27,7 @@
 	menuTable.separatorColor = [UIColor clearColor];
 	
 
+	
 	[Scroll addSubview:menuTable];
 	Scroll.frame = CGRectMake(12, 5, 297, 232);
 	buttontype = true;
@@ -95,7 +95,7 @@
 	{
 		if( [[DataManager getInstance] getCartPrice] < 8000)
 		{
-			[self ShowOKAlert:@"주문" msg:@"8000원 이상주문하셔야 합니다."];
+			[self ShowOKAlert:ALERT_TITLE msg:ORDER_COND_MSG];
 		}
 		else {
 			Order *order = [[DataManager getInstance] UserOrder];

@@ -79,18 +79,8 @@
 }
 
 - (IBAction)callbutton
-{// 핸드폰에서 전하걸림.
-	NSString *p_tmp;
-	int len = [[Info storephone] length];
-	int t = 3;
-	if ([[[Info storephone] substringWithRange:NSMakeRange(0, 2)] compare:@"02"] == NSOrderedSame) t = 2;
-	
-	p_tmp = [NSString stringWithFormat:@"tel://%@-%@-%@",
-			 [[Info storephone] substringWithRange:NSMakeRange(0, t)],
-			 [[Info storephone] substringWithRange:NSMakeRange(t, len - 4 - t)],
-			 [[Info storephone] substringWithRange:NSMakeRange(len - 4, 4)]];
-	
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:p_tmp]];
+{// 콜센터로 전화
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://1600-9999"]];
 }
 
 @end

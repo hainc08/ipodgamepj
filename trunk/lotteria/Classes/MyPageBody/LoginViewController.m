@@ -83,21 +83,19 @@
 		[ID_Save2 setAlpha:0];
 	}
 }
+/* 영문 4~15자리 한글 x 
+ 특수문자( -  _  )  사용 
+ */
 - (IBAction)LoginButton 
 {
 
 	// Login 하자..
-	if([ID.text length] >  10 || [ID.text length] < 4 )
+	if([ID.text length] >  15 || [ID.text length] < 4 || 	[Password.text length] >  15  || [Password.text length] < 6 )
 	{
-		[self ShowOKAlert:@"Login Error" msg:@"Login ID 가 10자 이상입니다."];
+		[self ShowOKAlert:ALERT_TITLE msg:LOGIN_INPUT_ERROR_MSG];
 		return;
 	}
 	
-	if([Password.text length] >  12)
-	{
-		[self ShowOKAlert:@"Login Error" msg:@"Password 가 12자 이상입니다."];
-		return;
-	}
 	httpRequest = [[HTTPRequest alloc] init];
 	
 	// HTTP Request 인스턴스 생성
@@ -137,9 +135,11 @@
 	
 	if(![result compare:@"error"])
 	{
-		[self ShowOKAlert:@"Server Error" msg:@"서버와의 연결에 실패하셨습니다."];	
+		[self ShowOKAlert:ERROR_TITLE msg:HTTP_ERROR_MSG];	
 	}
 	else {
+		/* 아직 xml처리를 안했음 
+		 */
 		
 		if([[DataManager getInstance] isLoginSave])
 		{

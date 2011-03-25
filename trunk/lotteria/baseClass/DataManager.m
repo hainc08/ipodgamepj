@@ -338,7 +338,7 @@ static DataManager *DataManagerInst;
 		}
 	}
 	
-	return ((addCount + count) < MAX_BURGER);
+	return ((addCount + count) <= MAX_BURGER);
 }
 
 //-------------------상품 정보 처리---------------------

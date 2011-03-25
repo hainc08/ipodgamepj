@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DefineMessage.h"
 
 @interface UIViewControllerTemplate : UIViewController {
 	UINavigationController *navi;

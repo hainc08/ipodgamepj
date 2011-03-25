@@ -17,4 +17,7 @@
 #import "ViewManager.h"
 
 #define MAX_BURGER 12
+#define SERVERURL	@"http://homeservice.lotteria.co.kr/mobile"
+#define SERVERURLWS	@"http://homeservice.lotteria.co.kr/ws/mobile"
+
 //#import "NavigatorManager.h"

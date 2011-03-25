@@ -56,23 +56,23 @@
 	if(sender == Money)
 	{
 				OrderType = MONEY;
-		[self ShowOKCancleAlert:@"주문" msg:@"현금주문이 맞습니까?"];
+		[self ShowOKCancleAlert:ORDER_TITLE msg:MONEY_PAY_MSG];
 
 	}
 	else if(sender == Money2)
 	{
 				OrderType = MONEY_PERSONAL;
-		[self ShowOKCancleAlert:@"주문" msg:@"현금+현금영수증 주문이 맞습니까?"];
+		[self ShowOKCancleAlert:ORDER_TITLE msg:MONEY_PERSONAL_PAY_MSG];
 	}
 	else if(sender == Card)
 	{
 				OrderType = CARD;
-		[self ShowOKCancleAlert:@"주문" msg:@"방문 카드결제 주문이 맞습니까?"];
+		[self ShowOKCancleAlert:ORDER_TITLE msg:CARD_PAY_MSG];
 	}
 	else if(sender == Card2)
 	{
 			OrderType = CARD;
-		[self ShowOKAlert:nil msg:@"온라인 결제는 준비중입니다."];
+		[self ShowOKAlert:nil msg:ONLINE_PAY_MSG];
 	}
 }
 
@@ -241,25 +241,30 @@
 	
 	// 로그인 성공하면 이뷰는 사라진다. 
 	// xml에서 로그인처리 
-	
-	XmlParser* xmlParser = [XmlParser alloc];
-	[xmlParser parserString:result];
-	Element* root = [xmlParser getRoot:@"RESULT_CODE"];
-	
-	if(![[root getValue] compare:@"Y"])
+	if(![result compare:@"error"])
 	{
-		[[DataManager getInstance] allremoveCartItem];
-		
-		OrderEndViewController* popView = [[OrderEndViewController alloc] initWithNibName:@"OrderEnd"  bundle:nil];
-		[[ViewManager getInstance] popUp:popView owner:nil];
-		
+		[self ShowOKAlert:ERROR_TITLE msg:HTTP_ERROR_MSG];	
 	}
-	else if(![[root getValue] compare:@"N"])
-		[self ShowOKAlert:nil msg:@"주문에 실패하였습니다."];	
-	else 
-		[self ShowOKAlert:@"ERROR" msg:@"시스템 오류가 발생했습니다.."];
+	else {
+		
+		XmlParser* xmlParser = [XmlParser alloc];
+		[xmlParser parserString:result];
+		Element* root = [xmlParser getRoot:@"RESULT_CODE"];
+	
+		if(![[root getValue] compare:@"Y"])
+		{
+			[[DataManager getInstance] allremoveCartItem];
+		
+			OrderEndViewController* popView = [[OrderEndViewController alloc] initWithNibName:@"OrderEnd"  bundle:nil];
+			[[ViewManager getInstance] popUp:popView owner:nil];
+		
+		}
+		else if([[root getValue] compare:@"N"] == NSOrderedSame || [[root getValue] compare:@"C"] == NSOrderedSame  )
+			[self ShowOKAlert:ERROR_TITLE msg:ORDER_ERROR_MSG];	// 장바구니 첫하면으로 이동하자~
 
-	[xmlParser release];
+
+		[xmlParser release];
+	}
 	[httpRequest release];
 	httpRequest = nil;
 }

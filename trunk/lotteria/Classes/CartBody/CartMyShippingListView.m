@@ -129,7 +129,6 @@
 		
 	if( [root childCount] == 0 )
 	{
-			//[self ShowOKAlert:nil msg:@"등록된 배송지 목록이 없습니다."];	
 		[CustomerTable setAlpha:0];
 		[noRegImage setAlpha:1];
 	}
@@ -198,29 +197,32 @@
 {	
 	[[ViewManager getInstance] waitview:self.view	isBlock:NO];
 	
-	
-	XmlParser* xmlParser = [XmlParser alloc];
-	[xmlParser parserString:result];
-	Element* root = [xmlParser getRoot:@"RESULT_CODE"];
-	
-	if(![[root getValue] compare:@"Y"])
+	if(![result compare:@"error"])
 	{
-		[CustomerArr removeObjectAtIndex:RemoveNum];
-		if([CustomerArr count] > 0)
-		{
-			[CustomerTable setAlpha:1];
-			[CustomerTable reloadData];	
-		}
-		else
-		{
-			[CustomerTable setAlpha:0];
-			[noRegImage setAlpha:1];
-		}
+		[self ShowOKAlert:ERROR_TITLE msg:HTTP_ERROR_MSG];	
 	}
-	else if(![[root getValue] compare:@"N"])
-		[self ShowOKAlert:nil msg:@"삭제하는데 실패하였습니다."];	
-	else 
-		[self ShowOKAlert:@"ERROR" msg:@"시스템 오류가 발생했습니다.."];
+	else {
+		
+		XmlParser* xmlParser = [XmlParser alloc];
+		[xmlParser parserString:result];
+		Element* root = [xmlParser getRoot:@"RESULT_CODE"];
+	
+		if([[root getValue] compare:@"Y"] == NSOrderedSame)
+		{
+			[CustomerArr removeObjectAtIndex:RemoveNum];
+			if([CustomerArr count] > 0)
+			{
+				[CustomerTable setAlpha:1];
+				[CustomerTable reloadData];	
+			}
+			else
+			{
+				[CustomerTable setAlpha:0];
+				[noRegImage setAlpha:1];
+			}
+		}
+		else	[self ShowOKAlert:ERROR_TITLE msg:DELI_ERROR_MSG];	
+	}
 	[httpRequest release];
 	httpRequest = nil;
 }
@@ -284,57 +286,66 @@
 	[[ViewManager getInstance] waitview:self.view	isBlock:NO];
 	if(![result compare:@"error"])
 	{
-		[self ShowOKAlert:nil msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
+		[self ShowOKAlert:ERROR_TITLE msg:HTTP_ERROR_MSG];	
 	}
 	else 
-	{
-	XmlParser* xmlParser = [XmlParser alloc];
-	[xmlParser parserString:result];
-	Element* root = [xmlParser getRoot:@"NewDataSet"];
+	{ 
+		XmlParser* xmlParser = [XmlParser alloc];
+		[xmlParser parserString:result];
+		Element* root = [xmlParser getRoot:@"NewDataSet"];
 		
-	if( [root childCount] == 0 )
-	{
-		[self ShowOKAlert:nil msg:@"배송가능한 매장이 존재 하지 않습니다."];	
-	}
-	else {
-			
-		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
+		if( [root childCount] == 0 )
 		{
-			if ( [t_item.name compare:@"BRANCH"]  == NSOrderedSame ) {
-					
-			DeliveryAddrInfo *Customer  = [[[DataManager getInstance] UserOrder] UserAddr];
+			[self ShowOKAlert:ERROR_TITLE msg:DELI_SEARCH_ERROR_MSG];	
+		}
+		else {
+			NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+			NSDateFormatter *dateFormatter		=	[[NSDateFormatter alloc] init];
+			[dateFormatter setLocale:locale];
+			[dateFormatter setDateFormat:@"hhmiss"];
+		
+			for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
+			{
+				if ( [t_item.name compare:@"BRANCH"]  == NSOrderedSame ) {
+						
+					DeliveryAddrInfo *Customer  = [[[DataManager getInstance] UserOrder] UserAddr];
 
-			[Customer setSi:[[t_item getChild:@"SI"] getValue]];
-			[Customer setGu:[[t_item getChild:@"GU"] getValue]];
-			[Customer setDong:[[t_item getChild:@"DONG"] getValue]];
-			[Customer setBunji:[[t_item getChild:@"BUNJI"] getValue]];
-			[Customer setBuilding:[[t_item getChild:@"BUILDING"] getValue]];
-			[Customer setAddrdesc:[[t_item getChild:@"ADDR_APPEND"] getValue]];
-			[Customer setBranchid:[[t_item getChild:@"BRANCH_ID"] getValue]];
-			[Customer setBranchname:[[t_item getChild:@"BRANCH_NM"] getValue]];
-			[Customer setGis_x:[[t_item getChild:@"GIS_X"] getValue]];
-			[Customer setGis_y:[[t_item getChild:@"GIS_Y"] getValue]];
-			[Customer setTerminal_id:[[t_item getChild:@"TERMINAL_ID"] getValue]];
-			[Customer setBusiness_date:[[t_item getChild:@"BUSINESS_DATE"] getValue]];
-			[Customer setBranchtel:[[t_item getChild:@"BRANCH_TEL1"] getValue]];
-
+					[Customer setSi:[[t_item getChild:@"SI"] getValue]];	
+					[Customer setGu:[[t_item getChild:@"GU"] getValue]];
+					[Customer setDong:[[t_item getChild:@"DONG"] getValue]];
+					[Customer setBunji:[[t_item getChild:@"BUNJI"] getValue]];
+					[Customer setBuilding:[[t_item getChild:@"BUILDING"] getValue]];
+					[Customer setAddrdesc:[[t_item getChild:@"ADDR_APPEND"] getValue]];
+					[Customer setBranchid:[[t_item getChild:@"BRANCH_ID"] getValue]];
+					[Customer setBranchname:[[t_item getChild:@"BRANCH_NM"] getValue]];
+					[Customer setGis_x:[[t_item getChild:@"GIS_X"] getValue]];
+					[Customer setGis_y:[[t_item getChild:@"GIS_Y"] getValue]];
+					[Customer setTerminal_id:[[t_item getChild:@"TERMINAL_ID"] getValue]];
+					[Customer setBusiness_date:[[t_item getChild:@"BUSINESS_DATE"] getValue]];
+					[Customer setBranchtel:[[t_item getChild:@"BRANCH_TEL1"] getValue]];
 			
-			}
-			else if( [t_item.name compare:@"ITEM"] == NSOrderedSame ) {
+					[Customer setOpendate:[[dateFormatter dateFromString:[[t_item getChild:@"DELI_OPEN_TIME"] getValue]] retain]];
+					[Customer setClosedate:[[dateFormatter dateFromString:[[t_item getChild:@"DELI_CLOSE_TIME"] getValue]] retain]];
+					[Customer setBranchtel:[[t_item getChild:@"DELIVERY_TIME"] getValue]];
+				
+				}
+				else if( [t_item.name compare:@"ITEM"] == NSOrderedSame ) {
 					
-			[[DataManager getInstance] 	updateCartMenuStatus:[[t_item getChild:@"MENU_ID"] getValue] 
-				dis:[[t_item getChild:@"MENU_DIS"] getValue] 
-				flag: ( [[[t_item getChild:@"SHORT_FLAG"] getValue] compare:@"Y"] == NSOrderedSame ) ? false: true ]; // Y 이면 결품
-			}
+					[[DataManager getInstance] 	updateCartMenuStatus:[[t_item getChild:@"MENU_ID"] getValue] 
+																 dis:[[t_item getChild:@"MENU_DIS"] getValue] 
+																flag: ( [[[t_item getChild:@"SHORT_FLAG"] getValue] compare:@"Y"] == NSOrderedSame ) ? false: true ]; // Y 이면 결품
+				}
 
-		}	
-
-		CartOrderShopMenuViewController *Order = [[CartOrderShopMenuViewController alloc] initWithNibName:@"CartOrderShopMenu" bundle:nil];
-		[self.navigationController pushViewController:Order animated:YES];
-		[Order release];
+			}	
+			[locale release];
+			[dateFormatter release];
+		
+			CartOrderShopMenuViewController *Order = [[CartOrderShopMenuViewController alloc] initWithNibName:@"CartOrderShopMenu" bundle:nil];
+			[self.navigationController pushViewController:Order animated:YES];
+			[Order release];
 			
-	}		
-	[xmlParser release];
+		}		
+		[xmlParser release];
 	}
 	[httpRequest release];
 	httpRequest = nil;

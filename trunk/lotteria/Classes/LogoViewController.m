@@ -4,17 +4,10 @@
 #import "XmlParser.h"
 #import "FileIO.h"
 #import "DataManager.h"
+#import "DefineMessage.h"
 #define kAnimationDuration  0.25
 
-#define ERROR_TITLE @"연결에러"
-#define VER_ERROR_MSG @"서버에서 버전 정보를 읽는데 실패하였습니다."
-#define MENU_ERROR_MSG @"서버에서 메뉴정보를 읽는데 실패하였습니다."
 
-#define UPDATE_TITLE @"업데이트"
-#define VER_MISMATCH_MSG @"최신버전의 어플이 아닙니다.\n앱스토어에서 최신버전으로\n업데이트 하시기바랍니다."
-
-#define UPDATE_AGAIN @"다시시도"
-#define EXIT_APP @"어플닫기"
 
 @implementation LogoViewController
 
@@ -155,15 +148,7 @@
 	httpRequest = nil;
 
 	doneStep = 1;
-/*
-	if( [Version compare:[[DataManager getInstance] getVersion]] != NSOrderedSame )
-	{
-		[self ShowOKCancleAlert:nil msg:@"버전이 업그레이드 되었습니다. 앱스토어에서 다시 다운받으세요 "];
-	}
-	else {
-		[self loadingDone];
-	}
- */
+
 	NSString *remoteImagePath = [NSString stringWithFormat:@"%@/iphone/notice/%@",SERVERURL,Image];
 	UIImage *localImage = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:remoteImagePath]]];
 	[noticeImg setImage:localImage];

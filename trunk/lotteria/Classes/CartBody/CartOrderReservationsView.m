@@ -46,12 +46,19 @@
 	if ( [[Picket date] timeIntervalSince1970] < [[NSDate date] timeIntervalSince1970] )
 	{
 		[Picket setDate:[[NSDate date] addTimeInterval:10*60]] ;
-		[self ShowOKAlert:nil msg:@"배달 가능한 시간이 아닙니다."];
+		[self ShowOKAlert:ALERT_TITLE msg:DELI_TIME_ERROR_MSG];
+		return;
 	}
-	else if ( [[Picket date] timeIntervalSince1970] < [[NSDate date] timeIntervalSince1970] )
+	
+	Order *Data = [[DataManager getInstance] UserOrder];
+	DeliveryAddrInfo *deli = [Data UserAddr];
+	
+	if ( [[Picket date] timeIntervalSince1970] < [[deli opendate] timeIntervalSince1970] || 
+		 [[Picket date] timeIntervalSince1970] > [[deli closedate] timeIntervalSince1970]
+		)
 	{
-		[Picket setDate:[[NSDate date] addTimeInterval:10*60]] ;
-		[self ShowOKAlert:nil msg:@"배달 가능한 시간이 아닙니다."];
+		[Picket setDate:[NSDate date]];
+		[self ShowOKAlert:ALERT_TITLE msg:DELI_TIME_ERROR_MSG];
 	}
 	
 

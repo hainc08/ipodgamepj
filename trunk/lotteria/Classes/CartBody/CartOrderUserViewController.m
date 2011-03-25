@@ -43,7 +43,7 @@
 - (IBAction)ContinueButton:(id)sender
 {
 	if([Name.text compare:@""] == NSOrderedSame || [Phone.text compare:@""] == NSOrderedSame)
-		[self ShowOKAlert:nil msg:@"수령자명과 핸드폰 번호를 입력 해주세요"];
+		[self ShowOKAlert:ALERT_TITLE msg:ORDER_USER_ERROR_MSG];
 	else {
 		Order *Data = [[DataManager getInstance] UserOrder];
 		
@@ -62,7 +62,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string 
 {     
 	if (textField == Phone)
-	{
+	{	/* 핸드폰 번호 만 입력 받기로함 */
 		NSCharacterSet *numbers = [NSCharacterSet decimalDigitCharacterSet];
 		
 		NSUInteger currentLength = textField.text.length;
