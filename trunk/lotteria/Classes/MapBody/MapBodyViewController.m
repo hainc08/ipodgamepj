@@ -210,6 +210,7 @@
 	[locationManager startUpdatingLocation];
 	
 	[mapView setDelegate:self];
+	[mapView setShowsUserLocation:YES];
 
 //원하는 위치로 찾아가는 코드...
 //	CLLocationCoordinate2D location; 
@@ -324,11 +325,12 @@
 	region.center=newLocation.coordinate;
 	
 	MKCoordinateSpan span;
-	span.latitudeDelta=0.02f;
-	span.longitudeDelta=0.02f;
+	span.latitudeDelta=0.045f;
+	span.longitudeDelta=0.045f;
 	region.span=span;
-	
+
 	[mapView setRegion:region animated:FALSE];
+
 	mapView.userLocation.title = @"내위치";
 
 	[self GetStoreInfo:[NSString stringWithFormat:@"%f", newLocation.coordinate.latitude] gis_y:[NSString stringWithFormat:@"%f", newLocation.coordinate.longitude]];
@@ -347,6 +349,23 @@
 }
 
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation{
+	if( [[annotation title] isEqualToString:@"내위치"] )
+	{
+		MKAnnotationView *annView=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
+		annView.image = [UIImage imageNamed:@"icon_pin_home.png"];
+
+		annView.canShowCallout = YES;
+		annView.centerOffset = CGPointMake(0, -18);
+		
+		UIButton *disclosureButton = [UIButton buttonWithType: UIButtonTypeDetailDisclosure];
+		annView.canShowCallout = YES;
+		annView.rightCalloutAccessoryView = disclosureButton;
+		
+		//annView.pinColor = MKPinAnnotationColorGreen;  
+		
+		return annView;
+	}
+
 	PlaceMark *anote = (PlaceMark*)annotation;
 	
 	//MKPinAnnotationView *annView=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
