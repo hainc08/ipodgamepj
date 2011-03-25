@@ -24,6 +24,10 @@
 	[[ViewManager getInstance] setCartView:self];
 	
 	self.navigationItem.title = @"장바구니";
+	
+	if([[DataManager getInstance] getCartPrice] <= 0 )
+			[self ShowOKAlert:ALERT_TITLE msg:ORDER_CLEAN_MSG];
+	
 }
 
 - (void)update
@@ -76,7 +80,7 @@
 {
 	if( [[DataManager getInstance] getCartPrice] < 8000)
 	{
-		[self ShowOKAlert:@"주문" msg:@"8000원 이상주문하셔야 합니다."];
+		[self ShowOKAlert:ALERT_TITLE msg:ORDER_COND_MSG];
 	}
 	else
 	{
@@ -85,5 +89,8 @@
 		[OrderView release];
 	}
 }
-
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{	/* 메뉴선택으로 이동 시킴 */
+	[[[UIApplication sharedApplication] delegate]UpdateMoveView:0 viewType:-1];
+}
 @end

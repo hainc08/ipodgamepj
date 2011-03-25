@@ -91,57 +91,61 @@
 - (void)didReceiveFinished:(NSString *)result
 {
 	[[ViewManager getInstance] waitview:self.view isBlock:NO];
-	XmlParser* xmlParser = [XmlParser alloc];
-	[xmlParser parserString:result];
-	Element* root = [xmlParser getRoot:@"NewDataSet"];
 	
-	if (AddressArr == nil) AddressArr = [[NSMutableArray alloc] initWithArray:0];
-	else [AddressArr removeAllObjects];
-	
-	if(root == nil)
+	if(![result compare:@"error"])
 	{
-		NSString *Value  = [[xmlParser getRoot:@"RESULT_CODE"] getValue];
-		if( [Value compare:@"N"] == NSOrderedSame )
-			[self ShowOKAlert:@"Data Fail" msg:@"서버에서 데이터 불러오는데 실패하였습니다."];	
-		else 	if( [Value compare:@"C"] == NSOrderedSame )
-			[self ShowOKAlert:@"Data Fail" msg:@"서버에 오류가 발생하였습니다."];	
+		[self ShowOKAlert:ERROR_TITLE msg:HTTP_ERROR_MSG];	
 	}
 	else {
+		XmlParser* xmlParser = [XmlParser alloc];
+		[xmlParser parserString:result];
+		Element* root = [xmlParser getRoot:@"NewDataSet"];
+	
+		if (AddressArr == nil) AddressArr = [[NSMutableArray alloc] initWithArray:0];
+		else [AddressArr removeAllObjects];
+	
+		if(root == nil) {
+			NSString *Value  = [[xmlParser getRoot:@"RESULT_CODE"] getValue];
+			if( [Value compare:@"N"] == NSOrderedSame || [Value compare:@"C"] == NSOrderedSame)
+			[self ShowOKAlert:ERROR_TITLE msg:MAP_RESULT_ERROR_MSG];	
+		}
+		else {
 	
 		
-		for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
-		{
+			for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
+			{
 			
-			StoreInfo *storeaddr  = [[[StoreInfo alloc] init] retain];
-			[storeaddr setStoreid:[[t_item getChild:@"BRANCH_ID"] getValue]];
-			[storeaddr setStorename:[[t_item getChild:@"BRANCH_NM"] getValue]];
-			[storeaddr setStorephone:[[t_item getChild:@"BRANCH_TEL1"] getValue]];
+				StoreInfo *storeaddr  = [[[StoreInfo alloc] init] retain];
+				[storeaddr setStoreid:[[t_item getChild:@"BRANCH_ID"] getValue]];
+				[storeaddr setStorename:[[t_item getChild:@"BRANCH_NM"] getValue]];
+				[storeaddr setStorephone:[[t_item getChild:@"BRANCH_TEL1"] getValue]];
 			
-			[storeaddr setSi:[[t_item getChild:@"SI"] getValue]];
-			[storeaddr setGu:[[t_item getChild:@"GU"] getValue]];
-			[storeaddr setDong:[[t_item getChild:@"DONG"] getValue]];
-			[storeaddr setBunji:[[t_item getChild:@"BUNJI"] getValue]];
-			[storeaddr setBuilding:[[t_item getChild:@"BUILDING"] getValue]];
-			[storeaddr setAddrdesc:[[t_item getChild:@"ADDR_DESC"] getValue]];
+				[storeaddr setSi:[[t_item getChild:@"SI"] getValue]];
+				[storeaddr setGu:[[t_item getChild:@"GU"] getValue]];
+				[storeaddr setDong:[[t_item getChild:@"DONG"] getValue]];
+				[storeaddr setBunji:[[t_item getChild:@"BUNJI"] getValue]];
+				[storeaddr setBuilding:[[t_item getChild:@"BUILDING"] getValue]];
+				[storeaddr setAddrdesc:[[t_item getChild:@"ADDR_DESC"] getValue]];
 			
-			NSString *xvalue = [[t_item getChild:@"GIS_X"] getValue];
-			NSString *yvalue = [[t_item getChild:@"GIS_Y"] getValue];
+				NSString *xvalue = [[t_item getChild:@"GIS_X"] getValue];
+				NSString *yvalue = [[t_item getChild:@"GIS_Y"] getValue];
 			
-			CLLocationCoordinate2D temp;
-			temp.latitude	= [xvalue integerValue];
-			temp.longitude	= [yvalue integerValue];
-			[storeaddr setCoordinate:temp];
+				CLLocationCoordinate2D temp;
+				temp.latitude	= [xvalue integerValue];
+				temp.longitude	= [yvalue integerValue];
+				[storeaddr setCoordinate:temp];
+				
+				NSString *delivery = [[t_item getChild:@"DELIVERY_FLAG"] getValue];
+				NSString *open = [[t_item getChild:@"OPEN_FLAG"] getValue];
 			
-			NSString *delivery = [[t_item getChild:@"DELIVERY_FLAG"] getValue];
-			NSString *open = [[t_item getChild:@"OPEN_FLAG"] getValue];
+				if ( [delivery compare:@"Y"] == NSOrderedSame ) [storeaddr setStore_flag:DELIVERYSTORE];
+				else if ( [open compare:@"Y"] == NSOrderedSame ) [storeaddr setStore_flag:TIMESTORE];
+				else [storeaddr setStore_flag:NORMALSTORE];
 			
-			if ( [delivery compare:@"Y"] == NSOrderedSame ) [storeaddr setStore_flag:DELIVERYSTORE];
-			else if ( [open compare:@"Y"] == NSOrderedSame ) [storeaddr setStore_flag:TIMESTORE];
-			else [storeaddr setStore_flag:NORMALSTORE];
-			
-			[AddressArr  addObject:storeaddr];
-		}	
-		[xmlParser release];
+				[AddressArr  addObject:storeaddr];
+			}	
+			[xmlParser release];
+		}
 	}
 	[httpRequest release];
 	httpRequest = nil;

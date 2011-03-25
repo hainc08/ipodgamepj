@@ -225,7 +225,7 @@
 	{
 		if ([[DataManager getInstance] checkBurgerCount:count] == false)
 		{
-			[self ShowOKAlert:@"주문오류" msg:[NSString stringWithFormat:@"햄버거는 %d개까지 주문가능합니다.", MAX_BURGER]];
+			[self ShowOKAlert:ORDERFAIL_TITLE msg:[NSString stringWithFormat:@"햄버거는 %d개까지 주문가능합니다.", MAX_BURGER]];
 			return false;
 		}
 	}

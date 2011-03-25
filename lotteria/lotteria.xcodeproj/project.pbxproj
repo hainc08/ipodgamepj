@@ -570,6 +570,7 @@
 		288765580DF743DE002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* lotteria_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lotteria_Prefix.pch; sourceTree = "<group>"; };
+		5612FF40133CFF17008D3BF7 /* DefineMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefineMessage.h; sourceTree = "<group>"; };
 		56928BE41312BECB000700A9 /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
 		56928BE51312BECB000700A9 /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequest.m; sourceTree = "<group>"; };
 		56928BE91312BEEC000700A9 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
@@ -1877,6 +1878,7 @@
 		84B4A35D130FFF1500A7A99B /* Main View */ = {
 			isa = PBXGroup;
 			children = (
+				5612FF40133CFF17008D3BF7 /* DefineMessage.h */,
 				849DBD131316FF1500C630CD /* NaviView.xib */,
 				849DBD141316FF1500C630CD /* NaviViewController.h */,
 				849DBD151316FF1500C630CD /* NaviViewController.m */,
