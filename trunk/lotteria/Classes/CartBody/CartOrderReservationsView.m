@@ -45,39 +45,13 @@
 
 -(void)controlEventValueChanged:(id)sender
 {
-	Order *Data = [[DataManager getInstance] UserOrder];
-	DeliveryAddrInfo *deli = [Data UserAddr];
-	
-	NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-	NSDateFormatter *dateFormatter		=	[[NSDateFormatter alloc] init];
-	[dateFormatter setLocale:locale];
-	[dateFormatter setDateFormat:@"yyyy-MM-dd HHmmss"];
-	NSDate* now = [[NSDate alloc] init];
-	NSString* toDay = [[dateFormatter stringFromDate:now] substringToIndex:10];
-
-	NSDate* openDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@", toDay, [deli opendate]]];
-	NSDate* closeDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@", toDay, [deli closedate]]];
-	NSDate* pickDate = [Picket date];
-
-	if ([pickDate timeIntervalSince1970] < [[[NSDate date] addTimeInterval:120*60] timeIntervalSince1970] )
-	{
-		[Picket setDate:[[NSDate date] addTimeInterval:ADDINTERVAL]] ;
-		[self ShowOKAlert:ALERT_TITLE msg:DELI_TIME_ERROR_2HOUR_MSG];
-	}
-	else if (([pickDate timeIntervalSince1970] < [openDate timeIntervalSince1970]) ||
-			([pickDate timeIntervalSince1970] > [closeDate timeIntervalSince1970]))
-	{
-		[Picket setDate:[[NSDate date] addTimeInterval:ADDINTERVAL]] ;
-		[self ShowOKAlert:ALERT_TITLE msg:DELI_TIME_ERROR_MSG];
-	}
-
-	[locale release];
-	[dateFormatter release];
-	return ;
+	[self checkTime];
 }
 
 - (IBAction)ReservationButton
 {
+	if ([self checkTime] == false) return;
+
 	NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
 	NSDateFormatter *dateFormatter		=	[[NSDateFormatter alloc] init];
 	[dateFormatter setLocale:locale];
@@ -92,6 +66,45 @@
 	[Order release];
 }
 
+- (bool)checkTime
+{
+	Order *Data = [[DataManager getInstance] UserOrder];
+	DeliveryAddrInfo *deli = [Data UserAddr];
+	
+	NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+	NSDateFormatter *dateFormatter		=	[[NSDateFormatter alloc] init];
+	[dateFormatter setLocale:locale];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd HHmmss"];
+	NSDate* now = [[NSDate alloc] init];
+	NSString* toDay = [[dateFormatter stringFromDate:now] substringToIndex:10];
+	
+	NSDate* openDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@", toDay, [deli opendate]]];
+	NSDate* closeDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@", toDay, [deli closedate]]];
+	NSDate* pickDate = [Picket date];
+	
+	bool isOK = true;
+	
+	if ([pickDate timeIntervalSince1970] < [[[NSDate date] addTimeInterval:120*60] timeIntervalSince1970] )
+	{
+		[Picket setDate:[[NSDate date] addTimeInterval:ADDINTERVAL]] ;
+		[self ShowOKAlert:ALERT_TITLE msg:DELI_TIME_ERROR_2HOUR_MSG];
+		
+		isOK = false;
+	}
+	else if (([pickDate timeIntervalSince1970] < [openDate timeIntervalSince1970]) ||
+			 ([pickDate timeIntervalSince1970] > [closeDate timeIntervalSince1970]))
+	{
+		[Picket setDate:[[NSDate date] addTimeInterval:ADDINTERVAL]] ;
+		[self ShowOKAlert:ALERT_TITLE msg:DELI_TIME_ERROR_MSG];
+
+		isOK = false;
+	}
+	
+	[locale release];
+	[dateFormatter release];
+	
+	return isOK;
+}
 #pragma mark -
 #pragma mark TableView
 
