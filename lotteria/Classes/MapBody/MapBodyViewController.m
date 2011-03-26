@@ -40,6 +40,7 @@
 	
 	Annotations = [[NSMutableArray alloc] initWithObjects:0];
 	AddressArr =  [[NSMutableArray alloc] initWithObjects:0];
+	infoReceive = false;
 	[self selectCategory:0];
 	[self setupMap];
 }
@@ -147,8 +148,10 @@
 			[xmlParser release];
 		}
 	}
+
 	[httpRequest release];
 	httpRequest = nil;
+	infoReceive = true;
 
 	[self reloadMapAnnotation];
 }
@@ -214,7 +217,7 @@
 	[locationManager startUpdatingLocation];
 	
 	[mapView setDelegate:self];
-	[mapView setShowsUserLocation:YES];
+//	[mapView setShowsUserLocation:YES];
 
 //원하는 위치로 찾아가는 코드...
 //	CLLocationCoordinate2D location; 
@@ -254,6 +257,8 @@
 	[store24 setImage:buttonImg[2][i[2]] forState:UIControlStateNormal];
 	[store24 setImage:buttonImg[2][i[2]] forState:UIControlStateHighlighted];
 	[store24 setImage:buttonImg[2][i[2]] forState:UIControlStateSelected];	
+
+	if (infoReceive) [self reloadMapAnnotation];
 }
 
 -(IBAction)buttonClick:(id)sender
@@ -272,29 +277,6 @@
 		[SearchControl release];
 	}
 	else if (sender == TextClear)	[Search setText:@""];
-}
-
-//테스트용...실제 데이타는 어떻게 들어오려나?
--(void)addShopMark:(int)shopIdx location:(CLLocationCoordinate2D)location
-{
-	PlaceMark *anote = [[PlaceMark alloc] init];
-	anote.idx = shopIdx;
-	anote.shopType = shopIdx;
-	anote.coordinate = location;
-	
-	
-	anote.title =@"롯데리아 대청점";
-
-	NSString *phoneRgCode = @"02";
-	NSString *phoneNumber = @"5332580";
-	
-	anote.subtitle  = [NSString stringWithFormat:@"%@-%@-%@",
-					   phoneRgCode ,
-					   [phoneNumber substringToIndex:[phoneNumber length]-4],
-					   [phoneNumber substringFromIndex:[phoneNumber length]-4]];
-
-	[mapView addAnnotation:anote];
-	[Annotations addObject:anote];
 }
 
 -(void)addShopMark:(int)shopIdx  store:(StoreInfo *)Info
@@ -335,9 +317,15 @@
 
 	[mapView setRegion:region animated:FALSE];
 
-	mapView.userLocation.title = @"내위치";
+	{
+		PlaceMark *anote = [[PlaceMark alloc] init];
+		anote.coordinate = newLocation.coordinate ;
+		anote.title = @"내위치";
+		[mapView addAnnotation:anote];
+	}
 
-	[self GetStoreInfo:[NSString stringWithFormat:@"%f", newLocation.coordinate.latitude] gis_y:[NSString stringWithFormat:@"%f", newLocation.coordinate.longitude]];
+	[self GetStoreInfo:[NSString stringWithFormat:@"%f", region.center.latitude]
+				 gis_y:[NSString stringWithFormat:@"%f", region.center.longitude]];
 }
 	 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -409,8 +397,33 @@
 	int i = 0;
 	for (StoreInfo* storeaddr in AddressArr)
 	{
+		if (selectIdx == 1)
+		{
+			if ([storeaddr store_flag] != DELIVERYSTORE) continue;
+		}
+
+		if (selectIdx == 2)
+		{
+			if ([storeaddr store_flag] != TIMESTORE) continue;
+		}
+		
 		[self addShopMark:i store:storeaddr];
 		++i;
+	}
+	
+	if (i == 0)
+	{
+		switch (selectIdx)
+		{
+			case 0:
+				[self ShowOKAlert:ERROR_TITLE msg:MAP_RESULT_NOTFOUND_MSG];
+				break;
+			case 1:
+				[self ShowOKAlert:ERROR_TITLE msg:MAP_DELI_NOTFOUND_MSG];
+				break;
+			case 2:
+				[self ShowOKAlert:ERROR_TITLE msg:MAP_24STORE_NOTFOUND_MSG];
+		}
 	}
 }
 

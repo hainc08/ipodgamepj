@@ -502,6 +502,8 @@
 		842165291323475800F9A5F3 /* bg_badge_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 842165261323475800F9A5F3 /* bg_badge_3.png */; };
 		8421656313234C8200F9A5F3 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8421656113234C8200F9A5F3 /* Icon.png */; };
 		8421656413234C8200F9A5F3 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8421656213234C8200F9A5F3 /* Icon@2x.png */; };
+		843464EB133DC33400A16B10 /* donedown.png in Resources */ = {isa = PBXBuildFile; fileRef = 843464E9133DC33400A16B10 /* donedown.png */; };
+		843464EC133DC33400A16B10 /* doneup.png in Resources */ = {isa = PBXBuildFile; fileRef = 843464EA133DC33400A16B10 /* doneup.png */; };
 		84361D96133CF79700500E91 /* icon_pin_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 84361D95133CF79700500E91 /* icon_pin_home.png */; };
 		84384256130F862200EE2887 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84384255130F862200EE2887 /* DataManager.m */; };
 		845D7DE0133A3A3D00698700 /* st_bb_a.png in Resources */ = {isa = PBXBuildFile; fileRef = 845D7DD6133A3A3D00698700 /* st_bb_a.png */; };
@@ -517,7 +519,6 @@
 		8463A0891323D84B0064F123 /* ViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463A0881323D84B0064F123 /* ViewManager.m */; };
 		84774392130F8F2100FB2532 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 84774391130F8F2100FB2532 /* FileIO.m */; };
 		848B04AD1313864E00A1C50E /* XmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 848B04AC1313864E00A1C50E /* XmlParser.m */; };
-		848B6F67131382DF000E3272 /* product.xml in Resources */ = {isa = PBXBuildFile; fileRef = 848B6F66131382DF000E3272 /* product.xml */; };
 		849DBD161316FF1500C630CD /* NaviView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849DBD131316FF1500C630CD /* NaviView.xib */; };
 		849DBD171316FF1500C630CD /* NaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DBD151316FF1500C630CD /* NaviViewController.m */; };
 		849F0B61132D2BD30048C2AA /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849F0B54132D2BD30048C2AA /* DetailView.xib */; };
@@ -1079,6 +1080,8 @@
 		842165261323475800F9A5F3 /* bg_badge_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_badge_3.png; sourceTree = "<group>"; };
 		8421656113234C8200F9A5F3 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		8421656213234C8200F9A5F3 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		843464E9133DC33400A16B10 /* donedown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donedown.png; sourceTree = "<group>"; };
+		843464EA133DC33400A16B10 /* doneup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneup.png; sourceTree = "<group>"; };
 		84361D95133CF79700500E91 /* icon_pin_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pin_home.png; sourceTree = "<group>"; };
 		84384254130F862200EE2887 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		84384255130F862200EE2887 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
@@ -1098,7 +1101,6 @@
 		84774391130F8F2100FB2532 /* FileIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileIO.m; sourceTree = "<group>"; };
 		848B04AB1313864E00A1C50E /* XmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XmlParser.h; sourceTree = "<group>"; };
 		848B04AC1313864E00A1C50E /* XmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XmlParser.m; sourceTree = "<group>"; };
-		848B6F66131382DF000E3272 /* product.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = product.xml; path = DownloadData/product.xml; sourceTree = "<group>"; };
 		849DBD131316FF1500C630CD /* NaviView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NaviView.xib; path = Classes/NaviView.xib; sourceTree = "<group>"; };
 		849DBD141316FF1500C630CD /* NaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NaviViewController.h; path = Classes/NaviViewController.h; sourceTree = "<group>"; };
 		849DBD151316FF1500C630CD /* NaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NaviViewController.m; path = Classes/NaviViewController.m; sourceTree = "<group>"; };
@@ -1339,6 +1341,8 @@
 				842165241323475800F9A5F3 /* bg_badge_1.png */,
 				842165251323475800F9A5F3 /* bg_badge_2.png */,
 				842165261323475800F9A5F3 /* bg_badge_3.png */,
+				843464E9133DC33400A16B10 /* donedown.png */,
+				843464EA133DC33400A16B10 /* doneup.png */,
 				84361D95133CF79700500E91 /* icon_pin_home.png */,
 				84F0EB5A1323751C00F5DB68 /* bg_thumb_box2.png */,
 				56D80B5F1318F75B0049314B /* bg_approval_box.png */,
@@ -1831,7 +1835,6 @@
 		848B6F61131382BA000E3272 /* DownloadData */ = {
 			isa = PBXGroup;
 			children = (
-				848B6F66131382DF000E3272 /* product.xml */,
 				84F1B8D0131450F3006FC7C7 /* productKey.xml */,
 			);
 			name = DownloadData;
@@ -1994,7 +1997,6 @@
 				84AA544D13118208007CE392 /* CartCellView.xib in Resources */,
 				56928BEB1312BEEC000700A9 /* LoginView.xib in Resources */,
 				56928C881312D787000700A9 /* MyCustomerDelivery.xib in Resources */,
-				848B6F67131382DF000E3272 /* product.xml in Resources */,
 				84F1B8D1131450F3006FC7C7 /* productKey.xml in Resources */,
 				56A9C7AC1313FC660071D8A0 /* ShippingOrderCell.xib in Resources */,
 				56A9C7AE1313FC930071D8A0 /* OrderListMiddleCell.xib in Resources */,
@@ -2493,6 +2495,8 @@
 				845D7DE9133A3A3D00698700 /* st_tb_s.png in Resources */,
 				84AE31C2133A6E8000F849B2 /* default.png in Resources */,
 				84361D96133CF79700500E91 /* icon_pin_home.png in Resources */,
+				843464EB133DC33400A16B10 /* donedown.png in Resources */,
+				843464EC133DC33400A16B10 /* doneup.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2579,8 +2583,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Youngjin Pack (P53XJ4T97K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: SeongYong Lee (XZ3S2XAKBV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: SeongYong Lee (XZ3S2XAKBV)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

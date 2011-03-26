@@ -60,6 +60,18 @@
 
 #define ORDER_USER_ERROR_MSG		@"수령자명과 핸드폰 번호를 입력 해주세요."
 
+/* 
+ *   수령자 전화번호 입력이 잘못되었을때.
+ */
+
+#define ORDER_PHONE_ERROR_MSG		@"전화번호를 확인해주세요.\n핸드폰번호만 가능합니다."
+
+/* 
+ *   수령자 전화번호 입력이 잘못되었을때.
+ */
+
+#define ORDER_NAME_ERROR_MSG		@"수령자명은 13자 이내로 써주세요."
+
 /*
  *   로그인 정보가 정확히 입력 되지 않았을때.
  */ 
@@ -74,8 +86,8 @@
 #define MAP_RESULT_ERROR_MSG		@"위치정보를 불러오는데 실패하였습니다."
 #define MAP_RESULT_NOTFOUND_MSG		@"주변(반경 2KM)에 매장이 없습니다."
 
-#define MAP_24STORE_NOTFOUND_MSG	@"24시 매장이 없습니다."
-#define MAP_DELI_NOTFOUND_MSG		@"배달 매장이 없습니다."
+#define MAP_24STORE_NOTFOUND_MSG	@"주변(반경 2KM)에 24시 매장이 없습니다."
+#define MAP_DELI_NOTFOUND_MSG		@"주변(반경 2KM)에 배달 매장이 없습니다."
 
 
 /* 
