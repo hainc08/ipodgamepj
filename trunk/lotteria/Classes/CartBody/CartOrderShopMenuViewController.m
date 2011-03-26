@@ -23,13 +23,7 @@
 
 	menuTable.backgroundColor = [UIColor clearColor];
 	menuTable.opaque = NO;
-	menuTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-	menuTable.separatorColor = [UIColor clearColor];
 	
-
-	
-	[Scroll addSubview:menuTable];
-	Scroll.frame = CGRectMake(12, 5, 297, 232);
 	buttontype = true;
 	
 	[menuTable reloadData];

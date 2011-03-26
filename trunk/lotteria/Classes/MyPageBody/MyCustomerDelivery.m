@@ -65,6 +65,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView1 { 
 }
+
 - (BOOL)webView:(UIWebView *)webview shouldStartLoadWithRequest:(NSURLRequest *)req navigationType:(UIWebViewNavigationType)navigationtype
 {
 	

@@ -14,6 +14,13 @@
 	IBOutlet UITextField	*Name;
 	IBOutlet UITextField	*Phone;
 	NSString *OrgPhone;
+
+    UIButton *doneButton;
 }
+
 - (IBAction)ContinueButton:(id)sender;
+- (IBAction)done:(id)sender;
+- (void)makeDoneButton;
+- (UIView*)findKeyboard:(UIView*)tempWindow;
+
 @end

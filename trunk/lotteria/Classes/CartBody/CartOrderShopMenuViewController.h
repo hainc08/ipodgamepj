@@ -15,7 +15,6 @@
 	IBOutlet UITableView *menuTable;
 	IBOutlet UIButton	*orderButton;
 	IBOutlet UIButton	*againButton;
-	IBOutlet UIScrollView *Scroll;
 	bool buttontype;
 	
 }
