@@ -57,6 +57,7 @@
     <product menu_id="201081" key="spcb"/><!--S30	선택고구마치즈볼-->
 
     <product menu_id="LD0004" key="la"/><!--D40	레몬에이드	LEMONADE-->
+    <product menu_id="LD0005" key="gr"/><!--D40	포도주스-->
     <product menu_id="LD0007" key="or"/><!--D40	오렌지(R)-->
     <product menu_id="LD0008" key="ict"/><!--D40	아이스티-->
     <product menu_id="LD0009" key="cl"/><!--D40	콜라(R)-->
@@ -65,6 +66,9 @@
     <product menu_id="LD0020" key="iam"/><!--D40	아이스아메리카노-->
     <product menu_id="LD0021" key="hcl"/><!--D40	카페라떼-->
     <product menu_id="LD0022" key="icl"/><!--D40	아이스카페라테(신)-->
+    <product menu_id="LD0026" key="gra"/><!--D40	자몽에이드-->
+    <product menu_id="LD0027" key="pin"/><!--D40	파인애플에이드-->
+    <product menu_id="LD0028" key="app"/><!--D40	사과주스-->
 
     <product menu_id="200807" key="cl"/><!--S40	세트콜라(R)-->
     <product menu_id="200808" key="cd"/><!--S40	선택사이다(R)-->
@@ -76,7 +80,7 @@
     <product menu_id="200849" key="icl"/><!--S40	선택아이스카페라떼(신)-->
     <product menu_id="200872" key="gr"/><!--S40	선택포도주스-->
     <product menu_id="200937" key="la"/><!--S40	선택 레모네이드-->
-    <product menu_id="202872" key="qra"/><!--S40	선택 자몽에이드-->
+    <product menu_id="202872" key="gra"/><!--S40	선택 자몽에이드-->
     <product menu_id="202873" key="pin"/><!--S40	선택 파인애플에이드-->
     <product menu_id="202874" key="app"/><!--S40	선택 사과주스-->
 </Products>
