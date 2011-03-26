@@ -136,8 +136,8 @@ typedef enum _Storetype
 	NSString *terminal_id;	// 주문시 사용 
 	NSString *business_date;	// 주무시 사용
 
-	NSDate  *opendate;		// 배달 시작시간
-	NSDate	*closedate;		// 배달 끝시간
+	NSString *opendate;		// 배달 시작시간
+	NSString *closedate;		// 배달 끝시간
 	NSString *deliverytime;		// 배달 소요시간 ( 사용가능한곳은 없지만 나중에 사용할 수있으니 추가)
 	
 	NSString *gis_x;
@@ -159,8 +159,8 @@ typedef enum _Storetype
 @property (retain) NSString *gis_x;
 @property (retain) NSString *gis_y;
 
-@property (retain) 	NSDate  *opendate; 
-@property (retain)  NSDate	*closedate;
+@property (retain) NSString *opendate; 
+@property (retain) NSString *closedate;
 @property (retain) 	NSString *deliverytime;
 @property (retain) NSString *branchtel; 
 @property (retain) NSString *terminal_id;	// 주문시 사용 
