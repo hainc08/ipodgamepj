@@ -39,7 +39,7 @@
 	[self.view addSubview:toolbar];
 	
 	Annotations = [[NSMutableArray alloc] initWithObjects:0];
-	
+	AddressArr =  [[NSMutableArray alloc] initWithObjects:0];
 	[self selectCategory:0];
 	[self setupMap];
 }
@@ -101,8 +101,8 @@
 		[xmlParser parserString:result];
 		Element* root = [xmlParser getRoot:@"NewDataSet"];
 	
-		if (AddressArr == nil) AddressArr = [[NSMutableArray alloc] initWithArray:0];
-		else [AddressArr removeAllObjects];
+	
+		[AddressArr removeAllObjects];
 	
 		if(root == nil) {
 			NSString *Value  = [[xmlParser getRoot:@"RESULT_CODE"] getValue];
@@ -131,8 +131,8 @@
 				NSString *yvalue = [[t_item getChild:@"GIS_Y"] getValue];
 			
 				CLLocationCoordinate2D temp;
-				temp.latitude	= [xvalue integerValue];
-				temp.longitude	= [yvalue integerValue];
+				temp.latitude	= atof([xvalue UTF8String] ) ;
+				temp.longitude	= atof([yvalue UTF8String] );
 				[storeaddr setCoordinate:temp];
 				
 				NSString *delivery = [[t_item getChild:@"DELIVERY_FLAG"] getValue];
