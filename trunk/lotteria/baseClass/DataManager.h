@@ -206,6 +206,9 @@ typedef enum _Storetype
 	NSString* accountId;
 	NSString* accountPass;
 
+	NSString* cust_id;
+	NSString* cust_phone;
+
 	Order		 *UserOrder;
 	
 	// D10 + S10 의 합이 12개 주문할수 있음 나머지 메뉴는 무한대로 주문 가능
@@ -224,6 +227,8 @@ typedef enum _Storetype
 @property (readwrite) bool isLoginSave;
 @property (retain) NSString* accountId;
 @property (retain) NSString* accountPass;
+@property (retain) NSString* cust_id;
+@property (retain) NSString* cust_phone;
 @property (retain) Order	 *UserOrder;
 
 + (DataManager*)getInstance;

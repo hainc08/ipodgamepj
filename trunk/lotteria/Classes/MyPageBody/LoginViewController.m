@@ -13,7 +13,7 @@
 #import "NaviViewController.h"
 #import "HttpRequest.h"
 #import "ViewManager.h"
-
+#import "XmlParser.h"
 
 @implementation LoginViewController
 @synthesize LoginNextType;
@@ -85,6 +85,7 @@
 /* 영문 4~15자리 한글 x 
  특수문자( -  _  )  사용 
  */
+
 - (IBAction)LoginButton 
 {
 
@@ -125,6 +126,14 @@
 
 #pragma mark -
 #pragma mark HttpRequestDelegate
+/* 
+ <?xml version="1.0" encoding="utf-8"?>
+ <NewDataSet>
+ <RESULT_CODE>Y</RESULT_CODE>
+ <CUST_ID>mobileuser</CUST_ID>
+ <CUST_PHONE>01012345678</CUST_PHONE>
+ </NewDataSet>
+ */
 
 - (void)didReceiveFinished:(NSString *)result
 {
@@ -137,8 +146,25 @@
 		[self ShowOKAlert:ERROR_TITLE msg:HTTP_ERROR_MSG];	
 	}
 	else {
-		/* 아직 xml처리를 안했음 
-		 */
+
+		XmlParser* xmlParser = [XmlParser alloc];
+		[xmlParser parserString:result];
+		Element* root = [xmlParser getRoot:@"NewDataSet"];
+		
+		if (root == nil || [[[root getChild:@"RESULT_CODE"] getValue] compare:@"Y"] != NSOrderedSame )
+		{
+			[self ShowOKAlert:ERROR_TITLE msg:LOGIN_FAIL_MSG];
+		}
+		else
+		{
+			NSString *Cust_ID =  [[root getChild:@"CUST_ID"] getValue] ;
+			NSString *Cust_PHONE =  [[root getChild:@"CUST_PHONE"] getValue] ;
+			[[DataManager getInstance] setCust_id:Cust_ID];
+			[[DataManager getInstance] setCust_phone:Cust_PHONE];
+		}
+		
+		[xmlParser release];
+		
 		
 		if([[DataManager getInstance] isLoginSave])
 		{
