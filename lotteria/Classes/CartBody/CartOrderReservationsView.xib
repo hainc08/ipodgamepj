@@ -83,7 +83,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA</b
 						<object class="NSDate" key="IBUIDate">
 							<double key="NS.time">320402104.224213</double>
 						</object>
-						<int key="IBUIMinuteInterval">5</int>
+						<int key="IBUIMinuteInterval">30</int>
 					</object>
 					<object class="IBUIImageView" id="999979677">
 						<reference key="NSNextResponder" ref="191373211"/>

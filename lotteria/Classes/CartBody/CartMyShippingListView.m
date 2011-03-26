@@ -299,11 +299,6 @@
 			[self ShowOKAlert:ERROR_TITLE msg:DELI_SEARCH_ERROR_MSG];	
 		}
 		else {
-			NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-			NSDateFormatter *dateFormatter		=	[[NSDateFormatter alloc] init];
-			[dateFormatter setLocale:locale];
-			[dateFormatter setDateFormat:@"hhmmsi"];
-		
 			for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
 			{
 				if ( [t_item.name compare:@"BRANCH"]  == NSOrderedSame ) {
@@ -323,12 +318,17 @@
 					[Customer setTerminal_id:[[t_item getChild:@"TERMINAL_ID"] getValue]];
 					[Customer setBusiness_date:[[t_item getChild:@"BUSINESS_DATE"] getValue]];
 					[Customer setBranchtel:[[t_item getChild:@"BRANCH_TEL1"] getValue]];
-			
-					NSString *data =[[t_item getChild:@"DELI_OPEN_TIME"] getValue];
-					NSDate *dateinfo = [[dateFormatter dateFromString:data] retain] ;
-					[Customer setOpendate:[[dateFormatter dateFromString:[[t_item getChild:@"DELI_OPEN_TIME"] getValue]] retain]];
-					[Customer setClosedate:[[dateFormatter dateFromString: ( [[[t_item getChild:@"DELI_CLOSE_TIME"] getValue] compare:@"000000" ] == NSOrderedSame || 
-																			 [[[t_item getChild:@"DELI_CLOSE_TIME"] getValue] compare:@"240000" ] == NSOrderedSame ) ?  @"235959" :  [[t_item getChild:@"DELI_CLOSE_TIME"] getValue] ] retain]];
+
+					[Customer setOpendate:[[t_item getChild:@"DELI_OPEN_TIME"] getValue]];
+
+					{
+						NSString *data = [[t_item getChild:@"DELI_CLOSE_TIME"] getValue];
+						if (([data compare:@"240000"] == NSOrderedSame) ||
+							([data compare:@"000000"] == NSOrderedSame)) data = @"235900";
+
+						[Customer setClosedate:data];
+					}
+
 					[Customer setBranchtel:[[t_item getChild:@"DELIVERY_TIME"] getValue]];
 				
 				}
@@ -340,8 +340,6 @@
 				}
 
 			}	
-			[locale release];
-			[dateFormatter release];
 		
 			CartOrderShopMenuViewController *Order = [[CartOrderShopMenuViewController alloc] initWithNibName:@"CartOrderShopMenu" bundle:nil];
 			[self.navigationController pushViewController:Order animated:YES];

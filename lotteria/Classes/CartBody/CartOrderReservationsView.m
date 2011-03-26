@@ -11,6 +11,7 @@
 #import "CartOrderUserViewController.h"
 #import "DataManager.h"
 
+#define ADDINTERVAL 120*60+30*60
 
 @implementation CartOrderReservationsView
 
@@ -24,8 +25,9 @@
     [super viewDidLoad];
 	
 	[Picket addTarget:self action:@selector(controlEventValueChanged:) forControlEvents:UIControlEventValueChanged];
-	Picket.date = [NSDate date];
+	[Picket setDate:[[NSDate date] addTimeInterval:ADDINTERVAL]] ;
 	Picket.backgroundColor = [UIColor clearColor];
+
 	[OrderBurial reloadData];
 	self.navigationItem.title = @"주문하기";
 }
@@ -43,26 +45,37 @@
 
 -(void)controlEventValueChanged:(id)sender
 {
-	if ( [[Picket date] timeIntervalSince1970] < [[NSDate date] timeIntervalSince1970] )
-	{
-		[Picket setDate:[[NSDate date] addTimeInterval:5*60]] ;
-		[self ShowOKAlert:ALERT_TITLE msg:DELI_TIME_ERROR_MSG];
-		return;
-	}
-	
 	Order *Data = [[DataManager getInstance] UserOrder];
 	DeliveryAddrInfo *deli = [Data UserAddr];
 	
-	if ( [[Picket date] timeIntervalSince1970] < [[deli opendate] timeIntervalSince1970] || 
-		 [[Picket date] timeIntervalSince1970] > [[deli closedate] timeIntervalSince1970]
-		)
+	NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+	NSDateFormatter *dateFormatter		=	[[NSDateFormatter alloc] init];
+	[dateFormatter setLocale:locale];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd HHmmss"];
+	NSDate* now = [[NSDate alloc] init];
+	NSString* toDay = [[dateFormatter stringFromDate:now] substringToIndex:10];
+
+	NSDate* openDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@", toDay, [deli opendate]]];
+	NSDate* closeDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@", toDay, [deli closedate]]];
+	NSDate* pickDate = [Picket date];
+
+	if ([pickDate timeIntervalSince1970] < [[[NSDate date] addTimeInterval:120*60] timeIntervalSince1970] )
 	{
-		[Picket setDate:[NSDate date]];
+		[Picket setDate:[[NSDate date] addTimeInterval:ADDINTERVAL]] ;
+		[self ShowOKAlert:ALERT_TITLE msg:DELI_TIME_ERROR_2HOUR_MSG];
+	}
+	else if (([pickDate timeIntervalSince1970] < [openDate timeIntervalSince1970]) ||
+			([pickDate timeIntervalSince1970] > [closeDate timeIntervalSince1970]))
+	{
+		[Picket setDate:[[NSDate date] addTimeInterval:ADDINTERVAL]] ;
 		[self ShowOKAlert:ALERT_TITLE msg:DELI_TIME_ERROR_MSG];
 	}
-	return ;
 
+	[locale release];
+	[dateFormatter release];
+	return ;
 }
+
 - (IBAction)ReservationButton
 {
 	NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
