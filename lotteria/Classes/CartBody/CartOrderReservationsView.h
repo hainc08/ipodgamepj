@@ -17,6 +17,9 @@
 @property (nonatomic, retain) IBOutlet UIDatePicker	*Picket;
 @property (nonatomic, retain) IBOutlet UIButton		*reButton;
 @property (nonatomic, retain) IBOutlet UITableView	*OrderBurial;
+
 - (IBAction)ReservationButton;
--(void)controlEventValueChanged:(id)sender;
+- (void)controlEventValueChanged:(id)sender;
+- (bool)checkTime;
+
 @end
