@@ -22,7 +22,6 @@
 
     [super viewDidLoad];
 	
-	ID.returnKeyType = UIReturnKeyDone;
 	Password.returnKeyType = UIReturnKeyDone;
 	ID.delegate = self;
 	Password.delegate = self;
