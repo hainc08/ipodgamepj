@@ -302,7 +302,7 @@
 			NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
 			NSDateFormatter *dateFormatter		=	[[NSDateFormatter alloc] init];
 			[dateFormatter setLocale:locale];
-			[dateFormatter setDateFormat:@"hhmiss"];
+			[dateFormatter setDateFormat:@"hhmmsi"];
 		
 			for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
 			{
@@ -324,8 +324,11 @@
 					[Customer setBusiness_date:[[t_item getChild:@"BUSINESS_DATE"] getValue]];
 					[Customer setBranchtel:[[t_item getChild:@"BRANCH_TEL1"] getValue]];
 			
+					NSString *data =[[t_item getChild:@"DELI_OPEN_TIME"] getValue];
+					NSDate *dateinfo = [[dateFormatter dateFromString:data] retain] ;
 					[Customer setOpendate:[[dateFormatter dateFromString:[[t_item getChild:@"DELI_OPEN_TIME"] getValue]] retain]];
-					[Customer setClosedate:[[dateFormatter dateFromString:[[t_item getChild:@"DELI_CLOSE_TIME"] getValue]] retain]];
+					[Customer setClosedate:[[dateFormatter dateFromString: ( [[[t_item getChild:@"DELI_CLOSE_TIME"] getValue] compare:@"000000" ] == NSOrderedSame || 
+																			 [[[t_item getChild:@"DELI_CLOSE_TIME"] getValue] compare:@"240000" ] == NSOrderedSame ) ?  @"235959" :  [[t_item getChild:@"DELI_CLOSE_TIME"] getValue] ] retain]];
 					[Customer setBranchtel:[[t_item getChild:@"DELIVERY_TIME"] getValue]];
 				
 				}

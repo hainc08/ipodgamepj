@@ -45,7 +45,7 @@
 {
 	if ( [[Picket date] timeIntervalSince1970] < [[NSDate date] timeIntervalSince1970] )
 	{
-		[Picket setDate:[[NSDate date] addTimeInterval:10*60]] ;
+		[Picket setDate:[[NSDate date] addTimeInterval:5*60]] ;
 		[self ShowOKAlert:ALERT_TITLE msg:DELI_TIME_ERROR_MSG];
 		return;
 	}
@@ -60,7 +60,7 @@
 		[Picket setDate:[NSDate date]];
 		[self ShowOKAlert:ALERT_TITLE msg:DELI_TIME_ERROR_MSG];
 	}
-	
+	return ;
 
 }
 - (IBAction)ReservationButton
@@ -68,7 +68,7 @@
 	NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
 	NSDateFormatter *dateFormatter		=	[[NSDateFormatter alloc] init];
 	[dateFormatter setLocale:locale];
-	[dateFormatter setDateFormat:@"hhmi"];
+	[dateFormatter setDateFormat:@"hhmm"];
 	Order *Data = [[DataManager getInstance] UserOrder];
 	[Data setOrderTime:[dateFormatter stringFromDate:[Picket date]]];
 	[locale release];
