@@ -108,7 +108,7 @@
 
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								@"mobileuser",@"cust_id",
+								[[DataManager getInstance] cust_id] ,@"cust_id",
 								@"3",@"cust_flag",
 								nil];
 	
@@ -181,7 +181,7 @@
 	DeliveryAddrInfo  *Tmp = [CustomerArr objectAtIndex:RemoveNum];
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								@"mobileuser" ,@"cust_id",
+								[[DataManager getInstance] cust_id] ,@"cust_id",
 								[Tmp Seq] ,@"seq",
 								nil];
 	

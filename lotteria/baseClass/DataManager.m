@@ -177,6 +177,8 @@ static DataManager *DataManagerInst;
 @synthesize accountId;
 @synthesize accountPass;
 @synthesize UserOrder;
+@synthesize cust_id;
+@synthesize cust_phone;
 
 + (DataManager*)getInstance
 {

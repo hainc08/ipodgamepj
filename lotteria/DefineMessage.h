@@ -82,7 +82,7 @@
  */ 
 
 #define LOGIN_INPUT_ERROR_MSG		@"ID 와 Password를 입력해주세요."
-
+#define LOGIN_FAIL_MSG				@"로그인이 실패하였습니다.\n ID와 Password를 확인해주세요."
 
 /*
  *	 MAP에서 사용되는 메시지

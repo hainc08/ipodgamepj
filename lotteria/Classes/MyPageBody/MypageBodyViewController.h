@@ -3,11 +3,13 @@
 #import "UIViewControllerTemplate.h"		
 
 @class LoginViewController;
+@class HTTPRequest;
 @interface MypageBodyViewController : UIViewControllerTemplate  {
 
 	IBOutlet UIButton *OrderList;
 	IBOutlet UIButton *LogOut;
 	
+	HTTPRequest *httpRequest;
 	UINavigationController* loginCon;
 }
 

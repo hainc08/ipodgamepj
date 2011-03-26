@@ -158,7 +158,7 @@
 	}
 	[Body	 addObject:[NSString stringWithFormat:@"cust_delivery_seq=%@", Temp.UserAddr.Seq ]];
 	
-	[Body	 addObject:[NSString stringWithFormat:@"cust_id=%@", @"mobileuser" ]];
+	[Body	 addObject:[NSString stringWithFormat:@"cust_id=%@", [[DataManager getInstance] cust_id] ]];
 	[Body	 addObject:[NSString stringWithFormat:@"branch_id=%@", Temp.UserAddr.branchid ]];
 	[Body	 addObject:[NSString stringWithFormat:@"cust_nm=%@", 
 						[ Temp.UserName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]  ]];
