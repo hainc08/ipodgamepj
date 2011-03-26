@@ -121,8 +121,8 @@
 				NSString *yvalue = [[t_item getChild:@"GIS_Y"] getValue];
 			
 				CLLocationCoordinate2D temp;
-				temp.latitude	= [xvalue integerValue];
-				temp.longitude	= [yvalue integerValue];
+				temp.latitude	= atof([xvalue UTF8String] ) ;
+				temp.longitude	= atof([yvalue UTF8String] );
 				[storeaddr setCoordinate:temp];
 			
 				NSString *delivery = [[t_item getChild:@"DELIVERY_FLAG"] getValue];
