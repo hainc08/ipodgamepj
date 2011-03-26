@@ -113,10 +113,10 @@
     [super dealloc];
 }
 
-- (IBAction)doneButton
+- (void)back
 {
-	int k =0;
-	k=0;
+	[doneButton setAlpha:0];
+	[super back];
 }
 
 - (IBAction)ContinueButton:(id)sender
