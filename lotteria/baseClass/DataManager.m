@@ -291,6 +291,18 @@ static DataManager *DataManagerInst;
 	return count;
 }
 
+- (int)itemAllCount
+{
+	int count = 0;
+	
+	for (CartItem* item in ShopCart)
+	{
+		count += [item count];
+	}
+	
+	return count;
+}
+
 - (CartItem*)getCartItem:(int)idx listIdx:(int)listIdx
 {
 	for (CartItem* item in ShopCart)

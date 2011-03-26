@@ -141,6 +141,7 @@
 - (void)selectId:(NSString*)mId
 {
 	menuId = mId;
+	[self back];
 }
 
 - (void)reloadData
