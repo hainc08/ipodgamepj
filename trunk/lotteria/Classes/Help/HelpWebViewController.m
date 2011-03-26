@@ -27,6 +27,7 @@
 													  timeoutInterval:timeout];
 	
 	[Webview loadRequest:request];	
+	[Webview setScalesPageToFit:true];
 }
 
 - (void)didReceiveMemoryWarning {

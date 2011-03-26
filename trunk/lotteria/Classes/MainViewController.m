@@ -147,7 +147,7 @@
 
 - (void)cartUpdate
 {
-	int count = [[DataManager getInstance] itemCount:-1];
+	int count = [[DataManager getInstance] itemAllCount];
 
 	[cartCountBack1 setAlpha:0];
 	[cartCountBack2 setAlpha:0];

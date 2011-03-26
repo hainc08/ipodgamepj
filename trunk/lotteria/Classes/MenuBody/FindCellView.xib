@@ -77,42 +77,6 @@
 									<string key="NSResourceName">bg_cb_a.png</string>
 								</object>
 							</object>
-							<object class="IBUIButton" id="175480501">
-								<reference key="NSNextResponder" ref="150445108"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{280, 20}, {40, 45}}</string>
-								<reference key="NSSuperview" ref="150445108"/>
-								<bool key="IBUIOpaque">NO</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIContentHorizontalAlignment">0</int>
-								<int key="IBUIContentVerticalAlignment">0</int>
-								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Helvetica-Bold</string>
-									<double key="NSSize">15</double>
-									<int key="NSfFlags">16</int>
-								</object>
-								<object class="NSColor" key="IBUIHighlightedTitleColor" id="950587873">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MQA</bytes>
-								</object>
-								<object class="NSColor" key="IBUINormalTitleColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-								</object>
-								<object class="NSColor" key="IBUINormalTitleShadowColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MC41AA</bytes>
-								</object>
-								<object class="NSCustomResource" key="IBUIHighlightedImage" id="656409801">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">ico_list_arrow_on.png</string>
-								</object>
-								<reference key="IBUISelectedImage" ref="656409801"/>
-								<object class="NSCustomResource" key="IBUINormalImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">ico_list_arrow_off.png</string>
-								</object>
-							</object>
 							<object class="IBUILabel" id="947780874">
 								<reference key="NSNextResponder" ref="150445108"/>
 								<int key="NSvFlags">292</int>
@@ -133,7 +97,10 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4yODYyNzQ1MDk4IDAuMTI5NDExNzY0NyAwLjAzMTM3MjU0OTAyAA</bytes>
 								</object>
-								<reference key="IBUIHighlightedColor" ref="950587873"/>
+								<object class="NSColor" key="IBUIHighlightedColor" id="950587873">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
+								</object>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
@@ -214,6 +181,39 @@
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">ico_new.png</string>
+								</object>
+							</object>
+							<object class="IBUIButton" id="175480501">
+								<reference key="NSNextResponder" ref="150445108"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrameSize">{320, 86}</string>
+								<reference key="NSSuperview" ref="150445108"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Helvetica-Bold</string>
+									<double key="NSSize">15</double>
+									<int key="NSfFlags">16</int>
+								</object>
+								<reference key="IBUIHighlightedTitleColor" ref="950587873"/>
+								<object class="NSColor" key="IBUINormalTitleColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+								</object>
+								<object class="NSColor" key="IBUINormalTitleShadowColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MC41AA</bytes>
+								</object>
+								<object class="NSCustomResource" key="IBUIHighlightedImage" id="656409801">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">ico_list_arrow_on.png</string>
+								</object>
+								<reference key="IBUISelectedImage" ref="656409801"/>
+								<object class="NSCustomResource" key="IBUINormalImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">ico_list_arrow_off.png</string>
 								</object>
 							</object>
 						</object>
@@ -402,7 +402,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIResponder</string>
 					<string>FindCellView</string>
-					<string>{{340, 441}, {320, 86}}</string>
+					<string>{{363, 525}, {320, 86}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABBoAAAwpwAAA</bytes>
@@ -727,8 +727,8 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{100, 85}</string>
 				<string>{280, 2}</string>
-				<string>{40, 45}</string>
-				<string>{40, 45}</string>
+				<string>{320, 86}</string>
+				<string>{320, 86}</string>
 				<string>{45, 40}</string>
 				<string>{16, 16}</string>
 			</object>

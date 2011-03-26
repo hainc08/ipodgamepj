@@ -238,6 +238,7 @@ typedef enum _Storetype
 - (void)allremoveCartItem;
 - (NSMutableArray*)getShopCart;
 - (int)itemCount:(int)listIdx;
+- (int)itemAllCount;
 - (CartItem*)getCartItem:(int)idx listIdx:(int)listIdx;
 - (CartItem*)getCartItem:(int)idx;
 - (void)updateCartMenuStatus:(NSString *)menu_id dis:(NSString *)menu_dis flag:(bool)Flag;
