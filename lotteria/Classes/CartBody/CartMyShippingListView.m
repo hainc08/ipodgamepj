@@ -125,8 +125,13 @@
 
 	XmlParser* xmlParser = [XmlParser alloc];
 	[xmlParser parserString:result];
-	if ([self checkSession:xmlParser] == false) return;
-	
+	if ([self checkSession:xmlParser] == false) 
+	{
+		[xmlParser release];
+		[httpRequest release];
+		httpRequest = nil;
+		return;
+	}
 	Element* root = [xmlParser getRoot:@"NewDataSet"];
 		
 	if( [root childCount] == 0 )
@@ -207,7 +212,13 @@
 		
 		XmlParser* xmlParser = [XmlParser alloc];
 		[xmlParser parserString:result];
-		if ([self checkSession:xmlParser] == false) return;
+		if ([self checkSession:xmlParser] == false) 
+		{
+			[xmlParser release];
+			[httpRequest release];
+			httpRequest = nil;
+			return;
+		}
 		Element* root = [xmlParser getRoot:@"RESULT_CODE"];
 	
 		if([[root getValue] compare:@"Y"] == NSOrderedSame)
@@ -295,7 +306,13 @@
 	{ 
 		XmlParser* xmlParser = [XmlParser alloc];
 		[xmlParser parserString:result];
-		if ([self checkSession:xmlParser] == false) return;
+		if ([self checkSession:xmlParser] == false) 
+		{
+			[xmlParser release];
+			[httpRequest release];
+			httpRequest = nil;
+			return;
+		}
 		Element* root = [xmlParser getRoot:@"NewDataSet"];
 		
 		if( [root childCount] == 0 )
