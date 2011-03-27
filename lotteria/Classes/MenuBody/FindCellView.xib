@@ -50,7 +50,7 @@
 							<object class="IBUIImageView" id="464708638">
 								<reference key="NSNextResponder" ref="150445108"/>
 								<int key="NSvFlags">256</int>
-								<string key="NSFrame">{{20, 84}, {280, 2}}</string>
+								<string key="NSFrame">{{20, 0}, {273, 86}}</string>
 								<reference key="NSSuperview" ref="150445108"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -59,7 +59,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">bg_dot_line.png</string>
+									<string key="NSResourceName">bg_cart_prd_box.png</string>
 								</object>
 							</object>
 							<object class="IBUIImageView" id="1057018751">
@@ -391,6 +391,7 @@
 					<string>102.IBPluginDependency</string>
 					<string>128.IBViewBoundsToFrameTransform</string>
 					<string>130.IBPluginDependency</string>
+					<string>130.IBViewBoundsToFrameTransform</string>
 					<string>134.IBPluginDependency</string>
 					<string>134.IBViewBoundsToFrameTransform</string>
 					<string>135.IBPluginDependency</string>
@@ -408,6 +409,9 @@
 						<bytes key="NSTransformStruct">P4AAAL+AAABBoAAAwpwAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAwmwAAA</bytes>
+					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AULAAABA4AAAA</bytes>
@@ -716,8 +720,8 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>bg_cart_prd_box.png</string>
 				<string>bg_cb_a.png</string>
-				<string>bg_dot_line.png</string>
 				<string>ico_list_arrow_off.png</string>
 				<string>ico_list_arrow_on.png</string>
 				<string>ico_new.png</string>
@@ -725,8 +729,8 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{273, 86}</string>
 				<string>{100, 85}</string>
-				<string>{280, 2}</string>
 				<string>{320, 86}</string>
 				<string>{320, 86}</string>
 				<string>{45, 40}</string>

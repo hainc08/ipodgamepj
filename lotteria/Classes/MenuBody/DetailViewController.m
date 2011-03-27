@@ -10,6 +10,7 @@
 	[super viewDidLoad];
 	[contentScrollView setContentSize:CGSizeMake(320, 380)];
 	count = 1;
+	singleOrigin = [singleButton center];
 
 	[self showProduct:productId];
 }
@@ -32,10 +33,12 @@
 		([[data category] compare:@"S10"] == NSOrderedSame))
 	{
 		[setButton setAlpha:1];
+		[singleButton setCenter:singleOrigin];
 	}
 	else
 	{
 		[setButton setAlpha:0];
+		[singleButton setCenter:[setButton center]];
 	}
 
 	if ([[data category] compare:@"S10"] == NSOrderedSame)
