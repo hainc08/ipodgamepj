@@ -8,6 +8,7 @@
 @synthesize coordinate;
 
 @synthesize idx;
+@synthesize info;
 
 -(void) dealloc
 {

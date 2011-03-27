@@ -107,7 +107,7 @@
 			{
 				StoreInfo *storeaddr  = [[[StoreInfo alloc] init] retain];
 				[storeaddr setStoreid:[[t_item getChild:@"BRANCH_ID"] getValue]];
-				[storeaddr setStorename:[[t_item getChild:@"BRANCH_NM"] getValue]];
+				[storeaddr setStorename:[[DataManager getInstance] smartBranchName:[[t_item getChild:@"BRANCH_NM"] getValue]]];
 				[storeaddr setStorephone:[[t_item getChild:@"BRANCH_TEL1"] getValue]];
 			
 				[storeaddr setSi:[[t_item getChild:@"SI"] getValue]];

@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "PlaceMark.h"
 #import "UIViewControllerTemplate.h"	
 
 @class HTTPRequest;
@@ -24,6 +25,8 @@
 	NSMutableArray *Annotations;
 	
 	bool infoReceive;
+	
+	PlaceMark *myAnote;
 }
 
 @property (nonatomic, retain) MKMapView *mapView;
