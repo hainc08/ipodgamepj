@@ -20,4 +20,11 @@
 #define SERVERURL	@"http://homeservice.lotteria.co.kr/mobile"
 #define SERVERURLWS	@"http://homeservice.lotteria.co.kr/ws/mobile"
 
+/* 
+ *  로그인에서 사용됨 
+ */
+
+#define SERVERURL_MEMBER	@"http://member.lottetown.com/door/sso/authUser.jsp"
+#define SERVERURL_AUTH		@"http://homeservice.lotteria.co.kr/Auth"
+
 //#import "NavigatorManager.h"
