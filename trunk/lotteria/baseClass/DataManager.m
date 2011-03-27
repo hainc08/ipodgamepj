@@ -238,6 +238,24 @@ static DataManager *DataManagerInst;
 	}
 }
 
+- (bool)checkSession:(XmlParser*)parser
+{
+	if (isLoginNow == false) return false;
+	
+	//여기서 일단 로그인이 정상적인지를 체크한다...
+	Element* root = [parser getRoot:@"RESULT_CODE"];
+	if (root == nil) return true;
+
+	if ([[root getValue] compare:@"L"] == NSOrderedSame)
+	{
+		//세션이 정상적이지 않다.
+		isLoginNow = false;
+		return false;
+	}
+	
+	return true;
+}
+
 //-------------------장바구니 처리---------------------
 - (void)addCartItem:(CartItem*)item
 {

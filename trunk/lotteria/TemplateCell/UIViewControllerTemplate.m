@@ -52,6 +52,7 @@
 
 	[[ViewManager getInstance] setNaviImgIdx:naviImgIdx];
 	[navi.navigationBar setNeedsDisplay];
+	lastMsg = nil;
 }
 
 - (void)back
@@ -67,6 +68,8 @@
 												   delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
 	[alert show];
 	[alert release];
+	
+	lastMsg = message;
 }
 - (void)ShowOKCancleAlert:(NSString *)title msg:(NSString *)message
 {
@@ -74,13 +77,29 @@
 												   delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
 	[alert show];
 	[alert release];
+
+	lastMsg = message;
 }
 
 #pragma mark -
 #pragma mark AlertView
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	// 필요한 엑션이 있으면 넣자 ..
+	if (lastMsg == LOGIN_SESSION_FAIL_MSG)
+		[[self navigationController]  popToRootViewControllerAnimated:true];
+}
+
+- (bool)checkSession:(XmlParser*)parser
+{
+	if ([[DataManager getInstance] checkSession:parser] == false)
+	{
+		//도중에 세션이 날아가서 끊겼다.
+		//맨처음으로 돌아가자...
+		[self ShowOKAlert:ERROR_TITLE msg:LOGIN_SESSION_FAIL_MSG];
+		return;
+	}
+	
+	return true;
 }
 
 - (void)viewDidUnload {
@@ -104,29 +123,32 @@
 	{
 		UIImage *buttonImage = [UIImage imageNamed:@"btn_box_close_on.png"];
 		
-		backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-		[backButton setImage:buttonImage forState:UIControlStateNormal];
+		closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+		[closeButton setImage:buttonImage forState:UIControlStateNormal];
 		
-		backButton.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
+		closeButton.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
 		
-		[backButton addTarget:self action:@selector(viewClose) forControlEvents:UIControlEventTouchUpInside];
+		[closeButton addTarget:self action:@selector(viewClose) forControlEvents:UIControlEventTouchUpInside];
 		
-		UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+		UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:closeButton];
 		self.navigationItem.rightBarButtonItem = customBarItem;
 		[customBarItem release];
 	}
 	else
 	self.navigationItem.leftBarButtonItem = nil;
 
-	[navi.view setCenter:CGPointMake(160, 480 + 206)];
-	
-	[UIView beginAnimations:@"helpAni" context:NULL];
-	[UIView setAnimationDuration:0.3];
-	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-	
-	[navi.view setCenter:CGPointMake(160, 220)];
-
-	[UIView commitAnimations];
+	if ([[self.navigationController viewControllers] count] == 1)
+	{
+		[navi.view setCenter:CGPointMake(160, 480 + 206)];
+		
+		[UIView beginAnimations:@"helpAni" context:NULL];
+		[UIView setAnimationDuration:0.3];
+		[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+		
+		[navi.view setCenter:CGPointMake(160, 220)];
+		
+		[UIView commitAnimations];
+	}
 }
 
 - (void)viewClose
@@ -134,7 +156,7 @@
 	[[ViewManager getInstance] closePopUp];
 }
 
-- (void)back
+- (void)closePopUp
 {
 	[UIView beginAnimations:@"helpAni" context:NULL];
 	[UIView setAnimationDuration:0.3];

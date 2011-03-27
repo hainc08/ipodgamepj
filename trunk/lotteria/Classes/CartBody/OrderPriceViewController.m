@@ -249,6 +249,7 @@
 		
 		XmlParser* xmlParser = [XmlParser alloc];
 		[xmlParser parserString:result];
+		if ([self checkSession:xmlParser] == false) return;
 		Element* root = [xmlParser getRoot:@"RESULT_CODE"];
 	
 		if(![[root getValue] compare:@"Y"])

@@ -154,6 +154,7 @@
 		if (root == nil || [[[root getChild:@"RESULT_CODE"] getValue] compare:@"Y"] != NSOrderedSame )
 		{
 			[self ShowOKAlert:ERROR_TITLE msg:LOGIN_FAIL_MSG];
+			return;
 		}
 		else
 		{

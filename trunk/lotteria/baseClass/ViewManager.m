@@ -79,7 +79,7 @@ static ViewManager *ViewManagerInst;
 
 - (void)closePopUp
 {
-	[[(NaviViewController*)popUpView body] back];
+	[[(UIViewControllerDownTemplate*)popUpView body] closePopUp];
 	[helpButton setAlpha:1];
 	if (popOwner != nil) [popOwner refresh];
 }

@@ -16,6 +16,8 @@
 
 
 - (void)viewDidLoad {
+	closetype = true;
+
     [super viewDidLoad];
 	self.navigationItem.title = TitleName;
 	self.view.backgroundColor = 

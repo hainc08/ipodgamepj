@@ -1,4 +1,5 @@
 #import <MapKit/MapKit.h>
+#import "XmlParser.h"
 
 typedef enum _MOVEMENU {
 	MYPAGEMOVE,
@@ -237,6 +238,8 @@ typedef enum _Storetype
 - (void)reset;
 
 - (void)LoginSave;
+- (bool)checkSession:(XmlParser*)parser;
+
 //-------------------장바구니 처리---------------------
 - (void)addCartItem:(CartItem*)item;
 - (void)removeCartItem:(CartItem*)item;

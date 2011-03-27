@@ -16,6 +16,8 @@
 	UIButton *backButton;
 	
 	int naviImgIdx;
+	
+	NSString* lastMsg;
 }
 
 @property (nonatomic , retain) UINavigationController *navi;
@@ -27,13 +29,17 @@
 - (void)ShowOKAlert:(NSString *)title msg:(NSString *)message;
 - (void)ShowOKCancleAlert:(NSString *)title msg:(NSString *)message;
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
+- (bool)checkSession:(XmlParser*)parser;
 
 @end
 
 @interface UIViewControllerDownTemplate : UIViewControllerTemplate {
 	bool	closetype;
+	UIButton *closeButton;
 }
 
 @property (assign) bool closetype;
+
+- (void)closePopUp;
 
 @end
