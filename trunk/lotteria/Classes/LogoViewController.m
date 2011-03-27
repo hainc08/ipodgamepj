@@ -17,31 +17,7 @@
 	isNoticeCheck = false;
 	[noticeView setAlpha:0.f];
 	doneStep = 0;
-//	[self GetVersion];
-
-	NSURL *url = [NSURL URLWithString: @"https://member.lottetown.com/door/sso/authUser.jsp"];
-	NSString *body = [NSString stringWithFormat: @"sid=%@&loginid=%@&password=%@&returnurl=%@",
-					  @"RIA",
-					  @"SEYOGO",
-					  @"1q2w3e",
-					  @"http://homeservice.lotteria.com/Auth/MBlogin_result.asp"];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url];
-    [request setHTTPMethod: @"POST"];
-    [request setHTTPBody: [body dataUsingEncoding: NSUTF8StringEncoding]];
-	[webView loadRequest: request];
-	[webView setDelegate: self];
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-	httpRequest = [[HTTPRequest alloc] init];
-	// POST로 전송할 데이터 설정
-	
-	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
-	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
-	
-	// 페이지 호출
-	[httpRequest requestUrlFull:@"http://homeservice.lotteria.com/Auth/MBlogin_result.asp" bodyObject:nil bodyArray:nil];
+	[self GetVersion];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
