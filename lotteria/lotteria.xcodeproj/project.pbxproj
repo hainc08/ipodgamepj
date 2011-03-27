@@ -550,13 +550,13 @@
 		849F0B67132D2BD30048C2AA /* IconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849F0B5D132D2BD30048C2AA /* IconButton.xib */; };
 		849F0B68132D2BD30048C2AA /* MenuBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849F0B5E132D2BD30048C2AA /* MenuBodyView.xib */; };
 		849F0B69132D2BD30048C2AA /* MenuBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 849F0B60132D2BD30048C2AA /* MenuBodyViewController.m */; };
+		84A0AF0F133FC8AE00FAE61D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A0AEE2133FC5B900FAE61D /* Default.png */; };
 		84A59ED11326BAD300FC0F95 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A59ED01326BAD300FC0F95 /* QuartzCore.framework */; };
 		84AA542513115FD5007CE392 /* CartBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AA542213115FD5007CE392 /* CartBodyView.xib */; };
 		84AA542613115FD5007CE392 /* CartBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA542413115FD5007CE392 /* CartBodyViewController.m */; };
 		84AA543B1311734E007CE392 /* CartListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AA54381311734E007CE392 /* CartListView.xib */; };
 		84AA543C1311734E007CE392 /* CartListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA543A1311734E007CE392 /* CartListViewController.m */; };
 		84AA544D13118208007CE392 /* CartCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AA544A13118208007CE392 /* CartCellView.xib */; };
-		84AE31C2133A6E8000F849B2 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 84AE31C1133A6E8000F849B2 /* default.png */; };
 		84B4A363130FFF2800A7A99B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A362130FFF2800A7A99B /* MainViewController.m */; };
 		84B4A42A1310089000A7A99B /* MypageBodyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B4A4271310089000A7A99B /* MypageBodyView.xib */; };
 		84B4A42B1310089000A7A99B /* MypageBodyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B4A4291310089000A7A99B /* MypageBodyViewController.m */; };
@@ -1157,6 +1157,7 @@
 		849F0B5E132D2BD30048C2AA /* MenuBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuBodyView.xib; sourceTree = "<group>"; };
 		849F0B5F132D2BD30048C2AA /* MenuBodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuBodyViewController.h; sourceTree = "<group>"; };
 		849F0B60132D2BD30048C2AA /* MenuBodyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuBodyViewController.m; sourceTree = "<group>"; };
+		84A0AEE2133FC5B900FAE61D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		84A59ED01326BAD300FC0F95 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		84AA542213115FD5007CE392 /* CartBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartBodyView.xib; sourceTree = "<group>"; };
 		84AA542313115FD5007CE392 /* CartBodyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartBodyViewController.h; sourceTree = "<group>"; };
@@ -1165,7 +1166,6 @@
 		84AA54391311734E007CE392 /* CartListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartListViewController.h; sourceTree = "<group>"; };
 		84AA543A1311734E007CE392 /* CartListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartListViewController.m; sourceTree = "<group>"; };
 		84AA544A13118208007CE392 /* CartCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartCellView.xib; sourceTree = "<group>"; };
-		84AE31C1133A6E8000F849B2 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
 		84B4A361130FFF2800A7A99B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Classes/MainViewController.h; sourceTree = "<group>"; };
 		84B4A362130FFF2800A7A99B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Classes/MainViewController.m; sourceTree = "<group>"; };
 		84B4A4271310089000A7A99B /* MypageBodyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MypageBodyView.xib; sourceTree = "<group>"; };
@@ -1267,7 +1267,7 @@
 				8D1107310486CEB800E47090 /* lotteria-Info.plist */,
 				8421656113234C8200F9A5F3 /* Icon.png */,
 				8421656213234C8200F9A5F3 /* Icon@2x.png */,
-				84AE31C1133A6E8000F849B2 /* default.png */,
+				84A0AEE2133FC5B900FAE61D /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -2049,6 +2049,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A0AF0F133FC8AE00FAE61D /* Default.png in Resources */,
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
 				84B4A42A1310089000A7A99B /* MypageBodyView.xib in Resources */,
 				84B4A430131008C100A7A99B /* MapBodyView.xib in Resources */,
@@ -2553,7 +2554,6 @@
 				845D7DE7133A3A3D00698700 /* st_tb_l.png in Resources */,
 				845D7DE8133A3A3D00698700 /* st_tb_n.png in Resources */,
 				845D7DE9133A3A3D00698700 /* st_tb_s.png in Resources */,
-				84AE31C2133A6E8000F849B2 /* default.png in Resources */,
 				84361D96133CF79700500E91 /* icon_pin_home.png in Resources */,
 				843464EB133DC33400A16B10 /* donedown.png in Resources */,
 				843464EC133DC33400A16B10 /* doneup.png in Resources */,
