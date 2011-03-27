@@ -17,7 +17,7 @@
 
 	[detailBody.view setFrame:CGRectMake(0, 0, 320, 412)];
 }
- 
+
 - (void)setData:(ProductData*)data
 {
 	product = data;

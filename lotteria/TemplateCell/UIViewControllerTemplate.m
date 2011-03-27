@@ -96,7 +96,7 @@
 		//도중에 세션이 날아가서 끊겼다.
 		//맨처음으로 돌아가자...
 		[self ShowOKAlert:ERROR_TITLE msg:LOGIN_SESSION_FAIL_MSG];
-		return;
+		return false;
 	}
 	
 	return true;
