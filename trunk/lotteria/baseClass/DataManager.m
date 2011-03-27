@@ -243,10 +243,13 @@ static DataManager *DataManagerInst;
 	if (isLoginNow == false) return false;
 	
 	//여기서 일단 로그인이 정상적인지를 체크한다...
-	Element* root = [parser getRoot:@"RESULT_CODE"];
+	Element* root = [parser getRoot:@"NewDataSet"];
 	if (root == nil) return true;
+	
+	Element* result = [root getChild:@"RESULT_CODE"];
+	if (result == nil) return true;
 
-	if ([[root getValue] compare:@"L"] == NSOrderedSame)
+	if ([[result getValue] compare:@"L"] == NSOrderedSame)
 	{
 		//세션이 정상적이지 않다.
 		isLoginNow = false;
