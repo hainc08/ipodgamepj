@@ -79,9 +79,13 @@ static ViewManager *ViewManagerInst;
 
 - (void)closePopUp
 {
-	[[(UIViewControllerDownTemplate*)popUpView body] closePopUp];
+	if (popUpView != nil) [[(NaviViewController*)popUpView body] closePopUp];
 	[helpButton setAlpha:1];
-	if (popOwner != nil) [popOwner refresh];
+	if (popOwner != nil)
+	{
+		[popOwner refresh];
+		popOwner = nil;
+	}
 }
 
 #pragma mark WaitViewController
