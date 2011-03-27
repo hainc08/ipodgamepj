@@ -36,6 +36,7 @@
 	IBOutlet UIButton* closeButton;
 
 	bool fullType;
+	CGPoint singleOrigin;
 }
 
 @property (readwrite) bool fullType;
