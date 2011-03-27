@@ -81,8 +81,10 @@
  *   로그인 정보가 정확히 입력 되지 않았을때.
  */ 
 
-#define LOGIN_INPUT_ERROR_MSG		@"ID 와 Password를 입력해주세요."
-#define LOGIN_FAIL_MSG				@"로그인이 실패하였습니다.\n ID와 Password를 확인해주세요."
+#define LOGIN_INPUT_ERROR_MSG		@"아이디와 비밀번호를 입력해주세요."
+#define LOGIN_ID_INPUT_ERROR_MSG	@"아이디는 4글자에서 15글자 사이입니다."
+#define LOGIN_PASS_INPUT_ERROR_MSG	@"비밀번호는 6글자에서 15글자 사이입니다."
+#define LOGIN_FAIL_MSG				@"로그인이 실패하였습니다.\n 아이디와 비밀번호를 확인해주세요."
 #define LOGIN_SESSION_FAIL_MSG		@"로그인한지 오래되어 접속이 끊어졌습니다."
 
 /*

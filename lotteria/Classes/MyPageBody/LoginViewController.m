@@ -88,11 +88,22 @@
 
 - (IBAction)LoginButton 
 {
-
 	// Login 하자..
-	if([ID.text length] >  15 || [ID.text length] < 4 || 	[Password.text length] >  15  || [Password.text length] < 6 )
+
+	if (( [ID.text length] == 0 ) || ( [Password.text length] == 0 ))
 	{
 		[self ShowOKAlert:ALERT_TITLE msg:LOGIN_INPUT_ERROR_MSG];
+	}
+
+	if (( [ID.text length] >  15 ) || ( [ID.text length] < 4 ))
+	{
+		[self ShowOKAlert:ALERT_TITLE msg:LOGIN_ID_INPUT_ERROR_MSG];
+		return;
+	}
+
+	if (( [Password.text length] > 15 ) || ( [Password.text length] < 6 ))
+	{
+		[self ShowOKAlert:ALERT_TITLE msg:LOGIN_PASS_INPUT_ERROR_MSG];
 		return;
 	}
 	
