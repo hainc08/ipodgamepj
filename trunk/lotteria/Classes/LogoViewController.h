@@ -1,5 +1,5 @@
 @class HTTPRequest;
-@interface LogoViewController : UIViewController {
+@interface LogoViewController : UIViewController <UIWebViewDelegate> {
 	IBOutlet UIButton* closeButton;
 	IBOutlet UIImageView* noticeImg;
 	IBOutlet UIView* noticeView;
@@ -10,6 +10,8 @@
 	
 	HTTPRequest *httpRequest;
 	
+	IBOutlet UIWebView* webView;
+
 	int doneStep;
 }
 
