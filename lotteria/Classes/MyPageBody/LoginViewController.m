@@ -93,6 +93,7 @@
 	if (( [ID.text length] == 0 ) || ( [Password.text length] == 0 ))
 	{
 		[self ShowOKAlert:ALERT_TITLE msg:LOGIN_INPUT_ERROR_MSG];
+		return;
 	}
 
 	if (( [ID.text length] >  15 ) || ( [ID.text length] < 4 ))
@@ -157,7 +158,7 @@
 	[[ViewManager getInstance] waitview:self.view isBlock:NO];
 	[ID resignFirstResponder];
 	[Password resignFirstResponder];
-	ㄴ 
+
 	if(![result compare:@"error"])
 	{
 		[self ShowOKAlert:ERROR_TITLE msg:HTTP_ERROR_MSG];	
