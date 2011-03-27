@@ -114,15 +114,17 @@
 	
 	// POST로 전송할 데이터 설정
 	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								ID.text,@"cust_id",
-								Password.text, @"cust_pw",
+								@"RIA" , @"sid" ,
+								ID.text,@"loginid",
+								Password.text, @"password",
+								[NSString stringWithFormat:@"%@/MBlogin_result.asp?cust_flag=%d", SERVERURL_AUTH, 3], @"returnurl",
 								nil];
 	
 	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
 	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
 	
 	// 페이지 호출
-	[httpRequest requestUrl:@"/MbCust.asmx/ws_isLogin" bodyObject:bodyObject bodyArray:nil];
+	[httpRequest requestUrlFull:SERVERURL_MEMBER bodyObject:bodyObject bodyArray:nil];
 	[[ViewManager getInstance] waitview:self.view isBlock:YES];
 }
 #pragma mark  -
@@ -152,6 +154,10 @@
 	// 로그인 성공하면 이뷰는 사라진다. 
 	// xml에서 로그인처리 
 	
+	[[ViewManager getInstance] waitview:self.view isBlock:NO];
+	[ID resignFirstResponder];
+	[Password resignFirstResponder];
+	ㄴ 
 	if(![result compare:@"error"])
 	{
 		[self ShowOKAlert:ERROR_TITLE msg:HTTP_ERROR_MSG];	
@@ -194,10 +200,8 @@
 	}
 	[httpRequest release];
 	httpRequest = nil;
-	
-	[[ViewManager getInstance] waitview:self.view isBlock:NO];
-	[ID resignFirstResponder];
-	[Password resignFirstResponder];
+
+
 	[[ViewManager getInstance] closePopUp];
 
 }

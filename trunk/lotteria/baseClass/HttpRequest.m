@@ -67,6 +67,62 @@
 	return NO;
 }
 
+- (BOOL)requestUrlFull:(NSString *)url bodyObject:(NSDictionary *)bodyObject  bodyArray:(NSMutableArray *)bodyarr
+{
+	
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+	
+	// URL Request 객체 생성
+	request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", url]]
+									  cachePolicy:NSURLRequestUseProtocolCachePolicy
+								  timeoutInterval:5.0f];
+	
+	// 통신방식 정의 (POST, GET)
+	[request setHTTPMethod:@"POST"];
+	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	
+	
+	// bodyObject의 객체가 존재할 경우 QueryString형태로 변환
+	if(bodyObject)
+	{
+		// 임시 변수 선언
+		NSMutableArray *parts = [NSMutableArray array];
+		NSString *part;
+		id key;
+		id value;
+		
+		// 값을 하나하나 변환
+		for(key in bodyObject)
+		{
+			value = [bodyObject objectForKey:key];
+			part = [NSString stringWithFormat:@"%@=%@", [key stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+					[value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+			[parts addObject:part];
+		}
+		
+		// 값들을 &로 연결하여 Body에 사용
+		[request setHTTPBody:[[parts componentsJoinedByString:@"&"] dataUsingEncoding:NSUTF8StringEncoding]];
+	}
+	else {
+		// 값들을 &로 연결하여 Body에 사용
+		[request setHTTPBody:[[bodyarr componentsJoinedByString:@"&"] dataUsingEncoding:NSUTF8StringEncoding]];
+	}
+	
+	// Request를 사용하여 실제 연결을 시도하는 NSURLConnection 인스턴스 생성
+	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+	
+	// 정상적으로 연결이 되었다면
+	if(connection)
+	{
+		// 데이터를 전송받을 멤버 변수 초기화
+		receivedData = [[NSMutableData alloc] init];
+		return YES;
+	}
+	
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+	return NO;
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)aResponse
 {
 	// 데이터를 전송받기 전에 호출되는 메서드, 우선 Response의 헤더만을 먼저 받아 온다.
