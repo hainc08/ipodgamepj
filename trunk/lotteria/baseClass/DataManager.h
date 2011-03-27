@@ -267,4 +267,7 @@ typedef enum _Storetype
 - (void)searchProduct:(NSString*)str;
 - (NSString*)getCategoryName:(NSString*)cat;
 - (NSString*)getPhoneStr:(NSString*)PhoneNumber;
+
+//-------------------매장이름 잘못되서 너어온 경우 리터칭---------------------
+- (NSString*)smartBranchName:(NSString*)name;
 @end

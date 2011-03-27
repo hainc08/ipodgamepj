@@ -147,7 +147,7 @@
 			[Customer setBuilding:[[t_item getChild:@"BUILDING"] getValue]];
 			[Customer setAddrdesc:[[t_item getChild:@"ADDR_APPEND"] getValue]];
 			[Customer setBranchid:[[t_item getChild:@"BRANCH_ID"] getValue]];
-			[Customer setBranchname:[[t_item getChild:@"BRANCH_NM"] getValue]];
+			[Customer setBranchname:[[DataManager getInstance] smartBranchName:[[t_item getChild:@"BRANCH_NM"] getValue]]];
 			[Customer setGis_x:[[t_item getChild:@"POINT_X"] getValue]];
 			[Customer setGis_y:[[t_item getChild:@"POINT_Y"] getValue]];
 			[CustomerArr  addObject:Customer];
@@ -316,7 +316,7 @@
 					[Customer setBuilding:[[t_item getChild:@"BUILDING"] getValue]];
 					[Customer setAddrdesc:[[t_item getChild:@"ADDR_APPEND"] getValue]];
 					[Customer setBranchid:[[t_item getChild:@"BRANCH_ID"] getValue]];
-					[Customer setBranchname:[[t_item getChild:@"BRANCH_NM"] getValue]];
+					[Customer setBranchname:[[DataManager getInstance] smartBranchName:[[t_item getChild:@"BRANCH_NM"] getValue]]];
 					[Customer setGis_x:[[t_item getChild:@"GIS_X"] getValue]];
 					[Customer setGis_y:[[t_item getChild:@"GIS_Y"] getValue]];
 					[Customer setTerminal_id:[[t_item getChild:@"TERMINAL_ID"] getValue]];

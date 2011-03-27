@@ -1,6 +1,6 @@
 #import "MapBodyViewController.h"
 #import "MapSearchViewController.h"
-#import "PlaceMark.h"
+#import "MapSearchDetailViewController.h"
 #import "HttpRequest.h"
 #import "XmlParser.h"
 
@@ -41,6 +41,8 @@
 	Annotations = [[NSMutableArray alloc] initWithObjects:0];
 	AddressArr =  [[NSMutableArray alloc] initWithObjects:0];
 	infoReceive = false;
+	myAnote = nil;
+
 	[self selectCategory:0];
 	[self setupMap];
 }
@@ -102,23 +104,30 @@
 		[xmlParser parserString:result];
 		Element* root = [xmlParser getRoot:@"NewDataSet"];
 	
-	
 		[AddressArr removeAllObjects];
 	
-		if(root == nil) {
+		if(root == nil)
+		{
 			NSString *Value  = [[xmlParser getRoot:@"RESULT_CODE"] getValue];
 			if( [Value compare:@"N"] == NSOrderedSame || [Value compare:@"C"] == NSOrderedSame)
-			[self ShowOKAlert:ERROR_TITLE msg:MAP_RESULT_ERROR_MSG];	
+			{
+				[self ShowOKAlert:ERROR_TITLE msg:MAP_RESULT_ERROR_MSG];
+				[xmlParser release];
+
+				[httpRequest release];
+				httpRequest = nil;
+				infoReceive = true;
+
+				return;
+			}
 		}
 		else {
-	
-		
 			for(Element* t_item = [root getFirstChild] ; nil != t_item   ; t_item = [root getNextChild] )
 			{
 			
 				StoreInfo *storeaddr  = [[[StoreInfo alloc] init] retain];
 				[storeaddr setStoreid:[[t_item getChild:@"BRANCH_ID"] getValue]];
-				[storeaddr setStorename:[[t_item getChild:@"BRANCH_NM"] getValue]];
+				[storeaddr setStorename:[[DataManager getInstance] smartBranchName:[[t_item getChild:@"BRANCH_NM"] getValue]]];
 				[storeaddr setStorephone:[[t_item getChild:@"BRANCH_TEL1"] getValue]];
 			
 				[storeaddr setSi:[[t_item getChild:@"SI"] getValue]];
@@ -285,7 +294,7 @@
 	anote.idx = shopIdx;
 	anote.shopType = Info.store_flag	;
 	anote.coordinate = Info.coordinate ;
-		
+	anote.info = Info;
 		
 	anote.title = [NSString	 stringWithFormat:@"롯데리아 %@" , Info.storename] ;
 	
@@ -311,17 +320,23 @@
 	region.center=newLocation.coordinate;
 	
 	MKCoordinateSpan span;
-	span.latitudeDelta=0.045f;
-	span.longitudeDelta=0.045f;
+	span.latitudeDelta=0.018f;
+	span.longitudeDelta=0.018f;
 	region.span=span;
 
 	[mapView setRegion:region animated:FALSE];
 
 	{
-		PlaceMark *anote = [[PlaceMark alloc] init];
-		anote.coordinate = newLocation.coordinate ;
-		anote.title = @"내위치";
-		[mapView addAnnotation:anote];
+		if (myAnote != nil)
+		{
+			[mapView removeAnnotation:myAnote];
+			[myAnote release];
+		}
+		
+		myAnote = [[PlaceMark alloc] init];
+		myAnote.coordinate = newLocation.coordinate ;
+		myAnote.title = @"내위치";
+		[mapView addAnnotation:myAnote];
 	}
 
 	[self GetStoreInfo:[NSString stringWithFormat:@"%f", region.center.latitude]
@@ -338,6 +353,15 @@
 						  otherButtonTitles:nil];
 	[alert show];
 	[alert release];
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+//- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+	MapSearchDetailViewController *SearchControl = [[MapSearchDetailViewController alloc] initWithNibName:@"MapSearchDetailView" bundle:nil];
+	SearchControl.Info = [(PlaceMark*)[view annotation] info];
+	[self.navigationController pushViewController:SearchControl animated:YES];
+	[SearchControl release];
 }
 
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation{

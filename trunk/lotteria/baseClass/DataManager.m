@@ -735,4 +735,15 @@ static DataManager *DataManagerInst;
 	
 	return p_tmp;
 }
+
+- (NSString*)smartBranchName:(NSString*)name
+{
+	if ([name hasPrefix:@"리아 "])
+	{
+		return [NSString stringWithString:[name substringFromIndex:3]];
+	}
+	
+	return name;
+}
+
 @end
