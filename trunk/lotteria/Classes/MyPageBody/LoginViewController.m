@@ -26,6 +26,7 @@
 	ID.delegate = self;
 	Password.delegate = self;
 	self.navigationItem.title = @"로그인";
+	processNow = false;
 	[self reset];
 
 }
@@ -88,6 +89,9 @@
 
 - (IBAction)LoginButton 
 {
+	//프로세싱중이면 뮈...
+	if (processNow) return;
+	
 	// Login 하자..
 
 	if (( [ID.text length] == 0 ) || ( [Password.text length] == 0 ))
@@ -107,6 +111,8 @@
 		[self ShowOKAlert:ALERT_TITLE msg:LOGIN_PASS_INPUT_ERROR_MSG];
 		return;
 	}
+
+	processNow = true;
 
 	NSURL *url = [NSURL URLWithString: @"http://homeservice.lotteria.com/Auth/MBlogin.asp?Rstate=1"];
 	NSString *body = [NSString stringWithFormat: @"sid=RIA&cust_id=%@&cust_pwd=%@", ID.text, Password.text];
@@ -128,9 +134,11 @@
 
 		// 통신 완료 후 호출할 델리게이트 셀렉터 설정
 		[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
-		
+		NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
+									ID.text ,@"cust_id",
+									nil];
 		// 페이지 호출
-		[httpRequest requestUrlFull:SERVERURL_MEMBER bodyObject:nil bodyArray:nil];
+		[httpRequest requestUrlFull:SERVERURL_MEMBER bodyObject:bodyObject bodyArray:nil];
 		[[ViewManager getInstance] waitview:self.view isBlock:YES];		
 	}
 }
@@ -179,6 +187,9 @@
 		if (root == nil || [[[root getChild:@"RESULT_CODE"] getValue] compare:@"Y"] != NSOrderedSame )
 		{
 			[self ShowOKAlert:ERROR_TITLE msg:LOGIN_FAIL_MSG];
+			[httpRequest release];
+			httpRequest = nil;
+			processNow = false;
 			return;
 		}
 		else
@@ -208,7 +219,7 @@
 	}
 	[httpRequest release];
 	httpRequest = nil;
-
+	processNow = false;
 
 	[[ViewManager getInstance] closePopUp];
 
