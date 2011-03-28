@@ -107,27 +107,36 @@
 		[self ShowOKAlert:ALERT_TITLE msg:LOGIN_PASS_INPUT_ERROR_MSG];
 		return;
 	}
-	
-	httpRequest = [[HTTPRequest alloc] init];
-	
-	// HTTP Request 인스턴스 생성
 
-	
-	// POST로 전송할 데이터 설정
-	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-								@"RIA" , @"sid" ,
-								ID.text,@"loginid",
-								Password.text, @"password",
-								[NSString stringWithFormat:@"%@/MBlogin_result.asp?cust_flag=%d", SERVERURL_AUTH, 3], @"returnurl",
-								nil];
-	
-	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
-	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
-	
-	// 페이지 호출
-	[httpRequest requestUrlFull:SERVERURL_MEMBER bodyObject:bodyObject bodyArray:nil];
-	[[ViewManager getInstance] waitview:self.view isBlock:YES];
+	NSURL *url = [NSURL URLWithString: @"http://homeservice.lotteria.com/Auth/MBlogin_test1.asp?Rstate=1"];
+	NSString *body = [NSString stringWithFormat: @"sid=RIA&cust_id=%@&cust_pwd=%@", ID.text, Password.text];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url];
+    [request setHTTPMethod: @"POST"];
+    [request setHTTPBody: [body dataUsingEncoding: NSUTF8StringEncoding]];
+	[webView loadRequest: request];
+	[webView setDelegate: self];
+	finishCount = 0;
 }
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+	++finishCount;
+	if (finishCount == 4)
+	{
+		httpRequest = [[HTTPRequest alloc] init];
+		
+		// HTTP Request 인스턴스 생성
+		
+
+		// 통신 완료 후 호출할 델리게이트 셀렉터 설정
+		[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
+		
+		// 페이지 호출
+		[httpRequest requestUrlFull:SERVERURL_MEMBER bodyObject:nil bodyArray:nil];
+		[[ViewManager getInstance] waitview:self.view isBlock:YES];		
+	}
+}
+
 #pragma mark  -
 #pragma mark TextField
 
