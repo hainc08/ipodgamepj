@@ -24,7 +24,8 @@
  *  로그인에서 사용됨 
  */
 
-#define SERVERURL_MEMBER	@"http://member.lottetown.com/door/sso/authUser.jsp"
+//#define SERVERURL_MEMBER	@"http://member.lottetown.com/door/sso/authUser.jsp"
+#define SERVERURL_MEMBER	@"http://homeservice.lotteria.com/Auth/MBlogin_result.asp"
 #define SERVERURL_AUTH		@"http://homeservice.lotteria.co.kr/Auth"
 
 //#import "NavigatorManager.h"

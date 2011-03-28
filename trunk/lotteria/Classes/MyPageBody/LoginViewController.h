@@ -13,7 +13,7 @@ enum TYPE {
 	CART,
 };
 @class HTTPRequest;
-@interface LoginViewController : UIViewControllerDownTemplate <UITextFieldDelegate> {
+@interface LoginViewController : UIViewControllerDownTemplate <UITextFieldDelegate, UIWebViewDelegate> {
 
 	IBOutlet UITextField	*ID;
 	IBOutlet UITextField	*Password;
@@ -23,6 +23,9 @@ enum TYPE {
 	IBOutlet UIButton		*Login;
 	int		LoginNextType;
 	HTTPRequest *httpRequest;
+
+	IBOutlet UIWebView* webView;
+	int finishCount;
 }
 @property (readwrite) int LoginNextType;
 
