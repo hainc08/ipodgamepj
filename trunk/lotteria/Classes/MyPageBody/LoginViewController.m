@@ -108,7 +108,7 @@
 		return;
 	}
 
-	NSURL *url = [NSURL URLWithString: @"http://homeservice.lotteria.com/Auth/MBlogin_test1.asp?Rstate=1"];
+	NSURL *url = [NSURL URLWithString: @"http://homeservice.lotteria.com/Auth/MBlogin_test3.asp?Rstate=1"];
 	NSString *body = [NSString stringWithFormat: @"sid=RIA&cust_id=%@&cust_pwd=%@", ID.text, Password.text];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url];
     [request setHTTPMethod: @"POST"];
@@ -124,9 +124,7 @@
 	if (finishCount == 4)
 	{
 		httpRequest = [[HTTPRequest alloc] init];
-		
 		// HTTP Request 인스턴스 생성
-		
 
 		// 통신 완료 후 호출할 델리게이트 셀렉터 설정
 		[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
@@ -174,24 +172,52 @@
 	}
 	else {
 
-		XmlParser* xmlParser = [XmlParser alloc];
-		[xmlParser parserString:result];
-		Element* root = [xmlParser getRoot:@"NewDataSet"];
+//		XmlParser* xmlParser = [XmlParser alloc];
+//		[xmlParser parserString:result];
+//		Element* root = [xmlParser getRoot:@"NewDataSet"];
 		
-		if (root == nil || [[[root getChild:@"RESULT_CODE"] getValue] compare:@"Y"] != NSOrderedSame )
+//		if (root == nil || [[[root getChild:@"RESULT_CODE"] getValue] compare:@"Y"] != NSOrderedSame )
+
+		//인코딩변환이 죽어도 안된다...
+		//일단 무식한 방법을 쓰자
+		//뭐 나중엔 어떻게든 되겠지!
+		bool isLoginOK = false;
+		int IDStart, IDLnegth;
+		int PhoneStart, PhoneLength;
+		for (int i=0; i<[result length]; ++i)
+		{
+			NSString* temp = [result substringFromIndex:i];
+			if ([temp hasPrefix:@"<RESULT_CODE>Y</RESULT_CODE>"])
+			{
+				isLoginOK = true;
+			}
+
+			if ([temp hasPrefix:@"<CUST_ID>"]) IDStart = i + 9;
+			if ([temp hasPrefix:@"</CUST_ID>"]) IDLnegth = i - IDStart;
+
+			if ([temp hasPrefix:@"<CUST_PHONE>"]) PhoneStart = i + 12;
+			if ([temp hasPrefix:@"</CUST_PHONE>"]) PhoneLength = i - PhoneStart;
+		}
+		
+		if (isLoginOK == false)
 		{
 			[self ShowOKAlert:ERROR_TITLE msg:LOGIN_FAIL_MSG];
 			return;
 		}
 		else
 		{
-			NSString *Cust_ID =  [[root getChild:@"CUST_ID"] getValue] ;
-			NSString *Cust_PHONE =  [[root getChild:@"CUST_PHONE"] getValue] ;
+//			NSString *Cust_ID =  [[root getChild:@"CUST_ID"] getValue] ;
+//			NSString *Cust_PHONE =  [[root getChild:@"CUST_PHONE"] getValue] ;
+			NSRange range;
+			range.location = IDStart; range.length = IDLnegth;
+			NSString *Cust_ID =  [result substringWithRange:range];
+			range.location = PhoneStart; range.length = PhoneLength;
+			NSString *Cust_PHONE =  [result substringWithRange:range];
 			[[DataManager getInstance] setCust_id:Cust_ID];
 			[[DataManager getInstance] setCust_phone:Cust_PHONE];
 		}
 		
-		[xmlParser release];
+//		[xmlParser release];
 		
 		
 		if([[DataManager getInstance] isLoginSave])
