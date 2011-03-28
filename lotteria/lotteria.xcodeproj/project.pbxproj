@@ -13,6 +13,11 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280E754C0DD40C5E005A515E /* MainWindow.xib */; };
 		288765590DF743DE002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765580DF743DE002DB57D /* CoreGraphics.framework */; };
+		568D68401340D4D500BD9CB2 /* bg_hb_a.png in Resources */ = {isa = PBXBuildFile; fileRef = 568D683B1340D4D500BD9CB2 /* bg_hb_a.png */; };
+		568D68411340D4D500BD9CB2 /* bg_hb_c.png in Resources */ = {isa = PBXBuildFile; fileRef = 568D683C1340D4D500BD9CB2 /* bg_hb_c.png */; };
+		568D68421340D4D500BD9CB2 /* bg_hb_l.png in Resources */ = {isa = PBXBuildFile; fileRef = 568D683D1340D4D500BD9CB2 /* bg_hb_l.png */; };
+		568D68431340D4D500BD9CB2 /* bg_hb_n.png in Resources */ = {isa = PBXBuildFile; fileRef = 568D683E1340D4D500BD9CB2 /* bg_hb_n.png */; };
+		568D68441340D4D500BD9CB2 /* bg_hb_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 568D683F1340D4D500BD9CB2 /* bg_hb_s.png */; };
 		56928BE61312BECB000700A9 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56928BE51312BECB000700A9 /* HttpRequest.m */; };
 		56928BEB1312BEEC000700A9 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56928BE91312BEEC000700A9 /* LoginView.xib */; };
 		56928BEC1312BEEC000700A9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56928BEA1312BEEC000700A9 /* LoginViewController.m */; };
@@ -592,6 +597,11 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* lotteria_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lotteria_Prefix.pch; sourceTree = "<group>"; };
 		5612FF40133CFF17008D3BF7 /* DefineMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefineMessage.h; sourceTree = "<group>"; };
+		568D683B1340D4D500BD9CB2 /* bg_hb_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_hb_a.png; sourceTree = "<group>"; };
+		568D683C1340D4D500BD9CB2 /* bg_hb_c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_hb_c.png; sourceTree = "<group>"; };
+		568D683D1340D4D500BD9CB2 /* bg_hb_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_hb_l.png; sourceTree = "<group>"; };
+		568D683E1340D4D500BD9CB2 /* bg_hb_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_hb_n.png; sourceTree = "<group>"; };
+		568D683F1340D4D500BD9CB2 /* bg_hb_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_hb_s.png; sourceTree = "<group>"; };
 		56928BE41312BECB000700A9 /* HttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
 		56928BE51312BECB000700A9 /* HttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequest.m; sourceTree = "<group>"; };
 		56928BE91312BEEC000700A9 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
@@ -1591,6 +1601,11 @@
 		56D80C2E1318F75B0049314B /* products */ = {
 			isa = PBXGroup;
 			children = (
+				568D683B1340D4D500BD9CB2 /* bg_hb_a.png */,
+				568D683C1340D4D500BD9CB2 /* bg_hb_c.png */,
+				568D683D1340D4D500BD9CB2 /* bg_hb_l.png */,
+				568D683E1340D4D500BD9CB2 /* bg_hb_n.png */,
+				568D683F1340D4D500BD9CB2 /* bg_hb_s.png */,
 				8453CC39133E328700B5EDE0 /* dr_app_a.png */,
 				8453CC3A133E328700B5EDE0 /* dr_app_c.png */,
 				8453CC3B133E328700B5EDE0 /* dr_app_l.png */,
@@ -2577,6 +2592,11 @@
 				8453CC5E133E328700B5EDE0 /* dr_pin_l.png in Resources */,
 				8453CC5F133E328700B5EDE0 /* dr_pin_n.png in Resources */,
 				8453CC60133E328700B5EDE0 /* dr_pin_s.png in Resources */,
+				568D68401340D4D500BD9CB2 /* bg_hb_a.png in Resources */,
+				568D68411340D4D500BD9CB2 /* bg_hb_c.png in Resources */,
+				568D68421340D4D500BD9CB2 /* bg_hb_l.png in Resources */,
+				568D68431340D4D500BD9CB2 /* bg_hb_n.png in Resources */,
+				568D68441340D4D500BD9CB2 /* bg_hb_s.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

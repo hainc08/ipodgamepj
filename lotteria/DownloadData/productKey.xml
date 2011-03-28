@@ -16,10 +16,12 @@
     <product menu_id="LB0012" key="shb"/><!--D10	새우햄버거-->
     <product menu_id="LB0013" key="sb"/><!--D10	오징어버거-->
     <product menu_id="LB0014" key="cb"/><!--D10	치킨버거-->
+    <product menu_id="LB0015" key="hb"/><!--D10	햄버거-->
     <product menu_id="LB0016" key="tb"/><!--D10	데리버거-->
     <product menu_id="LB0017" key="ch"/><!--D10	치즈버거-->
     <product menu_id="LB0021" key="hlb"/><!--D10	한우레이디버거-->
 
+	
     <product menu_id="200266" key="hbc"/><!--S11	한우불고기콤보(신)-->
 
     <product menu_id="200419" key="hsp"/><!--D50	한우연인팩-->

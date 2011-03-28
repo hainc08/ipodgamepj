@@ -121,6 +121,7 @@
     [request setHTTPBody: [body dataUsingEncoding: NSUTF8StringEncoding]];
 	[webView loadRequest: request];
 	[webView setDelegate: self];
+
 	finishCount = 0;
 }
 
@@ -139,7 +140,8 @@
 									nil];
 		// 페이지 호출
 		[httpRequest requestUrlFull:SERVERURL_MEMBER bodyObject:bodyObject bodyArray:nil];
-		[[ViewManager getInstance] waitview:self.view isBlock:YES];		
+		[[ViewManager getInstance] waitview:self.view isBlock:YES];	
+	
 	}
 }
 
@@ -186,6 +188,9 @@
 		
 		if (root == nil || [[[root getChild:@"RESULT_CODE"] getValue] compare:@"Y"] != NSOrderedSame )
 		{
+			[xmlParser release];
+			[httpRequest release];
+			httpRequest = nil;
 			[self ShowOKAlert:ERROR_TITLE msg:LOGIN_FAIL_MSG];
 			[httpRequest release];
 			httpRequest = nil;
