@@ -26,6 +26,8 @@ enum TYPE {
 
 	IBOutlet UIWebView* webView;
 	int finishCount;
+	
+	bool processNow;
 }
 @property (readwrite) int LoginNextType;
 
