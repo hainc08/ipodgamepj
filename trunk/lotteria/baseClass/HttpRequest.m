@@ -128,7 +128,9 @@
 	// 데이터를 전송받기 전에 호출되는 메서드, 우선 Response의 헤더만을 먼저 받아 온다.
 	//[receivedData setLength:0];
 	self.response = aResponse;
+
 }
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {

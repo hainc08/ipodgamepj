@@ -9,7 +9,7 @@
 	bool isNoticeCheck;
 	
 	HTTPRequest *httpRequest;
-	
+
 	int doneStep;
 }
 
