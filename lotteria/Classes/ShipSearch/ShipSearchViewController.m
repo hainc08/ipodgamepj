@@ -39,6 +39,8 @@
 
 
 - (void)dealloc {
+	[webview stopLoading];
+	webview.delegate = nil;
     [super dealloc];
 }
 

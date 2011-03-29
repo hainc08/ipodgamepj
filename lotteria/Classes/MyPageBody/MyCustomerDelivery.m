@@ -42,6 +42,7 @@
 }
 
 - (void)viewDidUnload {
+		[WebView stopLoading];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -49,6 +50,7 @@
 
 
 - (void)dealloc {
+		[WebView stopLoading];
     [super dealloc];
 }
 - (void)viewWillAppear:(BOOL)animated
