@@ -36,6 +36,7 @@
 		[httpRequest release];
 		httpRequest = nil;
     }
+	[webView stopLoading];
 	[ID resignFirstResponder];
 	[Password resignFirstResponder];
 	[super viewDidUnload];
@@ -47,6 +48,7 @@
 		[httpRequest release];
 		httpRequest = nil;
     }
+	[webView stopLoading];
 	[ID resignFirstResponder];
 	[Password resignFirstResponder];
     [super dealloc];
@@ -124,9 +126,19 @@
 
 	finishCount = 0;
 }
-
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+}
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+	[self ShowOKAlert:ALERT_TITLE msg:LOGIN_PASS_INPUT_ERROR_MSG];
+	
+}
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	++finishCount;
 	if (finishCount == 4)
 	{
