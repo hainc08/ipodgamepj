@@ -29,16 +29,16 @@
 	pId[0] = productId = menu_id;
 	ProductData* data = [[DataManager getInstance] getProduct:menu_id];
 	
-	if (([[data category] compare:@"D10"] == NSOrderedSame)||
-		([[data category] compare:@"S10"] == NSOrderedSame))
-	{
-		[setButton setAlpha:1];
-		[singleButton setCenter:singleOrigin];
-	}
-	else
+	if (([[data category] compare:@"S10"] != NSOrderedSame) &&
+		([[DataManager getInstance] getSetId:menu_id] == nil))
 	{
 		[setButton setAlpha:0];
 		[singleButton setCenter:[setButton center]];
+	}
+	else
+	{
+		[setButton setAlpha:1];
+		[singleButton setCenter:singleOrigin];
 	}
 
 	if ([[data category] compare:@"S10"] == NSOrderedSame)
