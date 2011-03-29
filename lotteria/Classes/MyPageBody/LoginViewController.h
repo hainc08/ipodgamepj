@@ -23,6 +23,7 @@ enum TYPE {
 	IBOutlet UIButton		*Login;
 	int		LoginNextType;
 	HTTPRequest *httpRequest;
+	IBOutlet UIActivityIndicatorView* loadingNow;
 
 	IBOutlet UIWebView* webView;
 	int finishCount;

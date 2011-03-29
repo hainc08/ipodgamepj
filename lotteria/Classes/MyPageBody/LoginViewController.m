@@ -69,6 +69,8 @@
 		[ID_Save setAlpha:1];
 		[ID_Save2 setAlpha:0];
 	}
+
+	[loadingNow setAlpha:0];
 }
 
 - (IBAction)IDSaveButton
@@ -123,6 +125,9 @@
     [request setHTTPBody: [body dataUsingEncoding: NSUTF8StringEncoding]];
 	[webView loadRequest: request];
 	[webView setDelegate: self];
+	
+	[loadingNow setAlpha:1];
+	[loadingNow startAnimating];
 
 	finishCount = 0;
 }
@@ -201,13 +206,8 @@
 		if (root == nil || [[[root getChild:@"RESULT_CODE"] getValue] compare:@"Y"] != NSOrderedSame )
 		{
 			[xmlParser release];
-			[httpRequest release];
-			httpRequest = nil;
 			[self ShowOKAlert:ERROR_TITLE msg:LOGIN_FAIL_MSG];
-			[httpRequest release];
-			httpRequest = nil;
-			processNow = false;
-			return;
+			goto LOGINEND;
 		}
 		else
 		{
@@ -234,12 +234,15 @@
 		
 		[[DataManager getInstance] setIsLoginNow:TRUE];
 	}
-	[httpRequest release];
-	httpRequest = nil;
-	processNow = false;
 
 	[[ViewManager getInstance] closePopUp];
 
+LOGINEND:
+	[httpRequest release];
+	httpRequest = nil;
+	processNow = false;
+	[loadingNow setAlpha:0];
+	[loadingNow stopAnimating];
 }
 
 @end
