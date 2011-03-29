@@ -120,8 +120,9 @@
 
 	NSURL *url = [NSURL URLWithString: @"http://homeservice.lotteria.com/Auth/MBlogin.asp?Rstate=1"];
 	NSString *body = [NSString stringWithFormat: @"sid=RIA&cust_id=%@&cust_pwd=%@", ID.text, Password.text];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url];
-    [request setHTTPMethod: @"POST"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+	
+	[request setHTTPMethod: @"POST"];
     [request setHTTPBody: [body dataUsingEncoding: NSUTF8StringEncoding]];
 	[webView loadRequest: request];
 	[webView setDelegate: self];
@@ -207,7 +208,12 @@
 		{
 			[xmlParser release];
 			[self ShowOKAlert:ERROR_TITLE msg:LOGIN_FAIL_MSG];
-			goto LOGINEND;
+			[httpRequest release];
+			httpRequest = nil;
+			processNow = false;
+			[loadingNow setAlpha:0];
+			[loadingNow stopAnimating];
+			return;
 		}
 		else
 		{
@@ -235,14 +241,13 @@
 		[[DataManager getInstance] setIsLoginNow:TRUE];
 	}
 
-	[[ViewManager getInstance] closePopUp];
-
-LOGINEND:
 	[httpRequest release];
 	httpRequest = nil;
 	processNow = false;
 	[loadingNow setAlpha:0];
 	[loadingNow stopAnimating];
+
+//	[[ViewManager getInstance] closePopUp];
 }
 
 @end
