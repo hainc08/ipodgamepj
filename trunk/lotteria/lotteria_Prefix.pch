@@ -17,14 +17,14 @@
 #import "ViewManager.h"
 
 #define MAX_BURGER 12
-#define SERVERURL	@"http://homeservice.lotteria.co.kr/mobile"
-#define SERVERURLWS	@"http://homeservice.lotteria.co.kr/ws/mobile"
+#define SERVERURL	@"http://homeservice.lotteria.com/mobile"
+#define SERVERURLWS	@"http://homeservice.lotteria.com/ws/mobile"
 
 /* 
  *  로그인에서 사용됨 
  */
 
 #define SERVERURL_MEMBER	@"http://homeservice.lotteria.com/Auth/MBlogin_result.asp"
-#define SERVERURL_AUTH		@"http://homeservice.lotteria.co.kr/Auth"
+#define SERVERURL_AUTH		@"http://homeservice.lotteria.com/Auth"
 
 //#import "NavigatorManager.h"
