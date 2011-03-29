@@ -40,7 +40,10 @@
 @implementation FindBodyViewController
 
 - (void)viewDidLoad {
+
+	idx = 0;
 	naviImgIdx = 1;
+
 	[super viewDidLoad];
 }
 
@@ -50,23 +53,23 @@
 
 	if (sender == bgButton)
 	{
-		i = 0;
+		i = 1;
 	}
 	else if (sender == chButton)
 	{
-		i = 1;
+		i = 2;
 	}
 	else if (sender == drButton)
 	{
-		i = 2;
+		i = 3;
 	}
 	else if (sender == dsButton)
 	{
-		i = 3;
+		i = 4;
 	}
 	else if (sender == pcButton)
 	{
-		i = 4;
+		i = 5;
 	}
 
 	if (idx == i) return;

@@ -220,7 +220,7 @@ typedef enum _Storetype
 	NSMutableDictionary *allProductMap;
 	NSMutableArray* allProductList;
 	
-	NSMutableArray* searchResult[5];
+	NSMutableArray* searchResult[6];
 
 }
 

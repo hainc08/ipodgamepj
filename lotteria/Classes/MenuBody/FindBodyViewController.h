@@ -29,7 +29,7 @@
 	IBOutlet UIButton* pcButton;
 	
 	IBOutlet UITableView* tableView;
-	int itemCount[5];
+	int itemCount[6];
 	int idx;
 }
 
