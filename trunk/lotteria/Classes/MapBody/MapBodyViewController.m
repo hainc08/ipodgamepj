@@ -373,12 +373,6 @@
 		annView.canShowCallout = YES;
 		annView.centerOffset = CGPointMake(0, -18);
 		
-		UIButton *disclosureButton = [UIButton buttonWithType: UIButtonTypeDetailDisclosure];
-		annView.canShowCallout = YES;
-		annView.rightCalloutAccessoryView = disclosureButton;
-		
-		//annView.pinColor = MKPinAnnotationColorGreen;  
-		
 		return annView;
 	}
 

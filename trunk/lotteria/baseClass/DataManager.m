@@ -670,7 +670,7 @@ static DataManager *DataManagerInst;
 
 - (void)searchProduct:(NSString*)str
 {
-	for (int i=0; i<5; ++i)
+	for (int i=0; i<6; ++i)
 	{
 		if (searchResult[i] != nil) [searchResult[i] removeAllObjects];
 		else searchResult[i] = [[NSMutableArray alloc] initWithCapacity:0];
@@ -680,25 +680,65 @@ static DataManager *DataManagerInst;
 	{
 		for (ProductData* data in allProductList)
 		{
-			if ([[data category] compare:@"D10"] == NSOrderedSame) [searchResult[0] addObject:data];
-			else if ([[data category] compare:@"D20"] == NSOrderedSame) [searchResult[1] addObject:data];
-			else if ([[data category] compare:@"D40"] == NSOrderedSame) [searchResult[2] addObject:data];
-			else if ([[data category] compare:@"D30"] == NSOrderedSame) [searchResult[3] addObject:data];
-			else if ([[data category] compare:@"D50"] == NSOrderedSame) [searchResult[4] addObject:data];
+			if ([[data category] compare:@"D10"] == NSOrderedSame)
+			{
+				[searchResult[0] addObject:data];
+				[searchResult[1] addObject:data];
+			}
+			else if ([[data category] compare:@"D20"] == NSOrderedSame)
+			{
+				[searchResult[0] addObject:data];
+				[searchResult[2] addObject:data];
+			}
+			else if ([[data category] compare:@"D40"] == NSOrderedSame)
+			{
+				[searchResult[0] addObject:data];
+				[searchResult[3] addObject:data];
+			}
+			else if ([[data category] compare:@"D30"] == NSOrderedSame)
+			{
+				[searchResult[0] addObject:data];
+				[searchResult[4] addObject:data];
+			}
+			else if ([[data category] compare:@"D50"] == NSOrderedSame)
+			{
+				[searchResult[0] addObject:data];
+				[searchResult[5] addObject:data];
+			}
 		}
 	}
 	else
 	{
 		for (ProductData* data in allProductList)
 		{
-			NSRange range = [[data name] rangeOfString:str];
+			NSRange range = [[[data name] lowercaseString] rangeOfString:[str lowercaseString]];
 			if (range.location != NSNotFound)
 			{
-				if ([[data category] compare:@"D10"] == NSOrderedSame) [searchResult[0] addObject:data];
-				else if ([[data category] compare:@"D20"] == NSOrderedSame) [searchResult[1] addObject:data];
-				else if ([[data category] compare:@"D40"] == NSOrderedSame) [searchResult[2] addObject:data];
-				else if ([[data category] compare:@"D30"] == NSOrderedSame) [searchResult[3] addObject:data];
-				else if ([[data category] compare:@"D50"] == NSOrderedSame) [searchResult[4] addObject:data];
+				if ([[data category] compare:@"D10"] == NSOrderedSame)
+				{
+					[searchResult[0] addObject:data];
+					[searchResult[1] addObject:data];
+				}
+				else if ([[data category] compare:@"D20"] == NSOrderedSame)
+				{
+					[searchResult[0] addObject:data];
+					[searchResult[2] addObject:data];
+				}
+				else if ([[data category] compare:@"D40"] == NSOrderedSame)
+				{
+					[searchResult[0] addObject:data];
+					[searchResult[3] addObject:data];
+				}
+				else if ([[data category] compare:@"D30"] == NSOrderedSame)
+				{
+					[searchResult[0] addObject:data];
+					[searchResult[4] addObject:data];
+				}
+				else if ([[data category] compare:@"D50"] == NSOrderedSame)
+				{
+					[searchResult[0] addObject:data];
+					[searchResult[5] addObject:data];
+				}
 			}
 		}
 	}
