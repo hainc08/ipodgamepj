@@ -120,7 +120,7 @@
 
 	NSURL *url = [NSURL URLWithString: @"http://homeservice.lotteria.com/Auth/MBlogin.asp?Rstate=1"];
 	NSString *body = [NSString stringWithFormat: @"sid=RIA&cust_id=%@&cust_pwd=%@", ID.text, Password.text];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
 	
 	[request setHTTPMethod: @"POST"];
     [request setHTTPBody: [body dataUsingEncoding: NSUTF8StringEncoding]];
