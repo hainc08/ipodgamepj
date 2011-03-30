@@ -137,9 +137,11 @@
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
+{	processNow = FALSE;
+	[loadingNow setAlpha:0];
+	[loadingNow stopAnimating];
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-	[self ShowOKAlert:ALERT_TITLE msg:LOGIN_PASS_INPUT_ERROR_MSG];
+	[self ShowOKAlert:ALERT_TITLE msg:HTTP_ERROR_MSG];
 	
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView

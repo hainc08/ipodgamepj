@@ -172,6 +172,7 @@
 
 - (void)dealloc
 {
+
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	[connection cancel];
 	[connection release];
