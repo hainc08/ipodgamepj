@@ -18,7 +18,7 @@
 	
 	// URL Request 객체 생성
 	request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", SERVERURLWS, url]]
-														   cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+														   cachePolicy:NSURLRequestUseProtocolCachePolicy
 													   timeoutInterval:5.0f];
 	
 	// 통신방식 정의 (POST, GET)
