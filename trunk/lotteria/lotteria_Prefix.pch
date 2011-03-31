@@ -24,7 +24,7 @@
  *  로그인에서 사용됨 
  */
 
-#define SERVERURL_MEMBER	@"http://homeservice.lotteria.com/Auth/MBlogin_result.asp"
+#define SERVERURL_MEMBER	@"http://homeservice.lotteria.com/auth/MBlogin_result.asp"
 #define SERVERURL_AUTH		@"http://homeservice.lotteria.com/Auth"
 
 //#import "NavigatorManager.h"
