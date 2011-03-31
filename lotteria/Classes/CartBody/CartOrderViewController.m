@@ -36,10 +36,23 @@
 		[Order release];
 	}
 	else {
-		[Data  setOrderType:1];
-		CartOrderReservationsView *Order = [[CartOrderReservationsView alloc] initWithNibName:@"CartOrderReservationsView" bundle:nil];
-		[self.navigationController pushViewController:Order animated:YES];
-		[Order release];
+		//시간을 체크해서 밤 열시 이후에는 예약이 되지 않게 한다.
+		NSLocale *locale	=	[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+		NSDateFormatter *dateFormatter		=	[[NSDateFormatter alloc] init];
+		[dateFormatter setLocale:locale];
+		[dateFormatter setDateFormat:@"HH"];
+		NSString* hour = [dateFormatter stringFromDate:[NSDate date]];
+		if ([hour intValue] >= 22)
+		{
+			[self ShowOKAlert:ALERT_TITLE msg:DELI_TIME_ERROR_22_MSG];
+		}
+		else
+		{
+			[Data  setOrderType:1];
+			CartOrderReservationsView *Order = [[CartOrderReservationsView alloc] initWithNibName:@"CartOrderReservationsView" bundle:nil];
+			[self.navigationController pushViewController:Order animated:YES];
+			[Order release];
+		}
 	}
 
 }
