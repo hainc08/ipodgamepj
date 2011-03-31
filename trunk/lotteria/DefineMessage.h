@@ -52,6 +52,7 @@
  */ 
 
 #define DELI_TIME_ERROR_2HOUR_MSG	@"배달예약시간은 2시간 이후부터 가능합니다."
+#define DELI_TIME_ERROR_22_MSG		@"저녁 10시부터 24시까지는 예약주문이 불가능합니다."
 
 /*
  *  예약 주문시 매장에 주문 가능 시간과 비교 
