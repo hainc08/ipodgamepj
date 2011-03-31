@@ -92,10 +92,10 @@
  */ 
 
 #define MAP_RESULT_ERROR_MSG		@"위치정보를 불러오는데 실패하였습니다."
-#define MAP_RESULT_NOTFOUND_MSG		@"주변(반경 2KM)에 매장이 없습니다."
+#define MAP_RESULT_NOTFOUND_MSG		@"주변(반경 3KM)에 매장이 없습니다."
 
-#define MAP_24STORE_NOTFOUND_MSG	@"주변(반경 2KM)에 24시 매장이 없습니다."
-#define MAP_DELI_NOTFOUND_MSG		@"주변(반경 2KM)에 배달 매장이 없습니다."
+#define MAP_24STORE_NOTFOUND_MSG	@"주변(반경 3KM)에 24시 매장이 없습니다."
+#define MAP_DELI_NOTFOUND_MSG		@"주변(반경 3KM)에 배달 매장이 없습니다."
 
 
 /* 
