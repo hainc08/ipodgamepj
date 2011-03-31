@@ -161,6 +161,7 @@
 {
 	// 데이터를 전송받기 전에 호출되는 메서드, 우선 Response의 헤더만을 먼저 받아 온다.
 	//[receivedData setLength:0];
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	response = aResponse;
 	
 }
@@ -173,8 +174,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-	
-	[[ViewManager getInstance] waitview:self.view isBlock:NO];
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	[receivedData release];
 	processNow = false;
 	[loadingNow setAlpha:0];
@@ -185,6 +185,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
 	// 데이터 전송이 끝났을 때 호출되는 메서드, 전송받은 데이터를 NSString형태로 변환한다.
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	result = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
 	[receivedData release];
 	[self  didReceiveFinished:result];
