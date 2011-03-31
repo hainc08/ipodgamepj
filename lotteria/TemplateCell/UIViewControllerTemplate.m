@@ -13,7 +13,11 @@
 @implementation UINavigationBar (CustomImage)
 - (void)drawRect:(CGRect)rect {
 	//DataManager에 들어갈만한 함수는 아니지만 싱글턴이 이것밖에 없어서 걍 이걸로...
-	UIImage *image = [[ViewManager getInstance] getNaviImg];
+	UIImage *image;
+	if( [[ViewManager getInstance] naviImgIdx] == 0)
+		image = [UIImage imageNamed: @"bg_titlebar.png"];
+	else 
+		image = [UIImage imageNamed: @"bg_logo_titlebar.png"];	   
 	[image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 }
 @end
