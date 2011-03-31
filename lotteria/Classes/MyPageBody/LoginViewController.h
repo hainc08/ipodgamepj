@@ -35,7 +35,7 @@ enum TYPE {
 	NSString *result;
 }
 @property (readwrite) int LoginNextType;
-
+- (void)didReceiveFinished:(NSString *)result;
 - (IBAction)LoginButton;
 - (IBAction)IDSaveButton;
 - (void)reset;
