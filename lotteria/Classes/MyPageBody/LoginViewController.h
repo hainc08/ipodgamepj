@@ -22,13 +22,17 @@ enum TYPE {
 	IBOutlet UIButton		*ID_Save2;
 	IBOutlet UIButton		*Login;
 	int		LoginNextType;
-	HTTPRequest *httpRequest;
+	
 	IBOutlet UIActivityIndicatorView* loadingNow;
 
 	IBOutlet UIWebView* webView;
 	int finishCount;
 	
 	bool processNow;
+	
+	NSURLResponse *response;
+	NSMutableData *receivedData;
+	NSString *result;
 }
 @property (readwrite) int LoginNextType;
 

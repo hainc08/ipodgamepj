@@ -32,10 +32,7 @@
 }
 
 - (void)viewDidUnload {
-	if(httpRequest){
-		[httpRequest release];
-		httpRequest = nil;
-    }
+
 	[webView stopLoading];
 	[ID resignFirstResponder];
 	[Password resignFirstResponder];
@@ -44,10 +41,6 @@
 
 
 - (void)dealloc {
-	if(httpRequest){
-		[httpRequest release];
-		httpRequest = nil;
-    }
 	[webView stopLoading];
 	[ID resignFirstResponder];
 	[Password resignFirstResponder];
@@ -118,9 +111,9 @@
 
 	processNow = true;
 
-	NSURL *url = [NSURL URLWithString: @"http://homeservice.lotteria.com/Auth/MBlogin.asp?Rstate=1"];
-	NSString *body = [NSString stringWithFormat: @"sid=RIA&cust_id=%@&cust_pwd=%@", ID.text, Password.text];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
+	NSURL *url = [NSURL URLWithString: @"http://homeservice.lotteria.com/Auth/mblogin.asp"];
+	NSString *body = [NSString stringWithFormat: @"cust_id=%@&cust_pwd=%@&cust_flag=3", ID.text, Password.text];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
 	
 	[request setHTTPMethod: @"POST"];
     [request setHTTPBody: [body dataUsingEncoding: NSUTF8StringEncoding]];
@@ -132,9 +125,15 @@
 
 	finishCount = 0;
 }
+
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];	
 }
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {	processNow = FALSE;
@@ -144,26 +143,53 @@
 	[self ShowOKAlert:ALERT_TITLE msg:HTTP_ERROR_MSG];
 	
 }
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-	++finishCount;
-	if (finishCount == 4)
-	{
-		httpRequest = [[HTTPRequest alloc] init];
-		// HTTP Request 인스턴스 생성
 
-		// 통신 완료 후 호출할 델리게이트 셀렉터 설정
-		[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
-		NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
-									ID.text ,@"cust_id",
-									nil];
-		// 페이지 호출
-		[httpRequest requestUrlFull:SERVERURL_MEMBER bodyObject:bodyObject bodyArray:nil];
-		[[ViewManager getInstance] waitview:self.view isBlock:YES];	
-	
+- (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    // just create a new NSURLConnection and assign it a delegate, it'll get called
+	if([[[request URL] absoluteString] isEqual:SERVERURL_MEMBER] == YES)
+	{
+		receivedData = [[NSMutableData alloc] init];
+		[NSURLConnection connectionWithRequest:request delegate:self];
+		return NO;
 	}
+
+	return YES;
 }
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)aResponse
+{
+	// 데이터를 전송받기 전에 호출되는 메서드, 우선 Response의 헤더만을 먼저 받아 온다.
+	//[receivedData setLength:0];
+	response = aResponse;
+	
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+	// 데이터를 전송받는 도중에 호출되는 메서드, 여러번에 나누어 호출될 수 있으므로 appendData를 사용한다.
+	[receivedData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+	
+	[[ViewManager getInstance] waitview:self.view isBlock:NO];
+	[receivedData release];
+	processNow = false;
+	[loadingNow setAlpha:0];
+	[loadingNow stopAnimating];
+	[self ShowOKAlert:ERROR_TITLE msg:HTTP_ERROR_MSG];	
+	
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+	// 데이터 전송이 끝났을 때 호출되는 메서드, 전송받은 데이터를 NSString형태로 변환한다.
+	result = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+	[receivedData release];
+	[self  didReceiveFinished:result];
+}
+
 
 #pragma mark  -
 #pragma mark TextField
@@ -191,65 +217,47 @@
 	
 	// 로그인 성공하면 이뷰는 사라진다. 
 	// xml에서 로그인처리 
-	
-	[[ViewManager getInstance] waitview:self.view isBlock:NO];
+
 	[ID resignFirstResponder];
 	[Password resignFirstResponder];
-
-	if(![result compare:@"error"])
+	
+	XmlParser* xmlParser = [XmlParser alloc];
+	[xmlParser parserString:result];
+	Element* root = [xmlParser getRoot:@"NewDataSet"];
+		
+	if (root == nil || [[[root getChild:@"RESULT_CODE"] getValue] compare:@"Y"] != NSOrderedSame )
 	{
-		[self ShowOKAlert:ERROR_TITLE msg:HTTP_ERROR_MSG];	
+		[self ShowOKAlert:ERROR_TITLE msg:LOGIN_FAIL_MSG];
+		goto LOGIN_FAIL;
 	}
 	else
 	{
-		XmlParser* xmlParser = [XmlParser alloc];
-		[xmlParser parserString:result];
-		Element* root = [xmlParser getRoot:@"NewDataSet"];
-		
-		if (root == nil || [[[root getChild:@"RESULT_CODE"] getValue] compare:@"Y"] != NSOrderedSame )
-		{
-			[xmlParser release];
-			[self ShowOKAlert:ERROR_TITLE msg:LOGIN_FAIL_MSG];
-			[httpRequest release];
-			httpRequest = nil;
-			processNow = false;
-			[loadingNow setAlpha:0];
-			[loadingNow stopAnimating];
-			return;
-		}
-		else
-		{
-			NSString *Cust_ID =  [[root getChild:@"CUST_ID"] getValue] ;
-			NSString *Cust_PHONE =  [[root getChild:@"CUST_PHONE"] getValue] ;
-			[[DataManager getInstance] setCust_id:Cust_ID];
-			[[DataManager getInstance] setCust_phone:Cust_PHONE];
-		}
-		
-		[xmlParser release];
-		
-		
-		if([[DataManager getInstance] isLoginSave])
-		{
-			[[DataManager getInstance] setAccountId:ID.text];
-			[[DataManager getInstance] setAccountPass:Password.text];
-			[[DataManager getInstance] LoginSave];
-		}
-		else {
-			[[DataManager getInstance] setAccountId:@""];
-			[[DataManager getInstance] setAccountPass:Password.text];
-			[[DataManager getInstance] LoginSave];
-		}
-		
-		[[DataManager getInstance] setIsLoginNow:TRUE];
+		NSString *Cust_ID =  [[root getChild:@"CUST_ID"] getValue] ;
+		NSString *Cust_PHONE =  [[root getChild:@"CUST_PHONE"] getValue] ;
+		[[DataManager getInstance] setCust_id:Cust_ID];
+		[[DataManager getInstance] setCust_phone:Cust_PHONE];
 	}
+		
+	if([[DataManager getInstance] isLoginSave])
+	{
+		[[DataManager getInstance] setAccountId:ID.text];
+		[[DataManager getInstance] setAccountPass:Password.text];
+		[[DataManager getInstance] LoginSave];
+	}
+	else {
+		[[DataManager getInstance] setAccountId:@""];
+		[[DataManager getInstance] setAccountPass:@""];
+		[[DataManager getInstance] LoginSave];
+	}
+		
+	[[DataManager getInstance] setIsLoginNow:TRUE];
+	[[ViewManager getInstance] closePopUp];
 
-	[httpRequest release];
-	httpRequest = nil;
+LOGIN_FAIL:
+	[xmlParser release];
 	processNow = false;
 	[loadingNow setAlpha:0];
 	[loadingNow stopAnimating];
-
-//	[[ViewManager getInstance] closePopUp];
 }
 
 @end
