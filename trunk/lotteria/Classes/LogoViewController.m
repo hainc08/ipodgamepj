@@ -123,6 +123,7 @@
 		if (root == nil)
 		{
 			[self ShowOKAlert:ERROR_TITLE msg:VER_ERROR_MSG button:UPDATE_AGAIN];
+			return;
 		}
 		else
 		{
