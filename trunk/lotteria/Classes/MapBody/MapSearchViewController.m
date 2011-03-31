@@ -46,6 +46,9 @@
 }
 
 - (void)viewDidUnload {
+	if(httpRequest)
+		[httpRequest release];
+	[AddressArr release];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
