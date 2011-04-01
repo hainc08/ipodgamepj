@@ -1970,7 +1970,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AlarmGitaiFinalAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmGitaiFinalAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AlarmGitaiFinalAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmGitaiFinalAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* AlarmGitaiFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarmGitaiFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* GitaiAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitaiAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		280E754B0DD40C5E005A515E /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		280E754C0DD40C5E005A515E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -2630,7 +2630,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* AlarmGitaiFinal.app */,
+				1D6058910D05DD3D006BFB54 /* GitaiAlarm.app */,
 				56A9A63C12E6C5EB009C8435 /* NatsukoAlarm.app */,
 				56020EDB12EAE02200BB6235 /* HarukaAlarm.app */,
 				5641F03612ED995000CDA3EA /* HitomiAlarm.app */,
@@ -3495,7 +3495,7 @@
 			);
 			name = GitaiAlarm;
 			productName = AlarmGitaiFinal;
-			productReference = 1D6058910D05DD3D006BFB54 /* AlarmGitaiFinal.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* GitaiAlarm.app */;
 			productType = "com.apple.product-type.application";
 		};
 		56020C9612EAE02200BB6235 /* HarukaAlarm */ = {
