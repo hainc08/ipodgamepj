@@ -41,6 +41,8 @@
 	baseIdx = idx / step;
 	faceIdx = idx % (step * 2);
 
+	if (([name compare:@"akari"] == NSOrderedSame) && (baseIdx == 14)) faceIdx += 9;
+
 	UIImage* imgBase = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d_%@_b.png", name, baseIdx, timeStr]];
 
     CGColorSpaceRef     colorSpace;
