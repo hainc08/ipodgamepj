@@ -46,8 +46,8 @@
 	[u_Dot setFrame:CGRectMake(95,-5,82,89)];
 	[b_Dot setFrame:CGRectMake(95,-5,82,89)];
 	
-	[u_Week setFrame:CGRectMake(100,70,164,89)];
-	[b_Week setFrame:CGRectMake(100,70,164,89)];
+	[u_Week setFrame:CGRectMake(100,60,164,89)];
+	[b_Week setFrame:CGRectMake(100,60,164,89)];
 
 	[u_MonT setFrame:CGRectMake(-10,-5,82,89)];
 	[u_MonM setFrame:CGRectMake(50,-5,82,89)];
