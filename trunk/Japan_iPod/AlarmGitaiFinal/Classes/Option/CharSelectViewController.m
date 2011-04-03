@@ -85,32 +85,32 @@
 		switch (indexPath.row)
 		{
 			case 0:
-				text = @"natsuko";
-				text2 = @"なつこ";
-				break;
-			case 1:
 				text = @"akari";
 				text2 = @"あかり";
 				break;
-			case 2:
-				text = @"haruka";
-				text2 = @"はるか";
-				break;
-			case 3:
+			case 1:
 				text = @"hitomi";
 				text2 = @"ひとみ";
 				break;
+			case 2:
+				text = @"reina";
+				text2 = @"れいな";
+				break;
+			case 3:
+				text = @"fumiko";
+				text2 = @"ふみこ";
+				break;
 			case 4:
-				text = @"irika";
-				text2 = @"エリカ";
+				text = @"natsuko";
+				text2 = @"なつこ";
 				break;
 			case 5:
-				text = @"reina";
-				text2 = @"レイナ";
+				text = @"haruka";
+				text2 = @"はるか";
 				break;
 			case 6:
-				text = @"fumiko";
-				text2 = @"文子";
+				text = @"irika";
+				text2 = @"えりか";
 				break;
 		}
 		
@@ -165,32 +165,32 @@
 		switch (indexPath.row)
 		{
 			case 0:
-				text = @"natsuko";
-				text2 = @"なつこ";
-				break;
-			case 1:
 				text = @"akari";
 				text2 = @"あかり";
 				break;
-			case 2:
-				text = @"haruka";
-				text2 = @"はるか";
-				break;
-			case 3:
+			case 1:
 				text = @"hitomi";
 				text2 = @"ひとみ";
 				break;
+			case 2:
+				text = @"reina";
+				text2 = @"れいな";
+				break;
+			case 3:
+				text = @"fumiko";
+				text2 = @"ふみこ";
+				break;
 			case 4:
-				text = @"irika";
-				text2 = @"エリカ";
+				text = @"natsuko";
+				text2 = @"なつこ";
 				break;
 			case 5:
-				text = @"reina";
-				text2 = @"レイナ";
+				text = @"haruka";
+				text2 = @"はるか";
 				break;
 			case 6:
-				text = @"fumiko";
-				text2 = @"文子";
+				text = @"irika";
+				text2 = @"えりか";
 				break;
 		}
 		
