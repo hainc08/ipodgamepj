@@ -108,24 +108,25 @@
 		[self ShowOKAlert:ALERT_TITLE msg:LOGIN_PASS_INPUT_ERROR_MSG];
 		return;
 	}
-
+		httpRequest = [[HTTPRequest alloc] init];
 	processNow = true;
-
-	NSURL *url = [NSURL URLWithString: @"http://homeservice.lotteria.com/Auth/mblogin.asp"];
-	NSString *body = [NSString stringWithFormat: @"cust_id=%@&cust_pwd=%@&cust_flag=3", ID.text, Password.text];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL: url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
 	
-	[request setHTTPMethod: @"POST"];
-    [request setHTTPBody: [body dataUsingEncoding: NSUTF8StringEncoding]];
-	[webView loadRequest: request];
-	[webView setDelegate: self];
+	NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
+								@"MRIA",@"sid",
+								ID.text,@"loginid",
+								Password.text,@"password",
+								nil];
+	
+	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
+	// 페이지 호출
+	[httpRequest  requestUrlFull:SERVERURL_TOWN bodyObject:bodyObject bodyArray:nil];
 	
 	[loadingNow setAlpha:1];
 	[loadingNow startAnimating];
 
 	finishCount = 0;
 }
-
+/*
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -190,6 +191,7 @@
 	[receivedData release];
 	[self  didReceiveFinished:result];
 }
+ */
 
 
 #pragma mark  -
@@ -212,53 +214,101 @@
  <CUST_PHONE>01012345678</CUST_PHONE>
  </NewDataSet>
  */
+- (void)didServerResult:(NSString *)result
+{
+	
+	if( [result compare:@"error"] == NSOrderedSame || result == nil)
+	{
+		[self ShowOKAlert:ERROR_TITLE msg:HTTP_ERROR_MSG];	
+	}
+	else {
+		
+		if([[DataManager getInstance] isLoginSave])
+		{
+			[[DataManager getInstance] setAccountId:ID.text];
+			[[DataManager getInstance] setAccountPass:Password.text];
+			[[DataManager getInstance] LoginSave];
+		}
+		else {
+			[[DataManager getInstance] setAccountId:@""];
+			[[DataManager getInstance] setAccountPass:@""];
+			[[DataManager getInstance] LoginSave];
+		}
+		[[DataManager getInstance] setCust_id:ID.text];
+		
+		[[DataManager getInstance] setIsLoginNow:TRUE];
+		[[ViewManager getInstance] closePopUp];
+	}
+	processNow = false;
+	[loadingNow setAlpha:0];
+	[loadingNow stopAnimating];
+	[httpRequest release];
+	httpRequest = nil;
 
+}
 - (void)didReceiveFinished:(NSString *)result
 {
 	
 	// 로그인 성공하면 이뷰는 사라진다. 
 	// xml에서 로그인처리 
-
+	NSRange length;
+	length.length = 0;
+	length.location =0;
 	[ID resignFirstResponder];
 	[Password resignFirstResponder];
 	
-	XmlParser* xmlParser = [XmlParser alloc];
-	[xmlParser parserString:result];
-	Element* root = [xmlParser getRoot:@"NewDataSet"];
-		
-	if (root == nil || [[[root getChild:@"RESULT_CODE"] getValue] compare:@"Y"] != NSOrderedSame )
+	
+	if(result == nil) 
 	{
+		processNow = false;
+		[loadingNow setAlpha:0];
+		[loadingNow stopAnimating];	
+		[httpRequest release];
+		httpRequest = nil;
+		[self ShowOKAlert:ERROR_TITLE msg:LOGIN_FAIL_MSG];	
+	
+		return	;
+	}
+	
+	NSString *temp = nil;
+	for(int loop = 0 ; loop < 4; loop++)
+	{
+		length = [result rangeOfString:[NSString stringWithFormat:@"%d;", loop] ];
+		
+		if(length.location > 80) continue;  /* 음.. location 값이 해당 문자열이 없으면 엄청 큰값을 리턴하네..;;*/
+		temp = [result substringFromIndex:length.location];
+		if (temp != nil) {
+			break;
+		}
+	}
+	
+	if( [temp  hasPrefix:@"0;"])
+	{
+		
+		NSDictionary *bodyObject = [NSDictionary dictionaryWithObjectsAndKeys:
+									ID.text,@"login_id",
+									@"Y",@"result_flag",
+									nil];
+		[httpRequest setDelegate:self selector:@selector(didServerResult:)];
+		// 페이지 호출
+		[httpRequest  requestUrlFull:SERVERURL_MEMBER bodyObject:bodyObject bodyArray:nil];
+		
+		return ;
+	}
+	else 	if( [temp  hasPrefix:@"1;"])
 		[self ShowOKAlert:ERROR_TITLE msg:LOGIN_FAIL_MSG];
-		goto LOGIN_FAIL;
-	}
+	else 	if( [temp  hasPrefix:@"2;"])
+		[self ShowOKAlert:ERROR_TITLE msg:LOGIN_AUTH_CUST_FAIL];
+	else 	if( [temp  hasPrefix:@"3;"])
+		[self ShowOKAlert:ERROR_TITLE msg:LOGIN_FAIL_LOCK_MSG];
 	else
-	{
-		NSString *Cust_ID =  [[root getChild:@"CUST_ID"] getValue] ;
-		NSString *Cust_PHONE =  [[root getChild:@"CUST_PHONE"] getValue] ;
-		[[DataManager getInstance] setCust_id:Cust_ID];
-		[[DataManager getInstance] setCust_phone:Cust_PHONE];
-	}
-		
-	if([[DataManager getInstance] isLoginSave])
-	{
-		[[DataManager getInstance] setAccountId:ID.text];
-		[[DataManager getInstance] setAccountPass:Password.text];
-		[[DataManager getInstance] LoginSave];
-	}
-	else {
-		[[DataManager getInstance] setAccountId:@""];
-		[[DataManager getInstance] setAccountPass:@""];
-		[[DataManager getInstance] LoginSave];
-	}
-		
-	[[DataManager getInstance] setIsLoginNow:TRUE];
-	[[ViewManager getInstance] closePopUp];
-
-LOGIN_FAIL:
-	[xmlParser release];
+		[self ShowOKAlert:ERROR_TITLE msg:HTTP_ERROR_MSG];	
+	
 	processNow = false;
 	[loadingNow setAlpha:0];
 	[loadingNow stopAnimating];
+	[httpRequest release];
+	httpRequest= nil;
 }
 
 @end

@@ -87,6 +87,8 @@
 #define LOGIN_PASS_INPUT_ERROR_MSG	@"비밀번호는 6글자에서 15글자 사이입니다."
 #define LOGIN_FAIL_MSG				@"로그인이 실패하였습니다.\n 아이디와 비밀번호를 확인해주세요."
 #define LOGIN_SESSION_FAIL_MSG		@"로그인한지 오래되어 접속이 끊어졌습니다."
+#define LOGIN_AUTH_CUST_FAIL		@"실명인증 대상회원 입니다.\n 실명인증후 사용해주시기 바랍니다 "
+#define LOGIN_FAIL_LOCK_MSG			@"로그인 실패 5회로 인해 사용제한되었습니다."
 
 /*
  *	 MAP에서 사용되는 메시지

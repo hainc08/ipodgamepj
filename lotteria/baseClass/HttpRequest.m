@@ -159,8 +159,10 @@
 	if(target)
 	{
 		[target performSelector:selector withObject:result ];
+		
 	}
-
+	[result release];
+	result = nil;
 }
 
 - (void)setDelegate:(id)aTarget selector:(SEL)aSelector
@@ -178,7 +180,8 @@
 	[connection release];
 	[response release];
 	[receivedData release];
-	[result release];
+	if(result)
+		[result release];
 	[super dealloc];
 }
 

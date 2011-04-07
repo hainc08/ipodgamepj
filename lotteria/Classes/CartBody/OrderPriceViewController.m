@@ -71,7 +71,7 @@
 	}
 	else if(sender == Card2)
 	{
-			OrderType = CARD;
+			OrderType = ONLINE;
 		[self ShowOKAlert:nil msg:ONLINE_PAY_MSG];
 	}
 }
@@ -189,7 +189,7 @@
 	[Body addObject:[NSString stringWithFormat:@"pay_master_disc_money=%d", Temp.OrderSaleMoney ]];  // 할인금액
 	[Body addObject:[NSString stringWithFormat:@"pay_master_save_money=%d", 0 ]];  // 적립금액	
 	[Body addObject:[NSString stringWithFormat:@"pay_master_receipt_flag=%@", ( OrderType == MONEY_PERSONAL ? @"Y" : @"") ]];  // 영수증사용여부
-	
+					
 	 
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_pay_cd=%@", 
 					 (OrderType == MONEY_PERSONAL || OrderType == MONEY) ? @"02" : @"01" ]];  // 결제종류 (01 : 카드 02:현금  03: 교환권 04:할인 05:적립)
