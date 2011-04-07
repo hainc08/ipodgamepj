@@ -189,24 +189,26 @@
 	[Body addObject:[NSString stringWithFormat:@"pay_master_disc_money=%d", Temp.OrderSaleMoney ]];  // 할인금액
 	[Body addObject:[NSString stringWithFormat:@"pay_master_save_money=%d", 0 ]];  // 적립금액	
 	[Body addObject:[NSString stringWithFormat:@"pay_master_receipt_flag=%@", ( OrderType == MONEY_PERSONAL ? @"Y" : @"") ]];  // 영수증사용여부
-					
+		
+	for(int loop = 1; loop <= 6; loop++)
+	{
 	 
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_pay_cd=%@", 
-								OrderType == ONLINE ? @"01" : @"02" ]];  // 결제종류 (01 : 카드 02:현금  03: 교환권 04:할인 05:적립)
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_no=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 카드번호
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_ex=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 유효기간
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_acc=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 할부
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_control_no=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인넘버
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_money=%d",Temp.OrderMoney]];  // 승인금액 ( 토탈금액 )
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_no=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인번호
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_date=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인일자
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_time=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인시간
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_cd=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 발급사코드
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_nm=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 발급사명
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_terminal_id=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 터미널 ID 
-	[Body addObject:[NSString stringWithFormat:@"pay_detail_msg=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인메시지
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_pay_cd=%02d", loop]];  // 결제종류 (01 : 카드 02:현금  03: 교환권 04:할인 05:적립)
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_no=%@", (loop == 1 ? @"" : @"") ]];  // 카드번호
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_ex=%@", (loop == 1 ? @"" : @"") ]];  // 유효기간
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_acc=%@", (loop == 1 ? @"" : @"") ]];  // 할부
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_control_no=%@", (loop == 1 ? @"" : @"") ]];  // 승인넘버
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_money=%d", loop == 2 ? Temp.OrderMoney : 0 ]];  // 승인금액 ( 토탈금액 )
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_no=%@", (loop == 1 ? @"" : @"") ]];  // 승인번호
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_date=%@", (loop == 1 ? @"" : @"") ]];  // 승인일자
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_arv_time=%@", (loop == 1 ? @"" : @"") ]];  // 승인시간
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_cd=%@", (loop == 1? @"" : @"") ]];  // 발급사코드
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_nm=%@", (loop == 1? @"" : @"") ]];  // 발급사명
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_terminal_id=%@", (loop == 1 ? @"" : @"") ]];  // 터미널 ID 
+	[Body addObject:[NSString stringWithFormat:@"pay_detail_msg=%@", (loop == 1 ? @"" : @"") ]];  // 승인메시지
 	 
-	 
+	}
+#if 0 
 	if(Temp.OrderSaleMoney > 0)
 	 {
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_pay_cd=%@",@"04"]];  // 결제종류 ( 장난감은 추가해야됨.)
@@ -223,6 +225,7 @@
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_terminal_id=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 터미널 ID 
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_msg=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 승인메시지
 	 }
+#endif
 	
 	//if(Temp.UserPhone)  // 일반전화 ? 핸드폰 체크 ( 핸드폰 번호는 배송입력받거나 , 로그인 사용자 번호던가 
 	[Body addObject:[NSString stringWithFormat:@"personal_mobile=%@", (OrderType == MONEY_PERSONAL ?  Temp.UserPhone : @"") ]];  // 현금영수증 전화번호
