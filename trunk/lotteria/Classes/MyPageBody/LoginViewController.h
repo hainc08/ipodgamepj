@@ -30,9 +30,7 @@ enum TYPE {
 	
 	bool processNow;
 	
-	NSURLResponse *response;
-	NSMutableData *receivedData;
-	NSString *result;
+	HTTPRequest *httpRequest;
 }
 @property (readwrite) int LoginNextType;
 - (void)didReceiveFinished:(NSString *)result;
