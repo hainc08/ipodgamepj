@@ -192,7 +192,7 @@
 					
 	 
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_pay_cd=%@", 
-					 (OrderType == MONEY_PERSONAL  || OrderType == MONEY) ? @"02" : @"01" ]];  // 결제종류 (01 : 카드 02:현금  03: 교환권 04:할인 05:적립)
+								OrderType == ONLINE ? @"01" : @"02" ]];  // 결제종류 (01 : 카드 02:현금  03: 교환권 04:할인 05:적립)
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_no=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 카드번호
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_ex=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 유효기간
 	[Body addObject:[NSString stringWithFormat:@"pay_detail_card_acc=%@", (OrderType == ONLINE ? @"" : @"") ]];  // 할부
