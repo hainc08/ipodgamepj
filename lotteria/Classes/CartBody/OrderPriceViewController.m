@@ -107,7 +107,7 @@
 	[MenuData addObject:[NSString stringWithFormat:@"item_disc_cd=%@",
 				( [[prdata category] compare:@"Z10"] == NSOrderedSame ) ? @"04" : @"" ]];	// 할인 코드  ( 장난감 '04' )
 	[MenuData addObject:[NSString stringWithFormat:@"item_qty=%d", ordercnt]];	// 주문 개수 
-	[MenuData addObject:[NSString stringWithFormat:@"item_pay_money=%d", [prdata price ]]]; // 매뉴 가격
+	[MenuData addObject:[NSString stringWithFormat:@"item_pay_money=%d", [prdata price ] * ordercnt ]]; // 매뉴 가격
 	[MenuData addObject:[NSString stringWithFormat:@"item_disc_money=%d", 
 				( [[prdata category] compare:@"Z10"] == NSOrderedSame ) ? [prdata price] : 0 ]];	// 할인 가격 ( 장난감은 넣어야한다 )
 
