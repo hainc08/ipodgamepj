@@ -478,32 +478,47 @@
 
 - (void)showChr:(float)delay
 {
-	[UIView beginAnimations:@"show" context:NULL];
-	
-	[UIView setAnimationDelay:delay];
-	[UIView setAnimationDuration:0.2];
-	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	if (isSkipMode == false)
+	{
+		[UIView beginAnimations:@"show" context:NULL];
+		
+		[UIView setAnimationDelay:delay];
+		[UIView setAnimationDuration:0.2];
+		[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	}
+
 	[chrView[0] setAlpha:1];
 	[chrView[1] setAlpha:1];
 	[chrView[2] setAlpha:1];
 	[chrView[3] setAlpha:1];
 	[bgView setAlpha:1];
-	[UIView commitAnimations];
+
+	if (isSkipMode == false)
+	{
+		[UIView commitAnimations];
+	}
 }
 
 - (void)hideChr:(float)delay
 {
-	[UIView beginAnimations:@"hide" context:NULL];
-	
-	[UIView setAnimationDelay:delay];
-	[UIView setAnimationDuration:0.2];
-	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	if (isSkipMode == false)
+	{
+		[UIView beginAnimations:@"hide" context:NULL];
+		[UIView setAnimationDelay:delay];
+		[UIView setAnimationDuration:0.2];
+		[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	}
+
 	[oldChrView[0] setAlpha:0];
 	[oldChrView[1] setAlpha:0];
 	[oldChrView[2] setAlpha:0];
 	[oldChrView[3] setAlpha:0];
 	[oldBgView setAlpha:0];
-	[UIView commitAnimations];
+
+	if (isSkipMode == false)
+	{
+		[UIView commitAnimations];
+	}
 }
 
 - (void)showMenu
@@ -613,7 +628,8 @@
 			[chrView[i] setFrame:imgRect];
 		}
 		
-		showOkTick = frameTick + (0.2 * framePerSec);
+		if (isSkipMode) showOkTick = frameTick;
+		else showOkTick = frameTick + (0.2 * framePerSec);
 	}
 }
 

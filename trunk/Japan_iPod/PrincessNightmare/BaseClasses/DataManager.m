@@ -170,7 +170,7 @@ static NSString* ResourcePath;
 
 - (bool)getIsShow:(int)idx
 {
-//	return true;
+	return true;
 	return isShow[idx];
 }
 
@@ -792,6 +792,27 @@ static NSString* ResourcePath;
 	Msg* m = [Msg alloc];
 	msg[msgCount] = m;
 	
+//	static int temp = 0;
+//	static int last = 0;
+//	
+//	if (temp != idx)
+//	{
+//		static FILE* temp2 = NULL;
+//		
+//		if (temp2 == NULL) temp2 = fopen("test.txt","w+");
+//
+//		for (int i=temp+1; i<idx; ++i)
+//		{
+//			fprintf(temp2, "0, ", last);
+//		}
+//
+//		fprintf(temp2, "%d, ", last);
+//
+//		temp = idx;
+//	}
+//	last = idx2;
+	
+	
 //	Tag, Index 프리로딩
 //	nowScene = idx;
 //	nowIdx = msgCount;
@@ -1287,6 +1308,7 @@ GABBAGE_CHECK_OK:
 
 - (bool)getMusicShow:(int)idx
 {
+	return true;
 	return musicShowData[idx];
 }
 

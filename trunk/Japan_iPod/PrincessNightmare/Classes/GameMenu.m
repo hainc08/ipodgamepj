@@ -71,6 +71,9 @@
 		[configView setAlpha:0];
 		[configView setViewtype:1];
 	}
+	
+	[menuView setAlpha:1];
+	[exitView setAlpha:0];
 }
 
 - (IBAction)ButtonClick:(id)sender
@@ -92,6 +95,16 @@
 		[loadView setAlpha:1];
 	}
 	else if (sender == exitButton)
+	{
+		[menuView setAlpha:0];
+		[exitView setAlpha:1];
+	}
+	else if (sender == noButton)
+	{
+		[menuView setAlpha:1];
+		[exitView setAlpha:0];
+	}
+	else if (sender == yesButton)
 	{
 		if (MenuType == SCINEMENU)
 			[[ViewManager getInstance] changeView:@"ScineView"];

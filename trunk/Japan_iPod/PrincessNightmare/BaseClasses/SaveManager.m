@@ -529,6 +529,7 @@ void writeChar(NSFileHandle* writeFile, char value)
 
 - (bool)getSceneExp:(int)idx
 {
+	return true;
 	return sceneExp[idx];
 }
 
@@ -608,6 +609,7 @@ void writeChar(NSFileHandle* writeFile, char value)
 
 - (bool)getSceneExp2:(int)idx
 {
+	return true;
 	int i = (int)(idx / 8);
 	int check = sceneExp2[i] & (0x01 << (idx % 8));
 	return (check != 0);

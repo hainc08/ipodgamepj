@@ -36,12 +36,7 @@
 		
 		for (int i=0; i<4; ++i)
 		{
-			imageBigButton[i] = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 480, 360)];
-			[self addSubview:imageBigButton[i]];
-			[self bringSubviewToFront:imageBigButton[i]];
-			[imageBigButton[i] setCenter:CGPointMake(240, 160)];
-			[imageBigButton[i] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-			[imageBigButton[i] setAlpha:0];
+			imageBigButton[i] = nil;
 		}
 			
 		isInit = true;
@@ -195,6 +190,16 @@
 			{
 				tempImg = [UIImage imageNamed:[NSString stringWithFormat:@"Aev_%03d.jpg", imgId]];
 
+				if (imageBigButton[j] != nil)
+				{
+					[imageBigButton[j] removeFromSuperview];
+				}
+
+				imageBigButton[j] = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 480, 360)];
+				[self addSubview:imageBigButton[j]];
+				[self bringSubviewToFront:imageBigButton[j]];
+				[imageBigButton[j] addTarget:self action:@selector(ButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+				
 				[imageBigButton[j] setFrame:CGRectMake(0, 0, [tempImg size].width, [tempImg size].height)];
 				[imageBigButton[j] setImage:tempImg forState:UIControlStateNormal];
 				[imageBigButton[j] setImage:tempImg forState:UIControlStateHighlighted];
@@ -203,9 +208,8 @@
 				
 				if ([tempImg size].height > 500)
 				{
-					[imageBigButton[j] setAlpha:1];
-
-					[UIView beginAnimations:@"scene" context:NULL];
+					[UIView beginAnimations:@"scene2" context:NULL];
+					[UIView setAnimationDelay:0.5];
 					[UIView setAnimationDuration:5];
 					[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 					[imageBigButton[j] setCenter:CGPointMake(240, 340 - (int)([tempImg size].height / 2))];
@@ -213,8 +217,6 @@
 				}
 				else
 				{
-					[imageBigButton[j] setAlpha:0];
-
 					if ((imgId >= 123)&&(imgId <= 125))
 					{
 						[imageBigButton[j] setCenter:CGPointMake(240, 180)];
@@ -223,13 +225,15 @@
 					{
 						[imageBigButton[j] setCenter:CGPointMake(240, 160)];
 					}
-					
-					[UIView beginAnimations:@"scene" context:NULL];
-					[UIView setAnimationDuration:0.5];
-					[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-					[imageBigButton[j] setAlpha:1];
-					[UIView commitAnimations];
 				}
+
+				[imageBigButton[j] setAlpha:0];
+
+				[UIView beginAnimations:@"scene2" context:NULL];
+				[UIView setAnimationDuration:0.5];
+				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+				[imageBigButton[j] setAlpha:1];
+				[UIView commitAnimations];
 			}
 			
 			[self bringSubviewToFront:button1];
