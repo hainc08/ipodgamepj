@@ -20,6 +20,8 @@
     <product menu_id="LB0016" key="tb"/><!--D10	데리버거-->
     <product menu_id="LB0017" key="ch"/><!--D10	치즈버거-->
     <product menu_id="LB0021" key="hlb"/><!--D10	한우레이디버거-->
+	
+	<product menu_id="LB0022" key="bbb"/><!--D50	빅비프버거-->
 
 	
     <product menu_id="200266" key="hbc"/><!--S11	한우불고기콤보(신)-->
@@ -34,6 +36,8 @@
     <product menu_id="210470" key="hcp"/><!--D50	HOME 연인팩-->
     <product menu_id="210471" key="hp"/><!--D50	HOME 실속팩-->
     <product menu_id="210472" key="hfp"/><!--D50	HOME 가족팩-->
+	<product menu_id="212064" key="ffp"/><!--D50	화이어휠레팩(홈서비스전용)-->
+	
 
     <product menu_id="LC0001" key="fw2"/><!--D20	화이어윙2조각-->
     <product menu_id="LC0002" key="fw4"/><!--D20	화이어윙(4)-->
@@ -71,6 +75,8 @@
     <product menu_id="LD0026" key="gra"/><!--D40	자몽에이드-->
     <product menu_id="LD0027" key="pin"/><!--D40	파인애플에이드-->
     <product menu_id="LD0028" key="app"/><!--D40	사과주스-->
+	<product menu_id="211986" key="pc"/><!--D40	콜라(R)-->
+	
 
     <product menu_id="200807" key="cl"/><!--S40	세트콜라(R)-->
     <product menu_id="200808" key="cd"/><!--S40	선택사이다(R)-->

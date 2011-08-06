@@ -17,8 +17,12 @@
 #import "ViewManager.h"
 
 #define MAX_BURGER 12
-#define SERVERURL	@"http://homeservice.lotteria.com/mobile"
-#define SERVERURLWS	@"http://homeservice.lotteria.com/ws/mobile"
+//#define SERVERURL	@"https://homeservice.lotteria.com/mobile"
+//#define SERVERURLWS	@"https://homeservice.lotteria.com/ws/mobile"
+
+#define SERVERURL	@"http://121.131.176.253/mobile"
+#define SERVERURLWS	@"http://121.131.176.253/ws/mobile"
+//#define SERVERURLWS	@"http://192.168.106.203/ws/mobile"
 
 /* 
  *  로그인에서 사용됨 
