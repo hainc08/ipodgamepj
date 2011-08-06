@@ -1,5 +1,24 @@
 // !$*UTF8*$!
 {
+	069AF22E13E6389300B47258 /* dr_pc_s.png */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, 60}, {1133, 718}}";
+		};
+	};
+	1D3623240D0F684500981E51 /* lotteriaAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 351}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 561}";
+		};
+	};
+	1D3623250D0F684500981E51 /* lotteriaAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1157}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{176, 631}";
+		};
+	};
 	1D6058900D05DD3D006BFB54 /* lotteria */ = {
 		activeExec = 0;
 		executables = (
@@ -7,11 +26,14 @@
 		);
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = 84F70EAF130EB0FD00A9322A /* lotteria */;
+		activeSDKPreference = iphoneos4.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* lotteria */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* lotteria */,
+		);
+		breakpoints = (
 		);
 		codeSenseManager = 84F70EBF130EB10000A9322A /* Code sense */;
 		executables = (
@@ -40,24 +62,334 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 319731763;
-			PBXWorkspaceStateSaveDate = 319731763;
+			PBXPerProjectTemplateStateSaveDate = 334312397;
+			PBXWorkspaceStateSaveDate = 334312397;
 		};
 		perUserProjectItems = {
-			842C294E130EB1750003BAD4 /* PBXBookmark */ = 842C294E130EB1750003BAD4 /* PBXBookmark */;
-			84E644BD130EB84E00BE8557 /* PBXBookmark */ = 84E644BD130EB84E00BE8557 /* PBXBookmark */;
+			848E96C313ED676900385563 /* PBXTextBookmark */ = 848E96C313ED676900385563 /* PBXTextBookmark */;
+			848E96C413ED676900385563 /* PBXTextBookmark */ = 848E96C413ED676900385563 /* PBXTextBookmark */;
+			848E972413ED711800385563 /* PBXBookmark */ = 848E972413ED711800385563 /* PBXBookmark */;
+			848E972513ED711800385563 /* PlistBookmark */ = 848E972513ED711800385563 /* PlistBookmark */;
+			848E972613ED711800385563 /* PBXTextBookmark */ = 848E972613ED711800385563 /* PBXTextBookmark */;
+			848E976C13ED745000385563 /* PBXTextBookmark */ = 848E976C13ED745000385563 /* PBXTextBookmark */;
+			848E979513ED778B00385563 /* PBXTextBookmark */ = 848E979513ED778B00385563 /* PBXTextBookmark */;
+			848E97BE13ED7A4100385563 /* PBXTextBookmark */ = 848E97BE13ED7A4100385563 /* PBXTextBookmark */;
+			848E97BF13ED7A4100385563 /* PBXTextBookmark */ = 848E97BF13ED7A4100385563 /* PBXTextBookmark */;
+			848E97C313ED7A5400385563 /* PBXTextBookmark */ = 848E97C313ED7A5400385563 /* PBXTextBookmark */;
+			848E97C413ED7A5400385563 /* PlistBookmark */ = 848E97C413ED7A5400385563 /* PlistBookmark */;
 		};
 		sourceControlManager = 84F70EBE130EB10000A9322A /* Source Control */;
 		userBuildSettings = {
 		};
 	};
-	842C294E130EB1750003BAD4 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 842C2656130EB1590003BAD4 /* bg_bottom.png */;
+	32CA4F630368D1EE00C91783 /* lotteria_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 508}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 715}";
+		};
 	};
-	84E644BD130EB84E00BE8557 /* PBXBookmark */ = {
+	5612FF40133CFF17008D3BF7 /* DefineMessage.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 1424}}";
+			sepNavSelRange = "{1984, 0}";
+			sepNavVisRange = "{1772, 706}";
+		};
+	};
+	56928BE41312BECB000700A9 /* HttpRequest.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 431}}";
+			sepNavSelRange = "{950, 21}";
+			sepNavVisRange = "{0, 1183}";
+		};
+	};
+	56928BE51312BECB000700A9 /* HttpRequest.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 2408}}";
+			sepNavSelRange = "{229, 91}";
+			sepNavVisRange = "{0, 855}";
+		};
+	};
+	56A9CA64131550F00071D8A0 /* HelpViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 323}}";
+			sepNavSelRange = "{296, 0}";
+			sepNavVisRange = "{0, 453}";
+		};
+	};
+	56A9CD53131586770071D8A0 /* OrderViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 348}}";
+			sepNavSelRange = "{379, 0}";
+			sepNavVisRange = "{0, 411}";
+		};
+	};
+	56A9CD54131586770071D8A0 /* OrderViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 3056}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 692}";
+		};
+	};
+	56D815CA131A9A190049314B /* OrderPriceViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 455}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{154, 550}";
+		};
+	};
+	56D815CB131A9A190049314B /* OrderPriceViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1042, 3834}}";
+			sepNavSelRange = "{10418, 0}";
+			sepNavVisRange = "{9758, 835}";
+		};
+	};
+	56D8165D131AB13E0049314B /* OrderEndViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 348}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 401}";
+		};
+	};
+	56D8165E131AB13E0049314B /* OrderEndViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1153, 521}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 914}";
+		};
+	};
+	56D82163132365B90049314B /* HelpWebViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 323}}";
+			sepNavSelRange = "{277, 73}";
+			sepNavVisRange = "{0, 460}";
+		};
+	};
+	56D82164132365B90049314B /* HelpWebViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 715}}";
+			sepNavSelRange = "{700, 0}";
+			sepNavVisRange = "{185, 891}";
+		};
+	};
+	84384255130F862200EE2887 /* DataManager.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 10265}}";
+			sepNavSelRange = "{14115, 0}";
+			sepNavVisRange = "{13774, 494}";
+		};
+	};
+	8463A0871323D84B0064F123 /* ViewManager.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 588}}";
+			sepNavSelRange = "{1090, 80}";
+			sepNavVisRange = "{307, 868}";
+		};
+	};
+	8463A0881323D84B0064F123 /* ViewManager.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 1859}}";
+			sepNavSelRange = "{1173, 0}";
+			sepNavVisRange = "{967, 631}";
+		};
+	};
+	848B04AC1313864E00A1C50E /* XmlParser.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 2353}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 458}";
+		};
+	};
+	848E968713ED364300385563 /* OnlinePayViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 371}}";
+			sepNavSelRange = "{166, 0}";
+			sepNavVisRange = "{0, 323}";
+		};
+	};
+	848E968813ED364300385563 /* OnlinePayViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {488, 988}}";
+			sepNavSelRange = "{337, 0}";
+			sepNavVisRange = "{191, 219}";
+		};
+	};
+	848E96C313ED676900385563 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 848B04AC1313864E00A1C50E /* XmlParser.m */;
+		name = "XmlParser.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 458;
+		vrLoc = 0;
+	};
+	848E96C413ED676900385563 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 56D815CB131A9A190049314B /* OrderPriceViewController.m */;
+		name = "OrderPriceViewController.m: 245";
+		rLen = 0;
+		rLoc = 10418;
+		rType = 0;
+		vrLen = 835;
+		vrLoc = 9758;
+	};
+	848E972413ED711800385563 /* PBXBookmark */ = {
 		isa = PBXBookmark;
-		fRef = 842C2656130EB1590003BAD4 /* bg_bottom.png */;
+		fRef = 56D80C301318F75B0049314B /* bg_bb_c.png */;
+	};
+	848E972513ED711800385563 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* lotteria-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/teseuteojigeum/Desktop/ipod_trunk/lotteria/lotteria-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	848E972613ED711800385563 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8463A0881323D84B0064F123 /* ViewManager.m */;
+		name = "ViewManager.m: 69";
+		rLen = 0;
+		rLoc = 1173;
+		rType = 0;
+		vrLen = 631;
+		vrLoc = 967;
+	};
+	848E976C13ED745000385563 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 848E976D13ED745000385563 /* CGGeometry.h */;
+		name = "CGGeometry.h: 273";
+		rLen = 0;
+		rLoc = 8537;
+		rType = 0;
+		vrLen = 584;
+		vrLoc = 8165;
+	};
+	848E976D13ED745000385563 /* CGGeometry.h */ = {
+		isa = PBXFileReference;
+		name = CGGeometry.h;
+		path = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h;
+		sourceTree = "<absolute>";
+	};
+	848E979513ED778B00385563 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 84B4A362130FFF2800A7A99B /* MainViewController.m */;
+		name = "MainViewController.m: 51";
+		rLen = 0;
+		rLoc = 1224;
+		rType = 0;
+		vrLen = 686;
+		vrLoc = 849;
+	};
+	848E97BE13ED7A4100385563 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 849F0B60132D2BD30048C2AA /* MenuBodyViewController.m */;
+		name = "MenuBodyViewController.m: 162";
+		rLen = 7;
+		rLoc = 4200;
+		rType = 0;
+		vrLen = 638;
+		vrLoc = 3632;
+	};
+	848E97BF13ED7A4100385563 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 849F0B5C132D2BD30048C2AA /* IconButton.m */;
+		name = "IconButton.m: 21";
+		rLen = 10;
+		rLoc = 343;
+		rType = 0;
+		vrLen = 653;
+		vrLoc = 73;
+	};
+	848E97C313ED7A5400385563 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 84384255130F862200EE2887 /* DataManager.m */;
+		name = "DataManager.m: 552";
+		rLen = 0;
+		rLoc = 14115;
+		rType = 0;
+		vrLen = 494;
+		vrLoc = 13774;
+	};
+	848E97C413ED7A5400385563 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* lotteria-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			NSMainNibFile,
+		);
+		name = "/Users/teseuteojigeum/Desktop/ipod_trunk/lotteria/lotteria-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	849DBD141316FF1500C630CD /* NaviViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 323}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 354}";
+		};
+	};
+	849F0B5C132D2BD30048C2AA /* IconButton.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 535}}";
+			sepNavSelRange = "{343, 10}";
+			sepNavVisRange = "{73, 653}";
+		};
+	};
+	849F0B60132D2BD30048C2AA /* MenuBodyViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 5161}}";
+			sepNavSelRange = "{4200, 7}";
+			sepNavVisRange = "{3632, 638}";
+		};
+	};
+	84B4A361130FFF2800A7A99B /* MainViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 520}}";
+			sepNavSelRange = "{706, 0}";
+			sepNavVisRange = "{298, 627}";
+		};
+	};
+	84B4A362130FFF2800A7A99B /* MainViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {720, 2314}}";
+			sepNavSelRange = "{1184, 0}";
+			sepNavVisRange = "{1020, 285}";
+		};
+	};
+	84B4A42F131008C100A7A99B /* MapBodyViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {740, 6020}}";
+			sepNavSelRange = "{5778, 232}";
+			sepNavVisRange = "{5703, 310}";
+		};
+	};
+	84B9C5111316AC59003FED88 /* LogoViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 3263}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 507}";
+		};
+	};
+	84BB813D131A340F00991EC4 /* ChangeSideViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 1938}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 676}";
+		};
+	};
+	84F1B8D0131450F3006FC7C7 /* productKey.xml */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 1287}}";
+			sepNavSelRange = "{529, 0}";
+			sepNavVisRange = "{255, 1185}";
+		};
 	};
 	84F70EAF130EB0FD00A9322A /* lotteria */ = {
 		isa = PBXExecutable;
@@ -66,7 +398,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
+		breakpointsEnabled = 1;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -83,9 +415,13 @@
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
 		name = lotteria;
+		savedGlobals = {
+		};
 		showTypeColumn = 0;
 		sourceDirectories = (
 		);
+		variableFormatDictionary = {
+		};
 	};
 	84F70EBE130EB10000A9322A /* Source Control */ = {
 		isa = PBXSourceControlManager;

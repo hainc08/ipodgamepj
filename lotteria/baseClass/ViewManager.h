@@ -1,4 +1,5 @@
 @class	WaitViewController;
+@class	OnlinePayViewController;
 
 @interface ViewManager : NSObject
 {
@@ -14,6 +15,7 @@
 	UIButton* helpButton;
 	
 	WaitViewController *WaitView;
+	OnlinePayViewController *onlinePayView;
 }
 
 @property (retain) UIViewController* cartView;
@@ -38,4 +40,5 @@
 - (void)closePopUp;
 #pragma mark blockView
 - (void) waitview: (UIView *) view isBlock: (BOOL) isBlock;
+- (void) showOnlinePayView:(NSString *)url bodyArray:(NSMutableArray *)bodyarr;
 @end

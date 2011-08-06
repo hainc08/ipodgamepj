@@ -105,7 +105,8 @@
  *	결제 TYPE 메시지 
  */ 
 
-#define ONLINE_PAY_MSG				@"온라인 결제는 준비중입니다."
+//#define ONLINE_PAY_MSG				@"온라인 결제는 준비중입니다."
+#define ONLINE_PAY_MSG				@"온라인 결제가 맞습니까?"
 #define CARD_PAY_MSG				@"신용카드(단말기) 주문이 맞습니까?"
 #define MONEY_PERSONAL_PAY_MSG		@"현금+현금영수증 주문이 맞습니까?"
 #define MONEY_PAY_MSG				@"현금주문이 맞습니까?"

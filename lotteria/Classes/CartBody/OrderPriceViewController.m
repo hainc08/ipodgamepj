@@ -55,24 +55,24 @@
 	
 	if(sender == Money)
 	{
-				OrderType = MONEY;
+		OrderType = MONEY;
 		[self ShowOKCancleAlert:ORDER_TITLE msg:MONEY_PAY_MSG];
 
 	}
 	else if(sender == Money2)
 	{
-				OrderType = MONEY_PERSONAL;
+		OrderType = MONEY_PERSONAL;
 		[self ShowOKCancleAlert:ORDER_TITLE msg:MONEY_PERSONAL_PAY_MSG];
 	}
 	else if(sender == Card)
 	{
-				OrderType = CARD;
+		OrderType = CARD;
 		[self ShowOKCancleAlert:ORDER_TITLE msg:CARD_PAY_MSG];
 	}
 	else if(sender == Card2)
 	{
-			OrderType = ONLINE;
-		[self ShowOKAlert:nil msg:ONLINE_PAY_MSG];
+		OrderType = ONLINE;
+		[self ShowOKCancleAlert:ORDER_TITLE msg:ONLINE_PAY_MSG];
 	}
 }
 
@@ -119,7 +119,6 @@
 	
 	NSUInteger GroupIDIndex = 0;
 	NSMutableArray	*Body = [[NSMutableArray alloc] initWithCapacity:0];
-	httpRequest = [[HTTPRequest alloc] init];
 	
 	Order *Temp = [[DataManager getInstance] UserOrder];
 	
@@ -231,12 +230,20 @@
 	[Body addObject:[NSString stringWithFormat:@"personal_mobile=%@", (OrderType == MONEY_PERSONAL ?  Temp.UserPhone : @"") ]];  // 현금영수증 전화번호
 	
 	
-	
-	// 통신 완료 후 호출할 델리게이트 셀렉터 설정
-	[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
-	
-	// 페이지 호출
-	[httpRequest requestUrl:@"/MbOrder.asmx/ws_insOrderXml" bodyObject:nil bodyArray:Body];
+	if (OrderType == ONLINE)
+	{
+		[[ViewManager getInstance] showOnlinePayView:@"/MbOrder.asmx/ws_insOrderXml" bodyArray:Body];
+	}
+	else
+	{
+		httpRequest = [[HTTPRequest alloc] init];
+		
+		// 통신 완료 후 호출할 델리게이트 셀렉터 설정
+		[httpRequest setDelegate:self selector:@selector(didReceiveFinished:)];
+		
+		// 페이지 호출
+		[httpRequest requestUrl:@"/MbOrder.asmx/ws_insOrderXml" bodyObject:nil bodyArray:Body];
+	}
 }
 
 - (void)didReceiveFinished:(NSString *)result
