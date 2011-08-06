@@ -3,6 +3,8 @@
 #import "MainViewController.h"
 #import "NaviViewController.h"
 #import "WaitViewController.h"
+#import "OnlinePayViewController.h"
+
 static ViewManager *ViewManagerInst;
 
 @implementation ViewManager
@@ -38,6 +40,7 @@ static ViewManager *ViewManagerInst;
 	naviBackImg[1] = [UIImage imageNamed: @"bg_logo_titlebar.png"];
 	
 	popUpView = nil;
+	onlinePayView = nil;
 }
 
 - (void)cartUpdate
@@ -102,4 +105,25 @@ static ViewManager *ViewManagerInst;
 		[self.WaitView.view removeFromSuperview];
 	}
 }
+
+- (void) showOnlinePayView:(NSString *)url bodyArray:(NSMutableArray *)bodyarr
+{
+	if (onlinePayView == nil)
+	{
+		onlinePayView = [[OnlinePayViewController alloc] init];
+		[mainView.view addSubview:onlinePayView.view];
+	}
+
+	[onlinePayView.view setCenter:CGPointMake(160, 720)];
+
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.5];
+	
+	[onlinePayView.view setCenter:CGPointMake(160, 230)];
+	
+	[UIView commitAnimations];
+	
+	[onlinePayView showPage:url bodyArray:bodyarr];
+}
+
 @end
