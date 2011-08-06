@@ -72,6 +72,8 @@
 
 	[[SaveManager getInstance] loadExtraFile];
 	[self loadPage:page];
+	
+	[[SoundManager getInstance] playBGM:@"Abgm_10-1.mp3" idx:10];
 }
 
 - (void)loadPage:(int)page

@@ -14,6 +14,12 @@ enum _MenuType {
 	IBOutlet id configButton;
 	IBOutlet id exitButton;
 
+	IBOutlet id yesButton;
+	IBOutlet id noButton;
+
+	IBOutlet id menuView;
+	IBOutlet id exitView;
+
 	SaveView* saveView;
 	LoadView* loadView;
 	ConfigurationView* configView;

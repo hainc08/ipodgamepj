@@ -44,9 +44,9 @@
 		else
 		{
 			[[SoundManager getInstance] playFX:@"010_se.mp3" repeat:false];
-			[[SaveManager getInstance] setOpt:opt1 :opt2];
 			[[ViewManager getInstance] changeView:@"MainTopView"];
 		}
+		[[SaveManager getInstance] setOpt:opt1 :opt2];
 	}
 	else if (sender == opt1_p)
 	{
