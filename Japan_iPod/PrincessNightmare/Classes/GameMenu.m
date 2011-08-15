@@ -83,6 +83,7 @@
 	if (sender == backButton)
 	{
 		[self setAlpha:0];
+		[[[ViewManager getInstance] getCurView] refresh];
 	}
 	else if (sender == saveButton)
 	{

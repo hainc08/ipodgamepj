@@ -17,34 +17,26 @@ static SoundManager *SoundManagerInst;
 
 - (void)reset
 {
-	for (int i=0; i<35; ++i)
-	{
-		bgmPlayer[i] = nil;
-	}
-	for (int i=0; i<216; ++i)
-	{
-		fxPlayer[i] = nil;
-	}
-
-	curBgmPlayer = nil;
-	curFxPlayer = nil;
-	otherFxPlayer = nil;
+	bgmPlayer = nil;
+	fxPlayer = nil;
 
 	fxVolume = bgmVolume = 1; // default 설정
 }
 
 -(void)closeManager
 {
-	for (int i=0; i<35; ++i)
+	if (bgmPlayer != nil)
 	{
-		[bgmPlayer[i] stop];
-		[bgmPlayer[i] dealloc];
+		[bgmPlayer stop];
+		[bgmPlayer release];
+		bgmPlayer = nil;
 	}
 
-	for (int i=0; i<216; ++i)
+	if (fxPlayer != nil)
 	{
-		[fxPlayer[i] stop];
-		[fxPlayer[i] dealloc];
+		[fxPlayer stop];
+		[fxPlayer release];
+		fxPlayer = nil;
 	}
 }
 
@@ -52,82 +44,43 @@ static SoundManager *SoundManagerInst;
 {
 	if ([name compare:bgmName] == NSOrderedSame) return;
 
-	if (bgmPlayer[idx] == nil)
-	{
-		// make file URL
-		NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
-		NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
+	// make file URL
+	NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
+	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
 	
-		// checkfile exist
-		NSFileManager *fileManager = [NSFileManager defaultManager];
-		BOOL success = [fileManager fileExistsAtPath:filePath];
-		if(!success) {
-			NSLog(@"sound file does not exist");
-			return;
-		}
-		
-		bgmPlayer[idx] = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
-		[bgmPlayer[idx] prepareToPlay];
-		[bgmPlayer[idx] setDelegate:self];
-		
-		[filePath release];
-		[fileURL release];
+	// checkfile exist
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	BOOL success = [fileManager fileExistsAtPath:filePath];
+	if(!success) {
+		NSLog(@"sound file does not exist");
+		return;
 	}
 
 	[self stopBGM];
 
-	curBgmPlayer = bgmPlayer[idx];
+	bgmPlayer = [[[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil] retain];
+	[bgmPlayer prepareToPlay];
+	[bgmPlayer setDelegate:self];
 	
-	[curBgmPlayer setVolume: bgmVolume];
-	[curBgmPlayer setNumberOfLoops:-1];
+	[bgmPlayer setVolume: bgmVolume];
+	[bgmPlayer setNumberOfLoops:-1];
 
-	[curBgmPlayer play];
+	[bgmPlayer play];
 
 	if (bgmName != nil) [bgmName release];
 	bgmName = [[NSString stringWithFormat:@"%@", name] retain];
-}
 
--(void)playFX2:(NSString*)name idx:(int)idx repeat:(bool)repeat
-{
-	if (fxPlayer[idx] == nil)
-	{
-		// make file URL
-		NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
-		NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
-		
-		// checkfile exist
-		NSFileManager *fileManager = [NSFileManager defaultManager];
-		BOOL success = [fileManager fileExistsAtPath:filePath];
-		if(!success) {
-			NSLog(@"sound file does not exist");
-			return;
-		}
-		
-		fxPlayer[idx] = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
-		[fxPlayer[idx] prepareToPlay];
-		[fxPlayer[idx] setDelegate:self];
-		
-		[filePath release];
-		[fileURL release];
-	}
-	
-	[self stopFX];
-
-	curFxPlayer = fxPlayer[idx];
-
-	[curFxPlayer setVolume: fxVolume];
-	if (repeat)
-		[curFxPlayer setNumberOfLoops:-1];
-	else
-		[curFxPlayer setNumberOfLoops:0];
-	[curFxPlayer play];
+	[filePath release];
+	[fileURL release];
 }
 
 -(void)playFX:(NSString*)name repeat:(bool)repeat
 {
+	// make file URL
 	NSString* filePath = [NSString stringWithFormat: @"%@/%@", [[NSBundle mainBundle] resourcePath], name];
 	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: filePath];
-
+	
+	// checkfile exist
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	BOOL success = [fileManager fileExistsAtPath:filePath];
 	if(!success) {
@@ -137,17 +90,17 @@ static SoundManager *SoundManagerInst;
 	
 	[self stopFX];
 	
-	otherFxPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
-	[otherFxPlayer prepareToPlay];
-	[otherFxPlayer setDelegate:self];
+	fxPlayer = [[[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil] retain];
+	[fxPlayer prepareToPlay];
+	[fxPlayer setDelegate:self];
 	
-	[otherFxPlayer setVolume: fxVolume];
+	[fxPlayer setVolume: fxVolume];
 	if (repeat)
-		[otherFxPlayer setNumberOfLoops:-1];
+		[fxPlayer setNumberOfLoops:-1];
 	else
-		[otherFxPlayer setNumberOfLoops:0];
-	[otherFxPlayer play];
-
+		[fxPlayer setNumberOfLoops:0];
+	[fxPlayer play];
+	
 	[filePath release];
 	[fileURL release];
 }
@@ -160,32 +113,26 @@ static SoundManager *SoundManagerInst;
 -(void) setBGMVolume : (float) level 
 {
     bgmVolume = level; // 볼륨 설정
-	if (curBgmPlayer != nil) [curBgmPlayer setVolume: bgmVolume];
+	if (bgmPlayer != nil) [bgmPlayer setVolume: bgmVolume];
 }
 
 -(void)stopBGM
 {
-	if (curBgmPlayer != nil)
+	if (bgmPlayer != nil)
 	{
-		if (bgmName != nil) [bgmName release];
-		bgmName = nil;
-		[curBgmPlayer stop];
-		[curBgmPlayer setCurrentTime:0];
+		[bgmPlayer stop];
+		[bgmPlayer release];
+		bgmPlayer = nil;
 	}
 }
 
 -(void)stopFX
 {
-	if (curFxPlayer != nil)
+	if (fxPlayer != nil)
 	{
-		[curFxPlayer stop];
-		[curFxPlayer setCurrentTime:0];
-	}
-
-	if (otherFxPlayer != nil)
-	{
-		[otherFxPlayer stop];
-		[otherFxPlayer setCurrentTime:0];
+		[fxPlayer stop];
+		[fxPlayer release];
+		fxPlayer = nil;
 	}
 }
 
@@ -198,6 +145,16 @@ static SoundManager *SoundManagerInst;
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer*)player successfully:(BOOL)flag
 {
     // This is protocol's callback function. But we do not use this.
+	if (player == fxPlayer)
+	{
+		[fxPlayer release];
+		fxPlayer = nil;
+	}
+	else if (player == bgmPlayer)
+	{
+		[bgmPlayer release];
+		bgmPlayer = nil;
+	}
 }
 
 @end
