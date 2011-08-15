@@ -57,6 +57,7 @@
 		[param setStartScene:0];//[[DataManager getInstance] getMsgIdx:0 idx2:1]];
 //		[param setStartScene:[[DataManager getInstance] getMsgIdx:18 idx2:414]];
 		[param setIsReplay:false];
+		[[SaveManager getInstance] setQsaveSlot:-1];
 //		[[ViewManager getInstance] changeViewWithInit:@"GameView" param:param];
 		[[ViewManager getInstance] changeView:@"GameView" param:param];
 	}

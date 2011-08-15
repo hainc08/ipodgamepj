@@ -11,6 +11,7 @@
 @synthesize endScene;
 @synthesize isReplay;
 @synthesize replayIdx;
+@synthesize qsave;
 
 @end
 
@@ -94,7 +95,16 @@
 		
 		[self bringSubviewToFront:msgClose];
 		[self bringSubviewToFront:skip];
-
+		[self bringSubviewToFront:prev];
+		[self bringSubviewToFront:prev2];
+		[self bringSubviewToFront:play];
+		[self bringSubviewToFront:play2];
+		[self bringSubviewToFront:autoButton];
+		[self bringSubviewToFront:qsave];
+		[self bringSubviewToFront:qsaveIdx];
+		
+		//[prev2 setEnabled:false];
+		
 		sceneView = (SceneView*)[[ViewManager getInstance] getInstView:@"SceneView"];
 		[self addSubview:sceneView];
 		[sceneView setAlpha:0];
@@ -137,18 +147,30 @@
 	
 	scene = NULL;
 	curSceneId = [gParam startScene];
+	
+	int qsaveSlot = [[SaveManager getInstance] qsaveSlot];
+	if (qsaveSlot != -1)
+	{
+		[[SaveManager getInstance] setQsaveScene:qsaveSlot];
+	}
+
 	updateWait = 0;
 	phase = LOAD;
+	
+	[self qSaveButtonShow:true];
+	[saved setAlpha:0];
 
 	[self clearView];
 	[blackBoard setAlpha:1];
-	
+
 	[[DataManager getInstance] setCurIdx:curSceneId];
 
 	isSkipMode = false;
 
 	chrData[0] = chrData[1] = chrData[2] = chrData[3] = nil;
 	bgData = nil;
+	isRecollNow = false;
+	[self setRecollMode:false];
 }
 
 - (IBAction)SkipButtonClick:(id)sender
@@ -181,11 +203,52 @@
 	return;
 }
 
+- (IBAction)AutoButtonClick:(id)sender
+{
+	
+}
+
+- (IBAction)QSaveButtonClick:(id)sender
+{
+	[[SaveManager getInstance] qsave];
+
+	[saved setAlpha:1];
+
+	[UIView beginAnimations:@"scene" context:NULL];
+	[UIView setAnimationDuration:2];
+	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	[saved setAlpha:0];
+	[UIView commitAnimations];
+}
+
+typedef enum {
+	ALPHA = 0,
+	BLUE = 1,
+	GREEN = 2,
+	RED = 3
+} PIXELS;
+
 - (IBAction)ButtonClick:(id)sender
 {
 	if (phase != WAITINPUT) return;
 	if (sender == next2) return [self ButtonClick:next];
-	
+
+	if (isRecollNow)
+	{
+		if (sender == next)
+		{
+			[[DataManager getInstance] GotoRecollEnd];
+
+			[serihuBoard setSerihu:[[DataManager getInstance] recollChr]
+							serihu:[[DataManager getInstance] recollMsg]];
+
+			[self setRecollMode:false];
+		}
+		
+		//나머지는 무시...
+		return;
+	}
+		
 	if ( sender == msgClose )
 	{
 		[msgClose setAlpha:0];
@@ -193,6 +256,14 @@
 		[menuButton setAlpha:0];
 		[serihuBoard.view setAlpha:0];
 		[skip setAlpha:0];
+		[prev setAlpha:0];
+		[prev2 setAlpha:0];
+		[play setAlpha:0];
+		[play2 setAlpha:0];
+		[autoButton setAlpha:0];
+		
+		[self qSaveButtonShow:false];
+		
 		return;
 	}
 	if ( sender == menuButton )
@@ -205,10 +276,18 @@
 	if ( [msgClose alpha] == 0)
 	{
 		[skip setAlpha:1];
+		[prev setAlpha:1];
+		[prev2 setAlpha:1];
+		[play setAlpha:1];
+		[play2 setAlpha:1];
+		[autoButton setAlpha:1];
 		[msgClose setAlpha:1];
 		[chrView[3] setAlpha:1];
 		[menuButton setAlpha:1];
 		[serihuBoard.view setAlpha:1];
+		
+		[self qSaveButtonShow:true];
+		
 		return;
 	}
 
@@ -343,6 +422,8 @@
 				else if (sender == selectButton2) tagIdx = 1;
 				else if (sender == selectButton3) tagIdx = 2;
 				
+				[[DataManager getInstance] addRecoll:curSceneId :tagIdx];
+
 				curSceneId = [[DataManager getInstance] getTagInfo:[scene getSelectTag:tagIdx]];
 				[[DataManager getInstance] setCurIdx:curSceneId];
 				phase = LOAD;
@@ -355,6 +436,53 @@
 			}
 			break;
 	}
+}
+
+- (IBAction)RecollButton:(id)sender
+{
+	bool isOK = false;
+
+	if (sender == play)
+	{
+		if ([[DataManager getInstance] can_next_Recoll])
+		{
+			[[DataManager getInstance] next_Recoll];
+			isOK = true;
+		}
+	}
+	else if (sender == play2)
+	{
+		if ([[DataManager getInstance] can_next_Recoll])
+		{
+			[[DataManager getInstance] next2_Recoll];
+			isOK = true;
+		}
+	}
+
+	else if (sender == prev)
+	{
+		if ([[DataManager getInstance] can_prev_Recoll])
+		{
+			[[DataManager getInstance] prev_Recoll];
+			isOK = true;
+		}
+	}
+	else if (sender == prev2)
+	{
+		if ([[DataManager getInstance] can_prev_Recoll])
+		{
+			[[DataManager getInstance] prev2_Recoll];
+			isOK = true;
+		}
+	}
+	
+	if (isOK)
+	{
+		[serihuBoard setSerihu:[[DataManager getInstance] recollChr]
+						serihu:[[DataManager getInstance] recollMsg]];
+	}
+	
+	[self setRecollMode:[[DataManager getInstance] can_next_Recoll]];
 }
 
 - (void) BaseSoundPlay
@@ -453,6 +581,8 @@
 				if ([sceneView makeBeforeScene:scene])
 				{
 					[self clearView];
+					[[DataManager getInstance] resetRecoll];
+					
 					phase = BEFORE;
 					
 					[[SoundManager getInstance] stopAll];
@@ -474,6 +604,26 @@
 	}
 	
 	[super update];
+}
+
+- (void)refresh
+{
+	[self qSaveButtonShow:true];
+}
+
+- (void)qSaveButtonShow:(bool)isShow
+{
+	if ((isShow == false) || ([[SaveManager getInstance] qsaveSlot] == -1))
+	{
+		[qsave setAlpha:0];
+		[qsaveIdx setAlpha:0];
+	}
+	else
+	{
+		[qsave setAlpha:1];
+		[qsaveIdx setAlpha:1];
+		[qsaveIdx setText:[NSString stringWithFormat:@"%d", [[SaveManager getInstance] qsaveSlot] + 1]];
+	}
 }
 
 - (void)showChr:(float)delay
@@ -567,12 +717,12 @@
 		if ([scene FXrepeat])
 		{
 			fxName = [[NSString alloc] initWithFormat:@"seLoop-%d.mp3",fxIdx];
-			[[SoundManager getInstance] playFX2:fxName idx:fxIdx-1 repeat:true];
+			[[SoundManager getInstance] playFX:fxName repeat:true];
 		}
 		else
 		{
 			fxName = [[NSString alloc] initWithFormat:@"se-%d.mp3",fxIdx];
-			[[SoundManager getInstance] playFX2:fxName idx:fxIdx+16-1 repeat:false];
+			[[SoundManager getInstance] playFX:fxName repeat:false];
 		}
 		[fxName release];
 	}
@@ -661,13 +811,14 @@
 			[[SaveManager getInstance] saveExtraFile];
 	}
 
-	//스킵모드에서는 에니를 보여주지 않는다.
-	if (isSkipMode) return;
-	
 	switch ([s animeType])
 	{
 		case 0:
-			if ([[bgView image] size].height == 360)
+			if ([[bgView image] size].height == 320)
+			{
+				[bgView setCenter:CGPointMake(240, 160)];
+			}
+			else if ([[bgView image] size].height == 360)
 			{
 				if (([s preLoadBgIdx] >= 623)&&([s preLoadBgIdx] <= 625))
 				{
@@ -681,52 +832,70 @@
 			else
 			{
 				if ([s preLoadBgIdx] == 791)
-					[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
+					[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height * 0.5f))];
 				else
 					[bgView setCenter:CGPointMake(240, (int)([[bgView image] size].height * 0.5f) - 20)];
 			}
-			showOkTick = frameTick + (0.2 * framePerSec);
+			
+			if (!isSkipMode) showOkTick = frameTick + (0.2 * framePerSec);
 			break;
 		case 1:
-			[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
-			
-			[UIView beginAnimations:@"anime" context:NULL];
-			[UIView setAnimationDuration:2];
-			[UIView setAnimationDelay:1];
-			[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-			[bgView setCenter:CGPointMake(240, (int)([img size].height * 0.5f) - 20)];
-			[UIView commitAnimations];
-			
-			showOkTick = frameTick + (3.0 * framePerSec);
+			//스킵모드에서는 끝 에니만 보여준다.
+			if (isSkipMode)
+			{
+				[bgView setCenter:CGPointMake(240, (int)([img size].height * 0.5f) - 20)];
+			}
+			else
+			{
+				[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
+				
+				[UIView beginAnimations:@"anime" context:NULL];
+				[UIView setAnimationDuration:2];
+				[UIView setAnimationDelay:1];
+				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+				[bgView setCenter:CGPointMake(240, (int)([img size].height * 0.5f) - 20)];
+				[UIView commitAnimations];
+				
+				showOkTick = frameTick + (3.0 * framePerSec);
+			}
 			break;
 		case 3:
-			[bgView setCenter:CGPointMake(240, (int)([img size].height * 0.5f) - 20)];
-			
-			[UIView beginAnimations:@"anime" context:NULL];
-			[UIView setAnimationDuration:2];
-			[UIView setAnimationDelay:1];
-			[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-			[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
-			[UIView commitAnimations];
-			
-			showOkTick = frameTick + (3.0 * framePerSec);
+			if (isSkipMode)
+			{
+				[bgView setCenter:CGPointMake(240, 340 - (int)([img size].height / 2))];
+			}
+			else
+			{
+				[bgView setCenter:CGPointMake(240, (int)([img size].height * 0.5f) - 20)];
+				
+				[UIView beginAnimations:@"anime" context:NULL];
+				[UIView setAnimationDuration:2];
+				[UIView setAnimationDelay:1];
+				[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+				[UIView commitAnimations];
+				
+				showOkTick = frameTick + (3.0 * framePerSec);
+			}
 			break;
 		case 400:
 		case 401:
 		case 402:
 		case 403:
 		{
-			//여기는 적당한 파일이름을 정해주자.
-			[self bringSubviewToFront:movieUI];
-			[movieUI setAlpha:1];
-			[[SoundManager getInstance] stopBGM];
-			[movieBoard playScene:s];
-			if (serihuBoard2 != nil)
+			if (!isSkipMode)
 			{
-				[serihuBoard2 setSerihu:[s getChara] serihu:[s getSerihu]];
+				//여기는 적당한 파일이름을 정해주자.
+				[self bringSubviewToFront:movieUI];
+				[movieUI setAlpha:1];
+				[[SoundManager getInstance] stopBGM];
+				[movieBoard playScene:s];
+				if (serihuBoard2 != nil)
+				{
+					[serihuBoard2 setSerihu:[s getChara] serihu:[s getSerihu]];
+				}
+				
+				[serihuBoard.view setAlpha:0];
 			}
-			
-			[serihuBoard.view setAlpha:0];
 		}
 	}
 }
@@ -811,6 +980,8 @@
 			[selectPanel2 setAlpha:0];
 			[selectPanel3 setAlpha:0];
 			[next setAlpha:1];
+
+			[[DataManager getInstance] addRecoll:curSceneId :-1];
 			break;
 		case 3:
 			[timer setAlpha:1];
@@ -847,6 +1018,8 @@
 			break;
 	}
 
+	[self setRecollMode:false];
+
 	[serihuBoard.view setAlpha:1];
 	[serihuBoard setSerihu:[scene getChara] serihu:[scene getSerihu]];
 //	[debugLabel setText:[[DataManager getInstance] getSceneIdxStr]];
@@ -871,5 +1044,138 @@
 	[selectPanel3 setAlpha:0];
 }
 
+- (void)setRecollMode:(bool)isRecoll
+{
+	if (isRecoll != isRecollNow)
+	{
+		if (isRecoll)
+		{
+			for (int i=0; i<4; ++i)
+			{
+				if ([chrView[i] alpha] != 0)
+				{
+					originChr[i] = [[chrView[i] image] retain];
+					[chrView[i] setImage:[self getSepiaImage:originChr[i]]];
+				}
+			}
+
+			if ([bgView alpha] != 0)
+			{
+				originBg = [[bgView image] retain];
+				[bgView setImage:[self getSepiaImage:originBg]];
+			}
+		}
+		else
+		{
+			for (int i=0; i<4; ++i)
+			{
+				if ([chrView[i] alpha] != 0)
+				{
+					[chrView[i] setImage:originChr[i]];
+					[originChr[i] release];
+				}
+			}
+			if ([bgView alpha] != 0)
+			{
+				[bgView setImage:originBg];
+				[originBg release];
+			}
+		}
+	}
+
+	isRecollNow = isRecoll;
+	
+	if (isRecollNow)
+	{
+		[msgClose setAlpha:0];
+		[skip setAlpha:0];
+		[autoButton setAlpha:0];
+		[menuButton setAlpha:0];
+		[self qSaveButtonShow:false];
+		
+		[play setEnabled:true];
+		[play2 setEnabled:true];
+	}
+	else
+	{
+		[msgClose setAlpha:1];
+		[skip setAlpha:1];
+		[autoButton setAlpha:1];
+		[menuButton setAlpha:1];
+		[self qSaveButtonShow:true];
+
+		[play setEnabled:false];
+		[play2 setEnabled:false];
+	}
+
+	if ([[DataManager getInstance] can_prev_Recoll])
+	{
+		[prev setEnabled:true];
+		[prev2 setEnabled:true];
+	}
+	else
+	{
+		[prev setEnabled:false];
+		[prev2 setEnabled:false];
+	}
+}
+
+- (UIImage*)getSepiaImage:(UIImage*)pImage
+{
+	CGSize size = [pImage size];
+	int width = size.width;
+	int height = size.height;
+	
+	// the pixels will be painted to this array
+	uint32_t *pixels = (uint32_t *) malloc(width * height * sizeof(uint32_t));
+	
+	// clear the pixels so any transparency is preserved
+	memset(pixels, 0, width * height * sizeof(uint32_t));
+	
+	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+	
+	// create a context with RGBA pixels
+	CGContextRef context = CGBitmapContextCreate(pixels, width, height, 8, width * sizeof(uint32_t), colorSpace, 
+												 kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedLast);
+	
+	// paint the bitmap to our context which will fill in the pixels array
+	CGContextDrawImage(context, CGRectMake(0, 0, width, height), [pImage CGImage]);
+	
+	for(int y = 0; y < height; y++) {
+		for(int x = 0; x < width; x++) {
+			uint8_t *rgbaPixel = (uint8_t *) &pixels[y * width + x];
+			
+			// set the pixels to sepia
+			uint16_t red = (0.393 * rgbaPixel[RED] + 0.769 * rgbaPixel[GREEN] + 0.189 * rgbaPixel[BLUE]) * 1.1f;
+			uint16_t green = (0.349 * rgbaPixel[RED] + 0.686 * rgbaPixel[GREEN] + 0.168 * rgbaPixel[BLUE]) * 1.1f;
+			uint16_t blue = (0.272 * rgbaPixel[RED] + 0.534 * rgbaPixel[GREEN] + 0.131 * rgbaPixel[BLUE]) * 1.1f;
+
+			if (red > 255) rgbaPixel[RED] = 255;
+			else rgbaPixel[RED] = red;
+			
+			if (green > 255) rgbaPixel[GREEN] = 255;
+			else rgbaPixel[GREEN] = green;
+			
+			if (blue > 255) rgbaPixel[BLUE] = 255;
+			else rgbaPixel[BLUE] = blue;
+		}
+	}
+	
+	// create a new CGImageRef from our context with the modified pixels
+	CGImageRef image = CGBitmapContextCreateImage(context);
+	
+	// we're done with the context, color space, and pixels
+	CGContextRelease(context);
+	CGColorSpaceRelease(colorSpace);
+	free(pixels);
+	
+	// make a new UIImage to return
+	UIImage *resultUIImage = [UIImage imageWithCGImage:image];
+	
+	// we're done with image now too
+	CGImageRelease(image);
+	
+	return resultUIImage;
+}
 
 @end

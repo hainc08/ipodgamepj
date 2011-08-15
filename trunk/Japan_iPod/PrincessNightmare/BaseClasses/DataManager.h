@@ -182,10 +182,19 @@
 	NSData* DataCollector[50];
 	UIImage* ImgCollector[50];
 	int DataCount;
+
+	int recoll[256];
+	int recollEnd;
+	int curRecoll;
+	int curRecollIdx;
+	NSString* recollMsg;
+	NSString* recollChr;
 }
 
 @property (readwrite) bool loadingDone;
 @property (readwrite) int loadingTime;
+@property (retain) NSString* recollMsg;
+@property (retain) NSString* recollChr;
 
 + (DataManager*)getInstance;
 + (void)initManager;
@@ -237,5 +246,18 @@
 
 - (NSString*)getBGMname:(int)idx;
 - (void)checkSceneExp:(int)idx;
+
+- (void)addRecoll:(int)idx :(int)select;
+- (void)resetRecoll;
+
+- (bool)can_next_Recoll;
+- (bool)can_prev_Recoll;
+
+- (void)next_Recoll;
+- (void)next2_Recoll;
+- (void)prev_Recoll;
+- (void)prev2_Recoll;
+
+- (void)GotoRecollEnd;
 
 @end

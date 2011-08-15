@@ -25,12 +25,18 @@
 	NSString* itemFlagFileName;
 	
 	int lastPage;
+	
+	int qsaveSlot;
+	int qsavedScene;
 }
 
 @property (readonly) int opt1;
 @property (readonly) int opt2;
 
 @property (readwrite) int lastPage;
+
+@property (readwrite) int qsaveSlot;
+@property (readwrite) int qsaveScene;
 
 + (SaveManager*)getInstance;
 + (void)initManager;
@@ -80,5 +86,7 @@
 - (void)save:(int)idx data:(int)data;
 
 - (void)setOpt:(int)o1 :(int)o2;
+
+- (void)qsave;
 
 @end

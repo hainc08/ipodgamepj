@@ -11,12 +11,14 @@
 	int endScene;
 	bool isReplay;
 	int replayIdx;
+	int qsave;
 }
 
 @property (readwrite) int startScene;
 @property (readwrite) int endScene;
 @property (readwrite) bool isReplay;
 @property (readwrite) int replayIdx;
+@property (readwrite) int qsave;
 
 @end
 
@@ -34,6 +36,15 @@
 	IBOutlet id msgClose;
 	IBOutlet id skip;
 
+	IBOutlet UIButton* prev;
+	IBOutlet UIButton* prev2;
+	IBOutlet UIButton* play;
+	IBOutlet UIButton* play2;
+	IBOutlet UIButton* autoButton;
+	IBOutlet UIButton* qsave;
+	IBOutlet UILabel* qsaveIdx;
+	IBOutlet UILabel* saved;
+
 	GameParam* gParam;
 
 	SerihuBoard* serihuBoard;
@@ -43,6 +54,9 @@
 	
 	UIImageView* chrView[4];
 	UIImageView* bgView;
+	
+	UIImage* originChr[4];
+	UIImage* originBg;
 	
 	UIImageView* oldChrView[4];
 	UIImageView* oldBgView;
@@ -89,15 +103,23 @@
 	int phase;
 	bool isSkipMode;
 	int skipEnd;
-	
+
 	MovieBoard* movieBoard;
 	CGPoint menuButtonOrigin;
+	
+	bool isRecollNow;
 }
 
 - (IBAction)SkipButtonClick:(id)sender;
+- (IBAction)AutoButtonClick:(id)sender;
+- (IBAction)QSaveButtonClick:(id)sender;
 - (IBAction)ButtonClick:(id)sender;
+- (IBAction)RecollButton:(id)sender;
 - (void)showMenu;
 - (void)update;
+- (void)refresh;
+
+- (void)qSaveButtonShow:(bool)isShow;
 
 - (void)showChr:(float)delay;
 - (void)hideChr:(float)delay;
@@ -114,4 +136,6 @@
 
 - (void)clearView;
 
+- (void)setRecollMode:(bool)isRecoll;
+- (UIImage*)getSepiaImage:(UIImage*)pImage;
 @end

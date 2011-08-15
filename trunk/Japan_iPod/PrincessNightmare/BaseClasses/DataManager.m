@@ -387,6 +387,8 @@ static NSString* ResourcePath;
 
 @synthesize loadingDone;
 @synthesize loadingTime;
+@synthesize recollMsg;
+@synthesize recollChr;
 
 + (DataManager*)getInstance
 {
@@ -452,6 +454,7 @@ static NSString* ResourcePath;
 	}
 	
 	[self resetPreload];
+	[self resetRecoll];
 	DataCount = 0;
 }
 
@@ -1036,8 +1039,8 @@ static NSString* ResourcePath;
 			FIND_OK3:
 				[preloadScene[j] setBgData:tempData bgId:bgId];
 				
-				[preloadScene[j] setChara:[[msg[willSceneId] getStrVal:0] autorelease]];
-				[preloadScene[j] setSerihu:[[msg[willSceneId] getStrVal:1] autorelease]];
+				[preloadScene[j] setChara:[msg[willSceneId] getStrVal:0]];
+				[preloadScene[j] setSerihu:[msg[willSceneId] getStrVal:1]];
 
 				int sceneType = [msg[willSceneId] getIntVal:0];
 				[preloadScene[j] setSceneType:sceneType];
@@ -1045,8 +1048,8 @@ static NSString* ResourcePath;
 				switch (sceneType)
 				{
 					case 3:
-						[preloadScene[j] setSelect:0 str:[[msg[willSceneId] getStrVal:2] autorelease]];
-						[preloadScene[j] setSelect:1 str:[[msg[willSceneId] getStrVal:3] autorelease]];
+						[preloadScene[j] setSelect:0 str:[msg[willSceneId] getStrVal:2]];
+						[preloadScene[j] setSelect:1 str:[msg[willSceneId] getStrVal:3]];
 						
 						[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8]
 						 :[msg[willSceneId] getIntVal:9]
@@ -1054,9 +1057,9 @@ static NSString* ResourcePath;
 						 :0];
 						break;
 					case 4:
-						[preloadScene[j] setSelect:0 str:[[msg[willSceneId] getStrVal:2] autorelease]];
-						[preloadScene[j] setSelect:1 str:[[msg[willSceneId] getStrVal:3] autorelease]];
-						[preloadScene[j] setSelect:2 str:[[msg[willSceneId] getStrVal:4] autorelease]];
+						[preloadScene[j] setSelect:0 str:[msg[willSceneId] getStrVal:2]];
+						[preloadScene[j] setSelect:1 str:[msg[willSceneId] getStrVal:3]];
+						[preloadScene[j] setSelect:2 str:[msg[willSceneId] getStrVal:4]];
 						
 						[preloadScene[j] setSelectTag:[msg[willSceneId] getIntVal:8]
 						 :[msg[willSceneId] getIntVal:9]
@@ -1083,7 +1086,7 @@ static NSString* ResourcePath;
 
 				for (int l=strcount; l<[msg[willSceneId] valCount]; ++l)
 				{
-					optionStr = [[msg[willSceneId] getStrVal:l] autorelease];
+					optionStr = [msg[willSceneId] getStrVal:l];
 
 					if (optionStr != nil)
 					{
@@ -1328,6 +1331,183 @@ GABBAGE_CHECK_OK:
 			[[SaveManager getInstance] setSceneExp:i];
 		}
 	}
+}
+
+- (void)addRecoll:(int)idx :(int)select
+{
+	curRecoll = idx;
+
+	//선택지는 무조건 따로 저장한다.
+	if (select != -1)
+	{
+		recoll[recollEnd] = 2;
+		recoll[recollEnd+1] = idx;
+		recoll[recollEnd+2] = select;
+		curRecollIdx = recollEnd;
+		recollEnd = recollEnd+3;
+		return;
+	}
+	
+	if (recollEnd != 0)
+	{
+		if (recoll[recollEnd-3] == 1)
+		{
+			if ((recoll[recollEnd-1] + recoll[recollEnd-2] + 1) == idx)
+			{
+				++recoll[recollEnd-1];
+				return;
+			}
+		}
+	}
+	
+	recoll[recollEnd] = 1;
+	recoll[recollEnd+1] = idx;
+	recoll[recollEnd+2] = 0;
+	curRecollIdx = recollEnd;
+	recollEnd = recollEnd+3;
+}
+
+- (void)resetRecoll
+{
+	recollEnd = 0;
+	curRecollIdx = -1;
+	memset(recoll, 0x00, 256 * sizeof(int));
+}
+
+- (bool)can_next_Recoll
+{
+	if (curRecollIdx == -1) return false;
+	if ((recoll[curRecollIdx] == 1) && ((recoll[curRecollIdx + 1] + recoll[curRecollIdx + 2]) > curRecoll)) return true;
+	if (curRecollIdx + 3 == recollEnd) return false;
+	return true;
+}
+
+- (bool)can_prev_Recoll
+{
+	if (curRecollIdx == -1) return false;
+	if ((recoll[curRecollIdx] == 1) && (recoll[curRecollIdx + 1] < curRecoll)) return true;
+	if (curRecollIdx == 0) return false;
+	return true;
+}
+
+- (void)next_Recoll
+{
+	if ((recoll[curRecollIdx] == 1) && ((recoll[curRecollIdx + 1] + recoll[curRecollIdx + 2]) > curRecoll))
+	{
+		++curRecoll;
+	}
+	else
+	{
+		if (curRecollIdx + 3 == recollEnd) return;
+		
+		curRecollIdx += 3;
+		curRecoll = recoll[curRecollIdx+1];
+	}
+	
+	recollChr = [msg[curRecoll] getStrVal:0];
+
+	if (recoll[curRecollIdx] == 1)
+	{
+		recollMsg = [msg[curRecoll] getStrVal:1];
+	}
+	else
+	{
+		recollMsg = [NSString stringWithFormat: @"●選択「%@」",[msg[curRecoll] getStrVal:2 + recoll[curRecollIdx+2]]];
+	}
+}
+
+- (void)next2_Recoll
+{
+	while (1)
+	{
+		if (curRecollIdx + 3 >= recollEnd)
+		{
+			if (recoll[curRecollIdx] == 1)
+			{
+				curRecoll = recoll[curRecollIdx + 1] + recoll[curRecollIdx + 2];
+				recollChr = [msg[curRecoll] getStrVal:0];
+				recollMsg = [msg[curRecoll] getStrVal:1];
+			}
+			return;
+		}
+
+		curRecollIdx += 3;
+		if (recoll[curRecollIdx] == 2)
+		{
+			curRecoll = recoll[curRecollIdx + 1];
+			recollChr = [msg[curRecoll] getStrVal:0];
+			recollMsg = [NSString stringWithFormat: @"●選択「%@」",[msg[curRecoll] getStrVal:2 + recoll[curRecollIdx+2]]];
+			return;
+		}
+	}
+}
+
+- (void)prev_Recoll
+{
+	if ((recoll[curRecollIdx] == 1) && (recoll[curRecollIdx + 1] < curRecoll))
+	{
+		--curRecoll;
+	}
+	else
+	{
+		if (curRecollIdx == 0) return;
+
+		curRecollIdx -= 3;
+		if (recoll[curRecollIdx] == 1)
+		{
+			curRecoll = recoll[curRecollIdx+1] + recoll[curRecollIdx+2];
+		}
+		else
+		{
+			curRecoll = recoll[curRecollIdx+1];
+		}
+	}
+	
+	recollChr = [msg[curRecoll] getStrVal:0];
+
+	if (recoll[curRecollIdx] == 1)
+	{
+		recollMsg = [msg[curRecoll] getStrVal:1];
+	}
+	else
+	{
+		recollMsg = [NSString stringWithFormat: @"●選択「%@」",[msg[curRecoll] getStrVal:2 + recoll[curRecollIdx+2]]];
+	}
+}
+
+- (void)prev2_Recoll
+{
+	while (1)
+	{
+		if (curRecollIdx <= 0)
+		{
+			if (recoll[curRecollIdx] == 1)
+			{
+				curRecoll = recoll[curRecollIdx + 1];
+				recollChr = [msg[curRecoll] getStrVal:0];
+				recollMsg = [msg[curRecoll] getStrVal:1];
+			}
+			return;
+		}
+		
+		curRecollIdx -= 3;
+		if (recoll[curRecollIdx] == 2)
+		{
+			curRecoll = recoll[curRecollIdx + 1];
+			recollChr = [msg[curRecoll] getStrVal:0];
+			recollMsg = [NSString stringWithFormat: @"●選択「%@」",[msg[curRecoll] getStrVal:2 + recoll[curRecollIdx+2]]];
+			return;
+		}
+	}
+}
+
+- (void)GotoRecollEnd
+{
+	curRecollIdx = recollEnd - 3;
+
+	curRecoll = recoll[curRecollIdx + 1] + recoll[curRecollIdx + 2];
+	recollChr = [msg[curRecoll] getStrVal:0];
+	recollMsg = [msg[curRecoll] getStrVal:1];
 }
 
 @end

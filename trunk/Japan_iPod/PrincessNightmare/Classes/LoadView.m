@@ -91,7 +91,8 @@
 				GameParam* param = [GameParam alloc];
 				[param setStartScene:[bars[i] saveIdx]];
 				[param setIsReplay:false];
-				
+
+				[[SaveManager getInstance] setQsaveSlot:curPage*4+i];
 				[[SaveManager getInstance] setFlagData:curPage*4+i];
 				[[ViewManager getInstance] changeView:@"GameView" param:param];
 				return;

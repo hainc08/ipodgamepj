@@ -44,6 +44,8 @@ void writeChar(NSFileHandle* writeFile, char value)
 @synthesize opt1;
 @synthesize opt2;
 @synthesize lastPage;
+@synthesize qsaveSlot;
+@synthesize qsaveScene;
 
 + (SaveManager*)getInstance
 {
@@ -52,7 +54,7 @@ void writeChar(NSFileHandle* writeFile, char value)
 
 + (void)initManager;
 {
-	SaveManagerInst = [SaveManager alloc];
+	SaveManagerInst = [[SaveManager alloc] init];
 	
 	[SaveManagerInst setLastPage:0];
 	
@@ -702,6 +704,9 @@ void writeChar(NSFileHandle* writeFile, char value)
 	memcpy(saveFlag[idx], flag, 20);
 	memcpy(saveFlag2[idx], flag2, 30);
 	
+	qsaveSlot = idx;
+	qsaveScene = data; 
+	
 	[self saveSaveFile];
 }
 
@@ -710,6 +715,17 @@ void writeChar(NSFileHandle* writeFile, char value)
 	opt1 = o1;
 	opt2 = o2;
 	[self saveOptionFile];
+}
+
+- (void)qsave
+{
+	if (qsaveSlot == -1) return;
+
+	int curScene = [[[DataManager getInstance] getCurScene] sceneId];
+	if (qsavedScene == curScene) return;
+
+	[self save:qsaveSlot data:curScene];
+	qsaveScene = curScene;
 }
 
 @end

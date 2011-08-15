@@ -153,6 +153,7 @@
 					[param setEndScene:[scenario endIdx]];
 					[param setIsReplay:true];
 					[param setReplayIdx:idx];
+					[[SaveManager getInstance] setQsaveSlot:-1];
 					
 					[[ViewManager getInstance] changeView:@"GameView" param:param];
 				}
