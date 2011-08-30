@@ -708,6 +708,9 @@ void writeChar(NSFileHandle* writeFile, char value)
 	qsaveScene = data; 
 	
 	[self saveSaveFile];
+	
+	//recoll을 별도의 파일에 저장한다.
+	[[DataManager getInstance] saveRecoll:idx];
 }
 
 - (void)setOpt:(int)o1 :(int)o2

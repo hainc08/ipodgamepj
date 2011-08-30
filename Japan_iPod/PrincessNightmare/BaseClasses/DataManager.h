@@ -183,7 +183,7 @@
 	UIImage* ImgCollector[50];
 	int DataCount;
 
-	int recoll[256];
+	int recoll[512];
 	int recollEnd;
 	int curRecoll;
 	int curRecollIdx;
@@ -201,6 +201,9 @@
 - (void)closeManager;
 - (void)reset;
 - (void)resetData;
+
+- (void)saveRecoll:(int)idx;
+- (void)loadRecoll:(int)idx;
 
 - (NSData*)getData:(NSString*)path;
 
