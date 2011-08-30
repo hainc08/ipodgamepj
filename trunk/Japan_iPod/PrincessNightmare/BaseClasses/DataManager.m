@@ -458,6 +458,59 @@ static NSString* ResourcePath;
 	DataCount = 0;
 }
 
+- (void)saveRecoll:(int)idx
+{
+	NSString* fileName = [NSString stringWithFormat:@"recoll%d.dat", idx];
+	NSFileHandle *writeFile = [NSFileHandle fileHandleForWritingAtPath:fileName];
+	if (writeFile == nil)
+	{
+		[[NSFileManager defaultManager] createFileAtPath:fileName
+												contents:nil attributes:nil];
+		
+		writeFile = [NSFileHandle fileHandleForWritingAtPath:fileName];
+	}
+	
+	if (writeFile == nil)
+	{
+		NSLog(@"fail to open file");
+		return;
+	}
+	
+	//버전정보심기
+	int ver = 1;
+	writeInt(writeFile, ver);
+	writeInt(writeFile, recollEnd);
+	[writeFile writeData: [NSData dataWithBytes:recoll
+										 length:sizeof(int) * recollEnd]];
+	
+	[writeFile closeFile];
+}
+
+- (void)loadRecoll:(int)idx
+{
+	NSString* fileName = [NSString stringWithFormat:@"recoll%d.dat", idx];
+	NSFileHandle *readFile = [NSFileHandle fileHandleForReadingAtPath:fileName];
+	
+	if(readFile == nil)
+	{
+		[self resetRecoll];
+		return;
+	}
+	
+	//버전정보확인
+	int ver = readInt(readFile);
+	
+	if (ver == 1)
+	{
+		recollEnd = readInt(readFile);
+		NSData *data;
+		data = [readFile readDataOfLength:sizeof(int)*recollEnd];
+		[data getBytes:recoll];
+	}
+	
+	[readFile closeFile];	
+}
+
 - (NSData*)getData:(NSString*)path
 {
 	NSString* filePath = [NSString stringWithFormat: @"%@/%@", ResourcePath, path];
@@ -1371,7 +1424,7 @@ GABBAGE_CHECK_OK:
 {
 	recollEnd = 0;
 	curRecollIdx = -1;
-	memset(recoll, 0x00, 256 * sizeof(int));
+	memset(recoll, 0x00, 512 * sizeof(int));
 }
 
 - (bool)can_next_Recoll

@@ -36,10 +36,18 @@
 	IBOutlet id msgClose;
 	IBOutlet id skip;
 
+	IBOutlet id buttonView;
+
 	IBOutlet UIButton* prev;
 	IBOutlet UIButton* prev2;
 	IBOutlet UIButton* play;
 	IBOutlet UIButton* play2;
+	
+	IBOutlet UIImageView* prev_dis;
+	IBOutlet UIImageView* prev2_dis;
+	IBOutlet UIImageView* play_dis;
+	IBOutlet UIImageView* play2_dis;
+	
 	IBOutlet UIButton* autoButton;
 	IBOutlet UIButton* qsave;
 	IBOutlet UILabel* qsaveIdx;
@@ -102,6 +110,8 @@
 	
 	int phase;
 	bool isSkipMode;
+	bool isAutoMode;
+	float autoFrame;
 	int skipEnd;
 
 	MovieBoard* movieBoard;
@@ -120,6 +130,7 @@
 - (void)refresh;
 
 - (void)qSaveButtonShow:(bool)isShow;
+- (void)buttonViewShow:(bool)isShow;
 
 - (void)showChr:(float)delay;
 - (void)hideChr:(float)delay;

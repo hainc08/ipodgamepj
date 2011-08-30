@@ -95,13 +95,11 @@
 		
 		[self bringSubviewToFront:msgClose];
 		[self bringSubviewToFront:skip];
-		[self bringSubviewToFront:prev];
-		[self bringSubviewToFront:prev2];
-		[self bringSubviewToFront:play];
-		[self bringSubviewToFront:play2];
+		[self bringSubviewToFront:buttonView];
 		[self bringSubviewToFront:autoButton];
 		[self bringSubviewToFront:qsave];
 		[self bringSubviewToFront:qsaveIdx];
+		[self bringSubviewToFront:menuButton];
 		
 		//[prev2 setEnabled:false];
 		
@@ -166,11 +164,13 @@
 	[[DataManager getInstance] setCurIdx:curSceneId];
 
 	isSkipMode = false;
+	isAutoMode = false;
 
 	chrData[0] = chrData[1] = chrData[2] = chrData[3] = nil;
 	bgData = nil;
 	isRecollNow = false;
 	[self setRecollMode:false];
+	[self buttonViewShow:true];
 }
 
 - (IBAction)SkipButtonClick:(id)sender
@@ -205,7 +205,16 @@
 
 - (IBAction)AutoButtonClick:(id)sender
 {
+	isAutoMode = true;
+
+	[msgClose setAlpha:0];
+	[autoButton setAlpha:0];
+	[menuButton setAlpha:0];
 	
+	[self qSaveButtonShow:false];
+	[self buttonViewShow:false];
+	
+	autoFrame = frameTick + 1;
 }
 
 - (IBAction)QSaveButtonClick:(id)sender
@@ -231,7 +240,24 @@ typedef enum {
 - (IBAction)ButtonClick:(id)sender
 {
 	if (phase != WAITINPUT) return;
-	if (sender == next2) return [self ButtonClick:next];
+
+	if (isAutoMode && (sender == next))
+	{
+		isAutoMode = false;
+		
+		[msgClose setAlpha:1];
+		[autoButton setAlpha:1];
+		[menuButton setAlpha:1];
+		
+		[self qSaveButtonShow:true];
+		[self buttonViewShow:true];
+		
+		[self setRecollMode:false];
+		
+		return;
+	}
+
+	if (sender == next2) sender = next;
 
 	if (isRecollNow)
 	{
@@ -248,21 +274,17 @@ typedef enum {
 		//나머지는 무시...
 		return;
 	}
-		
+
 	if ( sender == msgClose )
 	{
 		[msgClose setAlpha:0];
 		[chrView[3] setAlpha:0];
 		[menuButton setAlpha:0];
 		[serihuBoard.view setAlpha:0];
-		[skip setAlpha:0];
-		[prev setAlpha:0];
-		[prev2 setAlpha:0];
-		[play setAlpha:0];
-		[play2 setAlpha:0];
 		[autoButton setAlpha:0];
 		
 		[self qSaveButtonShow:false];
+		[self buttonViewShow:false];
 		
 		return;
 	}
@@ -273,13 +295,8 @@ typedef enum {
 		return;
 	}
 
-	if ( [msgClose alpha] == 0)
+	if (!isAutoMode && [msgClose alpha] == 0)
 	{
-		[skip setAlpha:1];
-		[prev setAlpha:1];
-		[prev2 setAlpha:1];
-		[play setAlpha:1];
-		[play2 setAlpha:1];
 		[autoButton setAlpha:1];
 		[msgClose setAlpha:1];
 		[chrView[3] setAlpha:1];
@@ -287,6 +304,7 @@ typedef enum {
 		[serihuBoard.view setAlpha:1];
 		
 		[self qSaveButtonShow:true];
+		[self buttonViewShow:true];
 		
 		return;
 	}
@@ -495,6 +513,15 @@ typedef enum {
 
 - (void)update
 {
+	if (isAutoMode)
+	{
+		if (frameTick >= autoFrame)
+		{
+			[self ButtonClick:next2];
+			autoFrame += 20;
+		}
+	}
+	
 	if ([[ViewManager getInstance] movieMode] == 1)
 	{
 		if ([movieBoard isPLaying] && [movieBoard update])
@@ -624,6 +651,21 @@ typedef enum {
 		[qsaveIdx setAlpha:1];
 		[qsaveIdx setText:[NSString stringWithFormat:@"%d", [[SaveManager getInstance] qsaveSlot] + 1]];
 	}
+}
+
+- (void)buttonViewShow:(bool)isShow
+{
+	if (!isShow || [gParam isReplay])
+	{
+		[skip setAlpha:0];
+		[buttonView setAlpha:0];
+	}
+	else
+	{
+		[skip setAlpha:1];
+		[buttonView setAlpha:1];
+	}
+
 }
 
 - (void)showChr:(float)delay
@@ -1018,7 +1060,10 @@ typedef enum {
 			break;
 	}
 
-	[self setRecollMode:false];
+	if (isAutoMode == false)
+	{
+		[self setRecollMode:false];
+	}
 
 	[serihuBoard.view setAlpha:1];
 	[serihuBoard setSerihu:[scene getChara] serihu:[scene getSerihu]];
@@ -1092,31 +1137,42 @@ typedef enum {
 		[autoButton setAlpha:0];
 		[menuButton setAlpha:0];
 		[self qSaveButtonShow:false];
-		
-		[play setEnabled:true];
-		[play2 setEnabled:true];
+
+		[play setAlpha:1];
+		[play_dis setAlpha:0];
+		[play2 setAlpha:1];
+		[play2_dis setAlpha:0];
 	}
 	else
 	{
 		[msgClose setAlpha:1];
-		[skip setAlpha:1];
+		if ([gParam isReplay] == false)
+		{
+			[skip setAlpha:1];
+		}
 		[autoButton setAlpha:1];
 		[menuButton setAlpha:1];
 		[self qSaveButtonShow:true];
 
-		[play setEnabled:false];
-		[play2 setEnabled:false];
+		[play setAlpha:0];
+		[play_dis setAlpha:1];
+		[play2 setAlpha:0];
+		[play2_dis setAlpha:1];
 	}
 
 	if ([[DataManager getInstance] can_prev_Recoll])
 	{
-		[prev setEnabled:true];
-		[prev2 setEnabled:true];
+		[prev setAlpha:1];
+		[prev_dis setAlpha:0];
+		[prev2 setAlpha:1];
+		[prev2_dis setAlpha:0];
 	}
 	else
 	{
-		[prev setEnabled:false];
-		[prev2 setEnabled:false];
+		[prev setAlpha:0];
+		[prev_dis setAlpha:1];
+		[prev2 setAlpha:0];
+		[prev2_dis setAlpha:1];
 	}
 }
 
