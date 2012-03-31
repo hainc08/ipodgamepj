@@ -7,6 +7,8 @@
 //
 
 #import "HalloweenViewController.h"
+#import "GameViewController.h"
+#import "ViewManager.h"
 
 @implementation HalloweenViewController
 
@@ -61,6 +63,12 @@
 
 - (void)dealloc {
     [super dealloc];
+}
+
+- (IBAction)test
+{
+	GameViewController* nextView = [[GameViewController alloc] init];
+	[[ViewManager getInstance] changeView:nextView :20 :NULL];
 }
 
 @end

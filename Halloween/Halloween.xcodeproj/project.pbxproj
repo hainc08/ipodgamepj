@@ -15,6 +15,7 @@
 		2899E5220DE3E06400AC0155 /* HalloweenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* HalloweenViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* HalloweenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* HalloweenViewController.m */; };
+		844DB65B1526E1E800F74B82 /* ghost.png in Resources */ = {isa = PBXBuildFile; fileRef = 844DB65A1526E1E800F74B82 /* ghost.png */; };
 		845E8ADE1526DA6D0016F910 /* AchieveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AC11526DA6D0016F910 /* AchieveManager.m */; };
 		845E8ADF1526DA6D0016F910 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AC31526DA6D0016F910 /* BaseViewController.m */; };
 		845E8AE01526DA6D0016F910 /* ErrorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AC51526DA6D0016F910 /* ErrorManager.m */; };
@@ -31,6 +32,13 @@
 		845E8AEB1526DA6D0016F910 /* TexManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8ADB1526DA6D0016F910 /* TexManager.m */; };
 		845E8AEC1526DA6D0016F910 /* ViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8ADD1526DA6D0016F910 /* ViewManager.m */; };
 		845E8B0D1526DAD50016F910 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845E8B0C1526DAD50016F910 /* AudioToolbox.framework */; };
+		8467D10A1526DD3B005BF6BC /* BackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467D1051526DD3B005BF6BC /* BackViewController.m */; };
+		8467D10B1526DD3B005BF6BC /* BackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8467D1061526DD3B005BF6BC /* BackViewController.xib */; };
+		8467D10C1526DD3B005BF6BC /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467D1081526DD3B005BF6BC /* GameViewController.m */; };
+		8467D10D1526DD3B005BF6BC /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8467D1091526DD3B005BF6BC /* GameViewController.xib */; };
+		8467D11E1526DF40005BF6BC /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8467D11D1526DF40005BF6BC /* back.png */; };
+		8467D1281526E0AE005BF6BC /* Ghost.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467D1261526E0AE005BF6BC /* Ghost.m */; };
+		8467D1291526E0AE005BF6BC /* Ghost.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8467D1271526E0AE005BF6BC /* Ghost.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +54,7 @@
 		28D7ACF70DDB3853001CB0EB /* HalloweenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalloweenViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Halloween_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Halloween_Prefix.pch; sourceTree = "<group>"; };
+		844DB65A1526E1E800F74B82 /* ghost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost.png; sourceTree = "<group>"; };
 		845E8AC01526DA6D0016F910 /* AchieveManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchieveManager.h; sourceTree = "<group>"; };
 		845E8AC11526DA6D0016F910 /* AchieveManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchieveManager.m; sourceTree = "<group>"; };
 		845E8AC21526DA6D0016F910 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -77,6 +86,16 @@
 		845E8ADC1526DA6D0016F910 /* ViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewManager.h; sourceTree = "<group>"; };
 		845E8ADD1526DA6D0016F910 /* ViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewManager.m; sourceTree = "<group>"; };
 		845E8B0C1526DAD50016F910 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8467D1041526DD3B005BF6BC /* BackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackViewController.h; sourceTree = "<group>"; };
+		8467D1051526DD3B005BF6BC /* BackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackViewController.m; sourceTree = "<group>"; };
+		8467D1061526DD3B005BF6BC /* BackViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackViewController.xib; sourceTree = "<group>"; };
+		8467D1071526DD3B005BF6BC /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		8467D1081526DD3B005BF6BC /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		8467D1091526DD3B005BF6BC /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
+		8467D11D1526DF40005BF6BC /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		8467D1251526E0AE005BF6BC /* Ghost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ghost.h; sourceTree = "<group>"; };
+		8467D1261526E0AE005BF6BC /* Ghost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ghost.m; sourceTree = "<group>"; };
+		8467D1271526E0AE005BF6BC /* Ghost.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Ghost.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Halloween-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Halloween-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +121,12 @@
 				1D3623250D0F684500981E51 /* HalloweenAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* HalloweenViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* HalloweenViewController.m */,
+				8467D1041526DD3B005BF6BC /* BackViewController.h */,
+				8467D1051526DD3B005BF6BC /* BackViewController.m */,
+				8467D1061526DD3B005BF6BC /* BackViewController.xib */,
+				8467D1071526DD3B005BF6BC /* GameViewController.h */,
+				8467D1081526DD3B005BF6BC /* GameViewController.m */,
+				8467D1091526DD3B005BF6BC /* GameViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -119,8 +144,10 @@
 			children = (
 				845E8ABF1526DA6D0016F910 /* BaseClasses */,
 				080E96DDFE201D6D7F000001 /* Classes */,
+				8467D1241526E0AE005BF6BC /* Object */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				8467D11C1526DF40005BF6BC /* img */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -194,6 +221,25 @@
 			path = BaseClasses;
 			sourceTree = "<group>";
 		};
+		8467D11C1526DF40005BF6BC /* img */ = {
+			isa = PBXGroup;
+			children = (
+				844DB65A1526E1E800F74B82 /* ghost.png */,
+				8467D11D1526DF40005BF6BC /* back.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		8467D1241526E0AE005BF6BC /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				8467D1251526E0AE005BF6BC /* Ghost.h */,
+				8467D1261526E0AE005BF6BC /* Ghost.m */,
+				8467D1271526E0AE005BF6BC /* Ghost.xib */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -245,6 +291,11 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* HalloweenViewController.xib in Resources */,
+				8467D10B1526DD3B005BF6BC /* BackViewController.xib in Resources */,
+				8467D10D1526DD3B005BF6BC /* GameViewController.xib in Resources */,
+				8467D11E1526DF40005BF6BC /* back.png in Resources */,
+				8467D1291526E0AE005BF6BC /* Ghost.xib in Resources */,
+				844DB65B1526E1E800F74B82 /* ghost.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +324,9 @@
 				845E8AEA1526DA6D0016F910 /* StageManager.m in Sources */,
 				845E8AEB1526DA6D0016F910 /* TexManager.m in Sources */,
 				845E8AEC1526DA6D0016F910 /* ViewManager.m in Sources */,
+				8467D10A1526DD3B005BF6BC /* BackViewController.m in Sources */,
+				8467D10C1526DD3B005BF6BC /* GameViewController.m in Sources */,
+				8467D1281526E0AE005BF6BC /* Ghost.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

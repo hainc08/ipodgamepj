@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface HalloweenViewController : UIViewController {
+@interface HalloweenViewController : BaseViewController {
 
 }
+
+- (IBAction)test;
 
 @end
 
