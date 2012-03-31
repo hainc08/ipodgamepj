@@ -1,0 +1,313 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* HalloweenAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {565, 299}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 480}";
+		};
+	};
+	1D3623250D0F684500981E51 /* HalloweenAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {810, 1729}}";
+			sepNavSelRange = "{953, 14}";
+			sepNavVisRange = "{716, 503}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* Halloween */ = {
+		activeExec = 0;
+		executables = (
+			842600C11526DA24002E1792 /* Halloween */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* HalloweenViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 237}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 240}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* HalloweenViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {712, 845}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 503}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 842600C11526DA24002E1792 /* Halloween */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* Halloween */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* Halloween */,
+		);
+		codeSenseManager = 842600D71526DA27002E1792 /* Code sense */;
+		executables = (
+			842600C11526DA24002E1792 /* Halloween */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					341,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFindDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFindDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					355,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFindDataSource_MessageID,
+					PBXFindDataSource_LocationID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 354867988;
+			PBXWorkspaceStateSaveDate = 354867988;
+		};
+		perUserProjectItems = {
+			8448BF481526DB32000BB8BA /* PlistBookmark */ = 8448BF481526DB32000BB8BA /* PlistBookmark */;
+			8448BF491526DB32000BB8BA /* PBXTextBookmark */ = 8448BF491526DB32000BB8BA /* PBXTextBookmark */;
+			8448BF521526DB47000BB8BA /* PBXTextBookmark */ = 8448BF521526DB47000BB8BA /* PBXTextBookmark */;
+			8448BF531526DB47000BB8BA /* PBXTextBookmark */ = 8448BF531526DB47000BB8BA /* PBXTextBookmark */;
+			845E8AF01526DA860016F910 /* PBXTextBookmark */ = 845E8AF01526DA860016F910 /* PBXTextBookmark */;
+			845E8AF11526DA860016F910 /* PBXTextBookmark */ = 845E8AF11526DA860016F910 /* PBXTextBookmark */;
+			845E8AF21526DA860016F910 /* PBXTextBookmark */ = 845E8AF21526DA860016F910 /* PBXTextBookmark */;
+			845E8AF41526DA860016F910 /* PBXTextBookmark */ = 845E8AF41526DA860016F910 /* PBXTextBookmark */;
+			845E8AF51526DA860016F910 /* PBXTextBookmark */ = 845E8AF51526DA860016F910 /* PBXTextBookmark */;
+			845E8B231526DB0C0016F910 /* PBXTextBookmark */ = 845E8B231526DB0C0016F910 /* PBXTextBookmark */;
+			845E8B241526DB0C0016F910 /* PBXTextBookmark */ = 845E8B241526DB0C0016F910 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 842600D61526DA27002E1792 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	32CA4F630368D1EE00C91783 /* Halloween_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {642, 219}}";
+			sepNavSelRange = "{214, 0}";
+			sepNavVisRange = "{0, 299}";
+		};
+	};
+	842600C11526DA24002E1792 /* Halloween */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Halloween;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	842600D61526DA27002E1792 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	842600D71526DA27002E1792 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	8448BF481526DB32000BB8BA /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Halloween-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			UIStatusBarHidden,
+		);
+		name = "/Users/teseuteojigeum/Desktop/my_iPod/Halloween/Halloween-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	8448BF491526DB32000BB8BA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* HalloweenAppDelegate.m */;
+		name = "HalloweenAppDelegate.m: 39";
+		rLen = 0;
+		rLoc = 951;
+		rType = 0;
+		vrLen = 545;
+		vrLoc = 716;
+	};
+	8448BF521526DB47000BB8BA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32CA4F630368D1EE00C91783 /* Halloween_Prefix.pch */;
+		name = "Halloween_Prefix.pch: 10";
+		rLen = 0;
+		rLoc = 214;
+		rType = 0;
+		vrLen = 299;
+		vrLoc = 0;
+	};
+	8448BF531526DB47000BB8BA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32CA4F630368D1EE00C91783 /* Halloween_Prefix.pch */;
+		name = "Halloween_Prefix.pch: 10";
+		rLen = 0;
+		rLoc = 214;
+		rType = 0;
+		vrLen = 299;
+		vrLoc = 0;
+	};
+	845E8AC01526DA6D0016F910 /* AchieveManager.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 650}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 206}";
+		};
+	};
+	845E8AC11526DA6D0016F910 /* AchieveManager.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 2483}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 349}";
+		};
+	};
+	845E8AC21526DA6D0016F910 /* BaseViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 237}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 150}";
+		};
+	};
+	845E8AC31526DA6D0016F910 /* BaseViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 237}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 159}";
+		};
+	};
+	845E8AC41526DA6D0016F910 /* ErrorManager.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {519, 237}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 227}";
+		};
+	};
+	845E8AD61526DA6D0016F910 /* SpecManager.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {439, 377}}";
+			sepNavSelRange = "{189, 0}";
+			sepNavVisRange = "{0, 217}";
+		};
+	};
+	845E8AF01526DA860016F910 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 845E8AC31526DA6D0016F910 /* BaseViewController.m */;
+		name = "BaseViewController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 159;
+		vrLoc = 0;
+	};
+	845E8AF11526DA860016F910 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 845E8AC41526DA6D0016F910 /* ErrorManager.h */;
+		name = "ErrorManager.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 227;
+		vrLoc = 0;
+	};
+	845E8AF21526DA860016F910 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* HalloweenAppDelegate.h */;
+		name = "HalloweenAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 480;
+		vrLoc = 0;
+	};
+	845E8AF41526DA860016F910 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* HalloweenViewController.h */;
+		name = "HalloweenViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 240;
+		vrLoc = 0;
+	};
+	845E8AF51526DA860016F910 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* HalloweenViewController.m */;
+		name = "HalloweenViewController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 503;
+		vrLoc = 0;
+	};
+	845E8B231526DB0C0016F910 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 845E8AD61526DA6D0016F910 /* SpecManager.h */;
+		name = "SpecManager.h: 14";
+		rLen = 0;
+		rLoc = 189;
+		rType = 0;
+		vrLen = 271;
+		vrLoc = 0;
+	};
+	845E8B241526DB0C0016F910 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 845E8B251526DB0C0016F910 /* Ghost_Prefix.pch */;
+		name = "Ghost_Prefix.pch: 12";
+		rLen = 83;
+		rLoc = 208;
+		rType = 0;
+		vrLen = 291;
+		vrLoc = 0;
+	};
+	845E8B251526DB0C0016F910 /* Ghost_Prefix.pch */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = Ghost_Prefix.pch;
+		path = /Users/teseuteojigeum/Desktop/my_iPod/Ghost/Ghost_Prefix.pch;
+		sourceTree = "<absolute>";
+	};
+}

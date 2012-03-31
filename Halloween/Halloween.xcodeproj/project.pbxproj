@@ -1,0 +1,360 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* HalloweenAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* HalloweenAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2899E5220DE3E06400AC0155 /* HalloweenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* HalloweenViewController.xib */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28D7ACF80DDB3853001CB0EB /* HalloweenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* HalloweenViewController.m */; };
+		845E8ADE1526DA6D0016F910 /* AchieveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AC11526DA6D0016F910 /* AchieveManager.m */; };
+		845E8ADF1526DA6D0016F910 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AC31526DA6D0016F910 /* BaseViewController.m */; };
+		845E8AE01526DA6D0016F910 /* ErrorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AC51526DA6D0016F910 /* ErrorManager.m */; };
+		845E8AE11526DA6D0016F910 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AC71526DA6D0016F910 /* FileIO.m */; };
+		845E8AE21526DA6D0016F910 /* GOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AC91526DA6D0016F910 /* GOManager.m */; };
+		845E8AE31526DA6D0016F910 /* HighScoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8ACB1526DA6D0016F910 /* HighScoreManager.m */; };
+		845E8AE41526DA6D0016F910 /* Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8ACD1526DA6D0016F910 /* Object.m */; };
+		845E8AE51526DA6D0016F910 /* PointManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8ACF1526DA6D0016F910 /* PointManager.m */; };
+		845E8AE61526DA6D0016F910 /* SaveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AD11526DA6D0016F910 /* SaveManager.m */; };
+		845E8AE71526DA6D0016F910 /* SoundEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AD31526DA6D0016F910 /* SoundEffect.m */; };
+		845E8AE81526DA6D0016F910 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AD51526DA6D0016F910 /* SoundManager.m */; };
+		845E8AE91526DA6D0016F910 /* SpecManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AD71526DA6D0016F910 /* SpecManager.m */; };
+		845E8AEA1526DA6D0016F910 /* StageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AD91526DA6D0016F910 /* StageManager.m */; };
+		845E8AEB1526DA6D0016F910 /* TexManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8ADB1526DA6D0016F910 /* TexManager.m */; };
+		845E8AEC1526DA6D0016F910 /* ViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8ADD1526DA6D0016F910 /* ViewManager.m */; };
+		845E8B0D1526DAD50016F910 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845E8B0C1526DAD50016F910 /* AudioToolbox.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* HalloweenAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalloweenAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* HalloweenAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalloweenAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* Halloween.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Halloween.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2899E5210DE3E06400AC0155 /* HalloweenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HalloweenViewController.xib; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* HalloweenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalloweenViewController.h; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* HalloweenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalloweenViewController.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Halloween_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Halloween_Prefix.pch; sourceTree = "<group>"; };
+		845E8AC01526DA6D0016F910 /* AchieveManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchieveManager.h; sourceTree = "<group>"; };
+		845E8AC11526DA6D0016F910 /* AchieveManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchieveManager.m; sourceTree = "<group>"; };
+		845E8AC21526DA6D0016F910 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		845E8AC31526DA6D0016F910 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		845E8AC41526DA6D0016F910 /* ErrorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorManager.h; sourceTree = "<group>"; };
+		845E8AC51526DA6D0016F910 /* ErrorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorManager.m; sourceTree = "<group>"; };
+		845E8AC61526DA6D0016F910 /* FileIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileIO.h; sourceTree = "<group>"; };
+		845E8AC71526DA6D0016F910 /* FileIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileIO.m; sourceTree = "<group>"; };
+		845E8AC81526DA6D0016F910 /* GOManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOManager.h; sourceTree = "<group>"; };
+		845E8AC91526DA6D0016F910 /* GOManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOManager.m; sourceTree = "<group>"; };
+		845E8ACA1526DA6D0016F910 /* HighScoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoreManager.h; sourceTree = "<group>"; };
+		845E8ACB1526DA6D0016F910 /* HighScoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoreManager.m; sourceTree = "<group>"; };
+		845E8ACC1526DA6D0016F910 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
+		845E8ACD1526DA6D0016F910 /* Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Object.m; sourceTree = "<group>"; };
+		845E8ACE1526DA6D0016F910 /* PointManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointManager.h; sourceTree = "<group>"; };
+		845E8ACF1526DA6D0016F910 /* PointManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointManager.m; sourceTree = "<group>"; };
+		845E8AD01526DA6D0016F910 /* SaveManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveManager.h; sourceTree = "<group>"; };
+		845E8AD11526DA6D0016F910 /* SaveManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveManager.m; sourceTree = "<group>"; };
+		845E8AD21526DA6D0016F910 /* SoundEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundEffect.h; sourceTree = "<group>"; };
+		845E8AD31526DA6D0016F910 /* SoundEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundEffect.m; sourceTree = "<group>"; };
+		845E8AD41526DA6D0016F910 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		845E8AD51526DA6D0016F910 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
+		845E8AD61526DA6D0016F910 /* SpecManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecManager.h; sourceTree = "<group>"; };
+		845E8AD71526DA6D0016F910 /* SpecManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecManager.m; sourceTree = "<group>"; };
+		845E8AD81526DA6D0016F910 /* StageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageManager.h; sourceTree = "<group>"; };
+		845E8AD91526DA6D0016F910 /* StageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageManager.m; sourceTree = "<group>"; };
+		845E8ADA1526DA6D0016F910 /* TexManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TexManager.h; sourceTree = "<group>"; };
+		845E8ADB1526DA6D0016F910 /* TexManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TexManager.m; sourceTree = "<group>"; };
+		845E8ADC1526DA6D0016F910 /* ViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewManager.h; sourceTree = "<group>"; };
+		845E8ADD1526DA6D0016F910 /* ViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewManager.m; sourceTree = "<group>"; };
+		845E8B0C1526DAD50016F910 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8D1107310486CEB800E47090 /* Halloween-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Halloween-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				845E8B0D1526DAD50016F910 /* AudioToolbox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623240D0F684500981E51 /* HalloweenAppDelegate.h */,
+				1D3623250D0F684500981E51 /* HalloweenAppDelegate.m */,
+				28D7ACF60DDB3853001CB0EB /* HalloweenViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* HalloweenViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* Halloween.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				845E8ABF1526DA6D0016F910 /* BaseClasses */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* Halloween_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2899E5210DE3E06400AC0155 /* HalloweenViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* Halloween-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				845E8B0C1526DAD50016F910 /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		845E8ABF1526DA6D0016F910 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				845E8AC01526DA6D0016F910 /* AchieveManager.h */,
+				845E8AC11526DA6D0016F910 /* AchieveManager.m */,
+				845E8AC21526DA6D0016F910 /* BaseViewController.h */,
+				845E8AC31526DA6D0016F910 /* BaseViewController.m */,
+				845E8AC41526DA6D0016F910 /* ErrorManager.h */,
+				845E8AC51526DA6D0016F910 /* ErrorManager.m */,
+				845E8AC61526DA6D0016F910 /* FileIO.h */,
+				845E8AC71526DA6D0016F910 /* FileIO.m */,
+				845E8AC81526DA6D0016F910 /* GOManager.h */,
+				845E8AC91526DA6D0016F910 /* GOManager.m */,
+				845E8ACA1526DA6D0016F910 /* HighScoreManager.h */,
+				845E8ACB1526DA6D0016F910 /* HighScoreManager.m */,
+				845E8ACC1526DA6D0016F910 /* Object.h */,
+				845E8ACD1526DA6D0016F910 /* Object.m */,
+				845E8ACE1526DA6D0016F910 /* PointManager.h */,
+				845E8ACF1526DA6D0016F910 /* PointManager.m */,
+				845E8AD01526DA6D0016F910 /* SaveManager.h */,
+				845E8AD11526DA6D0016F910 /* SaveManager.m */,
+				845E8AD21526DA6D0016F910 /* SoundEffect.h */,
+				845E8AD31526DA6D0016F910 /* SoundEffect.m */,
+				845E8AD41526DA6D0016F910 /* SoundManager.h */,
+				845E8AD51526DA6D0016F910 /* SoundManager.m */,
+				845E8AD61526DA6D0016F910 /* SpecManager.h */,
+				845E8AD71526DA6D0016F910 /* SpecManager.m */,
+				845E8AD81526DA6D0016F910 /* StageManager.h */,
+				845E8AD91526DA6D0016F910 /* StageManager.m */,
+				845E8ADA1526DA6D0016F910 /* TexManager.h */,
+				845E8ADB1526DA6D0016F910 /* TexManager.m */,
+				845E8ADC1526DA6D0016F910 /* ViewManager.h */,
+				845E8ADD1526DA6D0016F910 /* ViewManager.m */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* Halloween */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Halloween" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Halloween;
+			productName = Halloween;
+			productReference = 1D6058910D05DD3D006BFB54 /* Halloween.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Halloween" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* Halloween */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				2899E5220DE3E06400AC0155 /* HalloweenViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* HalloweenAppDelegate.m in Sources */,
+				28D7ACF80DDB3853001CB0EB /* HalloweenViewController.m in Sources */,
+				845E8ADE1526DA6D0016F910 /* AchieveManager.m in Sources */,
+				845E8ADF1526DA6D0016F910 /* BaseViewController.m in Sources */,
+				845E8AE01526DA6D0016F910 /* ErrorManager.m in Sources */,
+				845E8AE11526DA6D0016F910 /* FileIO.m in Sources */,
+				845E8AE21526DA6D0016F910 /* GOManager.m in Sources */,
+				845E8AE31526DA6D0016F910 /* HighScoreManager.m in Sources */,
+				845E8AE41526DA6D0016F910 /* Object.m in Sources */,
+				845E8AE51526DA6D0016F910 /* PointManager.m in Sources */,
+				845E8AE61526DA6D0016F910 /* SaveManager.m in Sources */,
+				845E8AE71526DA6D0016F910 /* SoundEffect.m in Sources */,
+				845E8AE81526DA6D0016F910 /* SoundManager.m in Sources */,
+				845E8AE91526DA6D0016F910 /* SpecManager.m in Sources */,
+				845E8AEA1526DA6D0016F910 /* StageManager.m in Sources */,
+				845E8AEB1526DA6D0016F910 /* TexManager.m in Sources */,
+				845E8AEC1526DA6D0016F910 /* ViewManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Halloween_Prefix.pch;
+				INFOPLIST_FILE = "Halloween-Info.plist";
+				PRODUCT_NAME = Halloween;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Halloween_Prefix.pch;
+				INFOPLIST_FILE = "Halloween-Info.plist";
+				PRODUCT_NAME = Halloween;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Halloween" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Halloween" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
