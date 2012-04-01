@@ -1,5 +1,6 @@
 #import "GameViewController.h"
 #import "Ghost.h"
+#import "GOManager.h"
 
 @implementation GameViewController
 
@@ -23,8 +24,12 @@
 	
 	Ghost* test = [[Ghost alloc] init];
 	[self.view addSubview:test.view];
-	[test.view setCenter:CGPointMake(50, 270)];
-	[test.view setTransform:halfForm];
+	[test reset];
+}
+
+- (void)update
+{
+	[[GOManager getInstance] update];
 }
 
 @end
