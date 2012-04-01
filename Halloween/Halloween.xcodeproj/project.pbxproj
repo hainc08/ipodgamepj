@@ -39,6 +39,10 @@
 		8467D11E1526DF40005BF6BC /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8467D11D1526DF40005BF6BC /* back.png */; };
 		8467D1281526E0AE005BF6BC /* Ghost.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467D1261526E0AE005BF6BC /* Ghost.m */; };
 		8467D1291526E0AE005BF6BC /* Ghost.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8467D1271526E0AE005BF6BC /* Ghost.xib */; };
+		84B2126D1527F619000D00A6 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B212691527F619000D00A6 /* box.png */; };
+		84B2126E1527F619000D00A6 /* boxGum.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B2126A1527F619000D00A6 /* boxGum.png */; };
+		84B2126F1527F619000D00A6 /* boxWater.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B2126B1527F619000D00A6 /* boxWater.png */; };
+		84B212701527F619000D00A6 /* nozzle.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B2126C1527F619000D00A6 /* nozzle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +100,10 @@
 		8467D1251526E0AE005BF6BC /* Ghost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ghost.h; sourceTree = "<group>"; };
 		8467D1261526E0AE005BF6BC /* Ghost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ghost.m; sourceTree = "<group>"; };
 		8467D1271526E0AE005BF6BC /* Ghost.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Ghost.xib; sourceTree = "<group>"; };
+		84B212691527F619000D00A6 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
+		84B2126A1527F619000D00A6 /* boxGum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxGum.png; sourceTree = "<group>"; };
+		84B2126B1527F619000D00A6 /* boxWater.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxWater.png; sourceTree = "<group>"; };
+		84B2126C1527F619000D00A6 /* nozzle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nozzle.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Halloween-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Halloween-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +234,10 @@
 			children = (
 				844DB65A1526E1E800F74B82 /* ghost.png */,
 				8467D11D1526DF40005BF6BC /* back.png */,
+				84B212691527F619000D00A6 /* box.png */,
+				84B2126A1527F619000D00A6 /* boxGum.png */,
+				84B2126B1527F619000D00A6 /* boxWater.png */,
+				84B2126C1527F619000D00A6 /* nozzle.png */,
 			);
 			path = img;
 			sourceTree = "<group>";
@@ -296,6 +308,10 @@
 				8467D11E1526DF40005BF6BC /* back.png in Resources */,
 				8467D1291526E0AE005BF6BC /* Ghost.xib in Resources */,
 				844DB65B1526E1E800F74B82 /* ghost.png in Resources */,
+				84B2126D1527F619000D00A6 /* box.png in Resources */,
+				84B2126E1527F619000D00A6 /* boxGum.png in Resources */,
+				84B2126F1527F619000D00A6 /* boxWater.png in Resources */,
+				84B212701527F619000D00A6 /* nozzle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
