@@ -31,7 +31,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	halfForm = CGAffineTransformMake(0.5, 0, 0, 0.5, 0, 0);
 	halfForm_flip = CGAffineTransformMake(-0.5, 0, 0, 0.5, 0, 0);
-	
+	MakePoint[0] = CGPointMake(50, 240);
+	MakePoint[1] = CGPointMake(50, 100);
+
 	[ErrorManager initManager];
 	[SoundManager initManager];
 	[TexManager initManager];

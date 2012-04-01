@@ -4,6 +4,7 @@
 	//죽더라도 holdTick을 지날 때까지 유지한다.
 	bool isDead;
 	int holdTick;
+	CGPoint pos;
 }
 
 @property (readonly) bool isDead;
