@@ -42,7 +42,7 @@
 				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIImageView" id="914572603">
+					<object class="IBUIImageView" id="440545131">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">256</int>
 						<string key="NSFrameSize">{120, 120}</string>
@@ -54,7 +54,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">ghost0_0.png</string>
+							<string key="NSResourceName">candy0.png</string>
 						</object>
 					</object>
 				</object>
@@ -83,9 +83,9 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">imgView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="914572603"/>
+						<reference key="destination" ref="440545131"/>
 					</object>
-					<int key="connectionID">11</int>
+					<int key="connectionID">13</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -113,13 +113,13 @@
 						<reference key="object" ref="774585933"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="914572603"/>
+							<reference ref="440545131"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">10</int>
-						<reference key="object" ref="914572603"/>
+						<int key="objectID">12</int>
+						<reference key="object" ref="440545131"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
 				</object>
@@ -130,13 +130,17 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-1.CustomClassName</string>
 					<string>-2.CustomClassName</string>
+					<string>12.IBViewBoundsToFrameTransform</string>
 					<string>6.IBEditorWindowLastContentRect</string>
 					<string>6.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>Ghost</string>
+					<string>Candy</string>
 					<string>UIResponder</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAADBMAAAwtQAAA</bytes>
+					</object>
 					<string>{{351, 636}, {120, 120}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
@@ -157,13 +161,13 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">11</int>
+			<int key="maxID">13</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">Ghost</string>
+					<string key="className">Candy</string>
 					<string key="superclassName">Object</string>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">imgView</string>
@@ -178,7 +182,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Object/Ghost.h</string>
+						<string key="minorKey">Object/Candy.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -386,7 +390,7 @@
 		<string key="IBDocument.LastKnownRelativeProjectPath">../Halloween.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">ghost0_0.png</string>
+			<string key="NS.key.0">candy0.png</string>
 			<string key="NS.object.0">{120, 120}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>

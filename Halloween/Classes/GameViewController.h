@@ -3,7 +3,7 @@
 
 @interface GameViewController : BaseViewController {
 	BackViewController* backView;
-
+	int testDelay;
 }
 
 - (void)reset:(NSObject*)param;

@@ -1,13 +1,10 @@
 #import "Object.h"
 
-@interface Ghost : Object {
-	UIImage* img[4];
-	
+@interface Candy : Object {
 	IBOutlet UIImageView* imgView;
-	int imgIdx;
 }
 
-- (id)initWithType:(int)type;
+- (id)init;
 - (void)reset;
 - (bool)update:(UInt32)tick;
 

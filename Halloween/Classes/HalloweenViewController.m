@@ -68,7 +68,7 @@
 - (IBAction)test
 {
 	GameViewController* nextView = [[GameViewController alloc] init];
-	[[ViewManager getInstance] changeView:nextView :20 :NULL];
+	[[ViewManager getInstance] changeView:nextView :10 :NULL];
 }
 
 @end

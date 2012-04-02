@@ -1,5 +1,6 @@
 #import "GameViewController.h"
 #import "Ghost.h"
+#import "Candy.h"
 #import "GOManager.h"
 
 @implementation GameViewController
@@ -22,14 +23,31 @@
 	[backView reset];
 	[self.view sendSubviewToBack:backView.view];
 	
-	Ghost* test = [[Ghost alloc] init];
-	[self.view addSubview:test.view];
-	[test reset];
+	//캔디 열개만 테스트삼아 생성해보자...
+	for (int i=0; i<10; ++i)
+	{
+		Candy* testCandy = [[Candy alloc] init];
+		[self.view addSubview:testCandy.view];
+		[testCandy reset];
+	}
+
+	testDelay = 0;
 }
 
 - (void)update
 {
 	[[GOManager getInstance] update];
+
+	//고스트를 꾸준히 만들어 보자...
+	--testDelay;
+	if (testDelay <= 0)
+	{
+		Ghost* test = [[Ghost alloc] initWithType:GHOST_BASE];
+		[self.view addSubview:test.view];
+		[test reset];
+		
+		testDelay = 20 + rand() % 10;
+	}
 }
 
 @end

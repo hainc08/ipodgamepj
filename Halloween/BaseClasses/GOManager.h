@@ -5,6 +5,7 @@ bool isIn(CGPoint* a, CGPoint* b, float rad);
 @interface GOManager : NSObject {
 	NSMutableArray* enemys;
 	NSMutableArray* boxes;
+	NSMutableArray* candys;
 	NSMutableArray* items;
 	
 	NSMutableIndexSet *discardedItems;
@@ -21,6 +22,7 @@ bool isIn(CGPoint* a, CGPoint* b, float rad);
 
 - (void)addEnemy:(NSObject*)e;
 - (void)addBox:(NSObject*)b;
+- (void)addCandy:(NSObject *)i;
 - (void)addItem:(NSObject*)i;
 
 - (void)update;
