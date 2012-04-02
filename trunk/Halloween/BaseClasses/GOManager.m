@@ -25,6 +25,7 @@ static GOManager *GOManagerInst;
 {
 	enemys = [[NSMutableArray alloc] initWithCapacity:0];
 	boxes = [[NSMutableArray alloc] initWithCapacity:0];
+	candys = [[NSMutableArray alloc] initWithCapacity:0];
 	items = [[NSMutableArray alloc] initWithCapacity:0];
 
 	discardedItems = [[NSMutableIndexSet alloc] init];
@@ -37,6 +38,7 @@ static GOManager *GOManagerInst;
 	[self reset];
 	[enemys release];
 	[boxes release];
+	[candys release];
 	[items release];
 	[discardedItems release];
 }
@@ -58,6 +60,11 @@ static GOManager *GOManagerInst;
 	[boxes addObject:b];
 }
 
+- (void)addCandy:(NSObject*)i
+{
+	[candys addObject:i];
+}
+
 - (void)addItem:(NSObject*)i
 {
 	[items addObject:i];
@@ -67,6 +74,7 @@ static GOManager *GOManagerInst;
 {
 	[self updateArray:enemys];
 	[self updateArray:boxes];
+	[self updateArray:candys];
 	[self updateArray:items];
 
 	++frameTick;
@@ -113,6 +121,12 @@ static GOManager *GOManagerInst;
 	}
 	[boxes removeAllObjects];
 
+	for (Object *itr in candys)
+	{
+		[itr release];
+	}
+	[candys removeAllObjects];
+	
 	for (Object *itr in items)
 	{
 		[itr release];
