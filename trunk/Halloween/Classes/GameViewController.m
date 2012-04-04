@@ -1,6 +1,7 @@
 #import "GameViewController.h"
 #import "Ghost.h"
 #import "Candy.h"
+#import "Box.h"
 #import "GOManager.h"
 
 @implementation GameViewController
@@ -29,6 +30,14 @@
 		Candy* testCandy = [[Candy alloc] init];
 		[self.view addSubview:testCandy.view];
 		[testCandy reset];
+	}
+	//Box도 3개 만.... 테스트로~~
+	for (int i=0; i<3; ++i)
+	{
+		Box* testBox = [[Box alloc] init];
+        testBox.floor = i;
+		[self.view addSubview:testBox.view];
+		[testBox reset];
 	}
 
 	testDelay = 0;

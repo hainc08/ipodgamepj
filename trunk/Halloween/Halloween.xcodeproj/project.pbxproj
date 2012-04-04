@@ -15,6 +15,8 @@
 		2899E5220DE3E06400AC0155 /* HalloweenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* HalloweenViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* HalloweenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* HalloweenViewController.m */; };
+		56BD836E152C8BB100FF4BA8 /* Box.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56BD836D152C8BB100FF4BA8 /* Box.xib */; };
+		56BD8371152C8C6600FF4BA8 /* Box.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BD8370152C8C6600FF4BA8 /* Box.m */; };
 		845E8ADE1526DA6D0016F910 /* AchieveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AC11526DA6D0016F910 /* AchieveManager.m */; };
 		845E8ADF1526DA6D0016F910 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AC31526DA6D0016F910 /* BaseViewController.m */; };
 		845E8AE01526DA6D0016F910 /* ErrorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AC51526DA6D0016F910 /* ErrorManager.m */; };
@@ -44,9 +46,9 @@
 		849A2137152A0FD6005BCE24 /* Candy.m in Sources */ = {isa = PBXBuildFile; fileRef = 849A2135152A0FD6005BCE24 /* Candy.m */; };
 		849A2138152A0FD6005BCE24 /* Candy.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849A2136152A0FD6005BCE24 /* Candy.xib */; };
 		84A5E7FB1528464300ABB02E /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7E81528464300ABB02E /* back.png */; };
-		84A5E7FC1528464300ABB02E /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7E91528464300ABB02E /* box.png */; };
-		84A5E7FD1528464300ABB02E /* boxGum.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7EA1528464300ABB02E /* boxGum.png */; };
-		84A5E7FE1528464300ABB02E /* boxWater.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7EB1528464300ABB02E /* boxWater.png */; };
+		84A5E7FC1528464300ABB02E /* box0.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7E91528464300ABB02E /* box0.png */; };
+		84A5E7FD1528464300ABB02E /* box1.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7EA1528464300ABB02E /* box1.png */; };
+		84A5E7FE1528464300ABB02E /* box2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7EB1528464300ABB02E /* box2.png */; };
 		84A5E7FF1528464300ABB02E /* candy0.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7EC1528464300ABB02E /* candy0.png */; };
 		84A5E8001528464300ABB02E /* candy1.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7ED1528464300ABB02E /* candy1.png */; };
 		84A5E8011528464300ABB02E /* candy2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7EE1528464300ABB02E /* candy2.png */; };
@@ -76,6 +78,9 @@
 		28D7ACF70DDB3853001CB0EB /* HalloweenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalloweenViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Halloween_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Halloween_Prefix.pch; sourceTree = "<group>"; };
+		56BD836D152C8BB100FF4BA8 /* Box.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Box.xib; sourceTree = "<group>"; };
+		56BD836F152C8C6600FF4BA8 /* Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box.h; sourceTree = "<group>"; };
+		56BD8370152C8C6600FF4BA8 /* Box.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Box.m; sourceTree = "<group>"; };
 		845E8AC01526DA6D0016F910 /* AchieveManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchieveManager.h; sourceTree = "<group>"; };
 		845E8AC11526DA6D0016F910 /* AchieveManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchieveManager.m; sourceTree = "<group>"; };
 		845E8AC21526DA6D0016F910 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -124,9 +129,9 @@
 		849A2135152A0FD6005BCE24 /* Candy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Candy.m; sourceTree = "<group>"; };
 		849A2136152A0FD6005BCE24 /* Candy.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Candy.xib; sourceTree = "<group>"; };
 		84A5E7E81528464300ABB02E /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
-		84A5E7E91528464300ABB02E /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
-		84A5E7EA1528464300ABB02E /* boxGum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxGum.png; sourceTree = "<group>"; };
-		84A5E7EB1528464300ABB02E /* boxWater.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxWater.png; sourceTree = "<group>"; };
+		84A5E7E91528464300ABB02E /* box0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box0.png; sourceTree = "<group>"; };
+		84A5E7EA1528464300ABB02E /* box1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box1.png; sourceTree = "<group>"; };
+		84A5E7EB1528464300ABB02E /* box2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box2.png; sourceTree = "<group>"; };
 		84A5E7EC1528464300ABB02E /* candy0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = candy0.png; sourceTree = "<group>"; };
 		84A5E7ED1528464300ABB02E /* candy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = candy1.png; sourceTree = "<group>"; };
 		84A5E7EE1528464300ABB02E /* candy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = candy2.png; sourceTree = "<group>"; };
@@ -274,9 +279,9 @@
 				849A20D7152A0C45005BCE24 /* ghost0_2.png */,
 				849A20D8152A0C45005BCE24 /* ghost0_3.png */,
 				84A5E7E81528464300ABB02E /* back.png */,
-				84A5E7E91528464300ABB02E /* box.png */,
-				84A5E7EA1528464300ABB02E /* boxGum.png */,
-				84A5E7EB1528464300ABB02E /* boxWater.png */,
+				84A5E7E91528464300ABB02E /* box0.png */,
+				84A5E7EA1528464300ABB02E /* box1.png */,
+				84A5E7EB1528464300ABB02E /* box2.png */,
 				84A5E7EC1528464300ABB02E /* candy0.png */,
 				84A5E7ED1528464300ABB02E /* candy1.png */,
 				84A5E7EE1528464300ABB02E /* candy2.png */,
@@ -304,6 +309,9 @@
 				849A2134152A0FD6005BCE24 /* Candy.h */,
 				849A2135152A0FD6005BCE24 /* Candy.m */,
 				849A2136152A0FD6005BCE24 /* Candy.xib */,
+				56BD836F152C8C6600FF4BA8 /* Box.h */,
+				56BD8370152C8C6600FF4BA8 /* Box.m */,
+				56BD836D152C8BB100FF4BA8 /* Box.xib */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -363,9 +371,9 @@
 				8467D10D1526DD3B005BF6BC /* GameViewController.xib in Resources */,
 				8467D1291526E0AE005BF6BC /* Ghost.xib in Resources */,
 				84A5E7FB1528464300ABB02E /* back.png in Resources */,
-				84A5E7FC1528464300ABB02E /* box.png in Resources */,
-				84A5E7FD1528464300ABB02E /* boxGum.png in Resources */,
-				84A5E7FE1528464300ABB02E /* boxWater.png in Resources */,
+				84A5E7FC1528464300ABB02E /* box0.png in Resources */,
+				84A5E7FD1528464300ABB02E /* box1.png in Resources */,
+				84A5E7FE1528464300ABB02E /* box2.png in Resources */,
 				84A5E7FF1528464300ABB02E /* candy0.png in Resources */,
 				84A5E8001528464300ABB02E /* candy1.png in Resources */,
 				84A5E8011528464300ABB02E /* candy2.png in Resources */,
@@ -385,6 +393,7 @@
 				849A20DB152A0C45005BCE24 /* ghost0_2.png in Resources */,
 				849A20DC152A0C45005BCE24 /* ghost0_3.png in Resources */,
 				849A2138152A0FD6005BCE24 /* Candy.xib in Resources */,
+				56BD836E152C8BB100FF4BA8 /* Box.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +426,7 @@
 				8467D10C1526DD3B005BF6BC /* GameViewController.m in Sources */,
 				8467D1281526E0AE005BF6BC /* Ghost.m in Sources */,
 				849A2137152A0FD6005BCE24 /* Candy.m in Sources */,
+				56BD8371152C8C6600FF4BA8 /* Box.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
