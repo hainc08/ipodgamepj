@@ -34,6 +34,11 @@ static TexManager *texManagerInst;
 	{
 		candyImg[i] = [UIImage imageNamed:[NSString stringWithFormat:@"candy%d.png", i]];
 	}
+    
+    for (int i=0; i< BOXCOUNT; ++i)
+	{
+		boxImg[i] = [UIImage imageNamed:[NSString stringWithFormat:@"box%d.png", i]];
+	}
 	
 }
 
@@ -47,4 +52,8 @@ static TexManager *texManagerInst;
 	return candyImg[type];
 }
 
+- (UIImage*)getBoxImg:(int)type
+{
+	return boxImg[type];
+}
 @end

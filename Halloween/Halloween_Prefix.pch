@@ -16,8 +16,10 @@ CGAffineTransform halfForm;
 CGAffineTransform halfForm_flip;
 CGPoint MakePoint[2];
 CGPoint CandyPoint;
+CGPoint BoxPoint;
 
 #define ENEMYCOUNT 1
 #define CANDYCOUNT 7
+#define BOXCOUNT 3
 
 #define GHOST_BASE 0

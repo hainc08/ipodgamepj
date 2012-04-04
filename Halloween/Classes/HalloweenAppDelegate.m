@@ -34,6 +34,7 @@
 	MakePoint[0] = CGPointMake(50, 250);
 	MakePoint[1] = CGPointMake(50, 100);
 	CandyPoint = CGPointMake(440, 270);
+    BoxPoint =  CGPointMake(380, 280);
 
 	[ErrorManager initManager];
 	[SoundManager initManager];

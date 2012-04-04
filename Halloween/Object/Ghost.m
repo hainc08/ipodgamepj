@@ -9,8 +9,7 @@
 	self = [super init];
 	
 	[[GOManager getInstance] addEnemy:self];
-	pos = MakePoint[0];
-	
+	pos = CGPointMake(50, 240);
 	for (int i=0; i<4; ++i)
 	{
 		img[i] = [[TexManager getInstance] getGhostImg:type :i];
@@ -32,7 +31,30 @@
 	imgIdx = (imgIdx + 1) % 4;
 	[imgView setImage:img[imgIdx]];
 	
-	pos.x += 3;
+    /* Candy 위치에서 Candy를 잡고 다시 돌아가자 */
+    if(pos.x >= 400)
+    {
+        ghost_type = GHOST_CANDY;
+        /* 이미지 반대로~ */
+    }
+    
+    
+    switch (ghost_type) {
+        case GHOST_NONE:
+            pos.x += 3;
+            break;
+        case GHOST_CANDY:
+            pos.x -= 3;
+            break;
+        case GHOST_DIE:
+            /* 죽으면 위로~ 휘리릭~~*/
+            pos.y -= 2;
+            [self.view setAlpha:[self.view alpha] - 0.1];
+            break;
+        default:
+            break;
+    }
+    
 	[self.view setCenter:pos];
 
 	return [super update:tick];
