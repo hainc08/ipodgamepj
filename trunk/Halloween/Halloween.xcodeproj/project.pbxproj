@@ -45,6 +45,13 @@
 		849A20DC152A0C45005BCE24 /* ghost0_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 849A20D8152A0C45005BCE24 /* ghost0_3.png */; };
 		849A2137152A0FD6005BCE24 /* Candy.m in Sources */ = {isa = PBXBuildFile; fileRef = 849A2135152A0FD6005BCE24 /* Candy.m */; };
 		849A2138152A0FD6005BCE24 /* Candy.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849A2136152A0FD6005BCE24 /* Candy.xib */; };
+		849FFB04152DF63900F089F2 /* ghost1_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 849FFB00152DF63900F089F2 /* ghost1_0.png */; };
+		849FFB05152DF63900F089F2 /* ghost1_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 849FFB01152DF63900F089F2 /* ghost1_1.png */; };
+		849FFB06152DF63900F089F2 /* ghost1_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 849FFB02152DF63900F089F2 /* ghost1_2.png */; };
+		849FFB07152DF63900F089F2 /* ghost1_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 849FFB03152DF63900F089F2 /* ghost1_3.png */; };
+		849FFB0B152DF65A00F089F2 /* GhostSparta.m in Sources */ = {isa = PBXBuildFile; fileRef = 849FFB09152DF65A00F089F2 /* GhostSparta.m */; };
+		849FFB0C152DF65A00F089F2 /* GhostSparta.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849FFB0A152DF65A00F089F2 /* GhostSparta.xib */; };
+		849FFB4E152DFBAA00F089F2 /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = 849FFB4D152DFBAA00F089F2 /* shield.png */; };
 		84A5E7FB1528464300ABB02E /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7E81528464300ABB02E /* back.png */; };
 		84A5E7FC1528464300ABB02E /* box0.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7E91528464300ABB02E /* box0.png */; };
 		84A5E7FD1528464300ABB02E /* box1.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7EA1528464300ABB02E /* box1.png */; };
@@ -63,6 +70,10 @@
 		84A5E80B1528464300ABB02E /* gum6.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7F81528464300ABB02E /* gum6.png */; };
 		84A5E80C1528464300ABB02E /* gun2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7F91528464300ABB02E /* gun2.png */; };
 		84A5E80D1528464300ABB02E /* nozzle.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A5E7FA1528464300ABB02E /* nozzle.png */; };
+		84FB65E8152E045200E164E1 /* ghost2_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FB65E4152E045200E164E1 /* ghost2_0.png */; };
+		84FB65E9152E045200E164E1 /* ghost2_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FB65E5152E045200E164E1 /* ghost2_1.png */; };
+		84FB65EA152E045200E164E1 /* ghost2_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FB65E6152E045200E164E1 /* ghost2_2.png */; };
+		84FB65EB152E045200E164E1 /* ghost2_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FB65E7152E045200E164E1 /* ghost2_3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +139,14 @@
 		849A2134152A0FD6005BCE24 /* Candy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Candy.h; sourceTree = "<group>"; };
 		849A2135152A0FD6005BCE24 /* Candy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Candy.m; sourceTree = "<group>"; };
 		849A2136152A0FD6005BCE24 /* Candy.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Candy.xib; sourceTree = "<group>"; };
+		849FFB00152DF63900F089F2 /* ghost1_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost1_0.png; sourceTree = "<group>"; };
+		849FFB01152DF63900F089F2 /* ghost1_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost1_1.png; sourceTree = "<group>"; };
+		849FFB02152DF63900F089F2 /* ghost1_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost1_2.png; sourceTree = "<group>"; };
+		849FFB03152DF63900F089F2 /* ghost1_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost1_3.png; sourceTree = "<group>"; };
+		849FFB08152DF65A00F089F2 /* GhostSparta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GhostSparta.h; sourceTree = "<group>"; };
+		849FFB09152DF65A00F089F2 /* GhostSparta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GhostSparta.m; sourceTree = "<group>"; };
+		849FFB0A152DF65A00F089F2 /* GhostSparta.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GhostSparta.xib; sourceTree = "<group>"; };
+		849FFB4D152DFBAA00F089F2 /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield.png; sourceTree = "<group>"; };
 		84A5E7E81528464300ABB02E /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		84A5E7E91528464300ABB02E /* box0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box0.png; sourceTree = "<group>"; };
 		84A5E7EA1528464300ABB02E /* box1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box1.png; sourceTree = "<group>"; };
@@ -146,6 +165,10 @@
 		84A5E7F81528464300ABB02E /* gum6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gum6.png; sourceTree = "<group>"; };
 		84A5E7F91528464300ABB02E /* gun2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gun2.png; sourceTree = "<group>"; };
 		84A5E7FA1528464300ABB02E /* nozzle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nozzle.png; sourceTree = "<group>"; };
+		84FB65E4152E045200E164E1 /* ghost2_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost2_0.png; sourceTree = "<group>"; };
+		84FB65E5152E045200E164E1 /* ghost2_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost2_1.png; sourceTree = "<group>"; };
+		84FB65E6152E045200E164E1 /* ghost2_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost2_2.png; sourceTree = "<group>"; };
+		84FB65E7152E045200E164E1 /* ghost2_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost2_3.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Halloween-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Halloween-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -278,6 +301,15 @@
 				849A20D6152A0C45005BCE24 /* ghost0_1.png */,
 				849A20D7152A0C45005BCE24 /* ghost0_2.png */,
 				849A20D8152A0C45005BCE24 /* ghost0_3.png */,
+				849FFB00152DF63900F089F2 /* ghost1_0.png */,
+				849FFB01152DF63900F089F2 /* ghost1_1.png */,
+				849FFB02152DF63900F089F2 /* ghost1_2.png */,
+				849FFB03152DF63900F089F2 /* ghost1_3.png */,
+				84FB65E4152E045200E164E1 /* ghost2_0.png */,
+				84FB65E5152E045200E164E1 /* ghost2_1.png */,
+				84FB65E6152E045200E164E1 /* ghost2_2.png */,
+				84FB65E7152E045200E164E1 /* ghost2_3.png */,
+				849FFB4D152DFBAA00F089F2 /* shield.png */,
 				84A5E7E81528464300ABB02E /* back.png */,
 				84A5E7E91528464300ABB02E /* box0.png */,
 				84A5E7EA1528464300ABB02E /* box1.png */,
@@ -306,6 +338,9 @@
 				8467D1251526E0AE005BF6BC /* Ghost.h */,
 				8467D1261526E0AE005BF6BC /* Ghost.m */,
 				8467D1271526E0AE005BF6BC /* Ghost.xib */,
+				849FFB08152DF65A00F089F2 /* GhostSparta.h */,
+				849FFB09152DF65A00F089F2 /* GhostSparta.m */,
+				849FFB0A152DF65A00F089F2 /* GhostSparta.xib */,
 				849A2134152A0FD6005BCE24 /* Candy.h */,
 				849A2135152A0FD6005BCE24 /* Candy.m */,
 				849A2136152A0FD6005BCE24 /* Candy.xib */,
@@ -394,6 +429,16 @@
 				849A20DC152A0C45005BCE24 /* ghost0_3.png in Resources */,
 				849A2138152A0FD6005BCE24 /* Candy.xib in Resources */,
 				56BD836E152C8BB100FF4BA8 /* Box.xib in Resources */,
+				849FFB04152DF63900F089F2 /* ghost1_0.png in Resources */,
+				849FFB05152DF63900F089F2 /* ghost1_1.png in Resources */,
+				849FFB06152DF63900F089F2 /* ghost1_2.png in Resources */,
+				849FFB07152DF63900F089F2 /* ghost1_3.png in Resources */,
+				849FFB0C152DF65A00F089F2 /* GhostSparta.xib in Resources */,
+				849FFB4E152DFBAA00F089F2 /* shield.png in Resources */,
+				84FB65E8152E045200E164E1 /* ghost2_0.png in Resources */,
+				84FB65E9152E045200E164E1 /* ghost2_1.png in Resources */,
+				84FB65EA152E045200E164E1 /* ghost2_2.png in Resources */,
+				84FB65EB152E045200E164E1 /* ghost2_3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +472,7 @@
 				8467D1281526E0AE005BF6BC /* Ghost.m in Sources */,
 				849A2137152A0FD6005BCE24 /* Candy.m in Sources */,
 				56BD8371152C8C6600FF4BA8 /* Box.m in Sources */,
+				849FFB0B152DF65A00F089F2 /* GhostSparta.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

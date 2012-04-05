@@ -1,10 +1,11 @@
 #import "Object.h"
 
-enum GHOST_TYPE {
+enum GHOST_STATE {
     GHOST_NONE = 0,
     GHOST_CANDY,
     GHOST_DIE,
     GHOST_SUCESS,
+    GHOST_LOST_SHIELD,
     GHOST_END
 };
 
@@ -14,7 +15,8 @@ enum GHOST_TYPE {
 	
 	IBOutlet UIImageView* imgView;
 	int imgIdx;
-    int ghost_type;
+    int ghost_state;
+	CGPoint cenOffset;
 }
 
 - (id)initWithType:(int)type;
