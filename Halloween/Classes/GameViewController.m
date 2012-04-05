@@ -1,8 +1,17 @@
 #import "GameViewController.h"
 #import "Ghost.h"
+#import "GhostSparta.h"
 #import "Candy.h"
 #import "Box.h"
 #import "GOManager.h"
+
+Ghost* MakeGhost(int idx)
+{
+	if (idx == GHOST_BASE)		return [[Ghost alloc] initWithType:GHOST_BASE];
+	if (idx == GHOST_SPARTA)	return [[GhostSparta alloc] initWithType:GHOST_SPARTA];
+	
+	return NULL;
+}
 
 @implementation GameViewController
 
@@ -51,7 +60,7 @@
 	--testDelay;
 	if (testDelay <= 0)
 	{
-		Ghost* test = [[Ghost alloc] initWithType:GHOST_BASE];
+		Ghost* test = MakeGhost(rand()%2);
 		[self.view addSubview:test.view];
 		[test reset];
 		

@@ -29,9 +29,11 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+	srand((unsigned) time(NULL));
+	
 	halfForm = CGAffineTransformMake(0.5, 0, 0, 0.5, 0, 0);
 	halfForm_flip = CGAffineTransformMake(-0.5, 0, 0, 0.5, 0, 0);
-	MakePoint[0] = CGPointMake(50, 250);
+	MakePoint[0] = CGPointMake(50, 280);
 	MakePoint[1] = CGPointMake(50, 100);
 	CandyPoint = CGPointMake(440, 270);
     BoxPoint =  CGPointMake(380, 280);
