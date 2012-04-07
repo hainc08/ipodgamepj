@@ -15,5 +15,6 @@
 - (bool)update:(UInt32)tick;
 - (void)debugDraw:(CGContextRef)context;
 - (bool)removeProcess;
+- (CGPoint*)GetCenPos;
 
 @end

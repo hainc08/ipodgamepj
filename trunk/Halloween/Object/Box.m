@@ -1,5 +1,6 @@
 #import "Box.h"
 #import "TexManager.h"
+#import "GOManager.h"
 
 @implementation Box
 @synthesize floor;
@@ -8,6 +9,8 @@
 	self = [super init];
 	
 	pos = BoxPoint;
+	
+	[[GOManager getInstance] addBox:self];
 
 	return self;
 }

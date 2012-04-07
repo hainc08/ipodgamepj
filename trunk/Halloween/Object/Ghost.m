@@ -40,7 +40,10 @@
         /* 이미지 반대로~ */
 		[self.view setTransform:halfForm_flip];	//요부분이 뒤집어주는 코드...
     }
-    
+
+	//[[GOManager getInstance] getBoxHeight:pos.x]
+	//이런식으로 높이를 가져와서 위로 올라가거나, 내려오거나, 옆으로 가거나...
+
     //오우 멋쪄! 스테이트 구분 이라니!
     switch (ghost_state) {
         case GHOST_NONE:

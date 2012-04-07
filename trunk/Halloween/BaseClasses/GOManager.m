@@ -46,6 +46,7 @@ static GOManager *GOManagerInst;
 - (void)reset
 {
 	frameTick = 0;
+	boxDirty = true;
 
 	[self removeAllObject];
 }
@@ -58,6 +59,7 @@ static GOManager *GOManagerInst;
 - (void)addBox:(NSObject*)b
 {
 	[boxes addObject:b];
+	boxDirty = true;
 }
 
 - (void)addCandy:(NSObject*)i
@@ -73,9 +75,16 @@ static GOManager *GOManagerInst;
 - (void)update
 {
 	[self updateArray:enemys];
+	
+	//업데이트 이후 박스 개수가 달려졌다면 dirty상태...
+	int boxCount = [boxes count];
 	[self updateArray:boxes];
+	boxDirty |= (boxCount != [boxes count]);
+
 	[self updateArray:candys];
 	[self updateArray:items];
+	
+	[self updateBoxHeight];
 
 	++frameTick;
 }
@@ -137,6 +146,35 @@ static GOManager *GOManagerInst;
 - (int)getEnemyCount
 {
 	return [enemys count];
+}
+
+- (void)updateBoxHeight
+{
+	if (boxDirty == false) return;
+
+	for (int i=0; i<480; ++i)
+	{
+		HeightInfo[i] = GroundHeight;
+	}
+	
+	for (Object *itr in boxes)
+	{
+		CGPoint* pos = [itr GetCenPos];
+		int h = pos->y - 25;
+		int x = pos->x - 25;
+		
+		for (int i=0; i<50; ++i)
+		{
+			if (HeightInfo[x+i] > h) HeightInfo[x+i] = h;
+		}
+	}
+	
+	boxDirty = false;
+}
+
+- (int)getBoxHeight:(int)xPos
+{
+	return HeightInfo[xPos];
 }
 
 @end

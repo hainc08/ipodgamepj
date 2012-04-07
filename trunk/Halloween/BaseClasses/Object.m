@@ -44,4 +44,9 @@
 	return false;
 }
 
+- (CGPoint*)GetCenPos
+{
+	return &pos;
+}
+
 @end

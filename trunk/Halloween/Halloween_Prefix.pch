@@ -17,6 +17,7 @@ CGAffineTransform halfForm_flip;
 CGPoint MakePoint[2];
 CGPoint CandyPoint;
 CGPoint BoxPoint;
+int GroundHeight;
 
 #define ENEMYCOUNT 2
 #define CANDYCOUNT 7
