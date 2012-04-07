@@ -11,6 +11,9 @@ bool isIn(CGPoint* a, CGPoint* b, float rad);
 	NSMutableIndexSet *discardedItems;
 	
 	int frameTick;
+	
+	int HeightInfo[480];
+	bool boxDirty;
 }
 
 + (GOManager*)getInstance;
@@ -31,5 +34,8 @@ bool isIn(CGPoint* a, CGPoint* b, float rad);
 
 - (void)removeAllObject;
 - (int)getEnemyCount;
+
+- (void)updateBoxHeight;
+- (int)getBoxHeight:(int)xPos;
 
 @end
