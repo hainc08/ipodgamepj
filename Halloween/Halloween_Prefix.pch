@@ -21,7 +21,11 @@ int GroundHeight;
 
 #define ENEMYCOUNT 2
 #define CANDYCOUNT 7
-#define BOXCOUNT 3
+#define BOXCOUNT 2
+#define GUMCOUNT 6
 
 #define GHOST_BASE 0
 #define GHOST_SPARTA 1
+
+#define BOX_BASE 0
+#define BOX_GUM 1

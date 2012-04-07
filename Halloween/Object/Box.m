@@ -17,7 +17,6 @@
 
 - (void)reset
 {
-	[imgView setImage:[[TexManager getInstance] getBoxImg:rand()%BOXCOUNT]];
     pos.y -= (50 * floor);
 	[self.view setCenter:pos];
 	[self.view setTransform:halfForm];

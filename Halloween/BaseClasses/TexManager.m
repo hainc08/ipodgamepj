@@ -35,11 +35,15 @@ static TexManager *texManagerInst;
 		candyImg[i] = [UIImage imageNamed:[NSString stringWithFormat:@"candy%d.png", i]];
 	}
     
-    for (int i=0; i< BOXCOUNT; ++i)
+    for (int i=0; i<BOXCOUNT; ++i)
 	{
 		boxImg[i] = [UIImage imageNamed:[NSString stringWithFormat:@"box%d.png", i]];
 	}
-	
+
+    for (int i=0; i<GUMCOUNT; ++i)
+	{
+		gumImg[i] = [UIImage imageNamed:[NSString stringWithFormat:@"gum%d.png", i]];
+	}
 }
 
 - (UIImage*)getGhostImg:(int)type :(int)idx
@@ -56,4 +60,10 @@ static TexManager *texManagerInst;
 {
 	return boxImg[type];
 }
+
+- (UIImage*)getGumImg:(int)type
+{
+	return gumImg[type];
+}
+
 @end

@@ -3,12 +3,21 @@
 #import "GhostSparta.h"
 #import "Candy.h"
 #import "Box.h"
+#import "BoxGum.h"
 #import "GOManager.h"
 
 Ghost* MakeGhost(int idx)
 {
 	if (idx == GHOST_BASE)		return [[Ghost alloc] initWithType:GHOST_BASE];
 	if (idx == GHOST_SPARTA)	return [[GhostSparta alloc] initWithType:GHOST_SPARTA];
+	
+	return NULL;
+}
+
+Box* MakeBox(int idx)
+{
+	if (idx == BOX_BASE)	return [[Box alloc] init];
+	if (idx == BOX_GUM)		return [[BoxGum alloc] init];
 	
 	return NULL;
 }
@@ -43,7 +52,7 @@ Ghost* MakeGhost(int idx)
 	//Box도 3개 만.... 테스트로~~
 	for (int i=0; i<3; ++i)
 	{
-		Box* testBox = [[Box alloc] init];
+		Box* testBox = MakeBox(rand()%BOXCOUNT);
         testBox.floor = i;
 		[self.view addSubview:testBox.view];
 		[testBox reset];
