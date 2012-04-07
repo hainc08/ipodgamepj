@@ -5,6 +5,7 @@
 	UIImage* ghostImg[ENEMYCOUNT][4];
 	UIImage* candyImg[CANDYCOUNT];
     UIImage* boxImg[BOXCOUNT];
+    UIImage* gumImg[GUMCOUNT];
 }
 
 + (TexManager*)getInstance;
@@ -16,4 +17,5 @@
 - (UIImage*)getGhostImg:(int)type :(int)idx;
 - (UIImage*)getCandyImg:(int)type;
 - (UIImage*)getBoxImg:(int)type;
+- (UIImage*)getGumImg:(int)type;
 @end
