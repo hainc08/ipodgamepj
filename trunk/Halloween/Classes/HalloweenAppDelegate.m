@@ -20,6 +20,8 @@
 #import "ViewManager.h"
 #import "GOManager.h"
 
+#import "DefaultInfo.h"
+
 @implementation HalloweenAppDelegate
 
 @synthesize window;
@@ -49,6 +51,7 @@
 	[StageManager initManager];
 	[HighScoreManager initManager];
 	[GOManager initManager];
+    [DefaultManager initManager];
 	
 	[application setStatusBarOrientation: UIInterfaceOrientationLandscapeRight animated:NO];
 	
@@ -120,7 +123,7 @@
 	[[TexManager getInstance] closeManager];
 	[[SoundManager getInstance] closeManager];
 	[[ErrorManager getInstance] closeManager];
-	
+	[[DefaultManager getInstance] closeManager];
 	[viewController release];
     [window release];
     [super dealloc];

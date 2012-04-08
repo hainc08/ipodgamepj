@@ -5,12 +5,12 @@
 
 @synthesize damage;
 
-- (id)initWithPos:(CGPoint)p speed:(int)s
+- (id)initWithPos:(CGPoint)p  attack:(GumAttectInfo)a;
 {
 	self = [super initWithImage:[[TexManager getInstance] getGumImg:rand()%GUMCOUNT]];
 	[self setTransform:halfForm];
 	pos = p;
-	speed = s;
+	attack = a;
 	[self setCenter:pos];
 
 	return self;
@@ -18,7 +18,7 @@
 
 - (bool)update
 {
-	pos.x += speed;
+	pos.x += attack.speed;
 	[self setCenter:pos];
 	
 	//유령에게 맞은지 체크해야한다.
@@ -55,8 +55,8 @@
 		CGPoint p = [nozzle center];
 		p.x = pos.x - 25 + (p.x * 0.5);
 		p.y = pos.y - 25 + (p.y * 0.5);
-		
-		Gum* gum = [[Gum alloc] initWithPos:p speed:-10];
+
+		Gum* gum = [[Gum alloc] initWithPos:p attack:[[DefaultManager getInstance] getGumInfo:boxtype]];
 		[gums addObject:gum];
 		//박스의 상위 뷰에다가 추가해준다.
 		[[self.view superview] addSubview:gum];
