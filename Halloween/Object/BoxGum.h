@@ -1,14 +1,13 @@
 #import "Box.h"
-
+#import "DefaultInfo.h"
 @interface Gum : UIImageView {
-	float damage;
 	CGPoint pos;
-	int speed;
+    GumAttectInfo attack;
 }
 
 @property (readwrite) float damage;
 
-- (id)initWithPos:(CGPoint)p speed:(int)s;
+- (id)initWithPos:(CGPoint)p attack:(GumAttectInfo)a;
 - (bool)update;
 
 @end
@@ -17,7 +16,7 @@
 	float shotDelay;
 	float shotWait;
 	float waitStep;
-	
+    BOX_TYPE   boxtype;
 	IBOutlet UIImageView* nozzle;
 
 	NSMutableArray* gums;

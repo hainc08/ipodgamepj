@@ -1,7 +1,6 @@
 #import "Object.h"
 
 @interface Box : Object {
-
 	IBOutlet UIImageView* imgView;
     int floor;
 }
