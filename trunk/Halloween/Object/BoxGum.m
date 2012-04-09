@@ -1,16 +1,18 @@
 #import "BoxGum.h"
 #import "TexManager.h"
+#import "GOManager.h"
 
 @implementation Gum
 
-@synthesize damage;
-
-- (id)initWithPos:(CGPoint)p  attack:(GumAttectInfo)a;
+- (id)initWithPos:(CGPoint)p  attack:(GumAttectInfo*)a;
 {
-	self = [super initWithImage:[[TexManager getInstance] getGumImg:rand()%GUMCOUNT]];
+	gumColor = rand()%GUMCOUNT;
+	self = [super initWithImage:[[TexManager getInstance] getGumImg:gumColor]];
 	[self setTransform:halfForm];
 	pos = p;
 	attack = a;
+	isPop = false;
+	attackDir = (attack->speed < 0);
 	[self setCenter:pos];
 
 	return self;
@@ -18,11 +20,33 @@
 
 - (bool)update
 {
-	pos.x += attack.speed;
-	[self setCenter:pos];
-	
-	//유령에게 맞은지 체크해야한다.
-	
+	if (isPop)
+	{
+		++popTime;
+		if (popTime == 6) return false;
+
+		[self setImage:[[TexManager getInstance] getGumPopImg:gumColor :popTime]];
+	}
+	else
+	{
+		pos.x += attack->speed;
+		[self setCenter:pos];
+		
+		//유령에게 맞은지 체크해야한다.
+		Object* hitGhost = (Object*)[[GOManager getInstance] hitCheck:[self center] :attack->rad :attackDir];
+		if (hitGhost != nil)
+		{
+			[hitGhost hit:attack->damage :BOX_GUM :attackDir];
+
+			[self setImage:[[TexManager getInstance] getGumPopImg:gumColor :0]];
+			[self setFrame:CGRectMake(pos.x - 40, pos.y - 40, 80, 80)];
+
+			isPop = true;
+			popTime = 0;
+			return true;
+		}
+	}
+
 	return ((pos.x > 0)&&(pos.x < 480));
 }
 
@@ -33,6 +57,7 @@
 - (id)init
 {
 	self = [super init];
+	boxtype = BOX_GUM;
 
 	return self;
 }
@@ -42,8 +67,9 @@
 	[super reset];
 	gums = [[NSMutableArray alloc] initWithCapacity:0];
 	discardedGums = [[NSMutableIndexSet alloc] init];
-	shotWait = shotDelay = 20.f;
+	shotWait = shotDelay = 10.f;
 	waitStep = 1.f;
+	attackInfo = [[DefaultManager getInstance] getGumInfo:boxtype];
 }
 
 - (bool)update:(UInt32)tick
@@ -56,7 +82,7 @@
 		p.x = pos.x - 25 + (p.x * 0.5);
 		p.y = pos.y - 25 + (p.y * 0.5);
 
-		Gum* gum = [[Gum alloc] initWithPos:p attack:[[DefaultManager getInstance] getGumInfo:boxtype]];
+		Gum* gum = [[Gum alloc] initWithPos:p attack:&attackInfo];
 		[gums addObject:gum];
 		//박스의 상위 뷰에다가 추가해준다.
 		[[self.view superview] addSubview:gum];

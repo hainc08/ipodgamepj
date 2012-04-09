@@ -2,12 +2,14 @@
 #import "DefaultInfo.h"
 @interface Gum : UIImageView {
 	CGPoint pos;
-    GumAttectInfo attack;
+    GumAttectInfo* attack;
+	bool isPop;
+	int popTime;
+	int gumColor;
+	bool attackDir;
 }
 
-@property (readwrite) float damage;
-
-- (id)initWithPos:(CGPoint)p attack:(GumAttectInfo)a;
+- (id)initWithPos:(CGPoint)p attack:(GumAttectInfo*)a;
 - (bool)update;
 
 @end
@@ -21,6 +23,8 @@
 
 	NSMutableArray* gums;
 	NSMutableIndexSet *discardedGums;
+
+	GumAttectInfo attackInfo;
 }
 
 - (id)init;

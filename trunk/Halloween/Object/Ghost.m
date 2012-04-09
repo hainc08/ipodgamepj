@@ -4,6 +4,8 @@
 
 @implementation Ghost
 
+@synthesize health;
+
 - (id)initWithType:(int)type
 {
 	self = [super init];
@@ -16,10 +18,23 @@
 	}
 
 	imgIdx = 0;
+	rad = 25;
 	cenOffset = CGPointMake(0, 0);
 	ghost_state = GHOST_NONE;
 	
 	return self;
+}
+
+- (void)hit:(float)damage :(int)type :(bool)dir
+{
+	health -= damage;
+	if (health <= 0) [self die];
+}
+
+- (void)die
+{
+	[super die];
+	ghost_state = GHOST_DIE;
 }
 
 - (void)reset

@@ -21,8 +21,8 @@ static DefaultManager *dataDefaultManager;
 - (void)loadGumInfo {
     /* 데미지, 스피드 , 공격 범위 */
    GumAttectInfo  value[2] = {
-        { 10, -10 , 420 }, 
-        { 10, -10 , 150 }
+        { 10, -10 , 420, 5 }, 
+        { 10, -10 , 150, 20 }
     };
     memcpy(gumInfo, value, sizeof(GumAttectInfo) * 2);
 }

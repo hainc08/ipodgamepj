@@ -71,7 +71,6 @@
 		845E8AE61526DA6D0016F910 /* SaveManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AD11526DA6D0016F910 /* SaveManager.m */; };
 		845E8AE71526DA6D0016F910 /* SoundEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AD31526DA6D0016F910 /* SoundEffect.m */; };
 		845E8AE81526DA6D0016F910 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AD51526DA6D0016F910 /* SoundManager.m */; };
-		845E8AE91526DA6D0016F910 /* SpecManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AD71526DA6D0016F910 /* SpecManager.m */; };
 		845E8AEA1526DA6D0016F910 /* StageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8AD91526DA6D0016F910 /* StageManager.m */; };
 		845E8AEB1526DA6D0016F910 /* TexManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8ADB1526DA6D0016F910 /* TexManager.m */; };
 		845E8AEC1526DA6D0016F910 /* ViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E8ADD1526DA6D0016F910 /* ViewManager.m */; };
@@ -197,8 +196,6 @@
 		845E8AD31526DA6D0016F910 /* SoundEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundEffect.m; sourceTree = "<group>"; };
 		845E8AD41526DA6D0016F910 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		845E8AD51526DA6D0016F910 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
-		845E8AD61526DA6D0016F910 /* SpecManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecManager.h; sourceTree = "<group>"; };
-		845E8AD71526DA6D0016F910 /* SpecManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecManager.m; sourceTree = "<group>"; };
 		845E8AD81526DA6D0016F910 /* StageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageManager.h; sourceTree = "<group>"; };
 		845E8AD91526DA6D0016F910 /* StageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageManager.m; sourceTree = "<group>"; };
 		845E8ADA1526DA6D0016F910 /* TexManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TexManager.h; sourceTree = "<group>"; };
@@ -405,8 +402,6 @@
 				845E8AD31526DA6D0016F910 /* SoundEffect.m */,
 				845E8AD41526DA6D0016F910 /* SoundManager.h */,
 				845E8AD51526DA6D0016F910 /* SoundManager.m */,
-				845E8AD61526DA6D0016F910 /* SpecManager.h */,
-				845E8AD71526DA6D0016F910 /* SpecManager.m */,
 				845E8AD81526DA6D0016F910 /* StageManager.h */,
 				845E8AD91526DA6D0016F910 /* StageManager.m */,
 				845E8ADA1526DA6D0016F910 /* TexManager.h */,
@@ -629,7 +624,6 @@
 				845E8AE61526DA6D0016F910 /* SaveManager.m in Sources */,
 				845E8AE71526DA6D0016F910 /* SoundEffect.m in Sources */,
 				845E8AE81526DA6D0016F910 /* SoundManager.m in Sources */,
-				845E8AE91526DA6D0016F910 /* SpecManager.m in Sources */,
 				845E8AEA1526DA6D0016F910 /* StageManager.m in Sources */,
 				845E8AEB1526DA6D0016F910 /* TexManager.m in Sources */,
 				845E8AEC1526DA6D0016F910 /* ViewManager.m in Sources */,

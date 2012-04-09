@@ -3,6 +3,7 @@
 @implementation Object
 
 @synthesize isDead;
+@synthesize rad;
 
 - (bool)update:(UInt32)tick
 {
@@ -31,6 +32,10 @@
 - (void)die
 {
 	isDead = true;
+}
+
+- (void)hit:(float)damage :(int)type :(bool)dir
+{
 }
 
 - (void)debugDraw:(CGContextRef)context

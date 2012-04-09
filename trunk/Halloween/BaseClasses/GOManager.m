@@ -177,4 +177,48 @@ static GOManager *GOManagerInst;
 	return HeightInfo[xPos];
 }
 
+- (NSObject*)hitCheck:(CGPoint)pos :(float)rad :(bool)dir
+{
+	Object* near = nil;
+	float min;
+	
+	if (dir) min = 1000;
+	else min = -1;
+
+	for (Object *itr in enemys)
+	{
+		if ([itr isDead]) continue;
+
+		float r = rad + [itr rad];
+		r = r * r;
+
+		CGPoint* epos = [itr GetCenPos];
+		int x = epos->x - pos.x;
+		int y = epos->y - pos.y;
+		
+		if ((x * x + y * y) < r)
+		{
+			//가장 가까운 녀석이 맞는다.
+			if (dir)
+			{
+				if (min > epos->x)
+				{
+					near = itr;
+					min = epos->x;
+				}
+			}
+			else
+			{
+				if (min < epos->x)
+				{
+					near = itr;
+					min = epos->x;
+				}
+			}
+		}
+	}
+	
+	return near;
+}
+
 @end

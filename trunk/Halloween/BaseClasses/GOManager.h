@@ -38,4 +38,6 @@ bool isIn(CGPoint* a, CGPoint* b, float rad);
 - (void)updateBoxHeight;
 - (int)getBoxHeight:(int)xPos;
 
+- (NSObject*)hitCheck:(CGPoint)pos :(float)rad :(bool)dir;
+
 @end
