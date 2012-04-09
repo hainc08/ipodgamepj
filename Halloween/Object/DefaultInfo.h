@@ -18,7 +18,10 @@ typedef struct _gumattectinfo
     float damage;   /* 공격력 */
 	int speed;  /* 이동속도 */
     int range;  /* 공격 범위 ( 이동 범위 ) */ 
+    int rad;	/* 공격 반경 */ 
 } GumAttectInfo;
+
+//--------Attect는 무슨 단어임?[ㅡ_ㅡ?]
 
 /* 유령 정보 */
 #if 0

@@ -1,5 +1,4 @@
 #import "AchieveManager.h"
-#import "SpecManager.h"
 #import "FileIO.h"
 
 static AchieveManager *AchieveManagerInst;

@@ -70,6 +70,7 @@ Box* MakeBox(int idx)
 	if (testDelay <= 0)
 	{
 		Ghost* test = MakeGhost(rand()%2);
+		[test setHealth:30];
 		[self.view addSubview:test.view];
 		[test reset];
 		

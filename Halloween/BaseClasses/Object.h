@@ -5,13 +5,16 @@
 	bool isDead;
 	int holdTick;
 	CGPoint pos;
+	float rad;
 }
 
 @property (readonly) bool isDead;
+@property (readonly) float rad;
 
 - (id)init;
 
 - (void)die;
+- (void)hit:(float)damage :(int)type :(bool)dir;
 - (bool)update:(UInt32)tick;
 - (void)debugDraw:(CGContextRef)context;
 - (bool)removeProcess;

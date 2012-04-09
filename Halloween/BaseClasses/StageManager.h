@@ -1,5 +1,4 @@
 #import <UIKit/UIKit.h>
-#import "SpecManager.h"
 
 struct _BoxInfo
 {
@@ -13,7 +12,6 @@ typedef struct _BoxInfo BoxInfo;
 @public	
 	int curStage;
 	int lastBox;
-	SpecManager* sp;
 	
 	int boxCount;
 	BoxInfo boxs[100];

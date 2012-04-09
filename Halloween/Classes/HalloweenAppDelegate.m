@@ -14,7 +14,6 @@
 #import "TexManager.h"
 #import "SaveManager.h"
 #import "PointManager.h"
-#import "SpecManager.h"
 #import "StageManager.h"
 #import "HighScoreManager.h"
 #import "ViewManager.h"
@@ -47,7 +46,6 @@
 	[SaveManager initManager];
 	[AchieveManager initManager];
 	[PointManager initManager];
-	[SpecManager initManager];
 	[StageManager initManager];
 	[HighScoreManager initManager];
 	[GOManager initManager];
@@ -116,7 +114,6 @@
 	[[GOManager getInstance] closeManager];
 	[[HighScoreManager getInstance] closeManager];
 	[[StageManager getInstance] closeManager];
-	[[SpecManager getInstance] closeManager];
 	[[PointManager getInstance] closeManager];
 	[[AchieveManager getInstance] closeManager];
 	[[SaveManager getInstance] closeManager];
