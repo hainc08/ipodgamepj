@@ -9,7 +9,6 @@
 	self = [super init];
 	
 	pos = BoxPoint;
-	
 	[[GOManager getInstance] addBox:self];
 
 	return self;
@@ -17,7 +16,9 @@
 
 - (void)reset
 {
+
     pos.y -= (50 * floor);
+    
 	[self.view setCenter:pos];
 	[self.view setTransform:halfForm];
 }

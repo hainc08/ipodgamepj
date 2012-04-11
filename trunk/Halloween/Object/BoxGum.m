@@ -4,15 +4,18 @@
 
 @implementation Gum
 
-- (id)initWithPos:(CGPoint)p  attack:(GumAttectInfo*)a;
+- (id)initWithPos:(CGPoint)p  attack:(GumAttactInfo*)a;
+
 {
 	gumColor = rand()%GUMCOUNT;
 	self = [super initWithImage:[[TexManager getInstance] getGumImg:gumColor]];
 	[self setTransform:halfForm];
-	pos = p;
 	attack = a;
+    pos     = p;
 	isPop = false;
+    popTime =  -1;
 	attackDir = (attack->speed < 0);
+
 	[self setCenter:pos];
 
 	return self;
@@ -20,6 +23,7 @@
 
 - (bool)update
 {
+
 	if (isPop)
 	{
 		++popTime;
@@ -42,7 +46,7 @@
 			[self setFrame:CGRectMake(pos.x - 40, pos.y - 40, 80, 80)];
 
 			isPop = true;
-			popTime = 0;
+			popTime = -1;
 			return true;
 		}
 	}
