@@ -1,15 +1,17 @@
 #import "Box.h"
 #import "DefaultInfo.h"
 @interface Gum : UIImageView {
-	CGPoint pos;
-    GumAttectInfo* attack;
+	CGPoint     pos;
+    int         effect;
+    GumAttactInfo* attack;
 	bool isPop;
 	int popTime;
 	int gumColor;
 	bool attackDir;
 }
 
-- (id)initWithPos:(CGPoint)p attack:(GumAttectInfo*)a;
+
+- (id)initWithPos:(CGPoint)p attack:(GumAttactInfo*)a;
 - (bool)update;
 
 @end
@@ -24,7 +26,7 @@
 	NSMutableArray* gums;
 	NSMutableIndexSet *discardedGums;
 
-	GumAttectInfo attackInfo;
+	GumAttactInfo attackInfo;
 }
 
 - (id)init;
