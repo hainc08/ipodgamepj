@@ -46,7 +46,7 @@
 			[self setFrame:CGRectMake(pos.x - 40, pos.y - 40, 80, 80)];
 
 			isPop = true;
-			popTime = -1;
+			popTime = 0;
 			return true;
 		}
 	}
