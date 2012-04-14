@@ -2,14 +2,12 @@
 #import "DefaultInfo.h"
 @interface Gum : UIImageView {
 	CGPoint     pos;
-    int         effect;
     GumAttactInfo* attack;
 	bool isPop;
 	int popTime;
 	int gumColor;
 	bool attackDir;
 }
-
 
 - (id)initWithPos:(CGPoint)p attack:(GumAttactInfo*)a;
 - (bool)update;

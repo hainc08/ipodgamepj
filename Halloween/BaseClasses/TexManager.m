@@ -48,6 +48,11 @@ static TexManager *texManagerInst;
 			gumPopImg[i][j] = [UIImage imageNamed:[NSString stringWithFormat:@"gum_pop_%d_%d.png", i, j]];
 		}
 	}
+	
+	for (int j=0; j<6; ++j)
+	{
+		icePopImg[j] = [UIImage imageNamed:[NSString stringWithFormat:@"ice_pop_%d.png", j]];
+	}
 }
 
 - (UIImage*)getGhostImg:(int)type :(int)idx
@@ -73,6 +78,11 @@ static TexManager *texManagerInst;
 - (UIImage*)getGumPopImg:(int)type :(int)idx
 {
 	return gumPopImg[type][idx];
+}
+
+- (UIImage*)getIcePopImg:(int)idx
+{
+	return icePopImg[idx];
 }
 
 @end
