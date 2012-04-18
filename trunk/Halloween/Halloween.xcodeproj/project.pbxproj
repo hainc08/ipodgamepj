@@ -81,6 +81,10 @@
 		8467D10D1526DD3B005BF6BC /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8467D1091526DD3B005BF6BC /* GameViewController.xib */; };
 		8467D1281526E0AE005BF6BC /* Ghost.m in Sources */ = {isa = PBXBuildFile; fileRef = 8467D1261526E0AE005BF6BC /* Ghost.m */; };
 		8467D1291526E0AE005BF6BC /* Ghost.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8467D1271526E0AE005BF6BC /* Ghost.xib */; };
+		8470F7CE153F458100645286 /* newboxButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8470F7CC153F458100645286 /* newboxButton.png */; };
+		8470F7CF153F458100645286 /* newBoxPos.png in Resources */ = {isa = PBXBuildFile; fileRef = 8470F7CD153F458100645286 /* newBoxPos.png */; };
+		8470F7D3153F45AE00645286 /* GameUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8470F7D1153F45AE00645286 /* GameUIController.m */; };
+		8470F7D4153F45AE00645286 /* GameUIController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8470F7D2153F45AE00645286 /* GameUIController.xib */; };
 		849A20D9152A0C45005BCE24 /* ghost0_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 849A20D5152A0C45005BCE24 /* ghost0_0.png */; };
 		849A20DA152A0C45005BCE24 /* ghost0_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 849A20D6152A0C45005BCE24 /* ghost0_1.png */; };
 		849A20DB152A0C45005BCE24 /* ghost0_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 849A20D7152A0C45005BCE24 /* ghost0_2.png */; };
@@ -219,6 +223,11 @@
 		8467D1251526E0AE005BF6BC /* Ghost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ghost.h; sourceTree = "<group>"; };
 		8467D1261526E0AE005BF6BC /* Ghost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ghost.m; sourceTree = "<group>"; };
 		8467D1271526E0AE005BF6BC /* Ghost.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Ghost.xib; sourceTree = "<group>"; };
+		8470F7CC153F458100645286 /* newboxButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newboxButton.png; sourceTree = "<group>"; };
+		8470F7CD153F458100645286 /* newBoxPos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newBoxPos.png; sourceTree = "<group>"; };
+		8470F7D0153F45AE00645286 /* GameUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUIController.h; sourceTree = "<group>"; };
+		8470F7D1153F45AE00645286 /* GameUIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameUIController.m; sourceTree = "<group>"; };
+		8470F7D2153F45AE00645286 /* GameUIController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameUIController.xib; sourceTree = "<group>"; };
 		849A20D5152A0C45005BCE24 /* ghost0_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost0_0.png; sourceTree = "<group>"; };
 		849A20D6152A0C45005BCE24 /* ghost0_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost0_1.png; sourceTree = "<group>"; };
 		849A20D7152A0C45005BCE24 /* ghost0_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ghost0_2.png; sourceTree = "<group>"; };
@@ -291,6 +300,9 @@
 				8467D1071526DD3B005BF6BC /* GameViewController.h */,
 				8467D1081526DD3B005BF6BC /* GameViewController.m */,
 				8467D1091526DD3B005BF6BC /* GameViewController.xib */,
+				8470F7D0153F45AE00645286 /* GameUIController.h */,
+				8470F7D1153F45AE00645286 /* GameUIController.m */,
+				8470F7D2153F45AE00645286 /* GameUIController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -435,6 +447,7 @@
 		8467D11C1526DF40005BF6BC /* img */ = {
 			isa = PBXGroup;
 			children = (
+				8470F7CB153F458100645286 /* UI */,
 				8423416E1530BD7D00C3BC3E /* effect */,
 				849A20D5152A0C45005BCE24 /* ghost0_0.png */,
 				849A20D6152A0C45005BCE24 /* ghost0_1.png */,
@@ -494,6 +507,15 @@
 				56C8C5481531DF2300F62F0C /* DefaultInfo.m */,
 			);
 			path = Object;
+			sourceTree = "<group>";
+		};
+		8470F7CB153F458100645286 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8470F7CC153F458100645286 /* newboxButton.png */,
+				8470F7CD153F458100645286 /* newBoxPos.png */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -628,6 +650,9 @@
 				84C6A39215392B5D00DCFD34 /* ice_pop_3.png in Resources */,
 				84C6A39315392B5D00DCFD34 /* ice_pop_4.png in Resources */,
 				84C6A39415392B5D00DCFD34 /* ice_pop_5.png in Resources */,
+				8470F7CE153F458100645286 /* newboxButton.png in Resources */,
+				8470F7CF153F458100645286 /* newBoxPos.png in Resources */,
+				8470F7D4153F45AE00645286 /* GameUIController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,6 +688,7 @@
 				849FFB0B152DF65A00F089F2 /* GhostSparta.m in Sources */,
 				84B933EA1530C3C000F4EAFF /* BoxGum.m in Sources */,
 				56C8C5491531DF2400F62F0C /* DefaultInfo.m in Sources */,
+				8470F7D3153F45AE00645286 /* GameUIController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

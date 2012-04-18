@@ -37,7 +37,7 @@
 	MakePoint[0] = CGPointMake(50, 280);
 	MakePoint[1] = CGPointMake(50, 100);
 	CandyPoint = CGPointMake(440, 270);
-    BoxPoint =  CGPointMake(380, 280);
+    BoxPoint =  CGPointMake(350, 280);
 	GroundHeight = 310;
 
 	[ErrorManager initManager];
