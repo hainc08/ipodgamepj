@@ -1,9 +1,11 @@
 #import "BaseViewController.h"
-#import "BackViewController.h"
 
 @interface GameViewController : BaseViewController {
-	BackViewController* backView;
 	int testDelay;
+	IBOutlet UIView* objectView;
+	
+	UIViewController* backView;
+	UIViewController* gameUIView;
 }
 
 - (void)reset:(NSObject*)param;

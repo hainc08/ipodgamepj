@@ -1,10 +1,14 @@
 #import "GameViewController.h"
+#import "GameUIController.h"
 #import "Ghost.h"
 #import "GhostSparta.h"
 #import "Candy.h"
 #import "Box.h"
 #import "BoxGum.h"
 #import "GOManager.h"
+
+#import "BackViewController.h"
+#import "GameUIController.h"
 
 Ghost* MakeGhost(int idx)
 {
@@ -28,6 +32,7 @@ Box* MakeBox(int idx)
 {
 	self = [super init];
 	backView = NULL;
+	gameUIView = NULL;
 	return self;
 }
 
@@ -38,15 +43,21 @@ Box* MakeBox(int idx)
 		backView = [[BackViewController alloc] init];
 		[self.view addSubview:backView.view];
 	}
-
-	[backView reset];
-	[self.view sendSubviewToBack:backView.view];
+	if (gameUIView == NULL)
+	{
+		gameUIView = [[GameUIController alloc] init];
+		[self.view addSubview:gameUIView.view];
+		[(GameUIController*)gameUIView setGameView:self];
+	}
+	
+	[(BackViewController*)backView reset];
+	[(GameUIController*)gameUIView reset];
 	
 	//캔디 열개만 테스트삼아 생성해보자...
 	for (int i=0; i<10; ++i)
 	{
 		Candy* testCandy = [[Candy alloc] init];
-		[self.view addSubview:testCandy.view];
+		[objectView addSubview:testCandy.view];
 		[testCandy reset];
 	}
 	//Box도 3개 만.... 테스트로~~
@@ -54,9 +65,14 @@ Box* MakeBox(int idx)
 	{
 		Box* testBox = MakeBox(rand()%BOXCOUNT);
         testBox.floor = i;
-		[self.view addSubview:testBox.view];
+		[objectView addSubview:testBox.view];
 		[testBox reset];
 	}
+	
+	[self.view sendSubviewToBack:backView.view];
+	[self.view bringSubviewToFront:objectView];
+	[self.view bringSubviewToFront:gameUIView.view];
+	
 
 	testDelay = 0;
 }
@@ -71,7 +87,7 @@ Box* MakeBox(int idx)
 	{
 		Ghost* test = MakeGhost(rand()%2);
 		[test setHealth:30];
-		[self.view addSubview:test.view];
+		[objectView addSubview:test.view];
 		[test reset];
 		
 		testDelay = 20 + rand() % 10;

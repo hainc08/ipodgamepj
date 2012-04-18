@@ -161,9 +161,9 @@ static GOManager *GOManagerInst;
 	{
 		CGPoint* pos = [itr GetCenPos];
 		int h = pos->y - 25;
-		int x = pos->x - 25;
+		int x = pos->x - 50;
 		
-		for (int i=0; i<50; ++i)
+		for (int i=0; i<100; ++i)
 		{
 			if (HeightInfo[x+i] > h) HeightInfo[x+i] = h;
 		}

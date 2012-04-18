@@ -49,24 +49,39 @@
 	[imgView setImage:img[imgIdx]];
 	
     /* Candy 위치에서 Candy를 잡고 다시 돌아가자 */
-    if(pos.x >= 400)
+    if(pos.x >= 420)
     {
         ghost_state = GHOST_CANDY;
         /* 이미지 반대로~ */
 		[self.view setTransform:halfForm_flip];	//요부분이 뒤집어주는 코드...
     }
 
-	//[[GOManager getInstance] getBoxHeight:pos.x]
-	//이런식으로 높이를 가져와서 위로 올라가거나, 내려오거나, 옆으로 가거나...
-
     //오우 멋쪄! 스테이트 구분 이라니!
     switch (ghost_state) {
         case GHOST_NONE:
-            pos.x += 3;
-            break;
         case GHOST_CANDY:
-            pos.x -= 3;
+		{
+			//이런식으로 높이를 가져와서 위로 올라가거나, 내려오거나, 옆으로 가거나...
+			float height = [[GOManager getInstance] getBoxHeight:pos.x] - 30;
+			if (pos.y < height)
+			{
+				pos.y += 3;
+				if (pos.y > height) pos.y = height;
+			}
+			else if (pos.y > height)
+			{
+				pos.y -= 3;
+				if (pos.y < height) pos.y = height;
+			}
+			else
+			{
+				if (ghost_state == GHOST_NONE)
+					pos.x += 3;
+				else
+					pos.x -= 3;
+			}
             break;
+		}
         case GHOST_DIE:
             /* 죽으면 위로~ 휘리릭~~*/
             pos.y -= 2;
