@@ -7,6 +7,9 @@
 	IBOutlet UIImageView* alphaBox;
 	
 	GameViewController* gameView;
+
+	UIViewController* boxGold;
+	UIViewController* nowGold;
 }
 
 @property (retain) GameViewController* gameView;
