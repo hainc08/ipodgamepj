@@ -80,11 +80,12 @@ Box* MakeBox(int idx)
 - (void)update
 {
 	[[GOManager getInstance] update];
+	[(GameUIController*)gameUIView update];
 
 	//고스트를 꾸준히 만들어 보자...
 	--testDelay;
 	if (testDelay <= 0)
-	{
+	{		
 		Ghost* test = MakeGhost(rand()%2);
 		[test setHealth:30];
 		[objectView addSubview:test.view];
