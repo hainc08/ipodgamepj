@@ -62,7 +62,7 @@
         case GHOST_CANDY:
 		{
 			//이런식으로 높이를 가져와서 위로 올라가거나, 내려오거나, 옆으로 가거나...
-			float height = [[GOManager getInstance] getBoxHeight:pos.x] - 30;
+			float height = [[GOManager getInstance] getMonsterPath:pos.x] - 30;
 			if (pos.y < height)
 			{
 				pos.y += 3;
@@ -76,9 +76,9 @@
 			else
 			{
 				if (ghost_state == GHOST_NONE)
-					pos.x += 3;
+					pos.x += 2;
 				else
-					pos.x -= 3;
+					pos.x -= 2;
 			}
             break;
 		}

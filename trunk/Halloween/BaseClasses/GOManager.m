@@ -1,5 +1,6 @@
 #import "GOManager.h"
 #import "Object.h"
+#import "Box.h"
 
 bool isIn(CGPoint* a, CGPoint* b, float rad)
 {
@@ -9,6 +10,8 @@ bool isIn(CGPoint* a, CGPoint* b, float rad)
 static GOManager *GOManagerInst;
 
 @implementation GOManager
+
+@synthesize GameView;
 
 + (GOManager*)getInstance
 {
@@ -30,6 +33,11 @@ static GOManager *GOManagerInst;
 
 	discardedItems = [[NSMutableIndexSet alloc] init];
 
+	for (int i=0; i<480; ++i)
+	{
+		GroundInit[i] = GroundHeight;
+	}
+	
 	return [super init];
 }
 
@@ -47,7 +55,8 @@ static GOManager *GOManagerInst;
 {
 	frameTick = 0;
 	boxDirty = true;
-
+	monPathDirty = true;
+	
 	[self removeAllObject];
 }
 
@@ -148,33 +157,99 @@ static GOManager *GOManagerInst;
 	return [enemys count];
 }
 
+//조금 더 최적화 할 수 있는 방안을 모색해야한다.
 - (void)updateBoxHeight
 {
-	if (boxDirty == false) return;
-
-	for (int i=0; i<480; ++i)
+	if (boxDirty == false)
 	{
-		HeightInfo[i] = GroundHeight;
+		if (monPathDirty) [self updateMonsterPath];
+		return;
 	}
-	
-	for (Object *itr in boxes)
+
+	memcpy(BoxHeight, GroundInit, sizeof(int) * 480);
+	memcpy(MonsterPath, GroundInit, sizeof(int) * 480);
+			
+	monPathDirty = false;
+
+	for (Box *itr in boxes)
 	{
-		CGPoint* pos = [itr GetCenPos];
-		int h = pos->y - 25;
-		int x = pos->x - 50;
-		
-		for (int i=0; i<100; ++i)
+		int x = [itr GetCenPos]->x - 25;
+		int h = [itr fallYpos] - 25;
+
+		for (int i=0; i<50; ++i)
 		{
-			if (HeightInfo[x+i] > h) HeightInfo[x+i] = h;
+			if (BoxHeight[x+i] > h) BoxHeight[x+i] = h;
+		}
+
+		if ([itr isFall])
+		{
+			monPathDirty = true;
+			continue;
+		}
+
+		x -= 20;
+		
+		for (int i=0; i<90; ++i)
+		{
+			if (MonsterPath[x+i] > h) MonsterPath[x+i] = h;
 		}
 	}
-	
+
 	boxDirty = false;
+}
+
+- (void)updateMonsterPath
+{
+	memcpy(MonsterPath, GroundInit, sizeof(int) * 480);
+	
+	monPathDirty = false;
+	
+	for (Box *itr in boxes)
+	{
+		int x = [itr GetCenPos]->x - 45;
+		int h = [itr fallYpos] - 25;
+
+		if ([itr isFall])
+		{
+			monPathDirty = true;
+			continue;
+		}
+		
+		for (int i=0; i<90; ++i)
+		{
+			if (MonsterPath[x+i] > h) MonsterPath[x+i] = h;
+		}
+	}
 }
 
 - (int)getBoxHeight:(int)xPos
 {
-	return HeightInfo[xPos];
+	return BoxHeight[xPos];
+}
+
+- (int)getMonsterPath:(int)xPos
+{
+	return MonsterPath[xPos];
+}
+
+- (bool)HitGhostByBox:(CGPoint)pos
+{
+	//박스 범위안에 녀석은 다 데미지...
+	for (Object *itr in enemys)
+	{
+		if ([itr isDead]) continue;
+		CGPoint* epos = [itr GetCenPos];
+		if (epos->x < pos.x - 25) continue;
+		if (epos->x > pos.x + 25) continue;
+		if (epos->y < pos.y - 50) continue;
+		if (epos->y > pos.y + 50) continue;
+		
+		[itr die];
+		
+		return true;
+	}
+	
+	return false;
 }
 
 - (NSObject*)hitCheck:(CGPoint)pos :(float)rad :(bool)dir

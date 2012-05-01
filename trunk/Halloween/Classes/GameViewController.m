@@ -18,15 +18,10 @@ Ghost* MakeGhost(int idx)
 	return NULL;
 }
 
-Box* MakeBox(int idx)
-{
-	if (idx == BOX_BASE)	return [[Box alloc] init];
-	if (idx == BOX_GUM)		return [[BoxGum alloc] init];
-	
-	return NULL;
-}
-
 @implementation GameViewController
+
+@synthesize objectView;
+@synthesize boxView;
 
 - (id)init
 {
@@ -57,23 +52,20 @@ Box* MakeBox(int idx)
 	for (int i=0; i<10; ++i)
 	{
 		Candy* testCandy = [[Candy alloc] init];
-		[objectView addSubview:testCandy.view];
+		[boxView addSubview:testCandy.view];
 		[testCandy reset];
 	}
-	//Box도 3개 만.... 테스트로~~
-	for (int i=0; i<3; ++i)
-	{
-		Box* testBox = MakeBox(rand()%BOXCOUNT);
-        testBox.floor = i;
-		[objectView addSubview:testBox.view];
-		[testBox reset];
-	}
+	
+	[frontGround setTransform:halfForm];
 	
 	[self.view sendSubviewToBack:backView.view];
+	[self.view bringSubviewToFront:boxView];
 	[self.view bringSubviewToFront:objectView];
+	[self.view bringSubviewToFront:frontGround];
 	[self.view bringSubviewToFront:gameUIView.view];
 	
-
+	[[GOManager getInstance] setGameView:self];
+	
 	testDelay = 0;
 }
 
@@ -85,13 +77,14 @@ Box* MakeBox(int idx)
 	//고스트를 꾸준히 만들어 보자...
 	--testDelay;
 	if (testDelay <= 0)
-	{		
+	{
 		Ghost* test = MakeGhost(rand()%2);
 		[test setHealth:30];
 		[objectView addSubview:test.view];
+		[objectView sendSubviewToBack:test.view];
 		[test reset];
 		
-		testDelay = 20 + rand() % 10;
+		testDelay = 40 + rand() % 15;
 	}
 }
 

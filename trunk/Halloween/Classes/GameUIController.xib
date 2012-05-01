@@ -60,7 +60,7 @@
 					<object class="IBUIImageView" id="666765045">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{120, -171}, {103, 580}}</string>
+						<string key="NSFrame">{{160, -171}, {103, 580}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -79,13 +79,39 @@
 						<reference key="NSSuperview" ref="774585933"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
-						<float key="IBUIAlpha">0.5</float>
+						<int key="IBUIContentMode">4</int>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<object class="NSCustomResource" key="IBUIImage" id="1015644052">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">box0.png</string>
+						</object>
+					</object>
+					<object class="IBUIImageView" id="394490301">
+						<reference key="NSNextResponder" ref="774585933"/>
+						<int key="NSvFlags">256</int>
+						<string key="NSFrame">{{12, 29}, {100, 100}}</string>
+						<reference key="NSSuperview" ref="774585933"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">4</int>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<reference key="IBUIImage" ref="1015644052"/>
+					</object>
+					<object class="IBUIImageView" id="950202644">
+						<reference key="NSNextResponder" ref="774585933"/>
+						<int key="NSvFlags">256</int>
+						<string key="NSFrame">{{261, 106}, {150, 150}}</string>
+						<reference key="NSSuperview" ref="774585933"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">box0.png</string>
+							<string key="NSResourceName">xMark.png</string>
 						</object>
 					</object>
 				</object>
@@ -137,6 +163,22 @@
 					</object>
 					<int key="connectionID">13</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">followBox</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="394490301"/>
+					</object>
+					<int key="connectionID">17</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">xMark</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="950202644"/>
+					</object>
+					<int key="connectionID">19</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -166,6 +208,8 @@
 							<reference ref="469004514"/>
 							<reference ref="666765045"/>
 							<reference ref="162103321"/>
+							<reference ref="394490301"/>
+							<reference ref="950202644"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -184,6 +228,16 @@
 						<reference key="object" ref="162103321"/>
 						<reference key="parent" ref="774585933"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">16</int>
+						<reference key="object" ref="394490301"/>
+						<reference key="parent" ref="774585933"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">18</int>
+						<reference key="object" ref="950202644"/>
+						<reference key="parent" ref="774585933"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -192,6 +246,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-1.CustomClassName</string>
 					<string>-2.CustomClassName</string>
+					<string>11.IBViewBoundsToFrameTransform</string>
 					<string>6.CustomClassName</string>
 					<string>6.IBEditorWindowLastContentRect</string>
 					<string>6.IBPluginDependency</string>
@@ -201,6 +256,9 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>GameUIController</string>
 					<string>UIResponder</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">AUL0AABC7gAAA</bytes>
+					</object>
 					<string>GameUIView</string>
 					<string>{{351, 436}, {480, 320}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -225,7 +283,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">15</int>
+			<int key="maxID">19</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -239,10 +297,14 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>alphaBox</string>
 							<string>boxGuide</string>
+							<string>followBox</string>
 							<string>newBox</string>
+							<string>xMark</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIImageView</string>
+							<string>UIImageView</string>
 							<string>UIImageView</string>
 							<string>UIImageView</string>
 							<string>UIImageView</string>
@@ -254,7 +316,9 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>alphaBox</string>
 							<string>boxGuide</string>
+							<string>followBox</string>
 							<string>newBox</string>
+							<string>xMark</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -267,7 +331,15 @@
 								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">followBox</string>
+								<string key="candidateClassName">UIImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">newBox</string>
+								<string key="candidateClassName">UIImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">xMark</string>
 								<string key="candidateClassName">UIImageView</string>
 							</object>
 						</object>
@@ -485,12 +557,14 @@
 				<string>box0.png</string>
 				<string>newBoxPos.png</string>
 				<string>newboxButton.png</string>
+				<string>xMark.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{100, 100}</string>
 				<string>{103, 580}</string>
 				<string>{120, 120}</string>
+				<string>{150, 150}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>

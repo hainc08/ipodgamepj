@@ -6,6 +6,7 @@
     UIImage* gumImg[GUMCOUNT];
     UIImage* gumPopImg[GUMCOUNT][6];
     UIImage* icePopImg[6];
+    UIImage* boxPopImg[4];
 }
 
 + (TexManager*)getInstance;
@@ -20,5 +21,6 @@
 - (UIImage*)getGumImg:(int)type;
 - (UIImage*)getGumPopImg:(int)type :(int)idx;
 - (UIImage*)getIcePopImg:(int)idx;
+- (UIImage*)getBoxPopImg:(int)idx;
 
 @end

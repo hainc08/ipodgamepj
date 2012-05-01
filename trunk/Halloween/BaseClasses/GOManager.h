@@ -12,9 +12,17 @@ bool isIn(CGPoint* a, CGPoint* b, float rad);
 	
 	int frameTick;
 	
-	int HeightInfo[480];
+	int GroundInit[480];
+	int BoxHeight[480];
+	int MonsterPath[480];
+
 	bool boxDirty;
+	bool monPathDirty;
+	
+	UIViewController* GameView;
 }
+
+@property (retain) UIViewController* GameView;
 
 + (GOManager*)getInstance;
 + (void)initManager;
@@ -36,7 +44,11 @@ bool isIn(CGPoint* a, CGPoint* b, float rad);
 - (int)getEnemyCount;
 
 - (void)updateBoxHeight;
+- (void)updateMonsterPath;
+
 - (int)getBoxHeight:(int)xPos;
+- (int)getMonsterPath:(int)xPos;
+- (bool)HitGhostByBox:(CGPoint)pos;
 
 - (NSObject*)hitCheck:(CGPoint)pos :(float)rad :(bool)dir;
 

@@ -53,6 +53,11 @@ static TexManager *texManagerInst;
 	{
 		icePopImg[j] = [UIImage imageNamed:[NSString stringWithFormat:@"ice_pop_%d.png", j]];
 	}
+	
+	for (int j=0; j<4; ++j)
+	{
+		boxPopImg[j] = [UIImage imageNamed:[NSString stringWithFormat:@"BoxPop_%d.png", j]];
+	}
 }
 
 - (UIImage*)getGhostImg:(int)type :(int)idx
@@ -83,6 +88,11 @@ static TexManager *texManagerInst;
 - (UIImage*)getIcePopImg:(int)idx
 {
 	return icePopImg[idx];
+}
+
+- (UIImage*)getBoxPopImg:(int)idx
+{
+	return boxPopImg[idx];
 }
 
 @end
