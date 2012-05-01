@@ -1,6 +1,7 @@
 #import "BoxGum.h"
 #import "TexManager.h"
 #import "GOManager.h"
+#import "GameViewController.h"
 
 @implementation Gum
 
@@ -89,7 +90,8 @@
 		Gum* gum = [[Gum alloc] initWithPos:p attack:&attackInfo];
 		[gums addObject:gum];
 		//박스의 상위 뷰에다가 추가해준다.
-		[[self.view superview] addSubview:gum];
+		GameViewController* gView = (GameViewController*)[[GOManager getInstance] GameView];
+		[[gView objectView] addSubview:gum];
 
 		shotWait = shotDelay;
 	}

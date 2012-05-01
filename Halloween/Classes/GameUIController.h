@@ -5,6 +5,9 @@
 	IBOutlet UIImageView* newBox;
 	IBOutlet UIImageView* boxGuide;
 	IBOutlet UIImageView* alphaBox;
+	IBOutlet UIImageView* followBox;
+
+	IBOutlet UIImageView* xMark;
 	
 	GameViewController* gameView;
 
@@ -16,12 +19,15 @@
 
 - (void)reset;
 - (void)update;
+- (void)newBox:(CGPoint)pos :(bool)isDrop;
 
 @end
 
 @interface GameUIView : UIView {
 	CGPoint buttonPos;
 	GameUIController* parent;
+	
+	bool isNewBox;
 }
 
 @property (readwrite) CGPoint buttonPos;
